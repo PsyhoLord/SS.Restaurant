@@ -1,0 +1,503 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FA336C1D19335B950007CC76 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA336C1C19335B950007CC76 /* Foundation.framework */; };
+		FA336C1F19335B950007CC76 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA336C1E19335B950007CC76 /* CoreGraphics.framework */; };
+		FA336C2119335B950007CC76 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA336C2019335B950007CC76 /* UIKit.framework */; };
+		FA336C2719335B950007CC76 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA336C2519335B950007CC76 /* InfoPlist.strings */; };
+		FA336C2919335B950007CC76 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA336C2819335B950007CC76 /* main.m */; };
+		FA336C2D19335B950007CC76 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA336C2C19335B950007CC76 /* AppDelegate.m */; };
+		FA336C3019335B950007CC76 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA336C2E19335B950007CC76 /* Main_iPhone.storyboard */; };
+		FA336C3319335B950007CC76 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA336C3119335B950007CC76 /* Main_iPad.storyboard */; };
+		FA336C3619335B950007CC76 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA336C3519335B950007CC76 /* ViewController.m */; };
+		FA336C3819335B950007CC76 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA336C3719335B950007CC76 /* Images.xcassets */; };
+		FA336C3F19335B950007CC76 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA336C3E19335B950007CC76 /* XCTest.framework */; };
+		FA336C4019335B950007CC76 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA336C1C19335B950007CC76 /* Foundation.framework */; };
+		FA336C4119335B950007CC76 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA336C2019335B950007CC76 /* UIKit.framework */; };
+		FA336C4919335B950007CC76 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA336C4719335B950007CC76 /* InfoPlist.strings */; };
+		FA336C4B19335B950007CC76 /* LV_116_iOS_SS_RestaurantTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA336C4A19335B950007CC76 /* LV_116_iOS_SS_RestaurantTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FA336C4219335B950007CC76 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA336C1119335B950007CC76 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA336C1819335B950007CC76;
+			remoteInfo = "LV-116.iOS.SS.Restaurant";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FA336C1919335B950007CC76 /* LV-116.iOS.SS.Restaurant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LV-116.iOS.SS.Restaurant.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA336C1C19335B950007CC76 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FA336C1E19335B950007CC76 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		FA336C2019335B950007CC76 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		FA336C2419335B950007CC76 /* LV-116.iOS.SS.Restaurant-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LV-116.iOS.SS.Restaurant-Info.plist"; sourceTree = "<group>"; };
+		FA336C2619335B950007CC76 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FA336C2819335B950007CC76 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FA336C2A19335B950007CC76 /* LV-116.iOS.SS.Restaurant-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LV-116.iOS.SS.Restaurant-Prefix.pch"; sourceTree = "<group>"; };
+		FA336C2B19335B950007CC76 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FA336C2C19335B950007CC76 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FA336C2F19335B950007CC76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		FA336C3219335B950007CC76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		FA336C3419335B950007CC76 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		FA336C3519335B950007CC76 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		FA336C3719335B950007CC76 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		FA336C3D19335B950007CC76 /* LV-116.iOS.SS.RestaurantTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LV-116.iOS.SS.RestaurantTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA336C3E19335B950007CC76 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		FA336C4619335B950007CC76 /* LV-116.iOS.SS.RestaurantTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LV-116.iOS.SS.RestaurantTests-Info.plist"; sourceTree = "<group>"; };
+		FA336C4819335B950007CC76 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FA336C4A19335B950007CC76 /* LV_116_iOS_SS_RestaurantTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LV_116_iOS_SS_RestaurantTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FA336C1619335B950007CC76 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA336C1F19335B950007CC76 /* CoreGraphics.framework in Frameworks */,
+				FA336C2119335B950007CC76 /* UIKit.framework in Frameworks */,
+				FA336C1D19335B950007CC76 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA336C3A19335B950007CC76 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA336C3F19335B950007CC76 /* XCTest.framework in Frameworks */,
+				FA336C4119335B950007CC76 /* UIKit.framework in Frameworks */,
+				FA336C4019335B950007CC76 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FA336C1019335B950007CC76 = {
+			isa = PBXGroup;
+			children = (
+				FA336C2219335B950007CC76 /* LV-116.iOS.SS.Restaurant */,
+				FA336C4419335B950007CC76 /* LV-116.iOS.SS.RestaurantTests */,
+				FA336C1B19335B950007CC76 /* Frameworks */,
+				FA336C1A19335B950007CC76 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FA336C1A19335B950007CC76 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FA336C1919335B950007CC76 /* LV-116.iOS.SS.Restaurant.app */,
+				FA336C3D19335B950007CC76 /* LV-116.iOS.SS.RestaurantTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FA336C1B19335B950007CC76 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FA336C1C19335B950007CC76 /* Foundation.framework */,
+				FA336C1E19335B950007CC76 /* CoreGraphics.framework */,
+				FA336C2019335B950007CC76 /* UIKit.framework */,
+				FA336C3E19335B950007CC76 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA336C2219335B950007CC76 /* LV-116.iOS.SS.Restaurant */ = {
+			isa = PBXGroup;
+			children = (
+				FA336C5519335CE60007CC76 /* VC_MainStoryBoard */,
+				FA336C5419335CCD0007CC76 /* AppDelegade */,
+				FA336C3419335B950007CC76 /* ViewController.h */,
+				FA336C3519335B950007CC76 /* ViewController.m */,
+				FA336C3719335B950007CC76 /* Images.xcassets */,
+				FA336C2319335B950007CC76 /* Supporting Files */,
+			);
+			path = "LV-116.iOS.SS.Restaurant";
+			sourceTree = "<group>";
+		};
+		FA336C2319335B950007CC76 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FA336C2419335B950007CC76 /* LV-116.iOS.SS.Restaurant-Info.plist */,
+				FA336C2519335B950007CC76 /* InfoPlist.strings */,
+				FA336C2819335B950007CC76 /* main.m */,
+				FA336C2A19335B950007CC76 /* LV-116.iOS.SS.Restaurant-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FA336C4419335B950007CC76 /* LV-116.iOS.SS.RestaurantTests */ = {
+			isa = PBXGroup;
+			children = (
+				FA336C4A19335B950007CC76 /* LV_116_iOS_SS_RestaurantTests.m */,
+				FA336C4519335B950007CC76 /* Supporting Files */,
+			);
+			path = "LV-116.iOS.SS.RestaurantTests";
+			sourceTree = "<group>";
+		};
+		FA336C4519335B950007CC76 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FA336C4619335B950007CC76 /* LV-116.iOS.SS.RestaurantTests-Info.plist */,
+				FA336C4719335B950007CC76 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FA336C5419335CCD0007CC76 /* AppDelegade */ = {
+			isa = PBXGroup;
+			children = (
+				FA336C2B19335B950007CC76 /* AppDelegate.h */,
+				FA336C2C19335B950007CC76 /* AppDelegate.m */,
+			);
+			name = AppDelegade;
+			sourceTree = "<group>";
+		};
+		FA336C5519335CE60007CC76 /* VC_MainStoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				FA336C2E19335B950007CC76 /* Main_iPhone.storyboard */,
+				FA336C3119335B950007CC76 /* Main_iPad.storyboard */,
+			);
+			name = VC_MainStoryBoard;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FA336C1819335B950007CC76 /* LV-116.iOS.SS.Restaurant */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA336C4E19335B950007CC76 /* Build configuration list for PBXNativeTarget "LV-116.iOS.SS.Restaurant" */;
+			buildPhases = (
+				FA336C1519335B950007CC76 /* Sources */,
+				FA336C1619335B950007CC76 /* Frameworks */,
+				FA336C1719335B950007CC76 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "LV-116.iOS.SS.Restaurant";
+			productName = "LV-116.iOS.SS.Restaurant";
+			productReference = FA336C1919335B950007CC76 /* LV-116.iOS.SS.Restaurant.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FA336C3C19335B950007CC76 /* LV-116.iOS.SS.RestaurantTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA336C5119335B950007CC76 /* Build configuration list for PBXNativeTarget "LV-116.iOS.SS.RestaurantTests" */;
+			buildPhases = (
+				FA336C3919335B950007CC76 /* Sources */,
+				FA336C3A19335B950007CC76 /* Frameworks */,
+				FA336C3B19335B950007CC76 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA336C4319335B950007CC76 /* PBXTargetDependency */,
+			);
+			name = "LV-116.iOS.SS.RestaurantTests";
+			productName = "LV-116.iOS.SS.RestaurantTests";
+			productReference = FA336C3D19335B950007CC76 /* LV-116.iOS.SS.RestaurantTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FA336C1119335B950007CC76 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = SortServe;
+				TargetAttributes = {
+					FA336C3C19335B950007CC76 = {
+						TestTargetID = FA336C1819335B950007CC76;
+					};
+				};
+			};
+			buildConfigurationList = FA336C1419335B950007CC76 /* Build configuration list for PBXProject "LV-116.iOS.SS.Restaurant" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FA336C1019335B950007CC76;
+			productRefGroup = FA336C1A19335B950007CC76 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FA336C1819335B950007CC76 /* LV-116.iOS.SS.Restaurant */,
+				FA336C3C19335B950007CC76 /* LV-116.iOS.SS.RestaurantTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FA336C1719335B950007CC76 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA336C3319335B950007CC76 /* Main_iPad.storyboard in Resources */,
+				FA336C3819335B950007CC76 /* Images.xcassets in Resources */,
+				FA336C3019335B950007CC76 /* Main_iPhone.storyboard in Resources */,
+				FA336C2719335B950007CC76 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA336C3B19335B950007CC76 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA336C4919335B950007CC76 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FA336C1519335B950007CC76 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA336C3619335B950007CC76 /* ViewController.m in Sources */,
+				FA336C2D19335B950007CC76 /* AppDelegate.m in Sources */,
+				FA336C2919335B950007CC76 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA336C3919335B950007CC76 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA336C4B19335B950007CC76 /* LV_116_iOS_SS_RestaurantTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FA336C4319335B950007CC76 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA336C1819335B950007CC76 /* LV-116.iOS.SS.Restaurant */;
+			targetProxy = FA336C4219335B950007CC76 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FA336C2519335B950007CC76 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA336C2619335B950007CC76 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		FA336C2E19335B950007CC76 /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA336C2F19335B950007CC76 /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		FA336C3119335B950007CC76 /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA336C3219335B950007CC76 /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		FA336C4719335B950007CC76 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA336C4819335B950007CC76 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FA336C4C19335B950007CC76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FA336C4D19335B950007CC76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FA336C4F19335B950007CC76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LV-116.iOS.SS.Restaurant/LV-116.iOS.SS.Restaurant-Prefix.pch";
+				INFOPLIST_FILE = "LV-116.iOS.SS.Restaurant/LV-116.iOS.SS.Restaurant-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		FA336C5019335B950007CC76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LV-116.iOS.SS.Restaurant/LV-116.iOS.SS.Restaurant-Prefix.pch";
+				INFOPLIST_FILE = "LV-116.iOS.SS.Restaurant/LV-116.iOS.SS.Restaurant-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		FA336C5219335B950007CC76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LV-116.iOS.SS.Restaurant.app/LV-116.iOS.SS.Restaurant";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LV-116.iOS.SS.Restaurant/LV-116.iOS.SS.Restaurant-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "LV-116.iOS.SS.RestaurantTests/LV-116.iOS.SS.RestaurantTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		FA336C5319335B950007CC76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LV-116.iOS.SS.Restaurant.app/LV-116.iOS.SS.Restaurant";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LV-116.iOS.SS.Restaurant/LV-116.iOS.SS.Restaurant-Prefix.pch";
+				INFOPLIST_FILE = "LV-116.iOS.SS.RestaurantTests/LV-116.iOS.SS.RestaurantTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FA336C1419335B950007CC76 /* Build configuration list for PBXProject "LV-116.iOS.SS.Restaurant" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA336C4C19335B950007CC76 /* Debug */,
+				FA336C4D19335B950007CC76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA336C4E19335B950007CC76 /* Build configuration list for PBXNativeTarget "LV-116.iOS.SS.Restaurant" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA336C4F19335B950007CC76 /* Debug */,
+				FA336C5019335B950007CC76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA336C5119335B950007CC76 /* Build configuration list for PBXNativeTarget "LV-116.iOS.SS.RestaurantTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA336C5219335B950007CC76 /* Debug */,
+				FA336C5319335B950007CC76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FA336C1119335B950007CC76 /* Project object */;
+}
