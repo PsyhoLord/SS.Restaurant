@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C3356AB3193DE8F90021A223 /* MenuDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C3356AB2193DE8F90021A223 /* MenuDataParser.m */; };
+		C348B3CA193DE4AD0004808D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C348B3C9193DE4AD0004808D /* ViewController.m */; };
+		C348B3D3193DE5E90004808D /* MenuRemoteDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C348B3D2193DE5E90004808D /* MenuRemoteDataProvider.m */; };
 		FA336C1D19335B950007CC76 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA336C1C19335B950007CC76 /* Foundation.framework */; };
 		FA336C1F19335B950007CC76 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA336C1E19335B950007CC76 /* CoreGraphics.framework */; };
 		FA336C2119335B950007CC76 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA336C2019335B950007CC76 /* UIKit.framework */; };
@@ -15,7 +18,6 @@
 		FA336C2D19335B950007CC76 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA336C2C19335B950007CC76 /* AppDelegate.m */; };
 		FA336C3019335B950007CC76 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA336C2E19335B950007CC76 /* Main_iPhone.storyboard */; };
 		FA336C3319335B950007CC76 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA336C3119335B950007CC76 /* Main_iPad.storyboard */; };
-		FA336C3619335B950007CC76 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA336C3519335B950007CC76 /* ViewController.m */; };
 		FA336C3819335B950007CC76 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA336C3719335B950007CC76 /* Images.xcassets */; };
 		FA336C3F19335B950007CC76 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA336C3E19335B950007CC76 /* XCTest.framework */; };
 		FA336C4019335B950007CC76 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA336C1C19335B950007CC76 /* Foundation.framework */; };
@@ -35,6 +37,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C3356AB1193DE8F90021A223 /* MenuDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuDataParser.h; sourceTree = "<group>"; };
+		C3356AB2193DE8F90021A223 /* MenuDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuDataParser.m; sourceTree = "<group>"; };
+		C348B3C8193DE4AD0004808D /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = Controllers/ViewController.h; sourceTree = "<group>"; };
+		C348B3C9193DE4AD0004808D /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = Controllers/ViewController.m; sourceTree = "<group>"; };
+		C348B3D1193DE5E90004808D /* MenuRemoteDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuRemoteDataProvider.h; sourceTree = "<group>"; };
+		C348B3D2193DE5E90004808D /* MenuRemoteDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuRemoteDataProvider.m; sourceTree = "<group>"; };
+		C348B3D5193DE68B0004808D /* DataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataParser.h; sourceTree = "<group>"; };
 		FA336C1919335B950007CC76 /* LV-116.iOS.SS.Restaurant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LV-116.iOS.SS.Restaurant.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA336C1C19335B950007CC76 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FA336C1E19335B950007CC76 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -47,8 +56,6 @@
 		FA336C2C19335B950007CC76 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		FA336C2F19335B950007CC76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		FA336C3219335B950007CC76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		FA336C3419335B950007CC76 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		FA336C3519335B950007CC76 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		FA336C3719335B950007CC76 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		FA336C3D19335B950007CC76 /* LV-116.iOS.SS.RestaurantTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LV-116.iOS.SS.RestaurantTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA336C3E19335B950007CC76 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -81,6 +88,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C348B3CB193DE4BC0004808D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C348B3C8193DE4AD0004808D /* ViewController.h */,
+				C348B3C9193DE4AD0004808D /* ViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		C348B3CF193DE5AC0004808D /* DataProviders */ = {
+			isa = PBXGroup;
+			children = (
+				C348B3D0193DE5E90004808D /* Remote */,
+			);
+			name = DataProviders;
+			sourceTree = "<group>";
+		};
+		C348B3D0193DE5E90004808D /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				C348B3D1193DE5E90004808D /* MenuRemoteDataProvider.h */,
+				C348B3D2193DE5E90004808D /* MenuRemoteDataProvider.m */,
+			);
+			name = Remote;
+			path = DataProviders/Remote;
+			sourceTree = "<group>";
+		};
+		C348B3D4193DE6100004808D /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+				C348B3D5193DE68B0004808D /* DataParser.h */,
+				C3356AB1193DE8F90021A223 /* MenuDataParser.h */,
+				C3356AB2193DE8F90021A223 /* MenuDataParser.m */,
+			);
+			path = Parsers;
+			sourceTree = "<group>";
+		};
 		FA336C1019335B950007CC76 = {
 			isa = PBXGroup;
 			children = (
@@ -114,11 +158,11 @@
 		FA336C2219335B950007CC76 /* LV-116.iOS.SS.Restaurant */ = {
 			isa = PBXGroup;
 			children = (
-				FA336C5519335CE60007CC76 /* VC_MainStoryBoard */,
+				C348B3D4193DE6100004808D /* Parsers */,
+				C348B3CB193DE4BC0004808D /* Controllers */,
+				FA336C5519335CE60007CC76 /* UI */,
 				FA336C5419335CCD0007CC76 /* AppDelegade */,
-				FA336C3419335B950007CC76 /* ViewController.h */,
-				FA336C3519335B950007CC76 /* ViewController.m */,
-				FA336C3719335B950007CC76 /* Images.xcassets */,
+				C348B3CF193DE5AC0004808D /* DataProviders */,
 				FA336C2319335B950007CC76 /* Supporting Files */,
 			);
 			path = "LV-116.iOS.SS.Restaurant";
@@ -127,6 +171,7 @@
 		FA336C2319335B950007CC76 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FA336C3719335B950007CC76 /* Images.xcassets */,
 				FA336C2419335B950007CC76 /* LV-116.iOS.SS.Restaurant-Info.plist */,
 				FA336C2519335B950007CC76 /* InfoPlist.strings */,
 				FA336C2819335B950007CC76 /* main.m */,
@@ -162,13 +207,13 @@
 			name = AppDelegade;
 			sourceTree = "<group>";
 		};
-		FA336C5519335CE60007CC76 /* VC_MainStoryBoard */ = {
+		FA336C5519335CE60007CC76 /* UI */ = {
 			isa = PBXGroup;
 			children = (
 				FA336C2E19335B950007CC76 /* Main_iPhone.storyboard */,
 				FA336C3119335B950007CC76 /* Main_iPad.storyboard */,
 			);
-			name = VC_MainStoryBoard;
+			name = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,9 +314,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA336C3619335B950007CC76 /* ViewController.m in Sources */,
+				C348B3CA193DE4AD0004808D /* ViewController.m in Sources */,
+				C348B3D3193DE5E90004808D /* MenuRemoteDataProvider.m in Sources */,
 				FA336C2D19335B950007CC76 /* AppDelegate.m in Sources */,
 				FA336C2919335B950007CC76 /* main.m in Sources */,
+				C3356AB3193DE8F90021A223 /* MenuDataParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +456,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LV-116.iOS.SS.Restaurant/LV-116.iOS.SS.Restaurant-Prefix.pch";
 				INFOPLIST_FILE = "LV-116.iOS.SS.Restaurant/LV-116.iOS.SS.Restaurant-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -422,6 +470,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LV-116.iOS.SS.Restaurant/LV-116.iOS.SS.Restaurant-Prefix.pch";
 				INFOPLIST_FILE = "LV-116.iOS.SS.Restaurant/LV-116.iOS.SS.Restaurant-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -443,6 +492,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "LV-116.iOS.SS.RestaurantTests/LV-116.iOS.SS.RestaurantTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -461,6 +511,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LV-116.iOS.SS.Restaurant/LV-116.iOS.SS.Restaurant-Prefix.pch";
 				INFOPLIST_FILE = "LV-116.iOS.SS.RestaurantTests/LV-116.iOS.SS.RestaurantTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
