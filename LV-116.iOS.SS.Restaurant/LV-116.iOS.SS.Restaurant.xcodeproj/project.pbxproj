@@ -10,7 +10,6 @@
 		C3356AB3193DE8F90021A223 /* MenuDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C3356AB2193DE8F90021A223 /* MenuDataParser.m */; };
 		C348B3CA193DE4AD0004808D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C348B3C9193DE4AD0004808D /* ViewController.m */; };
 		C348B3D3193DE5E90004808D /* MenuRemoteDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C348B3D2193DE5E90004808D /* MenuRemoteDataProvider.m */; };
-		C3E47595193DF821001F58EF /* Temporery.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E47594193DF821001F58EF /* Temporery.m */; };
 		FA336C1D19335B950007CC76 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA336C1C19335B950007CC76 /* Foundation.framework */; };
 		FA336C1F19335B950007CC76 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA336C1E19335B950007CC76 /* CoreGraphics.framework */; };
 		FA336C2119335B950007CC76 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA336C2019335B950007CC76 /* UIKit.framework */; };
@@ -45,8 +44,6 @@
 		C348B3D1193DE5E90004808D /* MenuRemoteDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuRemoteDataProvider.h; sourceTree = "<group>"; };
 		C348B3D2193DE5E90004808D /* MenuRemoteDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuRemoteDataProvider.m; sourceTree = "<group>"; };
 		C348B3D5193DE68B0004808D /* DataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataParser.h; sourceTree = "<group>"; };
-		C3E47593193DF821001F58EF /* Temporery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Temporery.h; sourceTree = "<group>"; };
-		C3E47594193DF821001F58EF /* Temporery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Temporery.m; sourceTree = "<group>"; };
 		FA336C1919335B950007CC76 /* LV-116.iOS.SS.Restaurant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LV-116.iOS.SS.Restaurant.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA336C1C19335B950007CC76 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FA336C1E19335B950007CC76 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -124,8 +121,6 @@
 				C348B3D5193DE68B0004808D /* DataParser.h */,
 				C3356AB1193DE8F90021A223 /* MenuDataParser.h */,
 				C3356AB2193DE8F90021A223 /* MenuDataParser.m */,
-				C3E47593193DF821001F58EF /* Temporery.h */,
-				C3E47594193DF821001F58EF /* Temporery.m */,
 			);
 			path = Parsers;
 			sourceTree = "<group>";
@@ -322,7 +317,6 @@
 				C348B3CA193DE4AD0004808D /* ViewController.m in Sources */,
 				C348B3D3193DE5E90004808D /* MenuRemoteDataProvider.m in Sources */,
 				FA336C2D19335B950007CC76 /* AppDelegate.m in Sources */,
-				C3E47595193DF821001F58EF /* Temporery.m in Sources */,
 				FA336C2919335B950007CC76 /* main.m in Sources */,
 				C3356AB3193DE8F90021A223 /* MenuDataParser.m in Sources */,
 			);
