@@ -10,6 +10,6 @@
 
 @protocol DataParser <NSObject>
 
--(NSArray*) parse: (NSData*) data;
++(NSMutableArray*) parse:(NSData*) data;
 
 @end

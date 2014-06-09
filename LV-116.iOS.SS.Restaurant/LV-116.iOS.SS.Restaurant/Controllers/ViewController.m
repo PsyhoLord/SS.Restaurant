@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "DataProvider.h"
 
 @interface ViewController ()
 
@@ -17,7 +18,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+
+    DataProvider *provider = [[DataProvider alloc] init];
+    [provider getMenuData:nil responseBlock:^(MenuCategory *menu, NSError *error) {
+        
+        for ( MenuCategory *tmp in menu.categories ) {
+            NSLog(@"%@", tmp.name);
+        }
+        
+    }];
+    
 }
 
 - (void)didReceiveMemoryWarning

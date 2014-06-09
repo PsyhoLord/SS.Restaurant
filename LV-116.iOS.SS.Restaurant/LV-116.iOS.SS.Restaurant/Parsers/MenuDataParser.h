@@ -8,6 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "DataParser.h"
+#define ID          @"Id"
+#define Name        @"Name"
+#define ParentId    @"ParentId"
+#define Portions    @"Portions"
+#define Price       @"Price"
+#define CategoryId  @"CategoryId"
+#define Description @"Description"
+#define Items       @"Items"
+#define IsActive    @"IsActive"
 
 @interface MenuDataParser : NSObject<DataParser>
 

@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MenuRemoteDataProvider : NSObject
+@interface RemoteDataProvider : NSObject
+
+-(instancetype)init;
+
+-(NSArray*)getMenuData:(int)Id responseBlock:(void (^)(NSMutableArray*, NSError*))callback;
 
 @end
