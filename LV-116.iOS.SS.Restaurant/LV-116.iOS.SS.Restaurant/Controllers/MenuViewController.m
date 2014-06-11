@@ -106,32 +106,34 @@
     DataProvider *provider = [[DataProvider alloc] init];
     
     // testing ...
-    __block MenuCategory *_menu = [provider getMenuData:nil responseBlock:^(MenuCategory *menu, NSError *error) {
+    __block MenuCategory *_menu = [[MenuCategory alloc] init];
+    [provider getMenuData:nil responseBlock:^(MenuCategory *menu, NSError *error) {
+        
         _menu = menu;
         for ( MenuCategory *tmp in _menu.categories ) {
             NSLog(@"%@", tmp.name);
         }
         
-        [provider getMenuData:_menu.categories[2] responseBlock:^(MenuCategory *menu, NSError *error) {
-            _menu = menu;
-            for ( MenuCategory *tmp in _menu.categories ) {
-                NSLog(@"%@", tmp.name);
-            }
-            
-            [provider getMenuData:_menu.categories[0] responseBlock:^(MenuCategory *menu, NSError *error) {
-                _menu = menu;
-                for ( MenuCategory *tmp in _menu.categories ) {
-                    NSLog(@"%@", tmp.name);
-                }
-                
-                [provider getMenuData:_menu.categories[0] responseBlock:^(MenuCategory *menu, NSError *error) {
-                    _menu = menu;
-                    for ( MenuItem *tmp in _menu.items ) {
-                        NSLog(@"%@", tmp.name);
-                    }
-                }];
-            }];
-        }];
+//        [provider getMenuData:_menu.categories[2] responseBlock:^(MenuCategory *menu, NSError *error) {
+//            _menu = menu;
+//            for ( MenuCategory *tmp in _menu.categories ) {
+//                NSLog(@"%@", tmp.name);
+//            }
+//            
+//            [provider getMenuData:_menu.categories[1] responseBlock:^(MenuCategory *menu, NSError *error) {
+//                _menu = menu;
+//                for ( MenuCategory *tmp in _menu.categories ) {
+//                    NSLog(@"%@", tmp.name);
+//                }
+//                
+//                [provider getMenuData:_menu.categories[0] responseBlock:^(MenuCategory *menu, NSError *error) {
+//                    _menu = menu;
+//                    for ( MenuItem *tmp in _menu.items ) {
+//                        NSLog(@"%@", tmp.name);
+//                    }
+//                }];
+//            }];
+//        }];
     }];
     
 }

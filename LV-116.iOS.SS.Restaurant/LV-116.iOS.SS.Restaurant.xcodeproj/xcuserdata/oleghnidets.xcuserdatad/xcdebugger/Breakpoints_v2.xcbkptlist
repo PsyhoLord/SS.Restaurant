@@ -22,40 +22,40 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LV-116.iOS.SS.Restaurant/Controllers/MenuViewController.m"
-            timestampString = "423998667.56884"
+            timestampString = "424160798.930893"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "-[MenuViewController viewDidLoad]"
                   moduleName = "LV-116.iOS.SS.Restaurant"
-                  urlString = "file:///Users/oleghnidets/Dropbox/Shared_Work/Roman%20Sorochak/SS.Restaurant%20%208.06_22.00%20(current)/LV-116.iOS.SS.Restaurant/LV-116.iOS.SS.Restaurant/Controllers/MenuViewController.m"
-                  timestampString = "424000279.148193"
+                  urlString = "file:///Users/oleghnidets/Desktop/SS.Restaurant%20%208.06_22.00%20(current)/LV-116.iOS.SS.Restaurant/LV-116.iOS.SS.Restaurant/Controllers/MenuViewController.m"
+                  timestampString = "424160432.977961"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "109"
                   endingLineNumber = "109"
-                  offsetFromSymbolStart = "1998">
+                  offsetFromSymbolStart = "2000">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "__Block_byref_object_copy_"
                   moduleName = "LV-116.iOS.SS.Restaurant"
-                  urlString = "file:///Users/oleghnidets/Dropbox/Shared_Work/Roman%20Sorochak/SS.Restaurant%20%208.06_22.00%20(current)/LV-116.iOS.SS.Restaurant/LV-116.iOS.SS.Restaurant/Controllers/MenuViewController.m"
-                  timestampString = "424000279.148551"
+                  urlString = "file:///Users/oleghnidets/Desktop/SS.Restaurant%20%208.06_22.00%20(current)/LV-116.iOS.SS.Restaurant/LV-116.iOS.SS.Restaurant/Controllers/MenuViewController.m"
+                  timestampString = "424160432.978252"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "109"
@@ -63,13 +63,13 @@
                   offsetFromSymbolStart = "19">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "__Block_byref_object_dispose_"
                   moduleName = "LV-116.iOS.SS.Restaurant"
-                  urlString = "file:///Users/oleghnidets/Dropbox/Shared_Work/Roman%20Sorochak/SS.Restaurant%20%208.06_22.00%20(current)/LV-116.iOS.SS.Restaurant/LV-116.iOS.SS.Restaurant/Controllers/MenuViewController.m"
-                  timestampString = "424000279.148842"
+                  urlString = "file:///Users/oleghnidets/Desktop/SS.Restaurant%20%208.06_22.00%20(current)/LV-116.iOS.SS.Restaurant/LV-116.iOS.SS.Restaurant/Controllers/MenuViewController.m"
+                  timestampString = "424160432.979632"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "109"
@@ -77,13 +77,13 @@
                   offsetFromSymbolStart = "17">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "__33-[MenuViewController viewDidLoad]_block_invoke"
                   moduleName = "LV-116.iOS.SS.Restaurant"
-                  urlString = "file:///Users/oleghnidets/Dropbox/Shared_Work/Roman%20Sorochak/SS.Restaurant%20%208.06_22.00%20(current)/LV-116.iOS.SS.Restaurant/LV-116.iOS.SS.Restaurant/Controllers/MenuViewController.m"
-                  timestampString = "424000279.149146"
+                  urlString = "file:///Users/oleghnidets/Desktop/SS.Restaurant%20%208.06_22.00%20(current)/LV-116.iOS.SS.Restaurant/LV-116.iOS.SS.Restaurant/Controllers/MenuViewController.m"
+                  timestampString = "424160432.979936"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "109"
@@ -96,7 +96,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LV-116.iOS.SS.Restaurant/Parsers/MenuDataParser.m"
@@ -112,7 +112,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LV-116.iOS.SS.Restaurant/Parsers/MenuDataParser.m"
@@ -122,6 +122,38 @@
             startingLineNumber = "18"
             endingLineNumber = "18"
             landmarkName = "+parse:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LV-116.iOS.SS.Restaurant/DataProviders/DataProvider.m"
+            timestampString = "424160283.318138"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "-getMenuData:responseBlock:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LV-116.iOS.SS.Restaurant/Controllers/MenuViewController.m"
+            timestampString = "424160798.930893"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
