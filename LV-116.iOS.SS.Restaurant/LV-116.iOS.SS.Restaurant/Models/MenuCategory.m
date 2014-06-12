@@ -20,7 +20,7 @@
     }
     return self;
 }
-
+// Test comment
 -(BOOL) isCategories
 {
     return ( 0 != [self.categories count] );
