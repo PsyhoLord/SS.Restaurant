@@ -8,6 +8,5 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MenuViewController : UITableViewController<UITableViewDelegate,UITableViewDataSource>
-
+@interface MenuViewController : UITableViewController
 @end

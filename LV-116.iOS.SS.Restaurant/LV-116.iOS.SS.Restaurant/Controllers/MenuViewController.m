@@ -94,9 +94,7 @@
     
     
     
-    //mmmm
-    //qewqyraew gygeqwiufgeuasgfueqwufgaegfui
-    //jhasfh gu idgid
+
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -159,7 +157,7 @@
 //#warning Incomplete method implementation.
     // Return the number of rows in the section.
     //return 5;
-    int q=[self.menuFromServer count];
+    int q=[self.toView count];
     return  q;
 }
 
@@ -171,22 +169,18 @@
     // Configure the cell...
     if ( !cell ) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
         //NSString *temp=[[NSString alloc]init ];
         MenuCategory *tempmc=[[MenuCategory alloc]init];
-        tempmc=[self.toView objectAtIndex:[indexPath item]];
-        //temp=;
+        tempmc=[self.toView objectAtIndex:[indexPath row]];
         cell.textLabel.text=tempmc.name;
-        // 2
-    }
     return cell;
 }
 
 - (void) tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    int row;
-    row=[indexPath item];
     MenuCategory *currentRow=[[MenuCategory alloc] init];
-    currentRow =[self.toView objectAtIndex:row];
+    currentRow =[self.toView objectAtIndex:[indexPath item]];
     if(currentRow.items==nil)
     {
         self.toView=currentRow.categories;
