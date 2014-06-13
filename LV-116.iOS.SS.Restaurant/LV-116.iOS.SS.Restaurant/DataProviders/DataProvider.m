@@ -9,11 +9,13 @@
 #import "DataProvider.h"
 #import "MenuModel.h"
 
+
 @implementation DataProvider
 {
     MenuModel           *_menuModel;
     MenuCategory        *_currentCategory;
     RemoteDataProvider  *_remoteDataProvider;
+    id<PMenuDataNotification> _delegate;
 }
 
 -(instancetype)init
@@ -24,13 +26,18 @@
     return self;
 }
 
+-(void)setDelegate:(id<PMenuDataNotification>)newDelegate
+{
+    _delegate = newDelegate;
+}
+
 -(void)createMenuModel
 {
     [_remoteDataProvider getEntireMenuDataWithResponseBlock:^(MenuModel *menuModel, NSError *error) {
         
         _menuModel = menuModel;
         _currentCategory = [_menuModel getMenuData:nil];
-        
+        [_delegate didFinishMenuTree];
     }];
 }
 

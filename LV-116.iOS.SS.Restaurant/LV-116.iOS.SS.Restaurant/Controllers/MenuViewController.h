@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "MenuCategory.h"
+#import "PMenuDataNotification.h"
 
-@interface MenuViewController : UITableViewController
+@interface MenuViewController : UITableViewController <PMenuDataNotification>
 
 @property (strong, nonatomic) MenuCategory *currentCategory;
 

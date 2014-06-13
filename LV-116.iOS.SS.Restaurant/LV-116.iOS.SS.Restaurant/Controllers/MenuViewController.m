@@ -9,6 +9,7 @@
 #import "MenuViewController.h"
 #import "DataProvider.h"
 
+
 @interface MenuViewController ()
     @property NSMutableArray *menuFromServer;
     @property NSMutableArray *subMenu1;
@@ -16,6 +17,9 @@
 @end
 
 @implementation MenuViewController
+{
+    DataProvider *_dataProvider;
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -69,14 +73,23 @@
 
 }
 
+-(void)didFinishMenuTree
+{
+    NSLog(@"Hello");
+    _currentCategory = [_dataProvider getMenuData:nil];
+//    NSLog(@"%@", _currentCategory.name);
+    [self.MenuTableView reloadData];
+}
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     if(!self.currentCategory)[self MakeHardCode];
     //[self MakeHardCode];
-    
-    
+    _dataProvider = [[DataProvider alloc] init];
+    [_dataProvider setDelegate:self];
+    [_dataProvider getMenuData:nil];
     
     //My code
    // DataProvider *provider = [[DataProvider alloc] init];
@@ -175,7 +188,7 @@
     }
         //NSString *temp=[[NSString alloc]init ];
         MenuCategory *tempmc=[[MenuCategory alloc]init];
-        tempmc=[self.currentCategory.categories objectAtIndex:[indexPath row]];
+        tempmc=[self.currentCategory.categories objectAtIndex:indexPath.row];
         cell.textLabel.text=tempmc.name;
     return cell;
 }

@@ -9,11 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "RemoteDataProvider.h"
 #include "MenuCategory.h"
+#import "PMenuDataNotification.h"
 
 @interface DataProvider : NSObject
+
+-(void)setDelegate:(id<PMenuDataNotification>)newDelegate;
 
 -(MenuCategory*)getMenuData:(MenuCategory*)category;
 
 -(MenuCategory*)getMenuData:(MenuCategory*)category FromNetWithResponseBlock:(void (^)(MenuCategory*, NSError*))callback;
+
 
 @end
