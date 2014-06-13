@@ -12,7 +12,6 @@
 @interface MenuViewController ()
     @property NSMutableArray *menuFromServer;
     @property NSMutableArray *subMenu1;
-    @property NSMutableArray *toView;
     @property (strong, nonatomic) IBOutlet UITableView *MenuTableView;
 @end
 
@@ -23,16 +22,17 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        
     }
     return self;
 }
 
-
+//Creating data for testing
 -(void) MakeHardCode
 {
     self.menuFromServer=[[NSMutableArray alloc] init];
     self.subMenu1=[[NSMutableArray alloc] init];
-    self.toView=[[NSMutableArray alloc] init];
+    self.currentCategory=[[MenuCategory alloc]init];
     
     for (int i=0;i<5;i++)
     {
@@ -64,7 +64,8 @@
     temp.categories=  self.subMenu1;
     [self.menuFromServer addObject:temp];
     //Quite bad :(
-    self.toView=self.menuFromServer;
+    self.currentCategory.categories=self.menuFromServer;
+   // self.currentCategory=self.cur;
 
 }
 
@@ -72,7 +73,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self MakeHardCode];
+    if(!self.currentCategory)[self MakeHardCode];
+    //[self MakeHardCode];
+    
+    
+    
     //My code
    // DataProvider *provider = [[DataProvider alloc] init];
     /*//[provider getMenuData:nil];
@@ -100,7 +105,7 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    DataProvider *provider = [[DataProvider alloc] init];
+  /*  DataProvider *provider = [[DataProvider alloc] init];
     
     // testing ...
     __block MenuCategory *_menu = [[MenuCategory alloc] init];
@@ -110,7 +115,7 @@
         for ( MenuCategory *tmp in _menu.categories ) {
             NSLog(@"%@", tmp.name);
         }
-        
+   
 //        [provider getMenuData:_menu.categories[2] responseBlock:^(MenuCategory *menu, NSError *error) {
 //            _menu = menu;
 //            for ( MenuCategory *tmp in _menu.categories ) {
@@ -132,7 +137,7 @@
 //            }];
 //        }];
     }];
-    
+*/
 }
 
 - (void)didReceiveMemoryWarning
@@ -155,7 +160,7 @@
 //#warning Incomplete method implementation.
     // Return the number of rows in the section.
     
-    int q=[self.toView count];
+    int q=[self.currentCategory.categories count];
     return  q;
 }
 
@@ -170,30 +175,17 @@
     }
         //NSString *temp=[[NSString alloc]init ];
         MenuCategory *tempmc=[[MenuCategory alloc]init];
-        tempmc=[self.toView objectAtIndex:[indexPath row]];
+        tempmc=[self.currentCategory.categories objectAtIndex:[indexPath row]];
         cell.textLabel.text=tempmc.name;
     return cell;
 }
 
-//
-//- (void) tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    MenuCategory *currentRow=[[MenuCategory alloc] init];
-//    currentRow =[self.toView objectAtIndex:[indexPath item]];
-//    if(currentRow.items==nil)
-//    {
-//        self.toView=currentRow.categories;
-//    }
-//    [self.MenuTableView reloadData];
-//}
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MenuViewController *vc = [[MenuViewController alloc] init];
-    
-    // set current category
-    MenuCategory *selected = [self.toView objectAtIndex:indexPath.row];
+    MenuCategory *selected = [self.currentCategory.categories objectAtIndex:indexPath.row];
     
     [vc setTitle: selected.name];
     
