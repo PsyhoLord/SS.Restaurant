@@ -10,10 +10,10 @@
 #import "DataProvider.h"
 
 @interface MenuViewController ()
-@property NSMutableArray *menuFromServer;
-@property NSMutableArray *subMenu1;
-@property NSMutableArray *toView;
-@property (strong, nonatomic) IBOutlet UITableView *MenuTableView;
+    @property NSMutableArray *menuFromServer;
+    @property NSMutableArray *subMenu1;
+    @property NSMutableArray *toView;
+    @property (strong, nonatomic) IBOutlet UITableView *MenuTableView;
 @end
 
 @implementation MenuViewController
@@ -27,9 +27,52 @@
     return self;
 }
 
+
+-(void) MakeHardCode
+{
+    self.menuFromServer=[[NSMutableArray alloc] init];
+    self.subMenu1=[[NSMutableArray alloc] init];
+    self.toView=[[NSMutableArray alloc] init];
+    
+    for (int i=0;i<5;i++)
+    {
+        MenuCategory *temp=[[MenuCategory alloc] init];
+        temp.Id=10+i;
+        temp.parentId=1;
+        temp.name=[NSString stringWithFormat:@"SubNumero - %d",i];
+        temp.items=nil;
+        [self.subMenu1 addObject:temp];
+      
+    }
+    
+    for (int i=0;i<10;i++)
+    {
+        MenuCategory *temp=[[MenuCategory alloc] init];
+        temp.Id=i;
+        temp.parentId=0;
+        temp.name=[NSString stringWithFormat:@"Numero - %d",i];
+        temp.items=nil;
+        [self.menuFromServer addObject:temp];
+        
+    }
+    MenuCategory *temp=[[MenuCategory alloc] init];
+    
+    temp.Id=1;
+    temp.parentId=0;
+    temp.name=[NSString stringWithFormat:@"WithSub"];
+    temp.items=nil;
+    temp.categories=  self.subMenu1;
+    [self.menuFromServer addObject:temp];
+    //Quite bad :(
+    self.toView=self.menuFromServer;
+
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self MakeHardCode];
     //My code
    // DataProvider *provider = [[DataProvider alloc] init];
     /*//[provider getMenuData:nil];
@@ -45,51 +88,6 @@
     
     
     //Hardcode for init
-    self.menuFromServer=[[NSMutableArray alloc] init];
-    self.subMenu1=[[NSMutableArray alloc] init];
-    self.toView=[[NSMutableArray alloc] init];
-   
-    for (int i=0;i<5;i++)
-    {
-        MenuCategory *temp=[[MenuCategory alloc] init];
-        //MenuCategory *temp=[[MenuCategory alloc] init];
-        temp.Id=10+i;
-        temp.parentId=1;
-        temp.name=[NSString stringWithFormat:@"SubNumero - %d",i];
-        temp.items=nil;
-        [self.subMenu1 addObject:temp];
-        //int q=[self.menuFromServer count];
-        /*  NSString *q1=[[NSString alloc] initWithString: temp.name ];
-         NSLog(q1);*/
-        //NSLog(self.menuFromServer);
-        //  [self.menuFromServer ];
-    }
-
-    for (int i=0;i<10;i++)
-    {
-        MenuCategory *temp=[[MenuCategory alloc] init];
-    //MenuCategory *temp=[[MenuCategory alloc] init];
-        temp.Id=i;
-        temp.parentId=0;
-        temp.name=[NSString stringWithFormat:@"Numero - %d",i];
-        temp.items=nil;
-        [self.menuFromServer addObject:temp];
-        //int q=[self.menuFromServer count];
-      /*  NSString *q1=[[NSString alloc] initWithString: temp.name ];
-        NSLog(q1);*/
-        //NSLog(self.menuFromServer);
-      //  [self.menuFromServer ];
-    }
-    MenuCategory *temp=[[MenuCategory alloc] init];
-    
-    temp.Id=1;
-    temp.parentId=0;
-    temp.name=[NSString stringWithFormat:@"WithSub"];
-    temp.items=nil;
-    temp.categories=  self.subMenu1;
-    [self.menuFromServer addObject:temp];
-    //Quite bad :(
-    self.toView=self.menuFromServer;
     
     
     
@@ -177,15 +175,31 @@
     return cell;
 }
 
-- (void) tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+//
+//- (void) tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    MenuCategory *currentRow=[[MenuCategory alloc] init];
+//    currentRow =[self.toView objectAtIndex:[indexPath item]];
+//    if(currentRow.items==nil)
+//    {
+//        self.toView=currentRow.categories;
+//    }
+//    [self.MenuTableView reloadData];
+//}
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MenuCategory *currentRow=[[MenuCategory alloc] init];
-    currentRow =[self.toView objectAtIndex:[indexPath item]];
-    if(currentRow.items==nil)
-    {
-        self.toView=currentRow.categories;
-    }
-    [self.MenuTableView reloadData];
+    MenuViewController *vc = [[MenuViewController alloc] init];
+    
+    // set current category
+    MenuCategory *selected = [self.toView objectAtIndex:indexPath.row];
+    
+    [vc setTitle: selected.name];
+    
+    vc.currentCategory = selected;
+    
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 /*

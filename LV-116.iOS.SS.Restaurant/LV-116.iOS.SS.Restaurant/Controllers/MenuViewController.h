@@ -7,6 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MenuCategory.h"
 
 @interface MenuViewController : UITableViewController
+
+@property (strong, nonatomic) MenuCategory *currentCategory;
+
 @end
