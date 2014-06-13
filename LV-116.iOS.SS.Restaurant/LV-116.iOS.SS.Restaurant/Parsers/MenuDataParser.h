@@ -15,6 +15,7 @@
 #define Price       @"Price"
 #define CategoryId  @"CategoryId"
 #define Description @"Description"
+#define Categories  @"Categories"
 #define Items       @"Items"
 #define IsActive    @"IsActive"
 

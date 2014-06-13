@@ -24,23 +24,40 @@
     return self;
 }
 
--(NSArray*)getMenuData:(int)Id responseBlock:(void (^)(NSMutableArray*, NSError*))callback
+-(void)getMenuData:(int)Id responseBlock:(void (^)(NSMutableArray*, NSError*))callback
 {
-    NSString *strRequest = [[NSString alloc] initWithFormat:@"http://192.168.195.212/Restaurant/api/Menu?withItems=true&active=true&parentId=%i", Id];
+    NSString *strRequest = [[NSString alloc] initWithFormat:URLMenu, Id];
     
     NSURLRequest *URLRequest = [[NSURLRequest alloc] initWithURL:[[NSURL alloc] initWithString:strRequest]];
     
     __block NSMutableArray *arrCategories;
-
+    
     [_serviceAgent send:URLRequest
           responseBlock:^(NSData *data, NSError *error) {
-
+              
               // call parser
-              arrCategories = [MenuDataParser parse:data];
+              arrCategories = [MenuDataParser parseCurrentCategory:data];
               callback(arrCategories, error);
               
           }];
-    return arrCategories;
+}
+
+-(void)getEntireMenuDataWithResponseBlock:(void (^)(MenuModel*, NSError*))callback
+{
+    int Id = 0;
+    
+    NSString *strRequest = [[NSString alloc] initWithFormat:URLMenu, Id];
+    
+    NSURLRequest *URLRequest = [[NSURLRequest alloc] initWithURL:[[NSURL alloc] initWithString:strRequest]];
+    
+    [_serviceAgent send:URLRequest
+          responseBlock:^(NSData *data, NSError *error) {
+              
+              // call parser
+              MenuModel *entireMenuModel = [MenuDataParser parseEntireMenu:data];
+              callback(entireMenuModel, error);
+              
+          }];
 }
 
 @end

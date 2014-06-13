@@ -12,8 +12,8 @@
 
 @interface DataProvider : NSObject
 
--(instancetype)init;
+-(MenuCategory*)getMenuData:(MenuCategory*)category;
 
--(MenuCategory*)getMenuData:(MenuCategory*)category responseBlock:(void (^)(MenuCategory*, NSError*))callback;
+-(MenuCategory*)getMenuData:(MenuCategory*)category FromNetWithResponseBlock:(void (^)(MenuCategory*, NSError*))callback;
 
 @end

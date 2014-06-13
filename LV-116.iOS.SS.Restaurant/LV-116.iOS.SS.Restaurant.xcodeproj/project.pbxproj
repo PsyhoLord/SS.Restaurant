@@ -12,6 +12,7 @@
 		C348B3D3193DE5E90004808D /* RemoteDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C348B3D2193DE5E90004808D /* RemoteDataProvider.m */; };
 		C3C979E719414FC300143229 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C979E619414FC300143229 /* MenuViewController.m */; };
 		EDADBCB3193F6E2F004E18EC /* DataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = EDADBCB2193F6E2F004E18EC /* DataProvider.m */; };
+		EDB83954194B578600C81221 /* MenuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB83953194B578600C81221 /* MenuModel.m */; };
 		EDE50DF7193E110500ACA71D /* ServiceAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE50DF6193E110500ACA71D /* ServiceAgent.m */; };
 		EDE50DFE193E1A4400ACA71D /* MenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE50DFD193E1A4400ACA71D /* MenuItem.m */; };
 		EDE50E04193E1AAF00ACA71D /* MenuCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE50E01193E1AAF00ACA71D /* MenuCategory.m */; };
@@ -53,6 +54,8 @@
 		C3C979E619414FC300143229 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuViewController.m; path = Controllers/MenuViewController.m; sourceTree = "<group>"; };
 		EDADBCB1193F6E2F004E18EC /* DataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataProvider.h; path = DataProviders/DataProvider.h; sourceTree = "<group>"; };
 		EDADBCB2193F6E2F004E18EC /* DataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataProvider.m; path = DataProviders/DataProvider.m; sourceTree = "<group>"; };
+		EDB83952194B578600C81221 /* MenuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuModel.h; path = Models/MenuModel.h; sourceTree = "<group>"; };
+		EDB83953194B578600C81221 /* MenuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuModel.m; path = Models/MenuModel.m; sourceTree = "<group>"; };
 		EDE50DF3193E10D400ACA71D /* PServiceAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PServiceAgent.h; path = ServiceAgent/PServiceAgent.h; sourceTree = "<group>"; };
 		EDE50DF5193E110500ACA71D /* ServiceAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceAgent.h; path = ServiceAgent/ServiceAgent.h; sourceTree = "<group>"; };
 		EDE50DF6193E110500ACA71D /* ServiceAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceAgent.m; path = ServiceAgent/ServiceAgent.m; sourceTree = "<group>"; };
@@ -162,6 +165,8 @@
 				EDE50E01193E1AAF00ACA71D /* MenuCategory.m */,
 				EDE50DFC193E1A4400ACA71D /* MenuItem.h */,
 				EDE50DFD193E1A4400ACA71D /* MenuItem.m */,
+				EDB83952194B578600C81221 /* MenuModel.h */,
+				EDB83953194B578600C81221 /* MenuModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -366,6 +371,7 @@
 				EDE50DF7193E110500ACA71D /* ServiceAgent.m in Sources */,
 				FA336C2919335B950007CC76 /* main.m in Sources */,
 				C3356AB3193DE8F90021A223 /* MenuDataParser.m in Sources */,
+				EDB83954194B578600C81221 /* MenuModel.m in Sources */,
 				C3C979E719414FC300143229 /* MenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

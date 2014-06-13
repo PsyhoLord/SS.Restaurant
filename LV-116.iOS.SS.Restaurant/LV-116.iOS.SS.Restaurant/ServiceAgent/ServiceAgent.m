@@ -8,15 +8,15 @@
 
 #import "ServiceAgent.h"
 
-@implementation ServiceAgent{
+@implementation ServiceAgent {
     NSOperationQueue *_operationQueue;
 }
 
 -(instancetype)init
 {
-   if ( self = [super init] ) {
+    if ( self = [super init] ) {
         _operationQueue = [[NSOperationQueue alloc] init];
-   }
+    }
     return self;
 }
 
@@ -24,14 +24,14 @@
 {
     NSLog(@"Function is starting!");
     
-//    NSOperationQueue *operationQueue = [[NSOperationQueue alloc] init];
+    //    NSOperationQueue *operationQueue = [[NSOperationQueue alloc] init];
     // send request
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:_operationQueue
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                               
                                // get response
                                callback(data, connectionError);
-                               // ???
                                
                                NSLog(@"NSURLConnection's block've finished!");
                            }];

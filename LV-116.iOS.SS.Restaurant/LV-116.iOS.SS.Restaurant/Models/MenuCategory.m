@@ -20,22 +20,20 @@
     }
     return self;
 }
-// Test comment
+
 -(BOOL) isCategories
 {
-    return ( 0 != [self.categories count] );
-//    return ( nil != _categories );
+    return ( [self.categories count] != 0 );
 }
 
 -(BOOL) isItems
 {
-    return ( 0 != [self.items count] );
-//    return ( nil != _items );
+    return ( [self.items count] != 0 );
 }
 
 -(void) addCategory:(MenuCategory*)category
 {
-    if ( nil == self.categories ) {
+    if ( self.categories == nil ) {
         self.categories = [[NSMutableArray alloc] init];
     }
     [self.categories addObject:category];
@@ -43,7 +41,7 @@
 
 -(void) addItem:(MenuItem*)item
 {
-    if ( nil == self.items ) {
+    if ( self.items == nil ) {
         self.items = [[NSMutableArray alloc] init];
     }
     [self.items addObject:item];

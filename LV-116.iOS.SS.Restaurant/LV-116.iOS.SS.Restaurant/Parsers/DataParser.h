@@ -7,9 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MenuModel.h"
 
 @protocol DataParser <NSObject>
 
-+(NSMutableArray*) parse:(NSData*) data;
++(NSMutableArray*) parseCurrentCategory:(NSData*) data;
+
++(MenuModel*) parseEntireMenu:(NSData*) data;
 
 @end

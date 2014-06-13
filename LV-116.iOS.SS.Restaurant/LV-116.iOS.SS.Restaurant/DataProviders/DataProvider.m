@@ -7,10 +7,11 @@
 //
 
 #import "DataProvider.h"
-#import "MenuCategory.h"
+#import "MenuModel.h"
 
 @implementation DataProvider
 {
+    MenuModel           *_menuModel;
     MenuCategory        *_currentCategory;
     RemoteDataProvider  *_remoteDataProvider;
 }
@@ -23,12 +24,34 @@
     return self;
 }
 
--(MenuCategory*)getMenuData:(MenuCategory*)category responseBlock:(void (^)(MenuCategory*, NSError*))callback
+-(void)createMenuModel
 {
-    if ( nil == category ) {
-        _currentCategory = [[MenuCategory alloc] initWithId:1 name:@"menu" parentId:0];
+    [_remoteDataProvider getEntireMenuDataWithResponseBlock:^(MenuModel *menuModel, NSError *error) {
+        
+        _menuModel = menuModel;
+        _currentCategory = [_menuModel getMenuData:nil];
+        
+    }];
+}
+
+-(MenuCategory*)getMenuData:(MenuCategory*)category
+{
+    if ( _menuModel ) {
+        if ( category ) {
+            _currentCategory = [_menuModel getMenuData:category];
+        }
     } else {
+        [self createMenuModel];
+    }
+    return _currentCategory;
+}
+
+-(MenuCategory*)getMenuData:(MenuCategory*)category FromNetWithResponseBlock:(void (^)(MenuCategory*, NSError*))callback
+{
+    if ( category ) {
         _currentCategory = category;
+    } else {
+        _currentCategory = [[MenuCategory alloc] initWithId:1 name:@"menu" parentId:0];
     }
     
     if ( false == [_currentCategory isItems] ) {

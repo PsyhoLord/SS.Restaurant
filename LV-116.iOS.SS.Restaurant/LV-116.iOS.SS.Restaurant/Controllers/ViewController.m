@@ -19,14 +19,14 @@
 {
     [super viewDidLoad];
 
-    DataProvider *provider = [[DataProvider alloc] init];
-    [provider getMenuData:nil responseBlock:^(MenuCategory *menu, NSError *error) {
-        
-        for ( MenuCategory *tmp in menu.categories ) {
-            NSLog(@"%@", tmp.name);
-        }
-        
-    }];
+//    DataProvider *provider = [[DataProvider alloc] init];
+//    [provider getMenuData:nil responseBlock:^(MenuCategory *menu, NSError *error) {
+//        
+//        for ( MenuCategory *tmp in menu.categories ) {
+//            NSLog(@"%@", tmp.name);
+//        }
+//        
+//    }];
     
 }
 
