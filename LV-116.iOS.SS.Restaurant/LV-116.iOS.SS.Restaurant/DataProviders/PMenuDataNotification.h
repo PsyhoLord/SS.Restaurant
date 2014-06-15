@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+/// !!! we don't need anymore this file =)
+
 @protocol PMenuDataNotification <NSObject>
 
 -(void)didFinishMenuTree;
