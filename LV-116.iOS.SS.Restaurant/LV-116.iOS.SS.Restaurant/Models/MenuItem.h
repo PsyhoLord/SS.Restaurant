@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+// class MenuItem is needed for contains data of item
+
 @interface MenuItem : NSObject
 
 -(instancetype)initWithId:(int)Id categoryId:(int) categoryId description:(NSString*)description name:(NSString*)name portions:(int)portions price:(float) price;

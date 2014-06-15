@@ -24,24 +24,10 @@
     return self;
 }
 
--(void)getMenuData:(int)Id responseBlock:(void (^)(NSMutableArray*, NSError*))callback
-{
-    NSString *strRequest = [[NSString alloc] initWithFormat:URLMenu, Id];
-    
-    NSURLRequest *URLRequest = [[NSURLRequest alloc] initWithURL:[[NSURL alloc] initWithString:strRequest]];
-    
-    __block NSMutableArray *arrCategories;
-    
-    [_serviceAgent send:URLRequest
-          responseBlock:^(NSData *data, NSError *error) {
-              
-              // call parser
-              arrCategories = [MenuDataParser parseCurrentCategory:data];
-              callback(arrCategories, error);
-              
-          }];
-}
 
+// get all menu tree data from server
+// it makes requesst with id = 0
+// (void (^)(NSMutableArray*, NSError*))callback - block which will call when data is
 -(void)getEntireMenuDataWithResponseBlock:(void (^)(MenuModel*, NSError*))callback
 {
     int Id = 0;
@@ -55,7 +41,30 @@
               
               // call parser
               MenuModel *entireMenuModel = [MenuDataParser parseEntireMenu:data];
+              // call block from hight layer - DataProvider
               callback(entireMenuModel, error);
+              
+          }];
+}
+
+// get menu data from server
+// (int)Id - id of category which we need to get data from it
+// (void (^)(NSMutableArray*, NSError*))callback - block which will call when data is
+-(void)getMenuData:(int)Id responseBlock:(void (^)(NSMutableArray*, NSError*))callback
+{
+    NSString *strRequest = [[NSString alloc] initWithFormat:URLMenu, Id];
+    
+    NSURLRequest *URLRequest = [[NSURLRequest alloc] initWithURL:[[NSURL alloc] initWithString:strRequest]];
+    
+    __block NSMutableArray *arrCategories;
+    
+    [_serviceAgent send:URLRequest
+          responseBlock:^(NSData *data, NSError *error) {
+              
+              // call parser
+              arrCategories = [MenuDataParser parseCurrentCategory:data];
+              // call block from hight layer - DataProvider
+              callback(arrCategories, error);
               
           }];
 }

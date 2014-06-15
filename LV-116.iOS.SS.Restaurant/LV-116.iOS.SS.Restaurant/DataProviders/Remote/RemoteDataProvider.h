@@ -11,12 +11,19 @@
 
 #define URLMenu @"http://192.168.195.212/Restaurant/api/Menu?withItems=true&active=true&parentId=%i"
 
+// class RemoteDataProvider is needed for get data from server
+// and interpret returned data
+
 @interface RemoteDataProvider : NSObject
 
--(instancetype)init;
-
--(void)getMenuData:(int)Id responseBlock:(void (^)(NSMutableArray*, NSError*))callback;
-
+// get all menu tree data from server
+// it makes requesst with id = 0
+// (void (^)(NSMutableArray*, NSError*))callback - block which will call when data is
 -(void)getEntireMenuDataWithResponseBlock:(void (^)(MenuModel*, NSError*))callback;
+
+// get menu data from server
+// (int)Id - id of category which we need to get data from it
+// (void (^)(NSMutableArray*, NSError*))callback - block which will call when data is
+-(void)getMenuData:(int)Id responseBlock:(void (^)(NSMutableArray*, NSError*))callback;
 
 @end

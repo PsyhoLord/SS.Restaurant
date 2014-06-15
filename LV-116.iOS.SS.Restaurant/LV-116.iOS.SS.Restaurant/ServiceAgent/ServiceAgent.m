@@ -9,6 +9,7 @@
 #import "ServiceAgent.h"
 
 @implementation ServiceAgent {
+    // queue for threads
     NSOperationQueue *_operationQueue;
 }
 
@@ -20,17 +21,19 @@
     return self;
 }
 
+// send request to server and call block when response comes
+// (NSURLRequest *)request - request
+// responseBlock:(void (^)(NSData*, NSError*))callback - block which will call when response come
 -(void)send:(NSURLRequest *)request responseBlock:(void (^)(NSData*, NSError*))callback
 {
     NSLog(@"Function is starting!");
     
-    //    NSOperationQueue *operationQueue = [[NSOperationQueue alloc] init];
     // send request
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:_operationQueue
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
                                
-                               // get response
+                               // call block from hight layer - RemoteDataProvider
                                callback(data, connectionError);
                                
                                NSLog(@"NSURLConnection's block've finished!");

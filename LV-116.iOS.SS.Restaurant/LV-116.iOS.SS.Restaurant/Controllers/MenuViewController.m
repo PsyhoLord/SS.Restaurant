@@ -11,14 +11,15 @@
 
 
 @interface MenuViewController ()
-    @property NSMutableArray *menuFromServer;
-    @property NSMutableArray *subMenu1;
-    @property (strong, nonatomic) IBOutlet UITableView *MenuTableView;
+@property NSMutableArray *menuFromServer;
+@property NSMutableArray *subMenu1;
+@property (strong, nonatomic) IBOutlet UITableView *MenuTableView;
 @end
 
 @implementation MenuViewController
 {
     DataProvider *_dataProvider;
+    BOOL *didReachBottomMenuLevel;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -46,7 +47,7 @@
         temp.name=[NSString stringWithFormat:@"SubNumero - %d",i];
         temp.items=nil;
         [self.subMenu1 addObject:temp];
-      
+        
     }
     
     for (int i=0;i<10;i++)
@@ -69,88 +70,44 @@
     [self.menuFromServer addObject:temp];
     //Quite bad :(
     self.currentCategory.categories=self.menuFromServer;
-   // self.currentCategory=self.cur;
-
+    // self.currentCategory=self.cur;
+    
 }
 
 -(void)didFinishMenuTree
 {
     NSLog(@"Hello");
     _currentCategory = [_dataProvider getMenuData:nil];
-//    NSLog(@"%@", _currentCategory.name);
     [self.MenuTableView reloadData];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 }
 
+
+- (void)loadDataFromServer
+{
+    _dataProvider = [[DataProvider alloc] init];
+    //    [_dataProvider setDelegate:self];
+    [_dataProvider getMenuData:nil];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    if(!self.currentCategory)[self MakeHardCode];
-    //[self MakeHardCode];
-    _dataProvider = [[DataProvider alloc] init];
-    [_dataProvider setDelegate:self];
-    [_dataProvider getMenuData:nil];
     
-    //My code
-   // DataProvider *provider = [[DataProvider alloc] init];
-    /*//[provider getMenuData:nil];
-    [NSThread sleepForTimeInterval:6];
-    UIAlertView *greeting=[[UIAlertView alloc] initWithTitle:@"You WELCOM" message:@"We are glad to see You" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    [greeting show];
-    self.menuFromServer=[[NSMutableArray alloc] initWithArray:[provider getMenuData:0]];
-    BOOL isLoad=NO;
-    while (!isLoad) {
-        if([self.menuFromServer count]>0) isLoad=YES;
-    }*/
+    // add self as a listener of notification (notificationNameMenuTreeIsFinished) from _dataProvider
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishMenuTree) name:notificationNameMenuTreeIsFinished object:_dataProvider];
+    
+    if(!self.currentCategory)
+        [self loadDataFromServer];
     
     
-    
-    //Hardcode for init
-    
-    
-    
-    
-
-
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-  /*  DataProvider *provider = [[DataProvider alloc] init];
-    
-    // testing ...
-    __block MenuCategory *_menu = [[MenuCategory alloc] init];
-    [provider getMenuData:nil responseBlock:^(MenuCategory *menu, NSError *error) {
-        
-        _menu = menu;
-        for ( MenuCategory *tmp in _menu.categories ) {
-            NSLog(@"%@", tmp.name);
-        }
-   
-//        [provider getMenuData:_menu.categories[2] responseBlock:^(MenuCategory *menu, NSError *error) {
-//            _menu = menu;
-//            for ( MenuCategory *tmp in _menu.categories ) {
-//                NSLog(@"%@", tmp.name);
-//            }
-//            
-//            [provider getMenuData:_menu.categories[1] responseBlock:^(MenuCategory *menu, NSError *error) {
-//                _menu = menu;
-//                for ( MenuCategory *tmp in _menu.categories ) {
-//                    NSLog(@"%@", tmp.name);
-//                }
-//                
-//                [provider getMenuData:_menu.categories[0] responseBlock:^(MenuCategory *menu, NSError *error) {
-//                    _menu = menu;
-//                    for ( MenuItem *tmp in _menu.items ) {
-//                        NSLog(@"%@", tmp.name);
-//                    }
-//                }];
-//            }];
-//        }];
-    }];
-*/
 }
 
 - (void)didReceiveMemoryWarning
@@ -163,17 +120,20 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-//#warning Potentially incomplete method implementation.
+    //#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//#warning Incomplete method implementation.
+    //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    
-    int q=[self.currentCategory.categories count];
+    int q;
+    if (self.currentCategory.items)
+        q=[self.currentCategory.items count];
+    else
+        q=[self.currentCategory.categories count];
     return  q;
 }
 
@@ -186,10 +146,19 @@
     if ( !cell ) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-        //NSString *temp=[[NSString alloc]init ];
-        MenuCategory *tempmc=[[MenuCategory alloc]init];
+    MenuCategory *tempmc=[[MenuCategory alloc]init];
+    if (_currentCategory.categories)
+    {
         tempmc=[self.currentCategory.categories objectAtIndex:indexPath.row];
         cell.textLabel.text=tempmc.name;
+    }
+    else
+    {
+        tempmc=[self.currentCategory.items objectAtIndex:indexPath.row];
+        cell.textLabel.text=tempmc.name;
+        cell.detailTextLabel.text=tempmc.description;
+        
+    }
     return cell;
 }
 
@@ -203,59 +172,60 @@
     [vc setTitle: selected.name];
     
     vc.currentCategory = selected;
+    //  if(vc.currentCategory.items)  vc.did  vc.didReachBottomMenuLevel=YES;
     
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 /*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
 
 /*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ }
+ else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }
+ }
+ */
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+ {
+ }
+ */
 
 /*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
 
 /*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
+ #pragma mark - Navigation
+ 
+ // In a story board-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ 
  */
 
 @end

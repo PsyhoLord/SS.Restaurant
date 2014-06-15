@@ -10,6 +10,7 @@
 
 @implementation MenuModel
 {
+    // root of menu tree
     MenuCategory *_entireMenuCategory;
 }
 
@@ -26,6 +27,7 @@
     return  ( ( _entireMenuCategory == nil ) && ( [_entireMenuCategory isCategories] == 0 ) && ( [_entireMenuCategory isItems] == 0 ) );
 }
 
+// get MenuCategory object which contains categories or items of current category we want to get in
 -(MenuCategory*)getMenuData:(MenuCategory*)category
 {
     if ( [self isEmpty] ) {
@@ -37,6 +39,8 @@
     }
 }
 
+// add category or item to menu tree
+// needs for DataParser
 -(void)addNode:(id)node toCategory:(MenuCategory*)nodeFather
 {
     if ( nodeFather ) {

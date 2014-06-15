@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "PServiceAgent.h"
 
+// class ServiceAgent sends request and get response from server
+
 @interface ServiceAgent : NSObject<PServiceAgent>
 
 @end

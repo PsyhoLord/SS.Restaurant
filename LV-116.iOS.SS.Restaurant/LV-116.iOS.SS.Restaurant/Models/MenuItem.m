@@ -15,7 +15,7 @@
     self = [super init];
     if ( nil != self ) {
         self.Id             = Id;
-//        self.image          = [UIImage alloc] init
+        //        self.image          = [UIImage alloc] init
         self.categoryId     = categoryId;
         self.description    = [[NSString alloc] initWithString:description];
         self.name           = [[NSString alloc] initWithString:name];

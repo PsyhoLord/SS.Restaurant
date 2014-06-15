@@ -11,8 +11,12 @@
 
 @protocol DataParser <NSObject>
 
-+(NSMutableArray*) parseCurrentCategory:(NSData*) data;
-
+// parse all menu tree
+// (NSData*) data - data to parse
 +(MenuModel*) parseEntireMenu:(NSData*) data;
+
+// parse data for current category
+// (NSData*) data - data to parse
++(NSMutableArray*) parseCurrentCategory:(NSData*) data;
 
 @end

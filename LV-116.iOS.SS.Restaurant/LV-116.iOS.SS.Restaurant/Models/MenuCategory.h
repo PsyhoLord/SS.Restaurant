@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "MenuItem.h"
 
+// class MenuCategory is needed for contains data of category
+// it can also contain any categories or items
+
 @interface MenuCategory : NSObject
 
 -(instancetype) initWithId:(int)Id name:(NSString*)name parentId:(int)parentId;
