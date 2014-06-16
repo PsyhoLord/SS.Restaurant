@@ -133,7 +133,6 @@
         [vc setTitle: selected.name];
     
         vc.currentCategory = selected;
-    //  if(vc.currentCategory.items)  vc.did  vc.didReachBottomMenuLevel=YES;
     
         [self.navigationController pushViewController:vc animated:YES];
     }
@@ -142,9 +141,6 @@
         MenuItem *selected = [self.currentCategory.items objectAtIndex:indexPath.row];
         
         [vc setTitle: selected.name];
-        
-        //vc.currentCategory = selected;
-        //  if(vc.currentCategory.items)  vc.did  vc.didReachBottomMenuLevel=YES;
         
         [self.navigationController pushViewController:vc animated:YES];
     }
