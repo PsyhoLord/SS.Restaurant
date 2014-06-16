@@ -32,47 +32,6 @@
     return self;
 }
 
-//Creating data for testing
--(void) MakeHardCode
-{
-    self.menuFromServer=[[NSMutableArray alloc] init];
-    self.subMenu1=[[NSMutableArray alloc] init];
-    self.currentCategory=[[MenuCategory alloc]init];
-    
-    for (int i=0;i<5;i++)
-    {
-        MenuCategory *temp=[[MenuCategory alloc] init];
-        temp.Id=10+i;
-        temp.parentId=1;
-        temp.name=[NSString stringWithFormat:@"SubNumero - %d",i];
-        temp.items=nil;
-        [self.subMenu1 addObject:temp];
-        
-    }
-    
-    for (int i=0;i<10;i++)
-    {
-        MenuCategory *temp=[[MenuCategory alloc] init];
-        temp.Id=i;
-        temp.parentId=0;
-        temp.name=[NSString stringWithFormat:@"Numero - %d",i];
-        temp.items=nil;
-        [self.menuFromServer addObject:temp];
-        
-    }
-    MenuCategory *temp=[[MenuCategory alloc] init];
-    
-    temp.Id=1;
-    temp.parentId=0;
-    temp.name=[NSString stringWithFormat:@"WithSub"];
-    temp.items=nil;
-    temp.categories=  self.subMenu1;
-    [self.menuFromServer addObject:temp];
-    //Quite bad :(
-    self.currentCategory.categories=self.menuFromServer;
-    // self.currentCategory=self.cur;
-    
-}
 
 -(void)didFinishMenuTree
 {
