@@ -19,7 +19,7 @@
 @implementation MenuViewController
 {
     DataProvider *_dataProvider;
-    BOOL *didReachBottomMenuLevel;
+    BOOL didReachBottomMenuLevel;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -116,7 +116,7 @@
         tempmc=[self.currentCategory.items objectAtIndex:indexPath.row];
         cell.textLabel.text=tempmc.name;
         cell.detailTextLabel.text=tempmc.description;
-        
+        didReachBottomMenuLevel = YES;
     }
     return cell;
 }
@@ -125,15 +125,29 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MenuViewController *vc = [[MenuViewController alloc] init];
-    MenuCategory *selected = [self.currentCategory.categories objectAtIndex:indexPath.row];
+    if (!didReachBottomMenuLevel)
+    {
+        MenuViewController *vc = [[MenuViewController alloc] init];
+        MenuCategory *selected = [self.currentCategory.categories objectAtIndex:indexPath.row];
     
-    [vc setTitle: selected.name];
+        [vc setTitle: selected.name];
     
-    vc.currentCategory = selected;
+        vc.currentCategory = selected;
     //  if(vc.currentCategory.items)  vc.did  vc.didReachBottomMenuLevel=YES;
     
-    [self.navigationController pushViewController:vc animated:YES];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    {
+        MenuViewController *vc = [[MenuViewController alloc] init];
+        MenuItem *selected = [self.currentCategory.items objectAtIndex:indexPath.row];
+        
+        [vc setTitle: selected.name];
+        
+        //vc.currentCategory = selected;
+        //  if(vc.currentCategory.items)  vc.did  vc.didReachBottomMenuLevel=YES;
+        
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 /*
