@@ -30,15 +30,6 @@
 //    _delegate = newDelegate;
 //}
 
-// send broadcast notification notificationNameMenuTreeIsFinished
-// called when it has already created menu tree ( _menuModel )
--(void) broadcastMenuTreeIsFinishedNotification
-{
-    NSNotification *notificationMenuTreeIsFinished = [NSNotification notificationWithName:notificationNameMenuTreeIsFinished object:self];
-    
-    [[NSNotificationCenter defaultCenter] postNotification:notificationMenuTreeIsFinished];
-}
-
 // create menu tree asynchronously
 // it asks _remoteDataProvider to get all data
 -(void) createMenuModel
@@ -47,8 +38,10 @@
         
         _menuModel = menuModel;
         _currentCategory = [_menuModel getMenuData:nil];
-        //        [_delegate didFinishMenuTree];
-        [self broadcastMenuTreeIsFinishedNotification];
+        // [_delegate didFinishMenuTree];
+        // post notification that menu data is
+        [[NSNotificationCenter defaultCenter] postNotificationName:notificationNameMenuTreeIsFinished object:self];
+        
     }];
 }
 
@@ -56,11 +49,18 @@
 // it asks _remoteDataProvider to get menu data if it hasn't data
 // if it has data than it asks _menuModel to get menu data
 // (MenuCategory*)category - pointer to an category we want to get in
--(MenuCategory*) getMenuData:(MenuCategory*)category
+-(MenuCategory*)getMenuData:(MenuCategory*)category
 {
     if ( _menuModel ) {
         if ( category ) {
             _currentCategory = [_menuModel getMenuData:category];
+            
+            if ( _currentCategory.items && [((MenuItem*)[_currentCategory.items objectAtIndex:0]) isImage] ) {
+                for ( int i = 0; i <  [_currentCategory.items count]; ++i ) {
+                    MenuItem *item = [_currentCategory.items objectAtIndex:i];
+                    [self downloadImageForItem:item cellIndex:i];
+                }
+            }
         }
     } else {
         [self createMenuModel];
@@ -80,7 +80,9 @@
         _currentCategory = [[MenuCategory alloc] initWithId:1 name:@"menu" parentId:0];
     }
     
-    if ( false == [_currentCategory isItems] ) {
+    if ( [_currentCategory isItems] ) {
+        callback(_currentCategory, nil);
+    } else {
         [_remoteDataProvider getMenuData:_currentCategory.Id responseBlock:^(NSMutableArray *arrCategories, NSError *error) {
             
             _currentCategory.categories = arrCategories;
@@ -88,11 +90,27 @@
             callback(_currentCategory, error);
             
         }];
-    } else {
-        callback(_currentCategory, nil);
     }
     
     return _currentCategory;
+}
+
+// download image for item and cell index in tableView
+// (MenuItem*)item - ptr to item which need to update image
+// (int)cellIndex  - index of cell in tableView
+// this method posts notificationItemImageDownloadIsFinished when image has downloaded
+-(void)downloadImageForItem:(MenuItem*)item cellIndex:(int)cellIndex
+{
+    [_remoteDataProvider downloadImageForItemId:item.Id withBlock:^(UIImage *itemImage, NSError *error) {
+        // set image to menuItem
+        item.image = itemImage;
+        NSNumber *objCellIndex = [NSNumber numberWithInt:cellIndex];
+        NSDictionary *userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:item, menuItemKey,
+                                  objCellIndex, menuCellIndexKey,
+                                  nil];
+        // post notification that image has downloaded
+        [[NSNotificationCenter defaultCenter] postNotificationName:notificationItemImageDownloadIsFinished object:self userInfo:userInfo];
+    }];
 }
 
 @end

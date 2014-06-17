@@ -25,4 +25,9 @@
 // (void (^)(NSMutableArray*, NSError*))callback - block which will call when data is
 -(void)getMenuData:(int)Id responseBlock:(void (^)(NSMutableArray*, NSError*))callback;
 
+// download image for itemId
+// (int)itemId - Id of item in menu
+// (void (^)(UIImage*, NSError*))callback - block which will be called when image is
+-(void)downloadImageForItemId:(int)itemId withBlock:(void (^)(UIImage*, NSError*))callback;
+
 @end

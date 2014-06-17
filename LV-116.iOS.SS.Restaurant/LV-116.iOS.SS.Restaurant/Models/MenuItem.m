@@ -25,4 +25,9 @@
     return self;
 }
 
+-(bool)isImage
+{
+    return (self.image != nil);
+}
+
 @end

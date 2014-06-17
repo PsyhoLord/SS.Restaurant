@@ -11,7 +11,10 @@
 #import "MenuCategory.h"
 #import "PMenuDataNotification.h"
 
-#define notificationNameMenuTreeIsFinished @"notificationMenuTreeIsFinished"
+#define notificationNameMenuTreeIsFinished      @"notificationMenuTreeIsFinished"
+#define notificationItemImageDownloadIsFinished @"notificationItemImageDownloadIsFinished"
+#define menuItemKey                             @"menuItem"
+#define menuCellIndexKey                        @"cellIndex"
 
 // DataProvider class makes decision where it has to get data
 

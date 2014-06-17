@@ -37,10 +37,12 @@
     NSLog(@"Hello");
     _currentCategory = [_dataProvider getMenuData:nil];
     [self.MenuTableView reloadData];
+    
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     [UIActivityIndicatorView setAnimationBeginsFromCurrentState:YES];
 }
 
+// test by Oleg & Roman
 // called by NSNotiricationCenter if is connectionErrorNotification
 - (void)didErrorAppear:(NSNotification*)notificationError
 {
@@ -65,12 +67,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishMenuTree) name:notificationNameMenuTreeIsFinished object:_dataProvider];
     // add self as a listener of notification (connectionErrorNotification) if it
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didErrorAppear:) name:connectionErrorNotification object:nil];
-    
-    MenuModel *a;
+    // add self as a listener of notification (notificationItemImageDownloadIsFinished) if it
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didImageDownload:) name:notificationItemImageDownloadIsFinished object:nil];
     
     if(!self.currentCategory)
         [self loadDataFromServer];
-    
     
 }
 
@@ -124,8 +125,6 @@
     return cell;
 }
 
-
-
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (!didReachBottomMenuLevel)
@@ -138,8 +137,7 @@
         vc.currentCategory = selected;
     
         [self.navigationController pushViewController:vc animated:YES];
-    }
-    {
+    } else {
         MenuViewController *vc = [[MenuViewController alloc] init];
         MenuItem *selected = [self.currentCategory.items objectAtIndex:indexPath.row];
         
