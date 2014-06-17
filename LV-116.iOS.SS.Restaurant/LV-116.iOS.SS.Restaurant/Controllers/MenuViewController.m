@@ -74,6 +74,7 @@
     
 }
 
+// called by NSNotificationCenter if is notificationNameMenuTreeIsFinished
 -(void)didFinishMenuTree
 {
     NSLog(@"Hello");
@@ -82,6 +83,14 @@
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 }
 
+// called by NSNotiricationCenter if is connectionErrorNotification
+- (void)didErrorAppear:(NSNotification*)notificationError
+{
+    NSLog(@"Connection error: code:%i, description:%@",
+          [[notificationError.userInfo valueForKey:connectionErrorCode] integerValue],
+          [notificationError.userInfo valueForKey:connectionErrorDescription]
+          );
+}
 
 - (void)loadDataFromServer
 {
@@ -97,6 +106,10 @@
     
     // add self as a listener of notification (notificationNameMenuTreeIsFinished) from _dataProvider
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishMenuTree) name:notificationNameMenuTreeIsFinished object:_dataProvider];
+    // add self as a listener of notification (connectionErrorNotification) if it
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didErrorAppear:) name:connectionErrorNotification object:nil];
+    
+    MenuModel *a;
     
     if(!self.currentCategory)
         [self loadDataFromServer];

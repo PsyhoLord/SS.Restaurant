@@ -33,8 +33,18 @@
                                        queue:_operationQueue
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
                                
-                               // call block from hight layer - RemoteDataProvider
-                               callback(data, connectionError);
+                               if ( connectionError ) {
+                                   NSLog(@"Connection error: code:%i description:%@", connectionError.code, connectionError.description);
+                                   NSDictionary *userInfo = [[NSDictionary alloc]
+                                                             initWithObjectsAndKeys:[NSNumber numberWithInt:connectionError.code ], connectionErrorCode,
+                                                             connectionError.description, connectionErrorDescription,
+                                                             nil];
+                                   // send notification if internet is absent
+                                   [[NSNotificationCenter defaultCenter] postNotificationName:connectionErrorNotification object:self userInfo:userInfo];
+                               } else {
+                                   // call block from hight layer - RemoteDataProvider
+                                   callback(data, connectionError);
+                               }
                                
                                NSLog(@"NSURLConnection's block've finished!");
                            }];

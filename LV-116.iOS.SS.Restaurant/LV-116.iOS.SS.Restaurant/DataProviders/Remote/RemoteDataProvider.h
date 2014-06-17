@@ -7,12 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MenuModel.h"
-
-#define URLMenu @"http://192.168.195.212/Restaurant/api/Menu?withItems=true&active=true&parentId=%i"
+#import "ServiceAgent.h"
 
 // class RemoteDataProvider is needed for get data from server
 // and interpret returned data
+@class MenuModel;
 
 @interface RemoteDataProvider : NSObject
 

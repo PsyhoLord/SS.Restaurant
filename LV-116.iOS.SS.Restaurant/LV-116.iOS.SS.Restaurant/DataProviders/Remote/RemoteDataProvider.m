@@ -8,8 +8,11 @@
 
 #import "RemoteDataProvider.h"
 #import "PServiceAgent.h"
-#import "ServiceAgent.h"
+#import "MenuModel.h"
 #import "MenuDataParser.h"
+
+#define URLMenu                     @"http://192.168.195.212/Restaurant/api/Menu?withItems=true&active=true&parentId=%i"
+#define connectionTimeoutInterval   3.0
 
 @implementation RemoteDataProvider
 {
@@ -34,7 +37,10 @@
     
     NSString *strRequest = [[NSString alloc] initWithFormat:URLMenu, Id];
     
-    NSURLRequest *URLRequest = [[NSURLRequest alloc] initWithURL:[[NSURL alloc] initWithString:strRequest]];
+//    NSURLRequest *URLRequest = [[NSURLRequest alloc] initWithURL:[[NSURL alloc] initWithString:strRequest]];
+    NSURLRequest *URLRequest = [NSURLRequest requestWithURL:[[NSURL alloc] initWithString:strRequest]
+                                                cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                            timeoutInterval:connectionTimeoutInterval];
     
     [_serviceAgent send:URLRequest
           responseBlock:^(NSData *data, NSError *error) {
@@ -54,7 +60,10 @@
 {
     NSString *strRequest = [[NSString alloc] initWithFormat:URLMenu, Id];
     
-    NSURLRequest *URLRequest = [[NSURLRequest alloc] initWithURL:[[NSURL alloc] initWithString:strRequest]];
+//    NSURLRequest *URLRequest = [[NSURLRequest alloc] initWithURL:[[NSURL alloc] initWithString:strRequest]];
+    NSURLRequest *URLRequest = [NSURLRequest requestWithURL:[[NSURL alloc] initWithString:strRequest]
+                                                cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                            timeoutInterval:connectionTimeoutInterval];
     
     __block NSMutableArray *arrCategories;
     
