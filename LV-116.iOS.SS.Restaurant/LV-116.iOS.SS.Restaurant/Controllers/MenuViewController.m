@@ -62,13 +62,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    // add self as a listener of notification (notificationNameMenuTreeIsFinished) from _dataProvider
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishMenuTree) name:notificationNameMenuTreeIsFinished object:_dataProvider];
     // add self as a listener of notification (connectionErrorNotification) if it
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didErrorAppear:) name:connectionErrorNotification object:nil];
-    // add self as a listener of notification (notificationItemImageDownloadIsFinished) if it
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didImageDownload:) name:notificationItemImageDownloadIsFinished object:nil];
+;
     
     if(!self.currentCategory)
         [self loadDataFromServer];
@@ -92,12 +90,10 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    int q;
     if (self.currentCategory.items)
-        q=[self.currentCategory.items count];
+        return [self.currentCategory.items count];
     else
-        q=[self.currentCategory.categories count];
-    return  q;
+        return [self.currentCategory.categories count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -107,7 +103,7 @@
     
     // Configure the cell...
     if ( !cell ) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     MenuCategory *tempVariableForTitle=[[MenuCategory alloc]init];
     if (_currentCategory.categories)
@@ -131,20 +127,21 @@
     {
         MenuViewController *vc = [[MenuViewController alloc] init];
         MenuCategory *selected = [self.currentCategory.categories objectAtIndex:indexPath.row];
+       // MenuCategory *selected = [_dataProvider getMenuData:[self.currentCategory.categories objectAtIndex:indexPath.row]];
     
         [vc setTitle: selected.name];
     
         vc.currentCategory = selected;
     
         [self.navigationController pushViewController:vc animated:YES];
-    } else {
+    } /*else {
         MenuViewController *vc = [[MenuViewController alloc] init];
         MenuItem *selected = [self.currentCategory.items objectAtIndex:indexPath.row];
         
         [vc setTitle: selected.name];
         
         [self.navigationController pushViewController:vc animated:YES];
-    }
+    }*/
 }
 
 @end
