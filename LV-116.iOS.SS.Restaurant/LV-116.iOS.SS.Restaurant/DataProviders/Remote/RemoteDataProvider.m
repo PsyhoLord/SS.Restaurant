@@ -8,8 +8,12 @@
 
 #import "RemoteDataProvider.h"
 #import "PServiceAgent.h"
-#import "ServiceAgent.h"
+#import "MenuModel.h"
 #import "MenuDataParser.h"
+
+#define URLMenu                     @"http://192.168.195.212/Restaurant/api/Menu?withItems=true&active=true&parentId=%i"
+#define URLDownloadImage            @"http://192.168.195.212/Restaurant/Menu/ImageResult/%i"
+#define connectionTimeoutInterval   5.0
 
 @implementation RemoteDataProvider
 {
@@ -34,7 +38,10 @@
     
     NSString *strRequest = [[NSString alloc] initWithFormat:URLMenu, Id];
     
-    NSURLRequest *URLRequest = [[NSURLRequest alloc] initWithURL:[[NSURL alloc] initWithString:strRequest]];
+//    NSURLRequest *URLRequest = [[NSURLRequest alloc] initWithURL:[[NSURL alloc] initWithString:strRequest]];
+    NSURLRequest *URLRequest = [NSURLRequest requestWithURL:[[NSURL alloc] initWithString:strRequest]
+                                                cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                            timeoutInterval:connectionTimeoutInterval];
     
     [_serviceAgent send:URLRequest
           responseBlock:^(NSData *data, NSError *error) {
@@ -54,7 +61,10 @@
 {
     NSString *strRequest = [[NSString alloc] initWithFormat:URLMenu, Id];
     
-    NSURLRequest *URLRequest = [[NSURLRequest alloc] initWithURL:[[NSURL alloc] initWithString:strRequest]];
+//    NSURLRequest *URLRequest = [[NSURLRequest alloc] initWithURL:[[NSURL alloc] initWithString:strRequest]];
+    NSURLRequest *URLRequest = [NSURLRequest requestWithURL:[[NSURL alloc] initWithString:strRequest]
+                                                cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                            timeoutInterval:connectionTimeoutInterval];
     
     __block NSMutableArray *arrCategories;
     
@@ -67,6 +77,25 @@
               callback(arrCategories, error);
               
           }];
+}
+
+
+// download image for itemId
+// (int)itemId - Id of item in menu
+// (void (^)(UIImage*, NSError*))callback - block which will be called when image is
+// this method posts notificationItemImageDownloadIsFinished when image has downloaded
+-(void)downloadImageForItemId:(int)itemId withBlock:(void (^)(UIImage*, NSError*))callback
+{
+    NSString *strRequest = [[NSString alloc] initWithFormat:URLDownloadImage, itemId];
+    NSURLRequest *URLRequest = [NSURLRequest requestWithURL:[[NSURL alloc] initWithString:strRequest]
+                                                cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                            timeoutInterval:connectionTimeoutInterval];
+    
+    [_serviceAgent send:URLRequest responseBlock:^(NSData *data, NSError *error) {
+        UIImage *image = [[UIImage alloc] initWithData:data];
+        // call block from hight layer - DataProvider
+        callback(image, error);
+    }];
 }
 
 @end

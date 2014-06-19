@@ -26,8 +26,6 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
-        
     }
     return self;
 }
@@ -38,14 +36,24 @@
     NSLog(@"Hello");
     _currentCategory = [_dataProvider getMenuData:nil];
     [self.MenuTableView reloadData];
+    
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    [UIActivityIndicatorView setAnimationBeginsFromCurrentState:YES];
 }
 
+// test by Oleg & Roman
+// called by NSNotiricationCenter if is connectionErrorNotification
+- (void)didErrorAppear:(NSNotification*)notificationError
+{
+    NSLog(@"Connection error: code:%i, description:%@",
+          [[notificationError.userInfo valueForKey:connectionErrorCode] integerValue],
+          [notificationError.userInfo valueForKey:connectionErrorDescription]
+          );
+}
 
 - (void)loadDataFromServer // Отримані дані з сервера
 {
     _dataProvider = [[DataProvider alloc] init];
-    //    [_dataProvider setDelegate:self];
     [_dataProvider getMenuData:nil];
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 }
@@ -53,19 +61,14 @@
 - (void)viewDidLoad // Завантажилось TableView
 {
     [super viewDidLoad];
-    
-    // add self as a listener of notification (notificationNameMenuTreeIsFinished) from _dataProvider
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishMenuTree) name:notificationNameMenuTreeIsFinished object:_dataProvider];
+    // add self as a listener of notification (connectionErrorNotification) if it
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didErrorAppear:) name:connectionErrorNotification object:nil];
+;
     
     if(!self.currentCategory)
         [self loadDataFromServer];
-    
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
 }
 
@@ -79,21 +82,17 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView // Кількість секцій в TableView
 {
-    //#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section // Кількість рядків в секції // Як зробити різну кількість? Через index
 {
-    //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    int q;
     if (self.currentCategory.items)
-        q=[self.currentCategory.items count];
+        return [self.currentCategory.items count];
     else
-        q=[self.currentCategory.categories count];
-    return  q;
+        return [self.currentCategory.categories count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath // повертає Cell для кожного з рядків. Саме тут ми вибираємо який Cell вантажити
@@ -183,76 +182,21 @@
     {
         MenuViewController *vc = [[MenuViewController alloc] init];
         MenuCategory *selected = [self.currentCategory.categories objectAtIndex:indexPath.row];
+       // MenuCategory *selected = [_dataProvider getMenuData:[self.currentCategory.categories objectAtIndex:indexPath.row]];
     
         [vc setTitle: selected.name];
     
         vc.currentCategory = selected;
-    //  if(vc.currentCategory.items)  vc.did  vc.didReachBottomMenuLevel=YES;
     
         [self.navigationController pushViewController:vc animated:YES];
-    }
-    {
+    } /*else {
         MenuViewController *vc = [[MenuViewController alloc] init];
         MenuItem *selected = [self.currentCategory.items objectAtIndex:indexPath.row];
         
         [vc setTitle: selected.name];
         
-        //vc.currentCategory = selected;
-        //  if(vc.currentCategory.items)  vc.did  vc.didReachBottomMenuLevel=YES;
-        
         [self.navigationController pushViewController:vc animated:YES];
-    }
+    }*/
 }
-
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- }
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-
-/*
- #pragma mark - Navigation
- 
- // In a story board-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
- {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- 
- */
 
 @end
