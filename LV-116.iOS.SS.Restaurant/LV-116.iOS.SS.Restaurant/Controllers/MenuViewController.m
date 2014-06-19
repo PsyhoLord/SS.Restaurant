@@ -22,7 +22,7 @@
     BOOL didReachBottomMenuLevel;
 }
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithStyle:(UITableViewStyle)style //Ініціалізація з стилем
 {
     self = [super initWithStyle:style];
     if (self) {
@@ -33,7 +33,7 @@
 }
 
 
--(void)didFinishMenuTree
+-(void)didFinishMenuTree // Завантажилось дерево для меню
 {
     NSLog(@"Hello");
     _currentCategory = [_dataProvider getMenuData:nil];
@@ -42,7 +42,7 @@
 }
 
 
-- (void)loadDataFromServer
+- (void)loadDataFromServer // Отримані дані з сервера
 {
     _dataProvider = [[DataProvider alloc] init];
     //    [_dataProvider setDelegate:self];
@@ -50,7 +50,7 @@
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 }
 
-- (void)viewDidLoad
+- (void)viewDidLoad // Завантажилось TableView
 {
     [super viewDidLoad];
     
@@ -69,7 +69,7 @@
     
 }
 
-- (void)didReceiveMemoryWarning
+- (void)didReceiveMemoryWarning // Попередження про память
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -77,14 +77,14 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView // Кількість секцій в TableView
 {
     //#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section // Кількість рядків в секції // Як зробити різну кількість? Через index
 {
     //#warning Incomplete method implementation.
     // Return the number of rows in the section.
@@ -96,34 +96,88 @@
     return  q;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath // повертає Cell для кожного з рядків. Саме тут ми вибираємо який Cell вантажити
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *CellIdentifier;
+    
     
     // Configure the cell...
-    if ( !cell ) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-    }
+    
+        
     MenuCategory *tempmc=[[MenuCategory alloc]init];
     if (_currentCategory.categories)
     {
-        tempmc=[self.currentCategory.categories objectAtIndex:indexPath.row];
-        cell.textLabel.text=tempmc.name;
+        CellIdentifier = @"CategoryCell";
+        CategoryCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if ( !cell )
+        {
+            cell = [[CategoryCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        
+            tempmc=[self.currentCategory.categories objectAtIndex:indexPath.row];
+            //cell.textLabel.text=tempmc.name;
+            cell.CategoryName.text = tempmc.name;
+        }
+        return cell;
     }
     else
     {
+        CellIdentifier = @"ItemCell";
+        ItemCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if ( !cell )
+        {
+        cell = [[ItemCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        
         tempmc=[self.currentCategory.items objectAtIndex:indexPath.row];
-        cell.textLabel.text=tempmc.name;
+        //cell.textLabel.text=tempmc.name;
         cell.detailTextLabel.text=tempmc.description;
         didReachBottomMenuLevel = YES;
+        }
+        return cell;
     }
-    return cell;
+        
+    
+    
+    /*NSString *CellIdentifier = @"CustomCell";
+    TableViewCell *CustomCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    // Configure the cell...
+    if ( !CustomCell ) {
+        //cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        CustomCell = [[TableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        
+    }
+    return CustomCell;*/
+    
+    /*NSString *CellIdentifier = @"CustomCategoryCell";
+     TableViewCell *CustomCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+     
+     // Configure the cell...
+     if ( !CustomCell ) {
+     //cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+     CustomCell = [[TableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+     
+     }
+     return CustomCell;*/
 }
 
+/*- (UITableViewCell *)tableView:(UITableView *)tableView customCellForRowAtIndexPath:(NSIndexPath *)indexPath // то мій темплорарі код. Хотів би його викликати, але хз як
+{
+    
+    
+    NSString *CellIdentifier = @"CustomCell";
+    TableViewCell *CustomCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+
+    // Configure the cell...
+    if ( !CustomCell ) {
+        //cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        CustomCell = [[TableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+
+    }
+    return CustomCell;
+}*/
 
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath // обробник кліків за індексом
 {
     if (!didReachBottomMenuLevel)
     {
