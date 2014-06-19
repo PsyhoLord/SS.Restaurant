@@ -10,6 +10,12 @@
 
 @implementation ItemCell
 
+@synthesize ItemName;
+//@synthesize Image;
+@synthesize ItemPrice;
+@synthesize ItemDescription;
+@synthesize ItemWeight;
+
 - (void)awakeFromNib
 {
     // Initialization code
@@ -21,5 +27,19 @@
 
     // Configure the view for the selected state
 }
+
+
+-(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if(self)
+    {
+        NSArray *nibArray = [[NSBundle mainBundle] loadNibNamed:@"ItemCell" owner:self options:nil];
+        self = [nibArray objectAtIndex:0];
+    }
+    return self;
+}
+
 
 @end

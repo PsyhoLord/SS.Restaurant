@@ -13,7 +13,7 @@
 
 #define URLMenu                     @"http://192.168.195.212/Restaurant/api/Menu?withItems=true&active=true&parentId=%i"
 #define URLDownloadImage            @"http://192.168.195.212/Restaurant/Menu/ImageResult/%i"
-#define connectionTimeoutInterval   5.0
+#define connectionTimeoutInterval   40.0
 
 @implementation RemoteDataProvider
 {

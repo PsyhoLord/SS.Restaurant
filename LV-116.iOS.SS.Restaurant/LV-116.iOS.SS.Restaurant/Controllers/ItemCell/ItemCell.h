@@ -12,7 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *ItemName;
 @property (weak, nonatomic) IBOutlet UIImageView *Image;
-@property (weak, nonatomic) IBOutlet UIView *ItemPrice;
+@property (weak, nonatomic) IBOutlet UILabel *ItemPrice;
 @property (weak, nonatomic) IBOutlet UILabel *ItemDescription;
 @property (weak, nonatomic) IBOutlet UILabel *ItemWeight;
 

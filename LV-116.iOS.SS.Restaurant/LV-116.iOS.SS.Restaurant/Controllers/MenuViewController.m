@@ -66,7 +66,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishMenuTree) name:notificationNameMenuTreeIsFinished object:_dataProvider];
     // add self as a listener of notification (connectionErrorNotification) if it
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didErrorAppear:) name:connectionErrorNotification object:nil];
-;
     
     if(!self.currentCategory)
         [self loadDataFromServer];
@@ -104,18 +103,20 @@
     // Configure the cell...
     
         
-    MenuCategory *tempmc=[[MenuCategory alloc]init];
+    //MenuCategory *tempmc=[[MenuCategory alloc]init];
+    id tempCellData;// = [[MenuCategory alloc]init];
     if (_currentCategory.categories)
     {
         CellIdentifier = @"CategoryCell";
         CategoryCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if ( !cell )
         {
-            cell = [[CategoryCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-        
-            tempmc=[self.currentCategory.categories objectAtIndex:indexPath.row];
-            //cell.textLabel.text=tempmc.name;
-            cell.CategoryName.text = tempmc.name;
+            cell = [[CategoryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            tempCellData=[self.currentCategory.categories objectAtIndex:indexPath.row];
+            
+            cell.CategoryName.text = ((MenuCategory*)tempCellData).name;
+            NSLog(@"%@",cell.CategoryName.text);
+            
         }
         return cell;
     }
@@ -126,11 +127,14 @@
         if ( !cell )
         {
             cell = [[ItemCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        
-            tempmc=[self.currentCategory.items objectAtIndex:indexPath.row];
+            tempCellData=[self.currentCategory.items objectAtIndex:indexPath.row];
             //cell.textLabel.text=tempmc.name;
-            cell.ItemDescription.text=tempmc.description;
-            didReachBottomMenuLevel = YES;
+            cell.ItemName.text = ((MenuItem*)tempCellData).name;
+            cell.ItemDescription.text=((MenuItem*)tempCellData).description;
+            cell.ItemPrice.text  = [NSString stringWithFormat:@"%.2f", ((MenuItem*)tempCellData).price];
+            cell.ItemWeight.text = [NSString stringWithFormat:@"%ld",((MenuItem*)tempCellData).portions];
+            
+            //didReachBottomMenuLevel = YES;
         }
         return cell;
     }
