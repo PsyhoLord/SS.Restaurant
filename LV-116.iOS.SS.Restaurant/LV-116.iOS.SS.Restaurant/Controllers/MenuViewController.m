@@ -129,7 +129,7 @@
         
         tempmc=[self.currentCategory.items objectAtIndex:indexPath.row];
         //cell.textLabel.text=tempmc.name;
-        cell.detailTextLabel.text=tempmc.description;
+        cell.ItemDescription.text=tempmc.description;
         didReachBottomMenuLevel = YES;
         }
         return cell;
