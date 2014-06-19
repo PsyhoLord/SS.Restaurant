@@ -31,7 +31,8 @@
 }
 
 
--(void)didFinishMenuTree // Завантажилось дерево для меню
+// called by NSNotificationCenter if is notificationNameMenuTreeIsFinished
+-(void)didFinishMenuTree
 {
     NSLog(@"Hello");
     _currentCategory = [_dataProvider getMenuData:nil];

@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		63ED694E1951C961005D7B1D /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63ED694C1951C961005D7B1D /* TableViewCell.m */; };
-		63ED694F1951C961005D7B1D /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63ED694D1951C961005D7B1D /* TableViewCell.xib */; };
 		63ED69581952CE35005D7B1D /* ItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63ED69561952CE35005D7B1D /* ItemCell.m */; };
 		63ED69591952CE35005D7B1D /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63ED69571952CE35005D7B1D /* ItemCell.xib */; };
 		63ED69621952CE83005D7B1D /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63ED69601952CE83005D7B1D /* CategoryCell.m */; };
@@ -49,9 +47,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		63ED694B1951C961005D7B1D /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableViewCell.h; path = Controllers/ItemCell/TableViewCell.h; sourceTree = "<group>"; };
-		63ED694C1951C961005D7B1D /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableViewCell.m; path = Controllers/ItemCell/TableViewCell.m; sourceTree = "<group>"; };
-		63ED694D1951C961005D7B1D /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TableViewCell.xib; path = Controllers/ItemCell/TableViewCell.xib; sourceTree = "<group>"; };
 		63ED69551952CE35005D7B1D /* ItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemCell.h; path = Controllers/ItemCell/ItemCell.h; sourceTree = "<group>"; };
 		63ED69561952CE35005D7B1D /* ItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemCell.m; path = Controllers/ItemCell/ItemCell.m; sourceTree = "<group>"; };
 		63ED69571952CE35005D7B1D /* ItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ItemCell.xib; path = Controllers/ItemCell/ItemCell.xib; sourceTree = "<group>"; };
@@ -123,16 +118,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		63ED69501951C96F005D7B1D /* ItemGroup */ = {
-			isa = PBXGroup;
-			children = (
-				63ED694B1951C961005D7B1D /* TableViewCell.h */,
-				63ED694C1951C961005D7B1D /* TableViewCell.m */,
-				63ED694D1951C961005D7B1D /* TableViewCell.xib */,
-			);
-			name = ItemGroup;
-			sourceTree = "<group>";
-		};
 		63ED69521952CD4F005D7B1D /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,7 +155,6 @@
 				C348B3C9193DE4AD0004808D /* ViewController.m */,
 				C3C979E519414FC300143229 /* MenuViewController.h */,
 				C3C979E619414FC300143229 /* MenuViewController.m */,
-				63ED69501951C96F005D7B1D /* ItemGroup */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -400,7 +384,6 @@
 			files = (
 				FA336C3319335B950007CC76 /* Main_iPad.storyboard in Resources */,
 				63ED69631952CE83005D7B1D /* CategoryCell.xib in Resources */,
-				63ED694F1951C961005D7B1D /* TableViewCell.xib in Resources */,
 				63ED69591952CE35005D7B1D /* ItemCell.xib in Resources */,
 				FA336C3819335B950007CC76 /* Images.xcassets in Resources */,
 				FA336C3019335B950007CC76 /* Main_iPhone.storyboard in Resources */,
@@ -424,7 +407,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDE50DFE193E1A4400ACA71D /* MenuItem.m in Sources */,
-				63ED694E1951C961005D7B1D /* TableViewCell.m in Sources */,
 				C348B3CA193DE4AD0004808D /* ViewController.m in Sources */,
 				C348B3D3193DE5E90004808D /* RemoteDataProvider.m in Sources */,
 				FA336C2D19335B950007CC76 /* AppDelegate.m in Sources */,
