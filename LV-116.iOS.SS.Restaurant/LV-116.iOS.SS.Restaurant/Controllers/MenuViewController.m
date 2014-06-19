@@ -125,12 +125,12 @@
         ItemCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if ( !cell )
         {
-        cell = [[ItemCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            cell = [[ItemCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         
-        tempmc=[self.currentCategory.items objectAtIndex:indexPath.row];
-        //cell.textLabel.text=tempmc.name;
-        cell.ItemDescription.text=tempmc.description;
-        didReachBottomMenuLevel = YES;
+            tempmc=[self.currentCategory.items objectAtIndex:indexPath.row];
+            //cell.textLabel.text=tempmc.name;
+            cell.ItemDescription.text=tempmc.description;
+            didReachBottomMenuLevel = YES;
         }
         return cell;
     }
