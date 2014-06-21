@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *ItemPrice;
 @property (weak, nonatomic) IBOutlet UILabel *ItemDescription;
 @property (weak, nonatomic) IBOutlet UILabel *ItemWeight;
+@property (weak, nonatomic) IBOutlet UIButton *InfoButton;
+- (IBAction)touchUpInfoButton:(UIButton *)sender;
 
 
 @end

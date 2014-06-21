@@ -11,10 +11,11 @@
 @implementation ItemCell
 
 @synthesize ItemName;
-//@synthesize Image;
+@synthesize Image;
 @synthesize ItemPrice;
 @synthesize ItemDescription;
 @synthesize ItemWeight;
+@synthesize InfoButton;
 
 - (void)awakeFromNib
 {
@@ -31,15 +32,17 @@
 
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self)
     {
-        NSArray *nibArray = [[NSBundle mainBundle] loadNibNamed:@"ItemCell" owner:self options:nil];
-        self = [nibArray objectAtIndex:0];
+        NSArray *nibItemArray = [[NSBundle mainBundle] loadNibNamed:@"ItemCell" owner:self options:nil];
+        //[nibItemArray awakeFromNib: @"itemCell"];
+        self = [nibItemArray objectAtIndex:0];
     }
     return self;
 }
 
 
+- (IBAction)touchUpInfoButton:(UIButton *)sender {
+}
 @end

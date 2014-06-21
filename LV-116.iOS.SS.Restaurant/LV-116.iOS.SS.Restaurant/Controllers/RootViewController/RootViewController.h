@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+// RootViewController class is root storyboard
+@interface RootViewController : UIViewController
 
 @end

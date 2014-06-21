@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
 
+#import "NavigationController.h"
 #import "MenuViewController.h"
 #import "DataProvider.h"
 
@@ -34,8 +35,8 @@
 // called by NSNotificationCenter if is notificationNameMenuTreeIsFinished
 -(void)didFinishMenuTree
 {
-    NSLog(@"Hello");
     _currentCategory = [_dataProvider getMenuData:nil];
+    
     [self.MenuTableView reloadData];
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
@@ -52,11 +53,25 @@
           );
 }
 
+
 - (void)loadDataFromServer // Отримані дані з сервера
 {
-    _dataProvider = [[DataProvider alloc] init];
-    [_dataProvider getMenuData:nil];
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+//    get pointer to an object of DataProvider from NavigationController if it is
+    _dataProvider = ((NavigationController*)self.navigationController).dataProvider;
+    if ( _dataProvider ) {
+        // menu data has alredy loaded before
+        [self didFinishMenuTree];
+    } else {
+//        in another case create it
+//        create object of DataProvider only one time
+//        when enter to menu from root storyboard
+        _dataProvider = [[DataProvider alloc] init];
+        // load menu data
+        [_dataProvider getMenuData:nil];
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+//        remember pointer to an object of DataProvider to NavigationController for use in future
+        ((NavigationController*)self.navigationController).dataProvider = _dataProvider;
+    }
 }
 
 - (void)viewDidLoad // Завантажилось TableView
@@ -98,16 +113,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath // повертає Cell для кожного з рядків. Саме тут ми вибираємо який Cell вантажити
 {
     static NSString *CellIdentifier;
-    
-    
+    id tempCellData;
+    CellIdentifier = @"CellIdentifier";
     // Configure the cell...
-    
-        
-    //MenuCategory *tempmc=[[MenuCategory alloc]init];
-    id tempCellData;// = [[MenuCategory alloc]init];
-    if (_currentCategory.categories)
+
+    if (_currentCategory.categories) // if we need to show categories
     {
-        CellIdentifier = @"CategoryCell";
+        //CellIdentifier = @"CategoryCell";
         CategoryCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if ( !cell )
         {
@@ -116,13 +128,12 @@
             
             cell.CategoryName.text = ((MenuCategory*)tempCellData).name;
             NSLog(@"%@",cell.CategoryName.text);
-            
         }
         return cell;
     }
-    else
+    else // if we need to show items
     {
-        CellIdentifier = @"ItemCell";
+        //CellIdentifier = @"ItemCell";
         ItemCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if ( !cell )
         {
@@ -134,11 +145,12 @@
             cell.ItemPrice.text  = [NSString stringWithFormat:@"%.2f", ((MenuItem*)tempCellData).price];
             cell.ItemWeight.text = [NSString stringWithFormat:@"%ld",((MenuItem*)tempCellData).portions];
             
-            //didReachBottomMenuLevel = YES;
+            didReachBottomMenuLevel = YES;
+            
         }
         return cell;
     }
-        
+    //return cell;
     
     
     /*NSString *CellIdentifier = @"CustomCell";
