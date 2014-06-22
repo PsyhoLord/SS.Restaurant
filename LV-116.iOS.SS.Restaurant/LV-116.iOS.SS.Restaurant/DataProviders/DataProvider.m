@@ -8,6 +8,8 @@
 
 #import "DataProvider.h"
 #import "MenuModel.h"
+#import "MapModel.h"
+#import "TableModel.h"
 
 NSString *const notificationNameMenuTreeIsFinished      = @"notificationMenuTreeIsFinished";
 NSString *const notificationItemImageDownloadIsFinished = @"notificationItemImageDownloadIsFinished";
@@ -17,7 +19,8 @@ NSString *const menuCellIndexKey                        = @"cellIndex";
 @implementation DataProvider
 {
     MenuModel           *_menuModel;
-    MenuCategoryModel        *_currentCategory;
+    MapModel            *_mapModel;
+    MenuCategoryModel   *_currentCategory;
     RemoteDataProvider  *_remoteDataProvider;
 }
 
@@ -27,20 +30,6 @@ NSString *const menuCellIndexKey                        = @"cellIndex";
         _remoteDataProvider = [[RemoteDataProvider alloc] init];
     }
     return self;
-}
-
-// create menu tree asynchronously
-// it asks _remoteDataProvider to get all data
--(void) createMenuModel
-{
-    [_remoteDataProvider getEntireMenuDataWithResponseBlock:^(MenuModel *menuModel, NSError *error) {
-        
-        _menuModel = menuModel;
-        _currentCategory = [_menuModel getMenuData:nil];
-        // post notification that menu data is
-        [[NSNotificationCenter defaultCenter] postNotificationName:notificationNameMenuTreeIsFinished object:self];
-        
-    }];
 }
 
 // get MenuCategory object which contains categories or items of current category we want to get in
@@ -64,6 +53,20 @@ NSString *const menuCellIndexKey                        = @"cellIndex";
         [self createMenuModel];
     }
     return _currentCategory;
+}
+
+// create menu tree asynchronously
+// it asks _remoteDataProvider to get all data
+-(void) createMenuModel
+{
+    [_remoteDataProvider getEntireMenuDataWithResponseBlock:^(MenuModel *menuModel, NSError *error) {
+        
+        _menuModel = menuModel;
+        _currentCategory = [_menuModel getMenuData:nil];
+        // post notification that menu data is
+        [[NSNotificationCenter defaultCenter] postNotificationName:notificationNameMenuTreeIsFinished object:self];
+        
+    }];
 }
 
 // get MenuCategory object which contains categories or items of current category we want to get in
@@ -109,6 +112,42 @@ NSString *const menuCellIndexKey                        = @"cellIndex";
         // post notification that image has downloaded
         [[NSNotificationCenter defaultCenter] postNotificationName:notificationItemImageDownloadIsFinished object:self userInfo:userInfo];
     }];
+}
+
+-(MapModel*)getMapData
+{
+    if ( _mapModel == nil ) {
+        [self createMapModel];
+    }
+    return _mapModel;
+}
+
+// create menu tree asynchronously
+// it asks _remoteDataProvider to get all data
+-(void) createMapModel
+{
+    // hardcode :
+    _mapModel = [[MapModel alloc] init];
+    TableModel *tableModel;
+    tableModel = [[TableModel alloc] initWithId:16 Capacity:2 height:62 isActive:NO isFree:YES isRound:YES name:@"1" rotation:0 width:58 coordX:637 coordY:118];
+    [_mapModel addTableModel:tableModel];
+    tableModel = [[TableModel alloc] initWithId:46 Capacity:2 height:47 isActive:YES isFree:NO isRound:NO name:@"10" rotation:0 width:50 coordX:104 coordY:207];
+    [_mapModel addTableModel:tableModel];
+    tableModel = [[TableModel alloc] initWithId:45 Capacity:2 height:52 isActive:YES isFree:NO isRound:YES name:@"11" rotation:0 width:57 coordX:249 coordY:299];
+    [_mapModel addTableModel:tableModel];
+    tableModel = [[TableModel alloc] initWithId:51 Capacity:2 height:50 isActive:YES isFree:NO isRound:NO name:@"12" rotation:0 width:40 coordX:749 coordY:226];
+    [_mapModel addTableModel:tableModel];
+    tableModel = [[TableModel alloc] initWithId:15 Capacity:4 height:59 isActive:YES isFree:NO isRound:YES name:@"13" rotation:0 width:57 coordX:14 coordY:49];
+    [_mapModel addTableModel:tableModel];
+    
+//    [_remoteDataProvider getEntireMenuDataWithResponseBlock:^(MenuModel *menuModel, NSError *error) {
+//        
+//        _menuModel = menuModel;
+//        _currentCategory = [_menuModel getMenuData:nil];
+//        // post notification that menu data is
+//        [[NSNotificationCenter defaultCenter] postNotificationName:notificationNameMenuTreeIsFinished object:self];
+//        
+//    }];
 }
 
 @end

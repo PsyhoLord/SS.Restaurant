@@ -11,15 +11,22 @@
 
 @implementation MapModel
 {
-    NSMutableArray *_tableArray;
+    NSMutableArray *_tableModelArray;
 }
 
--(void)addTables:(TableModel*)table
+// get object of MapModel which contains array of TableModels
+- (MapModel*)getMapData
 {
-    if( _tableArray ){
-        [_tableArray addObject:table];
+    return self;
+}
+
+// add TableModel to an array of TableModels
+- (void)addTableModel:(TableModel*)tableModel
+{
+    if( _tableModelArray ){
+        [_tableModelArray addObject:tableModel];
     } else{
-        _tableArray = [[NSMutableArray alloc] init];
+        _tableModelArray = [[NSMutableArray alloc] init];
     }
 }
 

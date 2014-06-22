@@ -64,8 +64,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // create object of class TableModel for use it to build TableModels map
-    TableModel *tableModel = [[TableModel alloc] initWithCapacity:2 height:62 width:58 coordX:67 coordY:120 isFree:true isActive:true isRound:true];
     
     //
     _scrollView.minimumZoomScale = 0.5;
@@ -74,7 +72,7 @@
     _scrollView.delegate = self;
     
     // [self setShapeButton:TableModel] returns object of UIButton for add it to scrollView
-    [_scrollView addSubview:[self setShapeButton:tableModel]];
+//    [_scrollView addSubview:[self setShapeButton:tableModel]];
     [self.view addSubview: _scrollView];
     
 //    [self.view addSubview: [self setShapeButton:TableModel]];

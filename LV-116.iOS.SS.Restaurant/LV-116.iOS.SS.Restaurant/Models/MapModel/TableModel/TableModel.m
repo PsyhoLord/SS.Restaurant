@@ -10,24 +10,30 @@
 
 @implementation TableModel
 
--(instancetype)initWithCapacity:(int)capacity
-                         height:(int)height
-                          width:(int)width
-                         coordX:(int)X
-                         coordY:(int)Y
-                         isFree:(BOOL)isFree
-                       isActive:(BOOL)isActive
-                        isRound:(BOOL)isRound
+-(instancetype)initWithId:(int)Id
+                 Capacity:(int)capacity
+                   height:(int)height
+                 isActive:(BOOL)isActive
+                   isFree:(BOOL)isFree
+                  isRound:(BOOL)isRound
+                     name:(NSString*)name
+                 rotation:(int)rotation
+                    width:(int)width
+                   coordX:(int)X
+                   coordY:(int)Y
 {
-    if(self = [super init]){
+    if ( self = [super init] ){
+        self.Id       = Id;
         self.capacity = capacity;
         self.height   = height;
+        self.isActive = isActive;
+        self.isFree   = isFree;
+        self.isRound  = isRound;
+        self.name     = name;
+        self.rotation = rotation;
         self.width    = width;
         self.X        = X;
         self.Y        = Y;
-        self.isFree   = isFree;
-        self.isActive = isActive;
-        self.isRound  = isRound;
     }
     return self;
 }

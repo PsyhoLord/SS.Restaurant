@@ -16,6 +16,8 @@ extern NSString *const notificationItemImageDownloadIsFinished;
 extern NSString *const menuItemKey;
 extern NSString *const menuCellIndexKey;
 
+
+@class MapModel;
 // DataProvider class makes decision where it has to get data
 
 @interface DataProvider : NSObject
@@ -32,5 +34,7 @@ extern NSString *const menuCellIndexKey;
 // (MenuCategory*)category - pointer to an category we want to get in
 // FromNetWithResponseBlock:(void (^)(MenuCategory*, NSError*))callback - block will called asynchronous when it is menu data of current category
 -(MenuCategoryModel*) getMenuData:(MenuCategoryModel*)category FromNetWithResponseBlock:(void (^)(MenuCategoryModel*, NSError*))callback;
+
+-(MapModel*)getMapData;
 
 @end

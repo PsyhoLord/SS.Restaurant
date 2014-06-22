@@ -8,7 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+@class TableModel;
+
 // MapModel class will contains an array of tables
 @interface MapModel : NSObject
+
+// get object of MapModel which contains array of TableModels
+- (MapModel*)getMapData;
+
+// add TableModel to an array of TableModels
+- (void)addTableModel:(TableModel*)tableModel;
 
 @end
