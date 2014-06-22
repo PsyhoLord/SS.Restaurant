@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "RemoteDataProvider.h"
 #import "MenuCategory.h"
-#import "PMenuDataNotification.h"
 
 extern NSString *const notificationNameMenuTreeIsFinished;
 extern NSString *const notificationItemImageDownloadIsFinished;
@@ -19,8 +18,6 @@ extern NSString *const menuCellIndexKey;
 // DataProvider class makes decision where it has to get data
 
 @interface DataProvider : NSObject
-
-//-(void)setDelegate:(id<PMenuDataNotification>)newDelegate;
 
 // get MenuCategory object which contains categories or items of current category we want to get in
 // it asks _remoteDataProvider to get menu data if it hasn't data
