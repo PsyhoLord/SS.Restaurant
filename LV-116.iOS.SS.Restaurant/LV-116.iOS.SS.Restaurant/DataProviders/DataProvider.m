@@ -129,7 +129,7 @@ NSString *const menuCellIndexKey                        = @"cellIndex";
     // hardcode :
     _mapModel = [[MapModel alloc] init];
     TableModel *tableModel;
-    tableModel = [[TableModel alloc] initWithId:16 Capacity:2 height:62 isActive:NO isFree:YES isRound:YES name:@"1" rotation:0 width:58 coordX:637 coordY:118];
+    tableModel = [[TableModel alloc] initWithId:16 Capacity:2 height:62 isActive:YES isFree:YES isRound:YES name:@"1" rotation:0 width:58 coordX:637 coordY:118];
     [_mapModel addTableModel:tableModel];
     tableModel = [[TableModel alloc] initWithId:46 Capacity:2 height:47 isActive:YES isFree:NO isRound:NO name:@"10" rotation:0 width:50 coordX:104 coordY:207];
     [_mapModel addTableModel:tableModel];
