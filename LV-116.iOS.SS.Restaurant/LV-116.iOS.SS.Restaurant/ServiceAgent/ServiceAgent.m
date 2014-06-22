@@ -8,6 +8,10 @@
 
 #import "ServiceAgent.h"
 
+NSString *const connectionErrorNotification = @"connectionErrorNotification";
+NSString *const connectionErrorCode         = @"connectionErrorCode";
+NSString *const connectionErrorDescription  = @"connectionErrorDescription";
+
 @implementation ServiceAgent {
     // queue for threads
     NSOperationQueue *_operationQueue;

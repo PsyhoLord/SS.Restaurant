@@ -11,9 +11,9 @@
 #import "MenuModel.h"
 #import "MenuDataParser.h"
 
-#define URLMenu                     @"http://192.168.195.212/Restaurant/api/Menu?withItems=true&active=true&parentId=%i"
-#define URLDownloadImage            @"http://192.168.195.212/Restaurant/Menu/ImageResult/%i"
-#define connectionTimeoutInterval   40.0
+NSString *const URLMenu             = @"http://192.168.195.212/Restaurant/api/Menu?withItems=true&active=true&parentId=%i";
+NSString *const URLDownloadImage    = @"http://192.168.195.212/Restaurant/Menu/ImageResult/%i";
+const int connectionTimeoutInterval = 40.0;
 
 @implementation RemoteDataProvider
 {

@@ -9,12 +9,16 @@
 #import "DataProvider.h"
 #import "MenuModel.h"
 
+NSString *const notificationNameMenuTreeIsFinished      = @"notificationMenuTreeIsFinished";
+NSString *const notificationItemImageDownloadIsFinished = @"notificationItemImageDownloadIsFinished";
+NSString *const menuItemKey                             = @"menuItem";
+NSString *const menuCellIndexKey                        = @"cellIndex";
+
 @implementation DataProvider
 {
     MenuModel           *_menuModel;
     MenuCategory        *_currentCategory;
     RemoteDataProvider  *_remoteDataProvider;
-    //    id<PMenuDataNotification> _delegate;
 }
 
 -(instancetype) init
@@ -25,11 +29,6 @@
     return self;
 }
 
-//-(void)setDelegate:(id<PMenuDataNotification>)newDelegate
-//{
-//    _delegate = newDelegate;
-//}
-
 // create menu tree asynchronously
 // it asks _remoteDataProvider to get all data
 -(void) createMenuModel
@@ -38,7 +37,6 @@
         
         _menuModel = menuModel;
         _currentCategory = [_menuModel getMenuData:nil];
-        // [_delegate didFinishMenuTree];
         // post notification that menu data is
         [[NSNotificationCenter defaultCenter] postNotificationName:notificationNameMenuTreeIsFinished object:self];
         

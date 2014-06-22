@@ -10,6 +10,17 @@
 #import "MenuCategory.h"
 #import "MenuItem.h"
 
+NSString *const ID          = @"Id";
+NSString *const Name        = @"Name";
+NSString *const ParentId    = @"ParentId";
+NSString *const Portions    = @"Portions";
+NSString *const Price       = @"Price";
+NSString *const CategoryId  = @"CategoryId";
+NSString *const Description = @"Description";
+NSString *const Categories  = @"Categories";
+NSString *const Items       = @"Items";
+NSString *const IsActive    = @"IsActive";
+
 @implementation MenuDataParser
 
 // parse all menu tree

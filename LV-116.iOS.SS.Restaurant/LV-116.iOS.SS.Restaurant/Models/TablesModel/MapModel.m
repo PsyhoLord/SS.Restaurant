@@ -18,11 +18,9 @@
 {
     if( _tableArray ){
         [_tableArray addObject:table];
-        
     } else{
         _tableArray = [[NSMutableArray alloc] init];
     }
-
 }
 
 @end

@@ -11,9 +11,9 @@
 
 // class ServiceAgent sends request and get response from server
 
-#define connectionErrorNotification @"connectionErrorNotification"
-#define connectionErrorCode         @"connectionErrorCode"
-#define connectionErrorDescription  @"connectionErrorDescription"
+extern NSString *const connectionErrorNotification;
+extern NSString *const connectionErrorCode;
+extern NSString *const connectionErrorDescription;
 
 @interface ServiceAgent : NSObject<PServiceAgent>
 
