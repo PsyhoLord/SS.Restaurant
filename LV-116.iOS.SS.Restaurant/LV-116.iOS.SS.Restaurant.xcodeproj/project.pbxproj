@@ -82,7 +82,6 @@
 		C348B3D5193DE68B0004808D /* DataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataParser.h; sourceTree = "<group>"; };
 		EDADBCB1193F6E2F004E18EC /* DataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataProvider.h; path = DataProviders/DataProvider.h; sourceTree = "<group>"; };
 		EDADBCB2193F6E2F004E18EC /* DataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataProvider.m; path = DataProviders/DataProvider.m; sourceTree = "<group>"; };
-		EDE113ED194B6AFE008ACA9C /* PMenuDataNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMenuDataNotification.h; path = DataProviders/PMenuDataNotification.h; sourceTree = "<group>"; };
 		EDE50DF3193E10D400ACA71D /* PServiceAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PServiceAgent.h; path = ServiceAgent/PServiceAgent.h; sourceTree = "<group>"; };
 		EDE50DF5193E110500ACA71D /* ServiceAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceAgent.h; path = ServiceAgent/ServiceAgent.h; sourceTree = "<group>"; };
 		EDE50DF6193E110500ACA71D /* ServiceAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceAgent.m; path = ServiceAgent/ServiceAgent.m; sourceTree = "<group>"; };
@@ -237,7 +236,6 @@
 			isa = PBXGroup;
 			children = (
 				C348B3D0193DE5E90004808D /* Remote */,
-				EDE113ED194B6AFE008ACA9C /* PMenuDataNotification.h */,
 				EDADBCB1193F6E2F004E18EC /* DataProvider.h */,
 				EDADBCB2193F6E2F004E18EC /* DataProvider.m */,
 			);
