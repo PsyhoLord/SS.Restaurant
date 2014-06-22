@@ -8,7 +8,6 @@
 
 #import "NavigationController.h"
 #import "MenuViewController.h"
-#import "DataProvider.h"
 
 
 @interface MenuViewController ()

@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RemoteDataProvider.h"
 #import "MenuCategory.h"
 
 extern NSString *const notificationNameMenuTreeIsFinished;

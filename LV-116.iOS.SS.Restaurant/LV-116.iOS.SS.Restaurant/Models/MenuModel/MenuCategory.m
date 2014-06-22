@@ -7,6 +7,7 @@
 //
 
 #import "MenuCategory.h"
+#import "MenuItem.h"
 
 @implementation MenuCategory
 
