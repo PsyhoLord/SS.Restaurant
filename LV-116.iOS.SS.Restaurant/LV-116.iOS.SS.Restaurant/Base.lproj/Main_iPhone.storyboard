@@ -48,7 +48,6 @@
                     <navigationItem key="navigationItem" title="Map" id="nsc-Nf-pnU"/>
                     <connections>
                         <outlet property="_scrollView" destination="RBD-mx-Ddw" id="nSJ-gH-UXL"/>
-                        <outlet property="scrollView" destination="RBD-mx-Ddw" id="msD-Yu-rQt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TgJ-MK-bNn" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MenuCategory.h"
-#import "MenuItem.h"
+
 
 // class MenuModel will contain all menu tree
+@class MenuCategory;
 
 @interface MenuModel : NSObject
 

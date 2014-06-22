@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 #import "PServiceAgent.h"
 
 // class ServiceAgent sends request and get response from server

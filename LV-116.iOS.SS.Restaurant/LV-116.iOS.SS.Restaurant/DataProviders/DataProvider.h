@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RemoteDataProvider.h"
 #import "MenuCategory.h"
-#import "PMenuDataNotification.h"
+#import "MenuItem.h"
+#import "RemoteDataProvider.h"
 
 #define notificationNameMenuTreeIsFinished      @"notificationMenuTreeIsFinished"
 #define notificationItemImageDownloadIsFinished @"notificationItemImageDownloadIsFinished"

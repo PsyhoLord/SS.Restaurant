@@ -7,6 +7,8 @@
 //
 
 #import "MenuModel.h"
+#import "MenuCategory.h"
+#import "MenuItem.h"
 
 @implementation MenuModel
 {

@@ -48,17 +48,18 @@
 
 //-(void)scrollViewDidZoom:(UIScrollView *)scrollView
 //{
-//    button.frame = CGRectMake((initialButtonFrame.origin.x * scrollView.zoomScale),
-//                                   (initialButtonFrame.origin.y * scrollView.zoomScale),
-//                                   initialButtonFrame.size.width,
-//                                   initialButtonFrame.size.height);
+//    CGPoint center = button.center;
+//    CGPoint newCenter = center; //center is set at load time, and only once
+//    newCenter.y = center.y * scrollView.zoomScale; //new center is calculated on original position
+//    newCenter.x = center.x * scrollView.zoomScale;
+//    button.center = newCenter;
 //}
 
-//- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
-//{
-//    button.frame = CGRectMake(679, 120, 50, 100);
-//    return button;
-//}
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+//    return self.view.superview;
+    return [_scrollView.subviews objectAtIndex:0 ];
+}
 
 - (void)viewDidLoad
 {
@@ -67,13 +68,14 @@
     Table *table = [[Table alloc] initWithCapacity:2 height:62 width:58 coordX:67 coordY:120 isFree:true isActive:true isRound:true];
     
     //
-    _scrollView.minimumZoomScale=0.5;
-    _scrollView.maximumZoomScale=6.0;
-    _scrollView.contentSize=CGSizeMake(1280, 960);
+    _scrollView.minimumZoomScale = 0.5;
+    _scrollView.maximumZoomScale = 6.0;
+    _scrollView.contentSize = CGSizeMake(1280, 960);
     _scrollView.delegate = self;
     
     // [self setShapeButton:table] returns object of UIButton for add it to scrollView
     [_scrollView addSubview:[self setShapeButton:table]];
+    [self.view addSubview: _scrollView];
     
 //    [self.view addSubview: [self setShapeButton:table]];
 //    [self.view addSubview: [self setShapeButton:table]];
