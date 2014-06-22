@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MenuCategory.h"
+#import "MenuCategoryModel.h"
+#import "MenuItemModel.h"
+#import "RemoteDataProvider.h"
 
 extern NSString *const notificationNameMenuTreeIsFinished;
 extern NSString *const notificationItemImageDownloadIsFinished;
@@ -23,12 +25,12 @@ extern NSString *const menuCellIndexKey;
 // if it has data than it asks _menuModel to get menu data
 // when menu tree will be finished it send notification notificationNameMenuTreeIsFinished
 // (MenuCategory*)category - pointer to an category we want to get in
--(MenuCategory*) getMenuData:(MenuCategory*)category;
+-(MenuCategoryModel*) getMenuData:(MenuCategoryModel*)category;
 
 // get MenuCategory object which contains categories or items of current category we want to get in
 // it asks _remoteDataProvider to get menu data any time we want to get menu data
 // (MenuCategory*)category - pointer to an category we want to get in
 // FromNetWithResponseBlock:(void (^)(MenuCategory*, NSError*))callback - block will called asynchronous when it is menu data of current category
--(MenuCategory*) getMenuData:(MenuCategory*)category FromNetWithResponseBlock:(void (^)(MenuCategory*, NSError*))callback;
+-(MenuCategoryModel*) getMenuData:(MenuCategoryModel*)category FromNetWithResponseBlock:(void (^)(MenuCategoryModel*, NSError*))callback;
 
 @end

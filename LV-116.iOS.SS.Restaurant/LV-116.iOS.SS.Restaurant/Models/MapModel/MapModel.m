@@ -7,14 +7,14 @@
 //
 
 #import "MapModel.h"
-#import "Table.h"
+#import "TableModel.h"
 
 @implementation MapModel
 {
     NSMutableArray *_tableArray;
 }
 
--(void)addTables:(Table*)table
+-(void)addTables:(TableModel*)table
 {
     if( _tableArray ){
         [_tableArray addObject:table];

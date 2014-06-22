@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
 
-#import "Table.h"
+#import "TableModel.h"
 
-@implementation Table
+@implementation TableModel
 
 -(instancetype)initWithCapacity:(int)capacity
                          height:(int)height

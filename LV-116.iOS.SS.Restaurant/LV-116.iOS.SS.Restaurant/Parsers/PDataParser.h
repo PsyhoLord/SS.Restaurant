@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "MenuModel.h"
 
-@protocol DataParser <NSObject>
+@protocol PDataParser <NSObject>
 
 // parse all menu tree
 // (NSData*) data - data to parse

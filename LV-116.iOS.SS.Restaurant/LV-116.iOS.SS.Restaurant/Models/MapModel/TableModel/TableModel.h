@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 // Table class will contains data about any of tables
-@interface Table : NSObject
+@interface TableModel : NSObject
 
 @property int capacity;
 @property int height;

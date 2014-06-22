@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MenuCategory.h"
-#import "MenuItem.h"
+#import "MenuCategoryModel.h"
+#import "MenuItemModel.h"
 #import "DataProvider.h"
 #import "ItemCell.h"
 #import "CategoryCell.h"
 
 @interface MenuViewController : UITableViewController //<PMenuDataNotification>
 
-@property (strong, nonatomic) MenuCategory *currentCategory;
+@property (strong, nonatomic) MenuCategoryModel *currentCategory;
 
 @end

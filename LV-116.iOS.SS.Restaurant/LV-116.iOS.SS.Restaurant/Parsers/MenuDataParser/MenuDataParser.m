@@ -7,8 +7,8 @@
 //
 
 #import "MenuDataParser.h"
-#import "MenuCategory.h"
-#import "MenuItem.h"
+#import "MenuCategoryModel.h"
+#import "MenuItemModel.h"
 
 NSString *const ID          = @"Id";
 NSString *const Name        = @"Name";
@@ -39,20 +39,20 @@ NSString *const IsActive    = @"IsActive";
 
 
 // recursive method for building menu tree
-+(void)parseDictionary:(NSMutableDictionary*)category toMenuModel:(MenuModel*)menuModel withTopMenuCategory:(MenuCategory*)topMenuCategory
++(void)parseDictionary:(NSMutableDictionary*)category toMenuModel:(MenuModel*)menuModel withTopMenuCategory:(MenuCategoryModel*)topMenuCategory
 {
     if ( [category count] == 0 )
         return;
     
     for ( NSMutableDictionary *tmpCategory in category ) {
-        MenuCategory *tmpTopMenuCategory = topMenuCategory;
+        MenuCategoryModel *tmpTopMenuCategory = topMenuCategory;
         
         int parentId = 0;
         if ( [tmpCategory objectForKey:ParentId] != [NSNull null] ) {
             parentId = [[tmpCategory valueForKey:ParentId] intValue];
         }
         
-        MenuCategory *menuCategory = [[MenuCategory alloc] initWithId:[[tmpCategory valueForKey:ID] intValue]
+        MenuCategoryModel *menuCategory = [[MenuCategoryModel alloc] initWithId:[[tmpCategory valueForKey:ID] intValue]
                                                                  name:[tmpCategory valueForKey:Name]
                                                              parentId:parentId
                                       ];
@@ -69,7 +69,7 @@ NSString *const IsActive    = @"IsActive";
                         description = [tmpItem valueForKey:Description];
                     }
                     
-                    MenuItem *menuItem = [[MenuItem alloc] initWithId:[[tmpItem valueForKey:ID] integerValue]
+                    MenuItemModel *menuItem = [[MenuItemModel alloc] initWithId:[[tmpItem valueForKey:ID] integerValue]
                                                            categoryId:[[tmpItem valueForKey:CategoryId] integerValue]
                                                           description:description
                                                                  name:[tmpItem valueForKey:Name]
@@ -99,7 +99,7 @@ NSString *const IsActive    = @"IsActive";
         if ( [category objectForKey:ParentId] != [NSNull null] ) {
             parentId = [[category valueForKey:ParentId] intValue];
         }
-        MenuCategory *menuCategory = [[MenuCategory alloc] initWithId:[[category valueForKey:ID] intValue]
+        MenuCategoryModel *menuCategory = [[MenuCategoryModel alloc] initWithId:[[category valueForKey:ID] intValue]
                                                                  name:[category  valueForKey:Name]
                                                              parentId:parentId];
         [menu addObject:menuCategory];
@@ -112,7 +112,7 @@ NSString *const IsActive    = @"IsActive";
                     description = [item valueForKey:Description];
                 }
                 
-                MenuItem *menuItem =[ [MenuItem alloc] initWithId:[[item valueForKey:ID] intValue]
+                MenuItemModel *menuItem =[ [MenuItemModel alloc] initWithId:[[item valueForKey:ID] intValue]
                                                        categoryId:[[item valueForKey:CategoryId] intValue]
                                                       description:description
                                                              name:[item valueForKey:Name]

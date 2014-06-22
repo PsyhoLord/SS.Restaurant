@@ -7,7 +7,7 @@
 //
 
 #import "MapViewController.h"
-#import "Table.h"
+#import "TableModel.h"
 
 @implementation MapViewController
 {
@@ -17,26 +17,26 @@
 //    __weak IBOutlet UIImageView *_imageView;
 }
 
-// create button with characteristic of the current table
-// (Table*)table - model of one table
+// create button with characteristic of the current TableModel
+// (TableModel*)TableModel - model of one TableModel
 // return button
--(UIButton*)setShapeButton:(Table*)table
+-(UIButton*)setShapeButton:(TableModel*)TableModel
 {
-    if(table.isActive){
+    if(TableModel.isActive){
         button = [UIButton buttonWithType: UIButtonTypeCustom];
-        button.frame = CGRectMake(table.X, table.Y, table.height, table.width);
+        button.frame = CGRectMake(TableModel.X, TableModel.Y, TableModel.height, TableModel.width);
         button.layer.borderWidth = 1;
         
-        if(table.isRound){
+        if(TableModel.isRound){
             button.layer.cornerRadius = 30;
         }
-        if(table.isFree){
+        if(TableModel.isFree){
             button.backgroundColor = [UIColor lightGrayColor];
         }else{
             button.backgroundColor = [UIColor redColor];
         }
         
-        [button setTitle:[NSString stringWithFormat:@"%i",table.capacity]
+        [button setTitle:[NSString stringWithFormat:@"%i",TableModel.capacity]
                 forState:UIControlStateNormal];
         initialButtonFrame = button.frame;
         return button;
@@ -64,8 +64,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // create object of class Table for use it to build tables map
-    Table *table = [[Table alloc] initWithCapacity:2 height:62 width:58 coordX:67 coordY:120 isFree:true isActive:true isRound:true];
+    // create object of class TableModel for use it to build TableModels map
+    TableModel *tableModel = [[TableModel alloc] initWithCapacity:2 height:62 width:58 coordX:67 coordY:120 isFree:true isActive:true isRound:true];
     
     //
     _scrollView.minimumZoomScale = 0.5;
@@ -73,12 +73,12 @@
     _scrollView.contentSize = CGSizeMake(1280, 960);
     _scrollView.delegate = self;
     
-    // [self setShapeButton:table] returns object of UIButton for add it to scrollView
-    [_scrollView addSubview:[self setShapeButton:table]];
+    // [self setShapeButton:TableModel] returns object of UIButton for add it to scrollView
+    [_scrollView addSubview:[self setShapeButton:tableModel]];
     [self.view addSubview: _scrollView];
     
-//    [self.view addSubview: [self setShapeButton:table]];
-//    [self.view addSubview: [self setShapeButton:table]];
+//    [self.view addSubview: [self setShapeButton:TableModel]];
+//    [self.view addSubview: [self setShapeButton:TableModel]];
     
     
 //    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(150,120,50,50)];

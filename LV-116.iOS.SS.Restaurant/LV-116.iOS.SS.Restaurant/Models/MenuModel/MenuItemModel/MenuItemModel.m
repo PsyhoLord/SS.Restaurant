@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
 
-#import "MenuItem.h"
+#import "MenuItemModel.h"
 
-@implementation MenuItem
+@implementation MenuItemModel
 
 -(instancetype)initWithId:(int)Id categoryId:(int) categoryId description:(NSString*)description name:(NSString*)name portions:(int)portions price:(float) price
 {

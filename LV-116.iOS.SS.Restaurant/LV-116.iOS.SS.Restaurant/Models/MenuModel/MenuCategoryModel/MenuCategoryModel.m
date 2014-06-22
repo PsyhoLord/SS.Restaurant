@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
 
-#import "MenuCategory.h"
-#import "MenuItem.h"
+#import "MenuCategoryModel.h"
+#import "MenuItemModel.h"
 
-@implementation MenuCategory
+@implementation MenuCategoryModel
 
 -(instancetype) initWithId:(int)Id name:(NSString*)name parentId:(int)parentId
 {
@@ -32,7 +32,7 @@
     return ( [self.items count] != 0 );
 }
 
--(void) addCategory:(MenuCategory*)category
+-(void) addCategory:(MenuCategoryModel*)category
 {
     if ( self.categories == nil ) {
         self.categories = [[NSMutableArray alloc] init];
@@ -40,7 +40,7 @@
     [self.categories addObject:category];
 }
 
--(void) addItem:(MenuItem*)item
+-(void) addItem:(MenuItemModel*)item
 {
     if ( self.items == nil ) {
         self.items = [[NSMutableArray alloc] init];

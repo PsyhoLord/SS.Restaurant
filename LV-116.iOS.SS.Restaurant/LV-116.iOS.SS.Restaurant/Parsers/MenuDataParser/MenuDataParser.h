@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DataParser.h"
+#import "PDataParser.h"
 
-@interface MenuDataParser : NSObject<DataParser>
+@interface MenuDataParser : NSObject<PDataParser>
 
 @end

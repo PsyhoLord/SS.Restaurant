@@ -11,15 +11,15 @@
 
 // class MenuCategory is needed for contains data of category
 // it can also contain any categories or items
-@class MenuItem;
-@interface MenuCategory : NSObject
+@class MenuItemModel;
+@interface MenuCategoryModel : NSObject
 
 -(instancetype) initWithId:(int)Id name:(NSString*)name parentId:(int)parentId;
 -(BOOL) isCategories;
 -(BOOL) isItems;
 
--(void) addCategory:(MenuCategory*)category;
--(void) addItem:(MenuItem*)item;
+-(void) addCategory:(MenuCategoryModel*)category;
+-(void) addItem:(MenuItemModel*)item;
 
 @property int Id;
 @property (strong, nonatomic) NSMutableArray *categories;

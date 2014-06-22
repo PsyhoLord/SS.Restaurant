@@ -10,7 +10,7 @@
 
 // class MenuItem is needed for contains data of item
 
-@interface MenuItem : NSObject
+@interface MenuItemModel : NSObject
 
 -(instancetype)initWithId:(int)Id categoryId:(int) categoryId description:(NSString*)description name:(NSString*)name portions:(int)portions price:(float) price;
 

@@ -125,7 +125,7 @@
             cell = [[CategoryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             tempCellData=[self.currentCategory.categories objectAtIndex:indexPath.row];
             
-            cell.CategoryName.text = ((MenuCategory*)tempCellData).name;
+            cell.CategoryName.text = ((MenuCategoryModel*)tempCellData).name;
             NSLog(@"%@",cell.CategoryName.text);
         }
         return cell;
@@ -139,10 +139,10 @@
             cell = [[ItemCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             tempCellData=[self.currentCategory.items objectAtIndex:indexPath.row];
             //cell.textLabel.text=tempmc.name;
-            cell.ItemName.text = ((MenuItem*)tempCellData).name;
-            cell.ItemDescription.text=((MenuItem*)tempCellData).description;
-            cell.ItemPrice.text  = [NSString stringWithFormat:@"%.2f", ((MenuItem*)tempCellData).price];
-            cell.ItemWeight.text = [NSString stringWithFormat:@"%ld",((MenuItem*)tempCellData).portions];
+            cell.ItemName.text = ((MenuItemModel*)tempCellData).name;
+            cell.ItemDescription.text=((MenuItemModel*)tempCellData).description;
+            cell.ItemPrice.text  = [NSString stringWithFormat:@"%.2f", ((MenuItemModel*)tempCellData).price];
+            cell.ItemWeight.text = [NSString stringWithFormat:@"%ld",((MenuItemModel*)tempCellData).portions];
             
             didReachBottomMenuLevel = YES;
             
@@ -197,7 +197,7 @@
     if (!didReachBottomMenuLevel)
     {
         MenuViewController *vc = [[MenuViewController alloc] init];
-        MenuCategory *selected = [self.currentCategory.categories objectAtIndex:indexPath.row];
+        MenuCategoryModel *selected = [self.currentCategory.categories objectAtIndex:indexPath.row];
        // MenuCategory *selected = [_dataProvider getMenuData:[self.currentCategory.categories objectAtIndex:indexPath.row]];
     
         [vc setTitle: selected.name];

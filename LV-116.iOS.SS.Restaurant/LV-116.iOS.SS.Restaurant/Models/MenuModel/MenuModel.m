@@ -7,13 +7,13 @@
 //
 
 #import "MenuModel.h"
-#import "MenuCategory.h"
-#import "MenuItem.h"
+#import "MenuCategoryModel.h"
+#import "MenuItemModel.h"
 
 @implementation MenuModel
 {
     // root of menu tree
-    MenuCategory *_entireMenuCategory;
+    MenuCategoryModel *_entireMenuCategory;
 }
 
 -(instancetype)init
@@ -30,7 +30,7 @@
 }
 
 // get MenuCategory object which contains categories or items of current category we want to get in
--(MenuCategory*)getMenuData:(MenuCategory*)category
+-(MenuCategoryModel*)getMenuData:(MenuCategoryModel*)category
 {
     if ( [self isEmpty] ) {
         return nil;
@@ -43,12 +43,12 @@
 
 // add category or item to menu tree
 // needs for DataParser
--(void)addNode:(id)node toCategory:(MenuCategory*)nodeFather
+-(void)addNode:(id)node toCategory:(MenuCategoryModel*)nodeFather
 {
     if ( nodeFather ) {
-        if ( [node isKindOfClass:([MenuCategory class])] ) {
+        if ( [node isKindOfClass:([MenuCategoryModel class])] ) {
             [nodeFather addCategory:node];
-        } else if ( [node isKindOfClass:([MenuItem class])] ) {
+        } else if ( [node isKindOfClass:([MenuItemModel class])] ) {
             [nodeFather addItem:node];
         }
     } else {

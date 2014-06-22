@@ -10,17 +10,17 @@
 
 
 // class MenuModel will contain all menu tree
-@class MenuCategory;
+@class MenuCategoryModel;
 
 @interface MenuModel : NSObject
 
 -(BOOL)isEmpty;
 
 // get MenuCategory object which contains categories or items of current category we want to get in
--(MenuCategory*)getMenuData:(MenuCategory*)category;
+-(MenuCategoryModel*)getMenuData:(MenuCategoryModel*)category;
 
 // add category or item to menu tree
 // needs for DataParser
--(void)addNode:(id)node toCategory:(MenuCategory*)nodeFather;
+-(void)addNode:(id)node toCategory:(MenuCategoryModel*)nodeFather;
 
 @end
