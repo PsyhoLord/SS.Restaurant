@@ -64,14 +64,14 @@ NSString *const URLMap              = @"http://192.168.195.212/Restaurant/api/ta
                                             timeoutInterval:connectionTimeoutInterval];
     
     [_serviceAgent send:URLRequest
-          responseBlock:^(NSData *data, NSError *error) {
+          responseBlock:[^(NSData *data, NSError *error) {
               
               // call parser
               MenuModel *entireMenuModel = [MenuDataParser parseEntireMenu:data];
               // call block from hight layer - DataProvider
               callback(entireMenuModel, error);
               
-          }];
+          } copy] ];
 }
 
 // get menu data from server
@@ -89,14 +89,14 @@ NSString *const URLMap              = @"http://192.168.195.212/Restaurant/api/ta
     __block NSMutableArray *arrCategories;
     
     [_serviceAgent send:URLRequest
-          responseBlock:^(NSData *data, NSError *error) {
+          responseBlock:[^(NSData *data, NSError *error) {
               
               // call parser
               arrCategories = [MenuDataParser parseCurrentCategory:data];
               // call block from hight layer - DataProvider
               callback(arrCategories, error);
               
-          }];
+          } copy] ];
 }
 
 
@@ -111,11 +111,11 @@ NSString *const URLMap              = @"http://192.168.195.212/Restaurant/api/ta
                                                 cachePolicy:NSURLRequestUseProtocolCachePolicy
                                             timeoutInterval:connectionTimeoutInterval];
     
-    [_serviceAgent send:URLRequest responseBlock:^(NSData *data, NSError *error) {
+    [_serviceAgent send:URLRequest responseBlock:[^(NSData *data, NSError *error) {
         UIImage *image = [[UIImage alloc] initWithData:data];
         // call block from hight layer - DataProvider
         callback(image, error);
-    }];
+    } copy] ];
 }
 
 @end

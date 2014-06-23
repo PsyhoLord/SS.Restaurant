@@ -76,8 +76,10 @@
     [self.view addSubview:scrollView];
 }
 
-
-
+- (void)dealloc
+{
+    //removeObserver ...
+}
 
 - (void)didReceiveMemoryWarning
 {
