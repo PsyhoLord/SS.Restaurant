@@ -11,16 +11,16 @@
 #import "MenuCategoryModel.h"
 #import "MenuItemModel.h"
 
-NSString *const ID          = @"Id";
-NSString *const Name        = @"Name";
-NSString *const ParentId    = @"ParentId";
-NSString *const Portions    = @"Portions";
-NSString *const Price       = @"Price";
-NSString *const CategoryId  = @"CategoryId";
-NSString *const Description = @"Description";
-NSString *const Categories  = @"Categories";
-NSString *const Items       = @"Items";
-NSString *const IsActive    = @"IsActive";
+static NSString *const ID          = @"Id";
+static NSString *const Name        = @"Name";
+static NSString *const ParentId    = @"ParentId";
+static NSString *const Portions    = @"Portions";
+static NSString *const Price       = @"Price";
+static NSString *const CategoryId  = @"CategoryId";
+static NSString *const Description = @"Description";
+static NSString *const Categories  = @"Categories";
+static NSString *const Items       = @"Items";
+static NSString *const IsActive    = @"IsActive";
 
 @implementation MenuDataParser
 

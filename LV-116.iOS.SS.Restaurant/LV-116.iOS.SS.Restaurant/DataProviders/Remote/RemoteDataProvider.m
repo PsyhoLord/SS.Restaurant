@@ -9,11 +9,14 @@
 #import "RemoteDataProvider.h"
 #import "PServiceAgent.h"
 #import "MenuModel.h"
+#import "MapModel.h"
 #import "MenuDataParser.h"
+#import "MapDataParser.h"
 
 NSString *const URLMenu             = @"http://192.168.195.212/Restaurant/api/Menu?withItems=true&active=true&parentId=%i";
 NSString *const URLDownloadImage    = @"http://192.168.195.212/Restaurant/Menu/ImageResult/%i";
 const int connectionTimeoutInterval = 7.0;
+NSString *const URLMap              = @"http://192.168.195.212/Restaurant/api/tables";
 
 @implementation RemoteDataProvider
 {
@@ -26,6 +29,23 @@ const int connectionTimeoutInterval = 7.0;
         _serviceAgent = [[ServiceAgent alloc] init];
     }
     return self;
+}
+
+-(void) getEntireMapDataWithResponseBlock:(void (^)(MapModel *, NSError *))callback
+{
+    //NSString *strRequest =[[NSString alloc] initWithFormat:URLMenu];
+    
+    //NSURLRequest *URLRequest =[[NSURLRequest requestWithURL:URLMap] ]
+    NSURLRequest *URLRequest = [NSURLRequest requestWithURL:[[NSURL alloc] initWithString:URLMap]
+                                                cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                            timeoutInterval:connectionTimeoutInterval];
+    [_serviceAgent send:URLRequest responseBlock:^(NSData *data, NSError *error)
+        {
+            //MapDataParser *parserForMap=[MapDataParser new];
+            MapModel *entireMapModel=[MapDataParser parseEntireMap:data];
+            callback (entireMapModel,error);
+        }
+     ];
 }
 
 

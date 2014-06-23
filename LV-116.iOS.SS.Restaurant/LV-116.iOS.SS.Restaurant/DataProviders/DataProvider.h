@@ -38,4 +38,7 @@ extern NSString *const menuCellIndexKey;
 // get object of MapModel which contains array of TableModels
 -(MapModel*)getMapData;
 
+//(creates a table map from remoteDataProvider);
+-(void) createMapModel;
+
 @end

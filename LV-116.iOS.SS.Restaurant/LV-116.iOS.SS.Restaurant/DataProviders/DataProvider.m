@@ -17,6 +17,7 @@ NSString *const notificationNameMenuTreeIsFinished      = @"notificationMenuTree
 NSString *const notificationItemImageDownloadIsFinished = @"notificationItemImageDownloadIsFinished";
 NSString *const menuItemKey                             = @"menuItem";
 NSString *const menuCellIndexKey                        = @"cellIndex";
+NSString *const notificationNameMapIsFinished           = @"notificationNameMapIsFinished";
 
 @implementation DataProvider
 {
@@ -55,6 +56,30 @@ NSString *const menuCellIndexKey                        = @"cellIndex";
         [self createMenuModel];
     }
     return _currentCategory;
+}
+
+
+// get object of MapModel which contains array of TableModels
+-(MapModel*) getMapData
+{
+    if (!_mapModel)
+        [self createMapModel];
+    return _mapModel;
+}
+
+
+
+
+//(creates a table map from remoteDataProvider);
+-(void) createMapModel
+{
+    [_remoteDataProvider getEntireMapDataWithResponseBlock:^(MapModel *mapModel, NSError *error)
+        {
+            _mapModel=mapModel;
+            [[NSNotificationCenter defaultCenter] postNotificationName:notificationNameMapIsFinished object:self];
+            
+        }
+    ];
 }
 
 // create menu tree asynchronously
@@ -116,19 +141,15 @@ NSString *const menuCellIndexKey                        = @"cellIndex";
     }];
 }
 
-// get object of MapModel which contains array of TableModels
-- (MapModel*)getMapData
-{
-    if ( _mapModel == nil ) {
-        [self createMapModel];
-    }
-    return _mapModel;
-}
+
 
 // create menu tree asynchronously
 // it asks _remoteDataProvider to get all data
-- (void)createMapModel
+/*- (void)createMapModel
 {
+  //  [_remoteDataProvider get]
+    
+    
     // hardcode :
     _mapModel = [[MapModel alloc] init];
     TableModel *tableModel;
@@ -151,6 +172,6 @@ NSString *const menuCellIndexKey                        = @"cellIndex";
 //        [[NSNotificationCenter defaultCenter] postNotificationName:notificationNameMenuTreeIsFinished object:self];
 //        
 //    }];
-}
+}*/
 
 @end

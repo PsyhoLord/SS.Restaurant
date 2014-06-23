@@ -11,6 +11,7 @@
 // class RemoteDataProvider is needed for get data from server
 // and interpret returned data
 @class MenuModel;
+@class MapModel;
 
 @interface RemoteDataProvider : NSObject
 
@@ -28,5 +29,7 @@
 // (int)itemId - Id of item in menu
 // (void (^)(UIImage*, NSError*))callback - block which will be called when image is
 -(void)downloadImageForItemId:(int)itemId withBlock:(void (^)(UIImage*, NSError*))callback;
+
+-(void) getEntireMapDataWithResponseBlock:(void (^)(MapModel*, NSError*)) callback;
 
 @end

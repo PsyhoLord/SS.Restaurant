@@ -15,6 +15,7 @@
 		2295C9321955B5EE00D6A4D7 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2295C92C1955B5EE00D6A4D7 /* MenuViewController.m */; };
 		22C2821E1955F57D00D8B115 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C2821D1955F57D00D8B115 /* NavigationController.m */; };
 		22C282221955F64E00D8B115 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C282211955F64E00D8B115 /* RootViewController.m */; };
+		2B1ABB9D1958466500BF5678 /* MapDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1ABB9C1958466500BF5678 /* MapDataParser.m */; };
 		C348B3D3193DE5E90004808D /* RemoteDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C348B3D2193DE5E90004808D /* RemoteDataProvider.m */; };
 		EDADBCB3193F6E2F004E18EC /* DataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = EDADBCB2193F6E2F004E18EC /* DataProvider.m */; };
 		EDE50DF7193E110500ACA71D /* ServiceAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE50DF6193E110500ACA71D /* ServiceAgent.m */; };
@@ -65,6 +66,8 @@
 		22C2821D1955F57D00D8B115 /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 		22C282201955F64E00D8B115 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		22C282211955F64E00D8B115 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		2B1ABB9B1958466500BF5678 /* MapDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapDataParser.h; path = MapDataParser/MapDataParser.h; sourceTree = "<group>"; };
+		2B1ABB9C1958466500BF5678 /* MapDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapDataParser.m; path = MapDataParser/MapDataParser.m; sourceTree = "<group>"; };
 		C348B3D1193DE5E90004808D /* RemoteDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteDataProvider.h; sourceTree = "<group>"; };
 		C348B3D2193DE5E90004808D /* RemoteDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteDataProvider.m; sourceTree = "<group>"; };
 		C348B3D5193DE68B0004808D /* PDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDataParser.h; sourceTree = "<group>"; };
@@ -206,6 +209,15 @@
 			path = RootViewController;
 			sourceTree = "<group>";
 		};
+		2B1ABB9A1958463000BF5678 /* MapDataParser */ = {
+			isa = PBXGroup;
+			children = (
+				2B1ABB9B1958466500BF5678 /* MapDataParser.h */,
+				2B1ABB9C1958466500BF5678 /* MapDataParser.m */,
+			);
+			name = MapDataParser;
+			sourceTree = "<group>";
+		};
 		C348B3CF193DE5AC0004808D /* DataProviders */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,7 +243,7 @@
 			children = (
 				C348B3D5193DE68B0004808D /* PDataParser.h */,
 				EDEC47381956FBB90041B98B /* MenuDataParser */,
-				EDEC47371956FBB90041B98B /* MapDataParser */,
+				2B1ABB9A1958463000BF5678 /* MapDataParser */,
 			);
 			path = Parsers;
 			sourceTree = "<group>";
@@ -303,13 +315,6 @@
 				EDEC47311956FACB0041B98B /* MenuItemModel.m */,
 			);
 			path = MenuItemModel;
-			sourceTree = "<group>";
-		};
-		EDEC47371956FBB90041B98B /* MapDataParser */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = MapDataParser;
 			sourceTree = "<group>";
 		};
 		EDEC47381956FBB90041B98B /* MenuDataParser */ = {
@@ -519,6 +524,7 @@
 				2295C9321955B5EE00D6A4D7 /* MenuViewController.m in Sources */,
 				C348B3D3193DE5E90004808D /* RemoteDataProvider.m in Sources */,
 				EDEC473B1956FBB90041B98B /* MenuDataParser.m in Sources */,
+				2B1ABB9D1958466500BF5678 /* MapDataParser.m in Sources */,
 				FA336C2D19335B950007CC76 /* AppDelegate.m in Sources */,
 				EDEC47291956F9950041B98B /* MapModel.m in Sources */,
 				22C2821E1955F57D00D8B115 /* NavigationController.m in Sources */,
