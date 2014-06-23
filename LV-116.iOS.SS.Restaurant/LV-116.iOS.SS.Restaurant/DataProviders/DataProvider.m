@@ -26,7 +26,7 @@ NSString *const menuCellIndexKey                        = @"cellIndex";
     RemoteDataProvider  *_remoteDataProvider;
 }
 
--(instancetype) init
+- (instancetype)init
 {
     if ( self = [super init] ) {
         _remoteDataProvider = [[RemoteDataProvider alloc] init];
@@ -38,7 +38,7 @@ NSString *const menuCellIndexKey                        = @"cellIndex";
 // it asks _remoteDataProvider to get menu data if it hasn't data
 // if it has data than it asks _menuModel to get menu data
 // (MenuCategory*)category - pointer to an category we want to get in
--(MenuCategoryModel*)getMenuData:(MenuCategoryModel*)category
+- (MenuCategoryModel*)getMenuData:(MenuCategoryModel*)category
 {
     if ( _menuModel ) {
         if ( category ) {
@@ -59,7 +59,7 @@ NSString *const menuCellIndexKey                        = @"cellIndex";
 
 // create menu tree asynchronously
 // it asks _remoteDataProvider to get all data
--(void) createMenuModel
+- (void)createMenuModel
 {
     [_remoteDataProvider getEntireMenuDataWithResponseBlock:^(MenuModel *menuModel, NSError *error) {
         
@@ -75,7 +75,7 @@ NSString *const menuCellIndexKey                        = @"cellIndex";
 // it asks _remoteDataProvider to get menu data any time we want to get menu data
 // (MenuCategory*)category - pointer to an category we want to get in
 // FromNetWithResponseBlock:(void (^)(MenuCategory*, NSError*))callback - block that will called when it is menu data of current category
--(MenuCategoryModel*) getMenuData:(MenuCategoryModel*)category FromNetWithResponseBlock:(void (^)(MenuCategoryModel*, NSError*))callback
+- (MenuCategoryModel*)getMenuData:(MenuCategoryModel*)category FromNetWithResponseBlock:(void (^)(MenuCategoryModel*, NSError*))callback
 {
     if ( category ) {
         _currentCategory = category;
@@ -102,7 +102,7 @@ NSString *const menuCellIndexKey                        = @"cellIndex";
 // (MenuItem*)item - ptr to item which need to update image
 // (int)cellIndex  - index of cell in tableView
 // this method posts notificationItemImageDownloadIsFinished when image has downloaded
--(void)downloadImageForItem:(MenuItemModel*)item cellIndex:(int)cellIndex
+- (void)downloadImageForItem:(MenuItemModel*)item cellIndex:(int)cellIndex
 {
     [_remoteDataProvider downloadImageForItemId:item.Id withBlock:^(UIImage *itemImage, NSError *error) {
         // set image to menuItem
@@ -116,7 +116,8 @@ NSString *const menuCellIndexKey                        = @"cellIndex";
     }];
 }
 
--(MapModel*)getMapData
+// get object of MapModel which contains array of TableModels
+- (MapModel*)getMapData
 {
     if ( _mapModel == nil ) {
         [self createMapModel];
@@ -126,7 +127,7 @@ NSString *const menuCellIndexKey                        = @"cellIndex";
 
 // create menu tree asynchronously
 // it asks _remoteDataProvider to get all data
--(void) createMapModel
+- (void)createMapModel
 {
     // hardcode :
     _mapModel = [[MapModel alloc] init];

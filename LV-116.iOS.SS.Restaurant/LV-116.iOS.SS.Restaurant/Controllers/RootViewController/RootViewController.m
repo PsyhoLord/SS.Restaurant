@@ -7,15 +7,16 @@
 //
 
 #import "RootViewController.h"
+#import "NavigationController.h"
+#import "DataProvider.h"
 
 @implementation RootViewController
-{
-    
-}
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];    
+    [super viewDidLoad];
+    
+    ((NavigationController*)self.navigationController).dataProvider = [[DataProvider alloc] init];
 }
 
 - (void)didReceiveMemoryWarning

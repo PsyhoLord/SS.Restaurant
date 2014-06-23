@@ -15,7 +15,6 @@ extern NSString *const notificationItemImageDownloadIsFinished;
 extern NSString *const menuItemKey;
 extern NSString *const menuCellIndexKey;
 
-
 @class MapModel;
 @class MenuCategoryModel;
 
@@ -36,6 +35,7 @@ extern NSString *const menuCellIndexKey;
 // FromNetWithResponseBlock:(void (^)(MenuCategory*, NSError*))callback - block will called asynchronous when it is menu data of current category
 -(MenuCategoryModel*) getMenuData:(MenuCategoryModel*)category FromNetWithResponseBlock:(void (^)(MenuCategoryModel*, NSError*))callback;
 
+// get object of MapModel which contains array of TableModels
 -(MapModel*)getMapData;
 
 @end

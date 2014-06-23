@@ -10,8 +10,6 @@
 #import "TableModel.h"
 
 @implementation MapModel
-{
-}
 
 // get object of MapModel which contains array of TableModels
 - (MapModel*)getMapData

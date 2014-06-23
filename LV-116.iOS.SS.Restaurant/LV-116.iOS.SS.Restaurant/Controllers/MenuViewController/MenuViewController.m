@@ -58,25 +58,11 @@
           );
 }
 
-
-- (void)loadDataFromServer // Отримані дані з сервера
+- (void)getDataFromModel // Отримані дані з сервера
 {
 //    get pointer to an object of DataProvider from NavigationController if it is
     _dataProvider = ((NavigationController*)self.navigationController).dataProvider;
-    if ( _dataProvider ) {
-        // menu data has alredy loaded before
-        [self didFinishMenuTree];
-    } else {
-//        in another case create it
-//        create object of DataProvider only one time
-//        when enter to menu from root storyboard
-        _dataProvider = [[DataProvider alloc] init];
-        // load menu data
-        [_dataProvider getMenuData:nil];
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-//        remember pointer to an object of DataProvider to NavigationController for use in future
-        ((NavigationController*)self.navigationController).dataProvider = _dataProvider;
-    }
+    _currentCategory = [_dataProvider getMenuData:nil];
 }
 
 - (void)viewDidLoad // Завантажилось TableView
@@ -88,8 +74,13 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didErrorAppear:) name:connectionErrorNotification object:nil];
     
     if(!self.currentCategory)
-        [self loadDataFromServer];
+        [self getDataFromModel];
     
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning // Попередження про память
