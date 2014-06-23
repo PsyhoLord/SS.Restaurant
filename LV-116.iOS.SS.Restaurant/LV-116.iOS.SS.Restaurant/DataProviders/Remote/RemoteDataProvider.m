@@ -44,14 +44,14 @@ const int connectionTimeoutInterval = 7.0;
                                             timeoutInterval:connectionTimeoutInterval];
     
     [_serviceAgent send:URLRequest
-          responseBlock:^(NSData *data, NSError *error) {
+          responseBlock:[^(NSData *data, NSError *error) {
               
               // call parser
               MenuModel *entireMenuModel = [MenuDataParser parseEntireMenu:data];
               // call block from hight layer - DataProvider
               callback(entireMenuModel, error);
               
-          }];
+          } copy] ];
 }
 
 // get menu data from server
@@ -69,14 +69,14 @@ const int connectionTimeoutInterval = 7.0;
     __block NSMutableArray *arrCategories;
     
     [_serviceAgent send:URLRequest
-          responseBlock:^(NSData *data, NSError *error) {
+          responseBlock:[^(NSData *data, NSError *error) {
               
               // call parser
               arrCategories = [MenuDataParser parseCurrentCategory:data];
               // call block from hight layer - DataProvider
               callback(arrCategories, error);
               
-          }];
+          } copy] ];
 }
 
 
@@ -91,11 +91,11 @@ const int connectionTimeoutInterval = 7.0;
                                                 cachePolicy:NSURLRequestUseProtocolCachePolicy
                                             timeoutInterval:connectionTimeoutInterval];
     
-    [_serviceAgent send:URLRequest responseBlock:^(NSData *data, NSError *error) {
+    [_serviceAgent send:URLRequest responseBlock:[^(NSData *data, NSError *error) {
         UIImage *image = [[UIImage alloc] initWithData:data];
         // call block from hight layer - DataProvider
         callback(image, error);
-    }];
+    } copy] ];
 }
 
 @end

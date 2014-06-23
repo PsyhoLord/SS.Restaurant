@@ -61,14 +61,14 @@ NSString *const menuCellIndexKey                        = @"cellIndex";
 // it asks _remoteDataProvider to get all data
 - (void)createMenuModel
 {
-    [_remoteDataProvider getEntireMenuDataWithResponseBlock:^(MenuModel *menuModel, NSError *error) {
+    [_remoteDataProvider getEntireMenuDataWithResponseBlock:[^(MenuModel *menuModel, NSError *error) {
         
         _menuModel = menuModel;
         _currentCategory = [_menuModel getMenuData:nil];
         // post notification that menu data is
         [[NSNotificationCenter defaultCenter] postNotificationName:notificationNameMenuTreeIsFinished object:self];
         
-    }];
+    } copy] ];
 }
 
 // get MenuCategory object which contains categories or items of current category we want to get in
@@ -86,13 +86,13 @@ NSString *const menuCellIndexKey                        = @"cellIndex";
     if ( [_currentCategory isItems] ) {
         callback(_currentCategory, nil);
     } else {
-        [_remoteDataProvider getMenuData:_currentCategory.Id responseBlock:^(NSMutableArray *arrCategories, NSError *error) {
+        [_remoteDataProvider getMenuData:_currentCategory.Id responseBlock:[^(NSMutableArray *arrCategories, NSError *error) {
             
             _currentCategory.categories = arrCategories;
             // call block from high layer
             callback(_currentCategory, error);
             
-        }];
+        } copy] ];
     }
     
     return _currentCategory;

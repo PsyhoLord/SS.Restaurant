@@ -35,7 +35,7 @@ NSString *const connectionErrorDescription  = @"connectionErrorDescription";
     // send request
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:_operationQueue
-                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                           completionHandler:[^(NSURLResponse *response, NSData *data, NSError *connectionError) {
                                
                                if ( connectionError ) {
                                    NSLog(@"Connection error: code:%i description:%@", connectionError.code, connectionError.description);
@@ -51,7 +51,7 @@ NSString *const connectionErrorDescription  = @"connectionErrorDescription";
                                }
                                
                                NSLog(@"NSURLConnection's block've finished!");
-                           }];
+                           } copy] ];
     NSLog(@"Function've finished!");
 }
 
