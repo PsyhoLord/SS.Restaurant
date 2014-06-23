@@ -6,12 +6,7 @@
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "MenuCategoryModel.h"
-#import "MenuItemModel.h"
-#import "DataProvider.h"
-#import "ItemCell.h"
-#import "CategoryCell.h"
+@class MenuCategoryModel;
 
 @interface MenuViewController : UITableViewController //<PMenuDataNotification>
 

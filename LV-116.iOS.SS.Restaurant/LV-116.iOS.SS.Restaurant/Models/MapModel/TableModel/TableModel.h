@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 // Table class will contains data about any of tables
 @interface TableModel : NSObject
 

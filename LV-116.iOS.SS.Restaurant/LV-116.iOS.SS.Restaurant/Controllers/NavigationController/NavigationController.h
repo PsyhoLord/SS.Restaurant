@@ -6,8 +6,7 @@
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "DataProvider.h"
+@class DataProvider;
 
 // NavigationController class need for navigation
 // also it will contain pointer to an object of DataProvider

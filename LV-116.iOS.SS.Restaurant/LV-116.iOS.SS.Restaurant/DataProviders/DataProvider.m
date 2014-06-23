@@ -8,6 +8,8 @@
 
 #import "DataProvider.h"
 #import "MenuModel.h"
+#import "MenuCategoryModel.h"
+#import "MenuItemModel.h"
 #import "MapModel.h"
 #import "TableModel.h"
 

@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 BTS. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 @protocol PServiceAgent <NSObject>
 
 // send request to server and call block when response comes

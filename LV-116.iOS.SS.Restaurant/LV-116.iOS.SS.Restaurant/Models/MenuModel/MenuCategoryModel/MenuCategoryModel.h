@@ -6,9 +6,6 @@
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
-
 // class MenuCategory is needed for contains data of category
 // it can also contain any categories or items
 @class MenuItemModel;

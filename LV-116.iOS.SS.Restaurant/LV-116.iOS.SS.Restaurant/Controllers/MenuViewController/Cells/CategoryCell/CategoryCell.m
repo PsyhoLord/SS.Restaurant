@@ -11,7 +11,6 @@
 @implementation CategoryCell
 @synthesize  CategoryName;
 
-
 - (void)awakeFromNib
 {
     // Initialization code

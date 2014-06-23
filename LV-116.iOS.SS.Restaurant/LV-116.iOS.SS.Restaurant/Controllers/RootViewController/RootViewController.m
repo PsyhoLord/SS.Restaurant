@@ -7,7 +7,6 @@
 //
 
 #import "RootViewController.h"
-#import "DataProvider.h"
 
 @implementation RootViewController
 {

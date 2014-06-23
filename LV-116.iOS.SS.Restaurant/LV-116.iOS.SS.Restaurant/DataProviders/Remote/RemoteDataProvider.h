@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "ServiceAgent.h"
 
 // class RemoteDataProvider is needed for get data from server

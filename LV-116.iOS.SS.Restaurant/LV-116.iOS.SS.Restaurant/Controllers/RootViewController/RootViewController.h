@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 // RootViewController class is root storyboard
 @interface RootViewController : UIViewController
 

@@ -8,6 +8,12 @@
 
 #import "NavigationController.h"
 #import "MenuViewController.h"
+#import "ItemCell.h"
+#import "CategoryCell.h"
+
+#import "DataProvider.h"
+#import "MenuCategoryModel.h"
+#import "MenuItemModel.h"
 
 
 @interface MenuViewController ()

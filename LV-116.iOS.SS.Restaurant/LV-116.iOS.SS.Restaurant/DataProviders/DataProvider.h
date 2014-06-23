@@ -6,10 +6,9 @@
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "MenuCategoryModel.h"
-#import "MenuItemModel.h"
+
 #import "RemoteDataProvider.h"
+
 
 extern NSString *const notificationNameMenuTreeIsFinished;
 extern NSString *const notificationItemImageDownloadIsFinished;
@@ -18,6 +17,8 @@ extern NSString *const menuCellIndexKey;
 
 
 @class MapModel;
+@class MenuCategoryModel;
+
 // DataProvider class makes decision where it has to get data
 
 @interface DataProvider : NSObject

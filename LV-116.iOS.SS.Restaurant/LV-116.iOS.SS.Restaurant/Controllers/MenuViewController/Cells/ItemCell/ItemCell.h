@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 @interface ItemCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *ItemName;

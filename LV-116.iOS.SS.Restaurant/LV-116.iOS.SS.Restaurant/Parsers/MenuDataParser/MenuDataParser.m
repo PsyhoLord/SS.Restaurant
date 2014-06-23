@@ -7,6 +7,7 @@
 //
 
 #import "MenuDataParser.h"
+#import "MenuModel.h"
 #import "MenuCategoryModel.h"
 #import "MenuItemModel.h"
 
