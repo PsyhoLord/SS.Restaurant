@@ -38,7 +38,7 @@
 
 
 // called by NSNotificationCenter if is notificationNameMenuTreeIsFinished
--(void)didFinishMenuTree
+-(void)didFinishMenuTreeCreation
 {
     _currentCategory = [_dataProvider getMenuData:nil];
     
@@ -69,7 +69,7 @@
 {
     [super viewDidLoad];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishMenuTree) name:notificationNameMenuTreeIsFinished object:_dataProvider];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishMenuTreeCreation) name:notificationNameMenuTreeIsFinished object:_dataProvider];
     // add self as a listener of notification (connectionErrorNotification) if it
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didErrorAppear:) name:connectionErrorNotification object:nil];
     
@@ -78,6 +78,7 @@
     
 }
 
+// remove self as observer when it deallocate from memory
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];

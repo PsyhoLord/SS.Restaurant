@@ -33,7 +33,7 @@
         }
         if(TableModel.isFree){
             button.backgroundColor = [UIColor lightGrayColor];
-        } else{
+        } else {
             button.backgroundColor = [UIColor redColor];
         }
         
@@ -41,7 +41,7 @@
                 forState:UIControlStateNormal];
         
         return button;
-    } else{
+    } else {
         return nil;
     }
 }
@@ -51,10 +51,17 @@
     return [scrollView.subviews objectAtIndex:0 ];
 }
 
+- (void)didFinishModelCreation
+{
+    // some code when MapModel has loaded from remote
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     _dataProvider = ((NavigationController*)self.navigationController).dataProvider;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishModelCreation) name:notificationNameMapIsFinished object:_dataProvider];
     
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     scrollView.delegate = self;
@@ -71,14 +78,13 @@
         [zoomView addSubview:[self setShapeButton:tableModel]];
     }
     
-    
     [scrollView addSubview:zoomView];
     [self.view addSubview:scrollView];
 }
 
 - (void)dealloc
 {
-    //removeObserver ...
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning

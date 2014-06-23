@@ -12,6 +12,8 @@
 
 extern NSString *const notificationNameMenuTreeIsFinished;
 extern NSString *const notificationItemImageDownloadIsFinished;
+extern NSString *const notificationNameMapIsFinished;
+
 extern NSString *const menuItemKey;
 extern NSString *const menuCellIndexKey;
 
