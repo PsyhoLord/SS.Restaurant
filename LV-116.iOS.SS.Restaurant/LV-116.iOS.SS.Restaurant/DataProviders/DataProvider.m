@@ -129,7 +129,7 @@ NSString *const notificationNameMapIsFinished           = @"notificationNameMapI
 // this method posts notificationItemImageDownloadIsFinished when image has downloaded
 - (void)downloadImageForItem:(MenuItemModel*)item cellIndex:(int)cellIndex
 {
-    [_remoteDataProvider downloadImageForItemId:item.Id withBlock:^(UIImage *itemImage, NSError *error) {
+    [_remoteDataProvider downloadImageForItemId:item.Id withBlock:[^(UIImage *itemImage, NSError *error) {
         // set image to menuItem
         item.image = itemImage;
         NSNumber *objCellIndex = [NSNumber numberWithInt:cellIndex];
@@ -138,7 +138,7 @@ NSString *const notificationNameMapIsFinished           = @"notificationNameMapI
                                   nil];
         // post notification that image has downloaded
         [[NSNotificationCenter defaultCenter] postNotificationName:notificationItemImageDownloadIsFinished object:self userInfo:userInfo];
-    }];
+    } copy] ];
 }
 
 

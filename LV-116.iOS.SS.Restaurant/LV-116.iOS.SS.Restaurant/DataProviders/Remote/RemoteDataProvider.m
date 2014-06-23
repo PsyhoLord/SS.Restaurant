@@ -31,24 +31,6 @@ NSString *const URLMap              = @"http://192.168.195.212/Restaurant/api/ta
     return self;
 }
 
--(void) getEntireMapDataWithResponseBlock:(void (^)(MapModel *, NSError *))callback
-{
-    //NSString *strRequest =[[NSString alloc] initWithFormat:URLMenu];
-    
-    //NSURLRequest *URLRequest =[[NSURLRequest requestWithURL:URLMap] ]
-    NSURLRequest *URLRequest = [NSURLRequest requestWithURL:[[NSURL alloc] initWithString:URLMap]
-                                                cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                            timeoutInterval:connectionTimeoutInterval];
-    [_serviceAgent send:URLRequest responseBlock:^(NSData *data, NSError *error)
-        {
-            //MapDataParser *parserForMap=[MapDataParser new];
-            MapModel *entireMapModel=[MapDataParser parseEntireMap:data];
-            callback (entireMapModel,error);
-        }
-     ];
-}
-
-
 // get all menu tree data from server
 // it makes requesst with id = 0
 // (void (^)(NSMutableArray*, NSError*))callback - block which will call when data is
@@ -116,6 +98,24 @@ NSString *const URLMap              = @"http://192.168.195.212/Restaurant/api/ta
         // call block from hight layer - DataProvider
         callback(image, error);
     } copy] ];
+}
+
+
+-(void) getEntireMapDataWithResponseBlock:(void (^)(MapModel *, NSError *))callback
+{
+    //NSString *strRequest =[[NSString alloc] initWithFormat:URLMenu];
+    
+    //NSURLRequest *URLRequest =[[NSURLRequest requestWithURL:URLMap] ]
+    NSURLRequest *URLRequest = [NSURLRequest requestWithURL:[[NSURL alloc] initWithString:URLMap]
+                                                cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                            timeoutInterval:connectionTimeoutInterval];
+    [_serviceAgent send:URLRequest responseBlock:[^(NSData *data, NSError *error)
+     {
+         //MapDataParser *parserForMap=[MapDataParser new];
+         MapModel *entireMapModel=[MapDataParser parseEntireMap:data];
+         callback (entireMapModel,error);
+     } copy]
+     ];
 }
 
 @end
