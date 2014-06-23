@@ -17,8 +17,6 @@
 
 
 @interface MenuViewController ()
-@property NSMutableArray *menuFromServer;
-@property NSMutableArray *subMenu1;
 @property (strong, nonatomic) IBOutlet UITableView *MenuTableView;
 @end
 
@@ -135,7 +133,6 @@
         {
             cell = [[ItemCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             tempCellData=[self.currentCategory.items objectAtIndex:indexPath.row];
-            //cell.textLabel.text=tempmc.name;
             cell.ItemName.text = ((MenuItemModel*)tempCellData).name;
             cell.ItemDescription.text=((MenuItemModel*)tempCellData).description;
             cell.ItemPrice.text  = [NSString stringWithFormat:@"%.2f", ((MenuItemModel*)tempCellData).price];
