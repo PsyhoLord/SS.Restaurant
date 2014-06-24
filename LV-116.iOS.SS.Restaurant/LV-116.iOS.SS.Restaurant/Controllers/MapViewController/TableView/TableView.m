@@ -21,16 +21,19 @@
         
         _tableModel = tableModel;
         
-        self.frame = CGRectMake(_tableModel.X, _tableModel.Y, _tableModel.height, _tableModel.width);
+        self.frame = CGRectMake(_tableModel.X, _tableModel.Y, _tableModel.width, _tableModel.height);
         self.layer.borderWidth = 1;
         
         if ( _tableModel.isRound ) {
             self.layer.cornerRadius = 30;
         }
+        if( _tableModel.rotation ){
+            self.transform = CGAffineTransformMakeRotation(_tableModel.rotation * M_PI/180.0);
+        }
         if ( _tableModel.isFree ) {
             self.backgroundColor = [UIColor lightGrayColor];
         } else {
-            self.backgroundColor = [UIColor redColor];
+            self.backgroundColor = [UIColor orangeColor];
         }
         [self setTitle:[NSString stringWithFormat:@"%@",_tableModel.name]
               forState:UIControlStateNormal];
