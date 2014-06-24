@@ -8,6 +8,8 @@
 
 @class TableModel;
 
+// class TableView is a wrapper for table
+
 @interface TableView : UIButton
 
 - (id)initWithTableModel:(TableModel*)tableModel;

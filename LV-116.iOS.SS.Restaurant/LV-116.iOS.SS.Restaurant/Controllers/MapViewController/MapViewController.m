@@ -13,6 +13,11 @@
 #import "MapModel.h"
 #import "TableModel.h"
 
+static const CGFloat scrollViewContentSizeZoomWidth  = 3.0f;
+static const CGFloat scrollViewContentSizeZoomHeight = 3.0f;
+static const CGFloat scrollViewMinimumZoomScale      = 0.5f;
+static const CGFloat scrollViewMaximumZoomScale      = 7.0f;
+
 @implementation MapViewController
 {
     UIScrollView    *_scrollView;
@@ -36,6 +41,9 @@
     }
 }
 
+// get map data from model
+// if there is no data than dataProvider get it from server
+// and post noteification after get it
 - (void)getMapDataFromModel
 {
     _mapModel = [_dataProvider getMapData];
@@ -44,6 +52,7 @@
     }
 }
 
+// draw map view with all tables
 - (void)drawMap
 {
     for ( TableModel *tableModel in _mapModel.tableModelArray ) {
@@ -60,9 +69,9 @@
     return [scrollView.subviews objectAtIndex:0 ];
 }
 
-- (void)didFinishModelCreation
+// called by NSNotificationCenter if is notificationNameMapIsFinished
+- (void)didFinishMapModelCreation
 {
-    // some code when MapModel has loaded from remote
     _mapModel = [_dataProvider getMapData];
     [self drawMap];
 }
@@ -78,13 +87,13 @@
     _tableViews = [[NSMutableArray alloc] init];
     
     // add self as observer to a notificationNameMapIsFinished from model
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishModelCreation) name:notificationNameMapIsFinished object:_dataProvider];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishMapModelCreation) name:notificationNameMapIsFinished object:_dataProvider];
     
     _scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     _scrollView.delegate = self;
-    _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width * 3.0f, _scrollView.frame.size.height * 3.0f);
-    _scrollView.minimumZoomScale = 0.5f;
-    _scrollView.maximumZoomScale = 7.0f;
+    _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width * scrollViewContentSizeZoomWidth, _scrollView.frame.size.height * scrollViewContentSizeZoomHeight);
+    _scrollView.minimumZoomScale = scrollViewMinimumZoomScale;
+    _scrollView.maximumZoomScale = scrollViewMaximumZoomScale;
     
     _zoomView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, _scrollView.contentSize.width, _scrollView.contentSize.height)];
     _zoomView.backgroundColor = [UIColor whiteColor];
@@ -103,4 +112,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 @end
