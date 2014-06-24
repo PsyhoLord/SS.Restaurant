@@ -15,9 +15,9 @@
 #import "MenuCategoryModel.h"
 #import "MenuItemModel.h"
 
-
 @interface MenuViewController ()
 @property (strong, nonatomic) IBOutlet UITableView *MenuTableView;
+@property (strong, nonatomic) MenuCategoryModel *currentCategory;
 @end
 
 @implementation MenuViewController
@@ -33,7 +33,6 @@
     }
     return self;
 }
-
 
 // called by NSNotificationCenter if is notificationNameMenuTreeIsFinished
 -(void)didFinishMenuTreeCreation
@@ -56,7 +55,7 @@
           );
 }
 
-- (void)getDataFromModel // Отримані дані з сервера
+- (void)getMenuDataFromModel // Отримані дані з сервера
 {
 //    get pointer to an object of DataProvider from NavigationController if it is
     _dataProvider = ((NavigationController*)self.navigationController).dataProvider;
@@ -72,7 +71,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didErrorAppear:) name:connectionErrorNotification object:nil];
     
     if(!self.currentCategory)
-        [self getDataFromModel];
+        [self getMenuDataFromModel];
     
 }
 

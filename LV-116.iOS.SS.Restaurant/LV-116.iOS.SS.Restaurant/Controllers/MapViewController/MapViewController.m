@@ -6,44 +6,53 @@
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
 
-#import "MapViewController.h"
-#import "DataProvider.h"
 #import "NavigationController.h"
+#import "MapViewController.h"
+#import "TableView.h"
+#import "DataProvider.h"
 #import "MapModel.h"
 #import "TableModel.h"
 
 @implementation MapViewController
 {
-    DataProvider *_dataProvider;
+    UIScrollView    *_scrollView;
+    UIView          *_zoomView;
+    DataProvider    *_dataProvider;
+    MapModel        *_mapModel;
+    NSMutableArray  *_tableViews;
 }
 
 // create button with characteristic of the current TableModel
 // (TableModel*)TableModel - model of one TableModel
 // return button
--(UIButton*)setShapeButton:(TableModel*)TableModel
+- (TableView*)addTableView:(TableModel*)tableModel
 {
-    if(TableModel.isActive){
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        button = [UIButton buttonWithType: UIButtonTypeCustom];
-        button.frame = CGRectMake(TableModel.X, TableModel.Y, TableModel.height, TableModel.width);
-        button.layer.borderWidth = 1;
-        
-        if(TableModel.isRound){
-            button.layer.cornerRadius = 30;
-        }
-        if(TableModel.isFree){
-            button.backgroundColor = [UIColor lightGrayColor];
-        } else {
-            button.backgroundColor = [UIColor redColor];
-        }
-        
-        [button setTitle:[NSString stringWithFormat:@"%@",TableModel.name]
-                forState:UIControlStateNormal];
-        
-        return button;
+    if ( tableModel.isActive ){
+        TableView *tableView = [[TableView alloc] initWithTableModel:tableModel];
+        [_tableViews addObject:tableView];
+        return tableView;
     } else {
         return nil;
     }
+}
+
+- (void)getMapDataFromModel
+{
+    _mapModel = [_dataProvider getMapData];
+    if ( _mapModel ) {
+        [self drawMap];
+    }
+}
+
+- (void)drawMap
+{
+    for ( TableModel *tableModel in _mapModel.tableModelArray ) {
+        [self addTableView:tableModel];
+        [_zoomView addSubview:[self addTableView:tableModel]];
+    }
+    
+    [_scrollView addSubview:_zoomView];
+    [self.view addSubview:_scrollView];
 }
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
@@ -54,34 +63,36 @@
 - (void)didFinishModelCreation
 {
     // some code when MapModel has loaded from remote
+    _mapModel = [_dataProvider getMapData];
+    [self drawMap];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // get an pointer to an object of model
     _dataProvider = ((NavigationController*)self.navigationController).dataProvider;
     
+    // init _tableViews
+    _tableViews = [[NSMutableArray alloc] init];
+    
+    // add self as observer to a notificationNameMapIsFinished from model
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishModelCreation) name:notificationNameMapIsFinished object:_dataProvider];
     
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
-    scrollView.delegate = self;
-    scrollView.contentSize = CGSizeMake(scrollView.frame.size.width * 3.0f, scrollView.frame.size.height * 3.0f);
-    scrollView.minimumZoomScale = 0.1f;
-    scrollView.maximumZoomScale = 7.0f;
+    _scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    _scrollView.delegate = self;
+    _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width * 3.0f, _scrollView.frame.size.height * 3.0f);
+    _scrollView.minimumZoomScale = 0.1f;
+    _scrollView.maximumZoomScale = 7.0f;
     
-    UIView *zoomView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, scrollView.contentSize.width, scrollView.contentSize.height)];
-    zoomView.backgroundColor = [UIColor whiteColor];
+    _zoomView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, _scrollView.contentSize.width, _scrollView.contentSize.height)];
+    _zoomView.backgroundColor = [UIColor whiteColor];
     
-    MapModel *mapModel = [_dataProvider getMapData];
-    
-    for (TableModel *tableModel in mapModel.tableModelArray){
-        [zoomView addSubview:[self setShapeButton:tableModel]];
-    }
-    
-    [scrollView addSubview:zoomView];
-    [self.view addSubview:scrollView];
+    [self getMapDataFromModel];
 }
 
+// remove self as observer from NSNotificationCenter when it deallocate
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];

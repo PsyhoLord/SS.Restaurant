@@ -16,6 +16,7 @@
 {
     [super viewDidLoad];
     
+    // create object of model
     ((NavigationController*)self.navigationController).dataProvider = [[DataProvider alloc] init];
 }
 

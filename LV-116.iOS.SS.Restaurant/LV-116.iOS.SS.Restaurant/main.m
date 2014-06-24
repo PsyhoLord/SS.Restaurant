@@ -14,11 +14,6 @@
 int main(int argc, char * argv[])
 {
     @autoreleasepool {
-//        DataProvider *provider = [[DataProvider alloc] init];
-//        NSArray *menu = [provider getMenuData:nil];
-//        for ( id current in menu )  {
-//            NSLog(@"%@", current);
-//        }
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
     }
 }

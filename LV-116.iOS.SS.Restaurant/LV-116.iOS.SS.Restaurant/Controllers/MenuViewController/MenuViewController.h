@@ -6,10 +6,6 @@
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
 
-@class MenuCategoryModel;
-
-@interface MenuViewController : UITableViewController //<PMenuDataNotification>
-
-@property (strong, nonatomic) MenuCategoryModel *currentCategory;
+@interface MenuViewController : UITableViewController
 
 @end
