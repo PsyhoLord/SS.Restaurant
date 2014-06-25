@@ -6,6 +6,6 @@
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
 
-@interface MapViewController : UIViewController<UIScrollViewDelegate>
+@interface MapViewController : UIViewController
 
 @end

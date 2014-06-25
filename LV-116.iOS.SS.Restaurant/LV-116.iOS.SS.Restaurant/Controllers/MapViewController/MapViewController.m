@@ -20,7 +20,7 @@ static const CGFloat scrollViewMaximumZoomScale      = 7.0f;
 
 @implementation MapViewController
 {
-    UIScrollView    *_scrollView;
+    __weak IBOutlet UIScrollView *_scrollView;
     UIView          *_zoomView;
     DataProvider    *_dataProvider;
     MapModel        *_mapModel;
@@ -46,6 +46,8 @@ static const CGFloat scrollViewMaximumZoomScale      = 7.0f;
 // and post noteification after get it
 - (void)getMapDataFromModel
 {
+    // get an pointer to an object of model
+    _dataProvider = ((NavigationController*)self.navigationController).dataProvider;
     _mapModel = [_dataProvider getMapData];
     if ( _mapModel ) {
         [self drawMap];
@@ -61,7 +63,6 @@ static const CGFloat scrollViewMaximumZoomScale      = 7.0f;
     }
     
     [_scrollView addSubview:_zoomView];
-    [self.view addSubview:_scrollView];
 }
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
@@ -80,26 +81,17 @@ static const CGFloat scrollViewMaximumZoomScale      = 7.0f;
 {
     [super viewDidLoad];
     
-    // get an pointer to an object of model
-    _dataProvider = ((NavigationController*)self.navigationController).dataProvider;
-    
     // init _tableViews
     _tableViews = [[NSMutableArray alloc] init];
     
     // add self as observer to a notificationNameMapIsFinished from model
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishMapModelCreation) name:notificationNameMapIsFinished object:_dataProvider];
     
-    _scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
-    _scrollView.delegate = self;
-    _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width * 3.0f, _scrollView.frame.size.height * 3.0f);
-    _scrollView.minimumZoomScale = 0.5f;
-    _scrollView.maximumZoomScale = 7.0f;
-    // for rotation in storyboard
-    _scrollView.autoresizesSubviews = YES;
-    _scrollView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+    _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width * scrollViewContentSizeZoomWidth, _scrollView.frame.size.height * scrollViewContentSizeZoomHeight);
+    _scrollView.minimumZoomScale = scrollViewMinimumZoomScale;
+    _scrollView.maximumZoomScale = scrollViewMaximumZoomScale;
     
     _zoomView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, _scrollView.contentSize.width, _scrollView.contentSize.height)];
-    _zoomView.backgroundColor = [UIColor whiteColor];
     
     [self getMapDataFromModel];
 }
