@@ -85,6 +85,9 @@
     _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width * 3.0f, _scrollView.frame.size.height * 3.0f);
     _scrollView.minimumZoomScale = 0.5f;
     _scrollView.maximumZoomScale = 7.0f;
+    // for rotation in storyboard
+    _scrollView.autoresizesSubviews = YES;
+    _scrollView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
     
     _zoomView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, _scrollView.contentSize.width, _scrollView.contentSize.height)];
     _zoomView.backgroundColor = [UIColor whiteColor];

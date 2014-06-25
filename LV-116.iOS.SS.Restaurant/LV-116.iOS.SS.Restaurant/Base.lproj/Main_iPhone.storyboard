@@ -57,9 +57,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pwa-ya-1fO">
-                                <rect key="frame" x="137" y="224" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pwa-ya-1fO">
+                                <rect key="frame" x="137" y="231" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="ZzU-Oh-8df"/>
+                                </constraints>
                                 <state key="normal" title="Menu">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -67,8 +70,8 @@
                                     <segue destination="nbA-tQ-6cB" kind="push" identifier="MenuSegue" id="ccP-sk-bhS"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fwq-f1-q3h">
-                                <rect key="frame" x="137" y="278" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fwq-f1-q3h">
+                                <rect key="frame" x="137" y="269" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Map">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -79,6 +82,13 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Fwq-f1-q3h" firstAttribute="centerX" secondItem="UdU-iq-3oP" secondAttribute="centerX" id="1jc-bJ-lnY"/>
+                            <constraint firstItem="Fwq-f1-q3h" firstAttribute="trailing" secondItem="Pwa-ya-1fO" secondAttribute="trailing" id="B75-Ib-auq"/>
+                            <constraint firstItem="Fwq-f1-q3h" firstAttribute="leading" secondItem="Pwa-ya-1fO" secondAttribute="leading" id="Rbo-5D-ZhS"/>
+                            <constraint firstItem="Fwq-f1-q3h" firstAttribute="centerY" secondItem="UdU-iq-3oP" secondAttribute="centerY" id="dok-mt-Nw0"/>
+                            <constraint firstItem="Fwq-f1-q3h" firstAttribute="top" secondItem="Pwa-ya-1fO" secondAttribute="bottom" constant="8" symbolic="YES" id="pyI-2T-1xK"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Root menu" id="H27-cw-o1d"/>
                 </viewController>
