@@ -30,6 +30,12 @@
 // (void (^)(UIImage*, NSError*))callback - block which will be called when image is
 -(void)downloadImageForItemId:(int)itemId withBlock:(void (^)(UIImage*, NSError*))callback;
 
+// get map data from remote server with help of ServiceAgent
+// (void (^)(MapModel*, NSError*)) callback - block which will call when data is
 -(void) getEntireMapDataWithResponseBlock:(void (^)(MapModel*, NSError*)) callback;
+
+// download image for MapModel
+// (void (^)(UIImage*, NSError*))callback - block which will be called when image is
+-(void)downloadMapImageWithBlock:(void (^)(UIImage*, NSError*))callback;
 
 @end

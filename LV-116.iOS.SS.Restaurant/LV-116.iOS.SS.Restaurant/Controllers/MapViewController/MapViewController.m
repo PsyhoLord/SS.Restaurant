@@ -85,7 +85,7 @@ static const CGFloat scrollViewMaximumZoomScale      = 7.0f;
     _tableViews = [[NSMutableArray alloc] init];
     
     // add self as observer to a notificationNameMapIsFinished from model
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishMapModelCreation) name:notificationNameMapIsFinished object:_dataProvider];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishMapModelCreation) name:notificationMapModelIsFinished object:_dataProvider];
     
     _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width * scrollViewContentSizeZoomWidth, _scrollView.frame.size.height * scrollViewContentSizeZoomHeight);
     _scrollView.minimumZoomScale = scrollViewMinimumZoomScale;

@@ -66,7 +66,7 @@
 {
     [super viewDidLoad];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishMenuTreeCreation) name:notificationNameMenuTreeIsFinished object:_dataProvider];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishMenuTreeCreation) name:notificationMenuTreeIsFinished object:_dataProvider];
     // add self as a listener of notification (connectionErrorNotification) if it
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didErrorAppear:) name:connectionErrorNotification object:nil];
     
