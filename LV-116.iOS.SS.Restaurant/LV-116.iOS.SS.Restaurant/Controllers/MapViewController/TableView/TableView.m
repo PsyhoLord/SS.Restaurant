@@ -9,9 +9,15 @@
 #import "TableView.h"
 #import "TableModel.h"
 
+static const NSInteger borderWidth  = 1;
+static const NSInteger cornerRadius = 30;
+
+#define TableColorFree lightGrayColor
+#define TableColorBusy orangeColor
+
 @implementation TableView
 {
-    __weak TableModel *_tableModel;
+    TableModel *_tableModel;
 }
 
 - (id)initWithTableModel:(TableModel*)tableModel
@@ -22,18 +28,17 @@
         _tableModel = tableModel;
         
         self.frame = CGRectMake(_tableModel.X, _tableModel.Y, _tableModel.width, _tableModel.height);
-        self.layer.borderWidth = 1;
-        
+        self.layer.borderWidth = borderWidth;
         if ( _tableModel.isRound ) {
-            self.layer.cornerRadius = 30;
+            self.layer.cornerRadius = cornerRadius;
         }
-        if( _tableModel.rotation ){
+        if( _tableModel.rotation ) {
             self.transform = CGAffineTransformMakeRotation(_tableModel.rotation * M_PI/180.0);
         }
         if ( _tableModel.isFree ) {
-            self.backgroundColor = [UIColor lightGrayColor];
+            self.backgroundColor = [UIColor TableColorFree];
         } else {
-            self.backgroundColor = [UIColor orangeColor];
+            self.backgroundColor = [UIColor TableColorBusy];
         }
         [self setTitle:[NSString stringWithFormat:@"%@",_tableModel.name]
               forState:UIControlStateNormal];

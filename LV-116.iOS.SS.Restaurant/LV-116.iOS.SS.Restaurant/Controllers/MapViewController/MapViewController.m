@@ -13,6 +13,11 @@
 #import "MapModel.h"
 #import "TableModel.h"
 
+static const CGFloat scrollViewContentSizeZoomWidth  = 3.0f;
+static const CGFloat scrollViewContentSizeZoomHeight = 3.0f;
+static const CGFloat scrollViewMinimumZoomScale      = 0.5f;
+static const CGFloat scrollViewMaximumZoomScale      = 7.0f;
+
 @implementation MapViewController
 {
     UIScrollView    *_scrollView;
@@ -36,6 +41,9 @@
     }
 }
 
+// get map data from model
+// if there is no data than dataProvider get it from server
+// and post noteification after get it
 - (void)getMapDataFromModel
 {
     _mapModel = [_dataProvider getMapData];
@@ -44,6 +52,7 @@
     }
 }
 
+// draw map view with all tables
 - (void)drawMap
 {
     for ( TableModel *tableModel in _mapModel.tableModelArray ) {
@@ -60,9 +69,9 @@
     return [scrollView.subviews objectAtIndex:0 ];
 }
 
-- (void)didFinishModelCreation
+// called by NSNotificationCenter if is notificationNameMapIsFinished
+- (void)didFinishMapModelCreation
 {
-    // some code when MapModel has loaded from remote
     _mapModel = [_dataProvider getMapData];
     [self drawMap];
 }
@@ -78,7 +87,7 @@
     _tableViews = [[NSMutableArray alloc] init];
     
     // add self as observer to a notificationNameMapIsFinished from model
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishModelCreation) name:notificationNameMapIsFinished object:_dataProvider];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishMapModelCreation) name:notificationNameMapIsFinished object:_dataProvider];
     
     _scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     _scrollView.delegate = self;
@@ -106,4 +115,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 @end
