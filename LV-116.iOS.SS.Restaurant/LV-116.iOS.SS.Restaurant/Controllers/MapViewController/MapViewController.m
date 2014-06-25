@@ -13,9 +13,7 @@
 #import "MapModel.h"
 #import "TableModel.h"
 
-static const CGFloat scrollViewContentSizeZoomWidth  = 3.0f;
-static const CGFloat scrollViewContentSizeZoomHeight = 3.0f;
-static const CGFloat scrollViewMinimumZoomScale      = 0.5f;
+static const CGFloat scrollViewMinimumZoomScale      = 0.6f;
 static const CGFloat scrollViewMaximumZoomScale      = 7.0f;
 
 @implementation MapViewController
@@ -54,9 +52,21 @@ static const CGFloat scrollViewMaximumZoomScale      = 7.0f;
     }
 }
 
-// draw map view with all tables
+// draw map view with all tables and background map image
 - (void)drawMap
 {
+    _scrollView.contentSize = CGSizeMake(_mapModel.image.size.width, _mapModel.image.size.height);
+
+    _scrollView.minimumZoomScale = scrollViewMinimumZoomScale;
+    _scrollView.maximumZoomScale = scrollViewMaximumZoomScale;
+    
+    _zoomView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, _mapModel.image.size.width, _mapModel.image.size.height)];
+    
+    UIImageView *backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, _mapModel.image.size.width, _mapModel.image.size.height)];
+    backgroundView.image = _mapModel.image;
+    
+    [_zoomView addSubview:backgroundView];
+    
     for ( TableModel *tableModel in _mapModel.tableModelArray ) {
         [self addTableView:tableModel];
         [_zoomView addSubview:[self addTableView:tableModel]];
@@ -86,12 +96,6 @@ static const CGFloat scrollViewMaximumZoomScale      = 7.0f;
     
     // add self as observer to a notificationNameMapIsFinished from model
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishMapModelCreation) name:notificationMapModelIsFinished object:_dataProvider];
-    
-    _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width * scrollViewContentSizeZoomWidth, _scrollView.frame.size.height * scrollViewContentSizeZoomHeight);
-    _scrollView.minimumZoomScale = scrollViewMinimumZoomScale;
-    _scrollView.maximumZoomScale = scrollViewMaximumZoomScale;
-    
-    _zoomView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, _scrollView.contentSize.width, _scrollView.contentSize.height)];
     
     [self getMapDataFromModel];
 }

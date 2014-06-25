@@ -330,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LV-116.iOS.SS.Restaurant/Controllers/MapViewController/MapViewController.m"
-            timestampString = "425394067.183007"
+            timestampString = "425401223.198076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "-didFinishMapModelCreation"
             landmarkType = "5">
          </BreakpointContent>
@@ -362,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LV-116.iOS.SS.Restaurant/Controllers/MapViewController/MapViewController.m"
-            timestampString = "425394067.183007"
+            timestampString = "425401223.198076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "@implementation MapViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -378,11 +378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LV-116.iOS.SS.Restaurant/Controllers/MapViewController/MapViewController.m"
-            timestampString = "425394067.183007"
+            timestampString = "425401223.198076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "-viewForZoomingInScrollView:"
             landmarkType = "5">
          </BreakpointContent>
@@ -394,11 +394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LV-116.iOS.SS.Restaurant/Controllers/MapViewController/MapViewController.m"
-            timestampString = "425394067.183007"
+            timestampString = "425401223.198076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
