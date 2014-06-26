@@ -16,6 +16,7 @@
 {
     [super viewDidLoad];
     
+#warning I don't think you need it here. It's better to initialize component where it's needed and used. For example in controller that uses this provider
     // create object of model
     ((NavigationController*)self.navigationController).dataProvider = [[DataProvider alloc] init];
 }

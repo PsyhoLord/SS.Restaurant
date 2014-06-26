@@ -61,19 +61,22 @@ NSString *const URLMap              = @"http://192.168.195.212/Restaurant/api/ta
 // (void (^)(NSMutableArray*, NSError*))callback - block which will call when data is
 -(void)getMenuData:(int)Id responseBlock:(void (^)(NSMutableArray*, NSError*))callback
 {
-    NSString *strRequest = [[NSString alloc] initWithFormat:URLMenu, Id];
+    NSString *url = [[NSString alloc] initWithFormat: URLMenu, Id];
     
+#warning What's an intention of using "cachePolicy:NSURLRequestUseProtocolCachePolicy" ?
 //    NSURLRequest *URLRequest = [[NSURLRequest alloc] initWithURL:[[NSURL alloc] initWithString:strRequest]];
-    NSURLRequest *URLRequest = [NSURLRequest requestWithURL:[[NSURL alloc] initWithString:strRequest]
+    NSURLRequest *URLRequest = [NSURLRequest requestWithURL:[[NSURL alloc] initWithString:url]
                                                 cachePolicy:NSURLRequestUseProtocolCachePolicy
                                             timeoutInterval:connectionTimeoutInterval];
-    
+
+#warning Do you really need this variable outside of the block ?
     __block NSMutableArray *arrCategories;
     
     [_serviceAgent send:URLRequest
           responseBlock:[^(NSData *data, NSError *error) {
               
               // call parser
+#warning What if Parse throws an error ? Will a user be notified ???
               arrCategories = [MenuDataParser parseCurrentCategory:data];
               // call block from hight layer - DataProvider
               callback(arrCategories, error);
@@ -100,7 +103,7 @@ NSString *const URLMap              = @"http://192.168.195.212/Restaurant/api/ta
     } copy] ];
 }
 
-
+#warning It's better to have different RemoteFacade for different areas. I mean MenuRemoteFacade, TableRemoteFacade, etc.
 -(void) getEntireMapDataWithResponseBlock:(void (^)(MapModel *, NSError *))callback
 {
     //NSString *strRequest =[[NSString alloc] initWithFormat:URLMenu];

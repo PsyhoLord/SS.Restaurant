@@ -21,6 +21,8 @@ NSString *const notificationNameMapIsFinished           = @"notificationNameMapI
 
 @implementation DataProvider
 {
+#warning Is there any reason that DataProvider contains internal state ? I'm taking about menuModel, mapModel, CurrentCategory.
+#warning As for me the DataProvider should stateless and provide operations only. Get inout parameter and return response. That's it !
     MenuModel           *_menuModel;
     MapModel            *_mapModel;
     MenuCategoryModel   *_currentCategory;
@@ -48,10 +50,10 @@ NSString *const notificationNameMapIsFinished           = @"notificationNameMapI
             if ( _currentCategory.items && [((MenuItemModel*)[_currentCategory.items objectAtIndex:0]) isImage] ) {
                 for ( int i = 0; i <  [_currentCategory.items count]; ++i ) {
                     MenuItemModel *item = [_currentCategory.items objectAtIndex:i];
+#warning It's better to download images during TableView scrolling. Method "cellForRowAtIndexPath" is the best place where you can do it. UITableView provides "virtualization" functionality to build only shown on screen items. In this case images will load as soon as an appropriate cell is created in the table.
                     [self downloadImageForItem:item cellIndex:i];
                 }
             }
-            
         }
     } else {
         [self createMenuModel];
@@ -67,6 +69,7 @@ NSString *const notificationNameMapIsFinished           = @"notificationNameMapI
         _menuModel = menuModel;
         _currentCategory = [_menuModel getMenuData:nil];
         // post notification that menu data is
+#warning USE blocks insted of notifications !
         [[NSNotificationCenter defaultCenter] postNotificationName:notificationNameMenuTreeIsFinished object:self];
     } copy] ];
 }
