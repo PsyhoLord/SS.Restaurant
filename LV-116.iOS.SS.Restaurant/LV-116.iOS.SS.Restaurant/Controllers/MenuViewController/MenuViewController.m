@@ -10,6 +10,7 @@
 #import "MenuViewController.h"
 #import "ItemCell.h"
 #import "CategoryCell.h"
+#import "TestCell.h"
 
 #import "DataProvider.h"
 #import "MenuCategoryModel.h"
@@ -131,12 +132,12 @@
         ItemCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if ( !cell )
         {
-            cell = [[ItemCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            cell = [[TestCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             tempCellData=[self.currentCategory.items objectAtIndex:indexPath.row];
             cell.ItemName.text = ((MenuItemModel*)tempCellData).name;
-            cell.ItemDescription.text=((MenuItemModel*)tempCellData).description;
-            cell.ItemPrice.text  = [NSString stringWithFormat:@"%.2f", ((MenuItemModel*)tempCellData).price];
-            cell.ItemWeight.text = [NSString stringWithFormat:@"%ld",((MenuItemModel*)tempCellData).portions];
+            //cell.ItemDescription.text=((MenuItemModel*)tempCellData).description;
+           // cell.ItemPrice.text  = [NSString stringWithFormat:@"%.2f", ((MenuItemModel*)tempCellData).price];
+            // cell.ItemWeight.text = [NSString stringWithFormat:@"%ld",((MenuItemModel*)tempCellData).portions];
             
             didReachBottomMenuLevel = YES;
             
