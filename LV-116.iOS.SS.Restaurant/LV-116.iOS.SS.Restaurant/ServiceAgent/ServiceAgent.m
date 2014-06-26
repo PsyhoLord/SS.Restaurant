@@ -9,18 +9,6 @@
 #import "ServiceAgent.h"
 
 @implementation ServiceAgent
-//{
-//    // queue for threads
-//    NSOperationQueue *_operationQueue;
-//}
-
-//-(instancetype)init
-//{
-//    if ( self = [super init] ) {
-//        _operationQueue = [[NSOperationQueue alloc] init];
-//    }
-//    return self;
-//}
 
 // send request to server and call block when response comes
 // (NSURLRequest *)request - request

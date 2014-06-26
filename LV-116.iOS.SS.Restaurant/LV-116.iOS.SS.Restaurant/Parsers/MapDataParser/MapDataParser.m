@@ -10,7 +10,6 @@
 #import "MapModel.h"
 #import "TableModel.h"
 
-
 static NSString *const ID     = @"Id";
 static NSString *const capacity    = @"Capacity";
 static NSString *const height      = @"Height";
@@ -23,11 +22,9 @@ static NSString *const width       = @"Width";
 static NSString *const x           = @"X";
 static NSString *const y           = @"Y";
 
-
-
 @implementation MapDataParser
 
-+(MapModel*) parseEntireMap:(NSData*) data
++ (id)parse:(NSData*) data
 {
     NSError *parsingError;
     NSMutableDictionary *responseForTableMap = [NSJSONSerialization JSONObjectWithData:data

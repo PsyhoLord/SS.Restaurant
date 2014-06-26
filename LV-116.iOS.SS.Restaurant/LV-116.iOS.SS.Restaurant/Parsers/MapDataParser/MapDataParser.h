@@ -6,12 +6,10 @@
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-@class  MapModel;
+#import "PDataParser.h"
 
-@interface MapDataParser : NSObject
+// class MapDataParser needs for parse map tables
 
-+(MapModel*) parseEntireMap:(NSData*) data;
-
+@interface MapDataParser : NSObject<PDataParser>
 
 @end

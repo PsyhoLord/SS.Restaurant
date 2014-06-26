@@ -13,15 +13,25 @@
 #import "TableModel.h"
 
 static const CGFloat scrollViewMinimumZoomScale      = 0.6f;
-static const CGFloat scrollViewMaximumZoomScale      = 7.0f;
+static const CGFloat scrollViewMaximumZoomScale      = 3.0f;
 
 @implementation MapViewController
 {
     __weak IBOutlet UIScrollView *_scrollView;
     UIView          *_zoomView;
-    DataProvider    *_dataProvider;
+//    DataProvider    *_dataProvider;
     MapModel        *_mapModel;
     NSMutableArray  *_tableViews;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    // init _tableViews
+    _tableViews = [[NSMutableArray alloc] init];
+    
+    [self loadMapData];
 }
 
 // create button with characteristic of the current TableModel
@@ -41,14 +51,29 @@ static const CGFloat scrollViewMaximumZoomScale      = 7.0f;
 // get map data from model
 // if there is no data than dataProvider get it from server
 // and post noteification after get it
-- (void)getMapDataFromModel
+- (void)loadMapData
 {
-    // get an pointer to an object of model
-//    _dataProvider = ((NavigationController*)self.navigationController).dataProvider;
-    _mapModel = [_dataProvider getMapData];
-    if ( _mapModel ) {
-        [self drawMap];
-    }
+    [DataProvider loadMapDataWithBlock:^(MapModel *mapModel, NSError *error) {
+        
+        if ( error ) {
+            NSLog(@"error1");
+        } else {
+            
+            _mapModel = mapModel;
+            
+            [DataProvider loadMapBackgroundImageWithBlock:^(UIImage *mapBackgroundImage, NSError *error) {
+               
+                if ( error ) {
+                    NSLog(@"error2");
+                } else {
+                    _mapModel.image = mapBackgroundImage;
+                    [self drawMap];
+                }
+                
+            }];
+        }
+        
+    }];
 }
 
 // draw map view with all tables and background map image
@@ -67,7 +92,6 @@ static const CGFloat scrollViewMaximumZoomScale      = 7.0f;
     [_zoomView addSubview:backgroundView];
     
     for ( TableModel *tableModel in _mapModel.tableModelArray ) {
-        [self addTableView:tableModel];
         [_zoomView addSubview:[self addTableView:tableModel]];
     }
     
@@ -77,32 +101,6 @@ static const CGFloat scrollViewMaximumZoomScale      = 7.0f;
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
     return [scrollView.subviews objectAtIndex:0 ];
-}
-
-// called by NSNotificationCenter if is notificationNameMapIsFinished
-- (void)didFinishMapModelCreation
-{
-    _mapModel = [_dataProvider getMapData];
-    [self drawMap];
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    // init _tableViews
-    _tableViews = [[NSMutableArray alloc] init];
-    
-    // add self as observer to a notificationNameMapIsFinished from model
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishMapModelCreation) name:notificationMapModelIsFinished object:_dataProvider];
-    
-    [self getMapDataFromModel];
-}
-
-// remove self as observer from NSNotificationCenter when it deallocate
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning

@@ -26,21 +26,20 @@ static NSString *const IsActive    = @"IsActive";
 
 // parse all menu tree
 // (NSData*) data - data to parse
-+(MenuModel*) parseEntireMenu:(NSData*) data
++ (id)parse:(NSData*) data
 {
     NSError *parsingError;
     NSMutableDictionary *response = [NSJSONSerialization JSONObjectWithData:data
                                                                     options:NSJSONReadingMutableContainers
                                                                       error: &parsingError];
-    MenuModel *entireMenuModel = [[MenuModel alloc] init];
+    MenuModel *menuModel = [[MenuModel alloc] init];
     // parsing
-    [MenuDataParser parseDictionary:response toMenuModel:entireMenuModel withTopMenuCategory:nil];
-    return entireMenuModel;
+    [MenuDataParser parseDictionary:response toMenuModel:menuModel withTopMenuCategory:nil];
+    return menuModel;
 }
 
-
 // recursive method for building menu tree
-+(void)parseDictionary:(NSMutableDictionary*)category toMenuModel:(MenuModel*)menuModel withTopMenuCategory:(MenuCategoryModel*)topMenuCategory
++ (void)parseDictionary:(NSMutableDictionary*)category toMenuModel:(MenuModel*)menuModel withTopMenuCategory:(MenuCategoryModel*)topMenuCategory
 {
     if ( [category count] == 0 )
         return;
@@ -82,53 +81,5 @@ static NSString *const IsActive    = @"IsActive";
         }
     }
 }
-
-// parse data for current category
-// (NSData*) data - data to parse
-+(NSMutableArray*)parseCurrentCategory:(NSData*)data
-{
-    NSError *parsingError;
-    NSMutableDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data
-                                                                              options:NSJSONReadingMutableContainers
-                                                                                error: &parsingError];
-    // parsing
-    NSMutableArray *menu = [[NSMutableArray alloc] init];
-    
-    for(NSMutableDictionary *category in responseDictionary){
-        
-        int parentId = 0;
-        if ( [category objectForKey:ParentId] != [NSNull null] ) {
-            parentId = [[category valueForKey:ParentId] intValue];
-        }
-        MenuCategoryModel *menuCategory = [[MenuCategoryModel alloc] initWithId:[[category valueForKey:ID] intValue]
-                                                                 name:[category  valueForKey:Name]
-                                                             parentId:parentId];
-        [menu addObject:menuCategory];
-        
-        if([[category valueForKey:Items] count] != 0){
-            for(NSMutableArray *item in [category valueForKey:Items] ) {
-                
-                NSString *description = [[NSString alloc] init];
-                if ( [item valueForKey:Description] != [NSNull null] ) {
-                    description = [item valueForKey:Description];
-                }
-                
-                MenuItemModel *menuItem =[ [MenuItemModel alloc] initWithId:[[item valueForKey:ID] intValue]
-                                                       categoryId:[[item valueForKey:CategoryId] intValue]
-                                                      description:description
-                                                             name:[item valueForKey:Name]
-                                                         portions:[[item valueForKey:Portions] intValue]
-                                                            price:[[item valueForKey:Price] floatValue]];
-                
-                if ( [[item valueForKey:IsActive] boolValue] == YES ) {
-                    [menuCategory addItem:menuItem];
-                }
-                
-            }
-        }
-    }
-    return menu;
-}
-
 
 @end

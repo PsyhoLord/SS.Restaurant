@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="UW7-hI-JYn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="UW7-hI-JYn">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -18,9 +18,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Menu" id="TKG-9y-o7c"/>
-                    <connections>
-                        <outlet property="MenuTableView" destination="l5B-Yx-6NT" id="re7-eb-bRa"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xsw-Kx-6or" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -48,10 +45,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="ZNM-9b-suM" secondAttribute="bottom" id="55Y-yA-qL5"/>
-                            <constraint firstAttribute="trailing" secondItem="ZNM-9b-suM" secondAttribute="trailing" id="DeM-0G-iqc"/>
-                            <constraint firstItem="ZNM-9b-suM" firstAttribute="top" secondItem="UYT-07-kPe" secondAttribute="top" id="fuD-Fz-AIy"/>
-                            <constraint firstItem="ZNM-9b-suM" firstAttribute="leading" secondItem="UYT-07-kPe" secondAttribute="leading" id="xCJ-pV-u62"/>
+                            <constraint firstItem="ZNM-9b-suM" firstAttribute="leading" secondItem="UYT-07-kPe" secondAttribute="leading" id="5Gv-Ww-cTZ"/>
+                            <constraint firstAttribute="bottom" secondItem="ZNM-9b-suM" secondAttribute="bottom" id="LQA-dr-nea"/>
+                            <constraint firstItem="ZNM-9b-suM" firstAttribute="top" secondItem="UYT-07-kPe" secondAttribute="top" id="lGf-XA-ntG"/>
+                            <constraint firstAttribute="trailing" secondItem="ZNM-9b-suM" secondAttribute="trailing" id="y79-eS-aqM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="nsc-Nf-pnU"/>
@@ -117,7 +114,7 @@
         <!--Navigation Controller-->
         <scene sceneID="S8t-83-ZLE">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UW7-hI-JYn" customClass="NavigationController" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UW7-hI-JYn" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1jI-LV-ofL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

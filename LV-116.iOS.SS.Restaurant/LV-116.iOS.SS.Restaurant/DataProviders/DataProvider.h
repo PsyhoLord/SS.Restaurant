@@ -17,35 +17,21 @@
 
 @interface DataProvider : NSObject
 
+// load menu data from remote and create menu model with these data
+// calls block when model has created
 + (void)loadMenuDataWithBlock:(void (^)(MenuModel*, NSError*))callback;
 
+// load map data from remote and create map model with these data
+// calls block when model has created
 + (void)loadMapDataWithBlock:(void (^)(MapModel*, NSError*))callback;
 
+// load menu item image from remote
+// calls block when image is
 + (void)loadMenuItemImage:(MenuItemModel*)menuItemModel withBlock:(void (^)(UIImage*, NSError*))callback;
 
-+ (void)loadMapImageWithBlock:(void (^)(UIImage*, NSError*))callback;
+// load map background image from remote
+// calls block when image is
++ (void)loadMapBackgroundImageWithBlock:(void (^)(UIImage*, NSError*))callback;
 
-
-
-
-
-// get MenuCategory object which contains categories or items of current category we want to get in
-// it asks _remoteDataProvider to get menu data if it hasn't data
-// if it has data than it asks _menuModel to get menu data
-// when menu tree will be finished it send notification notificationNameMenuTreeIsFinished
-// (MenuCategory*)category - pointer to an category we want to get in
-//- (MenuCategoryModel*)getMenuData:(MenuCategoryModel*)category;
-
-// get MenuCategory object which contains categories or items of current category we want to get in
-// it asks _remoteDataProvider to get menu data any time we want to get menu data
-// (MenuCategory*)category - pointer to an category we want to get in
-// FromNetWithResponseBlock:(void (^)(MenuCategory*, NSError*))callback - block will called asynchronous when it is menu data of current category
-//-(MenuCategoryModel*) getMenuData:(MenuCategoryModel*)category FromNetWithResponseBlock:(void (^)(MenuCategoryModel*, NSError*))callback;
-
-// get object of MapModel which contains array of TableModels
-//-(MapModel*)getMapData;
-
-//(creates a table map from remoteDataProvider);
-//-(void) createMapModel;
 
 @end

@@ -33,14 +33,4 @@
 // (void (^)(UIImage*, NSError*))callback - block which will be called when image is
 + (void)loadMapBackgroundImageWithBlock:(void (^)(UIImage*, NSError*))callback;
 
-
-
-
-//// get menu data from server
-//// (int)Id - id of category which we need to get data from it
-//// (void (^)(NSMutableArray*, NSError*))callback - block which will call when data is
-//-(void)getMenuData:(int)Id responseBlock:(void (^)(NSMutableArray*, NSError*))callback;
-
-
-
 @end

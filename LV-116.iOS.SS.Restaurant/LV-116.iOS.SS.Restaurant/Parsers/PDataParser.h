@@ -6,16 +6,10 @@
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
 
-@class MenuModel;
-
 @protocol PDataParser <NSObject>
 
 // parse all menu tree
 // (NSData*) data - data to parse
-+(MenuModel*) parseEntireMenu:(NSData*) data;
-
-// parse data for current category
-// (NSData*) data - data to parse
-+(NSMutableArray*) parseCurrentCategory:(NSData*) data;
++ (id)parse:(NSData*) data;
 
 @end

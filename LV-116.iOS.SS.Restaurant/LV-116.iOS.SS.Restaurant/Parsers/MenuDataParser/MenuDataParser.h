@@ -8,6 +8,8 @@
 
 #import "PDataParser.h"
 
+// class MenuDataParser needs for parse menu
+
 @interface MenuDataParser : NSObject<PDataParser>
 
 @end
