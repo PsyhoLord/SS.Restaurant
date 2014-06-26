@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
 
-#import "NavigationController.h"
 #import "MenuViewController.h"
 #import "ItemCell.h"
 #import "CategoryCell.h"
@@ -65,7 +64,7 @@
 {
 #warning Initialize DataProvider as part of MenuViewController. Get rid of custom navigation controller
 //    get pointer to an object of DataProvider from NavigationController if it is
-    _dataProvider = ((NavigationController*)self.navigationController).dataProvider;
+//    _dataProvider = ((NavigationController*)self.navigationController).dataProvider;
 #warning The same comment as above. It's not obvious for new developers (like me) why we pass nil here.
     _currentCategory = [_dataProvider getMenuData:nil];
 }
@@ -76,7 +75,7 @@
     [super viewDidLoad];
 
 #warning use blocks instead of Notifications !!!
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishMenuTreeCreation) name:notificationNameMenuTreeIsFinished object:_dataProvider];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishMenuTreeCreation) name:notificationMenuTreeIsFinished object:_dataProvider];
     // add self as a listener of notification (connectionErrorNotification) if it
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didErrorAppear:) name:connectionErrorNotification object:nil];
     

@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
 
-#import "NavigationController.h"
 #import "MapViewController.h"
 #import "TableView.h"
 #import "DataProvider.h"
@@ -45,7 +44,7 @@ static const CGFloat scrollViewMaximumZoomScale      = 7.0f;
 - (void)getMapDataFromModel
 {
     // get an pointer to an object of model
-    _dataProvider = ((NavigationController*)self.navigationController).dataProvider;
+//    _dataProvider = ((NavigationController*)self.navigationController).dataProvider;
     _mapModel = [_dataProvider getMapData];
     if ( _mapModel ) {
         [self drawMap];

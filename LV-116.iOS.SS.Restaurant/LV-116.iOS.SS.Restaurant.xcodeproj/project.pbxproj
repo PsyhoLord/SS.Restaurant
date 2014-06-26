@@ -14,7 +14,6 @@
 		225110201955B6B900DD4607 /* ItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2251101C1955B6B900DD4607 /* ItemCell.m */; };
 		225110211955B6B900DD4607 /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2251101D1955B6B900DD4607 /* ItemCell.xib */; };
 		2295C9321955B5EE00D6A4D7 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2295C92C1955B5EE00D6A4D7 /* MenuViewController.m */; };
-		22C2821E1955F57D00D8B115 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C2821D1955F57D00D8B115 /* NavigationController.m */; };
 		22C282221955F64E00D8B115 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C282211955F64E00D8B115 /* RootViewController.m */; };
 		2B1ABB9D1958466500BF5678 /* MapDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1ABB9C1958466500BF5678 /* MapDataParser.m */; };
 		C348B3D3193DE5E90004808D /* RemoteDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C348B3D2193DE5E90004808D /* RemoteDataProvider.m */; };
@@ -66,8 +65,6 @@
 		2251101D1955B6B900DD4607 /* ItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
 		2295C92B1955B5EE00D6A4D7 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		2295C92C1955B5EE00D6A4D7 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
-		22C2821C1955F57D00D8B115 /* NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
-		22C2821D1955F57D00D8B115 /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 		22C282201955F64E00D8B115 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		22C282211955F64E00D8B115 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		2B1ABB9B1958466500BF5678 /* MapDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapDataParser.h; path = MapDataParser/MapDataParser.h; sourceTree = "<group>"; };
@@ -183,7 +180,6 @@
 		2295C91C1955B5EE00D6A4D7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				22C2821B1955F55500D8B115 /* NavigationController */,
 				22C2821F1955F64E00D8B115 /* RootViewController */,
 				2295C92A1955B5EE00D6A4D7 /* MenuViewController */,
 				ED9AAE871959B8BA00656681 /* MapViewController */,
@@ -199,15 +195,6 @@
 				2295C92C1955B5EE00D6A4D7 /* MenuViewController.m */,
 			);
 			path = MenuViewController;
-			sourceTree = "<group>";
-		};
-		22C2821B1955F55500D8B115 /* NavigationController */ = {
-			isa = PBXGroup;
-			children = (
-				22C2821C1955F57D00D8B115 /* NavigationController.h */,
-				22C2821D1955F57D00D8B115 /* NavigationController.m */,
-			);
-			path = NavigationController;
 			sourceTree = "<group>";
 		};
 		22C2821F1955F64E00D8B115 /* RootViewController */ = {
@@ -559,7 +546,6 @@
 				2B1ABB9D1958466500BF5678 /* MapDataParser.m in Sources */,
 				FA336C2D19335B950007CC76 /* AppDelegate.m in Sources */,
 				EDEC47291956F9950041B98B /* MapModel.m in Sources */,
-				22C2821E1955F57D00D8B115 /* NavigationController.m in Sources */,
 				EDADBCB3193F6E2F004E18EC /* DataProvider.m in Sources */,
 				EDE50DF7193E110500ACA71D /* ServiceAgent.m in Sources */,
 				EDEC47341956FACB0041B98B /* MenuCategoryModel.m in Sources */,

@@ -70,7 +70,7 @@ NSString *const notificationMapModelIsFinished          = @"notificationMapModel
         _currentCategory = [_menuModel getMenuData:nil];
         // post notification that menu data is
 #warning USE blocks insted of notifications !
-        [[NSNotificationCenter defaultCenter] postNotificationName:notificationNameMenuTreeIsFinished object:self];
+        [[NSNotificationCenter defaultCenter] postNotificationName:notificationMenuTreeIsFinished object:self];
     } copy] ];
 }
 
