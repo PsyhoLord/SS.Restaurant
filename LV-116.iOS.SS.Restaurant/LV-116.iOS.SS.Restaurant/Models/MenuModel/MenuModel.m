@@ -13,20 +13,20 @@
 @implementation MenuModel
 {
     // root of menu tree
-    MenuCategoryModel *_entireMenuCategory;
+//    MenuCategoryModel *_rootMenuCategory;
 }
 
 -(instancetype)init
 {
     if ( self = [super init] ) {
-        //        _entireMenuCategory = [[MenuCategory alloc] init];
+        
     }
     return self;
 }
 
 -(BOOL)isEmpty
 {
-    return  ( ( _entireMenuCategory == nil ) && ( [_entireMenuCategory isCategories] == 0 ) && ( [_entireMenuCategory isItems] == 0 ) );
+    return  ( ( _rootMenuCategory == nil ) && ( [_rootMenuCategory isCategories] == 0 ) && ( [_rootMenuCategory isItems] == 0 ) );
 }
 
 // get MenuCategory object which contains categories or items of current category we want to get in
@@ -37,7 +37,7 @@
     } else if ( category ) {
         return category;
     } else {
-        return _entireMenuCategory;
+        return _rootMenuCategory;
     }
 }
 
@@ -53,7 +53,7 @@
         }
     } else {
         //        [_entireMenuCategory addCategory:node];
-        _entireMenuCategory = node;
+        _rootMenuCategory = node;
     }
 }
 

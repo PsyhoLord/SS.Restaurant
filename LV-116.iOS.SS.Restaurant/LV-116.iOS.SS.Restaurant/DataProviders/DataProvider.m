@@ -13,30 +13,63 @@
 #import "MapModel.h"
 #import "TableModel.h"
 
-NSString *const notificationMenuTreeIsFinished          = @"notificationMenuTreeIsFinished";
-NSString *const notificationItemImageDownloadIsFinished = @"notificationItemImageDownloadIsFinished";
-NSString *const menuItemKey                             = @"menuItem";
-NSString *const menuCellIndexKey                        = @"cellIndex";
-NSString *const notificationMapModelIsFinished          = @"notificationMapModelIsFinished";
-
 @implementation DataProvider
-{
 #warning Is there any reason that DataProvider contains internal state ? I'm taking about menuModel, mapModel, CurrentCategory.
 #warning As for me the DataProvider should stateless and provide operations only. Get inout parameter and return response. That's it !
-    MenuModel           *_menuModel;
-    MapModel            *_mapModel;
-    MenuCategoryModel   *_currentCategory;
-    RemoteDataProvider  *_remoteDataProvider;
-}
 
-- (instancetype)init
+
++ (void)loadMenuDataWithBlock:(void (^)(MenuModel*, NSError*))callback
 {
-    if ( self = [super init] ) {
-        _remoteDataProvider = [[RemoteDataProvider alloc] init];
-    }
-    return self;
+    RemoteDataProvider *remoteDataProvider = [[RemoteDataProvider alloc] init];
+    
+    [remoteDataProvider loadMenuDataWithBlock:[^(MenuModel *menuModel, NSError *error) {
+        
+        callback(menuModel, error);
+        
+    } copy] ];
 }
 
+
+
++ (void)loadMapDataWithBlock:(void (^)(MapModel*, NSError*))callback
+{
+    RemoteDataProvider *remoteDataProvider = [[RemoteDataProvider alloc] init];
+    
+    [remoteDataProvider loadMapDataWithBlock:[^(MapModel *mapModel, NSError *error) {
+        
+        callback(mapModel, error);
+        
+    } copy] ];
+}
+
++ (void)loadMenuItemImage:(MenuItemModel*)menuItemModel withBlock:(void (^)(UIImage*, NSError*))callback
+{
+    RemoteDataProvider *remoteDataProvider = [[RemoteDataProvider alloc] init];
+    
+    [remoteDataProvider loadMenuItemImageById:menuItemModel.Id withBlock:[^(UIImage *menuItemImage, NSError *error) {
+        
+        callback(menuItemImage, error);
+        
+    } copy] ];
+}
+
++ (void)loadMapImageWithBlock:(void (^)(UIImage*, NSError*))callback
+{
+    RemoteDataProvider *remoteDataProvider = [[RemoteDataProvider alloc] init];
+    
+    [remoteDataProvider loadMapBackgroundImageWithBlock:[^(UIImage *mapBackgroundImage, NSError *error) {
+        
+        callback(mapBackgroundImage, error);
+        
+    } copy] ];
+}
+
+
+
+
+
+
+/*
 // get MenuCategory object which contains categories or items of current category we want to get in
 // it asks _remoteDataProvider to get menu data if it hasn't data
 // if it has data than it asks _menuModel to get menu data
@@ -149,5 +182,6 @@ NSString *const notificationMapModelIsFinished          = @"notificationMapModel
         [[NSNotificationCenter defaultCenter] postNotificationName:notificationItemImageDownloadIsFinished object:self userInfo:userInfo];
     } copy] ];
 }
+ */
 
 @end

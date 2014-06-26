@@ -21,121 +21,148 @@ NSString *const URLDownloadMapImage = @"http://192.168.195.212/Restaurant/Images
 
 
 @implementation RemoteDataProvider
-{
-    id<PServiceAgent> _serviceAgent;
-}
 
--(instancetype)init
-{
-    if ( self = [super init] ) {
-        _serviceAgent = [[ServiceAgent alloc] init];
-    }
-    return self;
-}
+//-(instancetype)init
+//{
+//    if ( self = [super init] ) {
+//        _serviceAgent = [[ServiceAgent alloc] init];
+//    }
+//    return self;
+//}
 
 // get all menu tree data from server
 // it makes requesst with id = 0
 // (void (^)(NSMutableArray*, NSError*))callback - block which will call when data is
--(void)getEntireMenuDataWithResponseBlock:(void (^)(MenuModel*, NSError*))callback
++ (void)loadMenuDataWithBlock:(void (^)(MenuModel*, NSError*))callback
 {
-    int Id = 0;
+    ServiceAgent *serviceAgent = [[ServiceAgent alloc] init];
+
+    NSString *stringURL = [[NSString alloc] initWithFormat:URLMenu, 0];
     
-    NSString *strRequest = [[NSString alloc] initWithFormat:URLMenu, Id];
-    
-//    NSURLRequest *URLRequest = [[NSURLRequest alloc] initWithURL:[[NSURL alloc] initWithString:strRequest]];
-    NSURLRequest *URLRequest = [NSURLRequest requestWithURL:[[NSURL alloc] initWithString:strRequest]
+    NSURL *URL = [[NSURL alloc] initWithString:stringURL];
+
+    NSURLRequest *URLRequest = [NSURLRequest requestWithURL:URL
                                                 cachePolicy:NSURLRequestUseProtocolCachePolicy
                                             timeoutInterval:connectionTimeoutInterval];
     
-    [_serviceAgent send:URLRequest
+    [serviceAgent send:URLRequest
           responseBlock:[^(NSData *data, NSError *error) {
               
               // call parser
-              MenuModel *entireMenuModel = [MenuDataParser parseEntireMenu:data];
+              MenuModel *menuModel = [MenuDataParser parseEntireMenu:data];
+        
               // call block from hight layer - DataProvider
-              callback(entireMenuModel, error);
+              callback(menuModel, error);
               
           } copy] ];
 }
 
-// get menu data from server
-// (int)Id - id of category which we need to get data from it
-// (void (^)(NSMutableArray*, NSError*))callback - block which will call when data is
--(void)getMenuData:(int)Id responseBlock:(void (^)(NSMutableArray*, NSError*))callback
-{
-    NSString *url = [[NSString alloc] initWithFormat: URLMenu, Id];
-    
-#warning What's an intention of using "cachePolicy:NSURLRequestUseProtocolCachePolicy" ?
-//    NSURLRequest *URLRequest = [[NSURLRequest alloc] initWithURL:[[NSURL alloc] initWithString:strRequest]];
-    NSURLRequest *URLRequest = [NSURLRequest requestWithURL:[[NSURL alloc] initWithString:url]
-                                                cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                            timeoutInterval:connectionTimeoutInterval];
 
-#warning Do you really need this variable outside of the block ?
-    __block NSMutableArray *arrCategories;
-    
-    [_serviceAgent send:URLRequest
-          responseBlock:[^(NSData *data, NSError *error) {
-              
-              // call parser
-#warning What if Parse throws an error ? Will a user be notified ???
-              arrCategories = [MenuDataParser parseCurrentCategory:data];
-              // call block from hight layer - DataProvider
-              callback(arrCategories, error);
-              
-          } copy] ];
-}
 
 
 // download image for itemId
 // (int)itemId - Id of item in menu
 // (void (^)(UIImage*, NSError*))callback - block which will be called when image is
--(void)downloadImageForItemId:(int)itemId withBlock:(void (^)(UIImage*, NSError*))callback
++ (void)loadMenuItemImageById:(int)menuItemId withBlock:(void (^)(UIImage*, NSError*))callback
 {
-    NSString *strRequest = [[NSString alloc] initWithFormat:URLDownloadImage, itemId];
-    NSURLRequest *URLRequest = [NSURLRequest requestWithURL:[[NSURL alloc] initWithString:strRequest]
+    
+    ServiceAgent *serviceAgent = [[ServiceAgent alloc] init];
+    
+    NSString *stringURL = [[NSString alloc] initWithFormat:URLDownloadImage, menuItemId];
+    
+    NSURL *URL = [[NSURL alloc] initWithString:stringURL];
+    
+    NSURLRequest *URLRequest = [NSURLRequest requestWithURL:URL
                                                 cachePolicy:NSURLRequestUseProtocolCachePolicy
                                             timeoutInterval:connectionTimeoutInterval];
     
-    [_serviceAgent send:URLRequest responseBlock:[^(NSData *data, NSError *error) {
+    [serviceAgent send:URLRequest responseBlock:[^(NSData *data, NSError *error) {
         UIImage *image = [[UIImage alloc] initWithData:data];
+        
         // call block from hight layer - DataProvider
         callback(image, error);
+        
     } copy] ];
 }
 
 #warning It's better to have different RemoteFacade for different areas. I mean MenuRemoteFacade, TableRemoteFacade, etc.
--(void) getEntireMapDataWithResponseBlock:(void (^)(MapModel *, NSError *))callback
++ (void)loadMapDataWithBlock:(void (^)(MapModel *, NSError *))callback
 {
-    //NSString *strRequest =[[NSString alloc] initWithFormat:URLMenu];
+    ServiceAgent *serviceAgent = [[ServiceAgent alloc] init];
     
-    //NSURLRequest *URLRequest =[[NSURLRequest requestWithURL:URLMap] ]
-    NSURLRequest *URLRequest = [NSURLRequest requestWithURL:[[NSURL alloc] initWithString:URLMap]
+    NSString *stringURL = [[NSString alloc] initWithFormat:URLMap];
+    
+    NSURL *URL = [[NSURL alloc] initWithString:stringURL];
+    
+    NSURLRequest *URLRequest = [NSURLRequest requestWithURL:URL
                                                 cachePolicy:NSURLRequestUseProtocolCachePolicy
                                             timeoutInterval:connectionTimeoutInterval];
-    [_serviceAgent send:URLRequest responseBlock:[^(NSData *data, NSError *error)
-     {
+    [serviceAgent send:URLRequest responseBlock:[^(NSData *data, NSError *error) {
+        
          //MapDataParser *parserForMap=[MapDataParser new];
          MapModel *entireMapModel=[MapDataParser parseEntireMap:data];
+        
          callback (entireMapModel,error);
-     } copy]
-     ];
+        
+     } copy] ];
 }
 
 // download image for map
 // (void (^)(UIImage*, NSError*))callback - block which will be called when image is
--(void)downloadMapImageWithBlock:(void (^)(UIImage*, NSError*))callback
++ (void)loadMapBackgroundImageWithBlock:(void (^)(UIImage*, NSError*))callback
 {
-    NSString *strRequest = [[NSString alloc] initWithFormat:URLDownloadMapImage];
-    NSURLRequest *URLRequest = [NSURLRequest requestWithURL:[[NSURL alloc] initWithString:strRequest]
+    ServiceAgent *serviceAgent = [[ServiceAgent alloc] init];
+    
+    NSString *stringURL = [[NSString alloc] initWithFormat:URLMap];
+    
+    NSURL *URL = [[NSURL alloc] initWithString:stringURL];
+    
+    NSURLRequest *URLRequest = [NSURLRequest requestWithURL:URL
                                                 cachePolicy:NSURLRequestUseProtocolCachePolicy
                                             timeoutInterval:connectionTimeoutInterval];
     
-    [_serviceAgent send:URLRequest responseBlock:[^(NSData *data, NSError *error) {
+    [serviceAgent send:URLRequest responseBlock:[^(NSData *data, NSError *error) {
+        
         UIImage *image = [[UIImage alloc] initWithData:data];
+        
         // call block from hight layer - DataProvider
         callback(image, error);
+        
     } copy] ];
 }
+
+
+
+
+
+/*
+ // get menu data from server
+ // (int)Id - id of category which we need to get data from it
+ // (void (^)(NSMutableArray*, NSError*))callback - block which will call when data is
+ -(void)getMenuData:(int)Id responseBlock:(void (^)(NSMutableArray*, NSError*))callback
+ {
+ NSString *url = [[NSString alloc] initWithFormat: URLMenu, Id];
+ 
+ #warning What's an intention of using "cachePolicy:NSURLRequestUseProtocolCachePolicy" ?
+ //    NSURLRequest *URLRequest = [[NSURLRequest alloc] initWithURL:[[NSURL alloc] initWithString:strRequest]];
+ NSURLRequest *URLRequest = [NSURLRequest requestWithURL:[[NSURL alloc] initWithString:url]
+ cachePolicy:NSURLRequestUseProtocolCachePolicy
+ timeoutInterval:connectionTimeoutInterval];
+ 
+ #warning Do you really need this variable outside of the block ?
+ __block NSMutableArray *arrCategories;
+ 
+ [_serviceAgent send:URLRequest
+ responseBlock:[^(NSData *data, NSError *error) {
+ 
+ // call parser
+ #warning What if Parse throws an error ? Will a user be notified ???
+ arrCategories = [MenuDataParser parseCurrentCategory:data];
+ // call block from hight layer - DataProvider
+ callback(arrCategories, error);
+ 
+ } copy] ];
+ }
+ */
 
 @end

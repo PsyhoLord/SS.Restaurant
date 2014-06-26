@@ -14,6 +14,15 @@
 
 @interface MenuModel : NSObject
 
+@property (strong, nonatomic) MenuCategoryModel *rootMenuCategory;
+
+
+
+
+
+
+
+
 -(BOOL)isEmpty;
 
 // get MenuCategory object which contains categories or items of current category we want to get in
