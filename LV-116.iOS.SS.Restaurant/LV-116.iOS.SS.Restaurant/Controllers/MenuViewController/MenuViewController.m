@@ -9,7 +9,7 @@
 #import "MenuViewController.h"
 #import "ItemCell.h"
 #import "CategoryCell.h"
-#import "TestCell.h"
+//#import "TestCell.h"
 
 #import "DataProvider.h"
 #import "MenuCategoryModel.h"
@@ -17,9 +17,8 @@
 #import "MenuModel.h"
 
 @interface MenuViewController ()
-
 #warning What about using self.tableView ? UITableViewController provides you built in "tableView" property
-    @property (strong, nonatomic) MenuCategoryModel *currentCategory;
+@property (strong, nonatomic) MenuCategoryModel *currentCategory;
 @end
 
 @implementation MenuViewController
@@ -29,9 +28,9 @@
 }
 
 #warning COMMENT YOUR CODE ONLY IN ENGLISH !!!!!!
+
 //Init whith style
 - (id)initWithStyle:(UITableViewStyle)style
-
 {
     self = [super initWithStyle:style];
     if (self) {
@@ -39,8 +38,8 @@
     return self;
 }
 
-// called by NSNotificationCenter if is notificationNameMenuTreeIsFinished
--(void)loadMenuData
+// called by NSNotificationCenter if it is notificationNameMenuTreeIsFinished
+- (void)loadMenuData
 {
     #warning It's not a good practice to use "nil" for some logic. At least you can encapsulate it in some method inside the DataProvider. Just add another method called "getAllMenu" and place [self getMenuData:nil] as a body of this method. It's your internal logic, so stay as more simple as you can for component which will use your DataProvider.
 
@@ -62,10 +61,8 @@
     
 }
 
-// test by Oleg & Roman
-// called by NSNotiricationCenter if is connectionErrorNotification
-
-
+/* test by Oleg & Roman
+ called by NSNotiricationCenter if is connectionErrorNotification */
 /*- (void)getMenuDataFromModel // Отримані дані з сервера
 {
 #warning Initialize DataProvider as part of MenuViewController. Get rid of custom navigation controller
@@ -76,6 +73,7 @@
 }*/
 
 #warning Try to move view events at the begginng of ViewController implementation. Also, make sure al events are placed in right order. For example: viewDidLoad goes before viewDidAppear
+
 - (void)viewDidLoad // Завантажилось TableView
 {
     [super viewDidLoad];
@@ -86,9 +84,6 @@
         [self loadMenuData];
 }
 
-
-
-
 - (void)didReceiveMemoryWarning // Попередження про память
 {
     [super didReceiveMemoryWarning];
@@ -96,7 +91,6 @@
 }
 
 #pragma mark - Table view data source
-
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView // Кількість секцій в TableView
 {
@@ -115,6 +109,7 @@
 }
 
 #warning I decided to skip this method because it looks incomplete. Right ? :)
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath // повертає Cell для кожного з рядків. Саме тут ми вибираємо який Cell вантажити
 {
     static NSString *CellIdentifier;
@@ -142,7 +137,8 @@
         ItemCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if ( !cell )
         {
-            cell = [[TestCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            cell = [[ItemCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            [cell contentScaleFactor];
             tempCellData=[self.currentCategory.items objectAtIndex:indexPath.row];
             cell.ItemName.text = ((MenuItemModel*)tempCellData).name;
             //cell.ItemDescription.text=((MenuItemModel*)tempCellData).description;
@@ -158,7 +154,6 @@
 }
 
 #warning DON'T COMMIT WORDS LIKE "X3" !!!!!
-
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath // обробник кліків за індексом
 {
