@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		221F8DC1195C0DB300CF17B1 /* TestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 221F8DBF195C0DB300CF17B1 /* TestCell.m */; };
+		221F8DC2195C0DB300CF17B1 /* TestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 221F8DC0195C0DB300CF17B1 /* TestCell.xib */; };
 		2251101E1955B6B900DD4607 /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 225110181955B6B900DD4607 /* CategoryCell.m */; };
 		2251101F1955B6B900DD4607 /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 225110191955B6B900DD4607 /* CategoryCell.xib */; };
 		225110201955B6B900DD4607 /* ItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2251101C1955B6B900DD4607 /* ItemCell.m */; };
@@ -53,6 +55,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		221F8DBE195C0DB300CF17B1 /* TestCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestCell.h; path = TestCell/TestCell.h; sourceTree = "<group>"; };
+		221F8DBF195C0DB300CF17B1 /* TestCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestCell.m; path = TestCell/TestCell.m; sourceTree = "<group>"; };
+		221F8DC0195C0DB300CF17B1 /* TestCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TestCell.xib; path = TestCell/TestCell.xib; sourceTree = "<group>"; };
 		225110171955B6B900DD4607 /* CategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryCell.h; sourceTree = "<group>"; };
 		225110181955B6B900DD4607 /* CategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryCell.m; sourceTree = "<group>"; };
 		225110191955B6B900DD4607 /* CategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
@@ -135,9 +140,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		221F8DBA195C0BC500CF17B1 /* TestCell */ = {
+			isa = PBXGroup;
+			children = (
+				221F8DBE195C0DB300CF17B1 /* TestCell.h */,
+				221F8DBF195C0DB300CF17B1 /* TestCell.m */,
+				221F8DC0195C0DB300CF17B1 /* TestCell.xib */,
+			);
+			name = TestCell;
+			sourceTree = "<group>";
+		};
 		225110151955B6B900DD4607 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				221F8DBA195C0BC500CF17B1 /* TestCell */,
 				225110161955B6B900DD4607 /* CategoryCell */,
 				2251101A1955B6B900DD4607 /* ItemCell */,
 			);
@@ -513,6 +529,7 @@
 				225110211955B6B900DD4607 /* ItemCell.xib in Resources */,
 				FA336C3819335B950007CC76 /* Images.xcassets in Resources */,
 				FA336C3019335B950007CC76 /* Main_iPhone.storyboard in Resources */,
+				221F8DC2195C0DB300CF17B1 /* TestCell.xib in Resources */,
 				FA336C2719335B950007CC76 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -549,6 +566,7 @@
 				2251101E1955B6B900DD4607 /* CategoryCell.m in Sources */,
 				22C282221955F64E00D8B115 /* RootViewController.m in Sources */,
 				FA336C2919335B950007CC76 /* main.m in Sources */,
+				221F8DC1195C0DB300CF17B1 /* TestCell.m in Sources */,
 				EDEC472A1956F9950041B98B /* TableModel.m in Sources */,
 				EDEC47351956FACB0041B98B /* MenuItemModel.m in Sources */,
 			);

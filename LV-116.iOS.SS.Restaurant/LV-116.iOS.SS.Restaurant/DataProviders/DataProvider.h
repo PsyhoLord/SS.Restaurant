@@ -10,9 +10,9 @@
 #import "RemoteDataProvider.h"
 
 
-extern NSString *const notificationNameMenuTreeIsFinished;
+extern NSString *const notificationMenuTreeIsFinished;
 extern NSString *const notificationItemImageDownloadIsFinished;
-extern NSString *const notificationNameMapIsFinished;
+extern NSString *const notificationMapModelIsFinished;
 
 extern NSString *const menuItemKey;
 extern NSString *const menuCellIndexKey;

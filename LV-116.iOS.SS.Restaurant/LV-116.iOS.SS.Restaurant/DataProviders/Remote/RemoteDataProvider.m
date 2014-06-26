@@ -17,6 +17,8 @@ NSString *const URLMenu             = @"http://192.168.195.212/Restaurant/api/Me
 NSString *const URLDownloadImage    = @"http://192.168.195.212/Restaurant/Menu/ImageResult/%i";
 const int connectionTimeoutInterval = 7.0;
 NSString *const URLMap              = @"http://192.168.195.212/Restaurant/api/tables";
+NSString *const URLDownloadMapImage = @"http://192.168.195.212/Restaurant/Images/background.jpg";
+
 
 @implementation RemoteDataProvider
 {
@@ -88,7 +90,6 @@ NSString *const URLMap              = @"http://192.168.195.212/Restaurant/api/ta
 // download image for itemId
 // (int)itemId - Id of item in menu
 // (void (^)(UIImage*, NSError*))callback - block which will be called when image is
-// this method posts notificationItemImageDownloadIsFinished when image has downloaded
 -(void)downloadImageForItemId:(int)itemId withBlock:(void (^)(UIImage*, NSError*))callback
 {
     NSString *strRequest = [[NSString alloc] initWithFormat:URLDownloadImage, itemId];
@@ -119,6 +120,22 @@ NSString *const URLMap              = @"http://192.168.195.212/Restaurant/api/ta
          callback (entireMapModel,error);
      } copy]
      ];
+}
+
+// download image for map
+// (void (^)(UIImage*, NSError*))callback - block which will be called when image is
+-(void)downloadMapImageWithBlock:(void (^)(UIImage*, NSError*))callback
+{
+    NSString *strRequest = [[NSString alloc] initWithFormat:URLDownloadMapImage];
+    NSURLRequest *URLRequest = [NSURLRequest requestWithURL:[[NSURL alloc] initWithString:strRequest]
+                                                cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                            timeoutInterval:connectionTimeoutInterval];
+    
+    [_serviceAgent send:URLRequest responseBlock:[^(NSData *data, NSError *error) {
+        UIImage *image = [[UIImage alloc] initWithData:data];
+        // call block from hight layer - DataProvider
+        callback(image, error);
+    } copy] ];
 }
 
 @end

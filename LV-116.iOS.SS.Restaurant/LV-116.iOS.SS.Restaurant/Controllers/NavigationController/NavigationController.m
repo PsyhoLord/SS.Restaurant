@@ -10,4 +10,19 @@
 
 @implementation NavigationController
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+}
+
+//-(BOOL)shouldAutorotate
+//{
+//    return YES;
+//}
+//
+//-(NSUInteger)supportedInterfaceOrientations
+//{
+//    return UIInterfaceOrientationMaskAll;
+//}
+
 @end

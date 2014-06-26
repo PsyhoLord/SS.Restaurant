@@ -13,11 +13,11 @@
 #import "MapModel.h"
 #import "TableModel.h"
 
-NSString *const notificationNameMenuTreeIsFinished      = @"notificationMenuTreeIsFinished";
+NSString *const notificationMenuTreeIsFinished          = @"notificationMenuTreeIsFinished";
 NSString *const notificationItemImageDownloadIsFinished = @"notificationItemImageDownloadIsFinished";
 NSString *const menuItemKey                             = @"menuItem";
 NSString *const menuCellIndexKey                        = @"cellIndex";
-NSString *const notificationNameMapIsFinished           = @"notificationNameMapIsFinished";
+NSString *const notificationMapModelIsFinished          = @"notificationMapModelIsFinished";
 
 @implementation DataProvider
 {
@@ -88,8 +88,19 @@ NSString *const notificationNameMapIsFinished           = @"notificationNameMapI
 {
     [_remoteDataProvider getEntireMapDataWithResponseBlock:[^(MapModel *mapModel, NSError *error) {
         
-        _mapModel=mapModel;
-        [[NSNotificationCenter defaultCenter] postNotificationName:notificationNameMapIsFinished object:self];
+        _mapModel = mapModel;
+        
+        // when MapModel has created than take mapImage from remote
+        // and than tell MapViewController about that
+        [_remoteDataProvider downloadMapImageWithBlock:[^(UIImage *mapImage, NSError *error) {
+            
+            // set image to _mapModel
+            _mapModel.image = mapImage;
+            
+            // post notification that map model is finished
+            [[NSNotificationCenter defaultCenter] postNotificationName:notificationMapModelIsFinished object:self];
+            
+        } copy] ];
         
     } copy] ];
 }
