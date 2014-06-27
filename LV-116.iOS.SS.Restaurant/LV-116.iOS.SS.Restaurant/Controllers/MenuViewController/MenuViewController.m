@@ -23,7 +23,6 @@
 
 @implementation MenuViewController
 {
-    DataProvider *_dataProvider;
     BOOL _didReachBottomMenuLevel;
 }
 
@@ -138,13 +137,32 @@
         if ( !cell )
         {
             cell = [[ItemCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-            [cell contentScaleFactor];
+            //[cell contentScaleFactor];
+            
             tempCellData=[self.currentCategory.items objectAtIndex:indexPath.row];
             cell.ItemName.text = ((MenuItemModel*)tempCellData).name;
-            //cell.ItemDescription.text=((MenuItemModel*)tempCellData).description;
-           // cell.ItemPrice.text  = [NSString stringWithFormat:@"%.2f", ((MenuItemModel*)tempCellData).price];
-            // cell.ItemWeight.text = [NSString stringWithFormat:@"%ld",((MenuItemModel*)tempCellData).portions];
+            cell.ItemDescription.text=((MenuItemModel*)tempCellData).description;
+            cell.ItemPrice.text  = [NSString stringWithFormat:@"%.2f$", ((MenuItemModel*)tempCellData).price];
+            cell.ItemWeight.text = [NSString stringWithFormat:@"%ldg",((MenuItemModel*)tempCellData).portions];
+      
+            //That part of code must loading image... image lofdind into model, but did not appear on view!!!
+            if (((MenuItemModel*)[_currentCategory.items objectAtIndex:indexPath.row]).image) {
+                
+            } else{
             
+            [DataProvider loadMenuItemImage:[_currentCategory.items objectAtIndex:indexPath.row] withBlock:^(UIImage *itemImage, NSError *error) {
+                
+                ((MenuItemModel*)[_currentCategory.items objectAtIndex:indexPath.row]).image = itemImage;
+                
+                cell.imageView.image = ((MenuItemModel*)[_currentCategory.items objectAtIndex:indexPath.row]).image;
+                
+                [self.tableView reloadData];
+                
+            }];
+            
+            }
+            
+            //end op loadingimage part of code
             _didReachBottomMenuLevel = YES;
             
         }
@@ -153,6 +171,16 @@
 
 }
 
+//Method for row height setting (for items and for category)
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.currentCategory.items){
+        return 95;
+    } else {
+        return 44;
+    }
+ 
+}
 #warning DON'T COMMIT WORDS LIKE "X3" !!!!!
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath // обробник кліків за індексом
