@@ -11,7 +11,7 @@
 
 @implementation MenuCategoryModel
 
--(instancetype) initWithId:(int)Id name:(NSString*)name parentId:(int)parentId
+- (instancetype)initWithId:(int)Id name:(NSString*)name parentId:(int)parentId
 {
     self = [super init];
     if ( nil != self ) {
@@ -22,17 +22,17 @@
     return self;
 }
 
--(BOOL) isCategories
+- (BOOL)isCategories
 {
     return ( [self.categories count] != 0 );
 }
 
--(BOOL) isItems
+- (BOOL)isItems
 {
     return ( [self.items count] != 0 );
 }
 
--(void) addCategory:(MenuCategoryModel*)category
+- (void)addCategory:(MenuCategoryModel*)category
 {
     if ( self.categories == nil ) {
         self.categories = [[NSMutableArray alloc] init];
@@ -40,7 +40,7 @@
     [self.categories addObject:category];
 }
 
--(void) addItem:(MenuItemModel*)item
+- (void)addItem:(MenuItemModel*)item
 {
     if ( self.items == nil ) {
         self.items = [[NSMutableArray alloc] init];

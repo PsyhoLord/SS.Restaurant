@@ -37,14 +37,16 @@ NSString *const URLDownloadMapImage = @"http://192.168.195.212/Restaurant/Images
     
     [ServiceAgent send:URLRequest
           responseBlock:[^(NSData *data, NSError *error) {
-              
-              // call parser
-              MenuModel *menuModel = [MenuDataParser parse:data];
         
-              // call block from hight layer - DataProvider
-              callback(menuModel, error);
-              
-          } copy] ];
+        MenuModel *menuModel;
+        if ( error == nil ) {
+            // call parser
+            menuModel = [MenuDataParser parse:data];
+        }
+        // call block from hight layer - DataProvider
+        callback(menuModel, error);
+    
+    } copy] ];
 }
 
 // download image for itemId
@@ -61,8 +63,11 @@ NSString *const URLDownloadMapImage = @"http://192.168.195.212/Restaurant/Images
                                             timeoutInterval:connectionTimeoutInterval];
     
     [ServiceAgent send:URLRequest responseBlock:[^(NSData *data, NSError *error) {
-        UIImage *image = [[UIImage alloc] initWithData:data];
         
+        UIImage *image;
+        if ( error == nil ) {
+            image = [[UIImage alloc] initWithData:data];
+        }
         // call block from hight layer - DataProvider
         callback(image, error);
         
@@ -81,10 +86,11 @@ NSString *const URLDownloadMapImage = @"http://192.168.195.212/Restaurant/Images
                                             timeoutInterval:connectionTimeoutInterval];
     [ServiceAgent send:URLRequest responseBlock:[^(NSData *data, NSError *error) {
         
-         //MapDataParser *parserForMap=[MapDataParser new];
-         MapModel *entireMapModel=[MapDataParser parse:data];
-        
-         callback (entireMapModel,error);
+        MapModel *mapModel;
+        if ( error == nil ) {
+            mapModel = [MapDataParser parse:data];
+        }
+        callback (mapModel,error);
         
      } copy] ];
 }
@@ -103,8 +109,10 @@ NSString *const URLDownloadMapImage = @"http://192.168.195.212/Restaurant/Images
     
     [ServiceAgent send:URLRequest responseBlock:[^(NSData *data, NSError *error) {
         
-        UIImage *image = [[UIImage alloc] initWithData:data];
-        
+        UIImage *image;
+        if ( error == nil ) {
+            image = [[UIImage alloc] initWithData:data];
+        }
         // call block from hight layer - DataProvider
         callback(image, error);
         

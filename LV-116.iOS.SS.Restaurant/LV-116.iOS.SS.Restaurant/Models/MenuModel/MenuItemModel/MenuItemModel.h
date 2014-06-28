@@ -10,9 +10,9 @@
 
 @interface MenuItemModel : NSObject
 
--(instancetype)initWithId:(int)Id categoryId:(int) categoryId description:(NSString*)description name:(NSString*)name portions:(int)portions price:(float) price;
+- (instancetype)initWithId:(int)Id categoryId:(int) categoryId description:(NSString*)description name:(NSString*)name portions:(int)portions price:(float) price;
 
--(bool)isImage;
+- (bool)isImage;
 
 @property long Id;
 @property long categoryId;

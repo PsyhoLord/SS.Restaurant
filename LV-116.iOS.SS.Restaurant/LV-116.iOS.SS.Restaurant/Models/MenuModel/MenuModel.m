@@ -16,7 +16,7 @@
 //    MenuCategoryModel *_rootMenuCategory;
 }
 
--(instancetype)init
+- (instancetype)init
 {
     if ( self = [super init] ) {
         
@@ -24,13 +24,13 @@
     return self;
 }
 
--(BOOL)isEmpty
+- (BOOL)isEmpty
 {
     return  ( ( _rootMenuCategory == nil ) && ( [_rootMenuCategory isCategories] == 0 ) && ( [_rootMenuCategory isItems] == 0 ) );
 }
 
 // get MenuCategory object which contains categories or items of current category we want to get in
--(MenuCategoryModel*)getMenuData:(MenuCategoryModel*)category
+- (MenuCategoryModel*)getMenuData:(MenuCategoryModel*)category
 {
     if ( [self isEmpty] ) {
         return nil;
@@ -43,7 +43,7 @@
 
 // add category or item to menu tree
 // needs for DataParser
--(void)addNode:(id)node toCategory:(MenuCategoryModel*)nodeFather
+- (void)addNode:(id)node toCategory:(MenuCategoryModel*)nodeFather
 {
     if ( nodeFather ) {
         if ( [node isKindOfClass:([MenuCategoryModel class])] ) {

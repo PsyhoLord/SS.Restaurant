@@ -11,12 +11,12 @@
 @class MenuItemModel;
 @interface MenuCategoryModel : NSObject
 
--(instancetype) initWithId:(int)Id name:(NSString*)name parentId:(int)parentId;
--(BOOL) isCategories;
--(BOOL) isItems;
+- (instancetype)initWithId:(int)Id name:(NSString*)name parentId:(int)parentId;
+- (BOOL)isCategories;
+- (BOOL)isItems;
 
--(void) addCategory:(MenuCategoryModel*)category;
--(void) addItem:(MenuItemModel*)item;
+- (void)addCategory:(MenuCategoryModel*)category;
+- (void)addItem:(MenuItemModel*)item;
 
 @property int Id;
 @property (strong, nonatomic) NSMutableArray *categories;

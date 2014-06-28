@@ -10,7 +10,7 @@
 
 @implementation MenuItemModel
 
--(instancetype)initWithId:(int)Id categoryId:(int) categoryId description:(NSString*)description name:(NSString*)name portions:(int)portions price:(float) price
+- (instancetype)initWithId:(int)Id categoryId:(int) categoryId description:(NSString*)description name:(NSString*)name portions:(int)portions price:(float) price
 {
     self = [super init];
     if ( nil != self ) {
@@ -25,7 +25,7 @@
     return self;
 }
 
--(bool)isImage
+- (bool)isImage
 {
     return (self.image != nil);
 }

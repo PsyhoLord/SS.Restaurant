@@ -17,7 +17,6 @@
 #warning Is there any reason that DataProvider contains internal state ? I'm taking about menuModel, mapModel, CurrentCategory.
 #warning As for me the DataProvider should stateless and provide operations only. Get inout parameter and return response. That's it !
 
-
 // load menu data from remote and create menu model with these data
 // calls block when model has created
 + (void)loadMenuDataWithBlock:(void (^)(MenuModel*, NSError*))callback
