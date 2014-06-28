@@ -10,7 +10,7 @@
 #import "MapModel.h"
 #import "TableModel.h"
 
-static NSString *const ID     = @"Id";
+static NSString *const ID          = @"Id";
 static NSString *const capacity    = @"Capacity";
 static NSString *const height      = @"Height";
 static NSString *const isActive    = @"IsActive";
@@ -30,31 +30,30 @@ static NSString *const y           = @"Y";
     NSMutableDictionary *responseForTableMap = [NSJSONSerialization JSONObjectWithData:data
                                                                     options:NSJSONReadingMutableContainers
                                                                       error: &parsingError];
-
+    if ( parsingError ) {
+        return nil;
+    }
     //Calling a method, which will be convert data from JSON (type NSData) to MapModel (own type)
     return [self parseDictionary:responseForTableMap];
-
 }
 
-+(MapModel*)parseDictionary:(NSMutableDictionary*)tableDictionary
++ (MapModel*)parseDictionary:(NSMutableDictionary*)tableDictionary
 {
     MapModel *mapModel = [[MapModel alloc] init];
     
-    for(NSMutableDictionary *wholeMap in tableDictionary)
-    {
+    for ( NSMutableDictionary *wholeMap in tableDictionary ) {
         TableModel *tableToAddToMap;
-        tableToAddToMap=[
-                         [TableModel alloc] initWithId:[[wholeMap valueForKey:ID] intValue]
-                                            Capacity:[[wholeMap valueForKey:capacity]intValue]
-                                            height:[[wholeMap valueForKey:height]intValue]
-                                            isActive:[[wholeMap valueForKey:isActive] boolValue]
-                                            isFree:[[wholeMap valueForKey:isFree]boolValue]
-                                            isRound:[[wholeMap valueForKey:isRound]intValue]
-                                            name:[wholeMap valueForKey:name]
-                                            rotation:[[wholeMap valueForKey:rotation]intValue]
-                                            width:[[wholeMap valueForKey:width]intValue]
-                                            coordX:[[wholeMap valueForKey:x]intValue]
-                                            coordY:[[wholeMap valueForKey:y]intValue]
+        tableToAddToMap=[[TableModel alloc] initWithId:[[wholeMap valueForKey:ID] intValue]
+                                              Capacity:[[wholeMap valueForKey:capacity]intValue]
+                                                height:[[wholeMap valueForKey:height]intValue]
+                                              isActive:[[wholeMap valueForKey:isActive] boolValue]
+                                                isFree:[[wholeMap valueForKey:isFree]boolValue]
+                                               isRound:[[wholeMap valueForKey:isRound]intValue]
+                                                  name:[wholeMap valueForKey:name]
+                                              rotation:[[wholeMap valueForKey:rotation]intValue]
+                                                 width:[[wholeMap valueForKey:width]intValue]
+                                                coordX:[[wholeMap valueForKey:x]intValue]
+                                                coordY:[[wholeMap valueForKey:y]intValue]
                          ];
         [mapModel addTableModel:tableToAddToMap];
     }

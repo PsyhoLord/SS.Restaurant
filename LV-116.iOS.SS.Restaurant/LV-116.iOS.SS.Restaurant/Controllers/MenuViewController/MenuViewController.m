@@ -13,6 +13,7 @@
 #import "MenuModel.h"
 #import "MenuCategoryModel.h"
 #import "MenuItemModel.h"
+#import "Alert.h"
 
 static NSString *const menuCategoryCellIdentifier   = @"menuCategoryCellIdentifier";
 static NSString *const menuItemCellIdentifier       = @"menuItemCellIdentifier";
@@ -126,23 +127,18 @@ static const CGFloat rowHeightForMenuItemCell       = 95.0;
 // This method loads menu data from remote
 - (void)loadMenuData
 {
-
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
     [DataProvider loadMenuDataWithBlock:^(MenuModel *menuModel, NSError *error) {
-        if (error) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No network connection"
-                                                            message:@"You must be connected to the internet to use this app."
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-            [alert show];
-        } else{
+        
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        
+        if ( error ) {
+            [Alert showConnectionAlert];
+        } else {
             
          _currentCategory = menuModel.rootMenuCategory;
-            
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-            
+        
         [self.tableView reloadData];
         
         }

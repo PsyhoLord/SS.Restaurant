@@ -11,6 +11,7 @@
 		22346AEF195F0B5300495B2A /* MenuCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22346AED195F0B5300495B2A /* MenuCategoryCell.xib */; };
 		22346AF4195F0B5A00495B2A /* MenuItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22346AF2195F0B5A00495B2A /* MenuItemCell.m */; };
 		22346AF5195F0B5A00495B2A /* MenuItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22346AF3195F0B5A00495B2A /* MenuItemCell.xib */; };
+		22346B58195F209000495B2A /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 22346B57195F209000495B2A /* Alert.m */; };
 		2295C9321955B5EE00D6A4D7 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2295C92C1955B5EE00D6A4D7 /* MenuViewController.m */; };
 		22C282221955F64E00D8B115 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C282211955F64E00D8B115 /* RootViewController.m */; };
 		2B1ABB9D1958466500BF5678 /* MapDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1ABB9C1958466500BF5678 /* MapDataParser.m */; };
@@ -58,6 +59,8 @@
 		22346AF1195F0B5A00495B2A /* MenuItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuItemCell.h; sourceTree = "<group>"; };
 		22346AF2195F0B5A00495B2A /* MenuItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuItemCell.m; sourceTree = "<group>"; };
 		22346AF3195F0B5A00495B2A /* MenuItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuItemCell.xib; sourceTree = "<group>"; };
+		22346B56195F209000495B2A /* Alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alert.h; sourceTree = "<group>"; };
+		22346B57195F209000495B2A /* Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alert.m; sourceTree = "<group>"; };
 		2295C92B1955B5EE00D6A4D7 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		2295C92C1955B5EE00D6A4D7 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		22C282201955F64E00D8B115 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
@@ -150,6 +153,15 @@
 				22346AF3195F0B5A00495B2A /* MenuItemCell.xib */,
 			);
 			path = MenuItemCell;
+			sourceTree = "<group>";
+		};
+		22346B55195F204E00495B2A /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				22346B56195F209000495B2A /* Alert.h */,
+				22346B57195F209000495B2A /* Alert.m */,
+			);
+			path = Alerts;
 			sourceTree = "<group>";
 		};
 		225110151955B6B900DD4607 /* Cells */ = {
@@ -359,6 +371,7 @@
 		FA336C2219335B950007CC76 /* LV-116.iOS.SS.Restaurant */ = {
 			isa = PBXGroup;
 			children = (
+				22346B55195F204E00495B2A /* Alerts */,
 				EDE50DFB193E19EE00ACA71D /* Models */,
 				EDE50DF4193E10DA00ACA71D /* ServiceAgent */,
 				C348B3D4193DE6100004808D /* Parsers */,
@@ -534,6 +547,7 @@
 				EDE50DF7193E110500ACA71D /* ServiceAgent.m in Sources */,
 				EDEC47341956FACB0041B98B /* MenuCategoryModel.m in Sources */,
 				22C282221955F64E00D8B115 /* RootViewController.m in Sources */,
+				22346B58195F209000495B2A /* Alert.m in Sources */,
 				FA336C2919335B950007CC76 /* main.m in Sources */,
 				EDEC472A1956F9950041B98B /* TableModel.m in Sources */,
 				EDEC47351956FACB0041B98B /* MenuItemModel.m in Sources */,

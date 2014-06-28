@@ -9,6 +9,7 @@
 #import "MenuItemCell.h"
 #import "DataProvider.h"
 #import "MenuItemModel.h"
+#import "Alert.h"
 
 @implementation MenuItemCell
 
@@ -45,10 +46,13 @@
         
         [DataProvider loadMenuItemImage:menuItemModel withBlock:^(UIImage *itemImage, NSError *error) {
             
-            menuItemModel.image = itemImage;
-            
-            _itemImage.image = itemImage;
-            
+            if ( error ) {
+//                [Alert showConnectionAlert];
+            } else {
+                menuItemModel.image = itemImage;
+                
+                _itemImage.image = itemImage;
+            }
         }];
         
     }

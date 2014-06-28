@@ -15,7 +15,7 @@
 
 NSString *const URLMenu             = @"http://192.168.195.212/Restaurant/api/Menu?withItems=true&active=true&parentId=%i";
 NSString *const URLDownloadImage    = @"http://192.168.195.212/Restaurant/Menu/ImageResult/%i";
-const int connectionTimeoutInterval = 7.0;
+const int connectionTimeoutInterval = 4.0;
 NSString *const URLMap              = @"http://192.168.195.212/Restaurant/api/tables";
 NSString *const URLDownloadMapImage = @"http://192.168.195.212/Restaurant/Images/background.jpg";
 

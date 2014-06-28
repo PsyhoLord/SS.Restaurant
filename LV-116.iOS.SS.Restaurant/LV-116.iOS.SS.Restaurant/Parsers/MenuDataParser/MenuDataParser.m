@@ -32,6 +32,9 @@ static NSString *const IsActive    = @"IsActive";
     NSMutableDictionary *response = [NSJSONSerialization JSONObjectWithData:data
                                                                     options:NSJSONReadingMutableContainers
                                                                       error: &parsingError];
+    if ( parsingError ) {
+        return nil;
+    }
     MenuModel *menuModel = [[MenuModel alloc] init];
     // parsing
     [MenuDataParser parseDictionary:response toMenuModel:menuModel withTopMenuCategory:nil];

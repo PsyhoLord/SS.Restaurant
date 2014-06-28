@@ -11,6 +11,7 @@
 #import "DataProvider.h"
 #import "MapModel.h"
 #import "TableModel.h"
+#import "Alert.h"
 
 static const CGFloat scrollViewMinimumZoomScale      = 0.6f;
 static const CGFloat scrollViewMaximumZoomScale      = 3.0f;
@@ -53,23 +54,27 @@ static const CGFloat scrollViewMaximumZoomScale      = 3.0f;
 // and post noteification after get it
 - (void)loadMapData
 {
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    
     [DataProvider loadMapDataWithBlock:^(MapModel *mapModel, NSError *error) {
         
         if ( error ) {
-            NSLog(@"error1");
+            [Alert showConnectionAlert];
         } else {
             
             _mapModel = mapModel;
             
             [DataProvider loadMapBackgroundImageWithBlock:^(UIImage *mapBackgroundImage, NSError *error) {
                
+                [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+                
                 if ( error ) {
-                    NSLog(@"error2");
+                    [Alert showConnectionAlert];
                 } else {
                     _mapModel.image = mapBackgroundImage;
                     [self drawMap];
                 }
-                
+
             }];
         }
         
