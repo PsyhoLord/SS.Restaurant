@@ -20,6 +20,7 @@ static const CGFloat scrollViewMaximumZoomScale      = 3.0f;
 {
     __weak IBOutlet UIScrollView *_scrollView;
     UIView          *_zoomView;
+    UIImageView     *_backgroundView;
 //    DataProvider    *_dataProvider;
     MapModel        *_mapModel;
     NSMutableArray  *_tableViews;
@@ -31,6 +32,12 @@ static const CGFloat scrollViewMaximumZoomScale      = 3.0f;
     
     // init _tableViews
     _tableViews = [[NSMutableArray alloc] init];
+    _zoomView = [[UIView alloc] init];
+    _backgroundView = [[UIImageView alloc] init];
+    
+    
+    _scrollView.minimumZoomScale = scrollViewMinimumZoomScale;
+    _scrollView.maximumZoomScale = scrollViewMaximumZoomScale;
     
     [self loadMapData];
 }
@@ -72,29 +79,32 @@ static const CGFloat scrollViewMaximumZoomScale      = 3.0f;
                     [Alert showConnectionAlert];
                 } else {
                     _mapModel.image = mapBackgroundImage;
-                    [self drawMap];
+                    
+//                  drawing map performs on main thread
+                    dispatch_async( dispatch_get_main_queue(), ^{
+                        [self drawMap];
+                    });
+                    
                 }
-
             }];
         }
-        
     }];
+    
 }
 
 // draw map view with all tables and background map image
 - (void)drawMap
 {
     _scrollView.contentSize = CGSizeMake(_mapModel.image.size.width, _mapModel.image.size.height);
-
-    _scrollView.minimumZoomScale = scrollViewMinimumZoomScale;
-    _scrollView.maximumZoomScale = scrollViewMaximumZoomScale;
     
-    _zoomView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, _mapModel.image.size.width, _mapModel.image.size.height)];
+//    _zoomView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, _mapModel.image.size.width, _mapModel.image.size.height)];
+    _zoomView.frame = CGRectMake(0.0f, 0.0f, _mapModel.image.size.width, _mapModel.image.size.height);
     
-    UIImageView *backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, _mapModel.image.size.width, _mapModel.image.size.height)];
-    backgroundView.image = _mapModel.image;
+//    _backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, _mapModel.image.size.width, _mapModel.image.size.height)];
+    _backgroundView.frame = CGRectMake(0.0f, 0.0f, _mapModel.image.size.width, _mapModel.image.size.height);
+    _backgroundView.image = _mapModel.image;
     
-    [_zoomView addSubview:backgroundView];
+    [_zoomView addSubview:_backgroundView];
     
     for ( TableModel *tableModel in _mapModel.tableModelArray ) {
         [_zoomView addSubview:[self addTableView:tableModel]];

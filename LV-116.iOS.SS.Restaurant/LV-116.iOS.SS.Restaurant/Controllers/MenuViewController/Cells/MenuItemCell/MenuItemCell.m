@@ -51,7 +51,10 @@
             } else {
                 menuItemModel.image = itemImage;
                 
-                _itemImage.image = itemImage;
+//            drawing of item image performs on main thread.
+                dispatch_async( dispatch_get_main_queue(), ^{
+                    _itemImage.image = itemImage;
+                } );
             }
         }];
         

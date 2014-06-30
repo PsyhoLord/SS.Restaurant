@@ -35,6 +35,7 @@ static const CGFloat rowHeightForMenuItemCell       = 95.0;
     [super viewDidLoad];
     
     if ( _currentCategory == nil ) {
+//        [self performSelectorOnMainThread:@selector(loadMenuData) withObject:self waitUntilDone:NO];
         [self loadMenuData];
     }
 }
@@ -110,7 +111,7 @@ static const CGFloat rowHeightForMenuItemCell       = 95.0;
 {
     if ( [_currentCategory isCategories] ) {
         MenuViewController *menuViewController = [[MenuViewController alloc] init];
-        
+
         MenuCategoryModel *selectedCategory = [_currentCategory.categories objectAtIndex:indexPath.row];
         
         [menuViewController setTitle: selectedCategory.name];
@@ -129,6 +130,8 @@ static const CGFloat rowHeightForMenuItemCell       = 95.0;
 {
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
+    
+    
     [DataProvider loadMenuDataWithBlock:^(MenuModel *menuModel, NSError *error) {
         
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
@@ -137,14 +140,19 @@ static const CGFloat rowHeightForMenuItemCell       = 95.0;
             [Alert showConnectionAlert];
         } else {
             
+            
          _currentCategory = menuModel.rootMenuCategory;
-        
-        [self.tableView reloadData];
+            
+//            method reloadData performs on main thread.
+            dispatch_async( dispatch_get_main_queue(), ^{
+                [self.tableView reloadData];
+            } );
         
         }
     }];
     
 }
+
 
 #warning Try to move view events at the begginng of ViewController implementation. Also, make sure al events are placed in right order. For example: viewDidLoad goes before viewDidAppear
 #warning I decided to skip this method because it looks incomplete. Right ? :)
