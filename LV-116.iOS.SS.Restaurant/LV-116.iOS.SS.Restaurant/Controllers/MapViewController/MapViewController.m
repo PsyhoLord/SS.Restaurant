@@ -13,15 +13,11 @@
 #import "TableModel.h"
 #import "Alert.h"
 
-static const CGFloat scrollViewMinimumZoomScale      = 0.6f;
-static const CGFloat scrollViewMaximumZoomScale      = 3.0f;
-
 @implementation MapViewController
 {
     __weak IBOutlet UIScrollView *_scrollView;
     UIView          *_zoomView;
     UIImageView     *_backgroundView;
-//    DataProvider    *_dataProvider;
     MapModel        *_mapModel;
     NSMutableArray  *_tableViews;
 }
@@ -32,12 +28,6 @@ static const CGFloat scrollViewMaximumZoomScale      = 3.0f;
     
     // init _tableViews
     _tableViews = [[NSMutableArray alloc] init];
-    _zoomView = [[UIView alloc] init];
-    _backgroundView = [[UIImageView alloc] init];
-    
-    
-    _scrollView.minimumZoomScale = scrollViewMinimumZoomScale;
-    _scrollView.maximumZoomScale = scrollViewMaximumZoomScale;
     
     [self loadMapData];
 }
@@ -95,13 +85,9 @@ static const CGFloat scrollViewMaximumZoomScale      = 3.0f;
 // draw map view with all tables and background map image
 - (void)drawMap
 {
-    _scrollView.contentSize = CGSizeMake(_mapModel.image.size.width, _mapModel.image.size.height);
+    _zoomView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, _mapModel.image.size.width, _mapModel.image.size.height)];
     
-//    _zoomView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, _mapModel.image.size.width, _mapModel.image.size.height)];
-    _zoomView.frame = CGRectMake(0.0f, 0.0f, _mapModel.image.size.width, _mapModel.image.size.height);
-    
-//    _backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, _mapModel.image.size.width, _mapModel.image.size.height)];
-    _backgroundView.frame = CGRectMake(0.0f, 0.0f, _mapModel.image.size.width, _mapModel.image.size.height);
+    _backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, _mapModel.image.size.width, _mapModel.image.size.height)];
     _backgroundView.image = _mapModel.image;
     
     [_zoomView addSubview:_backgroundView];
@@ -111,6 +97,8 @@ static const CGFloat scrollViewMaximumZoomScale      = 3.0f;
     }
     
     [_scrollView addSubview:_zoomView];
+    
+    _scrollView.contentSize = CGSizeMake(_mapModel.image.size.width, _mapModel.image.size.height);
 }
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
