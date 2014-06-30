@@ -130,8 +130,6 @@ static const CGFloat rowHeightForMenuItemCell       = 95.0;
 {
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
-    
-    
     [DataProvider loadMenuDataWithBlock:^(MenuModel *menuModel, NSError *error) {
         
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
@@ -139,7 +137,6 @@ static const CGFloat rowHeightForMenuItemCell       = 95.0;
         if ( error ) {
             [Alert showConnectionAlert];
         } else {
-            
             
          _currentCategory = menuModel.rootMenuCategory;
             

@@ -21,44 +21,45 @@
 // calls block when model has created
 + (void)loadMenuDataWithBlock:(void (^)(MenuModel*, NSError*))callback
 {
-    [RemoteDataProvider loadMenuDataWithBlock:[^(MenuModel *menuModel, NSError *error) {
-        
+   
+    [RemoteDataProvider loadMenuDataWithBlock:^(MenuModel *menuModel, NSError *error) {
+
         callback(menuModel, error);
         
-    } copy] ];
+    } ];
 }
 
 // load map data from remote and create map model with these data
 // calls block when model has created
 + (void)loadMapDataWithBlock:(void (^)(MapModel*, NSError*))callback
 {
-    [RemoteDataProvider loadMapDataWithBlock:[^(MapModel *mapModel, NSError *error) {
+    [RemoteDataProvider loadMapDataWithBlock:^(MapModel *mapModel, NSError *error) {
         
         callback(mapModel, error);
         
-    } copy] ];
+    } ];
 }
 
 // load menu item image from remote
 // calls block when image is
 + (void)loadMenuItemImage:(MenuItemModel*)menuItemModel withBlock:(void (^)(UIImage*, NSError*))callback
 {
-    [RemoteDataProvider loadMenuItemImageById:menuItemModel.Id withBlock:[^(UIImage *menuItemImage, NSError *error) {
+    [RemoteDataProvider loadMenuItemImageById:menuItemModel.Id withBlock:^(UIImage *menuItemImage, NSError *error) {
         
         callback(menuItemImage, error);
         
-    } copy] ];
+    } ];
 }
 
 // load map background image from remote
 // calls block when image is
 + (void)loadMapBackgroundImageWithBlock:(void (^)(UIImage*, NSError*))callback
 {
-    [RemoteDataProvider loadMapBackgroundImageWithBlock:[^(UIImage *mapBackgroundImage, NSError *error) {
+    [RemoteDataProvider loadMapBackgroundImageWithBlock:^(UIImage *mapBackgroundImage, NSError *error) {
         
         callback(mapBackgroundImage, error);
         
-    } copy] ];
+    } ];
 }
 
 @end
