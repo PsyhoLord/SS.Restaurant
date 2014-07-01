@@ -42,12 +42,13 @@ static NSString *const IsActive    = @"IsActive";
 }
 
 // recursive method for building menu tree
-+ (void)parseDictionary:(NSMutableDictionary*)category toMenuModel:(MenuModel*)menuModel withTopMenuCategory:(MenuCategoryModel*)topMenuCategory
++ (void)parseDictionary:(NSMutableDictionary*)categories toMenuModel:(MenuModel*)menuModel withTopMenuCategory:(MenuCategoryModel*)topMenuCategory
 {
-    if ( [category count] == 0 )
+    if ( [categories count] == 0 ){
         return;
+    }
     
-    for ( NSMutableDictionary *tmpCategory in category ) {
+    for ( NSMutableDictionary *tmpCategory in categories ) {
         MenuCategoryModel *tmpTopMenuCategory = topMenuCategory;
         
         int parentId = 0;
@@ -56,33 +57,43 @@ static NSString *const IsActive    = @"IsActive";
         }
         
         MenuCategoryModel *menuCategory = [[MenuCategoryModel alloc] initWithId:[[tmpCategory valueForKey:ID] intValue]
-                                                                 name:[tmpCategory valueForKey:Name]
-                                                             parentId:parentId
-                                      ];
+                                                                           name:[tmpCategory valueForKey:Name]
+                                                                       parentId:parentId];
         [menuModel addNode:menuCategory toCategory:topMenuCategory];
         tmpTopMenuCategory = menuCategory;
+        
         if ( [[tmpCategory valueForKey:Categories] count] != 0 ) {
-            [MenuDataParser parseDictionary: [tmpCategory valueForKey:Categories] toMenuModel:menuModel withTopMenuCategory:tmpTopMenuCategory];
+            [MenuDataParser parseDictionary: [tmpCategory valueForKey:Categories]
+                                toMenuModel:menuModel
+                                withTopMenuCategory:tmpTopMenuCategory];
         } else {
             if ( [[tmpCategory valueForKey:Items] count] != 0 ) {
                 for ( NSMutableDictionary *tmpItem in [tmpCategory valueForKey:Items] ) {
                     
-                    NSString *description = [[NSString alloc] init];
-                    if ( [tmpItem objectForKey:Description] != [NSNull null] ) {
-                        description = [tmpItem valueForKey:Description];
-                    }
-                    
-                    MenuItemModel *menuItem = [[MenuItemModel alloc] initWithId:[[tmpItem valueForKey:ID] integerValue]
-                                                           categoryId:[[tmpItem valueForKey:CategoryId] integerValue]
-                                                          description:description
-                                                                 name:[tmpItem valueForKey:Name]
-                                                             portions:[[tmpItem valueForKey:Portions] integerValue]
-                                                                price:[[tmpItem valueForKey:Price] floatValue]];
-                    [menuModel addNode:menuItem toCategory:tmpTopMenuCategory];
+                    MenuItemModel *menuItem = [self createMenuItem:tmpItem];
+                    [menuModel addNode: menuItem toCategory: tmpTopMenuCategory];
                 }
             }
         }
     }
 }
+
+
++ (MenuItemModel *)createMenuItem:(NSMutableDictionary *) itemDict
+{
+    NSString *description = [[NSString alloc] init];
+    if ( [itemDict objectForKey: Description] != [NSNull null] ) {
+        description = [itemDict valueForKey: Description];
+    }
+    
+    MenuItemModel *menuItemModel = [[MenuItemModel alloc] initWithId: [[itemDict valueForKey:ID] integerValue]
+                                                     categoryId: [[itemDict valueForKey:CategoryId] integerValue]
+                                                    description: description
+                                                           name: [itemDict valueForKey:Name]
+                                                       portions: [[itemDict valueForKey:Portions] integerValue]
+                                                          price: [[itemDict valueForKey:Price] floatValue]];
+    return menuItemModel;
+}
+
 
 @end

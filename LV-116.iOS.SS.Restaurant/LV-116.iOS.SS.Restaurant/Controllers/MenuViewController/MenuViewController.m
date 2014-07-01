@@ -34,10 +34,17 @@ static const CGFloat rowHeightForMenuItemCell       = 95.0;
 {
     [super viewDidLoad];
     
+    [self setupRefreshControl];
+    
     if ( _currentCategory == nil ) {
 //        [self performSelectorOnMainThread:@selector(loadMenuData) withObject:self waitUntilDone:NO];
         [self loadMenuData];
     }
+}
+
+- (void) setupRefreshControl
+{
+    [self.refreshControl addTarget:self action:@selector(loadMenuData) forControlEvents:UIControlEventAllEvents];
 }
 
 #pragma mark - Table view data source
@@ -122,7 +129,6 @@ static const CGFloat rowHeightForMenuItemCell       = 95.0;
     }
 }
 
-#warning COMMENT YOUR CODE ONLY IN ENGLISH !!!!!!
 #warning It's not a good practice to use "nil" for some logic. At least you can encapsulate it in some method inside the DataProvider. Just add another method called "getAllMenu" and place [self getMenuData:nil] as a body of this method. It's your internal logic, so stay as more simple as you can for component which will use your DataProvider.
 
 // This method loads menu data from remote
@@ -130,22 +136,27 @@ static const CGFloat rowHeightForMenuItemCell       = 95.0;
 {
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
+    [self.refreshControl beginRefreshing];
+    
     [DataProvider loadMenuDataWithBlock:^(MenuModel *menuModel, NSError *error) {
         
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         
-        if ( error ) {
-            [Alert showConnectionAlert];
-        } else {
-            
-         _currentCategory = menuModel.rootMenuCategory;
-            
-//            method reloadData performs on main thread.
-            dispatch_async( dispatch_get_main_queue(), ^{
-                [self.tableView reloadData];
-            } );
+        _currentCategory = menuModel.rootMenuCategory;
         
-        }
+        //            method reloadData performs on main thread.
+        dispatch_async( dispatch_get_main_queue(), ^{
+            
+            
+            if ( error ) {
+                [Alert showConnectionAlert];
+            } else {
+                [self.tableView reloadData];
+                [self.refreshControl endRefreshing];
+            }
+        } );
+        
+        
     }];
     
 }
@@ -154,9 +165,8 @@ static const CGFloat rowHeightForMenuItemCell       = 95.0;
 #warning Try to move view events at the begginng of ViewController implementation. Also, make sure al events are placed in right order. For example: viewDidLoad goes before viewDidAppear
 #warning I decided to skip this method because it looks incomplete. Right ? :)
 
-#warning DON'T COMMIT WORDS LIKE "X3" !!!!!
 
-- (void)didReceiveMemoryWarning // Попередження про память
+- (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
