@@ -19,4 +19,5 @@
 // (MenuCategoryModel*)menuCategoryModel - data for category cell
 - (void) drawCellWithModel:(MenuCategoryModel*)menuCategoryModel;
 
++ (CGFloat) rowHeightForCell;
 @end

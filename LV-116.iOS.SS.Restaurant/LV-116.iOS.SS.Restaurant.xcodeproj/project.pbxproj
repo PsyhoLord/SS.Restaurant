@@ -15,6 +15,7 @@
 		2295C9321955B5EE00D6A4D7 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2295C92C1955B5EE00D6A4D7 /* MenuViewController.m */; };
 		22C282221955F64E00D8B115 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C282211955F64E00D8B115 /* RootViewController.m */; };
 		2B1ABB9D1958466500BF5678 /* MapDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1ABB9C1958466500BF5678 /* MapDataParser.m */; };
+		6364FE531961AB4C00E838F0 /* DescriptionScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 6364FE521961AB4C00E838F0 /* DescriptionScreen.m */; };
 		C348B3D3193DE5E90004808D /* RemoteDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C348B3D2193DE5E90004808D /* RemoteDataProvider.m */; };
 		ED9AAE8D1959B8BA00656681 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9AAE891959B8BA00656681 /* MapViewController.m */; };
 		ED9AAE8E1959B8BA00656681 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9AAE8C1959B8BA00656681 /* TableView.m */; };
@@ -67,6 +68,9 @@
 		22C282211955F64E00D8B115 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		2B1ABB9B1958466500BF5678 /* MapDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapDataParser.h; path = MapDataParser/MapDataParser.h; sourceTree = "<group>"; };
 		2B1ABB9C1958466500BF5678 /* MapDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapDataParser.m; path = MapDataParser/MapDataParser.m; sourceTree = "<group>"; };
+		6364FE511961AB4C00E838F0 /* DescriptionScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DescriptionScreen.h; path = DescritionScreen/DescriptionScreen.h; sourceTree = "<group>"; };
+		6364FE521961AB4C00E838F0 /* DescriptionScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DescriptionScreen.m; path = DescritionScreen/DescriptionScreen.m; sourceTree = "<group>"; };
+		6364FE541961B88E00E838F0 /* PMenuItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMenuItemCell.h; sourceTree = "<group>"; };
 		C348B3D1193DE5E90004808D /* RemoteDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteDataProvider.h; sourceTree = "<group>"; };
 		C348B3D2193DE5E90004808D /* RemoteDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteDataProvider.m; sourceTree = "<group>"; };
 		C348B3D5193DE68B0004808D /* PDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDataParser.h; sourceTree = "<group>"; };
@@ -148,6 +152,7 @@
 		22346AF0195F0B5A00495B2A /* MenuItemCell */ = {
 			isa = PBXGroup;
 			children = (
+				6364FE541961B88E00E838F0 /* PMenuItemCell.h */,
 				22346AF1195F0B5A00495B2A /* MenuItemCell.h */,
 				22346AF2195F0B5A00495B2A /* MenuItemCell.m */,
 				22346AF3195F0B5A00495B2A /* MenuItemCell.xib */,
@@ -186,6 +191,7 @@
 		2295C92A1955B5EE00D6A4D7 /* MenuViewController */ = {
 			isa = PBXGroup;
 			children = (
+				6364FE4D1961A78E00E838F0 /* DescriptionScreen */,
 				225110151955B6B900DD4607 /* Cells */,
 				2295C92B1955B5EE00D6A4D7 /* MenuViewController.h */,
 				2295C92C1955B5EE00D6A4D7 /* MenuViewController.m */,
@@ -209,6 +215,15 @@
 				2B1ABB9C1958466500BF5678 /* MapDataParser.m */,
 			);
 			name = MapDataParser;
+			sourceTree = "<group>";
+		};
+		6364FE4D1961A78E00E838F0 /* DescriptionScreen */ = {
+			isa = PBXGroup;
+			children = (
+				6364FE511961AB4C00E838F0 /* DescriptionScreen.h */,
+				6364FE521961AB4C00E838F0 /* DescriptionScreen.m */,
+			);
+			name = DescriptionScreen;
 			sourceTree = "<group>";
 		};
 		C348B3CF193DE5AC0004808D /* DataProviders */ = {
@@ -538,6 +553,7 @@
 				ED9AAE8E1959B8BA00656681 /* TableView.m in Sources */,
 				ED9AAE8D1959B8BA00656681 /* MapViewController.m in Sources */,
 				C348B3D3193DE5E90004808D /* RemoteDataProvider.m in Sources */,
+				6364FE531961AB4C00E838F0 /* DescriptionScreen.m in Sources */,
 				EDEC473B1956FBB90041B98B /* MenuDataParser.m in Sources */,
 				2B1ABB9D1958466500BF5678 /* MapDataParser.m in Sources */,
 				FA336C2D19335B950007CC76 /* AppDelegate.m in Sources */,

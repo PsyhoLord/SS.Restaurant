@@ -10,14 +10,32 @@
 #import "DataProvider.h"
 #import "MenuItemModel.h"
 #import "Alert.h"
+#import "DescriptionScreen.h"
+
+#define CELL_HEIGHT 107
 
 @implementation MenuItemCell
+
+
++ (CGFloat) rowHeightForCell
+{
+    return CELL_HEIGHT;
+}
+
+//{static int Height;}
+@synthesize delegate = _delegate;
+
+- (void)prepareForReuse
+{
+    [super prepareForReuse];
+    self.delegate = nil;
+}
 
 - (void)awakeFromNib
 {
     // Initialization code
-    
 }
+
 
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -28,6 +46,7 @@
     }
     return self;
 }
+
 
 // This method draw cell with data from menuItemModel
 // (MenuItemModel*)menuItemModel - data for cell
@@ -56,13 +75,17 @@
         }];
         
     }
-    
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
     // Configure the view for the selected state
+}
+- (IBAction)InfoButtonPressed:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(delegateForCell:)])
+        [self.delegate delegateForCell:self];
 }
 
 @end

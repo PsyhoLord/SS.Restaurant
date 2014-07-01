@@ -14,12 +14,11 @@
 #import "MenuCategoryModel.h"
 #import "MenuItemModel.h"
 #import "Alert.h"
+#import "DescriptionScreen.h"
 
 static NSString *const menuCategoryCellIdentifier   = @"menuCategoryCellIdentifier";
 static NSString *const menuItemCellIdentifier       = @"menuItemCellIdentifier";
 static const NSUInteger numberOfSectionsInTableView = 1;
-static const CGFloat rowHeightForMenuCategoryCell   = 44.0;
-static const CGFloat rowHeightForMenuItemCell       = 95.0;
 
 #warning What about using self.tableView ? UITableViewController provides you built in "tableView" property
 
@@ -43,7 +42,6 @@ static const CGFloat rowHeightForMenuItemCell       = 95.0;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView // Кількість секцій в TableView
 {
-    // Return the number of sections.
     return numberOfSectionsInTableView;
 }
 
@@ -61,9 +59,11 @@ static const CGFloat rowHeightForMenuItemCell       = 95.0;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ( [_currentCategory isItems] ) {
-        return rowHeightForMenuItemCell;
+        return [MenuItemCell rowHeightForCell];
+        //rowHeightForMenuItemCell;
     } else {
-        return rowHeightForMenuCategoryCell;
+        return [MenuCategoryCell rowHeightForCell];
+        //rowHeightForMenuCategoryCell;
     }
 }
 
@@ -97,6 +97,7 @@ static const CGFloat rowHeightForMenuItemCell       = 95.0;
             [menuItemCell drawCellWithModel:menuItemModel];
 
         }
+        [menuItemCell setDelegate:self];
         return menuItemCell;
     }
 
@@ -151,10 +152,24 @@ static const CGFloat rowHeightForMenuItemCell       = 95.0;
 
 #warning DON'T COMMIT WORDS LIKE "X3" !!!!!
 
-- (void)didReceiveMemoryWarning // Попередження про память
+- (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)delegateForCell:(MenuItemCell *)cell {
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    
+    // do your stuff
+    DescriptionScreen *DescriptionUI = [[DescriptionScreen alloc] init];
+    //DescriptionScreen *DescriptionUI = [self.storyboard instantiateViewControllerWithIdentifier:@"DescriptionUI"];
+    MenuItemModel *menuItemModel = [_currentCategory.items objectAtIndex:indexPath.row];
+    
+    [DescriptionUI drawDescriptionWithModel: menuItemModel];
+   
+    [self.navigationController pushViewController:DescriptionUI animated:YES];
 }
 
 @end

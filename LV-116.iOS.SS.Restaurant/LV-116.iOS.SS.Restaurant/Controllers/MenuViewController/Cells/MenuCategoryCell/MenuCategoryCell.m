@@ -9,7 +9,14 @@
 #import "MenuCategoryCell.h"
 #import "MenuCategoryModel.h"
 
+#define CELL_HEIGHT 39
+
 @implementation MenuCategoryCell
+
++ (CGFloat) rowHeightForCell
+{
+    return CELL_HEIGHT;
+}
 
 - (void)awakeFromNib
 {
