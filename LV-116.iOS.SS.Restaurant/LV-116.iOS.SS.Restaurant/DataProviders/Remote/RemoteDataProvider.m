@@ -7,7 +7,8 @@
 //
 
 #import "RemoteDataProvider.h"
-#import "PServiceAgent.h"
+//#import "PServiceAgent.h"
+#import "RequestManager.h"
 #import "MenuModel.h"
 #import "MapModel.h"
 #import "MenuDataParser.h"
@@ -15,9 +16,10 @@
 
 NSString *const URLMenu             = @"http://192.168.195.212/Restaurant/api/Menu?withItems=true&active=true&parentId=%i";
 NSString *const URLDownloadImage    = @"http://192.168.195.212/Restaurant/Menu/ImageResult/%i";
-const int connectionTimeoutInterval = 4.0;
+const int connectionTimeoutInterval = 3.0;
 NSString *const URLMap              = @"http://192.168.195.212/Restaurant/api/tables";
 NSString *const URLDownloadMapImage = @"http://192.168.195.212/Restaurant/Images/background.jpg";
+static const int maxCountOfAttemptsForRequest = 3;
 
 
 @implementation RemoteDataProvider
@@ -35,21 +37,22 @@ NSString *const URLDownloadMapImage = @"http://192.168.195.212/Restaurant/Images
                                                 cachePolicy:NSURLRequestUseProtocolCachePolicy
                                             timeoutInterval:connectionTimeoutInterval];
     
-    [ServiceAgent send:URLRequest
-         responseBlock:^(NSData *data, NSError *error) {
-             
-             MenuModel *menuModel;
-             if ( error == nil ) {
-                 // call parser
-                 
-                 menuModel = [MenuDataParser parse: data
-                                        parseError: &error];
-                 NSLog(@"%@",error);
-             }
-             // call block from hight layer - DataProvider
-             callback(menuModel, error);
-             
-         } ];
+    [RequestManager send:URLRequest
+           responseBlock:^(NSData *data, NSError *error) {
+               
+               MenuModel *menuModel;
+               if ( error == nil ) {
+                   // call parser
+                   
+                   menuModel = [MenuDataParser parse: data
+                                          parseError: &error];
+                   NSLog(@"%@",error);
+               }
+               // call block from hight layer - DataProvider
+               callback(menuModel, error);
+               
+           }
+         countOfAttempts:maxCountOfAttemptsForRequest];
 }
 
 // download image for itemId

@@ -14,6 +14,7 @@
 		22346B58195F209000495B2A /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 22346B57195F209000495B2A /* Alert.m */; };
 		2265A7001964292D0059EC0E /* MapDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2265A6FC1964292D0059EC0E /* MapDataProvider.m */; };
 		2265A7011964292D0059EC0E /* MenuDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2265A6FF1964292D0059EC0E /* MenuDataProvider.m */; };
+		2265A70519642B1B0059EC0E /* RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2265A70419642B1B0059EC0E /* RequestManager.m */; };
 		2295C9321955B5EE00D6A4D7 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2295C92C1955B5EE00D6A4D7 /* MenuViewController.m */; };
 		22C282221955F64E00D8B115 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C282211955F64E00D8B115 /* RootViewController.m */; };
 		2B1ABB9D1958466500BF5678 /* MapDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1ABB9C1958466500BF5678 /* MapDataParser.m */; };
@@ -72,6 +73,8 @@
 		2265A6FC1964292D0059EC0E /* MapDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapDataProvider.m; sourceTree = "<group>"; };
 		2265A6FE1964292D0059EC0E /* MenuDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuDataProvider.h; sourceTree = "<group>"; };
 		2265A6FF1964292D0059EC0E /* MenuDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuDataProvider.m; sourceTree = "<group>"; };
+		2265A70319642B1B0059EC0E /* RequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestManager.h; sourceTree = "<group>"; };
+		2265A70419642B1B0059EC0E /* RequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestManager.m; sourceTree = "<group>"; };
 		2295C92B1955B5EE00D6A4D7 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		2295C92C1955B5EE00D6A4D7 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		22C282201955F64E00D8B115 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
@@ -210,6 +213,15 @@
 			);
 			name = MenuDataProvider;
 			path = DataProviders/MenuDataProvider;
+			sourceTree = "<group>";
+		};
+		2265A70219642B0A0059EC0E /* RequestManager */ = {
+			isa = PBXGroup;
+			children = (
+				2265A70319642B1B0059EC0E /* RequestManager.h */,
+				2265A70419642B1B0059EC0E /* RequestManager.m */,
+			);
+			path = RequestManager;
 			sourceTree = "<group>";
 		};
 		2295C91C1955B5EE00D6A4D7 /* Controllers */ = {
@@ -438,6 +450,7 @@
 			children = (
 				22346B55195F204E00495B2A /* Alerts */,
 				EDE50DFB193E19EE00ACA71D /* Models */,
+				2265A70219642B0A0059EC0E /* RequestManager */,
 				EDE50DF4193E10DA00ACA71D /* ServiceAgent */,
 				C348B3D4193DE6100004808D /* Parsers */,
 				C348B3CF193DE5AC0004808D /* DataProviders */,
@@ -619,6 +632,7 @@
 				FA336C2919335B950007CC76 /* main.m in Sources */,
 				634D995A19640D48004775CA /* UIItemDescription.m in Sources */,
 				EDEC472A1956F9950041B98B /* TableModel.m in Sources */,
+				2265A70519642B1B0059EC0E /* RequestManager.m in Sources */,
 				EDEC47351956FACB0041B98B /* MenuItemModel.m in Sources */,
 				2265A7001964292D0059EC0E /* MapDataProvider.m in Sources */,
 				632C192D1964134200471DB6 /* ItemDescription.m in Sources */,
