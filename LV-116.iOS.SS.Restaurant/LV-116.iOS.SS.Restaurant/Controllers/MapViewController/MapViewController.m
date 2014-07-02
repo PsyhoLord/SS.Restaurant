@@ -56,26 +56,28 @@
     [MapDataProvider loadMapDataWithBlock:^(MapModel *mapModel, NSError *error) {
         
         if ( error ) {
-            [Alert showConnectionAlert];
+            dispatch_async( dispatch_get_main_queue(), ^{
+                [Alert showConnectionAlert];
+                [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+            });
         } else {
             
             _mapModel = mapModel;
             
             [MapDataProvider loadMapBackgroundImageWithBlock:^(UIImage *mapBackgroundImage, NSError *error) {
-               
+                
                 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
                 
-                if ( error ) {
-                    [Alert showConnectionAlert];
-                } else {
-                    _mapModel.image = mapBackgroundImage;
-                    
-//                  drawing map performs on main thread
-                    dispatch_async( dispatch_get_main_queue(), ^{
+                dispatch_async( dispatch_get_main_queue(), ^{
+                    if ( error ) {
+                        [Alert showConnectionAlert];
+                    } else {
+                        _mapModel.image = mapBackgroundImage;
+                        
+                        // drawing map performs on main thread
                         [self drawMap];
-                    });
-                    
-                }
+                    }
+                });
             }];
         }
     }];

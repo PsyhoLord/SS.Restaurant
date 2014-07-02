@@ -68,16 +68,18 @@ static const int maxCountOfAttemptsForRequest = 3;
                                                 cachePolicy:NSURLRequestUseProtocolCachePolicy
                                             timeoutInterval:connectionTimeoutInterval];
     
-    [ServiceAgent send:URLRequest responseBlock:^(NSData *data, NSError *error) {
-        
-        UIImage *image;
-        if ( error == nil ) {
-            image = [[UIImage alloc] initWithData:data];
-        }
-        // call block from hight layer - DataProvider
-        callback(image, error);
-        
-    } ];
+    [RequestManager send:URLRequest
+           responseBlock:^(NSData *data, NSError *error) {
+               
+               UIImage *image;
+               if ( error == nil ) {
+                   image = [[UIImage alloc] initWithData:data];
+               }
+               // call block from hight layer - DataProvider
+               callback(image, error);
+               
+           }
+         countOfAttempts:maxCountOfAttemptsForRequest];
 }
 
 + (void)loadMapDataWithBlock:(void (^)(MapModel *, NSError *))callback
@@ -89,16 +91,19 @@ static const int maxCountOfAttemptsForRequest = 3;
     NSURLRequest *URLRequest = [NSURLRequest requestWithURL:URL
                                                 cachePolicy:NSURLRequestUseProtocolCachePolicy
                                             timeoutInterval:connectionTimeoutInterval];
-    [ServiceAgent send:URLRequest responseBlock:^(NSData *data, NSError *error) {
-        
-        MapModel *mapModel;
-        if ( error == nil ) {
-            mapModel = [MapDataParser parse: data
-                                 parseError: &error];
-        }
-        callback (mapModel,error);
-        
-    } ];
+    
+    [RequestManager send:URLRequest
+           responseBlock:^(NSData *data, NSError *error) {
+               
+               MapModel *mapModel;
+               if ( error == nil ) {
+                   mapModel = [MapDataParser parse: data
+                                        parseError: &error];
+               }
+               callback (mapModel,error);
+               
+           }
+         countOfAttempts:maxCountOfAttemptsForRequest];
 }
 
 // download image for map
@@ -113,16 +118,18 @@ static const int maxCountOfAttemptsForRequest = 3;
                                                 cachePolicy:NSURLRequestUseProtocolCachePolicy
                                             timeoutInterval:connectionTimeoutInterval];
     
-    [ServiceAgent send:URLRequest responseBlock:^(NSData *data, NSError *error) {
-        
-        UIImage *image;
-        if ( error == nil ) {
-            image = [[UIImage alloc] initWithData: data];
-        }
-        // call block from hight layer - DataProvider
-        callback(image, error);
-        
-    } ];
+    [RequestManager send:URLRequest
+           responseBlock:^(NSData *data, NSError *error) {
+               
+               UIImage *image;
+               if ( error == nil ) {
+                   image = [[UIImage alloc] initWithData: data];
+               }
+               // call block from hight layer - DataProvider
+               callback(image, error);
+               
+           }
+         countOfAttempts:maxCountOfAttemptsForRequest];
 }
 
 @end
