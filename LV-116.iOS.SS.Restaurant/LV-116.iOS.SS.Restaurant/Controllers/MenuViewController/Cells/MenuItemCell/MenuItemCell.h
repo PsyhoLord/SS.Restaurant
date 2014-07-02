@@ -7,9 +7,9 @@
 //
 
 // class menuItemCell needs for custom item cell
-#import "PMenuItemCell.h"
+//#import "PMenuItemCell.h"
 @class MenuItemModel;
-@protocol MenuItemCellDelegate;
+//@protocol MenuItemCellDelegate;
 
 @interface MenuItemCell : UITableViewCell//<PMenuItemCell>
 
@@ -18,7 +18,8 @@
 @property (weak, nonatomic) IBOutlet UILabel     *itemPrice;
 @property (weak, nonatomic) IBOutlet UILabel     *itemWeight;
 @property (weak, nonatomic) IBOutlet UIImageView *itemImage;
-@property (weak, nonatomic) id <MenuItemCellDelegate> delegate;
+//@property (weak, nonatomic) id <MenuItemCellDelegate> delegate;
+//@property (strong, nonatomic) IBOutlet UIButton *infoButton;
 
 
 // this method draw cell with data from menuItemModel
@@ -30,9 +31,9 @@
 
 @end
 
-@protocol MenuItemCellDelegate <NSObject>
+//@protocol MenuItemCellDelegate <NSObject>
 
-@optional
+//@optional
 
-- (void)delegateForCell:(MenuItemCell *)cell;
-@end
+//- (void)delegateForCell:(MenuItemCell *)cell;
+//@end

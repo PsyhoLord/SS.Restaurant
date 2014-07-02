@@ -15,10 +15,14 @@
 #import "MenuItemModel.h"
 #import "Alert.h"
 #import "DescriptionScreen.h"
+#import "UIItemDescription.h"
+#import "ItemDescription.h"
 
 static NSString *const menuCategoryCellIdentifier   = @"menuCategoryCellIdentifier";
 static NSString *const menuItemCellIdentifier       = @"menuItemCellIdentifier";
 static const NSUInteger numberOfSectionsInTableView = 1;
+
+
 
 #warning What about using self.tableView ? UITableViewController provides you built in "tableView" property
 
@@ -95,9 +99,13 @@ static const NSUInteger numberOfSectionsInTableView = 1;
             MenuItemModel *menuItemModel = [_currentCategory.items objectAtIndex:indexPath.row];
             
             [menuItemCell drawCellWithModel:menuItemModel];
+            
+            //[[menuItemCell infoButton] addTarget:self action:@selector(tableView:) forControlEvents:UIControlEventTouchUpInside];
+
 
         }
-        [menuItemCell setDelegate:self];
+        
+        //[menuItemCell setDelegate:self];
         return menuItemCell;
     }
 
@@ -158,6 +166,22 @@ static const NSUInteger numberOfSectionsInTableView = 1;
     // Dispose of any resources that can be recreated.
 }
 
+
+- (void) tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    //UITableViewCell *ownerCell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    MenuItemModel *menuItemModel = [_currentCategory.items objectAtIndex:indexPath.row];
+    
+    ItemDescription *ItemScreen = [[ItemDescription alloc] initWithModel:menuItemModel];
+    
+    //[ItemScreen drawDescriptionWithModel: menuItemModel];
+    //[ drawDescriptionWithModel:<#(MenuItemModel *)#>]
+    ItemScreen.itemModel = menuItemModel;
+    [self.navigationController pushViewController:ItemScreen animated:YES];
+}
+
+/*
 - (void)delegateForCell:(MenuItemCell *)cell {
     
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
@@ -170,6 +194,6 @@ static const NSUInteger numberOfSectionsInTableView = 1;
     [DescriptionUI drawDescriptionWithModel: menuItemModel];
    
     [self.navigationController pushViewController:DescriptionUI animated:YES];
-}
+}*/
 
 @end

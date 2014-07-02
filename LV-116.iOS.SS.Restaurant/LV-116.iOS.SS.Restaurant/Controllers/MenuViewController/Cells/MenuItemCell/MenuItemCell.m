@@ -23,13 +23,13 @@
 }
 
 //{static int Height;}
-@synthesize delegate = _delegate;
+//@synthesize delegate = _delegate;
 
-- (void)prepareForReuse
+/*- (void)prepareForReuse
 {
     [super prepareForReuse];
     self.delegate = nil;
-}
+}*/
 
 - (void)awakeFromNib
 {
@@ -83,9 +83,7 @@
     [super setSelected:selected animated:animated];
     // Configure the view for the selected state
 }
-- (IBAction)InfoButtonPressed:(id)sender {
-    if ([self.delegate respondsToSelector:@selector(delegateForCell:)])
-        [self.delegate delegateForCell:self];
-}
+
+
 
 @end
