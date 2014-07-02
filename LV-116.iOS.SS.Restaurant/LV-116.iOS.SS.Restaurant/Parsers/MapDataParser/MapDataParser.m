@@ -24,13 +24,14 @@ static NSString *const y           = @"Y";
 
 @implementation MapDataParser
 
-+ (id)parse:(NSData*) data
++ (id)parse:(NSData*) data parseError:(NSError**) parseError
 {
     NSError *parsingError;
-    NSMutableDictionary *responseForTableMap = [NSJSONSerialization JSONObjectWithData:data
-                                                                    options:NSJSONReadingMutableContainers
-                                                                      error: &parsingError];
+    NSMutableDictionary *responseForTableMap = [NSJSONSerialization JSONObjectWithData: data
+                                                                               options: NSJSONReadingMutableContainers
+                                                                                 error: &parsingError];
     if ( parsingError ) {
+        *parseError = parsingError;
         return nil;
     }
     //Calling a method, which will be convert data from JSON (type NSData) to MapModel (own type)
@@ -58,7 +59,7 @@ static NSString *const y           = @"Y";
         [mapModel addTableModel:tableToAddToMap];
     }
     return mapModel;
-   
+    
 }
 
 @end

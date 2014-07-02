@@ -30,23 +30,26 @@ NSString *const URLDownloadMapImage = @"http://192.168.195.212/Restaurant/Images
     NSString *stringURL = [[NSString alloc] initWithFormat:URLMenu, 0];
     
     NSURL *URL = [[NSURL alloc] initWithString:stringURL];
-
+    
     NSURLRequest *URLRequest = [NSURLRequest requestWithURL:URL
                                                 cachePolicy:NSURLRequestUseProtocolCachePolicy
                                             timeoutInterval:connectionTimeoutInterval];
     
     [ServiceAgent send:URLRequest
-          responseBlock:^(NSData *data, NSError *error) {
-        
-        MenuModel *menuModel;
-        if ( error == nil ) {
-            // call parser
-            menuModel = [MenuDataParser parse:data];
-        }
-        // call block from hight layer - DataProvider
-        callback(menuModel, error);
-    
-    } ];
+         responseBlock:^(NSData *data, NSError *error) {
+             
+             MenuModel *menuModel;
+             if ( error == nil ) {
+                 // call parser
+                 
+                 menuModel = [MenuDataParser parse: data
+                                        parseError: &error];
+                 NSLog(@"%@",error);
+             }
+             // call block from hight layer - DataProvider
+             callback(menuModel, error);
+             
+         } ];
 }
 
 // download image for itemId
@@ -87,11 +90,12 @@ NSString *const URLDownloadMapImage = @"http://192.168.195.212/Restaurant/Images
         
         MapModel *mapModel;
         if ( error == nil ) {
-            mapModel = [MapDataParser parse:data];
+            mapModel = [MapDataParser parse: data
+                                 parseError: &error];
         }
         callback (mapModel,error);
         
-     } ];
+    } ];
 }
 
 // download image for map
@@ -110,7 +114,7 @@ NSString *const URLDownloadMapImage = @"http://192.168.195.212/Restaurant/Images
         
         UIImage *image;
         if ( error == nil ) {
-            image = [[UIImage alloc] initWithData:data];
+            image = [[UIImage alloc] initWithData: data];
         }
         // call block from hight layer - DataProvider
         callback(image, error);

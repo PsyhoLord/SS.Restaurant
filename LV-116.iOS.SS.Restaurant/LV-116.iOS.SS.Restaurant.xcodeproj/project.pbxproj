@@ -12,6 +12,8 @@
 		22346AF4195F0B5A00495B2A /* MenuItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22346AF2195F0B5A00495B2A /* MenuItemCell.m */; };
 		22346AF5195F0B5A00495B2A /* MenuItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22346AF3195F0B5A00495B2A /* MenuItemCell.xib */; };
 		22346B58195F209000495B2A /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 22346B57195F209000495B2A /* Alert.m */; };
+		2265A7001964292D0059EC0E /* MapDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2265A6FC1964292D0059EC0E /* MapDataProvider.m */; };
+		2265A7011964292D0059EC0E /* MenuDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2265A6FF1964292D0059EC0E /* MenuDataProvider.m */; };
 		2295C9321955B5EE00D6A4D7 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2295C92C1955B5EE00D6A4D7 /* MenuViewController.m */; };
 		22C282221955F64E00D8B115 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C282211955F64E00D8B115 /* RootViewController.m */; };
 		2B1ABB9D1958466500BF5678 /* MapDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1ABB9C1958466500BF5678 /* MapDataParser.m */; };
@@ -66,6 +68,10 @@
 		22346AF3195F0B5A00495B2A /* MenuItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuItemCell.xib; sourceTree = "<group>"; };
 		22346B56195F209000495B2A /* Alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alert.h; sourceTree = "<group>"; };
 		22346B57195F209000495B2A /* Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alert.m; sourceTree = "<group>"; };
+		2265A6FB1964292D0059EC0E /* MapDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapDataProvider.h; sourceTree = "<group>"; };
+		2265A6FC1964292D0059EC0E /* MapDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapDataProvider.m; sourceTree = "<group>"; };
+		2265A6FE1964292D0059EC0E /* MenuDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuDataProvider.h; sourceTree = "<group>"; };
+		2265A6FF1964292D0059EC0E /* MenuDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuDataProvider.m; sourceTree = "<group>"; };
 		2295C92B1955B5EE00D6A4D7 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		2295C92C1955B5EE00D6A4D7 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		22C282201955F64E00D8B115 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
@@ -186,6 +192,26 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		2265A6FA1964292D0059EC0E /* MapDataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				2265A6FB1964292D0059EC0E /* MapDataProvider.h */,
+				2265A6FC1964292D0059EC0E /* MapDataProvider.m */,
+			);
+			name = MapDataProvider;
+			path = DataProviders/MapDataProvider;
+			sourceTree = "<group>";
+		};
+		2265A6FD1964292D0059EC0E /* MenuDataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				2265A6FE1964292D0059EC0E /* MenuDataProvider.h */,
+				2265A6FF1964292D0059EC0E /* MenuDataProvider.m */,
+			);
+			name = MenuDataProvider;
+			path = DataProviders/MenuDataProvider;
+			sourceTree = "<group>";
+		};
 		2295C91C1955B5EE00D6A4D7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -251,8 +277,8 @@
 		C348B3CF193DE5AC0004808D /* DataProviders */ = {
 			isa = PBXGroup;
 			children = (
-				57007A411963FE4A00C8AF84 /* MenuDataProvider */,
-				57007A431963FE6700C8AF84 /* MapDataProvider */,
+				2265A6FA1964292D0059EC0E /* MapDataProvider */,
+				2265A6FD1964292D0059EC0E /* MenuDataProvider */,
 				C348B3D0193DE5E90004808D /* Remote */,
 				EDADBCB1193F6E2F004E18EC /* DataProvider.h */,
 				EDADBCB2193F6E2F004E18EC /* DataProvider.m */,
@@ -585,7 +611,6 @@
 				FA336C2D19335B950007CC76 /* AppDelegate.m in Sources */,
 				EDEC47291956F9950041B98B /* MapModel.m in Sources */,
 				EDADBCB3193F6E2F004E18EC /* DataProvider.m in Sources */,
-				57007A461964069D00C8AF84 /* MenuDataProvider.m in Sources */,
 				22346AF4195F0B5A00495B2A /* MenuItemCell.m in Sources */,
 				EDE50DF7193E110500ACA71D /* ServiceAgent.m in Sources */,
 				EDEC47341956FACB0041B98B /* MenuCategoryModel.m in Sources */,
@@ -595,7 +620,9 @@
 				634D995A19640D48004775CA /* UIItemDescription.m in Sources */,
 				EDEC472A1956F9950041B98B /* TableModel.m in Sources */,
 				EDEC47351956FACB0041B98B /* MenuItemModel.m in Sources */,
+				2265A7001964292D0059EC0E /* MapDataProvider.m in Sources */,
 				632C192D1964134200471DB6 /* ItemDescription.m in Sources */,
+				2265A7011964292D0059EC0E /* MenuDataProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

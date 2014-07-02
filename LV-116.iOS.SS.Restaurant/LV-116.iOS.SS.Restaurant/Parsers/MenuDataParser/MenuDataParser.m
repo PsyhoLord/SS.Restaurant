@@ -26,13 +26,15 @@ static NSString *const IsActive    = @"IsActive";
 
 // parse all menu tree
 // (NSData*) data - data to parse
-+ (id)parse:(NSData*) data
++ (id)parse:(NSData*) data parseError:(NSError**)parseError
 {
     NSError *parsingError;
+    
     NSMutableDictionary *menuDictionary = [NSJSONSerialization JSONObjectWithData: data
                                                                           options: NSJSONReadingMutableContainers
                                                                             error: &parsingError];
     if ( parsingError ) {
+        *parseError = parsingError;
         return nil;
     }
     MenuModel *menuModel = [[MenuModel alloc] init];
