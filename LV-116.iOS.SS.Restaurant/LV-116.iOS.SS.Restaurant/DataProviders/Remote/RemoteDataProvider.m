@@ -36,7 +36,7 @@ NSString *const URLDownloadMapImage = @"http://192.168.195.212/Restaurant/Images
                                             timeoutInterval:connectionTimeoutInterval];
     
     [ServiceAgent send:URLRequest
-          responseBlock:[^(NSData *data, NSError *error) {
+          responseBlock:^(NSData *data, NSError *error) {
         
         MenuModel *menuModel;
         if ( error == nil ) {
@@ -46,7 +46,7 @@ NSString *const URLDownloadMapImage = @"http://192.168.195.212/Restaurant/Images
         // call block from hight layer - DataProvider
         callback(menuModel, error);
     
-    } copy] ];
+    } ];
 }
 
 // download image for itemId
@@ -62,7 +62,7 @@ NSString *const URLDownloadMapImage = @"http://192.168.195.212/Restaurant/Images
                                                 cachePolicy:NSURLRequestUseProtocolCachePolicy
                                             timeoutInterval:connectionTimeoutInterval];
     
-    [ServiceAgent send:URLRequest responseBlock:[^(NSData *data, NSError *error) {
+    [ServiceAgent send:URLRequest responseBlock:^(NSData *data, NSError *error) {
         
         UIImage *image;
         if ( error == nil ) {
@@ -71,10 +71,9 @@ NSString *const URLDownloadMapImage = @"http://192.168.195.212/Restaurant/Images
         // call block from hight layer - DataProvider
         callback(image, error);
         
-    } copy] ];
+    } ];
 }
 
-#warning It's better to have different RemoteFacade for different areas. I mean MenuRemoteFacade, TableRemoteFacade, etc.
 + (void)loadMapDataWithBlock:(void (^)(MapModel *, NSError *))callback
 {
     NSString *stringURL = [[NSString alloc] initWithFormat:URLMap];
@@ -84,7 +83,7 @@ NSString *const URLDownloadMapImage = @"http://192.168.195.212/Restaurant/Images
     NSURLRequest *URLRequest = [NSURLRequest requestWithURL:URL
                                                 cachePolicy:NSURLRequestUseProtocolCachePolicy
                                             timeoutInterval:connectionTimeoutInterval];
-    [ServiceAgent send:URLRequest responseBlock:[^(NSData *data, NSError *error) {
+    [ServiceAgent send:URLRequest responseBlock:^(NSData *data, NSError *error) {
         
         MapModel *mapModel;
         if ( error == nil ) {
@@ -92,7 +91,7 @@ NSString *const URLDownloadMapImage = @"http://192.168.195.212/Restaurant/Images
         }
         callback (mapModel,error);
         
-     } copy] ];
+     } ];
 }
 
 // download image for map
@@ -107,7 +106,7 @@ NSString *const URLDownloadMapImage = @"http://192.168.195.212/Restaurant/Images
                                                 cachePolicy:NSURLRequestUseProtocolCachePolicy
                                             timeoutInterval:connectionTimeoutInterval];
     
-    [ServiceAgent send:URLRequest responseBlock:[^(NSData *data, NSError *error) {
+    [ServiceAgent send:URLRequest responseBlock:^(NSData *data, NSError *error) {
         
         UIImage *image;
         if ( error == nil ) {
@@ -116,7 +115,7 @@ NSString *const URLDownloadMapImage = @"http://192.168.195.212/Restaurant/Images
         // call block from hight layer - DataProvider
         callback(image, error);
         
-    } copy] ];
+    } ];
 }
 
 @end

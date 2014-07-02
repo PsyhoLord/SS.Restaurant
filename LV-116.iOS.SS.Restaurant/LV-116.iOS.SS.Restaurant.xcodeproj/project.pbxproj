@@ -251,6 +251,8 @@
 		C348B3CF193DE5AC0004808D /* DataProviders */ = {
 			isa = PBXGroup;
 			children = (
+				57007A411963FE4A00C8AF84 /* MenuDataProvider */,
+				57007A431963FE6700C8AF84 /* MapDataProvider */,
 				C348B3D0193DE5E90004808D /* Remote */,
 				EDADBCB1193F6E2F004E18EC /* DataProvider.h */,
 				EDADBCB2193F6E2F004E18EC /* DataProvider.m */,
@@ -583,6 +585,7 @@
 				FA336C2D19335B950007CC76 /* AppDelegate.m in Sources */,
 				EDEC47291956F9950041B98B /* MapModel.m in Sources */,
 				EDADBCB3193F6E2F004E18EC /* DataProvider.m in Sources */,
+				57007A461964069D00C8AF84 /* MenuDataProvider.m in Sources */,
 				22346AF4195F0B5A00495B2A /* MenuItemCell.m in Sources */,
 				EDE50DF7193E110500ACA71D /* ServiceAgent.m in Sources */,
 				EDEC47341956FACB0041B98B /* MenuCategoryModel.m in Sources */,
