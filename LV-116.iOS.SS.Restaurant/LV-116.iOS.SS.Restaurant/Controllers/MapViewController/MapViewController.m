@@ -8,7 +8,7 @@
 
 #import "MapViewController.h"
 #import "TableView.h"
-#import "DataProvider.h"
+#import "MapDataProvider.h"
 #import "MapModel.h"
 #import "TableModel.h"
 #import "Alert.h"
@@ -53,7 +53,7 @@
 {
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
-    [DataProvider loadMapDataWithBlock:^(MapModel *mapModel, NSError *error) {
+    [MapDataProvider loadMapDataWithBlock:^(MapModel *mapModel, NSError *error) {
         
         if ( error ) {
             [Alert showConnectionAlert];
@@ -61,7 +61,7 @@
             
             _mapModel = mapModel;
             
-            [DataProvider loadMapBackgroundImageWithBlock:^(UIImage *mapBackgroundImage, NSError *error) {
+            [MapDataProvider loadMapBackgroundImageWithBlock:^(UIImage *mapBackgroundImage, NSError *error) {
                
                 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
                 

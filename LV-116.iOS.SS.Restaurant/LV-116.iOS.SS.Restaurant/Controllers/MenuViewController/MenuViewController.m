@@ -9,7 +9,7 @@
 #import "MenuViewController.h"
 #import "MenuItemCell.h"
 #import "MenuCategoryCell.h"
-#import "DataProvider.h"
+#import "MenuDataProvider.h"
 #import "MenuModel.h"
 #import "MenuCategoryModel.h"
 #import "MenuItemModel.h"
@@ -21,14 +21,12 @@ static const NSUInteger numberOfSectionsInTableView = 1;
 static const CGFloat rowHeightForMenuCategoryCell   = 44.0;
 static const CGFloat rowHeightForMenuItemCell       = 95.0;
 
-#warning What about using self.tableView ? UITableViewController provides you built in "tableView" property
 
 @implementation MenuViewController
 {
     MenuCategoryModel *_currentCategory;
 }
 
-#warning use blocks instead of Notifications !!!
 
 - (void)viewDidLoad
 {
@@ -42,6 +40,37 @@ static const CGFloat rowHeightForMenuItemCell       = 95.0;
     }
 }
 
+// This method loads menu data from remote
+- (void)loadMenuData
+{
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    
+    [self.refreshControl beginRefreshing];
+    
+    [MenuDataProvider loadMenuDataWithBlock:^(MenuModel *menuModel, NSError *error) {
+        
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        
+        _currentCategory = menuModel.rootMenuCategory;
+        
+        //            method reloadData performs on main thread.
+        dispatch_async( dispatch_get_main_queue(), ^{
+            
+            
+            if ( error ) {
+                [Alert showConnectionAlert];
+            } else {
+                [self.tableView reloadData];
+                [self.refreshControl endRefreshing];
+            }
+        } );
+        
+        
+    }];
+    
+}
+
+
 - (void) setupRefreshControl
 {
     [self.refreshControl addTarget:self action:@selector(loadMenuData) forControlEvents:UIControlEventAllEvents];
@@ -49,7 +78,7 @@ static const CGFloat rowHeightForMenuItemCell       = 95.0;
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView // Кількість секцій в TableView
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
     return numberOfSectionsInTableView;
@@ -110,8 +139,6 @@ static const CGFloat rowHeightForMenuItemCell       = 95.0;
 
 }
 
-#warning Boolean flag usage leads to complex BUGS ! Try to avoid it !!!
-#warning you can extract method here. Something like "showCategoryItems" or "navigateToCategoryItems"
 
 // This method creates new storyboard recursively
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -129,41 +156,8 @@ static const CGFloat rowHeightForMenuItemCell       = 95.0;
     }
 }
 
-#warning It's not a good practice to use "nil" for some logic. At least you can encapsulate it in some method inside the DataProvider. Just add another method called "getAllMenu" and place [self getMenuData:nil] as a body of this method. It's your internal logic, so stay as more simple as you can for component which will use your DataProvider.
-
-// This method loads menu data from remote
-- (void)loadMenuData
-{
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-    
-    [self.refreshControl beginRefreshing];
-    
-    [DataProvider loadMenuDataWithBlock:^(MenuModel *menuModel, NSError *error) {
-        
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-        
-        _currentCategory = menuModel.rootMenuCategory;
-        
-        //            method reloadData performs on main thread.
-        dispatch_async( dispatch_get_main_queue(), ^{
-            
-            
-            if ( error ) {
-                [Alert showConnectionAlert];
-            } else {
-                [self.tableView reloadData];
-                [self.refreshControl endRefreshing];
-            }
-        } );
-        
-        
-    }];
-    
-}
 
 
-#warning Try to move view events at the begginng of ViewController implementation. Also, make sure al events are placed in right order. For example: viewDidLoad goes before viewDidAppear
-#warning I decided to skip this method because it looks incomplete. Right ? :)
 
 
 - (void)didReceiveMemoryWarning
