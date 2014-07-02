@@ -173,7 +173,7 @@ static const NSUInteger numberOfSectionsInTableView = 1;
     
     MenuItemModel *menuItemModel = [_currentCategory.items objectAtIndex:indexPath.row];
     
-    ItemDescription *ItemScreen = [[ItemDescription alloc] initWithModel:menuItemModel];
+    ItemDescription *ItemScreen = [[ItemDescription alloc] init];
     
     //[ItemScreen drawDescriptionWithModel: menuItemModel];
     //[ drawDescriptionWithModel:<#(MenuItemModel *)#>]
