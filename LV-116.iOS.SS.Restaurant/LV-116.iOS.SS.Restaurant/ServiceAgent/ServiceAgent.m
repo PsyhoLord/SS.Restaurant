@@ -29,8 +29,4 @@
     
 }
 
-#warning What do you need the notification for ? I can easily pass an error in callback below and handle it later !!!
-#warning It should be enough to send the error in callback and then handle it in view controller (just to complement previous statement :) )
-#warning What is a purpose of using copy method here ? Why do you need to copy the block ? Please, be ready to explain
-
 @end

@@ -14,8 +14,6 @@
 {
     [super viewDidLoad];
     
-#warning I don't think you need it here. It's better to initialize component where it's needed and used. For example in controller that uses this provider
-
 }
 
 - (void)didReceiveMemoryWarning

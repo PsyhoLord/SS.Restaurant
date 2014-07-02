@@ -74,7 +74,6 @@ NSString *const URLDownloadMapImage = @"http://192.168.195.212/Restaurant/Images
     } ];
 }
 
-#warning It's better to have different RemoteFacade for different areas. I mean MenuRemoteFacade, TableRemoteFacade, etc.
 + (void)loadMapDataWithBlock:(void (^)(MapModel *, NSError *))callback
 {
     NSString *stringURL = [[NSString alloc] initWithFormat:URLMap];
