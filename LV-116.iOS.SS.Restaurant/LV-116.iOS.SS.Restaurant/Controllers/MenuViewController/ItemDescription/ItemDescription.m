@@ -48,9 +48,11 @@
             if ( error ) {
                 //                [Alert showConnectionAlert];
             } else {
+                if (itemImage) {
                 _itemModel.image = itemImage;
                 
                 _itemImage.image = itemImage;
+                }
             }
         }];
         

@@ -10,7 +10,7 @@
 #import "MenuDataProvider.h"
 #import "MenuItemModel.h"
 #import "Alert.h"
-#import "DescriptionScreen.h"
+
 
 #define CELL_HEIGHT 107
 
@@ -72,7 +72,9 @@
                 
 //            drawing of item image performs on main thread.
                 dispatch_async( dispatch_get_main_queue(), ^{
+                    if (itemImage) {
                     _itemImage.image = itemImage;
+                    }
                 } );
             }
         }];

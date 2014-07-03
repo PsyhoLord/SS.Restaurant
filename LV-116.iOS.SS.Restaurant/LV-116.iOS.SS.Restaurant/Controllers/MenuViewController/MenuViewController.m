@@ -14,8 +14,6 @@
 #import "MenuCategoryModel.h"
 #import "MenuItemModel.h"
 #import "Alert.h"
-#import "DescriptionScreen.h"
-#import "UIItemDescription.h"
 #import "ItemDescription.h"
 
 static NSString *const menuCategoryCellIdentifier   = @"menuCategoryCellIdentifier";
