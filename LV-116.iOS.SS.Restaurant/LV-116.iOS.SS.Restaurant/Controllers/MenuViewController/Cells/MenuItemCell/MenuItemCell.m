@@ -7,7 +7,7 @@
 //
 
 #import "MenuItemCell.h"
-#import "DataProvider.h"
+#import "MenuDataProvider.h"
 #import "MenuItemModel.h"
 #import "Alert.h"
 #import "DescriptionScreen.h"
@@ -63,7 +63,7 @@
         
     } else {
         
-        [DataProvider loadMenuItemImage:menuItemModel withBlock:^(UIImage *itemImage, NSError *error) {
+        [MenuDataProvider loadMenuItemImage:menuItemModel withBlock:^(UIImage *itemImage, NSError *error) {
             
             if ( error ) {
 //                [Alert showConnectionAlert];

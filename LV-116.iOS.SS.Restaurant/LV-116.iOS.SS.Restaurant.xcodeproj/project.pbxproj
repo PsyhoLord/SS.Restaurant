@@ -26,7 +26,6 @@
 		C348B3D3193DE5E90004808D /* RemoteDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C348B3D2193DE5E90004808D /* RemoteDataProvider.m */; };
 		ED9AAE8D1959B8BA00656681 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9AAE891959B8BA00656681 /* MapViewController.m */; };
 		ED9AAE8E1959B8BA00656681 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9AAE8C1959B8BA00656681 /* TableView.m */; };
-		EDADBCB3193F6E2F004E18EC /* DataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = EDADBCB2193F6E2F004E18EC /* DataProvider.m */; };
 		EDE50DF7193E110500ACA71D /* ServiceAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE50DF6193E110500ACA71D /* ServiceAgent.m */; };
 		EDEC47291956F9950041B98B /* MapModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEC47251956F9950041B98B /* MapModel.m */; };
 		EDEC472A1956F9950041B98B /* TableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEC47281956F9950041B98B /* TableModel.m */; };
@@ -96,8 +95,6 @@
 		ED9AAE891959B8BA00656681 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		ED9AAE8B1959B8BA00656681 /* TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView.h; sourceTree = "<group>"; };
 		ED9AAE8C1959B8BA00656681 /* TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView.m; sourceTree = "<group>"; };
-		EDADBCB1193F6E2F004E18EC /* DataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataProvider.h; path = DataProviders/DataProvider.h; sourceTree = "<group>"; };
-		EDADBCB2193F6E2F004E18EC /* DataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataProvider.m; path = DataProviders/DataProvider.m; sourceTree = "<group>"; };
 		EDE50DF3193E10D400ACA71D /* PServiceAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PServiceAgent.h; path = ServiceAgent/PServiceAgent.h; sourceTree = "<group>"; };
 		EDE50DF5193E110500ACA71D /* ServiceAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceAgent.h; path = ServiceAgent/ServiceAgent.h; sourceTree = "<group>"; };
 		EDE50DF6193E110500ACA71D /* ServiceAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceAgent.m; path = ServiceAgent/ServiceAgent.m; sourceTree = "<group>"; };
@@ -292,8 +289,6 @@
 				2265A6FA1964292D0059EC0E /* MapDataProvider */,
 				2265A6FD1964292D0059EC0E /* MenuDataProvider */,
 				C348B3D0193DE5E90004808D /* Remote */,
-				EDADBCB1193F6E2F004E18EC /* DataProvider.h */,
-				EDADBCB2193F6E2F004E18EC /* DataProvider.m */,
 			);
 			name = DataProviders;
 			sourceTree = "<group>";
@@ -623,7 +618,6 @@
 				2B1ABB9D1958466500BF5678 /* MapDataParser.m in Sources */,
 				FA336C2D19335B950007CC76 /* AppDelegate.m in Sources */,
 				EDEC47291956F9950041B98B /* MapModel.m in Sources */,
-				EDADBCB3193F6E2F004E18EC /* DataProvider.m in Sources */,
 				22346AF4195F0B5A00495B2A /* MenuItemCell.m in Sources */,
 				EDE50DF7193E110500ACA71D /* ServiceAgent.m in Sources */,
 				EDEC47341956FACB0041B98B /* MenuCategoryModel.m in Sources */,

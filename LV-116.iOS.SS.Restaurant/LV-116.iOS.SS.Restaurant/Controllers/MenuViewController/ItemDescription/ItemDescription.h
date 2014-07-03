@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DataProvider.h"
+#import "MenuDataProvider.h"
 #import "MenuItemModel.h"
 
 

@@ -7,7 +7,7 @@
 //
 
 #import "DescriptionScreen.h"
-#import "DataProvider.h"
+#import "MenuDataProvider.h"
 
 
 @interface DescriptionScreen ()
@@ -50,7 +50,7 @@
         
     } else {
         
-        [DataProvider loadMenuItemImage:menuItemModel withBlock:^(UIImage *itemImage, NSError *error) {
+        [MenuDataProvider loadMenuItemImage:menuItemModel withBlock:^(UIImage *itemImage, NSError *error) {
             
             if ( error ) {
                 //                [Alert showConnectionAlert];
