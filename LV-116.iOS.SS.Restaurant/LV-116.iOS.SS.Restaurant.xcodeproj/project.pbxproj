@@ -27,6 +27,11 @@
 		ED89D3F11965B0AA00882F5C /* WaiterMapModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ED89D3F01965B0AA00882F5C /* WaiterMapModel.m */; };
 		ED9AAE8D1959B8BA00656681 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9AAE891959B8BA00656681 /* MapViewController.m */; };
 		ED9AAE8E1959B8BA00656681 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9AAE8C1959B8BA00656681 /* TableView.m */; };
+		EDBDFE12196720C700E65DCA /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDBDFE11196720C700E65DCA /* SWRevealViewController.m */; };
+		EDBDFE191967218600E65DCA /* OrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDBDFE151967218600E65DCA /* OrdersViewController.m */; };
+		EDBDFE1A1967218600E65DCA /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDBDFE181967218600E65DCA /* SidebarViewController.m */; };
+		EDBDFE331967219000E65DCA /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = EDBDFE231967219000E65DCA /* menu.png */; };
+		EDBDFE341967219000E65DCA /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDBDFE241967219000E65DCA /* menu@2x.png */; };
 		EDE50DF7193E110500ACA71D /* ServiceAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE50DF6193E110500ACA71D /* ServiceAgent.m */; };
 		EDEC47291956F9950041B98B /* MapModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEC47251956F9950041B98B /* MapModel.m */; };
 		EDEC472A1956F9950041B98B /* TableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEC47281956F9950041B98B /* TableModel.m */; };
@@ -99,6 +104,14 @@
 		ED9AAE891959B8BA00656681 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		ED9AAE8B1959B8BA00656681 /* TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView.h; sourceTree = "<group>"; };
 		ED9AAE8C1959B8BA00656681 /* TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView.m; sourceTree = "<group>"; };
+		EDBDFE10196720C700E65DCA /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		EDBDFE11196720C700E65DCA /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		EDBDFE141967218600E65DCA /* OrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersViewController.h; sourceTree = "<group>"; };
+		EDBDFE151967218600E65DCA /* OrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersViewController.m; sourceTree = "<group>"; };
+		EDBDFE171967218600E65DCA /* SidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarViewController.h; sourceTree = "<group>"; };
+		EDBDFE181967218600E65DCA /* SidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarViewController.m; sourceTree = "<group>"; };
+		EDBDFE231967219000E65DCA /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
+		EDBDFE241967219000E65DCA /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
 		EDE50DF3193E10D400ACA71D /* PServiceAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PServiceAgent.h; path = ServiceAgent/PServiceAgent.h; sourceTree = "<group>"; };
 		EDE50DF5193E110500ACA71D /* ServiceAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceAgent.h; path = ServiceAgent/ServiceAgent.h; sourceTree = "<group>"; };
 		EDE50DF6193E110500ACA71D /* ServiceAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceAgent.m; path = ServiceAgent/ServiceAgent.m; sourceTree = "<group>"; };
@@ -231,6 +244,7 @@
 				22C2821F1955F64E00D8B115 /* RootViewController */,
 				2295C92A1955B5EE00D6A4D7 /* MenuViewController */,
 				ED9AAE871959B8BA00656681 /* MapViewController */,
+				EDBDFE0E1967207F00E65DCA /* WaiterMapControllers */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -365,6 +379,52 @@
 			path = TableView;
 			sourceTree = "<group>";
 		};
+		EDBDFE0E1967207F00E65DCA /* WaiterMapControllers */ = {
+			isa = PBXGroup;
+			children = (
+				EDBDFE131967218600E65DCA /* OrdersViewController */,
+				EDBDFE161967218600E65DCA /* SidebarViewController */,
+				EDBDFE0F196720C700E65DCA /* SwRevealController */,
+			);
+			path = WaiterMapControllers;
+			sourceTree = "<group>";
+		};
+		EDBDFE0F196720C700E65DCA /* SwRevealController */ = {
+			isa = PBXGroup;
+			children = (
+				EDBDFE10196720C700E65DCA /* SWRevealViewController.h */,
+				EDBDFE11196720C700E65DCA /* SWRevealViewController.m */,
+			);
+			path = SwRevealController;
+			sourceTree = "<group>";
+		};
+		EDBDFE131967218600E65DCA /* OrdersViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EDBDFE141967218600E65DCA /* OrdersViewController.h */,
+				EDBDFE151967218600E65DCA /* OrdersViewController.m */,
+			);
+			path = OrdersViewController;
+			sourceTree = "<group>";
+		};
+		EDBDFE161967218600E65DCA /* SidebarViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EDBDFE171967218600E65DCA /* SidebarViewController.h */,
+				EDBDFE181967218600E65DCA /* SidebarViewController.m */,
+			);
+			path = SidebarViewController;
+			sourceTree = "<group>";
+		};
+		EDBDFE1B1967219000E65DCA /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				EDBDFE231967219000E65DCA /* menu.png */,
+				EDBDFE241967219000E65DCA /* menu@2x.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		EDE50DF4193E10DA00ACA71D /* ServiceAgent */ = {
 			isa = PBXGroup;
 			children = (
@@ -494,6 +554,7 @@
 		FA336C2319335B950007CC76 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EDBDFE1B1967219000E65DCA /* Images */,
 				FA336C3719335B950007CC76 /* Images.xcassets */,
 				FA336C2419335B950007CC76 /* LV-116.iOS.SS.Restaurant-Info.plist */,
 				FA336C2519335B950007CC76 /* InfoPlist.strings */,
@@ -621,6 +682,8 @@
 				FA336C3319335B950007CC76 /* Main_iPad.storyboard in Resources */,
 				FA336C3819335B950007CC76 /* Images.xcassets in Resources */,
 				FA336C3019335B950007CC76 /* Main_iPhone.storyboard in Resources */,
+				EDBDFE331967219000E65DCA /* menu.png in Resources */,
+				EDBDFE341967219000E65DCA /* menu@2x.png in Resources */,
 				FA336C2719335B950007CC76 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -645,12 +708,13 @@
 				2295C9321955B5EE00D6A4D7 /* MenuViewController.m in Sources */,
 				ED9AAE8E1959B8BA00656681 /* TableView.m in Sources */,
 				ED9AAE8D1959B8BA00656681 /* MapViewController.m in Sources */,
+				EDBDFE12196720C700E65DCA /* SWRevealViewController.m in Sources */,
 				C348B3D3193DE5E90004808D /* RemoteDataProvider.m in Sources */,
 				ED89D3ED1965B08A00882F5C /* OrderModel.m in Sources */,
 				ED89D3EC1965B08A00882F5C /* OrderItemModel.m in Sources */,
-				6364FE531961AB4C00E838F0 /* DescriptionScreen.m in Sources */,
 				EDEC473B1956FBB90041B98B /* MenuDataParser.m in Sources */,
 				2B1ABB9D1958466500BF5678 /* MapDataParser.m in Sources */,
+				EDBDFE1A1967218600E65DCA /* SidebarViewController.m in Sources */,
 				FA336C2D19335B950007CC76 /* AppDelegate.m in Sources */,
 				EDEC47291956F9950041B98B /* MapModel.m in Sources */,
 				ED89D3F11965B0AA00882F5C /* WaiterMapModel.m in Sources */,
@@ -660,10 +724,10 @@
 				22C282221955F64E00D8B115 /* RootViewController.m in Sources */,
 				22346B58195F209000495B2A /* Alert.m in Sources */,
 				FA336C2919335B950007CC76 /* main.m in Sources */,
-				634D995A19640D48004775CA /* UIItemDescription.m in Sources */,
 				ED89D3EE1965B08A00882F5C /* WaiterTableModel.m in Sources */,
 				EDEC472A1956F9950041B98B /* TableModel.m in Sources */,
 				2265A70519642B1B0059EC0E /* RequestManager.m in Sources */,
+				EDBDFE191967218600E65DCA /* OrdersViewController.m in Sources */,
 				EDEC47351956FACB0041B98B /* MenuItemModel.m in Sources */,
 				2265A7001964292D0059EC0E /* MapDataProvider.m in Sources */,
 				632C192D1964134200471DB6 /* ItemDescription.m in Sources */,
