@@ -26,7 +26,7 @@ static NSString *const IsActive    = @"IsActive";
 
 // parse all menu tree
 // (NSData*) data - data to parse
-+ (id)parse:(NSData*) data parseError:(NSError**)parseError
++ (id)parse:(NSData*) data parsingError:(NSError**)parseError
 {
     NSError *parsingError;
     

@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
 
+@class WaiterTableModel;
+
 // Table class will contains data about any of tables
 @interface TableModel : NSObject
 
@@ -20,6 +22,9 @@
 @property int width;
 @property int X;
 @property int Y;
+
+// ptr to an orders of this table
+@property (strong, nonatomic) WaiterTableModel *tableOrderModel;
 
 -(instancetype)initWithId:(int)Id
                  Capacity:(int)capacity

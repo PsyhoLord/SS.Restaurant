@@ -7,18 +7,17 @@
 //
 
 #import "RemoteDataProvider.h"
-//#import "PServiceAgent.h"
 #import "RequestManager.h"
 #import "MenuModel.h"
 #import "MapModel.h"
 #import "MenuDataParser.h"
 #import "MapDataParser.h"
 
-NSString *const URLMenu             = @"http://192.168.195.212/Restaurant/api/Menu?withItems=true&active=true&parentId=%i";
-NSString *const URLDownloadImage    = @"http://192.168.195.212/Restaurant/Menu/ImageResult/%i";
-const int connectionTimeoutInterval = 3.0;
-NSString *const URLMap              = @"http://192.168.195.212/Restaurant/api/tables";
-NSString *const URLDownloadMapImage = @"http://192.168.195.212/Restaurant/Images/background.jpg";
+NSString *const URLMenu                       = @"http://192.168.195.212/Restaurant/api/Menu?withItems=true&active=true&parentId=%i";
+NSString *const URLDownloadImage              = @"http://192.168.195.212/Restaurant/Menu/ImageResult/%i";
+const CGFloat connectionTimeoutInterval       = 3.0;
+NSString *const URLMap                        = @"http://192.168.195.212/Restaurant/api/tables";
+NSString *const URLDownloadMapImage           = @"http://192.168.195.212/Restaurant/Images/background.jpg";
 static const int maxCountOfAttemptsForRequest = 3;
 
 
@@ -29,13 +28,8 @@ static const int maxCountOfAttemptsForRequest = 3;
 // (void (^)(NSMutableArray*, NSError*))callback - block which will call when data is
 + (void)loadMenuDataWithBlock:(void (^)(MenuModel*, NSError*))callback
 {
-    NSString *stringURL = [[NSString alloc] initWithFormat:URLMenu, 0];
-    
-    NSURL *URL = [[NSURL alloc] initWithString:stringURL];
-    
-    NSURLRequest *URLRequest = [NSURLRequest requestWithURL:URL
-                                                cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                            timeoutInterval:connectionTimeoutInterval];
+    NSURLRequest *URLRequest = [RemoteDataProvider getURLRequestWithstring:[NSString stringWithFormat:URLMenu, 0]
+                                                           timeoutInterval:connectionTimeoutInterval];
     
     [RequestManager send:URLRequest
            responseBlock:^(NSData *data, NSError *error) {
@@ -45,7 +39,7 @@ static const int maxCountOfAttemptsForRequest = 3;
                    // call parser
                    
                    menuModel = [MenuDataParser parse: data
-                                          parseError: &error];
+                                        parsingError: &error];
                    NSLog(@"%@",error);
                }
                // call block from hight layer - DataProvider
@@ -60,13 +54,8 @@ static const int maxCountOfAttemptsForRequest = 3;
 // (void (^)(UIImage*, NSError*))callback - block which will be called when image is
 + (void)loadMenuItemImageById:(int)menuItemId withBlock:(void (^)(UIImage*, NSError*))callback
 {
-    NSString *stringURL = [[NSString alloc] initWithFormat:URLDownloadImage, menuItemId];
-    
-    NSURL *URL = [[NSURL alloc] initWithString:stringURL];
-    
-    NSURLRequest *URLRequest = [NSURLRequest requestWithURL:URL
-                                                cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                            timeoutInterval:connectionTimeoutInterval];
+    NSURLRequest *URLRequest = [RemoteDataProvider getURLRequestWithstring:[NSString stringWithFormat:URLDownloadImage, menuItemId]
+                                                           timeoutInterval:connectionTimeoutInterval];
     
     [RequestManager send:URLRequest
            responseBlock:^(NSData *data, NSError *error) {
@@ -84,13 +73,8 @@ static const int maxCountOfAttemptsForRequest = 3;
 
 + (void)loadMapDataWithBlock:(void (^)(MapModel *, NSError *))callback
 {
-    NSString *stringURL = [[NSString alloc] initWithFormat:URLMap];
-    
-    NSURL *URL = [[NSURL alloc] initWithString:stringURL];
-    
-    NSURLRequest *URLRequest = [NSURLRequest requestWithURL:URL
-                                                cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                            timeoutInterval:connectionTimeoutInterval];
+    NSURLRequest *URLRequest = [RemoteDataProvider getURLRequestWithstring:[NSString stringWithFormat:URLMap]
+                                                           timeoutInterval:connectionTimeoutInterval];
     
     [RequestManager send:URLRequest
            responseBlock:^(NSData *data, NSError *error) {
@@ -98,7 +82,7 @@ static const int maxCountOfAttemptsForRequest = 3;
                MapModel *mapModel;
                if ( error == nil ) {
                    mapModel = [MapDataParser parse: data
-                                        parseError: &error];
+                                      parsingError: &error];
                }
                callback (mapModel,error);
                
@@ -110,13 +94,8 @@ static const int maxCountOfAttemptsForRequest = 3;
 // (void (^)(UIImage*, NSError*))callback - block which will be called when image is
 + (void)loadMapBackgroundImageWithBlock:(void (^)(UIImage*, NSError*))callback
 {
-    NSString *stringURL = [[NSString alloc] initWithFormat:URLDownloadMapImage];
-    
-    NSURL *URL = [[NSURL alloc] initWithString:stringURL];
-    
-    NSURLRequest *URLRequest = [NSURLRequest requestWithURL:URL
-                                                cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                            timeoutInterval:connectionTimeoutInterval];
+    NSURLRequest *URLRequest = [RemoteDataProvider getURLRequestWithstring:[NSString stringWithFormat:URLDownloadMapImage]
+                                                           timeoutInterval:connectionTimeoutInterval];
     
     [RequestManager send:URLRequest
            responseBlock:^(NSData *data, NSError *error) {
@@ -130,6 +109,15 @@ static const int maxCountOfAttemptsForRequest = 3;
                
            }
          countOfAttempts:maxCountOfAttemptsForRequest];
+}
+
++ (NSURLRequest*) getURLRequestWithstring:(NSString*)stringURL timeoutInterval:(CGFloat)timeoutInterval
+{
+    NSURL *URL = [[NSURL alloc] initWithString:stringURL];
+    
+    return [NSURLRequest requestWithURL:URL
+                            cachePolicy:NSURLRequestUseProtocolCachePolicy
+                        timeoutInterval:timeoutInterval];
 }
 
 @end

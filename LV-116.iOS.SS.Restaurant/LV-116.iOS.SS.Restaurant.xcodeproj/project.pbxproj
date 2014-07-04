@@ -24,6 +24,10 @@
 		634D995B19640D48004775CA /* UIItemDescription.xib in Resources */ = {isa = PBXBuildFile; fileRef = 634D995919640D48004775CA /* UIItemDescription.xib */; };
 		6364FE531961AB4C00E838F0 /* DescriptionScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 6364FE521961AB4C00E838F0 /* DescriptionScreen.m */; };
 		C348B3D3193DE5E90004808D /* RemoteDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C348B3D2193DE5E90004808D /* RemoteDataProvider.m */; };
+		ED89D3EC1965B08A00882F5C /* OrderItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ED89D3E71965B08A00882F5C /* OrderItemModel.m */; };
+		ED89D3ED1965B08A00882F5C /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ED89D3E91965B08A00882F5C /* OrderModel.m */; };
+		ED89D3EE1965B08A00882F5C /* WaiterTableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ED89D3EB1965B08A00882F5C /* WaiterTableModel.m */; };
+		ED89D3F11965B0AA00882F5C /* WaiterMapModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ED89D3F01965B0AA00882F5C /* WaiterMapModel.m */; };
 		ED9AAE8D1959B8BA00656681 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9AAE891959B8BA00656681 /* MapViewController.m */; };
 		ED9AAE8E1959B8BA00656681 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9AAE8C1959B8BA00656681 /* TableView.m */; };
 		EDE50DF7193E110500ACA71D /* ServiceAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE50DF6193E110500ACA71D /* ServiceAgent.m */; };
@@ -91,6 +95,14 @@
 		C348B3D1193DE5E90004808D /* RemoteDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteDataProvider.h; sourceTree = "<group>"; };
 		C348B3D2193DE5E90004808D /* RemoteDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteDataProvider.m; sourceTree = "<group>"; };
 		C348B3D5193DE68B0004808D /* PDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDataParser.h; sourceTree = "<group>"; };
+		ED89D3E61965B08A00882F5C /* OrderItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderItemModel.h; sourceTree = "<group>"; };
+		ED89D3E71965B08A00882F5C /* OrderItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderItemModel.m; sourceTree = "<group>"; };
+		ED89D3E81965B08A00882F5C /* OrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderModel.h; sourceTree = "<group>"; };
+		ED89D3E91965B08A00882F5C /* OrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderModel.m; sourceTree = "<group>"; };
+		ED89D3EA1965B08A00882F5C /* WaiterTableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaiterTableModel.h; sourceTree = "<group>"; };
+		ED89D3EB1965B08A00882F5C /* WaiterTableModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaiterTableModel.m; sourceTree = "<group>"; };
+		ED89D3EF1965B0AA00882F5C /* WaiterMapModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaiterMapModel.h; sourceTree = "<group>"; };
+		ED89D3F01965B0AA00882F5C /* WaiterMapModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaiterMapModel.m; sourceTree = "<group>"; };
 		ED9AAE881959B8BA00656681 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		ED9AAE891959B8BA00656681 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		ED9AAE8B1959B8BA00656681 /* TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView.h; sourceTree = "<group>"; };
@@ -286,9 +298,9 @@
 		C348B3CF193DE5AC0004808D /* DataProviders */ = {
 			isa = PBXGroup;
 			children = (
-				2265A6FA1964292D0059EC0E /* MapDataProvider */,
-				2265A6FD1964292D0059EC0E /* MenuDataProvider */,
 				C348B3D0193DE5E90004808D /* Remote */,
+				2265A6FD1964292D0059EC0E /* MenuDataProvider */,
+				2265A6FA1964292D0059EC0E /* MapDataProvider */,
 			);
 			name = DataProviders;
 			sourceTree = "<group>";
@@ -311,6 +323,48 @@
 				2B1ABB9A1958463000BF5678 /* MapDataParser */,
 			);
 			path = Parsers;
+			sourceTree = "<group>";
+		};
+		ED89D3E21965B08A00882F5C /* WaiterMapModel */ = {
+			isa = PBXGroup;
+			children = (
+				ED89D3E31965B08A00882F5C /* WaiterTableModel */,
+				ED89D3EF1965B0AA00882F5C /* WaiterMapModel.h */,
+				ED89D3F01965B0AA00882F5C /* WaiterMapModel.m */,
+			);
+			name = WaiterMapModel;
+			path = Models/MapOrderModel;
+			sourceTree = "<group>";
+		};
+		ED89D3E31965B08A00882F5C /* WaiterTableModel */ = {
+			isa = PBXGroup;
+			children = (
+				ED89D3E41965B08A00882F5C /* OrderModel */,
+				ED89D3EA1965B08A00882F5C /* WaiterTableModel.h */,
+				ED89D3EB1965B08A00882F5C /* WaiterTableModel.m */,
+			);
+			name = WaiterTableModel;
+			path = TableOrderModel;
+			sourceTree = "<group>";
+		};
+		ED89D3E41965B08A00882F5C /* OrderModel */ = {
+			isa = PBXGroup;
+			children = (
+				ED89D3E51965B08A00882F5C /* OrderItemModel */,
+				ED89D3E81965B08A00882F5C /* OrderModel.h */,
+				ED89D3E91965B08A00882F5C /* OrderModel.m */,
+			);
+			path = OrderModel;
+			sourceTree = "<group>";
+		};
+		ED89D3E51965B08A00882F5C /* OrderItemModel */ = {
+			isa = PBXGroup;
+			children = (
+				ED89D3E61965B08A00882F5C /* OrderItemModel.h */,
+				ED89D3E71965B08A00882F5C /* OrderItemModel.m */,
+			);
+			name = OrderItemModel;
+			path = ItemOrderModel;
 			sourceTree = "<group>";
 		};
 		ED9AAE871959B8BA00656681 /* MapViewController */ = {
@@ -345,6 +399,7 @@
 		EDE50DFB193E19EE00ACA71D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				ED89D3E21965B08A00882F5C /* WaiterMapModel */,
 				EDEC472B1956FACB0041B98B /* MenuModel */,
 				EDEC47231956F9950041B98B /* MapModel */,
 			);
@@ -613,11 +668,14 @@
 				ED9AAE8E1959B8BA00656681 /* TableView.m in Sources */,
 				ED9AAE8D1959B8BA00656681 /* MapViewController.m in Sources */,
 				C348B3D3193DE5E90004808D /* RemoteDataProvider.m in Sources */,
+				ED89D3ED1965B08A00882F5C /* OrderModel.m in Sources */,
+				ED89D3EC1965B08A00882F5C /* OrderItemModel.m in Sources */,
 				6364FE531961AB4C00E838F0 /* DescriptionScreen.m in Sources */,
 				EDEC473B1956FBB90041B98B /* MenuDataParser.m in Sources */,
 				2B1ABB9D1958466500BF5678 /* MapDataParser.m in Sources */,
 				FA336C2D19335B950007CC76 /* AppDelegate.m in Sources */,
 				EDEC47291956F9950041B98B /* MapModel.m in Sources */,
+				ED89D3F11965B0AA00882F5C /* WaiterMapModel.m in Sources */,
 				22346AF4195F0B5A00495B2A /* MenuItemCell.m in Sources */,
 				EDE50DF7193E110500ACA71D /* ServiceAgent.m in Sources */,
 				EDEC47341956FACB0041B98B /* MenuCategoryModel.m in Sources */,
@@ -625,6 +683,7 @@
 				22346B58195F209000495B2A /* Alert.m in Sources */,
 				FA336C2919335B950007CC76 /* main.m in Sources */,
 				634D995A19640D48004775CA /* UIItemDescription.m in Sources */,
+				ED89D3EE1965B08A00882F5C /* WaiterTableModel.m in Sources */,
 				EDEC472A1956F9950041B98B /* TableModel.m in Sources */,
 				2265A70519642B1B0059EC0E /* RequestManager.m in Sources */,
 				EDEC47351956FACB0041B98B /* MenuItemModel.m in Sources */,

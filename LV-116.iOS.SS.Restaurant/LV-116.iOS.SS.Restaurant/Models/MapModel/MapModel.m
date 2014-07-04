@@ -20,10 +20,10 @@
 // add TableModel to an array of TableModels
 - (void)addTableModel:(TableModel*)tableModel
 {
-    if( _tableModelArray == nil ) {
-        _tableModelArray = [[NSMutableArray alloc] init];
+    if( _arrayTableModel == nil ) {
+        _arrayTableModel = [[NSMutableArray alloc] init];
     }
-    [_tableModelArray addObject:tableModel];
+    [_arrayTableModel addObject:tableModel];
 }
 
 @end

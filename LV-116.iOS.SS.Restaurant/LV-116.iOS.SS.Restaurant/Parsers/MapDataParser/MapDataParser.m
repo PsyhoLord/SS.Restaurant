@@ -24,7 +24,7 @@ static NSString *const y           = @"Y";
 
 @implementation MapDataParser
 
-+ (id)parse:(NSData*) data parseError:(NSError**) parseError
++ (id)parse:(NSData*) data parsingError:(NSError**) parseError
 {
     NSError *parsingError;
     NSMutableDictionary *responseForTableMap = [NSJSONSerialization JSONObjectWithData: data
@@ -38,23 +38,23 @@ static NSString *const y           = @"Y";
     return [self parseDictionary:responseForTableMap];
 }
 
-+ (MapModel*)parseDictionary:(NSMutableDictionary*)tableDictionary
++ (MapModel*)parseDictionary:(NSMutableDictionary*)arrayOftablesDictionary
 {
     MapModel *mapModel = [[MapModel alloc] init];
     
-    for ( NSMutableDictionary *wholeMap in tableDictionary ) {
+    for ( NSMutableDictionary *tableDictionary in arrayOftablesDictionary ) {
         TableModel *tableToAddToMap;
-        tableToAddToMap=[[TableModel alloc] initWithId:[[wholeMap valueForKey:ID] intValue]
-                                              Capacity:[[wholeMap valueForKey:capacity]intValue]
-                                                height:[[wholeMap valueForKey:height]intValue]
-                                              isActive:[[wholeMap valueForKey:isActive] boolValue]
-                                                isFree:[[wholeMap valueForKey:isFree]boolValue]
-                                               isRound:[[wholeMap valueForKey:isRound]intValue]
-                                                  name:[wholeMap valueForKey:name]
-                                              rotation:[[wholeMap valueForKey:rotation]intValue]
-                                                 width:[[wholeMap valueForKey:width]intValue]
-                                                coordX:[[wholeMap valueForKey:x]intValue]
-                                                coordY:[[wholeMap valueForKey:y]intValue]
+        tableToAddToMap=[[TableModel alloc] initWithId:[[tableDictionary valueForKey:ID] intValue]
+                                              Capacity:[[tableDictionary valueForKey:capacity]intValue]
+                                                height:[[tableDictionary valueForKey:height]intValue]
+                                              isActive:[[tableDictionary valueForKey:isActive] boolValue]
+                                                isFree:[[tableDictionary valueForKey:isFree]boolValue]
+                                               isRound:[[tableDictionary valueForKey:isRound]intValue]
+                                                  name:[tableDictionary valueForKey:name]
+                                              rotation:[[tableDictionary valueForKey:rotation]intValue]
+                                                 width:[[tableDictionary valueForKey:width]intValue]
+                                                coordX:[[tableDictionary valueForKey:x]intValue]
+                                                coordY:[[tableDictionary valueForKey:y]intValue]
                          ];
         [mapModel addTableModel:tableToAddToMap];
     }
