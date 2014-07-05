@@ -14,4 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 
 @property (weak,nonatomic) WaiterTableModel *currentWaiterTable;
+
+@property (weak, nonatomic) IBOutlet UILabel *label1;
+
 @end

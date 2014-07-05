@@ -107,9 +107,9 @@ static NSString *const  kTableNameFormat     = @"Table # ";
     UINavigationController *destViewController = (UINavigationController*)segue.destinationViewController;
     
     if ( [segue.identifier isEqualToString:kSegueToOrdersView] ) {
-        destViewController.title = [[_waiterMapModel.arrayOfTableModel objectAtIndex:indexPath.row] capitalizedString];
-        
+        // set data to destViewController
         ((OrdersViewController*)destViewController).currentWaiterTable = [_waiterMapModel.arrayOfTableModel objectAtIndex:indexPath.row];
+        
     }
     
     if ( [segue isKindOfClass: [SWRevealViewControllerSegue class]] ) {

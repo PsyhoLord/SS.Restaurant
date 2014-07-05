@@ -8,6 +8,7 @@
 
 #import "OrdersViewController.h"
 #import "WaiterTableModel.h"
+#import "TableModel.h"
 #import "SWRevealViewController.h"
 
 @interface OrdersViewController ()
@@ -43,7 +44,7 @@
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     
     
-    
+    _label1.text = _currentWaiterTable.table.name;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
