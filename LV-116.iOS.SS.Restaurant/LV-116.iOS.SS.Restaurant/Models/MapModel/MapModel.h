@@ -18,6 +18,6 @@
 - (MapModel*)getMapData;
 
 // add TableModel to an array of TableModels
-- (void)addTableModel:(TableModel*)tableModel;
+- (void)addTableModel:(TableModel*)arrayOfTableModel;
 
 @end

@@ -8,24 +8,16 @@
 
 // class TableOrdersModel contains array of orders of one table
 
+@class TableModel;
 @class OrderModel;
 @class OrderItemModel;
 
 @interface WaiterTableModel : NSObject
 
-@property NSUInteger capacity;
-@property BOOL isFree;
-@property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) TableModel *table;
 
 @property (strong, nonatomic) NSMutableArray *arrayOfOrders;
 
-- (instancetype)initWithCapasity:(NSUInteger) capasity
-                          isFree:(BOOL)isFree
-                            name:(NSString*)name;
-
-- (void)addOrder:(OrderModel*)orderModel;
-
-- (void)addOrderItem:(OrderItemModel*)orderItemModel
-             toOrder:(OrderModel*)orderModel;
+- (instancetype) initWithTableModel:(TableModel*)tableModel;
 
 @end

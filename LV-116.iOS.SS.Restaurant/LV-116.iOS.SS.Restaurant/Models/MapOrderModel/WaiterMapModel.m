@@ -13,18 +13,19 @@
 
 @implementation WaiterMapModel
 
-- (instancetype)init
+- (instancetype) initWithMapModel:(MapModel*)mapModel
 {
     if ( self = [super init] ) {
-        self.arrayOfTableModel = [[NSMutableArray alloc] init];
+        _arrayOfTableModel = [[NSMutableArray alloc] init];
+        
+        [mapModel.arrayTableModel enumerateObjectsUsingBlock:^(id tableModel, NSUInteger indexOfTableModel, BOOL *stop) {
+            
+            WaiterTableModel *waiterTableModel = [[WaiterTableModel alloc] initWithTableModel:tableModel];
+            [_arrayOfTableModel addObject:waiterTableModel];
+            
+        }];
     }
     return self;
-}
-
-// add TableModel to an array of TableModels
-- (void)addTableModel:(WaiterTableModel*)tableModel
-{
-    [_arrayOfTableModel addObject:tableModel];
 }
 
 @end

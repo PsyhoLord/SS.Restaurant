@@ -11,10 +11,10 @@
 
 @implementation WaiterTableModel
 
-- (instancetype)init
+- (instancetype) initWithTableModel:(TableModel*)tableModel
 {
     if ( self = [super init] ) {
-        self.arrayOfOrders = [[NSMutableArray alloc] init];
+        _table = tableModel;
     }
     return self;
 }

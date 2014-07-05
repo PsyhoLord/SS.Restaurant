@@ -14,7 +14,6 @@
 
 @property (strong, nonatomic) NSMutableArray *arrayOfTableModel;
 
-// add TableModel to an array of TableModels
-- (void)addTableModel:(WaiterTableModel*)tableModel;
+- (instancetype) initWithMapModel:(MapModel*)mapModel;
 
 @end

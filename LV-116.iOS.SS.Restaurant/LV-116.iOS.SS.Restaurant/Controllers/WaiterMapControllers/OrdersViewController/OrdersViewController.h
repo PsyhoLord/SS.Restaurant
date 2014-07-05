@@ -6,9 +6,12 @@
 //  Copyright (c) 2014 Roman Sorochak. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+
+@class WaiterTableModel;
+
 
 @interface OrdersViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
-@property (weak, nonatomic) IBOutlet UILabel *label;
+
+@property (weak,nonatomic) WaiterTableModel *currentWaiterTable;
 @end
