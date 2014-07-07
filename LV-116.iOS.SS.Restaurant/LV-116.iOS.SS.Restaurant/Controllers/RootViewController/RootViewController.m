@@ -8,6 +8,10 @@
 
 #import "RootViewController.h"
 
+@interface RootViewController()
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@end
+
 @implementation RootViewController
 
 - (void)viewDidLoad

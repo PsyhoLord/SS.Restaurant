@@ -27,6 +27,11 @@
 		ED89D3F11965B0AA00882F5C /* WaiterMapModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ED89D3F01965B0AA00882F5C /* WaiterMapModel.m */; };
 		ED9AAE8D1959B8BA00656681 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9AAE891959B8BA00656681 /* MapViewController.m */; };
 		ED9AAE8E1959B8BA00656681 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9AAE8C1959B8BA00656681 /* TableView.m */; };
+		EDA13E2A196ADCC400CF579C /* role_client_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA13E24196ADCC400CF579C /* role_client_icon.png */; };
+		EDA13E2B196ADCC400CF579C /* role_waiter_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA13E25196ADCC400CF579C /* role_waiter_icon.png */; };
+		EDA13E2C196ADCC400CF579C /* map_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA13E27196ADCC400CF579C /* map_icon.png */; };
+		EDA13E2D196ADCC400CF579C /* map_waiter_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA13E28196ADCC400CF579C /* map_waiter_icon.png */; };
+		EDA13E2E196ADCC400CF579C /* menu_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA13E29196ADCC400CF579C /* menu_icon.png */; };
 		EDBDFE12196720C700E65DCA /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDBDFE11196720C700E65DCA /* SWRevealViewController.m */; };
 		EDBDFE191967218600E65DCA /* OrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDBDFE151967218600E65DCA /* OrdersViewController.m */; };
 		EDBDFE1A1967218600E65DCA /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDBDFE181967218600E65DCA /* SidebarViewController.m */; };
@@ -104,6 +109,11 @@
 		ED9AAE891959B8BA00656681 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		ED9AAE8B1959B8BA00656681 /* TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView.h; sourceTree = "<group>"; };
 		ED9AAE8C1959B8BA00656681 /* TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView.m; sourceTree = "<group>"; };
+		EDA13E24196ADCC400CF579C /* role_client_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = role_client_icon.png; sourceTree = "<group>"; };
+		EDA13E25196ADCC400CF579C /* role_waiter_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = role_waiter_icon.png; sourceTree = "<group>"; };
+		EDA13E27196ADCC400CF579C /* map_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_icon.png; sourceTree = "<group>"; };
+		EDA13E28196ADCC400CF579C /* map_waiter_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_waiter_icon.png; sourceTree = "<group>"; };
+		EDA13E29196ADCC400CF579C /* menu_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_icon.png; sourceTree = "<group>"; };
 		EDBDFE10196720C700E65DCA /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		EDBDFE11196720C700E65DCA /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		EDBDFE141967218600E65DCA /* OrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersViewController.h; sourceTree = "<group>"; };
@@ -379,6 +389,32 @@
 			path = TableView;
 			sourceTree = "<group>";
 		};
+		EDA13E23196ADCC400CF579C /* RolesIcons */ = {
+			isa = PBXGroup;
+			children = (
+				EDA13E24196ADCC400CF579C /* role_client_icon.png */,
+				EDA13E25196ADCC400CF579C /* role_waiter_icon.png */,
+			);
+			path = RolesIcons;
+			sourceTree = "<group>";
+		};
+		EDA13E26196ADCC400CF579C /* SidebarRootMenuIcons */ = {
+			isa = PBXGroup;
+			children = (
+				EDA13E27196ADCC400CF579C /* map_icon.png */,
+				EDA13E28196ADCC400CF579C /* map_waiter_icon.png */,
+				EDA13E29196ADCC400CF579C /* menu_icon.png */,
+			);
+			path = SidebarRootMenuIcons;
+			sourceTree = "<group>";
+		};
+		EDA13E2F196ADF1800CF579C /* Role */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Role;
+			sourceTree = "<group>";
+		};
 		EDBDFE0E1967207F00E65DCA /* WaiterMapControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -419,6 +455,8 @@
 		EDBDFE1B1967219000E65DCA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				EDA13E23196ADCC400CF579C /* RolesIcons */,
+				EDA13E26196ADCC400CF579C /* SidebarRootMenuIcons */,
 				EDBDFE231967219000E65DCA /* menu.png */,
 				EDBDFE241967219000E65DCA /* menu@2x.png */,
 			);
@@ -537,6 +575,7 @@
 		FA336C2219335B950007CC76 /* LV-116.iOS.SS.Restaurant */ = {
 			isa = PBXGroup;
 			children = (
+				EDA13E2F196ADF1800CF579C /* Role */,
 				22346B55195F204E00495B2A /* Alerts */,
 				EDE50DFB193E19EE00ACA71D /* Models */,
 				2265A70219642B0A0059EC0E /* RequestManager */,
@@ -677,13 +716,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				632C192E1964134200471DB6 /* ItemDescription.xib in Resources */,
+				EDA13E2C196ADCC400CF579C /* map_icon.png in Resources */,
 				22346AEF195F0B5300495B2A /* MenuCategoryCell.xib in Resources */,
 				22346AF5195F0B5A00495B2A /* MenuItemCell.xib in Resources */,
+				EDA13E2A196ADCC400CF579C /* role_client_icon.png in Resources */,
 				FA336C3319335B950007CC76 /* Main_iPad.storyboard in Resources */,
+				EDA13E2D196ADCC400CF579C /* map_waiter_icon.png in Resources */,
 				FA336C3819335B950007CC76 /* Images.xcassets in Resources */,
 				FA336C3019335B950007CC76 /* Main_iPhone.storyboard in Resources */,
 				EDBDFE331967219000E65DCA /* menu.png in Resources */,
 				EDBDFE341967219000E65DCA /* menu@2x.png in Resources */,
+				EDA13E2E196ADCC400CF579C /* menu_icon.png in Resources */,
+				EDA13E2B196ADCC400CF579C /* role_waiter_icon.png in Resources */,
 				FA336C2719335B950007CC76 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

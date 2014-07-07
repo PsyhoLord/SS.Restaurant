@@ -21,7 +21,15 @@ static NSString *const  kTableCellIdentifier = @"TableCellIdentifier";
 static const NSUInteger kNumberOfSections    = 1;
 static NSString *const  kTableNameFormat     = @"Table # ";
 
+static NSString *const  kTitleTableViewCellIdentifier       = @"TitleCellIdentifier";
+static NSString *const  kMenuTableViewCellIdentifier        = @"MenuCellIdentifier";
+static NSString *const  kMapTableViewCellIdentifier         = @"MapCellIdentifier";
+static NSString *const  kMapWaiterTableViewCellIdentifier   = @"MapWaiterCellIdentifier";
+
 @implementation SidebarViewController
+{
+    NSArray *_rootMenuItems;
+}
 
 - (id) initWithStyle:(UITableViewStyle)style
 {
@@ -38,29 +46,31 @@ static NSString *const  kTableNameFormat     = @"Table # ";
     
     self.revealViewController.rearViewRevealWidth = 175.0f;
     
-    [self loadMapData];
+//    [self loadMapData];
+    
+    _rootMenuItems = @[kTitleTableViewCellIdentifier, kMenuTableViewCellIdentifier, kMapTableViewCellIdentifier, kMapWaiterTableViewCellIdentifier];
 }
 
-- (void) loadMapData
-{
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-    
-    [MapDataProvider loadMapDataWithBlock:^(MapModel *mapModel, NSError *error) {
-        if ( error ) {
-            dispatch_async( dispatch_get_main_queue(), ^{
-                [Alert showConnectionAlert];
-                [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-            });
-        } else {
-            _waiterMapModel = [[WaiterMapModel alloc] initWithMapModel:mapModel];
-            dispatch_async( dispatch_get_main_queue(), ^{
-                [self.tableView reloadData];
-                [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-            });
-        }
-    }];
-    
-}
+//- (void) loadMapData
+//{
+//    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+//    
+//    [MapDataProvider loadMapDataWithBlock:^(MapModel *mapModel, NSError *error) {
+//        if ( error ) {
+//            dispatch_async( dispatch_get_main_queue(), ^{
+//                [Alert showConnectionAlert];
+//                [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+//            });
+//        } else {
+//            _waiterMapModel = [[WaiterMapModel alloc] initWithMapModel:mapModel];
+//            dispatch_async( dispatch_get_main_queue(), ^{
+//                [self.tableView reloadData];
+//                [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+//            });
+//        }
+//    }];
+//    
+//}
 
 - (void) didReceiveMemoryWarning
 {
@@ -79,25 +89,34 @@ static NSString *const  kTableNameFormat     = @"Table # ";
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [_waiterMapModel.arrayOfTableModel count];
+//    return [_waiterMapModel.arrayOfTableModel count];
+    return [_rootMenuItems count];
 }
 
-- (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableCellIdentifier];
-    if ( cell == nil ) {
-        cell = [[UITableViewCell alloc] init];
-    }
-    cell.textLabel.text = [kTableNameFormat stringByAppendingString:((WaiterTableModel*)_waiterMapModel.arrayOfTableModel[indexPath.row]).table.name];
+    NSString *CellIdentifier = _rootMenuItems[indexPath.row];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
     return cell;
 }
 
+//- (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableCellIdentifier];
+//    if ( cell == nil ) {
+//        cell = [[UITableViewCell alloc] init];
+//    }
+//    cell.textLabel.text = [kTableNameFormat stringByAppendingString:((WaiterTableModel*)_waiterMapModel.arrayOfTableModel[indexPath.row]).table.name];
+//    return cell;
+//}
+
 #pragma mark - Segue on next screen
 
-- (void) tableView: (UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
-{
-    [self performSegueWithIdentifier:kSegueToOrdersView sender:self];
-}
+//- (void) tableView: (UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+//{
+//    [self performSegueWithIdentifier:kSegueToOrdersView sender:self];
+//}
 
 // something that did before segue
 - (void) prepareForSegue: (UIStoryboardSegue *)segue sender: (id)sender
@@ -108,7 +127,7 @@ static NSString *const  kTableNameFormat     = @"Table # ";
     
     if ( [segue.identifier isEqualToString:kSegueToOrdersView] ) {
         // set data to destViewController
-        ((OrdersViewController*)destViewController).currentWaiterTable = [_waiterMapModel.arrayOfTableModel objectAtIndex:indexPath.row];
+//        ((OrdersViewController*)destViewController).currentWaiterTable = [_waiterMapModel.arrayOfTableModel objectAtIndex:indexPath.row];
         
     }
     
@@ -126,6 +145,5 @@ static NSString *const  kTableNameFormat     = @"Table # ";
     }
     
 }
-
 
 @end

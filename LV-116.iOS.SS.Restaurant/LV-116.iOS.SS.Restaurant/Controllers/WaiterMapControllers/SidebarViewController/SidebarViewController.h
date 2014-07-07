@@ -11,5 +11,5 @@
 @interface SidebarViewController : UITableViewController
 
 @property (strong, nonatomic) WaiterMapModel *waiterMapModel;
-
+@property (weak, nonatomic) IBOutlet UIImageView *roleImage;
 @end

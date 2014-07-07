@@ -7,5 +7,5 @@
 //
 
 @interface MenuViewController : UITableViewController
-
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 @end

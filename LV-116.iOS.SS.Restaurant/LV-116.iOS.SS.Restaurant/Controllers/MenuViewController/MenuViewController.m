@@ -15,6 +15,7 @@
 #import "MenuItemModel.h"
 #import "Alert.h"
 #import "ItemDescription.h"
+#import "SWRevealViewController.h"
 
 static NSString *const menuCategoryCellIdentifier   = @"menuCategoryCellIdentifier";
 static NSString *const menuItemCellIdentifier       = @"menuItemCellIdentifier";
@@ -34,6 +35,16 @@ static const NSUInteger numberOfSectionsInTableView = 1;
     [super viewDidLoad];
     
     [self setupRefreshControl];
+    
+    // Change button color
+    //    _sidebarButton.tintColor = [UIColor colorWithWhite:0.1f alpha:0.9f];
+    
+    // Set the side bar button action. When it's tapped, it'll show up the sidebar.
+    _sidebarButton.target = self.revealViewController;
+    _sidebarButton.action = @selector(revealToggle:);
+    
+    // Set the gesture
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     
     if ( _currentCategory == nil ) {
 //        [self performSelectorOnMainThread:@selector(loadMenuData) withObject:self waitUntilDone:NO];
