@@ -29,7 +29,7 @@ static NSString *const kRoleWaiterIconName  = @"role_waiter_icon.png";
     
     self.title = kRootMenuName;
     
-    [self setRoleImage:[UserRole getUserRole]];
+    [self setHomePageConfiguration:[UserRole getUserRole]];
 }
 
 - (void)setSidebarConfiguration
@@ -45,6 +45,21 @@ static NSString *const kRoleWaiterIconName  = @"role_waiter_icon.png";
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
 }
 
+- (void) setHomePageConfiguration:(EnumUserRole)userRole
+{
+    [self setRoleImage:userRole];
+    switch ( userRole ) {
+        case UserRoleClient:
+            _buttonLogIn.enabled  = YES;
+            _buttonLogOut.enabled = NO;
+            break;
+        case UserRoleWaiter:
+            _buttonLogIn.enabled  = NO;
+            _buttonLogOut.enabled = YES;
+            break;
+    }
+}
+
 - (void) setRoleImage:(EnumUserRole)userRole
 {
     switch ( userRole ) {
@@ -57,18 +72,16 @@ static NSString *const kRoleWaiterIconName  = @"role_waiter_icon.png";
     }
 }
 
-- (IBAction)LogIn:(id)sender {
-    [UserRole LogInWithLogin:@"123" password:@"123"];
-    [self setRoleImage:[UserRole getUserRole]];
-    ((UIButton*)sender).enabled = NO;
-    _buttonLogOut.enabled = YES;
+- (IBAction)LogIn:(id)sender
+{
+    EnumUserRole userRole = [UserRole LogInWithLogin:@"123" password:@"123"];
+    [self setHomePageConfiguration:userRole];
 }
 
-- (IBAction)LogOut:(id)sender {
-    [UserRole LogOut];
-    [self setRoleImage:[UserRole getUserRole]];
-    ((UIButton*)sender).enabled = NO;
-    _buttonLogIn.enabled = YES;
+- (IBAction)LogOut:(id)sender
+{
+    EnumUserRole userRole = [UserRole LogOut];
+    [self setHomePageConfiguration:userRole];
 }
 
 - (void)didReceiveMemoryWarning
