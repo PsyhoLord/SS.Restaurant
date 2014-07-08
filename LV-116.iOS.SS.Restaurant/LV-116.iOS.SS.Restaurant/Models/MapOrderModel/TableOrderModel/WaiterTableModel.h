@@ -20,4 +20,6 @@
 
 - (instancetype) initWithTableModel:(TableModel*)tableModel;
 
+- (void)addOrder:(OrderModel*)orderModel;
+
 @end

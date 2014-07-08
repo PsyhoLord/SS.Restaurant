@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="VBR-JW-beI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="VBR-JW-beI">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -273,6 +273,9 @@
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="eZe-jc-Bfx" kind="custom" customClass="SWRevealViewControllerSegue" id="I3V-Ph-qCA"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -336,7 +339,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tHx-xv-4Yq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-9" y="-490"/>
+            <point key="canvasLocation" x="121" y="-622"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eO0-B3-dJV">
@@ -351,7 +354,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mwj-uF-nRI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-534" y="530"/>
+            <point key="canvasLocation" x="-534" y="822"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="6IH-cq-Rxb">
@@ -404,7 +407,33 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M8m-ey-VvU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-9" y="528"/>
+            <point key="canvasLocation" x="121" y="822"/>
+        </scene>
+        <!--Orders View Controller-->
+        <scene sceneID="sSd-iJ-NFD">
+            <objects>
+                <tableViewController id="eZe-jc-Bfx" customClass="OrdersViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ZGw-tE-Mc4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="eZe-jc-Bfx" id="qIy-3Y-Crw"/>
+                            <outlet property="delegate" destination="eZe-jc-Bfx" id="yBG-yw-VWd"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="19Y-8C-yO4">
+                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="JAV-L1-2wl"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="sidebarButton" destination="JAV-L1-2wl" id="ge9-Fk-VXY"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rFy-2J-ol3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="121" y="58"/>
         </scene>
     </scenes>
     <resources>

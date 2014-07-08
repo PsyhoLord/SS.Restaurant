@@ -21,8 +21,11 @@
 
 - (void)addOrder:(OrderModel*)orderModel
 {
-    OrderModel *newOrderModel = [[OrderModel alloc] init];
-    [_arrayOfOrders addObject:newOrderModel];
+    if(_arrayOfOrders == nil){
+        _arrayOfOrders = [[NSMutableArray alloc] init];
+    }
+    
+    [_arrayOfOrders addObject:orderModel];
 }
 
 @end
