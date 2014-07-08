@@ -276,11 +276,11 @@
 		ED42A3C0196C32FA00A63656 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				ED42A3C1196C32FA00A63656 /* HomeViewController */,
-				ED42A3C4196C32FA00A63656 /* MapViewController */,
-				ED42A3CA196C32FA00A63656 /* MenuViewController */,
-				ED42A3DE196C32FA00A63656 /* SidebarViewController */,
 				ED42A3E5196C32FA00A63656 /* SwRevealViewController */,
+				ED42A3DE196C32FA00A63656 /* SidebarViewController */,
+				ED42A3C1196C32FA00A63656 /* HomeViewController */,
+				ED42A3CA196C32FA00A63656 /* MenuViewController */,
+				ED42A3C4196C32FA00A63656 /* MapViewController */,
 				ED42A3E8196C32FA00A63656 /* WaiterMapControllers */,
 			);
 			path = Controllers;
