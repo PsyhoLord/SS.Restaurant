@@ -14,7 +14,6 @@
 // (void (^)(MapModel*, NSError*)) callback - block which will call when data is
 + (void) loadMapDataWithBlock:(void (^)(MapModel*, NSError*)) callback;
 
-
 // download image for MapModel
 // (void (^)(UIImage*, NSError*))callback - block which will be called when image is
 + (void)loadMapBackgroundImageWithBlock:(void (^)(UIImage*, NSError*))callback;

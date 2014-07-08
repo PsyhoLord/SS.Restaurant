@@ -11,7 +11,6 @@
 #import "MapModel.h"
 #import "TableModel.h"
 
-
 @implementation MapDataProvider
 
 // load map data from remote and create map model with these data

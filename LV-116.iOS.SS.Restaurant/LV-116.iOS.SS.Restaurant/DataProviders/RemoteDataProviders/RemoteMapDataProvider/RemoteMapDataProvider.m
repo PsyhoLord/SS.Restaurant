@@ -11,10 +11,10 @@
 #import "MapModel.h"
 #import "MapDataParser.h"
 
-NSString *const kURLMap                        = @"http://192.168.195.212/Restaurant/api/tables";
-NSString *const kURLDownloadMapImage           = @"http://192.168.195.212/Restaurant/Images/background.jpg";
-const CGFloat kConnectionTimeoutInterval       = 3.0;
-static const int kMaxCountOfAttemptsForRequest = 3;
+static NSString *const kURLMap                         = @"http://192.168.195.212/Restaurant/api/tables";
+static NSString *const kURLDownloadMapImage            = @"http://192.168.195.212/Restaurant/Images/background.jpg";
+static const CGFloat kConnectionTimeoutInterval = 3.0;
+static const int kMaxCountOfAttemptsForRequest  = 3;
 
 @implementation RemoteMapDataProvider
 

@@ -11,11 +11,10 @@
 #import "MenuModel.h"
 #import "MenuDataParser.h"
 
-NSString *const kURLMenu                       = @"http://192.168.195.212/Restaurant/api/Menu?withItems=true&active=true&parentId=%i";
-NSString *const kURLDownloadImage              = @"http://192.168.195.212/Restaurant/Menu/ImageResult/%i";
-const CGFloat kConnectionTimeoutInterval       = 3.0;
-static const int kMaxCountOfAttemptsForRequest = 3;
-
+static NSString *const kURLMenu                        = @"http://192.168.195.212/Restaurant/api/Menu?withItems=true&active=true&parentId=%i";
+static NSString *const kURLDownloadImage               = @"http://192.168.195.212/Restaurant/Menu/ImageResult/%i";
+static const CGFloat kConnectionTimeoutInterval = 3.0;
+static const int kMaxCountOfAttemptsForRequest  = 3;
 
 @implementation RemoteMenuDataProvider
 
