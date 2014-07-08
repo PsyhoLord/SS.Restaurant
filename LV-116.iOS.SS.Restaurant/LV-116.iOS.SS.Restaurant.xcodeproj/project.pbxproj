@@ -263,8 +263,7 @@
 				570ABE90196C3EEF003DC398 /* OrdersViewController.h */,
 				570ABE91196C3EEF003DC398 /* OrdersViewController.m */,
 			);
-			name = OrdersViewController;
-			path = Controllers/OrdersViewController;
+			path = OrdersViewController;
 			sourceTree = "<group>";
 		};
 		570ABE8D196C3EEF003DC398 /* OrderItemsController */ = {
@@ -336,6 +335,7 @@
 				ED42A3C1196C32FA00A63656 /* HomeViewController */,
 				ED42A3CA196C32FA00A63656 /* MenuViewController */,
 				ED42A3C4196C32FA00A63656 /* MapViewController */,
+				570ABE8C196C3EEF003DC398 /* OrdersViewController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -660,7 +660,6 @@
 				C348B3D4193DE6100004808D /* Parsers */,
 				C348B3CF193DE5AC0004808D /* DataProviders */,
 				ED42A3C0196C32FA00A63656 /* Controllers */,
-				570ABE8C196C3EEF003DC398 /* OrdersViewController */,
 				FA336C5519335CE60007CC76 /* UI */,
 				FA336C5419335CCD0007CC76 /* AppDelegade */,
 				FA336C2319335B950007CC76 /* Supporting Files */,
