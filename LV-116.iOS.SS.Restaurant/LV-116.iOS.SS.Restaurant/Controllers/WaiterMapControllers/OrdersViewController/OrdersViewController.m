@@ -209,6 +209,12 @@ static const CGFloat kHeightOfHeaderSection    = 35.0f;
         //        NSString *str = [[NSString alloc] initWithFormat:@"Order%ld", random()];
         
         [self.tableView reloadData];
+    } else {
+//        Need Mykola's OrderItemsViewController.
+//        MenuViewController *orderItemsViewController = [[OrderItemsViewController alloc] init];
+//        [self.navigationController pushViewController: itemViewController
+//                                             animated: YES];
+//        [self.navigationController performSegueWithIdentifier: kSegueForOrderItems sender:self];
     }
 }
 
