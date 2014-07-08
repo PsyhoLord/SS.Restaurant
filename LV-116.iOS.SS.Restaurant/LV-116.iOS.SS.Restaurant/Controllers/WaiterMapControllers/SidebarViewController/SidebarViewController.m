@@ -16,11 +16,7 @@
 #import "TableModel.h"
 #import "Alert.h"
 
-static NSString *const  kSegueToOrdersView   = @"sw_orders";
-static NSString *const  kTableCellIdentifier = @"TableCellIdentifier";
-static const NSUInteger kNumberOfSections    = 1;
-static NSString *const  kTableNameFormat     = @"Table # ";
-
+static const NSUInteger kNumberOfSections                   = 1;
 static NSString *const  kTitleTableViewCellIdentifier       = @"TitleCellIdentifier";
 static NSString *const  kMenuTableViewCellIdentifier        = @"MenuCellIdentifier";
 static NSString *const  kMapTableViewCellIdentifier         = @"MapCellIdentifier";
@@ -46,31 +42,8 @@ static NSString *const  kMapWaiterTableViewCellIdentifier   = @"MapWaiterCellIde
     
     self.revealViewController.rearViewRevealWidth = 175.0f;
     
-//    [self loadMapData];
-    
     _rootMenuItems = @[kTitleTableViewCellIdentifier, kMenuTableViewCellIdentifier, kMapTableViewCellIdentifier, kMapWaiterTableViewCellIdentifier];
 }
-
-//- (void) loadMapData
-//{
-//    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-//    
-//    [MapDataProvider loadMapDataWithBlock:^(MapModel *mapModel, NSError *error) {
-//        if ( error ) {
-//            dispatch_async( dispatch_get_main_queue(), ^{
-//                [Alert showConnectionAlert];
-//                [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-//            });
-//        } else {
-//            _waiterMapModel = [[WaiterMapModel alloc] initWithMapModel:mapModel];
-//            dispatch_async( dispatch_get_main_queue(), ^{
-//                [self.tableView reloadData];
-//                [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-//            });
-//        }
-//    }];
-//    
-//}
 
 - (void) didReceiveMemoryWarning
 {
@@ -89,7 +62,6 @@ static NSString *const  kMapWaiterTableViewCellIdentifier   = @"MapWaiterCellIde
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-//    return [_waiterMapModel.arrayOfTableModel count];
     return [_rootMenuItems count];
 }
 
@@ -101,37 +73,13 @@ static NSString *const  kMapWaiterTableViewCellIdentifier   = @"MapWaiterCellIde
     return cell;
 }
 
-//- (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableCellIdentifier];
-//    if ( cell == nil ) {
-//        cell = [[UITableViewCell alloc] init];
-//    }
-//    cell.textLabel.text = [kTableNameFormat stringByAppendingString:((WaiterTableModel*)_waiterMapModel.arrayOfTableModel[indexPath.row]).table.name];
-//    return cell;
-//}
-
 #pragma mark - Segue on next screen
-
-//- (void) tableView: (UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
-//{
-//    [self performSegueWithIdentifier:kSegueToOrdersView sender:self];
-//}
 
 // something that did before segue
 - (void) prepareForSegue: (UIStoryboardSegue *)segue sender: (id)sender
 {
-    // Set the title of navigation bar by using the menu items
-    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    UINavigationController *destViewController = (UINavigationController*)segue.destinationViewController;
-    
-    if ( [segue.identifier isEqualToString:kSegueToOrdersView] ) {
-        // set data to destViewController
-//        ((OrdersViewController*)destViewController).currentWaiterTable = [_waiterMapModel.arrayOfTableModel objectAtIndex:indexPath.row];
-        
-    }
-    
     if ( [segue isKindOfClass: [SWRevealViewControllerSegue class]] ) {
+        
         SWRevealViewControllerSegue *swSegue = (SWRevealViewControllerSegue*) segue;
         
         swSegue.performBlock = ^(SWRevealViewControllerSegue* rvc_segue, UIViewController* svc, UIViewController* dvc) {
@@ -143,7 +91,6 @@ static NSString *const  kMapWaiterTableViewCellIdentifier   = @"MapWaiterCellIde
         };
         
     }
-    
 }
 
 @end

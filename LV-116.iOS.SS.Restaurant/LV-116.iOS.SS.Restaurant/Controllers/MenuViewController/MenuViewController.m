@@ -17,18 +17,16 @@
 #import "ItemDescription.h"
 #import "SWRevealViewController.h"
 
-static NSString *const menuCategoryCellIdentifier   = @"menuCategoryCellIdentifier";
-static NSString *const menuItemCellIdentifier       = @"menuItemCellIdentifier";
-static const NSUInteger numberOfSectionsInTableView = 1;
+static NSString *const  kMenuName                     = @"Menu";
 
-
-
+static NSString *const  kMenuCategoryCellIdentifier   = @"menuCategoryCellIdentifier";
+static NSString *const  kMenuItemCellIdentifier       = @"menuItemCellIdentifier";
+static const NSUInteger kNumberOfSectionsInTableView  = 1;
 
 @implementation MenuViewController
 {
     MenuCategoryModel *_currentCategory;
 }
-
 
 - (void)viewDidLoad
 {
@@ -36,8 +34,19 @@ static const NSUInteger numberOfSectionsInTableView = 1;
     
     [self setupRefreshControl];
     
+    [self setSidebarConfiguration];
+    
+    self.title = kMenuName;
+    
+    if ( _currentCategory == nil ) {
+        [self loadMenuData];
+    }
+}
+
+- (void)setSidebarConfiguration
+{
     // Change button color
-    //    _sidebarButton.tintColor = [UIColor colorWithWhite:0.1f alpha:0.9f];
+    _sidebarButton.tintColor = [UIColor colorWithWhite:0.1f alpha:0.9f];
     
     // Set the side bar button action. When it's tapped, it'll show up the sidebar.
     _sidebarButton.target = self.revealViewController;
@@ -45,11 +54,6 @@ static const NSUInteger numberOfSectionsInTableView = 1;
     
     // Set the gesture
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-    
-    if ( _currentCategory == nil ) {
-//        [self performSelectorOnMainThread:@selector(loadMenuData) withObject:self waitUntilDone:NO];
-        [self loadMenuData];
-    }
 }
 
 // This method loads menu data from remote
@@ -82,7 +86,6 @@ static const NSUInteger numberOfSectionsInTableView = 1;
     
 }
 
-
 - (void) setupRefreshControl
 {
     [self.refreshControl addTarget:self action:@selector(loadMenuData) forControlEvents:UIControlEventAllEvents];
@@ -92,7 +95,7 @@ static const NSUInteger numberOfSectionsInTableView = 1;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return numberOfSectionsInTableView;
+    return kNumberOfSectionsInTableView;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -122,11 +125,11 @@ static const NSUInteger numberOfSectionsInTableView = 1;
 {
     if ( [_currentCategory isCategories] ) {
         
-        MenuCategoryCell *menuCategoryCell = [tableView dequeueReusableCellWithIdentifier:menuCategoryCellIdentifier];
+        MenuCategoryCell *menuCategoryCell = [tableView dequeueReusableCellWithIdentifier:kMenuCategoryCellIdentifier];
         
         if ( menuCategoryCell == nil ) {
             
-            menuCategoryCell = [[MenuCategoryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:menuCategoryCellIdentifier];
+            menuCategoryCell = [[MenuCategoryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kMenuCategoryCellIdentifier];
             
             MenuCategoryModel *menuCategoryModel = [_currentCategory.categories objectAtIndex:indexPath.row];
             
@@ -136,11 +139,11 @@ static const NSUInteger numberOfSectionsInTableView = 1;
         return menuCategoryCell;
     } else {
         
-        MenuItemCell *menuItemCell = [tableView dequeueReusableCellWithIdentifier:menuItemCellIdentifier];
+        MenuItemCell *menuItemCell = [tableView dequeueReusableCellWithIdentifier:kMenuItemCellIdentifier];
         
         if ( menuItemCell == nil ) {
             
-            menuItemCell = [[MenuItemCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:menuItemCellIdentifier];
+            menuItemCell = [[MenuItemCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kMenuItemCellIdentifier];
         
             MenuItemModel *menuItemModel = [_currentCategory.items objectAtIndex:indexPath.row];
             

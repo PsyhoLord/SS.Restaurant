@@ -25,7 +25,6 @@
     } ];
 }
 
-
 // load map background image from remote
 // calls block when image is
 + (void)loadMapBackgroundImageWithBlock:(void (^)(UIImage*, NSError*))callback

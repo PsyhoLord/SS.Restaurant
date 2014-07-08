@@ -10,17 +10,17 @@
 #import "MapModel.h"
 #import "TableModel.h"
 
-static NSString *const ID          = @"Id";
-static NSString *const capacity    = @"Capacity";
-static NSString *const height      = @"Height";
-static NSString *const isActive    = @"IsActive";
-static NSString *const isFree      = @"IsFree";
-static NSString *const isRound     = @"IsRound";
-static NSString *const name        = @"Name";
-static NSString *const rotation    = @"Rotation";
-static NSString *const width       = @"Width";
-static NSString *const x           = @"X";
-static NSString *const y           = @"Y";
+static NSString *const kTableID          = @"Id";
+static NSString *const kTableCapacity    = @"Capacity";
+static NSString *const kTableHeight      = @"Height";
+static NSString *const kTableisActive    = @"IsActive";
+static NSString *const kTableIsFree      = @"IsFree";
+static NSString *const kTableIsRound     = @"IsRound";
+static NSString *const kTableName        = @"Name";
+static NSString *const kTableRotation    = @"Rotation";
+static NSString *const kTablewWidth      = @"Width";
+static NSString *const kTableX           = @"X";
+static NSString *const kTableY           = @"Y";
 
 @implementation MapDataParser
 
@@ -44,17 +44,17 @@ static NSString *const y           = @"Y";
     
     for ( NSMutableDictionary *tableDictionary in arrayOftablesDictionary ) {
         TableModel *tableToAddToMap;
-        tableToAddToMap=[[TableModel alloc] initWithId:[[tableDictionary valueForKey:ID] intValue]
-                                              Capacity:[[tableDictionary valueForKey:capacity]intValue]
-                                                height:[[tableDictionary valueForKey:height]intValue]
-                                              isActive:[[tableDictionary valueForKey:isActive] boolValue]
-                                                isFree:[[tableDictionary valueForKey:isFree]boolValue]
-                                               isRound:[[tableDictionary valueForKey:isRound]intValue]
-                                                  name:[tableDictionary valueForKey:name]
-                                              rotation:[[tableDictionary valueForKey:rotation]intValue]
-                                                 width:[[tableDictionary valueForKey:width]intValue]
-                                                coordX:[[tableDictionary valueForKey:x]intValue]
-                                                coordY:[[tableDictionary valueForKey:y]intValue]
+        tableToAddToMap=[[TableModel alloc] initWithId:[[tableDictionary valueForKey:kTableID] intValue]
+                                              Capacity:[[tableDictionary valueForKey:kTableCapacity]intValue]
+                                                height:[[tableDictionary valueForKey:kTableHeight]intValue]
+                                              isActive:[[tableDictionary valueForKey:kTableisActive] boolValue]
+                                                isFree:[[tableDictionary valueForKey:kTableIsFree]boolValue]
+                                               isRound:[[tableDictionary valueForKey:kTableIsRound]intValue]
+                                                  name:[tableDictionary valueForKey:kTableName]
+                                              rotation:[[tableDictionary valueForKey:kTableRotation]intValue]
+                                                 width:[[tableDictionary valueForKey:kTablewWidth]intValue]
+                                                coordX:[[tableDictionary valueForKey:kTableX]intValue]
+                                                coordY:[[tableDictionary valueForKey:kTableY]intValue]
                          ];
         [mapModel addTableModel:tableToAddToMap];
     }

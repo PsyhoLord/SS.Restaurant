@@ -7,6 +7,6 @@
 //
 
 // RootViewController class is root storyboard
-@interface RootViewController : UIViewController
-
+@interface HomeViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 @end

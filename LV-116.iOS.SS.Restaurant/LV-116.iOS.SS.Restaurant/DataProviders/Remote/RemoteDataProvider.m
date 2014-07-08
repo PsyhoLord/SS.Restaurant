@@ -13,12 +13,12 @@
 #import "MenuDataParser.h"
 #import "MapDataParser.h"
 
-NSString *const URLMenu                       = @"http://192.168.195.212/Restaurant/api/Menu?withItems=true&active=true&parentId=%i";
-NSString *const URLDownloadImage              = @"http://192.168.195.212/Restaurant/Menu/ImageResult/%i";
-const CGFloat connectionTimeoutInterval       = 3.0;
-NSString *const URLMap                        = @"http://192.168.195.212/Restaurant/api/tables";
-NSString *const URLDownloadMapImage           = @"http://192.168.195.212/Restaurant/Images/background.jpg";
-static const int maxCountOfAttemptsForRequest = 3;
+NSString *const kURLMenu                       = @"http://192.168.195.212/Restaurant/api/Menu?withItems=true&active=true&parentId=%i";
+NSString *const kURLDownloadImage              = @"http://192.168.195.212/Restaurant/Menu/ImageResult/%i";
+const CGFloat kConnectionTimeoutInterval       = 3.0;
+NSString *const kURLMap                        = @"http://192.168.195.212/Restaurant/api/tables";
+NSString *const kURLDownloadMapImage           = @"http://192.168.195.212/Restaurant/Images/background.jpg";
+static const int kMaxCountOfAttemptsForRequest = 3;
 
 
 @implementation RemoteDataProvider
@@ -28,8 +28,8 @@ static const int maxCountOfAttemptsForRequest = 3;
 // (void (^)(NSMutableArray*, NSError*))callback - block which will call when data is
 + (void)loadMenuDataWithBlock:(void (^)(MenuModel*, NSError*))callback
 {
-    NSURLRequest *URLRequest = [RemoteDataProvider getURLRequestWithstring:[NSString stringWithFormat:URLMenu, 0]
-                                                           timeoutInterval:connectionTimeoutInterval];
+    NSURLRequest *URLRequest = [RemoteDataProvider getURLRequestWithstring:[NSString stringWithFormat:kURLMenu, 0]
+                                                           timeoutInterval:kConnectionTimeoutInterval];
     
     [RequestManager send:URLRequest
            responseBlock:^(NSData *data, NSError *error) {
@@ -46,7 +46,7 @@ static const int maxCountOfAttemptsForRequest = 3;
                callback(menuModel, error);
                
            }
-         countOfAttempts:maxCountOfAttemptsForRequest];
+         countOfAttempts:kMaxCountOfAttemptsForRequest];
 }
 
 // download image for itemId
@@ -54,8 +54,8 @@ static const int maxCountOfAttemptsForRequest = 3;
 // (void (^)(UIImage*, NSError*))callback - block which will be called when image is
 + (void)loadMenuItemImageById:(int)menuItemId withBlock:(void (^)(UIImage*, NSError*))callback
 {
-    NSURLRequest *URLRequest = [RemoteDataProvider getURLRequestWithstring:[NSString stringWithFormat:URLDownloadImage, menuItemId]
-                                                           timeoutInterval:connectionTimeoutInterval];
+    NSURLRequest *URLRequest = [RemoteDataProvider getURLRequestWithstring:[NSString stringWithFormat:kURLDownloadImage, menuItemId]
+                                                           timeoutInterval:kConnectionTimeoutInterval];
     
     [RequestManager send:URLRequest
            responseBlock:^(NSData *data, NSError *error) {
@@ -68,13 +68,13 @@ static const int maxCountOfAttemptsForRequest = 3;
                callback(image, error);
                
            }
-         countOfAttempts:maxCountOfAttemptsForRequest];
+         countOfAttempts:kMaxCountOfAttemptsForRequest];
 }
 
 + (void)loadMapDataWithBlock:(void (^)(MapModel *, NSError *))callback
 {
-    NSURLRequest *URLRequest = [RemoteDataProvider getURLRequestWithstring:[NSString stringWithFormat:URLMap]
-                                                           timeoutInterval:connectionTimeoutInterval];
+    NSURLRequest *URLRequest = [RemoteDataProvider getURLRequestWithstring:[NSString stringWithFormat:kURLMap]
+                                                           timeoutInterval:kConnectionTimeoutInterval];
     
     [RequestManager send:URLRequest
            responseBlock:^(NSData *data, NSError *error) {
@@ -87,15 +87,15 @@ static const int maxCountOfAttemptsForRequest = 3;
                callback (mapModel,error);
                
            }
-         countOfAttempts:maxCountOfAttemptsForRequest];
+         countOfAttempts:kMaxCountOfAttemptsForRequest];
 }
 
 // download image for map
 // (void (^)(UIImage*, NSError*))callback - block which will be called when image is
 + (void)loadMapBackgroundImageWithBlock:(void (^)(UIImage*, NSError*))callback
 {
-    NSURLRequest *URLRequest = [RemoteDataProvider getURLRequestWithstring:[NSString stringWithFormat:URLDownloadMapImage]
-                                                           timeoutInterval:connectionTimeoutInterval];
+    NSURLRequest *URLRequest = [RemoteDataProvider getURLRequestWithstring:[NSString stringWithFormat:kURLDownloadMapImage]
+                                                           timeoutInterval:kConnectionTimeoutInterval];
     
     [RequestManager send:URLRequest
            responseBlock:^(NSData *data, NSError *error) {
@@ -108,7 +108,7 @@ static const int maxCountOfAttemptsForRequest = 3;
                callback(image, error);
                
            }
-         countOfAttempts:maxCountOfAttemptsForRequest];
+         countOfAttempts:kMaxCountOfAttemptsForRequest];
 }
 
 + (NSURLRequest*) getURLRequestWithstring:(NSString*)stringURL timeoutInterval:(CGFloat)timeoutInterval

@@ -14,6 +14,8 @@
 #import "Alert.h"
 #import "SWRevealViewController.h"
 
+static NSString *const kMapName = @"Table map";
+
 @implementation MapViewController
 {
     __weak IBOutlet UIScrollView *_scrollView;
@@ -27,8 +29,20 @@
 {
     [super viewDidLoad];
     
+    [self setSidebarConfiguration];
+    
+    self.title = kMapName;
+    
+    // init _tableViews
+    _tableViews = [[NSMutableArray alloc] init];
+    
+    [self loadMapData];
+}
+
+- (void)setSidebarConfiguration
+{
     // Change button color
-//    _sidebarButton.tintColor = [UIColor colorWithWhite:0.1f alpha:0.9f];
+    _sidebarButton.tintColor = [UIColor colorWithWhite:0.1f alpha:0.9f];
     
     // Set the side bar button action. When it's tapped, it'll show up the sidebar.
     _sidebarButton.target = self.revealViewController;
@@ -36,11 +50,6 @@
     
     // Set the gesture
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-    
-    // init _tableViews
-    _tableViews = [[NSMutableArray alloc] init];
-    
-    [self loadMapData];
 }
 
 // create button with characteristic of the current TableModel

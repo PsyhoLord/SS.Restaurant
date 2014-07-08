@@ -16,7 +16,6 @@
 		2265A7011964292D0059EC0E /* MenuDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2265A6FF1964292D0059EC0E /* MenuDataProvider.m */; };
 		2265A70519642B1B0059EC0E /* RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2265A70419642B1B0059EC0E /* RequestManager.m */; };
 		2295C9321955B5EE00D6A4D7 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2295C92C1955B5EE00D6A4D7 /* MenuViewController.m */; };
-		22C282221955F64E00D8B115 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C282211955F64E00D8B115 /* RootViewController.m */; };
 		2B1ABB9D1958466500BF5678 /* MapDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1ABB9C1958466500BF5678 /* MapDataParser.m */; };
 		632C192D1964134200471DB6 /* ItemDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 632C192B1964134200471DB6 /* ItemDescription.m */; };
 		632C192E1964134200471DB6 /* ItemDescription.xib in Resources */ = {isa = PBXBuildFile; fileRef = 632C192C1964134200471DB6 /* ItemDescription.xib */; };
@@ -32,11 +31,13 @@
 		EDA13E2C196ADCC400CF579C /* map_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA13E27196ADCC400CF579C /* map_icon.png */; };
 		EDA13E2D196ADCC400CF579C /* map_waiter_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA13E28196ADCC400CF579C /* map_waiter_icon.png */; };
 		EDA13E2E196ADCC400CF579C /* menu_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA13E29196ADCC400CF579C /* menu_icon.png */; };
+		EDA4E34D196BD97F008E7CE2 /* home_page_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA4E34C196BD97F008E7CE2 /* home_page_icon.png */; };
 		EDBDFE12196720C700E65DCA /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDBDFE11196720C700E65DCA /* SWRevealViewController.m */; };
 		EDBDFE191967218600E65DCA /* OrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDBDFE151967218600E65DCA /* OrdersViewController.m */; };
 		EDBDFE1A1967218600E65DCA /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDBDFE181967218600E65DCA /* SidebarViewController.m */; };
 		EDBDFE331967219000E65DCA /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = EDBDFE231967219000E65DCA /* menu.png */; };
 		EDBDFE341967219000E65DCA /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDBDFE241967219000E65DCA /* menu@2x.png */; };
+		EDCE5C84196BE3F800496B34 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDCE5C83196BE3F800496B34 /* HomeViewController.m */; };
 		EDE50DF7193E110500ACA71D /* ServiceAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE50DF6193E110500ACA71D /* ServiceAgent.m */; };
 		EDEC47291956F9950041B98B /* MapModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEC47251956F9950041B98B /* MapModel.m */; };
 		EDEC472A1956F9950041B98B /* TableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEC47281956F9950041B98B /* TableModel.m */; };
@@ -87,8 +88,6 @@
 		2265A70419642B1B0059EC0E /* RequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestManager.m; sourceTree = "<group>"; };
 		2295C92B1955B5EE00D6A4D7 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		2295C92C1955B5EE00D6A4D7 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
-		22C282201955F64E00D8B115 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		22C282211955F64E00D8B115 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		2B1ABB9B1958466500BF5678 /* MapDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapDataParser.h; path = MapDataParser/MapDataParser.h; sourceTree = "<group>"; };
 		2B1ABB9C1958466500BF5678 /* MapDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapDataParser.m; path = MapDataParser/MapDataParser.m; sourceTree = "<group>"; };
 		632C192A1964134200471DB6 /* ItemDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemDescription.h; path = ItemDescription/ItemDescription.h; sourceTree = "<group>"; };
@@ -114,6 +113,7 @@
 		EDA13E27196ADCC400CF579C /* map_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_icon.png; sourceTree = "<group>"; };
 		EDA13E28196ADCC400CF579C /* map_waiter_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_waiter_icon.png; sourceTree = "<group>"; };
 		EDA13E29196ADCC400CF579C /* menu_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_icon.png; sourceTree = "<group>"; };
+		EDA4E34C196BD97F008E7CE2 /* home_page_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_page_icon.png; sourceTree = "<group>"; };
 		EDBDFE10196720C700E65DCA /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		EDBDFE11196720C700E65DCA /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		EDBDFE141967218600E65DCA /* OrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersViewController.h; sourceTree = "<group>"; };
@@ -122,6 +122,8 @@
 		EDBDFE181967218600E65DCA /* SidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarViewController.m; sourceTree = "<group>"; };
 		EDBDFE231967219000E65DCA /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
 		EDBDFE241967219000E65DCA /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
+		EDCE5C82196BE3F800496B34 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		EDCE5C83196BE3F800496B34 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		EDE50DF3193E10D400ACA71D /* PServiceAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PServiceAgent.h; path = ServiceAgent/PServiceAgent.h; sourceTree = "<group>"; };
 		EDE50DF5193E110500ACA71D /* ServiceAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceAgent.h; path = ServiceAgent/ServiceAgent.h; sourceTree = "<group>"; };
 		EDE50DF6193E110500ACA71D /* ServiceAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceAgent.m; path = ServiceAgent/ServiceAgent.m; sourceTree = "<group>"; };
@@ -251,7 +253,7 @@
 		2295C91C1955B5EE00D6A4D7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				22C2821F1955F64E00D8B115 /* RootViewController */,
+				EDCE5C81196BE3F800496B34 /* HomeViewController */,
 				2295C92A1955B5EE00D6A4D7 /* MenuViewController */,
 				ED9AAE871959B8BA00656681 /* MapViewController */,
 				EDBDFE0E1967207F00E65DCA /* WaiterMapControllers */,
@@ -268,15 +270,6 @@
 				2295C92C1955B5EE00D6A4D7 /* MenuViewController.m */,
 			);
 			path = MenuViewController;
-			sourceTree = "<group>";
-		};
-		22C2821F1955F64E00D8B115 /* RootViewController */ = {
-			isa = PBXGroup;
-			children = (
-				22C282201955F64E00D8B115 /* RootViewController.h */,
-				22C282211955F64E00D8B115 /* RootViewController.m */,
-			);
-			path = RootViewController;
 			sourceTree = "<group>";
 		};
 		2B1ABB9A1958463000BF5678 /* MapDataParser */ = {
@@ -401,6 +394,7 @@
 		EDA13E26196ADCC400CF579C /* SidebarRootMenuIcons */ = {
 			isa = PBXGroup;
 			children = (
+				EDA4E34C196BD97F008E7CE2 /* home_page_icon.png */,
 				EDA13E27196ADCC400CF579C /* map_icon.png */,
 				EDA13E28196ADCC400CF579C /* map_waiter_icon.png */,
 				EDA13E29196ADCC400CF579C /* menu_icon.png */,
@@ -461,6 +455,15 @@
 				EDBDFE241967219000E65DCA /* menu@2x.png */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		EDCE5C81196BE3F800496B34 /* HomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EDCE5C82196BE3F800496B34 /* HomeViewController.h */,
+				EDCE5C83196BE3F800496B34 /* HomeViewController.m */,
+			);
+			path = HomeViewController;
 			sourceTree = "<group>";
 		};
 		EDE50DF4193E10DA00ACA71D /* ServiceAgent */ = {
@@ -726,6 +729,7 @@
 				FA336C3019335B950007CC76 /* Main_iPhone.storyboard in Resources */,
 				EDBDFE331967219000E65DCA /* menu.png in Resources */,
 				EDBDFE341967219000E65DCA /* menu@2x.png in Resources */,
+				EDA4E34D196BD97F008E7CE2 /* home_page_icon.png in Resources */,
 				EDA13E2E196ADCC400CF579C /* menu_icon.png in Resources */,
 				EDA13E2B196ADCC400CF579C /* role_waiter_icon.png in Resources */,
 				FA336C2719335B950007CC76 /* InfoPlist.strings in Resources */,
@@ -753,6 +757,7 @@
 				ED9AAE8E1959B8BA00656681 /* TableView.m in Sources */,
 				ED9AAE8D1959B8BA00656681 /* MapViewController.m in Sources */,
 				EDBDFE12196720C700E65DCA /* SWRevealViewController.m in Sources */,
+				EDCE5C84196BE3F800496B34 /* HomeViewController.m in Sources */,
 				C348B3D3193DE5E90004808D /* RemoteDataProvider.m in Sources */,
 				ED89D3ED1965B08A00882F5C /* OrderModel.m in Sources */,
 				ED89D3EC1965B08A00882F5C /* OrderItemModel.m in Sources */,
@@ -765,7 +770,6 @@
 				22346AF4195F0B5A00495B2A /* MenuItemCell.m in Sources */,
 				EDE50DF7193E110500ACA71D /* ServiceAgent.m in Sources */,
 				EDEC47341956FACB0041B98B /* MenuCategoryModel.m in Sources */,
-				22C282221955F64E00D8B115 /* RootViewController.m in Sources */,
 				22346B58195F209000495B2A /* Alert.m in Sources */,
 				FA336C2919335B950007CC76 /* main.m in Sources */,
 				ED89D3EE1965B08A00882F5C /* WaiterTableModel.m in Sources */,

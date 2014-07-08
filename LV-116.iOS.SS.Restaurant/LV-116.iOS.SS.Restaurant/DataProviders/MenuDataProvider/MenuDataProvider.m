@@ -15,7 +15,6 @@
 
 @implementation MenuDataProvider
 
-
 // load menu data from remote and create menu model with these data
 // calls block when model has created
 + (void)loadMenuDataWithBlock:(void (^)(MenuModel*, NSError*))callback
