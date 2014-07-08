@@ -7,7 +7,7 @@
 //
 
 
-#import "RemoteDataProvider.h"
+#import "RemoteMenuDataProvider.h"
 #import "MenuDataProvider.h"
 #import "MenuModel.h"
 #import "MenuCategoryModel.h"
@@ -20,7 +20,7 @@
 + (void)loadMenuDataWithBlock:(void (^)(MenuModel*, NSError*))callback
 {
     
-    [RemoteDataProvider loadMenuDataWithBlock:^(MenuModel *menuModel, NSError *error) {
+    [RemoteMenuDataProvider loadMenuDataWithBlock:^(MenuModel *menuModel, NSError *error) {
         
         callback(menuModel, error);
         
@@ -31,7 +31,7 @@
 // calls block when image is
 + (void)loadMenuItemImage:(MenuItemModel*)menuItemModel withBlock:(void (^)(UIImage*, NSError*))callback
 {
-    [RemoteDataProvider loadMenuItemImageById:menuItemModel.Id withBlock:^(UIImage *menuItemImage, NSError *error) {
+    [RemoteMenuDataProvider loadMenuItemImageById:menuItemModel.Id withBlock:^(UIImage *menuItemImage, NSError *error) {
         
         callback(menuItemImage, error);
         

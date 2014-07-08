@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
 
-#import "RemoteDataProvider.h"
+#import "RemoteMapDataProvider.h"
 #import "MapDataProvider.h"
 #import "MapModel.h"
 #import "TableModel.h"
@@ -18,7 +18,7 @@
 // calls block when model has created
 + (void)loadMapDataWithBlock:(void (^)(MapModel*, NSError*))callback
 {
-    [RemoteDataProvider loadMapDataWithBlock:^(MapModel *mapModel, NSError *error) {
+    [RemoteMapDataProvider loadMapDataWithBlock:^(MapModel *mapModel, NSError *error) {
         
         callback(mapModel, error);
         
@@ -29,7 +29,7 @@
 // calls block when image is
 + (void)loadMapBackgroundImageWithBlock:(void (^)(UIImage*, NSError*))callback
 {
-    [RemoteDataProvider loadMapBackgroundImageWithBlock:^(UIImage *mapBackgroundImage, NSError *error) {
+    [RemoteMapDataProvider loadMapBackgroundImageWithBlock:^(UIImage *mapBackgroundImage, NSError *error) {
         
         callback(mapBackgroundImage, error);
         

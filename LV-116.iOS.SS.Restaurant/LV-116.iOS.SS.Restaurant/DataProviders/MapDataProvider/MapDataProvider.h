@@ -22,5 +22,4 @@
 // calls block when image is
 + (void)loadMapBackgroundImageWithBlock:(void (^)(UIImage*, NSError*))callback;
 
-
 @end
