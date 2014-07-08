@@ -27,6 +27,14 @@ static NSString *const  kMenuTableViewCellIdentifier        = @"MenuCellIdentifi
 static NSString *const  kMapTableViewCellIdentifier         = @"MapCellIdentifier";
 static NSString *const  kOrdersTableViewCellIdentifier      = @"OrdersCellIdentifier";
 
+typedef enum
+{
+    CellHomePage,
+    CellMenuPage,
+    CellMapPage,
+    CellOrdersPage
+} EnumCellForPage;
+
 @implementation SidebarViewController
 {
     NSArray *_rootMenuItems;
@@ -106,17 +114,18 @@ static NSString *const  kOrdersTableViewCellIdentifier      = @"OrdersCellIdenti
 {
     UIImage *image;
     
-    switch ( indexPath.row ) {
-        case 0:
+    EnumCellForPage enumCell = indexPath.row;
+    switch ( enumCell ) {
+        case CellHomePage:
             image = [UIImage imageNamed:@"home_page_icon.png"];
             break;
-        case 1:
+        case CellMenuPage:
             image = [UIImage imageNamed:@"menu_icon.png"];
             break;
-        case 2:
+        case CellMapPage:
             image = [UIImage imageNamed:@"map_icon.png"];
             break;
-        case 3:
+        case CellOrdersPage:
             image = [UIImage imageNamed:@"orders_icon.png"];
             break;
     }
@@ -128,17 +137,18 @@ static NSString *const  kOrdersTableViewCellIdentifier      = @"OrdersCellIdenti
 {
     NSString *text;
     
-    switch ( indexPath.row ) {
-        case 0:
+    EnumCellForPage enumCell = indexPath.row;
+    switch ( enumCell ) {
+        case CellHomePage:
             text = @"Home";
             break;
-        case 1:
+        case CellMenuPage:
             text = @"Menu";
             break;
-        case 2:
+        case CellMapPage:
             text = @"Map";
             break;
-        case 3:
+        case CellOrdersPage:
             text = @"Orders";
             break;
     }
@@ -158,17 +168,18 @@ static NSString *const  kOrdersTableViewCellIdentifier      = @"OrdersCellIdenti
 - (NSString*) getStringSegueForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     NSString *stringSegue;
-    switch ( indexPath.row ) {
-        case 0:
+    EnumCellForPage enumCell = indexPath.row;
+    switch ( enumCell ) {
+        case CellHomePage:
             stringSegue = @"sw_segue_home";
             break;
-        case 1:
+        case CellMenuPage:
             stringSegue = @"sw_segue_menu";
             break;
-        case 2:
+        case CellMapPage:
             stringSegue = @"sw_segue_map";
             break;
-        case 3:
+        case CellOrdersPage:
             stringSegue = @"sw_segue_orders";
             break;
     }
