@@ -364,12 +364,41 @@
                     <view key="view" contentMode="scaleToFill" id="Yal-gQ-O2m">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="958-8V-1OG">
+                                <rect key="frame" x="85" y="98" width="151" height="154"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6mq-Dz-ScQ">
+                                <rect key="frame" x="93" y="301" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Log in">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="LogIn:" destination="KVh-Tl-JO0" eventType="touchUpInside" id="ruO-xF-Mbh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GG0-6k-HTD">
+                                <rect key="frame" x="178" y="301" width="58" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Log out">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="LogOut:" destination="KVh-Tl-JO0" eventType="touchUpInside" id="Ewc-uw-QeA"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="9ou-De-i2v">
                         <barButtonItem key="leftBarButtonItem" image="menu.png" id="Q9v-TC-F4O"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="_buttonLogIn" destination="6mq-Dz-ScQ" id="BZL-Zc-wEt"/>
+                        <outlet property="_buttonLogOut" destination="GG0-6k-HTD" id="hQd-A0-2yr"/>
+                        <outlet property="_roleImageView" destination="958-8V-1OG" id="XfS-Ig-B8g"/>
                         <outlet property="sidebarButton" destination="Q9v-TC-F4O" id="TTS-Ut-9Jk"/>
                     </connections>
                 </viewController>

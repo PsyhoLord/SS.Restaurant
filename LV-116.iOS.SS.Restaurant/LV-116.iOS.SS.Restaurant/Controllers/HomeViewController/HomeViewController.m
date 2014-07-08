@@ -8,10 +8,18 @@
 
 #import "HomeViewController.h"
 #import "SWRevealViewController.h"
+#import "UserRole.h"
 
-static NSString *const kRootMenuName = @"Home page";
+static NSString *const kRootMenuName        = @"Home page";
+static NSString *const kRoleClientIconName  = @"role_client_icon.png";
+static NSString *const kRoleWaiterIconName  = @"role_waiter_icon.png";
 
 @implementation HomeViewController
+{
+    __weak IBOutlet UIImageView *_roleImageView;
+    __weak IBOutlet UIButton *_buttonLogIn;
+    __weak IBOutlet UIButton *_buttonLogOut;
+}
 
 - (void)viewDidLoad
 {
@@ -20,6 +28,8 @@ static NSString *const kRootMenuName = @"Home page";
     [self setSidebarConfiguration];
     
     self.title = kRootMenuName;
+    
+    [self setRoleImage:[UserRole getUserRole]];
 }
 
 - (void)setSidebarConfiguration
@@ -33,6 +43,32 @@ static NSString *const kRootMenuName = @"Home page";
     
     // Set the gesture
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+}
+
+- (void) setRoleImage:(EnumUserRole)userRole
+{
+    switch ( userRole ) {
+        case UserRoleClient:
+            _roleImageView.image = [UIImage imageNamed:kRoleClientIconName];
+            break;
+        case UserRoleWaiter:
+            _roleImageView.image = [UIImage imageNamed:kRoleWaiterIconName];
+            break;
+    }
+}
+
+- (IBAction)LogIn:(id)sender {
+    [UserRole LogInWithLogin:@"123" password:@"123"];
+    [self setRoleImage:[UserRole getUserRole]];
+    ((UIButton*)sender).enabled = NO;
+    _buttonLogOut.enabled = YES;
+}
+
+- (IBAction)LogOut:(id)sender {
+    [UserRole LogOut];
+    [self setRoleImage:[UserRole getUserRole]];
+    ((UIButton*)sender).enabled = NO;
+    _buttonLogIn.enabled = YES;
 }
 
 - (void)didReceiveMemoryWarning
