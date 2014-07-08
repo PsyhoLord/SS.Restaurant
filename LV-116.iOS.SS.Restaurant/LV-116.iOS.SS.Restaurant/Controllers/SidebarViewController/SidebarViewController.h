@@ -9,5 +9,4 @@
 @class WaiterMapModel;
 
 @interface SidebarViewController : UITableViewController
-@property (strong, nonatomic) WaiterMapModel *waiterMapModel;
 @end

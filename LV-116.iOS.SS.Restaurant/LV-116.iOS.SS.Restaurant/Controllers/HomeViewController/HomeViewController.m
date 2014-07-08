@@ -32,6 +32,7 @@ static NSString *const kRoleWaiterIconName  = @"role_waiter_icon.png";
     [self setHomePageConfiguration:[UserRole getUserRole]];
 }
 
+// set configuration for sidebar
 - (void)setSidebarConfiguration
 {
     // Change button color
@@ -45,6 +46,7 @@ static NSString *const kRoleWaiterIconName  = @"role_waiter_icon.png";
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
 }
 
+// set home page configuration according to user role
 - (void) setHomePageConfiguration:(EnumUserRole)userRole
 {
     [self setRoleImage:userRole];
@@ -60,6 +62,7 @@ static NSString *const kRoleWaiterIconName  = @"role_waiter_icon.png";
     }
 }
 
+// set image on scrin according to user role
 - (void) setRoleImage:(EnumUserRole)userRole
 {
     switch ( userRole ) {
