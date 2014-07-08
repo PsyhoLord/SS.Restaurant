@@ -8,6 +8,7 @@
 
 #import "OrdersViewController.h"
 #import "SWRevealViewController.h"
+#import "OrderItemsViewController.h"
 
 #import "MapDataProvider.h"
 #import "Alert.h"
@@ -210,10 +211,9 @@ static const CGFloat kHeightOfHeaderSection    = 35.0f;
         
         [self.tableView reloadData];
     } else {
-//        Need Mykola's OrderItemsViewController.
-//        MenuViewController *orderItemsViewController = [[OrderItemsViewController alloc] init];
-//        [self.navigationController pushViewController: itemViewController
-//                                             animated: YES];
+        OrderItemsViewController *orderItemsViewController = [[OrderItemsViewController alloc] init];
+        [self.navigationController pushViewController: orderItemsViewController
+                                             animated: YES];
 //        [self.navigationController performSegueWithIdentifier: kSegueForOrderItems sender:self];
     }
 }
