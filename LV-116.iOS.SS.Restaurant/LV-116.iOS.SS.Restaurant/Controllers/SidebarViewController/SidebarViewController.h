@@ -9,4 +9,7 @@
 @class WaiterMapModel;
 
 @interface SidebarViewController : UITableViewController
+
+- (void) reloadData;
+
 @end

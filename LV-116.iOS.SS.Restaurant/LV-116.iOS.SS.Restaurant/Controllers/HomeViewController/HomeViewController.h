@@ -6,7 +6,10 @@
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
 
+@class SidebarViewController;
+
 // RootViewController class is root storyboard
 @interface HomeViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
+@property (weak, nonatomic) SidebarViewController *sidebarViewController;
 @end

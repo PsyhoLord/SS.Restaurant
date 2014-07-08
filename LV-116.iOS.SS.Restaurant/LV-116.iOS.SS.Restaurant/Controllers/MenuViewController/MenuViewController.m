@@ -69,9 +69,8 @@ static const NSUInteger kNumberOfSectionsInTableView  = 1;
         
         _currentCategory = menuModel.rootMenuCategory;
         
-        //            method reloadData performs on main thread.
+//  method reloadData performs on main thread.
         dispatch_async( dispatch_get_main_queue(), ^{
-            
             
             if ( error ) {
                 [Alert showConnectionAlert];

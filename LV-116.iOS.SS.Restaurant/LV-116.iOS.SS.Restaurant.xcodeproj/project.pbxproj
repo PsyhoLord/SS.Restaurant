@@ -13,22 +13,24 @@
 		2265A70519642B1B0059EC0E /* RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2265A70419642B1B0059EC0E /* RequestManager.m */; };
 		2B1ABB9D1958466500BF5678 /* MapDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1ABB9C1958466500BF5678 /* MapDataParser.m */; };
 		C348B3D3193DE5E90004808D /* RemoteDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C348B3D2193DE5E90004808D /* RemoteDataProvider.m */; };
+		ED42A3EC196C32FA00A63656 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3C3196C32FA00A63656 /* HomeViewController.m */; };
+		ED42A3ED196C32FA00A63656 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3C6196C32FA00A63656 /* MapViewController.m */; };
+		ED42A3EE196C32FA00A63656 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3C9196C32FA00A63656 /* TableView.m */; };
+		ED42A3EF196C32FA00A63656 /* MenuCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3CE196C32FA00A63656 /* MenuCategoryCell.m */; };
+		ED42A3F0196C32FA00A63656 /* MenuCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED42A3CF196C32FA00A63656 /* MenuCategoryCell.xib */; };
+		ED42A3F1196C32FA00A63656 /* MenuItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3D2196C32FA00A63656 /* MenuItemCell.m */; };
+		ED42A3F2196C32FA00A63656 /* MenuItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED42A3D3196C32FA00A63656 /* MenuItemCell.xib */; };
+		ED42A3F3196C32FA00A63656 /* ItemDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3D6196C32FA00A63656 /* ItemDescription.m */; };
+		ED42A3F4196C32FA00A63656 /* ItemDescription.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED42A3D7196C32FA00A63656 /* ItemDescription.xib */; };
+		ED42A3F5196C32FA00A63656 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3D9196C32FA00A63656 /* MenuViewController.m */; };
+		ED42A3F6196C32FA00A63656 /* TestSimpleUI.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3DC196C32FA00A63656 /* TestSimpleUI.m */; };
+		ED42A3F7196C32FA00A63656 /* TestSimpleUI.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED42A3DD196C32FA00A63656 /* TestSimpleUI.xib */; };
+		ED42A3F8196C32FA00A63656 /* SidebarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3E1196C32FA00A63656 /* SidebarTableViewCell.m */; };
+		ED42A3F9196C32FA00A63656 /* SidebarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED42A3E2196C32FA00A63656 /* SidebarTableViewCell.xib */; };
+		ED42A3FA196C32FA00A63656 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3E4196C32FA00A63656 /* SidebarViewController.m */; };
+		ED42A3FB196C32FA00A63656 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3E7196C32FA00A63656 /* SWRevealViewController.m */; };
+		ED42A3FC196C32FA00A63656 /* OrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3EB196C32FA00A63656 /* OrdersViewController.m */; };
 		ED58B567196BEAB300396CED /* UserRole.m in Sources */ = {isa = PBXBuildFile; fileRef = ED58B566196BEAB300396CED /* UserRole.m */; };
-		ED66191C196C021400F9C917 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6618F7196C021400F9C917 /* HomeViewController.m */; };
-		ED66191D196C021400F9C917 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6618FA196C021400F9C917 /* MapViewController.m */; };
-		ED66191E196C021400F9C917 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6618FD196C021400F9C917 /* TableView.m */; };
-		ED66191F196C021400F9C917 /* MenuCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED661902196C021400F9C917 /* MenuCategoryCell.m */; };
-		ED661920196C021400F9C917 /* MenuCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED661903196C021400F9C917 /* MenuCategoryCell.xib */; };
-		ED661921196C021400F9C917 /* MenuItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED661906196C021400F9C917 /* MenuItemCell.m */; };
-		ED661922196C021400F9C917 /* MenuItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED661907196C021400F9C917 /* MenuItemCell.xib */; };
-		ED661923196C021400F9C917 /* ItemDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = ED66190A196C021400F9C917 /* ItemDescription.m */; };
-		ED661924196C021400F9C917 /* ItemDescription.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED66190B196C021400F9C917 /* ItemDescription.xib */; };
-		ED661925196C021400F9C917 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED66190D196C021400F9C917 /* MenuViewController.m */; };
-		ED661926196C021400F9C917 /* TestSimpleUI.m in Sources */ = {isa = PBXBuildFile; fileRef = ED661910196C021400F9C917 /* TestSimpleUI.m */; };
-		ED661927196C021400F9C917 /* TestSimpleUI.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED661911196C021400F9C917 /* TestSimpleUI.xib */; };
-		ED661928196C021400F9C917 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED661914196C021400F9C917 /* SidebarViewController.m */; };
-		ED66192A196C021400F9C917 /* OrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED66191B196C021400F9C917 /* OrdersViewController.m */; };
-		ED661932196C028500F9C917 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED661931196C028500F9C917 /* SWRevealViewController.m */; };
 		ED89D3EC1965B08A00882F5C /* OrderItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ED89D3E71965B08A00882F5C /* OrderItemModel.m */; };
 		ED89D3ED1965B08A00882F5C /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ED89D3E91965B08A00882F5C /* OrderModel.m */; };
 		ED89D3EE1965B08A00882F5C /* WaiterTableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ED89D3EB1965B08A00882F5C /* WaiterTableModel.m */; };
@@ -88,34 +90,37 @@
 		C348B3D1193DE5E90004808D /* RemoteDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteDataProvider.h; sourceTree = "<group>"; };
 		C348B3D2193DE5E90004808D /* RemoteDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteDataProvider.m; sourceTree = "<group>"; };
 		C348B3D5193DE68B0004808D /* PDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDataParser.h; sourceTree = "<group>"; };
+		ED42A3C2196C32FA00A63656 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		ED42A3C3196C32FA00A63656 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		ED42A3C5196C32FA00A63656 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		ED42A3C6196C32FA00A63656 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		ED42A3C8196C32FA00A63656 /* TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView.h; sourceTree = "<group>"; };
+		ED42A3C9196C32FA00A63656 /* TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView.m; sourceTree = "<group>"; };
+		ED42A3CD196C32FA00A63656 /* MenuCategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuCategoryCell.h; sourceTree = "<group>"; };
+		ED42A3CE196C32FA00A63656 /* MenuCategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuCategoryCell.m; sourceTree = "<group>"; };
+		ED42A3CF196C32FA00A63656 /* MenuCategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuCategoryCell.xib; sourceTree = "<group>"; };
+		ED42A3D1196C32FA00A63656 /* MenuItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuItemCell.h; sourceTree = "<group>"; };
+		ED42A3D2196C32FA00A63656 /* MenuItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuItemCell.m; sourceTree = "<group>"; };
+		ED42A3D3196C32FA00A63656 /* MenuItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuItemCell.xib; sourceTree = "<group>"; };
+		ED42A3D5196C32FA00A63656 /* ItemDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemDescription.h; sourceTree = "<group>"; };
+		ED42A3D6196C32FA00A63656 /* ItemDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemDescription.m; sourceTree = "<group>"; };
+		ED42A3D7196C32FA00A63656 /* ItemDescription.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemDescription.xib; sourceTree = "<group>"; };
+		ED42A3D8196C32FA00A63656 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		ED42A3D9196C32FA00A63656 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		ED42A3DB196C32FA00A63656 /* TestSimpleUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestSimpleUI.h; sourceTree = "<group>"; };
+		ED42A3DC196C32FA00A63656 /* TestSimpleUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestSimpleUI.m; sourceTree = "<group>"; };
+		ED42A3DD196C32FA00A63656 /* TestSimpleUI.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestSimpleUI.xib; sourceTree = "<group>"; };
+		ED42A3E0196C32FA00A63656 /* SidebarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarTableViewCell.h; sourceTree = "<group>"; };
+		ED42A3E1196C32FA00A63656 /* SidebarTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarTableViewCell.m; sourceTree = "<group>"; };
+		ED42A3E2196C32FA00A63656 /* SidebarTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SidebarTableViewCell.xib; sourceTree = "<group>"; };
+		ED42A3E3196C32FA00A63656 /* SidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarViewController.h; sourceTree = "<group>"; };
+		ED42A3E4196C32FA00A63656 /* SidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarViewController.m; sourceTree = "<group>"; };
+		ED42A3E6196C32FA00A63656 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		ED42A3E7196C32FA00A63656 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		ED42A3EA196C32FA00A63656 /* OrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersViewController.h; sourceTree = "<group>"; };
+		ED42A3EB196C32FA00A63656 /* OrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersViewController.m; sourceTree = "<group>"; };
 		ED58B565196BEAB300396CED /* UserRole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRole.h; sourceTree = "<group>"; };
 		ED58B566196BEAB300396CED /* UserRole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserRole.m; sourceTree = "<group>"; };
-		ED6618F6196C021400F9C917 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
-		ED6618F7196C021400F9C917 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		ED6618F9196C021400F9C917 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
-		ED6618FA196C021400F9C917 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
-		ED6618FC196C021400F9C917 /* TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView.h; sourceTree = "<group>"; };
-		ED6618FD196C021400F9C917 /* TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView.m; sourceTree = "<group>"; };
-		ED661901196C021400F9C917 /* MenuCategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuCategoryCell.h; sourceTree = "<group>"; };
-		ED661902196C021400F9C917 /* MenuCategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuCategoryCell.m; sourceTree = "<group>"; };
-		ED661903196C021400F9C917 /* MenuCategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuCategoryCell.xib; sourceTree = "<group>"; };
-		ED661905196C021400F9C917 /* MenuItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuItemCell.h; sourceTree = "<group>"; };
-		ED661906196C021400F9C917 /* MenuItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuItemCell.m; sourceTree = "<group>"; };
-		ED661907196C021400F9C917 /* MenuItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuItemCell.xib; sourceTree = "<group>"; };
-		ED661909196C021400F9C917 /* ItemDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemDescription.h; sourceTree = "<group>"; };
-		ED66190A196C021400F9C917 /* ItemDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemDescription.m; sourceTree = "<group>"; };
-		ED66190B196C021400F9C917 /* ItemDescription.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemDescription.xib; sourceTree = "<group>"; };
-		ED66190C196C021400F9C917 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
-		ED66190D196C021400F9C917 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
-		ED66190F196C021400F9C917 /* TestSimpleUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestSimpleUI.h; sourceTree = "<group>"; };
-		ED661910196C021400F9C917 /* TestSimpleUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestSimpleUI.m; sourceTree = "<group>"; };
-		ED661911196C021400F9C917 /* TestSimpleUI.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestSimpleUI.xib; sourceTree = "<group>"; };
-		ED661913196C021400F9C917 /* SidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarViewController.h; sourceTree = "<group>"; };
-		ED661914196C021400F9C917 /* SidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarViewController.m; sourceTree = "<group>"; };
-		ED66191A196C021400F9C917 /* OrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersViewController.h; sourceTree = "<group>"; };
-		ED66191B196C021400F9C917 /* OrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersViewController.m; sourceTree = "<group>"; };
-		ED661930196C028500F9C917 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
-		ED661931196C028500F9C917 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		ED89D3E61965B08A00882F5C /* OrderItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderItemModel.h; sourceTree = "<group>"; };
 		ED89D3E71965B08A00882F5C /* OrderItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderItemModel.m; sourceTree = "<group>"; };
 		ED89D3E81965B08A00882F5C /* OrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderModel.h; sourceTree = "<group>"; };
@@ -268,6 +273,154 @@
 			path = Parsers;
 			sourceTree = "<group>";
 		};
+		ED42A3C0196C32FA00A63656 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				ED42A3C1196C32FA00A63656 /* HomeViewController */,
+				ED42A3C4196C32FA00A63656 /* MapViewController */,
+				ED42A3CA196C32FA00A63656 /* MenuViewController */,
+				ED42A3DE196C32FA00A63656 /* SidebarViewController */,
+				ED42A3E5196C32FA00A63656 /* SwRevealViewController */,
+				ED42A3E8196C32FA00A63656 /* WaiterMapControllers */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		ED42A3C1196C32FA00A63656 /* HomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ED42A3C2196C32FA00A63656 /* HomeViewController.h */,
+				ED42A3C3196C32FA00A63656 /* HomeViewController.m */,
+			);
+			path = HomeViewController;
+			sourceTree = "<group>";
+		};
+		ED42A3C4196C32FA00A63656 /* MapViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ED42A3C5196C32FA00A63656 /* MapViewController.h */,
+				ED42A3C6196C32FA00A63656 /* MapViewController.m */,
+				ED42A3C7196C32FA00A63656 /* TableView */,
+			);
+			path = MapViewController;
+			sourceTree = "<group>";
+		};
+		ED42A3C7196C32FA00A63656 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				ED42A3C8196C32FA00A63656 /* TableView.h */,
+				ED42A3C9196C32FA00A63656 /* TableView.m */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		ED42A3CA196C32FA00A63656 /* MenuViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ED42A3CB196C32FA00A63656 /* Cells */,
+				ED42A3D4196C32FA00A63656 /* ItemDescription */,
+				ED42A3D8196C32FA00A63656 /* MenuViewController.h */,
+				ED42A3D9196C32FA00A63656 /* MenuViewController.m */,
+				ED42A3DA196C32FA00A63656 /* TestSimpleUI */,
+			);
+			path = MenuViewController;
+			sourceTree = "<group>";
+		};
+		ED42A3CB196C32FA00A63656 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				ED42A3CC196C32FA00A63656 /* MenuCategoryCell */,
+				ED42A3D0196C32FA00A63656 /* MenuItemCell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		ED42A3CC196C32FA00A63656 /* MenuCategoryCell */ = {
+			isa = PBXGroup;
+			children = (
+				ED42A3CD196C32FA00A63656 /* MenuCategoryCell.h */,
+				ED42A3CE196C32FA00A63656 /* MenuCategoryCell.m */,
+				ED42A3CF196C32FA00A63656 /* MenuCategoryCell.xib */,
+			);
+			path = MenuCategoryCell;
+			sourceTree = "<group>";
+		};
+		ED42A3D0196C32FA00A63656 /* MenuItemCell */ = {
+			isa = PBXGroup;
+			children = (
+				ED42A3D1196C32FA00A63656 /* MenuItemCell.h */,
+				ED42A3D2196C32FA00A63656 /* MenuItemCell.m */,
+				ED42A3D3196C32FA00A63656 /* MenuItemCell.xib */,
+			);
+			path = MenuItemCell;
+			sourceTree = "<group>";
+		};
+		ED42A3D4196C32FA00A63656 /* ItemDescription */ = {
+			isa = PBXGroup;
+			children = (
+				ED42A3D5196C32FA00A63656 /* ItemDescription.h */,
+				ED42A3D6196C32FA00A63656 /* ItemDescription.m */,
+				ED42A3D7196C32FA00A63656 /* ItemDescription.xib */,
+			);
+			path = ItemDescription;
+			sourceTree = "<group>";
+		};
+		ED42A3DA196C32FA00A63656 /* TestSimpleUI */ = {
+			isa = PBXGroup;
+			children = (
+				ED42A3DB196C32FA00A63656 /* TestSimpleUI.h */,
+				ED42A3DC196C32FA00A63656 /* TestSimpleUI.m */,
+				ED42A3DD196C32FA00A63656 /* TestSimpleUI.xib */,
+			);
+			path = TestSimpleUI;
+			sourceTree = "<group>";
+		};
+		ED42A3DE196C32FA00A63656 /* SidebarViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ED42A3DF196C32FA00A63656 /* SidebarTableViewCell */,
+				ED42A3E3196C32FA00A63656 /* SidebarViewController.h */,
+				ED42A3E4196C32FA00A63656 /* SidebarViewController.m */,
+			);
+			path = SidebarViewController;
+			sourceTree = "<group>";
+		};
+		ED42A3DF196C32FA00A63656 /* SidebarTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				ED42A3E0196C32FA00A63656 /* SidebarTableViewCell.h */,
+				ED42A3E1196C32FA00A63656 /* SidebarTableViewCell.m */,
+				ED42A3E2196C32FA00A63656 /* SidebarTableViewCell.xib */,
+			);
+			path = SidebarTableViewCell;
+			sourceTree = "<group>";
+		};
+		ED42A3E5196C32FA00A63656 /* SwRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ED42A3E6196C32FA00A63656 /* SWRevealViewController.h */,
+				ED42A3E7196C32FA00A63656 /* SWRevealViewController.m */,
+			);
+			path = SwRevealViewController;
+			sourceTree = "<group>";
+		};
+		ED42A3E8196C32FA00A63656 /* WaiterMapControllers */ = {
+			isa = PBXGroup;
+			children = (
+				ED42A3E9196C32FA00A63656 /* OrdersViewController */,
+			);
+			path = WaiterMapControllers;
+			sourceTree = "<group>";
+		};
+		ED42A3E9196C32FA00A63656 /* OrdersViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ED42A3EA196C32FA00A63656 /* OrdersViewController.h */,
+				ED42A3EB196C32FA00A63656 /* OrdersViewController.m */,
+			);
+			path = OrdersViewController;
+			sourceTree = "<group>";
+		};
 		ED58B564196BEAA500396CED /* UserRole */ = {
 			isa = PBXGroup;
 			children = (
@@ -275,143 +428,6 @@
 				ED58B566196BEAB300396CED /* UserRole.m */,
 			);
 			path = UserRole;
-			sourceTree = "<group>";
-		};
-		ED6618F4196C021400F9C917 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				ED66192F196C028500F9C917 /* SwRevealViewController */,
-				ED661912196C021400F9C917 /* SidebarViewController */,
-				ED6618F5196C021400F9C917 /* HomeViewController */,
-				ED6618FE196C021400F9C917 /* MenuViewController */,
-				ED6618F8196C021400F9C917 /* MapViewController */,
-				ED661918196C021400F9C917 /* WaiterMapControllers */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		ED6618F5196C021400F9C917 /* HomeViewController */ = {
-			isa = PBXGroup;
-			children = (
-				ED6618F6196C021400F9C917 /* HomeViewController.h */,
-				ED6618F7196C021400F9C917 /* HomeViewController.m */,
-			);
-			path = HomeViewController;
-			sourceTree = "<group>";
-		};
-		ED6618F8196C021400F9C917 /* MapViewController */ = {
-			isa = PBXGroup;
-			children = (
-				ED6618F9196C021400F9C917 /* MapViewController.h */,
-				ED6618FA196C021400F9C917 /* MapViewController.m */,
-				ED6618FB196C021400F9C917 /* TableView */,
-			);
-			path = MapViewController;
-			sourceTree = "<group>";
-		};
-		ED6618FB196C021400F9C917 /* TableView */ = {
-			isa = PBXGroup;
-			children = (
-				ED6618FC196C021400F9C917 /* TableView.h */,
-				ED6618FD196C021400F9C917 /* TableView.m */,
-			);
-			path = TableView;
-			sourceTree = "<group>";
-		};
-		ED6618FE196C021400F9C917 /* MenuViewController */ = {
-			isa = PBXGroup;
-			children = (
-				ED6618FF196C021400F9C917 /* Cells */,
-				ED661908196C021400F9C917 /* ItemDescription */,
-				ED66190C196C021400F9C917 /* MenuViewController.h */,
-				ED66190D196C021400F9C917 /* MenuViewController.m */,
-				ED66190E196C021400F9C917 /* TestSimpleUI */,
-			);
-			path = MenuViewController;
-			sourceTree = "<group>";
-		};
-		ED6618FF196C021400F9C917 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				ED661900196C021400F9C917 /* MenuCategoryCell */,
-				ED661904196C021400F9C917 /* MenuItemCell */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		ED661900196C021400F9C917 /* MenuCategoryCell */ = {
-			isa = PBXGroup;
-			children = (
-				ED661901196C021400F9C917 /* MenuCategoryCell.h */,
-				ED661902196C021400F9C917 /* MenuCategoryCell.m */,
-				ED661903196C021400F9C917 /* MenuCategoryCell.xib */,
-			);
-			path = MenuCategoryCell;
-			sourceTree = "<group>";
-		};
-		ED661904196C021400F9C917 /* MenuItemCell */ = {
-			isa = PBXGroup;
-			children = (
-				ED661905196C021400F9C917 /* MenuItemCell.h */,
-				ED661906196C021400F9C917 /* MenuItemCell.m */,
-				ED661907196C021400F9C917 /* MenuItemCell.xib */,
-			);
-			path = MenuItemCell;
-			sourceTree = "<group>";
-		};
-		ED661908196C021400F9C917 /* ItemDescription */ = {
-			isa = PBXGroup;
-			children = (
-				ED661909196C021400F9C917 /* ItemDescription.h */,
-				ED66190A196C021400F9C917 /* ItemDescription.m */,
-				ED66190B196C021400F9C917 /* ItemDescription.xib */,
-			);
-			path = ItemDescription;
-			sourceTree = "<group>";
-		};
-		ED66190E196C021400F9C917 /* TestSimpleUI */ = {
-			isa = PBXGroup;
-			children = (
-				ED66190F196C021400F9C917 /* TestSimpleUI.h */,
-				ED661910196C021400F9C917 /* TestSimpleUI.m */,
-				ED661911196C021400F9C917 /* TestSimpleUI.xib */,
-			);
-			path = TestSimpleUI;
-			sourceTree = "<group>";
-		};
-		ED661912196C021400F9C917 /* SidebarViewController */ = {
-			isa = PBXGroup;
-			children = (
-				ED661913196C021400F9C917 /* SidebarViewController.h */,
-				ED661914196C021400F9C917 /* SidebarViewController.m */,
-			);
-			path = SidebarViewController;
-			sourceTree = "<group>";
-		};
-		ED661918196C021400F9C917 /* WaiterMapControllers */ = {
-			isa = PBXGroup;
-			children = (
-				ED661919196C021400F9C917 /* OrdersViewController */,
-			);
-			path = WaiterMapControllers;
-			sourceTree = "<group>";
-		};
-		ED661919196C021400F9C917 /* OrdersViewController */ = {
-			isa = PBXGroup;
-			children = (
-				ED66191A196C021400F9C917 /* OrdersViewController.h */,
-				ED66191B196C021400F9C917 /* OrdersViewController.m */,
-			);
-			path = OrdersViewController;
-			sourceTree = "<group>";
-		};
-		ED66192F196C028500F9C917 /* SwRevealViewController */ = {
-			isa = PBXGroup;
-			children = (
-				ED661930196C028500F9C917 /* SWRevealViewController.h */,
-				ED661931196C028500F9C917 /* SWRevealViewController.m */,
-			);
-			path = SwRevealViewController;
 			sourceTree = "<group>";
 		};
 		ED89D3E21965B08A00882F5C /* WaiterMapModel */ = {
@@ -606,7 +622,7 @@
 				EDE50DF4193E10DA00ACA71D /* ServiceAgent */,
 				C348B3D4193DE6100004808D /* Parsers */,
 				C348B3CF193DE5AC0004808D /* DataProviders */,
-				ED6618F4196C021400F9C917 /* Controllers */,
+				ED42A3C0196C32FA00A63656 /* Controllers */,
 				FA336C5519335CE60007CC76 /* UI */,
 				FA336C5419335CCD0007CC76 /* AppDelegade */,
 				FA336C2319335B950007CC76 /* Supporting Files */,
@@ -739,19 +755,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED42A3F9196C32FA00A63656 /* SidebarTableViewCell.xib in Resources */,
 				EDCE5C88196BE4C600496B34 /* role_client_icon.png in Resources */,
 				EDA13E2C196ADCC400CF579C /* map_icon.png in Resources */,
 				FA336C3319335B950007CC76 /* Main_iPad.storyboard in Resources */,
 				EDCE5C89196BE4C600496B34 /* role_waiter_icon.png in Resources */,
 				EDA13E2D196ADCC400CF579C /* map_waiter_icon.png in Resources */,
-				ED661922196C021400F9C917 /* MenuItemCell.xib in Resources */,
+				ED42A3F2196C32FA00A63656 /* MenuItemCell.xib in Resources */,
 				FA336C3819335B950007CC76 /* Images.xcassets in Resources */,
 				FA336C3019335B950007CC76 /* Main_iPhone.storyboard in Resources */,
 				EDBDFE331967219000E65DCA /* menu.png in Resources */,
-				ED661927196C021400F9C917 /* TestSimpleUI.xib in Resources */,
-				ED661920196C021400F9C917 /* MenuCategoryCell.xib in Resources */,
+				ED42A3F7196C32FA00A63656 /* TestSimpleUI.xib in Resources */,
+				ED42A3F0196C32FA00A63656 /* MenuCategoryCell.xib in Resources */,
 				EDBDFE341967219000E65DCA /* menu@2x.png in Resources */,
-				ED661924196C021400F9C917 /* ItemDescription.xib in Resources */,
+				ED42A3F4196C32FA00A63656 /* ItemDescription.xib in Resources */,
 				EDA4E34D196BD97F008E7CE2 /* home_page_icon.png in Resources */,
 				EDA13E2E196ADCC400CF579C /* menu_icon.png in Resources */,
 				FA336C2719335B950007CC76 /* InfoPlist.strings in Resources */,
@@ -773,23 +790,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED66191F196C021400F9C917 /* MenuCategoryCell.m in Sources */,
-				ED661926196C021400F9C917 /* TestSimpleUI.m in Sources */,
-				ED661925196C021400F9C917 /* MenuViewController.m in Sources */,
+				ED42A3EF196C32FA00A63656 /* MenuCategoryCell.m in Sources */,
+				ED42A3F6196C32FA00A63656 /* TestSimpleUI.m in Sources */,
+				ED42A3F5196C32FA00A63656 /* MenuViewController.m in Sources */,
 				EDEC47361956FACB0041B98B /* MenuModel.m in Sources */,
-				ED66191E196C021400F9C917 /* TableView.m in Sources */,
-				ED66192A196C021400F9C917 /* OrdersViewController.m in Sources */,
+				ED42A3EE196C32FA00A63656 /* TableView.m in Sources */,
 				C348B3D3193DE5E90004808D /* RemoteDataProvider.m in Sources */,
 				ED89D3ED1965B08A00882F5C /* OrderModel.m in Sources */,
 				ED89D3EC1965B08A00882F5C /* OrderItemModel.m in Sources */,
 				EDEC473B1956FBB90041B98B /* MenuDataParser.m in Sources */,
-				ED66191C196C021400F9C917 /* HomeViewController.m in Sources */,
+				ED42A3EC196C32FA00A63656 /* HomeViewController.m in Sources */,
 				2B1ABB9D1958466500BF5678 /* MapDataParser.m in Sources */,
-				ED661928196C021400F9C917 /* SidebarViewController.m in Sources */,
-				ED661923196C021400F9C917 /* ItemDescription.m in Sources */,
+				ED42A3F3196C32FA00A63656 /* ItemDescription.m in Sources */,
 				FA336C2D19335B950007CC76 /* AppDelegate.m in Sources */,
 				EDEC47291956F9950041B98B /* MapModel.m in Sources */,
 				ED89D3F11965B0AA00882F5C /* WaiterMapModel.m in Sources */,
+				ED42A3FA196C32FA00A63656 /* SidebarViewController.m in Sources */,
 				EDE50DF7193E110500ACA71D /* ServiceAgent.m in Sources */,
 				EDEC47341956FACB0041B98B /* MenuCategoryModel.m in Sources */,
 				22346B58195F209000495B2A /* Alert.m in Sources */,
@@ -797,13 +813,15 @@
 				ED89D3EE1965B08A00882F5C /* WaiterTableModel.m in Sources */,
 				EDEC472A1956F9950041B98B /* TableModel.m in Sources */,
 				2265A70519642B1B0059EC0E /* RequestManager.m in Sources */,
-				ED661932196C028500F9C917 /* SWRevealViewController.m in Sources */,
-				ED661921196C021400F9C917 /* MenuItemCell.m in Sources */,
+				ED42A3F8196C32FA00A63656 /* SidebarTableViewCell.m in Sources */,
+				ED42A3FB196C32FA00A63656 /* SWRevealViewController.m in Sources */,
+				ED42A3F1196C32FA00A63656 /* MenuItemCell.m in Sources */,
 				EDEC47351956FACB0041B98B /* MenuItemModel.m in Sources */,
 				2265A7001964292D0059EC0E /* MapDataProvider.m in Sources */,
 				ED58B567196BEAB300396CED /* UserRole.m in Sources */,
 				2265A7011964292D0059EC0E /* MenuDataProvider.m in Sources */,
-				ED66191D196C021400F9C917 /* MapViewController.m in Sources */,
+				ED42A3ED196C32FA00A63656 /* MapViewController.m in Sources */,
+				ED42A3FC196C32FA00A63656 /* OrdersViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

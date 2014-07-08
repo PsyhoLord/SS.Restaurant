@@ -8,6 +8,7 @@
 
 #import "HomeViewController.h"
 #import "SWRevealViewController.h"
+#import "SidebarViewController.h"
 #import "UserRole.h"
 
 static NSString *const kRootMenuName        = @"Home page";
@@ -17,8 +18,8 @@ static NSString *const kRoleWaiterIconName  = @"role_waiter_icon.png";
 @implementation HomeViewController
 {
     __weak IBOutlet UIImageView *_roleImageView;
-    __weak IBOutlet UIButton *_buttonLogIn;
-    __weak IBOutlet UIButton *_buttonLogOut;
+    __weak IBOutlet UIButton    *_buttonLogIn;
+    __weak IBOutlet UIButton    *_buttonLogOut;
 }
 
 - (void)viewDidLoad
@@ -30,10 +31,12 @@ static NSString *const kRoleWaiterIconName  = @"role_waiter_icon.png";
     self.title = kRootMenuName;
     
     [self setHomePageConfiguration:[UserRole getUserRole]];
+    
+    _sidebarViewController =  ((SidebarViewController*)self.revealViewController.rearViewController);
 }
 
 // set configuration for sidebar
-- (void)setSidebarConfiguration
+- (void) setSidebarConfiguration
 {
     // Change button color
     _sidebarButton.tintColor = [UIColor colorWithWhite:0.1f alpha:0.9f];
@@ -79,12 +82,14 @@ static NSString *const kRoleWaiterIconName  = @"role_waiter_icon.png";
 {
     EnumUserRole userRole = [UserRole LogInWithLogin:@"123" password:@"123"];
     [self setHomePageConfiguration:userRole];
+    [self.sidebarViewController reloadData];
 }
 
 - (IBAction)LogOut:(id)sender
 {
     EnumUserRole userRole = [UserRole LogOut];
     [self setHomePageConfiguration:userRole];
+    [self.sidebarViewController reloadData];
 }
 
 - (void)didReceiveMemoryWarning

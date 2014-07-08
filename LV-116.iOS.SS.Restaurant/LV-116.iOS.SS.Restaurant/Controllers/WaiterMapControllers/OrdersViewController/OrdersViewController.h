@@ -1,19 +1,20 @@
 //
-//  TestDropTableView.h
-//  LV-116.iOS.SS.Restaurant
+//  MainViewController.h
+//  SideBar
 //
-//  Created by Oleg Hnidets on 7/6/14.
-//  Copyright (c) 2014 SortServe. All rights reserved.
+//  Created by Roman Sorochak on 7/4/14.
+//  Copyright (c) 2014 Roman Sorochak. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 
-@class WaiterMapModel;
+@class WaiterTableModel;
 
-@interface OrdersViewController : UITableViewController
 
-@property (strong, nonatomic) WaiterMapModel *waiterMapModel;
-
+@interface OrdersViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
+
+@property (weak,nonatomic) WaiterTableModel *currentWaiterTable;
+
+@property (weak, nonatomic) IBOutlet UILabel *label1;
 
 @end

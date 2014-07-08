@@ -9,18 +9,23 @@
 #import "SidebarViewController.h"
 #import "SWRevealViewController.h"
 #import "OrdersViewController.h"
+#import "SidebarTableViewCell.h"
+
 #import "MapDataProvider.h"
+
 #import "WaiterMapModel.h"
 #import "WaiterTableModel.h"
 #import "MapModel.h"
 #import "TableModel.h"
+
 #import "Alert.h"
+#import "UserRole.h"
 
 static const NSUInteger kNumberOfSections                   = 1;
 static NSString *const  kTitleTableViewCellIdentifier       = @"TitleCellIdentifier";
 static NSString *const  kMenuTableViewCellIdentifier        = @"MenuCellIdentifier";
 static NSString *const  kMapTableViewCellIdentifier         = @"MapCellIdentifier";
-static NSString *const  kMapWaiterTableViewCellIdentifier   = @"MapWaiterCellIdentifier";
+static NSString *const  kOrdersTableViewCellIdentifier      = @"OrdersCellIdentifier";
 
 @implementation SidebarViewController
 {
@@ -42,7 +47,14 @@ static NSString *const  kMapWaiterTableViewCellIdentifier   = @"MapWaiterCellIde
     
     self.revealViewController.rearViewRevealWidth = 175.0f;
     
-    _rootMenuItems = @[kTitleTableViewCellIdentifier, kMenuTableViewCellIdentifier, kMapTableViewCellIdentifier, kMapWaiterTableViewCellIdentifier];
+    _rootMenuItems = @[kTitleTableViewCellIdentifier, kMenuTableViewCellIdentifier, kMapTableViewCellIdentifier, kOrdersTableViewCellIdentifier];
+}
+
+- (void) reloadData
+{
+    dispatch_async( dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+    });
 }
 
 - (void) didReceiveMemoryWarning
@@ -53,30 +65,118 @@ static NSString *const  kMapWaiterTableViewCellIdentifier   = @"MapWaiterCellIde
 
 #pragma mark - Table view data source
 
-- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return kNumberOfSections;
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [_rootMenuItems count];
+    switch ( [UserRole getUserRole] ) {
+        case UserRoleClient:
+            return [_rootMenuItems count] - 1; // without cell - orders
+        case UserRoleWaiter:
+            return [_rootMenuItems count];
+    }
+}
+
+//Method for row height setting (for items and for category)
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [SidebarTableViewCell rowHeightForCell];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *CellIdentifier = _rootMenuItems[indexPath.row];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    NSString *cellIdentifier = _rootMenuItems[indexPath.row];
     
+    SidebarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    if ( cell == nil ) {
+        cell = [[SidebarTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                           reuseIdentifier:cellIdentifier];
+        [cell drawWithImage: [self getImageForCellAtIndexPath:indexPath]
+                       text: [self getTextForCellAtIndexPath:indexPath]];
+    }
     return cell;
+}
+
+- (UIImage*) getImageForCellAtIndexPath:(NSIndexPath*)indexPath
+{
+    UIImage *image;
+    
+    switch ( indexPath.row ) {
+        case 0:
+            image = [UIImage imageNamed:@"home_page_icon.png"];
+            break;
+        case 1:
+            image = [UIImage imageNamed:@"menu_icon.png"];
+            break;
+        case 2:
+            image = [UIImage imageNamed:@"map_icon.png"];
+            break;
+        case 3:
+            image = [UIImage imageNamed:@"orders_icon.png"];
+            break;
+    }
+    
+    return image;
+}
+
+- (NSString*) getTextForCellAtIndexPath:(NSIndexPath*)indexPath
+{
+    NSString *text;
+    
+    switch ( indexPath.row ) {
+        case 0:
+            text = @"Home";
+            break;
+        case 1:
+            text = @"Menu";
+            break;
+        case 2:
+            text = @"Map";
+            break;
+        case 3:
+            text = @"Orders";
+            break;
+    }
+    
+    return text;
 }
 
 #pragma mark - Segue on next screen
 
+// This method creates new storyboard recursively
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
+{
+    NSString *stringSegue = [self getStringSegueForRowAtIndexPath:indexPath];
+    [self performSegueWithIdentifier:stringSegue sender:self];
+}
+
+- (NSString*) getStringSegueForRowAtIndexPath:(NSIndexPath*)indexPath
+{
+    NSString *stringSegue;
+    switch ( indexPath.row ) {
+        case 0:
+            stringSegue = @"sw_segue_home";
+            break;
+        case 1:
+            stringSegue = @"sw_segue_menu";
+            break;
+        case 2:
+            stringSegue = @"sw_segue_map";
+            break;
+        case 3:
+            stringSegue = @"sw_segue_orders";
+            break;
+    }
+    return stringSegue;
+}
+
 // something that did before segue
-- (void) prepareForSegue: (UIStoryboardSegue *)segue sender: (id)sender
+- (void) prepareForSegue: (UIStoryboardSegue*)segue sender: (id)sender
 {
     if ( [segue isKindOfClass: [SWRevealViewControllerSegue class]] ) {
         
