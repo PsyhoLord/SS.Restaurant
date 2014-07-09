@@ -9,6 +9,7 @@
 #import "HomeViewController.h"
 #import "SWRevealViewController.h"
 #import "SidebarViewController.h"
+#import "AutorizationProvider.h"
 #import "UserRole.h"
 
 static NSString *const kRootMenuName        = @"Home page";
@@ -80,16 +81,20 @@ static NSString *const kRoleWaiterIconName  = @"role_waiter_icon.png";
 
 - (IBAction)LogIn:(id)sender
 {
-    EnumUserRole userRole = [UserRole LogInWithLogin:@"123" password:@"123"];
-    [self setHomePageConfiguration:userRole];
-    [self.sidebarViewController reloadData];
+    [AutorizationProvider logInWithLogin:@"123" password:@"123" block:^(EnumUserRole userRole, NSError *error) {
+        [UserRole setUserRole:userRole];
+        [self setHomePageConfiguration:userRole];
+        [self.sidebarViewController reloadData];
+    }];
 }
 
 - (IBAction)LogOut:(id)sender
 {
-    EnumUserRole userRole = [UserRole LogOut];
-    [self setHomePageConfiguration:userRole];
-    [self.sidebarViewController reloadData];
+    [AutorizationProvider logOutWithBlock:^(EnumUserRole userRole, NSError *error) {
+        [UserRole setUserRole:userRole];
+        [self setHomePageConfiguration:userRole];
+        [self.sidebarViewController reloadData];
+    }];
 }
 
 - (void)didReceiveMemoryWarning

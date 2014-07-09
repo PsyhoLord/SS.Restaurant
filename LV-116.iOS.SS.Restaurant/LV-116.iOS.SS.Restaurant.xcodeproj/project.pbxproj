@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		22346B58195F209000495B2A /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 22346B57195F209000495B2A /* Alert.m */; };
-		2265A7001964292D0059EC0E /* MapDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2265A6FC1964292D0059EC0E /* MapDataProvider.m */; };
-		2265A7011964292D0059EC0E /* MenuDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2265A6FF1964292D0059EC0E /* MenuDataProvider.m */; };
 		2265A70519642B1B0059EC0E /* RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2265A70419642B1B0059EC0E /* RequestManager.m */; };
 		2B1ABB9D1958466500BF5678 /* MapDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1ABB9C1958466500BF5678 /* MapDataParser.m */; };
 		570ABE92196C3EEF003DC398 /* OrderItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570ABE8F196C3EEF003DC398 /* OrderItemsViewController.m */; };
@@ -18,7 +16,6 @@
 		570ABE9D196C4058003DC398 /* OrderItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 570ABE97196C4058003DC398 /* OrderItemCell.xib */; };
 		570ABE9E196C4058003DC398 /* OrderTotallCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 570ABE9A196C4058003DC398 /* OrderTotallCell.m */; };
 		570ABE9F196C4058003DC398 /* OrderTotallCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 570ABE9B196C4058003DC398 /* OrderTotallCell.xib */; };
-		ED42A3EC196C32FA00A63656 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3C3196C32FA00A63656 /* HomeViewController.m */; };
 		ED42A3ED196C32FA00A63656 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3C6196C32FA00A63656 /* MapViewController.m */; };
 		ED42A3EE196C32FA00A63656 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3C9196C32FA00A63656 /* TableView.m */; };
 		ED42A3EF196C32FA00A63656 /* MenuCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3CE196C32FA00A63656 /* MenuCategoryCell.m */; };
@@ -34,9 +31,13 @@
 		ED42A3F9196C32FA00A63656 /* SidebarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED42A3E2196C32FA00A63656 /* SidebarTableViewCell.xib */; };
 		ED42A3FA196C32FA00A63656 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3E4196C32FA00A63656 /* SidebarViewController.m */; };
 		ED42A3FB196C32FA00A63656 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3E7196C32FA00A63656 /* SWRevealViewController.m */; };
-		ED465BF4196C5E590079319A /* RemoteMapDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = ED465BF3196C5E590079319A /* RemoteMapDataProvider.m */; };
-		ED465BF7196C5E6E0079319A /* RemoteMenuDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = ED465BF6196C5E6E0079319A /* RemoteMenuDataProvider.m */; };
-		ED58B567196BEAB300396CED /* UserRole.m in Sources */ = {isa = PBXBuildFile; fileRef = ED58B566196BEAB300396CED /* UserRole.m */; };
+		ED5B2DF4196D21060070FF98 /* UserRole.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5B2DF3196D21060070FF98 /* UserRole.m */; };
+		ED5B2E07196D211B0070FF98 /* AutorizationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5B2DF8196D211B0070FF98 /* AutorizationProvider.m */; };
+		ED5B2E08196D211B0070FF98 /* MapDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5B2DFB196D211B0070FF98 /* MapDataProvider.m */; };
+		ED5B2E09196D211B0070FF98 /* MenuDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5B2DFE196D211B0070FF98 /* MenuDataProvider.m */; };
+		ED5B2E0A196D211B0070FF98 /* RemoteMapDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5B2E03196D211B0070FF98 /* RemoteMapDataProvider.m */; };
+		ED5B2E0B196D211B0070FF98 /* RemoteMenuDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5B2E06196D211B0070FF98 /* RemoteMenuDataProvider.m */; };
+		ED5B2E0E196D218F0070FF98 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5B2E0D196D218F0070FF98 /* HomeViewController.m */; };
 		ED89D3EC1965B08A00882F5C /* OrderItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ED89D3E71965B08A00882F5C /* OrderItemModel.m */; };
 		ED89D3ED1965B08A00882F5C /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ED89D3E91965B08A00882F5C /* OrderModel.m */; };
 		ED89D3EE1965B08A00882F5C /* WaiterTableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ED89D3EB1965B08A00882F5C /* WaiterTableModel.m */; };
@@ -85,10 +86,6 @@
 /* Begin PBXFileReference section */
 		22346B56195F209000495B2A /* Alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alert.h; sourceTree = "<group>"; };
 		22346B57195F209000495B2A /* Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alert.m; sourceTree = "<group>"; };
-		2265A6FB1964292D0059EC0E /* MapDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapDataProvider.h; sourceTree = "<group>"; };
-		2265A6FC1964292D0059EC0E /* MapDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapDataProvider.m; sourceTree = "<group>"; };
-		2265A6FE1964292D0059EC0E /* MenuDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuDataProvider.h; sourceTree = "<group>"; };
-		2265A6FF1964292D0059EC0E /* MenuDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuDataProvider.m; sourceTree = "<group>"; };
 		2265A70319642B1B0059EC0E /* RequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestManager.h; sourceTree = "<group>"; };
 		2265A70419642B1B0059EC0E /* RequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestManager.m; sourceTree = "<group>"; };
 		2B1ABB9B1958466500BF5678 /* MapDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapDataParser.h; path = MapDataParser/MapDataParser.h; sourceTree = "<group>"; };
@@ -104,8 +101,6 @@
 		570ABE9A196C4058003DC398 /* OrderTotallCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderTotallCell.m; sourceTree = "<group>"; };
 		570ABE9B196C4058003DC398 /* OrderTotallCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderTotallCell.xib; sourceTree = "<group>"; };
 		C348B3D5193DE68B0004808D /* PDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDataParser.h; sourceTree = "<group>"; };
-		ED42A3C2196C32FA00A63656 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
-		ED42A3C3196C32FA00A63656 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		ED42A3C5196C32FA00A63656 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		ED42A3C6196C32FA00A63656 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		ED42A3C8196C32FA00A63656 /* TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView.h; sourceTree = "<group>"; };
@@ -131,12 +126,20 @@
 		ED42A3E4196C32FA00A63656 /* SidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarViewController.m; sourceTree = "<group>"; };
 		ED42A3E6196C32FA00A63656 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		ED42A3E7196C32FA00A63656 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
-		ED465BF2196C5E590079319A /* RemoteMapDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteMapDataProvider.h; sourceTree = "<group>"; };
-		ED465BF3196C5E590079319A /* RemoteMapDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteMapDataProvider.m; sourceTree = "<group>"; };
-		ED465BF5196C5E6E0079319A /* RemoteMenuDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteMenuDataProvider.h; sourceTree = "<group>"; };
-		ED465BF6196C5E6E0079319A /* RemoteMenuDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteMenuDataProvider.m; sourceTree = "<group>"; };
-		ED58B565196BEAB300396CED /* UserRole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRole.h; sourceTree = "<group>"; };
-		ED58B566196BEAB300396CED /* UserRole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserRole.m; sourceTree = "<group>"; };
+		ED5B2DF2196D21060070FF98 /* UserRole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRole.h; sourceTree = "<group>"; };
+		ED5B2DF3196D21060070FF98 /* UserRole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserRole.m; sourceTree = "<group>"; };
+		ED5B2DF7196D211B0070FF98 /* AutorizationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutorizationProvider.h; sourceTree = "<group>"; };
+		ED5B2DF8196D211B0070FF98 /* AutorizationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutorizationProvider.m; sourceTree = "<group>"; };
+		ED5B2DFA196D211B0070FF98 /* MapDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapDataProvider.h; sourceTree = "<group>"; };
+		ED5B2DFB196D211B0070FF98 /* MapDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapDataProvider.m; sourceTree = "<group>"; };
+		ED5B2DFD196D211B0070FF98 /* MenuDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuDataProvider.h; sourceTree = "<group>"; };
+		ED5B2DFE196D211B0070FF98 /* MenuDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuDataProvider.m; sourceTree = "<group>"; };
+		ED5B2E02196D211B0070FF98 /* RemoteMapDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteMapDataProvider.h; sourceTree = "<group>"; };
+		ED5B2E03196D211B0070FF98 /* RemoteMapDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteMapDataProvider.m; sourceTree = "<group>"; };
+		ED5B2E05196D211B0070FF98 /* RemoteMenuDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteMenuDataProvider.h; sourceTree = "<group>"; };
+		ED5B2E06196D211B0070FF98 /* RemoteMenuDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteMenuDataProvider.m; sourceTree = "<group>"; };
+		ED5B2E0C196D218F0070FF98 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		ED5B2E0D196D218F0070FF98 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		ED89D3E61965B08A00882F5C /* OrderItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderItemModel.h; sourceTree = "<group>"; };
 		ED89D3E71965B08A00882F5C /* OrderItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderItemModel.m; sourceTree = "<group>"; };
 		ED89D3E81965B08A00882F5C /* OrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderModel.h; sourceTree = "<group>"; };
@@ -221,26 +224,6 @@
 			path = Alerts;
 			sourceTree = "<group>";
 		};
-		2265A6FA1964292D0059EC0E /* MapDataProvider */ = {
-			isa = PBXGroup;
-			children = (
-				2265A6FB1964292D0059EC0E /* MapDataProvider.h */,
-				2265A6FC1964292D0059EC0E /* MapDataProvider.m */,
-			);
-			name = MapDataProvider;
-			path = DataProviders/MapDataProvider;
-			sourceTree = "<group>";
-		};
-		2265A6FD1964292D0059EC0E /* MenuDataProvider */ = {
-			isa = PBXGroup;
-			children = (
-				2265A6FE1964292D0059EC0E /* MenuDataProvider.h */,
-				2265A6FF1964292D0059EC0E /* MenuDataProvider.m */,
-			);
-			name = MenuDataProvider;
-			path = DataProviders/MenuDataProvider;
-			sourceTree = "<group>";
-		};
 		2265A70219642B0A0059EC0E /* RequestManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,16 +283,6 @@
 			path = OrderTotallCell;
 			sourceTree = "<group>";
 		};
-		C348B3CF193DE5AC0004808D /* DataProviders */ = {
-			isa = PBXGroup;
-			children = (
-				ED465BEC196C5DE90079319A /* RemoteDataProviders */,
-				2265A6FD1964292D0059EC0E /* MenuDataProvider */,
-				2265A6FA1964292D0059EC0E /* MapDataProvider */,
-			);
-			name = DataProviders;
-			sourceTree = "<group>";
-		};
 		C348B3D4193DE6100004808D /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
@@ -336,8 +309,8 @@
 		ED42A3C1196C32FA00A63656 /* HomeViewController */ = {
 			isa = PBXGroup;
 			children = (
-				ED42A3C2196C32FA00A63656 /* HomeViewController.h */,
-				ED42A3C3196C32FA00A63656 /* HomeViewController.m */,
+				ED5B2E0C196D218F0070FF98 /* HomeViewController.h */,
+				ED5B2E0D196D218F0070FF98 /* HomeViewController.m */,
 			);
 			path = HomeViewController;
 			sourceTree = "<group>";
@@ -451,41 +424,86 @@
 			path = SwRevealViewController;
 			sourceTree = "<group>";
 		};
-		ED465BEC196C5DE90079319A /* RemoteDataProviders */ = {
+		ED58B564196BEAA500396CED /* UserRole */ = {
 			isa = PBXGroup;
 			children = (
-				ED465BF1196C5E380079319A /* RemoteMenuDataProvider */,
-				ED465BF0196C5E380079319A /* RemoteMapDataProvider */,
+				ED5B2DF2196D21060070FF98 /* UserRole.h */,
+				ED5B2DF3196D21060070FF98 /* UserRole.m */,
 			);
-			name = RemoteDataProviders;
-			path = DataProviders/RemoteDataProviders;
+			path = UserRole;
 			sourceTree = "<group>";
 		};
-		ED465BF0196C5E380079319A /* RemoteMapDataProvider */ = {
+		ED5B2DF5196D211B0070FF98 /* Providers */ = {
 			isa = PBXGroup;
 			children = (
-				ED465BF2196C5E590079319A /* RemoteMapDataProvider.h */,
-				ED465BF3196C5E590079319A /* RemoteMapDataProvider.m */,
+				ED5B2DF6196D211B0070FF98 /* AutorizationProvider */,
+				ED5B2DF9196D211B0070FF98 /* MapDataProvider */,
+				ED5B2DFC196D211B0070FF98 /* MenuDataProvider */,
+				ED5B2DFF196D211B0070FF98 /* RemoteProviders */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
+		ED5B2DF6196D211B0070FF98 /* AutorizationProvider */ = {
+			isa = PBXGroup;
+			children = (
+				ED5B2DF7196D211B0070FF98 /* AutorizationProvider.h */,
+				ED5B2DF8196D211B0070FF98 /* AutorizationProvider.m */,
+			);
+			path = AutorizationProvider;
+			sourceTree = "<group>";
+		};
+		ED5B2DF9196D211B0070FF98 /* MapDataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				ED5B2DFA196D211B0070FF98 /* MapDataProvider.h */,
+				ED5B2DFB196D211B0070FF98 /* MapDataProvider.m */,
+			);
+			path = MapDataProvider;
+			sourceTree = "<group>";
+		};
+		ED5B2DFC196D211B0070FF98 /* MenuDataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				ED5B2DFD196D211B0070FF98 /* MenuDataProvider.h */,
+				ED5B2DFE196D211B0070FF98 /* MenuDataProvider.m */,
+			);
+			path = MenuDataProvider;
+			sourceTree = "<group>";
+		};
+		ED5B2DFF196D211B0070FF98 /* RemoteProviders */ = {
+			isa = PBXGroup;
+			children = (
+				ED5B2E00196D211B0070FF98 /* RemoteAutorizationProvider */,
+				ED5B2E01196D211B0070FF98 /* RemoteMapDataProvider */,
+				ED5B2E04196D211B0070FF98 /* RemoteMenuDataProvider */,
+			);
+			path = RemoteProviders;
+			sourceTree = "<group>";
+		};
+		ED5B2E00196D211B0070FF98 /* RemoteAutorizationProvider */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RemoteAutorizationProvider;
+			sourceTree = "<group>";
+		};
+		ED5B2E01196D211B0070FF98 /* RemoteMapDataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				ED5B2E02196D211B0070FF98 /* RemoteMapDataProvider.h */,
+				ED5B2E03196D211B0070FF98 /* RemoteMapDataProvider.m */,
 			);
 			path = RemoteMapDataProvider;
 			sourceTree = "<group>";
 		};
-		ED465BF1196C5E380079319A /* RemoteMenuDataProvider */ = {
+		ED5B2E04196D211B0070FF98 /* RemoteMenuDataProvider */ = {
 			isa = PBXGroup;
 			children = (
-				ED465BF5196C5E6E0079319A /* RemoteMenuDataProvider.h */,
-				ED465BF6196C5E6E0079319A /* RemoteMenuDataProvider.m */,
+				ED5B2E05196D211B0070FF98 /* RemoteMenuDataProvider.h */,
+				ED5B2E06196D211B0070FF98 /* RemoteMenuDataProvider.m */,
 			);
 			path = RemoteMenuDataProvider;
-			sourceTree = "<group>";
-		};
-		ED58B564196BEAA500396CED /* UserRole */ = {
-			isa = PBXGroup;
-			children = (
-				ED58B565196BEAB300396CED /* UserRole.h */,
-				ED58B566196BEAB300396CED /* UserRole.m */,
-			);
-			path = UserRole;
 			sourceTree = "<group>";
 		};
 		ED89D3E21965B08A00882F5C /* WaiterMapModel */ = {
@@ -679,7 +697,7 @@
 				2265A70219642B0A0059EC0E /* RequestManager */,
 				EDE50DF4193E10DA00ACA71D /* ServiceAgent */,
 				C348B3D4193DE6100004808D /* Parsers */,
-				C348B3CF193DE5AC0004808D /* DataProviders */,
+				ED5B2DF5196D211B0070FF98 /* Providers */,
 				ED42A3C0196C32FA00A63656 /* Controllers */,
 				FA336C5519335CE60007CC76 /* UI */,
 				FA336C5419335CCD0007CC76 /* AppDelegade */,
@@ -853,14 +871,15 @@
 				ED42A3EF196C32FA00A63656 /* MenuCategoryCell.m in Sources */,
 				ED42A3F6196C32FA00A63656 /* TestSimpleUI.m in Sources */,
 				ED42A3F5196C32FA00A63656 /* MenuViewController.m in Sources */,
-				ED465BF7196C5E6E0079319A /* RemoteMenuDataProvider.m in Sources */,
+				ED5B2E0B196D211B0070FF98 /* RemoteMenuDataProvider.m in Sources */,
 				EDEC47361956FACB0041B98B /* MenuModel.m in Sources */,
 				ED42A3EE196C32FA00A63656 /* TableView.m in Sources */,
-				ED465BF4196C5E590079319A /* RemoteMapDataProvider.m in Sources */,
+				ED5B2E0A196D211B0070FF98 /* RemoteMapDataProvider.m in Sources */,
 				ED89D3ED1965B08A00882F5C /* OrderModel.m in Sources */,
 				ED89D3EC1965B08A00882F5C /* OrderItemModel.m in Sources */,
 				EDEC473B1956FBB90041B98B /* MenuDataParser.m in Sources */,
-				ED42A3EC196C32FA00A63656 /* HomeViewController.m in Sources */,
+				ED5B2DF4196D21060070FF98 /* UserRole.m in Sources */,
+				ED5B2E08196D211B0070FF98 /* MapDataProvider.m in Sources */,
 				2B1ABB9D1958466500BF5678 /* MapDataParser.m in Sources */,
 				570ABE92196C3EEF003DC398 /* OrderItemsViewController.m in Sources */,
 				ED42A3F3196C32FA00A63656 /* ItemDescription.m in Sources */,
@@ -880,12 +899,12 @@
 				570ABE93196C3EEF003DC398 /* OrdersViewController.m in Sources */,
 				ED42A3FB196C32FA00A63656 /* SWRevealViewController.m in Sources */,
 				ED42A3F1196C32FA00A63656 /* MenuItemCell.m in Sources */,
+				ED5B2E0E196D218F0070FF98 /* HomeViewController.m in Sources */,
 				EDEC47351956FACB0041B98B /* MenuItemModel.m in Sources */,
+				ED5B2E09196D211B0070FF98 /* MenuDataProvider.m in Sources */,
 				570ABE9E196C4058003DC398 /* OrderTotallCell.m in Sources */,
-				2265A7001964292D0059EC0E /* MapDataProvider.m in Sources */,
-				ED58B567196BEAB300396CED /* UserRole.m in Sources */,
-				2265A7011964292D0059EC0E /* MenuDataProvider.m in Sources */,
 				ED42A3ED196C32FA00A63656 /* MapViewController.m in Sources */,
+				ED5B2E07196D211B0070FF98 /* AutorizationProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

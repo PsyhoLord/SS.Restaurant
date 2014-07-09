@@ -12,21 +12,7 @@ static EnumUserRole _userRole   = UserRoleClient;
 
 @implementation UserRole
 
-+ (EnumUserRole) LogInWithLogin:(NSString*)login password:(NSString*)password
-{
-    if ( [login isEqualToString: @"123"] && [password isEqualToString:@"123"] ) {
-        [UserRole setUserRole:UserRoleWaiter];
-    }
-    return _userRole;
-}
-
-+ (EnumUserRole) LogOut
-{
-    [UserRole setUserRole:UserRoleClient];
-    return _userRole;
-}
-
-+ (void) setUserRole:(EnumUserRole)userRole
++ (void) setUserRole: (EnumUserRole)userRole
 {
     _userRole = userRole;
 }

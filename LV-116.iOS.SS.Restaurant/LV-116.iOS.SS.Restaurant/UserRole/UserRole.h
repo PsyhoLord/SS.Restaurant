@@ -14,8 +14,7 @@ typedef enum
 
 @interface UserRole : NSObject
 
-+ (EnumUserRole) LogInWithLogin:(NSString*)login password:(NSString*)password;
-+ (EnumUserRole) LogOut;
++ (void) setUserRole: (EnumUserRole)userRole;
 
 + (EnumUserRole) getUserRole;
 
