@@ -8,7 +8,7 @@
 
 #import "UserRole.h"
 
-@interface AutorizationProvider : NSObject
+@interface AuthorizationProvider : NSObject
 
 + (void) logInWithLogin:(NSString*)login password:(NSString*)password block:(void (^)(EnumUserRole, NSError*))callback;
 

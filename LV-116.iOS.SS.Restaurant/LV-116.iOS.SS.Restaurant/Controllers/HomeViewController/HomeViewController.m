@@ -9,7 +9,7 @@
 #import "HomeViewController.h"
 #import "SWRevealViewController.h"
 #import "SidebarViewController.h"
-#import "AutorizationProvider.h"
+#import "AuthorizationProvider.h"
 #import "UserRole.h"
 
 static NSString *const kRootMenuName        = @"Home page";
@@ -31,7 +31,8 @@ static NSString *const kRoleWaiterIconName  = @"role_waiter_icon.png";
     
     self.title = kRootMenuName;
     
-    [self setHomePageConfiguration:[UserRole getUserRole]];
+    EnumUserRole enumUserRole = ([UserRole getInstance]).enumUserRole;
+    [self setHomePageConfiguration:enumUserRole];
     
     _sidebarViewController =  ((SidebarViewController*)self.revealViewController.rearViewController);
 }
@@ -81,18 +82,18 @@ static NSString *const kRoleWaiterIconName  = @"role_waiter_icon.png";
 
 - (IBAction)LogIn:(id)sender
 {
-    [AutorizationProvider logInWithLogin:@"123" password:@"123" block:^(EnumUserRole userRole, NSError *error) {
-        [UserRole setUserRole:userRole];
-        [self setHomePageConfiguration:userRole];
+    [AuthorizationProvider logInWithLogin:@"123" password:@"123" block:^(EnumUserRole enumUserRole, NSError *error) {
+        [UserRole getInstance].enumUserRole = enumUserRole;
+        [self setHomePageConfiguration:enumUserRole];
         [self.sidebarViewController reloadData];
     }];
 }
 
 - (IBAction)LogOut:(id)sender
 {
-    [AutorizationProvider logOutWithBlock:^(EnumUserRole userRole, NSError *error) {
-        [UserRole setUserRole:userRole];
-        [self setHomePageConfiguration:userRole];
+    [AuthorizationProvider logOutWithBlock:^(EnumUserRole enumUserRole, NSError *error) {
+        [UserRole getInstance].enumUserRole = enumUserRole;
+        [self setHomePageConfiguration:enumUserRole];
         [self.sidebarViewController reloadData];
     }];
 }

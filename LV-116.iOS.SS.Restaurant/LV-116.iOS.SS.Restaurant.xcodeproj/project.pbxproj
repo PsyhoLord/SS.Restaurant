@@ -32,7 +32,7 @@
 		ED42A3FA196C32FA00A63656 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3E4196C32FA00A63656 /* SidebarViewController.m */; };
 		ED42A3FB196C32FA00A63656 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3E7196C32FA00A63656 /* SWRevealViewController.m */; };
 		ED5B2DF4196D21060070FF98 /* UserRole.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5B2DF3196D21060070FF98 /* UserRole.m */; };
-		ED5B2E07196D211B0070FF98 /* AutorizationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5B2DF8196D211B0070FF98 /* AutorizationProvider.m */; };
+		ED5B2E07196D211B0070FF98 /* AuthorizationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5B2DF8196D211B0070FF98 /* AuthorizationProvider.m */; };
 		ED5B2E08196D211B0070FF98 /* MapDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5B2DFB196D211B0070FF98 /* MapDataProvider.m */; };
 		ED5B2E09196D211B0070FF98 /* MenuDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5B2DFE196D211B0070FF98 /* MenuDataProvider.m */; };
 		ED5B2E0A196D211B0070FF98 /* RemoteMapDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5B2E03196D211B0070FF98 /* RemoteMapDataProvider.m */; };
@@ -128,8 +128,8 @@
 		ED42A3E7196C32FA00A63656 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		ED5B2DF2196D21060070FF98 /* UserRole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRole.h; sourceTree = "<group>"; };
 		ED5B2DF3196D21060070FF98 /* UserRole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserRole.m; sourceTree = "<group>"; };
-		ED5B2DF7196D211B0070FF98 /* AutorizationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutorizationProvider.h; sourceTree = "<group>"; };
-		ED5B2DF8196D211B0070FF98 /* AutorizationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutorizationProvider.m; sourceTree = "<group>"; };
+		ED5B2DF7196D211B0070FF98 /* AuthorizationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorizationProvider.h; sourceTree = "<group>"; };
+		ED5B2DF8196D211B0070FF98 /* AuthorizationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorizationProvider.m; sourceTree = "<group>"; };
 		ED5B2DFA196D211B0070FF98 /* MapDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapDataProvider.h; sourceTree = "<group>"; };
 		ED5B2DFB196D211B0070FF98 /* MapDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapDataProvider.m; sourceTree = "<group>"; };
 		ED5B2DFD196D211B0070FF98 /* MenuDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuDataProvider.h; sourceTree = "<group>"; };
@@ -447,8 +447,8 @@
 		ED5B2DF6196D211B0070FF98 /* AutorizationProvider */ = {
 			isa = PBXGroup;
 			children = (
-				ED5B2DF7196D211B0070FF98 /* AutorizationProvider.h */,
-				ED5B2DF8196D211B0070FF98 /* AutorizationProvider.m */,
+				ED5B2DF7196D211B0070FF98 /* AuthorizationProvider.h */,
+				ED5B2DF8196D211B0070FF98 /* AuthorizationProvider.m */,
 			);
 			path = AutorizationProvider;
 			sourceTree = "<group>";
@@ -904,7 +904,7 @@
 				ED5B2E09196D211B0070FF98 /* MenuDataProvider.m in Sources */,
 				570ABE9E196C4058003DC398 /* OrderTotallCell.m in Sources */,
 				ED42A3ED196C32FA00A63656 /* MapViewController.m in Sources */,
-				ED5B2E07196D211B0070FF98 /* AutorizationProvider.m in Sources */,
+				ED5B2E07196D211B0070FF98 /* AuthorizationProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

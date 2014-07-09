@@ -81,7 +81,8 @@ typedef enum
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    switch ( [UserRole getUserRole] ) {
+    EnumUserRole enumUserRole = ([UserRole getInstance]).enumUserRole;
+    switch ( enumUserRole ) {
         case UserRoleClient:
             return [_rootMenuItems count] - 1; // without cell - orders
         case UserRoleWaiter:

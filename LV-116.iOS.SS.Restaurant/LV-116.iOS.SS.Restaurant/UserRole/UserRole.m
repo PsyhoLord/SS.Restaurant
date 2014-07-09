@@ -8,18 +8,63 @@
 
 #import "UserRole.h"
 
-static EnumUserRole _userRole   = UserRoleClient;
-
 @implementation UserRole
-
-+ (void) setUserRole: (EnumUserRole)userRole
 {
-    _userRole = userRole;
+    dispatch_queue_t _syncQueue;
 }
 
-+ (EnumUserRole) getUserRole
+@synthesize enumUserRole    = _enumUserRole;
+@synthesize name            = _name;
+
++ (instancetype) getInstance
 {
-    return _userRole;
+    static UserRole *instance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[UserRole alloc] init];
+    });
+    return instance;
+}
+
+- (id) init
+{
+    if ( self = [super init] ) {
+        _enumUserRole = UserRoleClient;
+        _syncQueue  = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    }
+    return self;
+}
+
+- (void) setEnumUserRole: (EnumUserRole)enumUserRole
+{
+    dispatch_barrier_async(_syncQueue, ^{
+        _enumUserRole = enumUserRole;
+    });
+}
+
+- (EnumUserRole) enumUserRole
+{
+    __block EnumUserRole enumUserRole;
+    dispatch_sync(_syncQueue, ^{
+        enumUserRole = _enumUserRole;
+    });
+    return enumUserRole;
+}
+
+- (void) setName: (NSString *)name
+{
+    dispatch_barrier_async(_syncQueue, ^{
+        _name = name;
+    });
+}
+
+- (NSString*) name
+{
+    __block NSString *name;
+    dispatch_sync(_syncQueue, ^{
+        name = _name;
+    });
+    return name;
 }
 
 @end

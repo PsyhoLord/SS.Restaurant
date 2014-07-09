@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
 
-#import "AutorizationProvider.h"
+#import "AuthorizationProvider.h"
 
-@implementation AutorizationProvider
+@implementation AuthorizationProvider
 
 // load menu data from remote and create menu model with these data
 // calls block when model has created

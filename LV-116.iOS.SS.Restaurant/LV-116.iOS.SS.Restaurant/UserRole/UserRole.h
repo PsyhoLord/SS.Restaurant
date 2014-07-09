@@ -14,8 +14,9 @@ typedef enum
 
 @interface UserRole : NSObject
 
-+ (void) setUserRole: (EnumUserRole)userRole;
++ (instancetype) getInstance;
 
-+ (EnumUserRole) getUserRole;
+@property EnumUserRole enumUserRole;
+@property (strong, nonatomic) NSString *name;
 
 @end
