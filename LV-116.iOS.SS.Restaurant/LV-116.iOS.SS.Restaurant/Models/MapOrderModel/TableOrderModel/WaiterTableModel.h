@@ -18,8 +18,8 @@
 
 @property (strong, nonatomic) NSMutableArray *arrayOfOrders;
 
-- (instancetype) initWithTableModel:(TableModel*)tableModel;
+- (instancetype) initWithTableModel: (TableModel*)tableModel;
 
-- (void)addOrder:(OrderModel*)orderModel;
+- (void)addOrder: (OrderModel*)orderModel;
 
 @end

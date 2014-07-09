@@ -10,7 +10,7 @@
 
 @implementation OrderItemModel
 
-- (instancetype)initWithMenuItemModel:(MenuItemModel*)menuItemModel
+- (instancetype) initWithMenuItemModel: (MenuItemModel*)menuItemModel
 {
     if ( self = [super init] ) {
         self.menuItemModel = menuItemModel;

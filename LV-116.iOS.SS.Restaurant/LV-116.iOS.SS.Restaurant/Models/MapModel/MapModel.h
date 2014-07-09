@@ -14,10 +14,7 @@
 @property (strong, nonatomic) NSMutableArray *arrayTableModel;
 @property (strong, nonatomic) UIImage        *image;
 
-// get object of MapModel which contains array of TableModels
-- (MapModel*)getMapData;
-
 // add TableModel to an array of TableModels
-- (void)addTableModel:(TableModel*)arrayOfTableModel;
+- (void) addTableModel: (TableModel*)arrayOfTableModel;
 
 @end

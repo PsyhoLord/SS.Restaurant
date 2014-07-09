@@ -11,7 +11,7 @@
 
 @implementation WaiterTableModel
 
-- (instancetype) initWithTableModel:(TableModel*)tableModel
+- (instancetype) initWithTableModel: (TableModel*)tableModel
 {
     if ( self = [super init] ) {
         _table = tableModel;
@@ -19,7 +19,7 @@
     return self;
 }
 
-- (void)addOrder:(OrderModel*)orderModel
+- (void)addOrder: (OrderModel*)orderModel
 {
     if(_arrayOfOrders == nil){
         _arrayOfOrders = [[NSMutableArray alloc] init];

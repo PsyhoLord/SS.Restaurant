@@ -14,6 +14,6 @@
 
 @property (strong, nonatomic) NSMutableArray *arrayOfTableModel;
 
-- (instancetype) initWithMapModel:(MapModel*)mapModel;
+- (instancetype) initWithMapModel: (MapModel*)mapModel;
 
 @end

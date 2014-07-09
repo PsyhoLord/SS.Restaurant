@@ -28,7 +28,6 @@
 		ED42A3F6196C32FA00A63656 /* TestSimpleUI.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3DC196C32FA00A63656 /* TestSimpleUI.m */; };
 		ED42A3F7196C32FA00A63656 /* TestSimpleUI.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED42A3DD196C32FA00A63656 /* TestSimpleUI.xib */; };
 		ED42A3F8196C32FA00A63656 /* SidebarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3E1196C32FA00A63656 /* SidebarTableViewCell.m */; };
-		ED42A3F9196C32FA00A63656 /* SidebarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED42A3E2196C32FA00A63656 /* SidebarTableViewCell.xib */; };
 		ED42A3FA196C32FA00A63656 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3E4196C32FA00A63656 /* SidebarViewController.m */; };
 		ED42A3FB196C32FA00A63656 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3E7196C32FA00A63656 /* SWRevealViewController.m */; };
 		ED5B2DF4196D21060070FF98 /* UserRole.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5B2DF3196D21060070FF98 /* UserRole.m */; };
@@ -121,7 +120,6 @@
 		ED42A3DD196C32FA00A63656 /* TestSimpleUI.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestSimpleUI.xib; sourceTree = "<group>"; };
 		ED42A3E0196C32FA00A63656 /* SidebarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarTableViewCell.h; sourceTree = "<group>"; };
 		ED42A3E1196C32FA00A63656 /* SidebarTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarTableViewCell.m; sourceTree = "<group>"; };
-		ED42A3E2196C32FA00A63656 /* SidebarTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SidebarTableViewCell.xib; sourceTree = "<group>"; };
 		ED42A3E3196C32FA00A63656 /* SidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarViewController.h; sourceTree = "<group>"; };
 		ED42A3E4196C32FA00A63656 /* SidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarViewController.m; sourceTree = "<group>"; };
 		ED42A3E6196C32FA00A63656 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
@@ -410,7 +408,6 @@
 			children = (
 				ED42A3E0196C32FA00A63656 /* SidebarTableViewCell.h */,
 				ED42A3E1196C32FA00A63656 /* SidebarTableViewCell.m */,
-				ED42A3E2196C32FA00A63656 /* SidebarTableViewCell.xib */,
 			);
 			path = SidebarTableViewCell;
 			sourceTree = "<group>";
@@ -436,10 +433,10 @@
 		ED5B2DF5196D211B0070FF98 /* Providers */ = {
 			isa = PBXGroup;
 			children = (
+				ED5B2DFF196D211B0070FF98 /* RemoteProviders */,
 				ED5B2DF6196D211B0070FF98 /* AutorizationProvider */,
 				ED5B2DF9196D211B0070FF98 /* MapDataProvider */,
 				ED5B2DFC196D211B0070FF98 /* MenuDataProvider */,
-				ED5B2DFF196D211B0070FF98 /* RemoteProviders */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -831,7 +828,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED42A3F9196C32FA00A63656 /* SidebarTableViewCell.xib in Resources */,
 				570ABE9F196C4058003DC398 /* OrderTotallCell.xib in Resources */,
 				EDCE5C88196BE4C600496B34 /* role_client_icon.png in Resources */,
 				EDA13E2C196ADCC400CF579C /* map_icon.png in Resources */,

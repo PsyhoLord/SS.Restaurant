@@ -15,6 +15,6 @@
 @property NSUInteger countOfItem;
 @property (weak, nonatomic) MenuItemModel *menuItemModel;
 
-- (instancetype)initWithMenuItemModel:(MenuItemModel*)menuItemModel;
+- (instancetype)initWithMenuItemModel: (MenuItemModel*)menuItemModel;
 
 @end
