@@ -90,6 +90,7 @@ static NSString *const orderTotallIdentifier = @"TotallOrderCell";
 }
 
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([_currentOrder.arrayOfOrderItem count]>[indexPath row])
@@ -128,7 +129,25 @@ static NSString *const orderTotallIdentifier = @"TotallOrderCell";
 }
 
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if ([_currentOrder.arrayOfOrderItem count]<[indexPath row])
+    {}
+    else
+    {
+    addOrderItem =[[OrderItemModel alloc] init];
+    
+    addOrderItem.menuItemModel.name=[NSString stringWithFormat:@"Item"];
+    
+    addOrderItem.menuItemModel.price = 5*1.5;
+    
+    addOrderItem.countOfItem=3;
+    
+    [_currentOrder.arrayOfOrderItem addObject:addOrderItem];
+    
+    [tableView reloadData];
+    }
+}
 
 
 /*
