@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
 
-
-
 @class MenuModel;
 @class MapModel;
 @class MenuItemModel;

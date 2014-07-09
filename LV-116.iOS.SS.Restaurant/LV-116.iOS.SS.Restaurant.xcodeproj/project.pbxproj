@@ -18,7 +18,6 @@
 		570ABE9D196C4058003DC398 /* OrderItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 570ABE97196C4058003DC398 /* OrderItemCell.xib */; };
 		570ABE9E196C4058003DC398 /* OrderTotallCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 570ABE9A196C4058003DC398 /* OrderTotallCell.m */; };
 		570ABE9F196C4058003DC398 /* OrderTotallCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 570ABE9B196C4058003DC398 /* OrderTotallCell.xib */; };
-		C348B3D3193DE5E90004808D /* RemoteDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C348B3D2193DE5E90004808D /* RemoteDataProvider.m */; };
 		ED42A3EC196C32FA00A63656 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3C3196C32FA00A63656 /* HomeViewController.m */; };
 		ED42A3ED196C32FA00A63656 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3C6196C32FA00A63656 /* MapViewController.m */; };
 		ED42A3EE196C32FA00A63656 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3C9196C32FA00A63656 /* TableView.m */; };
@@ -35,6 +34,8 @@
 		ED42A3F9196C32FA00A63656 /* SidebarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED42A3E2196C32FA00A63656 /* SidebarTableViewCell.xib */; };
 		ED42A3FA196C32FA00A63656 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3E4196C32FA00A63656 /* SidebarViewController.m */; };
 		ED42A3FB196C32FA00A63656 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3E7196C32FA00A63656 /* SWRevealViewController.m */; };
+		ED465BF4196C5E590079319A /* RemoteMapDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = ED465BF3196C5E590079319A /* RemoteMapDataProvider.m */; };
+		ED465BF7196C5E6E0079319A /* RemoteMenuDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = ED465BF6196C5E6E0079319A /* RemoteMenuDataProvider.m */; };
 		ED58B567196BEAB300396CED /* UserRole.m in Sources */ = {isa = PBXBuildFile; fileRef = ED58B566196BEAB300396CED /* UserRole.m */; };
 		ED89D3EC1965B08A00882F5C /* OrderItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ED89D3E71965B08A00882F5C /* OrderItemModel.m */; };
 		ED89D3ED1965B08A00882F5C /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ED89D3E91965B08A00882F5C /* OrderModel.m */; };
@@ -102,8 +103,6 @@
 		570ABE99196C4058003DC398 /* OrderTotallCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderTotallCell.h; sourceTree = "<group>"; };
 		570ABE9A196C4058003DC398 /* OrderTotallCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderTotallCell.m; sourceTree = "<group>"; };
 		570ABE9B196C4058003DC398 /* OrderTotallCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderTotallCell.xib; sourceTree = "<group>"; };
-		C348B3D1193DE5E90004808D /* RemoteDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteDataProvider.h; sourceTree = "<group>"; };
-		C348B3D2193DE5E90004808D /* RemoteDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteDataProvider.m; sourceTree = "<group>"; };
 		C348B3D5193DE68B0004808D /* PDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDataParser.h; sourceTree = "<group>"; };
 		ED42A3C2196C32FA00A63656 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		ED42A3C3196C32FA00A63656 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
@@ -132,6 +131,10 @@
 		ED42A3E4196C32FA00A63656 /* SidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarViewController.m; sourceTree = "<group>"; };
 		ED42A3E6196C32FA00A63656 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		ED42A3E7196C32FA00A63656 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		ED465BF2196C5E590079319A /* RemoteMapDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteMapDataProvider.h; sourceTree = "<group>"; };
+		ED465BF3196C5E590079319A /* RemoteMapDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteMapDataProvider.m; sourceTree = "<group>"; };
+		ED465BF5196C5E6E0079319A /* RemoteMenuDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteMenuDataProvider.h; sourceTree = "<group>"; };
+		ED465BF6196C5E6E0079319A /* RemoteMenuDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteMenuDataProvider.m; sourceTree = "<group>"; };
 		ED58B565196BEAB300396CED /* UserRole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRole.h; sourceTree = "<group>"; };
 		ED58B566196BEAB300396CED /* UserRole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserRole.m; sourceTree = "<group>"; };
 		ED89D3E61965B08A00882F5C /* OrderItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderItemModel.h; sourceTree = "<group>"; };
@@ -263,8 +266,7 @@
 				570ABE90196C3EEF003DC398 /* OrdersViewController.h */,
 				570ABE91196C3EEF003DC398 /* OrdersViewController.m */,
 			);
-			name = OrdersViewController;
-			path = Controllers/OrdersViewController;
+			path = OrdersViewController;
 			sourceTree = "<group>";
 		};
 		570ABE8D196C3EEF003DC398 /* OrderItemsController */ = {
@@ -301,21 +303,11 @@
 		C348B3CF193DE5AC0004808D /* DataProviders */ = {
 			isa = PBXGroup;
 			children = (
-				C348B3D0193DE5E90004808D /* Remote */,
+				ED465BEC196C5DE90079319A /* RemoteDataProviders */,
 				2265A6FD1964292D0059EC0E /* MenuDataProvider */,
 				2265A6FA1964292D0059EC0E /* MapDataProvider */,
 			);
 			name = DataProviders;
-			sourceTree = "<group>";
-		};
-		C348B3D0193DE5E90004808D /* Remote */ = {
-			isa = PBXGroup;
-			children = (
-				C348B3D1193DE5E90004808D /* RemoteDataProvider.h */,
-				C348B3D2193DE5E90004808D /* RemoteDataProvider.m */,
-			);
-			name = Remote;
-			path = DataProviders/Remote;
 			sourceTree = "<group>";
 		};
 		C348B3D4193DE6100004808D /* Parsers */ = {
@@ -336,6 +328,7 @@
 				ED42A3C1196C32FA00A63656 /* HomeViewController */,
 				ED42A3CA196C32FA00A63656 /* MenuViewController */,
 				ED42A3C4196C32FA00A63656 /* MapViewController */,
+				570ABE8C196C3EEF003DC398 /* OrdersViewController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -456,6 +449,34 @@
 				ED42A3E7196C32FA00A63656 /* SWRevealViewController.m */,
 			);
 			path = SwRevealViewController;
+			sourceTree = "<group>";
+		};
+		ED465BEC196C5DE90079319A /* RemoteDataProviders */ = {
+			isa = PBXGroup;
+			children = (
+				ED465BF1196C5E380079319A /* RemoteMenuDataProvider */,
+				ED465BF0196C5E380079319A /* RemoteMapDataProvider */,
+			);
+			name = RemoteDataProviders;
+			path = DataProviders/RemoteDataProviders;
+			sourceTree = "<group>";
+		};
+		ED465BF0196C5E380079319A /* RemoteMapDataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				ED465BF2196C5E590079319A /* RemoteMapDataProvider.h */,
+				ED465BF3196C5E590079319A /* RemoteMapDataProvider.m */,
+			);
+			path = RemoteMapDataProvider;
+			sourceTree = "<group>";
+		};
+		ED465BF1196C5E380079319A /* RemoteMenuDataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				ED465BF5196C5E6E0079319A /* RemoteMenuDataProvider.h */,
+				ED465BF6196C5E6E0079319A /* RemoteMenuDataProvider.m */,
+			);
+			path = RemoteMenuDataProvider;
 			sourceTree = "<group>";
 		};
 		ED58B564196BEAA500396CED /* UserRole */ = {
@@ -660,7 +681,6 @@
 				C348B3D4193DE6100004808D /* Parsers */,
 				C348B3CF193DE5AC0004808D /* DataProviders */,
 				ED42A3C0196C32FA00A63656 /* Controllers */,
-				570ABE8C196C3EEF003DC398 /* OrdersViewController */,
 				FA336C5519335CE60007CC76 /* UI */,
 				FA336C5419335CCD0007CC76 /* AppDelegade */,
 				FA336C2319335B950007CC76 /* Supporting Files */,
@@ -833,9 +853,10 @@
 				ED42A3EF196C32FA00A63656 /* MenuCategoryCell.m in Sources */,
 				ED42A3F6196C32FA00A63656 /* TestSimpleUI.m in Sources */,
 				ED42A3F5196C32FA00A63656 /* MenuViewController.m in Sources */,
+				ED465BF7196C5E6E0079319A /* RemoteMenuDataProvider.m in Sources */,
 				EDEC47361956FACB0041B98B /* MenuModel.m in Sources */,
 				ED42A3EE196C32FA00A63656 /* TableView.m in Sources */,
-				C348B3D3193DE5E90004808D /* RemoteDataProvider.m in Sources */,
+				ED465BF4196C5E590079319A /* RemoteMapDataProvider.m in Sources */,
 				ED89D3ED1965B08A00882F5C /* OrderModel.m in Sources */,
 				ED89D3EC1965B08A00882F5C /* OrderItemModel.m in Sources */,
 				EDEC473B1956FBB90041B98B /* MenuDataParser.m in Sources */,

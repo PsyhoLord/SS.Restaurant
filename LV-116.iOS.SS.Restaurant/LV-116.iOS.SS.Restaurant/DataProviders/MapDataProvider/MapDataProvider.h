@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
 
-
 @class MenuModel;
 @class MapModel;
 @class MenuItemModel;
@@ -17,10 +16,8 @@
 // calls block when model has created
 + (void)loadMapDataWithBlock:(void (^)(MapModel*, NSError*))callback;
 
-
 // load map background image from remote
 // calls block when image is
 + (void)loadMapBackgroundImageWithBlock:(void (^)(UIImage*, NSError*))callback;
-
 
 @end
