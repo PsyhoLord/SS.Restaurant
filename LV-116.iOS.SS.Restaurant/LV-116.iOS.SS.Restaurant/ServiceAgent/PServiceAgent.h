@@ -11,6 +11,6 @@
 // send request to server and call block when response comes
 // (NSURLRequest *)request - request
 // responseBlock:(void (^)(NSData*, NSError*))callback - block which will call when response come
-+ (void)send:(NSURLRequest *)request responseBlock:(void (^)(NSData*, NSError*))callback;
++ (void) send: (NSURLRequest *)request responseBlock: (void (^)(NSHTTPURLResponse*, NSData*, NSError*))callback;
 
 @end

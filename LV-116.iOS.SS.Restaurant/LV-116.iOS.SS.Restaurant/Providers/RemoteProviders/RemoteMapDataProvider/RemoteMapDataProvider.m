@@ -11,42 +11,41 @@
 #import "MapModel.h"
 #import "MapDataParser.h"
 
-static NSString *const kURLMap                  = @"http://192.168.195.212/Restaurant/api/tables";
-static NSString *const kURLDownloadMapImage     = @"http://192.168.195.212/Restaurant/Images/background.jpg";
-static const CGFloat kConnectionTimeoutInterval = 3.0;
-static const int kMaxCountOfAttemptsForRequest  = 3;
+static NSString *const kStringURLMap                = @"http://192.168.195.212/Restaurant/api/tables";
+static NSString *const kStringURLDownloadMapImage   = @"http://192.168.195.212/Restaurant/Images/background.jpg";
+static const CGFloat kConnectionTimeoutInterval     = 3.0;
+static const int kMaxCountOfAttemptsForRequest      = 3;
 
 @implementation RemoteMapDataProvider
 
-+ (void)loadMapDataWithBlock:(void (^)(MapModel *, NSError *))callback
++ (void)loadMapDataWithBlock: (void (^)(MapModel *, NSError *))callback
 {
-    NSURLRequest *URLRequest = [RemoteMapDataProvider getURLRequestWithstring:[NSString stringWithFormat:kURLMap]
-                                                           timeoutInterval:kConnectionTimeoutInterval];
+    NSURLRequest *URLRequest = [RemoteMapDataProvider getURLRequestWithstring: kStringURLMap
+                                                           timeoutInterval: kConnectionTimeoutInterval];
     
-    [RequestManager send:URLRequest
-           responseBlock:^(NSData *data, NSError *error) {
+    [RequestManager send: URLRequest
+           responseBlock: ^(NSHTTPURLResponse *urlResponse, NSData *data, NSError *error) {
                
                MapModel *mapModel;
                if ( error == nil ) {
                    mapModel = [MapDataParser parse: data
                                       parsingError: &error];
                }
-               callback (mapModel,error);
+               callback(mapModel,error);
                
            }
-         countOfAttempts:kMaxCountOfAttemptsForRequest];
+         countOfAttempts: kMaxCountOfAttemptsForRequest];
 }
 
 // download image for map
 // (void (^)(UIImage*, NSError*))callback - block which will be called when image is
-+ (void)loadMapBackgroundImageWithBlock:(void (^)(UIImage*, NSError*))callback
++ (void) loadMapBackgroundImageWithBlock: (void (^)(UIImage*, NSError*))callback
 {
-    NSURLRequest *URLRequest = [RemoteMapDataProvider
-                                getURLRequestWithstring:[NSString stringWithFormat:kURLDownloadMapImage]
-                                timeoutInterval:kConnectionTimeoutInterval];
+    NSURLRequest *urlRequest = [RemoteMapDataProvider getURLRequestWithstring: kStringURLDownloadMapImage
+                                                              timeoutInterval: kConnectionTimeoutInterval];
     
-    [RequestManager send:URLRequest
-           responseBlock:^(NSData *data, NSError *error) {
+    [RequestManager send: urlRequest
+           responseBlock: ^(NSHTTPURLResponse *urlResponse, NSData *data, NSError *error) {
                
                UIImage *image;
                if ( error == nil ) {
@@ -61,11 +60,11 @@ static const int kMaxCountOfAttemptsForRequest  = 3;
 
 + (NSURLRequest*) getURLRequestWithstring:(NSString*)stringURL timeoutInterval:(CGFloat)timeoutInterval
 {
-    NSURL *URL = [[NSURL alloc] initWithString:stringURL];
+    NSURL *URL = [[NSURL alloc] initWithString: stringURL];
     
-    return [NSURLRequest requestWithURL:URL
-                            cachePolicy:NSURLRequestUseProtocolCachePolicy
-                        timeoutInterval:timeoutInterval];
+    return [NSURLRequest requestWithURL: URL
+                            cachePolicy: NSURLRequestUseProtocolCachePolicy
+                        timeoutInterval: timeoutInterval];
 }
 
 @end

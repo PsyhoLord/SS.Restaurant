@@ -26,8 +26,8 @@ static const int kMaxCountOfAttemptsForRequest  = 3;
     NSURLRequest *URLRequest = [RemoteMenuDataProvider getURLRequestWithstring:[NSString stringWithFormat:kURLMenu, 0]
                                                            timeoutInterval:kConnectionTimeoutInterval];
     
-    [RequestManager send:URLRequest
-           responseBlock:^(NSData *data, NSError *error) {
+    [RequestManager send: URLRequest
+           responseBlock: ^(NSHTTPURLResponse *urlResponse, NSData *data, NSError *error) {
                
                MenuModel *menuModel;
                if ( error == nil ) {
@@ -53,7 +53,7 @@ static const int kMaxCountOfAttemptsForRequest  = 3;
                                                            timeoutInterval:kConnectionTimeoutInterval];
     
     [RequestManager send:URLRequest
-           responseBlock:^(NSData *data, NSError *error) {
+           responseBlock:^(NSHTTPURLResponse *urlResponse, NSData *data, NSError *error) {
                
                UIImage *image;
                if ( error == nil ) {

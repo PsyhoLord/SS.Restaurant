@@ -10,7 +10,7 @@
 @property (weak, nonatomic, readonly) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *label;
 
-- (void) drawWithImage:(UIImage*)image text:(NSString*)text;
+- (void) drawWithImage: (UIImage*)image text: (NSString*)text;
 
 + (CGFloat) rowHeightForCell;
 

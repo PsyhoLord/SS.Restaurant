@@ -15,16 +15,17 @@
 // (NSURLRequest *)request - request
 // responseBlock:(void (^)(NSData*, NSError*))callback - block which will call when response come
 // countOfAttempts:(int)countOfAttempts - count of attempts if it is no internet
-+ (void)send:(NSURLRequest *)urlRequest responseBlock:(void (^)(NSData*, NSError*))callback countOfAttempts:(int)countOfAttempts
++ (void) send: (NSURLRequest *)urlRequest responseBlock: (void (^)(NSHTTPURLResponse*, NSData*, NSError*))callback countOfAttempts: (int)countOfAttempts
 {
     --countOfAttempts;
-    [ServiceAgent send:urlRequest responseBlock:^(NSData *data, NSError *error) {
-        NSLog(@"%i", countOfAttempts);
+    [ServiceAgent send: urlRequest responseBlock: ^(NSHTTPURLResponse *urlResponse, NSData *data, NSError *error) {
+        
         if ( error && countOfAttempts ) {
-            [RequestManager send:urlRequest responseBlock:callback countOfAttempts:countOfAttempts];
+            [RequestManager send: urlRequest responseBlock: callback countOfAttempts: countOfAttempts];
         } else {
-            callback(data, error);
+            callback(urlResponse, data, error);
         }
+        
     } ];
 }
 
