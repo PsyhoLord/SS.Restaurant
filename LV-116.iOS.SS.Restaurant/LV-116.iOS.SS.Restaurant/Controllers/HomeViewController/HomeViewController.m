@@ -104,19 +104,20 @@ static NSString *const kRoleWaiterIconName  = @"role_waiter_icon.png";
 {
     [AuthorizationProvider logInWithLogin: _textFieldUserName.text
                                  password: _textFieldPassword.text
-                                    block: ^(EnumUserRole enumUserRole, NSError *error) {
-        [UserRole getInstance].enumUserRole = enumUserRole;
-        [self setHomePageConfiguration: enumUserRole];
-        [_sidebarViewController reloadData];
-    }];
+                            responseBlock: ^(BOOL isAutorizated, UserRole *userRole, NSError *error) {
+                                
+                                [self setHomePageConfiguration: userRole.enumUserRole];
+                                [_sidebarViewController reloadData];
+                                
+                            }];
 }
 
 // logic of button logout
 - (IBAction) LogOut: (id)sender
 {
-    [AuthorizationProvider logOutWithBlock: ^(EnumUserRole enumUserRole, NSError *error) {
-        [UserRole getInstance].enumUserRole = enumUserRole;
-        [self setHomePageConfiguration: enumUserRole];
+    [AuthorizationProvider logOutWithResponseBlock: ^(UserRole *userRole, NSError *error) {
+        
+        [self setHomePageConfiguration: userRole.enumUserRole];
         [_sidebarViewController reloadData];
         
         // remove text from textFields
