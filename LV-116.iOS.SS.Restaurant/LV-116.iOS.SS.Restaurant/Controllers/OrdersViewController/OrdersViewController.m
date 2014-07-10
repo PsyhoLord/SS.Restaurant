@@ -212,6 +212,12 @@ static const CGFloat kHeightOfHeaderSection    = 35.0f;
         [self.tableView reloadData];
     } else {
         OrderItemsViewController *orderItemsViewController = [[OrderItemsViewController alloc] init];
+        orderItemsViewController.currentOrder=
+                [
+                 [[_waiterMapModel.arrayOfTableModel objectAtIndex:[indexPath section]]
+                  arrayOfOrders]
+                 objectAtIndex:[indexPath row]
+                ];
         [self.navigationController pushViewController: orderItemsViewController
                                              animated: YES];
 //        [self.navigationController performSegueWithIdentifier: kSegueForOrderItems sender:self];

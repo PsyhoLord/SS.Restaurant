@@ -11,11 +11,18 @@
 @class OrderItemModel;
 
 @interface OrderItemCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *ItemName;
-@property (weak, nonatomic) IBOutlet UILabel *ItemCount;
-@property (weak, nonatomic) IBOutlet UIStepper *ItemCountStepper;
-@property (weak, nonatomic) IBOutlet UILabel *pricePerPcs;
 
-- (void) drawCellWithModel:(OrderItemModel*)orderItemModel;
+@property (weak, nonatomic) IBOutlet UILabel *itemName;
+@property (weak, nonatomic) IBOutlet UILabel *itemCount;
+@property (weak, nonatomic) IBOutlet UILabel *pricePerPcs;
+@property (weak, nonatomic) IBOutlet UIStepper *itemCountStepper;
+
+
+
+
+
+@property (strong,nonatomic) OrderItemModel *currentOrderItem;
+
+- (void) drawCell;
 
 @end

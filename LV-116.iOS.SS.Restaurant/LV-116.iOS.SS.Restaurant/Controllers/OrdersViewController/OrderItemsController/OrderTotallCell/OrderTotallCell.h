@@ -11,9 +11,10 @@
 @class MenuItemModel;
 
 @interface OrderTotallCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *TotallPrice;
 
-- (IBAction)AddNewOrderItem:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UILabel *totallPrice;
+
+
 
 - (void) drawCellWithModel:(OrderModel*)orderModel;
 

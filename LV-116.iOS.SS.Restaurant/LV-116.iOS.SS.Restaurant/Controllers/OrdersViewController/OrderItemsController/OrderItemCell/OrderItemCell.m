@@ -16,9 +16,11 @@
 
 - (IBAction)ClickOnStepper:(id)sender {
     
-    double value = [_ItemCountStepper value];
-   [ _ItemCount setText:[NSString stringWithFormat:@"%d",(int)value]];
-     
+    
+    double value = [_itemCountStepper value];
+    _currentOrderItem.countOfItem=(int)[_itemCountStepper value];
+    [ _itemCount setText:[NSString stringWithFormat:@"%d",(int)value]];
+    
     //NEED ADD ACTION WHEN COUNT=0
 }
 
@@ -30,12 +32,12 @@
 
 
 
-- (void) drawCellWithModel:(OrderItemModel*)orderItemModel
+- (void) drawCell
 {
-    _ItemName.text=orderItemModel.menuItemModel.name;
-    _ItemCount.text=[NSString stringWithFormat:@"%d",orderItemModel.countOfItem];
-    _ItemCountStepper.value=orderItemModel.countOfItem;
-    _pricePerPcs.text=[NSString stringWithFormat:@"%f",orderItemModel.menuItemModel.price];
+    _itemName.text=_currentOrderItem.menuItemModel.name;
+    _itemCount.text=[NSString stringWithFormat:@"%d",_currentOrderItem.countOfItem];
+    _itemCountStepper.value=_currentOrderItem.countOfItem;
+    _pricePerPcs.text=[NSString stringWithFormat:@"%.2f $",_currentOrderItem.menuItemModel.price];
     
 }
 
@@ -46,6 +48,12 @@
         NSArray *nibArray = [[NSBundle mainBundle] loadNibNamed:@"OrderItemCell" owner:self options:nil];
         self = [nibArray objectAtIndex:0];
     }
+    
+    _currentOrderItem=[[OrderItemModel alloc] init];
+    
+    //Changing dimensions of stepper
+    _itemCountStepper.transform=CGAffineTransformMakeScale(0.75, 1);
+    
     return self;
 }
 

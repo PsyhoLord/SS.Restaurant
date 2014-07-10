@@ -30,6 +30,7 @@ static NSString *const orderTotallIdentifier = @"TotallOrderCell";
     return self;
 }
 
+
 - (void) setDefaultvalues
 {
   
@@ -57,7 +58,7 @@ static NSString *const orderTotallIdentifier = @"TotallOrderCell";
     _currentOrder=[[OrderModel alloc] init];
     
     [super viewDidLoad];
-    [self setDefaultvalues];
+    //[self setDefaultvalues];
     
     
     
@@ -103,9 +104,10 @@ static NSString *const orderTotallIdentifier = @"TotallOrderCell";
         }
     
     
-    OrderItemModel * tmp=[[OrderItemModel alloc] init];
-    tmp=[_currentOrder.arrayOfOrderItem objectAtIndex:[indexPath row]];
-    [orderItemCell drawCellWithModel:tmp];
+   /* OrderItemModel * tmp=[[OrderItemModel alloc] init];
+    tmp=[_currentOrder.arrayOfOrderItem objectAtIndex:[indexPath row]];*/
+        orderItemCell.currentOrderItem=[_currentOrder.arrayOfOrderItem objectAtIndex:[indexPath row]];
+    [orderItemCell drawCell];
         return orderItemCell;
         
     }
@@ -135,11 +137,16 @@ static NSString *const orderTotallIdentifier = @"TotallOrderCell";
     {}
     else
     {
-    addOrderItem =[[OrderItemModel alloc] init];
+        
+    MenuItemModel *menuItemModel=[[MenuItemModel alloc] init];
     
-    addOrderItem.menuItemModel.name=[NSString stringWithFormat:@"Item"];
-    
-    addOrderItem.menuItemModel.price = 5*1.5;
+    menuItemModel.name=[NSString stringWithFormat:@"Item"];
+        
+
+    menuItemModel.price = 5*1.5;
+        
+    addOrderItem=[[OrderItemModel alloc] initWithMenuItemModel:menuItemModel];
+        
     
     addOrderItem.countOfItem=3;
     

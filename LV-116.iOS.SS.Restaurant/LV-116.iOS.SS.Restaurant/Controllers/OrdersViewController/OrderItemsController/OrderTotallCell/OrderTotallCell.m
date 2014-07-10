@@ -56,7 +56,7 @@
         totalValue+=(itemInOrderWithCount.menuItemModel.price)*[itemInOrderWithCount countOfItem];
     }
     
-    self.TotallPrice.text=[NSString stringWithFormat:@"Totall   %.2f$",totalValue];
+    self.totallPrice.text=[NSString stringWithFormat:@"Totall  %.2f$",totalValue];
      // [[(OrderItemModel *)[orderModel.arrayOfOrderItem objectAtIndex:i] ].menuItemModel ];
 }
 

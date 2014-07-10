@@ -13,9 +13,7 @@
 		570ABE92196C3EEF003DC398 /* OrderItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570ABE8F196C3EEF003DC398 /* OrderItemsViewController.m */; };
 		570ABE93196C3EEF003DC398 /* OrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570ABE91196C3EEF003DC398 /* OrdersViewController.m */; };
 		570ABE9C196C4058003DC398 /* OrderItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 570ABE96196C4058003DC398 /* OrderItemCell.m */; };
-		570ABE9D196C4058003DC398 /* OrderItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 570ABE97196C4058003DC398 /* OrderItemCell.xib */; };
 		570ABE9E196C4058003DC398 /* OrderTotallCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 570ABE9A196C4058003DC398 /* OrderTotallCell.m */; };
-		570ABE9F196C4058003DC398 /* OrderTotallCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 570ABE9B196C4058003DC398 /* OrderTotallCell.xib */; };
 		ED42A3ED196C32FA00A63656 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3C6196C32FA00A63656 /* MapViewController.m */; };
 		ED42A3EE196C32FA00A63656 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3C9196C32FA00A63656 /* TableView.m */; };
 		ED42A3EF196C32FA00A63656 /* MenuCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3CE196C32FA00A63656 /* MenuCategoryCell.m */; };
@@ -95,10 +93,8 @@
 		570ABE91196C3EEF003DC398 /* OrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersViewController.m; sourceTree = "<group>"; };
 		570ABE95196C4058003DC398 /* OrderItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderItemCell.h; sourceTree = "<group>"; };
 		570ABE96196C4058003DC398 /* OrderItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderItemCell.m; sourceTree = "<group>"; };
-		570ABE97196C4058003DC398 /* OrderItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderItemCell.xib; sourceTree = "<group>"; };
 		570ABE99196C4058003DC398 /* OrderTotallCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderTotallCell.h; sourceTree = "<group>"; };
 		570ABE9A196C4058003DC398 /* OrderTotallCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderTotallCell.m; sourceTree = "<group>"; };
-		570ABE9B196C4058003DC398 /* OrderTotallCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderTotallCell.xib; sourceTree = "<group>"; };
 		C348B3D5193DE68B0004808D /* PDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDataParser.h; sourceTree = "<group>"; };
 		ED42A3C5196C32FA00A63656 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		ED42A3C6196C32FA00A63656 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
@@ -266,7 +262,6 @@
 			children = (
 				570ABE95196C4058003DC398 /* OrderItemCell.h */,
 				570ABE96196C4058003DC398 /* OrderItemCell.m */,
-				570ABE97196C4058003DC398 /* OrderItemCell.xib */,
 			);
 			path = OrderItemCell;
 			sourceTree = "<group>";
@@ -276,7 +271,6 @@
 			children = (
 				570ABE99196C4058003DC398 /* OrderTotallCell.h */,
 				570ABE9A196C4058003DC398 /* OrderTotallCell.m */,
-				570ABE9B196C4058003DC398 /* OrderTotallCell.xib */,
 			);
 			path = OrderTotallCell;
 			sourceTree = "<group>";
@@ -828,7 +822,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				570ABE9F196C4058003DC398 /* OrderTotallCell.xib in Resources */,
 				EDCE5C88196BE4C600496B34 /* role_client_icon.png in Resources */,
 				EDA13E2C196ADCC400CF579C /* map_icon.png in Resources */,
 				FA336C3319335B950007CC76 /* Main_iPad.storyboard in Resources */,
@@ -837,7 +830,6 @@
 				ED42A3F2196C32FA00A63656 /* MenuItemCell.xib in Resources */,
 				FA336C3819335B950007CC76 /* Images.xcassets in Resources */,
 				FA336C3019335B950007CC76 /* Main_iPhone.storyboard in Resources */,
-				570ABE9D196C4058003DC398 /* OrderItemCell.xib in Resources */,
 				EDBDFE331967219000E65DCA /* menu.png in Resources */,
 				ED42A3F7196C32FA00A63656 /* TestSimpleUI.xib in Resources */,
 				ED42A3F0196C32FA00A63656 /* MenuCategoryCell.xib in Resources */,

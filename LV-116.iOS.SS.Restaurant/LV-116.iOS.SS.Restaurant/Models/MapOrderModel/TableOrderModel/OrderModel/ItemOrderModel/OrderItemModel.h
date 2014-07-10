@@ -13,7 +13,7 @@
 @interface OrderItemModel : NSObject
 
 @property NSUInteger countOfItem;
-@property (weak, nonatomic) MenuItemModel *menuItemModel;
+@property (strong, nonatomic) MenuItemModel *menuItemModel;
 
 - (instancetype)initWithMenuItemModel: (MenuItemModel*)menuItemModel;
 
