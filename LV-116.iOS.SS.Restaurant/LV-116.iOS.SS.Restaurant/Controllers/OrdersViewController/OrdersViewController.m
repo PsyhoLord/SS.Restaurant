@@ -192,7 +192,6 @@ static const CGFloat kHeightOfHeaderSection    = 35.0f;
     } else {
         cell.textLabel.text = [NSString stringWithFormat:@"Order #%d", indexPath.row];
     }
-    
     return cell;
 }
 

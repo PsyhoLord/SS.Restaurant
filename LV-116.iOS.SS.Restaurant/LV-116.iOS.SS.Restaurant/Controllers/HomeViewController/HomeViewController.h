@@ -9,7 +9,7 @@
 @class SidebarViewController;
 
 // RootViewController class is root storyboard
-@interface HomeViewController : UIViewController
+@interface HomeViewController : UIViewController <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 @property (weak, nonatomic) SidebarViewController *sidebarViewController;
 @end

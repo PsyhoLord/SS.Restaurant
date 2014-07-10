@@ -21,6 +21,9 @@ static NSString *const kRoleWaiterIconName  = @"role_waiter_icon.png";
     __weak IBOutlet UIImageView *_roleImageView;
     __weak IBOutlet UIButton    *_buttonLogIn;
     __weak IBOutlet UIButton    *_buttonLogOut;
+    __weak IBOutlet UITextField *_textFieldUserName;
+    __weak IBOutlet UITextField *_textFieldPassword;
+    UITapGestureRecognizer      *tapRecognizer;
 }
 
 - (void)viewDidLoad
@@ -35,6 +38,19 @@ static NSString *const kRoleWaiterIconName  = @"role_waiter_icon.png";
     [self setHomePageConfiguration:enumUserRole];
     
     _sidebarViewController =  ((SidebarViewController*)self.revealViewController.rearViewController);
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+    
+    tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                            action:@selector(didTapAnywhere:)];
 }
 
 // set configuration for sidebar
@@ -82,7 +98,9 @@ static NSString *const kRoleWaiterIconName  = @"role_waiter_icon.png";
 
 - (IBAction)LogIn:(id)sender
 {
-    [AuthorizationProvider logInWithLogin:@"123" password:@"123" block:^(EnumUserRole enumUserRole, NSError *error) {
+    [AuthorizationProvider logInWithLogin: _textFieldUserName.text
+                                 password: _textFieldPassword.text
+                                    block: ^(EnumUserRole enumUserRole, NSError *error) {
         [UserRole getInstance].enumUserRole = enumUserRole;
         [self setHomePageConfiguration:enumUserRole];
         [self.sidebarViewController reloadData];
@@ -102,6 +120,19 @@ static NSString *const kRoleWaiterIconName  = @"role_waiter_icon.png";
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void) keyboardWillShow:(NSNotification *) note {
+    [self.view addGestureRecognizer:tapRecognizer];
+}
+
+-(void) keyboardWillHide:(NSNotification *) note
+{
+    [self.view removeGestureRecognizer:tapRecognizer];
+}
+
+-(void)didTapAnywhere: (UITapGestureRecognizer*)recognizer {
+    [_textFieldUserName resignFirstResponder];
 }
 
 @end
