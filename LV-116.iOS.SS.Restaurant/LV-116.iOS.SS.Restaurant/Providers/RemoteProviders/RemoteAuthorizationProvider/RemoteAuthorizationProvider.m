@@ -34,6 +34,7 @@
 // // - block which calls for return value: userRole, error to hight level
 + (void) logOutWithResponseBlock: (void (^)(UserRole*, NSError*))callback
 {
+    [UserRole getInstance].enumUserRole = UserRoleClient;
     // this is only for test
     callback([UserRole getInstance], nil);
 }

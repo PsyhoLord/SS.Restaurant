@@ -100,7 +100,7 @@ static NSString *const kRoleWaiterIconName  = @"role_waiter_icon.png";
 #pragma mark - action for buttons
 
 // logic of button login
-- (IBAction) LogIn: (id)sender
+- (IBAction) logIn: (id)sender
 {
     [AuthorizationProvider logInWithLogin: _textFieldUserName.text
                                  password: _textFieldPassword.text
@@ -113,7 +113,7 @@ static NSString *const kRoleWaiterIconName  = @"role_waiter_icon.png";
 }
 
 // logic of button logout
-- (IBAction) LogOut: (id)sender
+- (IBAction) logOut: (id)sender
 {
     [AuthorizationProvider logOutWithResponseBlock: ^(UserRole *userRole, NSError *error) {
         
@@ -146,7 +146,7 @@ static NSString *const kRoleWaiterIconName  = @"role_waiter_icon.png";
     // create object of UITapGestureRecognizer
     // for recognize gesture
     _tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget: self
-                                                            action: @selector(didTapAnywhere:)];
+                                                             action: @selector(didTapAnywhere:)];
 }
 
 #pragma mark - keyboard control methods

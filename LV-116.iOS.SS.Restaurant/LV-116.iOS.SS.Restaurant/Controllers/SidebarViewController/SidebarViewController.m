@@ -22,38 +22,31 @@
 #import "UserRole.h"
 
 // number of sections in table view
-static const NSUInteger kNumberOfSections                   = 1;
-
-// consts cell identifiers
-static NSString *const  kTitleTableViewCellIdentifier       = @"TitleCellIdentifier";
-static NSString *const  kMenuTableViewCellIdentifier        = @"MenuCellIdentifier";
-static NSString *const  kMapTableViewCellIdentifier         = @"MapCellIdentifier";
-static NSString *const  kOrdersTableViewCellIdentifier      = @"OrdersCellIdentifier";
+static const NSUInteger kNumberOfSections        = 1;
 
 // number of cells needs for waiter in the end of table view
-//static const NSUInteger kNumberOfCellsForWaiter             = 1;
-
+static const NSUInteger kNumberOfCellsForClient  = 3;
 // !!! this is only for test without any authorization !!!
-static const NSUInteger kNumberOfCellsForWaiter             = 0;
-// !!!
+//static const NSUInteger kNumberOfCellsForClient  = 4;
+static const NSUInteger kNumberOfCellsForWaiter  = 4;
 
 // consts segue to another scrins
-static NSString *const  kSegueToHome                        = @"sw_segue_home";
-static NSString *const  kSegueToMenu                        = @"sw_segue_menu";
-static NSString *const  kSegueToMap                         = @"sw_segue_map";
-static NSString *const  kSegueToOrders                      = @"sw_segue_orders";
+static NSString *const kSegueToHome              = @"sw_segue_home";
+static NSString *const kSegueToMenu              = @"sw_segue_menu";
+static NSString *const kSegueToMap               = @"sw_segue_map";
+static NSString *const kSegueToOrders            = @"sw_segue_orders";
 
 // const strings of images for cells
-static NSString *const kCellImageHome                       = @"home_page_icon.png";
-static NSString *const kCellImageMenu                       = @"menu_icon.png";
-static NSString *const kCellImageMap                        = @"map_icon.png";
-static NSString *const kCellImageOrders                     = @"orders_icon.png";
+static NSString *const kCellImageHome            = @"home_page_icon.png";
+static NSString *const kCellImageMenu            = @"menu_icon.png";
+static NSString *const kCellImageMap             = @"map_icon.png";
+static NSString *const kCellImageOrders          = @"orders_icon.png";
 
 // const strings of labels for cells
-static NSString *const kCellLabelTextHome                   = @"Home";
-static NSString *const kCellLabelTextMenu                   = @"Menu";
-static NSString *const kCellLabelTextMap                    = @"Map";
-static NSString *const kCellLabelTextOrders                 = @"Orders";
+static NSString *const kCellLabelTextHome        = @"Home";
+static NSString *const kCellLabelTextMenu        = @"Menu";
+static NSString *const kCellLabelTextMap         = @"Map";
+static NSString *const kCellLabelTextOrders      = @"Orders";
 
 
 // enum of all cells on root sidebar menu
@@ -66,9 +59,6 @@ typedef enum
 } EnumCellForPage;
 
 @implementation SidebarViewController
-{
-    NSArray *_rootMenuItems;
-}
 
 - (id) initWithStyle: (UITableViewStyle)style
 {
@@ -84,8 +74,6 @@ typedef enum
     [super viewDidLoad];
     
     self.revealViewController.rearViewRevealWidth = 175.0f;
-    
-    _rootMenuItems = @[kTitleTableViewCellIdentifier, kMenuTableViewCellIdentifier, kMapTableViewCellIdentifier, kOrdersTableViewCellIdentifier];
 }
 
 // reload data of sidebar menu on main thread
@@ -104,41 +92,36 @@ typedef enum
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView: (UITableView *)tableView
+- (NSInteger) numberOfSectionsInTableView: (UITableView *)tableView
 {
     return kNumberOfSections;
 }
 
-- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger) tableView: (UITableView *)tableView numberOfRowsInSection: (NSInteger)section
 {
     // Return the number of rows in the section.
     EnumUserRole enumUserRole = ([UserRole getInstance]).enumUserRole;
     switch ( enumUserRole ) {
         case UserRoleClient:
-            return [_rootMenuItems count] - kNumberOfCellsForWaiter; // without cell - orders
+            return kNumberOfCellsForClient; // without cell - orders
         case UserRoleWaiter:
-            return [_rootMenuItems count];
+            return kNumberOfCellsForWaiter;
     }
 }
 
 //Method for row height setting (for items and for category)
-- (CGFloat)tableView: (UITableView *)tableView heightForRowAtIndexPath: (NSIndexPath *)indexPath
+- (CGFloat) tableView: (UITableView *)tableView heightForRowAtIndexPath: (NSIndexPath *)indexPath
 {
     return [SidebarTableViewCell rowHeightForCell];
 }
 
 - (UITableViewCell *)tableView: (UITableView *)tableView cellForRowAtIndexPath: (NSIndexPath *)indexPath
 {
-    NSString *cellIdentifier = _rootMenuItems[indexPath.row];
+    SidebarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"SidebarTableViewCellIdentifier"];
     
-    SidebarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: cellIdentifier];
+    [cell drawWithImage: [self getImageForCellAtIndexPath: indexPath]
+                   text: [self getTextForCellAtIndexPath: indexPath]];
     
-    if ( cell == nil ) {
-        cell = [[SidebarTableViewCell alloc] initWithStyle: UITableViewCellStyleDefault
-                                           reuseIdentifier: cellIdentifier];
-        [cell drawWithImage: [self getImageForCellAtIndexPath: indexPath]
-                       text: [self getTextForCellAtIndexPath: indexPath]];
-    }
     return cell;
 }
 
