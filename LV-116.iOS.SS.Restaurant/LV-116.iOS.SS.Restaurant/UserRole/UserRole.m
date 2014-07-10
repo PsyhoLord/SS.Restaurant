@@ -8,6 +8,8 @@
 
 #import "UserRole.h"
 
+static const char *const kSyncQueueIdentifier = "SyncQueueIdentifier";
+
 @implementation UserRole
 {
     dispatch_queue_t _syncQueue;
@@ -30,7 +32,7 @@
 {
     if ( self = [super init] ) {
         _enumUserRole = UserRoleClient;
-        _syncQueue  = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        _syncQueue = dispatch_queue_create(kSyncQueueIdentifier, NULL);
     }
     return self;
 }
@@ -53,7 +55,7 @@
 
 - (void) setName: (NSString *)name
 {
-    dispatch_barrier_async(_syncQueue, ^{
+    dispatch_sync(_syncQueue, ^{
         _name = name;
     });
 }
