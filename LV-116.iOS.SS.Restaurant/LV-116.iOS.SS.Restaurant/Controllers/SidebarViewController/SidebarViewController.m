@@ -39,6 +39,19 @@ static NSString *const  kSegueToMenu                        = @"sw_segue_menu";
 static NSString *const  kSegueToMap                         = @"sw_segue_map";
 static NSString *const  kSegueToOrders                      = @"sw_segue_orders";
 
+// const strings of images for cells
+static NSString *const kCellImageHome                       = @"home_page_icon.png";
+static NSString *const kCellImageMenu                       = @"menu_icon.png";
+static NSString *const kCellImageMap                        = @"map_icon.png";
+static NSString *const kCellImageOrders                     = @"orders_icon.png";
+
+// const strings of labels for cells
+static NSString *const kCellLabelTextHome                   = @"Home";
+static NSString *const kCellLabelTextMenu                   = @"Menu";
+static NSString *const kCellLabelTextMap                    = @"Map";
+static NSString *const kCellLabelTextOrders                 = @"Orders";
+
+
 // enum of all cells on root sidebar menu
 typedef enum
 {
@@ -53,9 +66,9 @@ typedef enum
     NSArray *_rootMenuItems;
 }
 
-- (id) initWithStyle:(UITableViewStyle)style
+- (id) initWithStyle: (UITableViewStyle)style
 {
-    self = [super initWithStyle:style];
+    self = [super initWithStyle: style];
     if (self) {
         // Custom initialization
     }
@@ -87,7 +100,7 @@ typedef enum
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSInteger)numberOfSectionsInTableView: (UITableView *)tableView
 {
     return kNumberOfSections;
 }
@@ -114,7 +127,7 @@ typedef enum
 {
     NSString *cellIdentifier = _rootMenuItems[indexPath.row];
     
-    SidebarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    SidebarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: cellIdentifier];
     
     if ( cell == nil ) {
         cell = [[SidebarTableViewCell alloc] initWithStyle: UITableViewCellStyleDefault
@@ -133,16 +146,16 @@ typedef enum
     EnumCellForPage enumCell = indexPath.row;
     switch ( enumCell ) {
         case CellHomePage:
-            image = [UIImage imageNamed:@"home_page_icon.png"];
+            image = [UIImage imageNamed: kCellImageHome];
             break;
         case CellMenuPage:
-            image = [UIImage imageNamed:@"menu_icon.png"];
+            image = [UIImage imageNamed: kCellImageMenu];
             break;
         case CellMapPage:
-            image = [UIImage imageNamed:@"map_icon.png"];
+            image = [UIImage imageNamed: kCellImageMap];
             break;
         case CellOrdersPage:
-            image = [UIImage imageNamed:@"orders_icon.png"];
+            image = [UIImage imageNamed: kCellImageOrders];
             break;
     }
     
@@ -157,16 +170,16 @@ typedef enum
     EnumCellForPage enumCell = indexPath.row;
     switch ( enumCell ) {
         case CellHomePage:
-            text = @"Home";
+            text = kCellLabelTextHome;
             break;
         case CellMenuPage:
-            text = @"Menu";
+            text = kCellLabelTextMenu;
             break;
         case CellMapPage:
-            text = @"Map";
+            text = kCellLabelTextMap;
             break;
         case CellOrdersPage:
-            text = @"Orders";
+            text = kCellLabelTextOrders;
             break;
     }
     

@@ -18,12 +18,13 @@ static NSString *const kRoleWaiterIconName  = @"role_waiter_icon.png";
 
 @implementation HomeViewController
 {
-    __weak IBOutlet UIImageView *_roleImageView;
-    __weak IBOutlet UIButton    *_buttonLogIn;
-    __weak IBOutlet UIButton    *_buttonLogOut;
-    __weak IBOutlet UITextField *_textFieldUserName;
-    __weak IBOutlet UITextField *_textFieldPassword;
-    UITapGestureRecognizer      *tapRecognizer;
+    __weak SidebarViewController *_sidebarViewController;   // need for reload data on sidebar table view
+    __weak IBOutlet UIImageView  *_roleImageView;
+    __weak IBOutlet UIButton     *_buttonLogIn;
+    __weak IBOutlet UIButton     *_buttonLogOut;
+    __weak IBOutlet UITextField  *_textFieldUserName;
+    __weak IBOutlet UITextField  *_textFieldPassword;
+    UITapGestureRecognizer       *_tapRecognizer;           // need for recognize gesture for keyboard
 }
 
 - (void)viewDidLoad
@@ -34,24 +35,22 @@ static NSString *const kRoleWaiterIconName  = @"role_waiter_icon.png";
     
     self.title = kRootMenuName;
     
-    EnumUserRole enumUserRole = ([UserRole getInstance]).enumUserRole;
-    [self setHomePageConfiguration:enumUserRole];
+    [self setHomePageConfiguration: ([UserRole getInstance]).enumUserRole];
     
+    // set pointer to sidebar view controller
+    // which needs for reload data on sidebar according to change of user role
     _sidebarViewController =  ((SidebarViewController*)self.revealViewController.rearViewController);
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillShow:)
-                                                 name:UIKeyboardWillShowNotification
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillHide:)
-                                                 name:UIKeyboardWillHideNotification
-                                               object:nil];
-    
-    tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                            action:@selector(didTapAnywhere:)];
+    [self setKeyboardConfiguration];
 }
+
+- (void) didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Sidebar configuration
 
 // set configuration for sidebar
 - (void) setSidebarConfiguration
@@ -64,13 +63,15 @@ static NSString *const kRoleWaiterIconName  = @"role_waiter_icon.png";
     _sidebarButton.action = @selector(revealToggle:);
     
     // Set the gesture
-    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
 }
+
+#pragma mark - home page configuration
 
 // set home page configuration according to user role
 - (void) setHomePageConfiguration:(EnumUserRole)userRole
 {
-    [self setRoleImage:userRole];
+    [self setRoleImage: userRole];
     switch ( userRole ) {
         case UserRoleClient:
             _buttonLogIn.enabled  = YES;
@@ -84,55 +85,83 @@ static NSString *const kRoleWaiterIconName  = @"role_waiter_icon.png";
 }
 
 // set image on scrin according to user role
-- (void) setRoleImage:(EnumUserRole)userRole
+- (void) setRoleImage: (EnumUserRole)userRole
 {
     switch ( userRole ) {
         case UserRoleClient:
-            _roleImageView.image = [UIImage imageNamed:kRoleClientIconName];
+            _roleImageView.image = [UIImage imageNamed: kRoleClientIconName];
             break;
         case UserRoleWaiter:
-            _roleImageView.image = [UIImage imageNamed:kRoleWaiterIconName];
+            _roleImageView.image = [UIImage imageNamed: kRoleWaiterIconName];
             break;
     }
 }
 
-- (IBAction)LogIn:(id)sender
+#pragma mark - action for buttons
+
+// logic of button login
+- (IBAction) LogIn: (id)sender
 {
     [AuthorizationProvider logInWithLogin: _textFieldUserName.text
                                  password: _textFieldPassword.text
                                     block: ^(EnumUserRole enumUserRole, NSError *error) {
         [UserRole getInstance].enumUserRole = enumUserRole;
-        [self setHomePageConfiguration:enumUserRole];
-        [self.sidebarViewController reloadData];
+        [self setHomePageConfiguration: enumUserRole];
+        [_sidebarViewController reloadData];
     }];
 }
 
-- (IBAction)LogOut:(id)sender
+// logic of button logout
+- (IBAction) LogOut: (id)sender
 {
-    [AuthorizationProvider logOutWithBlock:^(EnumUserRole enumUserRole, NSError *error) {
+    [AuthorizationProvider logOutWithBlock: ^(EnumUserRole enumUserRole, NSError *error) {
         [UserRole getInstance].enumUserRole = enumUserRole;
-        [self setHomePageConfiguration:enumUserRole];
-        [self.sidebarViewController reloadData];
+        [self setHomePageConfiguration: enumUserRole];
+        [_sidebarViewController reloadData];
     }];
 }
 
-- (void)didReceiveMemoryWarning
+#pragma mark - Keyboard configuration
+
+// set keyboard configuration
+- (void) setKeyboardConfiguration
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    // add self as observer for UIKeyboardWillShowNotification
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(keyboardWillShow:)
+                                                 name: UIKeyboardWillShowNotification
+                                               object: nil];
+    
+    // add self as observer for UIKeyboardWillHideNotification
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(keyboardWillHide:)
+                                                 name: UIKeyboardWillHideNotification
+                                               object: nil];
+    
+    // create object of UITapGestureRecognizer
+    // for recognize gesture
+    _tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget: self
+                                                            action: @selector(didTapAnywhere:)];
 }
 
--(void) keyboardWillShow:(NSNotification *) note {
-    [self.view addGestureRecognizer:tapRecognizer];
-}
+#pragma mark - keyboard control methods
 
--(void) keyboardWillHide:(NSNotification *) note
+- (void) keyboardWillShow: (NSNotification*)note
 {
-    [self.view removeGestureRecognizer:tapRecognizer];
+    // add gesture recognizer for hide key board
+    [self.view addGestureRecognizer: _tapRecognizer];
 }
 
--(void)didTapAnywhere: (UITapGestureRecognizer*)recognizer {
+- (void) keyboardWillHide: (NSNotification*)note
+{
+    // remove gesture recognizer for hide key board
+    [self.view removeGestureRecognizer: _tapRecognizer];
+}
+
+- (void) didTapAnywhere: (UITapGestureRecognizer*)recognizer
+{
     [_textFieldUserName resignFirstResponder];
+    [_textFieldPassword resignFirstResponder];
 }
 
 @end
