@@ -38,4 +38,6 @@
                    coordX:(int)X
                    coordY:(int)Y;
 
+-(instancetype) initWithTableModel:(TableModel*)tableModel;
+
 @end

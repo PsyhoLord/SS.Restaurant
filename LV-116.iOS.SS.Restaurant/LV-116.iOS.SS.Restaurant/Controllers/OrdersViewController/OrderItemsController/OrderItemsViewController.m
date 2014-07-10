@@ -46,7 +46,7 @@ static NSString *const orderTotallIdentifier = @"TotallOrderCell";
         
         addOrderItem.countOfItem=i;
         
-        [_currentOrder.arrayOfOrderItem addObject:addOrderItem];
+        [_currentOrder.arrayOfOrderItems addObject:addOrderItem];
         
     }
     
@@ -87,14 +87,14 @@ static NSString *const orderTotallIdentifier = @"TotallOrderCell";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [_currentOrder.arrayOfOrderItem count]+1;
+    return [_currentOrder.arrayOfOrderItems count]+1;
 }
 
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([_currentOrder.arrayOfOrderItem count]>[indexPath row])
+    if ([_currentOrder.arrayOfOrderItems count]>[indexPath row])
     {
     OrderItemCell *orderItemCell = [tableView dequeueReusableCellWithIdentifier:orderCellIdentifier];
         if (orderItemCell==nil)
@@ -106,7 +106,7 @@ static NSString *const orderTotallIdentifier = @"TotallOrderCell";
     
    /* OrderItemModel * tmp=[[OrderItemModel alloc] init];
     tmp=[_currentOrder.arrayOfOrderItem objectAtIndex:[indexPath row]];*/
-        orderItemCell.currentOrderItem=[_currentOrder.arrayOfOrderItem objectAtIndex:[indexPath row]];
+        orderItemCell.currentOrderItem=[_currentOrder.arrayOfOrderItems objectAtIndex:[indexPath row]];
     [orderItemCell drawCell];
         return orderItemCell;
         
@@ -133,7 +133,7 @@ static NSString *const orderTotallIdentifier = @"TotallOrderCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if ([_currentOrder.arrayOfOrderItem count]<[indexPath row])
+    if ([_currentOrder.arrayOfOrderItems count]<[indexPath row])
     {}
     else
     {
@@ -150,7 +150,7 @@ static NSString *const orderTotallIdentifier = @"TotallOrderCell";
     
     addOrderItem.countOfItem=3;
     
-    [_currentOrder.arrayOfOrderItem addObject:addOrderItem];
+    [_currentOrder.arrayOfOrderItems addObject:addOrderItem];
     
     [tableView reloadData];
     }

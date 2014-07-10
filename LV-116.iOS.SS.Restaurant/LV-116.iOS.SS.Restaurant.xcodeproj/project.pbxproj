@@ -9,17 +9,24 @@
 /* Begin PBXBuildFile section */
 		22346B58195F209000495B2A /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 22346B57195F209000495B2A /* Alert.m */; };
 		2265A70519642B1B0059EC0E /* RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2265A70419642B1B0059EC0E /* RequestManager.m */; };
-		2B1ABB9D1958466500BF5678 /* MapDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1ABB9C1958466500BF5678 /* MapDataParser.m */; };
+		22A366D7196F10D2002D27B7 /* OrderItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A366D0196F10D2002D27B7 /* OrderItemModel.m */; };
+		22A366D8196F10D2002D27B7 /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A366D3196F10D2002D27B7 /* OrderModel.m */; };
+		22A366D9196F10D2002D27B7 /* TableModelWithOrders.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A366D6196F10D2002D27B7 /* TableModelWithOrders.m */; };
+		22A366E5196F11A4002D27B7 /* MapDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A366DD196F11A4002D27B7 /* MapDataParser.m */; };
+		22A366E6196F11A4002D27B7 /* MenuDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A366E0196F11A4002D27B7 /* MenuDataParser.m */; };
+		22A366E7196F11A4002D27B7 /* OrdersDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A366E3196F11A4002D27B7 /* OrdersDataParser.m */; };
+		22A36702196F11BA002D27B7 /* AuthorizationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A366EB196F11BA002D27B7 /* AuthorizationProvider.m */; };
+		22A36703196F11BA002D27B7 /* MapDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A366EE196F11BA002D27B7 /* MapDataProvider.m */; };
+		22A36704196F11BA002D27B7 /* MenuDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A366F1196F11BA002D27B7 /* MenuDataProvider.m */; };
+		22A36705196F11BA002D27B7 /* OrdersDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A366F4196F11BA002D27B7 /* OrdersDataProvider.m */; };
+		22A36706196F11BA002D27B7 /* RemoteAuthorizationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A366F8196F11BA002D27B7 /* RemoteAuthorizationProvider.m */; };
+		22A36707196F11BA002D27B7 /* RemoteMapDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A366FB196F11BA002D27B7 /* RemoteMapDataProvider.m */; };
+		22A36708196F11BA002D27B7 /* RemoteMenuDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A366FE196F11BA002D27B7 /* RemoteMenuDataProvider.m */; };
+		22A36709196F11BA002D27B7 /* RemoteOrdersDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A36701196F11BA002D27B7 /* RemoteOrdersDataProvider.m */; };
 		570ABE92196C3EEF003DC398 /* OrderItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570ABE8F196C3EEF003DC398 /* OrderItemsViewController.m */; };
 		570ABE93196C3EEF003DC398 /* OrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570ABE91196C3EEF003DC398 /* OrdersViewController.m */; };
 		570ABE9C196C4058003DC398 /* OrderItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 570ABE96196C4058003DC398 /* OrderItemCell.m */; };
 		570ABE9E196C4058003DC398 /* OrderTotallCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 570ABE9A196C4058003DC398 /* OrderTotallCell.m */; };
-		ED25B740196ECE8D00AA41EA /* AuthorizationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = ED25B731196ECE8D00AA41EA /* AuthorizationProvider.m */; };
-		ED25B741196ECE8D00AA41EA /* MapDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = ED25B734196ECE8D00AA41EA /* MapDataProvider.m */; };
-		ED25B742196ECE8D00AA41EA /* MenuDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = ED25B737196ECE8D00AA41EA /* MenuDataProvider.m */; };
-		ED25B743196ECE8D00AA41EA /* RemoteMapDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = ED25B73C196ECE8D00AA41EA /* RemoteMapDataProvider.m */; };
-		ED25B744196ECE8D00AA41EA /* RemoteMenuDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = ED25B73F196ECE8D00AA41EA /* RemoteMenuDataProvider.m */; };
-		ED25B747196ED01700AA41EA /* RemoteAuthorizationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = ED25B746196ED01700AA41EA /* RemoteAuthorizationProvider.m */; };
 		ED3A298A196EDBC100970B48 /* SidebarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3A2989196EDBC100970B48 /* SidebarTableViewCell.m */; };
 		ED42A3ED196C32FA00A63656 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3C6196C32FA00A63656 /* MapViewController.m */; };
 		ED42A3EE196C32FA00A63656 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3C9196C32FA00A63656 /* TableView.m */; };
@@ -36,10 +43,6 @@
 		ED42A3FB196C32FA00A63656 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3E7196C32FA00A63656 /* SWRevealViewController.m */; };
 		ED5B2DF4196D21060070FF98 /* UserRole.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5B2DF3196D21060070FF98 /* UserRole.m */; };
 		ED5B2E0E196D218F0070FF98 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5B2E0D196D218F0070FF98 /* HomeViewController.m */; };
-		ED89D3EC1965B08A00882F5C /* OrderItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ED89D3E71965B08A00882F5C /* OrderItemModel.m */; };
-		ED89D3ED1965B08A00882F5C /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ED89D3E91965B08A00882F5C /* OrderModel.m */; };
-		ED89D3EE1965B08A00882F5C /* WaiterTableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ED89D3EB1965B08A00882F5C /* WaiterTableModel.m */; };
-		ED89D3F11965B0AA00882F5C /* WaiterMapModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ED89D3F01965B0AA00882F5C /* WaiterMapModel.m */; };
 		EDA13E2C196ADCC400CF579C /* map_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA13E27196ADCC400CF579C /* map_icon.png */; };
 		EDA13E2D196ADCC400CF579C /* orders_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA13E28196ADCC400CF579C /* orders_icon.png */; };
 		EDA13E2E196ADCC400CF579C /* menu_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA13E29196ADCC400CF579C /* menu_icon.png */; };
@@ -54,7 +57,6 @@
 		EDEC47341956FACB0041B98B /* MenuCategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEC472E1956FACB0041B98B /* MenuCategoryModel.m */; };
 		EDEC47351956FACB0041B98B /* MenuItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEC47311956FACB0041B98B /* MenuItemModel.m */; };
 		EDEC47361956FACB0041B98B /* MenuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEC47331956FACB0041B98B /* MenuModel.m */; };
-		EDEC473B1956FBB90041B98B /* MenuDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEC473A1956FBB90041B98B /* MenuDataParser.m */; };
 		FA336C1D19335B950007CC76 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA336C1C19335B950007CC76 /* Foundation.framework */; };
 		FA336C1F19335B950007CC76 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA336C1E19335B950007CC76 /* CoreGraphics.framework */; };
 		FA336C2119335B950007CC76 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA336C2019335B950007CC76 /* UIKit.framework */; };
@@ -86,8 +88,35 @@
 		22346B57195F209000495B2A /* Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alert.m; sourceTree = "<group>"; };
 		2265A70319642B1B0059EC0E /* RequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestManager.h; sourceTree = "<group>"; };
 		2265A70419642B1B0059EC0E /* RequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestManager.m; sourceTree = "<group>"; };
-		2B1ABB9B1958466500BF5678 /* MapDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapDataParser.h; path = MapDataParser/MapDataParser.h; sourceTree = "<group>"; };
-		2B1ABB9C1958466500BF5678 /* MapDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapDataParser.m; path = MapDataParser/MapDataParser.m; sourceTree = "<group>"; };
+		22A366CF196F10D2002D27B7 /* OrderItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderItemModel.h; sourceTree = "<group>"; };
+		22A366D0196F10D2002D27B7 /* OrderItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderItemModel.m; sourceTree = "<group>"; };
+		22A366D2196F10D2002D27B7 /* OrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderModel.h; sourceTree = "<group>"; };
+		22A366D3196F10D2002D27B7 /* OrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderModel.m; sourceTree = "<group>"; };
+		22A366D5196F10D2002D27B7 /* TableModelWithOrders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableModelWithOrders.h; sourceTree = "<group>"; };
+		22A366D6196F10D2002D27B7 /* TableModelWithOrders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableModelWithOrders.m; sourceTree = "<group>"; };
+		22A366DC196F11A4002D27B7 /* MapDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapDataParser.h; sourceTree = "<group>"; };
+		22A366DD196F11A4002D27B7 /* MapDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapDataParser.m; sourceTree = "<group>"; };
+		22A366DF196F11A4002D27B7 /* MenuDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuDataParser.h; sourceTree = "<group>"; };
+		22A366E0196F11A4002D27B7 /* MenuDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuDataParser.m; sourceTree = "<group>"; };
+		22A366E2196F11A4002D27B7 /* OrdersDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersDataParser.h; sourceTree = "<group>"; };
+		22A366E3196F11A4002D27B7 /* OrdersDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersDataParser.m; sourceTree = "<group>"; };
+		22A366E4196F11A4002D27B7 /* PDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDataParser.h; sourceTree = "<group>"; };
+		22A366EA196F11BA002D27B7 /* AuthorizationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorizationProvider.h; sourceTree = "<group>"; };
+		22A366EB196F11BA002D27B7 /* AuthorizationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorizationProvider.m; sourceTree = "<group>"; };
+		22A366ED196F11BA002D27B7 /* MapDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapDataProvider.h; sourceTree = "<group>"; };
+		22A366EE196F11BA002D27B7 /* MapDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapDataProvider.m; sourceTree = "<group>"; };
+		22A366F0196F11BA002D27B7 /* MenuDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuDataProvider.h; sourceTree = "<group>"; };
+		22A366F1196F11BA002D27B7 /* MenuDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuDataProvider.m; sourceTree = "<group>"; };
+		22A366F3196F11BA002D27B7 /* OrdersDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersDataProvider.h; sourceTree = "<group>"; };
+		22A366F4196F11BA002D27B7 /* OrdersDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersDataProvider.m; sourceTree = "<group>"; };
+		22A366F7196F11BA002D27B7 /* RemoteAuthorizationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteAuthorizationProvider.h; sourceTree = "<group>"; };
+		22A366F8196F11BA002D27B7 /* RemoteAuthorizationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteAuthorizationProvider.m; sourceTree = "<group>"; };
+		22A366FA196F11BA002D27B7 /* RemoteMapDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteMapDataProvider.h; sourceTree = "<group>"; };
+		22A366FB196F11BA002D27B7 /* RemoteMapDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteMapDataProvider.m; sourceTree = "<group>"; };
+		22A366FD196F11BA002D27B7 /* RemoteMenuDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteMenuDataProvider.h; sourceTree = "<group>"; };
+		22A366FE196F11BA002D27B7 /* RemoteMenuDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteMenuDataProvider.m; sourceTree = "<group>"; };
+		22A36700196F11BA002D27B7 /* RemoteOrdersDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteOrdersDataProvider.h; sourceTree = "<group>"; };
+		22A36701196F11BA002D27B7 /* RemoteOrdersDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteOrdersDataProvider.m; sourceTree = "<group>"; };
 		570ABE8E196C3EEF003DC398 /* OrderItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderItemsViewController.h; sourceTree = "<group>"; };
 		570ABE8F196C3EEF003DC398 /* OrderItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderItemsViewController.m; sourceTree = "<group>"; };
 		570ABE90196C3EEF003DC398 /* OrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersViewController.h; sourceTree = "<group>"; };
@@ -96,19 +125,6 @@
 		570ABE96196C4058003DC398 /* OrderItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderItemCell.m; sourceTree = "<group>"; };
 		570ABE99196C4058003DC398 /* OrderTotallCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderTotallCell.h; sourceTree = "<group>"; };
 		570ABE9A196C4058003DC398 /* OrderTotallCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderTotallCell.m; sourceTree = "<group>"; };
-		C348B3D5193DE68B0004808D /* PDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDataParser.h; sourceTree = "<group>"; };
-		ED25B730196ECE8D00AA41EA /* AuthorizationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorizationProvider.h; sourceTree = "<group>"; };
-		ED25B731196ECE8D00AA41EA /* AuthorizationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorizationProvider.m; sourceTree = "<group>"; };
-		ED25B733196ECE8D00AA41EA /* MapDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapDataProvider.h; sourceTree = "<group>"; };
-		ED25B734196ECE8D00AA41EA /* MapDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapDataProvider.m; sourceTree = "<group>"; };
-		ED25B736196ECE8D00AA41EA /* MenuDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuDataProvider.h; sourceTree = "<group>"; };
-		ED25B737196ECE8D00AA41EA /* MenuDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuDataProvider.m; sourceTree = "<group>"; };
-		ED25B73B196ECE8D00AA41EA /* RemoteMapDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteMapDataProvider.h; sourceTree = "<group>"; };
-		ED25B73C196ECE8D00AA41EA /* RemoteMapDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteMapDataProvider.m; sourceTree = "<group>"; };
-		ED25B73E196ECE8D00AA41EA /* RemoteMenuDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteMenuDataProvider.h; sourceTree = "<group>"; };
-		ED25B73F196ECE8D00AA41EA /* RemoteMenuDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteMenuDataProvider.m; sourceTree = "<group>"; };
-		ED25B745196ED01700AA41EA /* RemoteAuthorizationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteAuthorizationProvider.h; sourceTree = "<group>"; };
-		ED25B746196ED01700AA41EA /* RemoteAuthorizationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteAuthorizationProvider.m; sourceTree = "<group>"; };
 		ED3A2988196EDBC100970B48 /* SidebarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarTableViewCell.h; sourceTree = "<group>"; };
 		ED3A2989196EDBC100970B48 /* SidebarTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarTableViewCell.m; sourceTree = "<group>"; };
 		ED42A3C5196C32FA00A63656 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -137,14 +153,6 @@
 		ED5B2DF3196D21060070FF98 /* UserRole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserRole.m; sourceTree = "<group>"; };
 		ED5B2E0C196D218F0070FF98 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		ED5B2E0D196D218F0070FF98 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		ED89D3E61965B08A00882F5C /* OrderItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderItemModel.h; sourceTree = "<group>"; };
-		ED89D3E71965B08A00882F5C /* OrderItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderItemModel.m; sourceTree = "<group>"; };
-		ED89D3E81965B08A00882F5C /* OrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderModel.h; sourceTree = "<group>"; };
-		ED89D3E91965B08A00882F5C /* OrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderModel.m; sourceTree = "<group>"; };
-		ED89D3EA1965B08A00882F5C /* WaiterTableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaiterTableModel.h; sourceTree = "<group>"; };
-		ED89D3EB1965B08A00882F5C /* WaiterTableModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaiterTableModel.m; sourceTree = "<group>"; };
-		ED89D3EF1965B0AA00882F5C /* WaiterMapModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaiterMapModel.h; sourceTree = "<group>"; };
-		ED89D3F01965B0AA00882F5C /* WaiterMapModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaiterMapModel.m; sourceTree = "<group>"; };
 		EDA13E27196ADCC400CF579C /* map_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_icon.png; sourceTree = "<group>"; };
 		EDA13E28196ADCC400CF579C /* orders_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orders_icon.png; sourceTree = "<group>"; };
 		EDA13E29196ADCC400CF579C /* menu_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_icon.png; sourceTree = "<group>"; };
@@ -166,8 +174,6 @@
 		EDEC47311956FACB0041B98B /* MenuItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuItemModel.m; sourceTree = "<group>"; };
 		EDEC47321956FACB0041B98B /* MenuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuModel.h; sourceTree = "<group>"; };
 		EDEC47331956FACB0041B98B /* MenuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuModel.m; sourceTree = "<group>"; };
-		EDEC47391956FBB90041B98B /* MenuDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuDataParser.h; sourceTree = "<group>"; };
-		EDEC473A1956FBB90041B98B /* MenuDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuDataParser.m; sourceTree = "<group>"; };
 		FA336C1919335B950007CC76 /* LV-116.iOS.SS.Restaurant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LV-116.iOS.SS.Restaurant.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA336C1C19335B950007CC76 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FA336C1E19335B950007CC76 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -230,13 +236,175 @@
 			path = RequestManager;
 			sourceTree = "<group>";
 		};
-		2B1ABB9A1958463000BF5678 /* MapDataParser */ = {
+		22A366CD196F10D2002D27B7 /* OrdersModel */ = {
 			isa = PBXGroup;
 			children = (
-				2B1ABB9B1958466500BF5678 /* MapDataParser.h */,
-				2B1ABB9C1958466500BF5678 /* MapDataParser.m */,
+				22A366CE196F10D2002D27B7 /* OrderItemModel */,
+				22A366D1196F10D2002D27B7 /* OrderModel */,
+				22A366D4196F10D2002D27B7 /* TableModelWithOrders */,
 			);
-			name = MapDataParser;
+			name = OrdersModel;
+			path = Models/OrdersModel;
+			sourceTree = "<group>";
+		};
+		22A366CE196F10D2002D27B7 /* OrderItemModel */ = {
+			isa = PBXGroup;
+			children = (
+				22A366CF196F10D2002D27B7 /* OrderItemModel.h */,
+				22A366D0196F10D2002D27B7 /* OrderItemModel.m */,
+			);
+			path = OrderItemModel;
+			sourceTree = "<group>";
+		};
+		22A366D1196F10D2002D27B7 /* OrderModel */ = {
+			isa = PBXGroup;
+			children = (
+				22A366D2196F10D2002D27B7 /* OrderModel.h */,
+				22A366D3196F10D2002D27B7 /* OrderModel.m */,
+			);
+			path = OrderModel;
+			sourceTree = "<group>";
+		};
+		22A366D4196F10D2002D27B7 /* TableModelWithOrders */ = {
+			isa = PBXGroup;
+			children = (
+				22A366D5196F10D2002D27B7 /* TableModelWithOrders.h */,
+				22A366D6196F10D2002D27B7 /* TableModelWithOrders.m */,
+			);
+			path = TableModelWithOrders;
+			sourceTree = "<group>";
+		};
+		22A366DA196F11A4002D27B7 /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+				22A366DB196F11A4002D27B7 /* MapDataParser */,
+				22A366DE196F11A4002D27B7 /* MenuDataParser */,
+				22A366E1196F11A4002D27B7 /* OrdersDataParser */,
+				22A366E4196F11A4002D27B7 /* PDataParser.h */,
+			);
+			path = Parsers;
+			sourceTree = "<group>";
+		};
+		22A366DB196F11A4002D27B7 /* MapDataParser */ = {
+			isa = PBXGroup;
+			children = (
+				22A366DC196F11A4002D27B7 /* MapDataParser.h */,
+				22A366DD196F11A4002D27B7 /* MapDataParser.m */,
+			);
+			path = MapDataParser;
+			sourceTree = "<group>";
+		};
+		22A366DE196F11A4002D27B7 /* MenuDataParser */ = {
+			isa = PBXGroup;
+			children = (
+				22A366DF196F11A4002D27B7 /* MenuDataParser.h */,
+				22A366E0196F11A4002D27B7 /* MenuDataParser.m */,
+			);
+			path = MenuDataParser;
+			sourceTree = "<group>";
+		};
+		22A366E1196F11A4002D27B7 /* OrdersDataParser */ = {
+			isa = PBXGroup;
+			children = (
+				22A366E2196F11A4002D27B7 /* OrdersDataParser.h */,
+				22A366E3196F11A4002D27B7 /* OrdersDataParser.m */,
+			);
+			path = OrdersDataParser;
+			sourceTree = "<group>";
+		};
+		22A366E8196F11BA002D27B7 /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				22A366E9196F11BA002D27B7 /* AuthorizationProvider */,
+				22A366EC196F11BA002D27B7 /* MapDataProvider */,
+				22A366EF196F11BA002D27B7 /* MenuDataProvider */,
+				22A366F2196F11BA002D27B7 /* OrdersDataProvider */,
+				22A366F5196F11BA002D27B7 /* RemoteProviders */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
+		22A366E9196F11BA002D27B7 /* AuthorizationProvider */ = {
+			isa = PBXGroup;
+			children = (
+				22A366EA196F11BA002D27B7 /* AuthorizationProvider.h */,
+				22A366EB196F11BA002D27B7 /* AuthorizationProvider.m */,
+			);
+			path = AuthorizationProvider;
+			sourceTree = "<group>";
+		};
+		22A366EC196F11BA002D27B7 /* MapDataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				22A366ED196F11BA002D27B7 /* MapDataProvider.h */,
+				22A366EE196F11BA002D27B7 /* MapDataProvider.m */,
+			);
+			path = MapDataProvider;
+			sourceTree = "<group>";
+		};
+		22A366EF196F11BA002D27B7 /* MenuDataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				22A366F0196F11BA002D27B7 /* MenuDataProvider.h */,
+				22A366F1196F11BA002D27B7 /* MenuDataProvider.m */,
+			);
+			path = MenuDataProvider;
+			sourceTree = "<group>";
+		};
+		22A366F2196F11BA002D27B7 /* OrdersDataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				22A366F3196F11BA002D27B7 /* OrdersDataProvider.h */,
+				22A366F4196F11BA002D27B7 /* OrdersDataProvider.m */,
+			);
+			path = OrdersDataProvider;
+			sourceTree = "<group>";
+		};
+		22A366F5196F11BA002D27B7 /* RemoteProviders */ = {
+			isa = PBXGroup;
+			children = (
+				22A366F6196F11BA002D27B7 /* RemoteAuthorizationProvider */,
+				22A366F9196F11BA002D27B7 /* RemoteMapDataProvider */,
+				22A366FC196F11BA002D27B7 /* RemoteMenuDataProvider */,
+				22A366FF196F11BA002D27B7 /* RemoteOrdersDataProvider */,
+			);
+			path = RemoteProviders;
+			sourceTree = "<group>";
+		};
+		22A366F6196F11BA002D27B7 /* RemoteAuthorizationProvider */ = {
+			isa = PBXGroup;
+			children = (
+				22A366F7196F11BA002D27B7 /* RemoteAuthorizationProvider.h */,
+				22A366F8196F11BA002D27B7 /* RemoteAuthorizationProvider.m */,
+			);
+			path = RemoteAuthorizationProvider;
+			sourceTree = "<group>";
+		};
+		22A366F9196F11BA002D27B7 /* RemoteMapDataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				22A366FA196F11BA002D27B7 /* RemoteMapDataProvider.h */,
+				22A366FB196F11BA002D27B7 /* RemoteMapDataProvider.m */,
+			);
+			path = RemoteMapDataProvider;
+			sourceTree = "<group>";
+		};
+		22A366FC196F11BA002D27B7 /* RemoteMenuDataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				22A366FD196F11BA002D27B7 /* RemoteMenuDataProvider.h */,
+				22A366FE196F11BA002D27B7 /* RemoteMenuDataProvider.m */,
+			);
+			path = RemoteMenuDataProvider;
+			sourceTree = "<group>";
+		};
+		22A366FF196F11BA002D27B7 /* RemoteOrdersDataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				22A36700196F11BA002D27B7 /* RemoteOrdersDataProvider.h */,
+				22A36701196F11BA002D27B7 /* RemoteOrdersDataProvider.m */,
+			);
+			path = RemoteOrdersDataProvider;
 			sourceTree = "<group>";
 		};
 		570ABE8C196C3EEF003DC398 /* OrdersViewController */ = {
@@ -276,91 +444,6 @@
 				570ABE9A196C4058003DC398 /* OrderTotallCell.m */,
 			);
 			path = OrderTotallCell;
-			sourceTree = "<group>";
-		};
-		C348B3D4193DE6100004808D /* Parsers */ = {
-			isa = PBXGroup;
-			children = (
-				C348B3D5193DE68B0004808D /* PDataParser.h */,
-				EDEC47381956FBB90041B98B /* MenuDataParser */,
-				2B1ABB9A1958463000BF5678 /* MapDataParser */,
-			);
-			path = Parsers;
-			sourceTree = "<group>";
-		};
-		ED25B72E196ECE8D00AA41EA /* Providers */ = {
-			isa = PBXGroup;
-			children = (
-				ED25B738196ECE8D00AA41EA /* RemoteProviders */,
-				ED25B72F196ECE8D00AA41EA /* AuthorizationProvider */,
-				ED25B732196ECE8D00AA41EA /* MapDataProvider */,
-				ED25B735196ECE8D00AA41EA /* MenuDataProvider */,
-			);
-			path = Providers;
-			sourceTree = "<group>";
-		};
-		ED25B72F196ECE8D00AA41EA /* AuthorizationProvider */ = {
-			isa = PBXGroup;
-			children = (
-				ED25B730196ECE8D00AA41EA /* AuthorizationProvider.h */,
-				ED25B731196ECE8D00AA41EA /* AuthorizationProvider.m */,
-			);
-			path = AuthorizationProvider;
-			sourceTree = "<group>";
-		};
-		ED25B732196ECE8D00AA41EA /* MapDataProvider */ = {
-			isa = PBXGroup;
-			children = (
-				ED25B733196ECE8D00AA41EA /* MapDataProvider.h */,
-				ED25B734196ECE8D00AA41EA /* MapDataProvider.m */,
-			);
-			path = MapDataProvider;
-			sourceTree = "<group>";
-		};
-		ED25B735196ECE8D00AA41EA /* MenuDataProvider */ = {
-			isa = PBXGroup;
-			children = (
-				ED25B736196ECE8D00AA41EA /* MenuDataProvider.h */,
-				ED25B737196ECE8D00AA41EA /* MenuDataProvider.m */,
-			);
-			path = MenuDataProvider;
-			sourceTree = "<group>";
-		};
-		ED25B738196ECE8D00AA41EA /* RemoteProviders */ = {
-			isa = PBXGroup;
-			children = (
-				ED25B739196ECE8D00AA41EA /* RemoteAuthorizationProvider */,
-				ED25B73A196ECE8D00AA41EA /* RemoteMapDataProvider */,
-				ED25B73D196ECE8D00AA41EA /* RemoteMenuDataProvider */,
-			);
-			path = RemoteProviders;
-			sourceTree = "<group>";
-		};
-		ED25B739196ECE8D00AA41EA /* RemoteAuthorizationProvider */ = {
-			isa = PBXGroup;
-			children = (
-				ED25B745196ED01700AA41EA /* RemoteAuthorizationProvider.h */,
-				ED25B746196ED01700AA41EA /* RemoteAuthorizationProvider.m */,
-			);
-			path = RemoteAuthorizationProvider;
-			sourceTree = "<group>";
-		};
-		ED25B73A196ECE8D00AA41EA /* RemoteMapDataProvider */ = {
-			isa = PBXGroup;
-			children = (
-				ED25B73B196ECE8D00AA41EA /* RemoteMapDataProvider.h */,
-				ED25B73C196ECE8D00AA41EA /* RemoteMapDataProvider.m */,
-			);
-			path = RemoteMapDataProvider;
-			sourceTree = "<group>";
-		};
-		ED25B73D196ECE8D00AA41EA /* RemoteMenuDataProvider */ = {
-			isa = PBXGroup;
-			children = (
-				ED25B73E196ECE8D00AA41EA /* RemoteMenuDataProvider.h */,
-				ED25B73F196ECE8D00AA41EA /* RemoteMenuDataProvider.m */,
-			);
-			path = RemoteMenuDataProvider;
 			sourceTree = "<group>";
 		};
 		ED42A3C0196C32FA00A63656 /* Controllers */ = {
@@ -502,48 +585,6 @@
 			path = UserRole;
 			sourceTree = "<group>";
 		};
-		ED89D3E21965B08A00882F5C /* WaiterMapModel */ = {
-			isa = PBXGroup;
-			children = (
-				ED89D3E31965B08A00882F5C /* WaiterTableModel */,
-				ED89D3EF1965B0AA00882F5C /* WaiterMapModel.h */,
-				ED89D3F01965B0AA00882F5C /* WaiterMapModel.m */,
-			);
-			name = WaiterMapModel;
-			path = Models/MapOrderModel;
-			sourceTree = "<group>";
-		};
-		ED89D3E31965B08A00882F5C /* WaiterTableModel */ = {
-			isa = PBXGroup;
-			children = (
-				ED89D3E41965B08A00882F5C /* OrderModel */,
-				ED89D3EA1965B08A00882F5C /* WaiterTableModel.h */,
-				ED89D3EB1965B08A00882F5C /* WaiterTableModel.m */,
-			);
-			name = WaiterTableModel;
-			path = TableOrderModel;
-			sourceTree = "<group>";
-		};
-		ED89D3E41965B08A00882F5C /* OrderModel */ = {
-			isa = PBXGroup;
-			children = (
-				ED89D3E51965B08A00882F5C /* OrderItemModel */,
-				ED89D3E81965B08A00882F5C /* OrderModel.h */,
-				ED89D3E91965B08A00882F5C /* OrderModel.m */,
-			);
-			path = OrderModel;
-			sourceTree = "<group>";
-		};
-		ED89D3E51965B08A00882F5C /* OrderItemModel */ = {
-			isa = PBXGroup;
-			children = (
-				ED89D3E61965B08A00882F5C /* OrderItemModel.h */,
-				ED89D3E71965B08A00882F5C /* OrderItemModel.m */,
-			);
-			name = OrderItemModel;
-			path = ItemOrderModel;
-			sourceTree = "<group>";
-		};
 		EDA13E26196ADCC400CF579C /* SidebarRootMenuIcons */ = {
 			isa = PBXGroup;
 			children = (
@@ -588,7 +629,7 @@
 		EDE50DFB193E19EE00ACA71D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				ED89D3E21965B08A00882F5C /* WaiterMapModel */,
+				22A366CD196F10D2002D27B7 /* OrdersModel */,
 				EDEC472B1956FACB0041B98B /* MenuModel */,
 				EDEC47231956F9950041B98B /* MapModel */,
 			);
@@ -645,15 +686,6 @@
 			path = MenuItemModel;
 			sourceTree = "<group>";
 		};
-		EDEC47381956FBB90041B98B /* MenuDataParser */ = {
-			isa = PBXGroup;
-			children = (
-				EDEC47391956FBB90041B98B /* MenuDataParser.h */,
-				EDEC473A1956FBB90041B98B /* MenuDataParser.m */,
-			);
-			path = MenuDataParser;
-			sourceTree = "<group>";
-		};
 		FA336C1019335B950007CC76 = {
 			isa = PBXGroup;
 			children = (
@@ -692,8 +724,8 @@
 				EDE50DFB193E19EE00ACA71D /* Models */,
 				2265A70219642B0A0059EC0E /* RequestManager */,
 				EDE50DF4193E10DA00ACA71D /* ServiceAgent */,
-				C348B3D4193DE6100004808D /* Parsers */,
-				ED25B72E196ECE8D00AA41EA /* Providers */,
+				22A366E8196F11BA002D27B7 /* Providers */,
+				22A366DA196F11A4002D27B7 /* Parsers */,
 				ED42A3C0196C32FA00A63656 /* Controllers */,
 				FA336C5519335CE60007CC76 /* UI */,
 				FA336C5419335CCD0007CC76 /* AppDelegade */,
@@ -864,39 +896,41 @@
 				ED42A3EF196C32FA00A63656 /* MenuCategoryCell.m in Sources */,
 				ED42A3F6196C32FA00A63656 /* TestSimpleUI.m in Sources */,
 				ED42A3F5196C32FA00A63656 /* MenuViewController.m in Sources */,
-				ED25B744196ECE8D00AA41EA /* RemoteMenuDataProvider.m in Sources */,
+				22A36708196F11BA002D27B7 /* RemoteMenuDataProvider.m in Sources */,
 				EDEC47361956FACB0041B98B /* MenuModel.m in Sources */,
 				ED42A3EE196C32FA00A63656 /* TableView.m in Sources */,
-				ED25B743196ECE8D00AA41EA /* RemoteMapDataProvider.m in Sources */,
-				ED89D3ED1965B08A00882F5C /* OrderModel.m in Sources */,
-				ED89D3EC1965B08A00882F5C /* OrderItemModel.m in Sources */,
-				EDEC473B1956FBB90041B98B /* MenuDataParser.m in Sources */,
 				ED5B2DF4196D21060070FF98 /* UserRole.m in Sources */,
-				ED25B741196ECE8D00AA41EA /* MapDataProvider.m in Sources */,
-				2B1ABB9D1958466500BF5678 /* MapDataParser.m in Sources */,
 				570ABE92196C3EEF003DC398 /* OrderItemsViewController.m in Sources */,
+				22A36707196F11BA002D27B7 /* RemoteMapDataProvider.m in Sources */,
 				ED42A3F3196C32FA00A63656 /* ItemDescription.m in Sources */,
+				22A366E6196F11A4002D27B7 /* MenuDataParser.m in Sources */,
+				22A36703196F11BA002D27B7 /* MapDataProvider.m in Sources */,
 				570ABE9C196C4058003DC398 /* OrderItemCell.m in Sources */,
-				ED25B747196ED01700AA41EA /* RemoteAuthorizationProvider.m in Sources */,
+				22A36705196F11BA002D27B7 /* OrdersDataProvider.m in Sources */,
 				FA336C2D19335B950007CC76 /* AppDelegate.m in Sources */,
-				ED25B740196ECE8D00AA41EA /* AuthorizationProvider.m in Sources */,
 				EDEC47291956F9950041B98B /* MapModel.m in Sources */,
-				ED89D3F11965B0AA00882F5C /* WaiterMapModel.m in Sources */,
+				22A366E7196F11A4002D27B7 /* OrdersDataParser.m in Sources */,
 				ED42A3FA196C32FA00A63656 /* SidebarViewController.m in Sources */,
+				22A36702196F11BA002D27B7 /* AuthorizationProvider.m in Sources */,
 				EDE50DF7193E110500ACA71D /* ServiceAgent.m in Sources */,
 				EDEC47341956FACB0041B98B /* MenuCategoryModel.m in Sources */,
+				22A36706196F11BA002D27B7 /* RemoteAuthorizationProvider.m in Sources */,
 				22346B58195F209000495B2A /* Alert.m in Sources */,
+				22A366D7196F10D2002D27B7 /* OrderItemModel.m in Sources */,
 				ED3A298A196EDBC100970B48 /* SidebarTableViewCell.m in Sources */,
 				FA336C2919335B950007CC76 /* main.m in Sources */,
-				ED89D3EE1965B08A00882F5C /* WaiterTableModel.m in Sources */,
 				EDEC472A1956F9950041B98B /* TableModel.m in Sources */,
 				2265A70519642B1B0059EC0E /* RequestManager.m in Sources */,
 				570ABE93196C3EEF003DC398 /* OrdersViewController.m in Sources */,
+				22A36709196F11BA002D27B7 /* RemoteOrdersDataProvider.m in Sources */,
 				ED42A3FB196C32FA00A63656 /* SWRevealViewController.m in Sources */,
+				22A366D8196F10D2002D27B7 /* OrderModel.m in Sources */,
 				ED42A3F1196C32FA00A63656 /* MenuItemCell.m in Sources */,
 				ED5B2E0E196D218F0070FF98 /* HomeViewController.m in Sources */,
-				ED25B742196ECE8D00AA41EA /* MenuDataProvider.m in Sources */,
+				22A366E5196F11A4002D27B7 /* MapDataParser.m in Sources */,
 				EDEC47351956FACB0041B98B /* MenuItemModel.m in Sources */,
+				22A36704196F11BA002D27B7 /* MenuDataProvider.m in Sources */,
+				22A366D9196F10D2002D27B7 /* TableModelWithOrders.m in Sources */,
 				570ABE9E196C4058003DC398 /* OrderTotallCell.m in Sources */,
 				ED42A3ED196C32FA00A63656 /* MapViewController.m in Sources */,
 			);

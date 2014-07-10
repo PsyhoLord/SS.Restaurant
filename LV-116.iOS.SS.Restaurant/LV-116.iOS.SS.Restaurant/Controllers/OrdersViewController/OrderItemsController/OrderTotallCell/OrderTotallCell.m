@@ -46,12 +46,12 @@
 - (void) drawCellWithModel:(OrderModel*)orderModel
 {
     float totalValue=0;
-    for (int i=0;i<[orderModel.arrayOfOrderItem count];i++)
+    for (int i=0;i<[orderModel.arrayOfOrderItems count];i++)
     {
     
         OrderItemModel *itemInOrderWithCount;
         
-        itemInOrderWithCount=[orderModel.arrayOfOrderItem objectAtIndex:i];
+        itemInOrderWithCount=[orderModel.arrayOfOrderItems objectAtIndex:i];
         
         totalValue+=(itemInOrderWithCount.menuItemModel.price)*[itemInOrderWithCount countOfItem];
     }

@@ -6,19 +6,18 @@
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
 
-#import "OrdersViewController.h"
 #import "SWRevealViewController.h"
+#import "OrdersViewController.h"
 #import "OrderItemsViewController.h"
 
 #import "MapDataProvider.h"
+#import "OrdersDataProvider.h"
 #import "Alert.h"
-
-#import "WaiterMapModel.h"
-#import "WaiterTableModel.h"
 
 #import "OrderModel.h"
 #import "MapModel.h"
 #import "TableModel.h"
+#import "TableModelWithOrders.h"
 
 static NSString *const kOrdersTitle            = @"Orders";
 static const CGFloat kHeightOfHeaderSection    = 35.0f;
@@ -26,9 +25,15 @@ static const CGFloat kHeightOfHeaderSection    = 35.0f;
 
 @implementation OrdersViewController
 {
-    NSDictionary *_currentSection;
-    NSMutableArray *_flagsContainer;
+    TableModelWithOrders *_containerTableModel;
+    
+    NSMutableArray  *_arrayOfTableModelWithOrders;
+    NSMutableArray  *_arrayOfOrderModel;
+    NSMutableArray  *_arrayOfFlags;
 }
+
+
+#pragma mark - Initialization methods
 
 - (id) initWithStyle:(UITableViewStyle)style
 {
@@ -63,8 +68,10 @@ static const CGFloat kHeightOfHeaderSection    = 35.0f;
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
 }
 
+#pragma mark - Load data from remote server
+
 // Load asynchronously map data which based on class MapModel
-- (void) loadMapData
+- (void)loadMapData
 {
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
@@ -77,7 +84,10 @@ static const CGFloat kHeightOfHeaderSection    = 35.0f;
             });
         } else {
             // assigned data from "client" MapModel
-            _waiterMapModel = [[WaiterMapModel alloc] initWithMapModel: mapModel];
+            
+            [self createAndSetArray: mapModel];
+            //            NSLog(@"%@", _arrayOfTableModelWithOrders);
+            
             dispatch_async( dispatch_get_main_queue(), ^{
                 
                 [self createAndResetFlagsContainer];
@@ -85,21 +95,83 @@ static const CGFloat kHeightOfHeaderSection    = 35.0f;
                 [self.tableView reloadData];
                 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
             });
-            
-            
         }
     }];
     
 }
-
+// Create and init array with TableModelWithOrders objects.
+- (void)createAndSetArray:(MapModel *)mapModel
+{
+    // if data is then we'll alloc memory for array
+    _arrayOfTableModelWithOrders = [[NSMutableArray alloc] init];
+    for( TableModel *tmpTableModel in mapModel.arrayOfTableModel ){
+        TableModelWithOrders *tmpWaiterTable = [[TableModelWithOrders alloc] initWithTableModel: tmpTableModel];
+        
+        [_arrayOfTableModelWithOrders addObject: tmpWaiterTable];
+    }
+}
 // Create and set initial values for _flagsContainer (if @NO - rows doesn't appear at start; if @YES - rows appear at start).
 -(void)createAndResetFlagsContainer
 {
-    _flagsContainer = [[NSMutableArray alloc] init];
-    for (int i=0; i < [_waiterMapModel.arrayOfTableModel count]; ++i) {
-        [_flagsContainer addObject: @NO];
+    _arrayOfFlags = [[NSMutableArray alloc] init];
+    for (int i=0; i < [_arrayOfTableModelWithOrders count]; ++i) {
+        [_arrayOfFlags addObject: @NO];
     }
 }
+
+// Load asynchronously orders on table.
+- (void)loadTableOrders:(UIButton *)sender
+{
+    [OrdersDataProvider loadTableOrdersDataWithTableId: ((TableModelWithOrders*)_arrayOfTableModelWithOrders[sender.tag]).Id andWithBlock:^(NSArray *arrayOfOrderModel, NSError *error) {
+        
+        if ( error ) {
+            dispatch_async( dispatch_get_main_queue(), ^{
+                [Alert showConnectionAlert];
+                [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+            });
+        } else {
+            
+            dispatch_async( dispatch_get_main_queue(), ^{
+                
+                //                [((TableModelWithOrders*)_arrayOfTableWithOrder[sender.tag]).arrayOfOrdersModel addObject: arrayOfOrderModel];
+                if( [arrayOfOrderModel count] != 0 ){
+                    //                    ((TableModelWithOrders*)_arrayOfTableWithOrder[sender.tag]).arrayOfOrdersModel = [[NSMutableArray alloc] init];
+                    [((TableModelWithOrders*)_arrayOfTableModelWithOrders[sender.tag]) addArrayOfOrders: arrayOfOrderModel];
+                }
+                
+                [self didReceiveOrdersResponse:sender];
+                [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+            });
+            
+        }
+        
+    }];
+}
+// It's delete or insert rows for one section.
+-(void)didReceiveOrdersResponse:(UIButton*)sender
+{
+    NSArray *items = ((TableModelWithOrders*)_arrayOfTableModelWithOrders[sender.tag]).arrayOfOrdersModel;
+    
+    
+    NSMutableArray *indexPaths = [NSMutableArray array]; //    Create index array
+    for (int i=0; i < items.count+1; ++i) {
+        [indexPaths addObject: [NSIndexPath indexPathForRow:i inSection:sender.tag]];
+    }
+    
+    
+    //    Get flag of some header section and then make inversion for this header section
+    BOOL isOpen = [[_arrayOfFlags objectAtIndex: sender.tag] boolValue];
+    [_arrayOfFlags replaceObjectAtIndex: sender.tag
+                             withObject: [NSNumber numberWithBool: !isOpen] ];
+    
+    if ( isOpen ) {
+        [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+    } else {
+        [self.tableView insertRowsAtIndexPaths:indexPaths  withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+}
+
+#pragma mark - Building and init table view components.
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -108,19 +180,20 @@ static const CGFloat kHeightOfHeaderSection    = 35.0f;
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [_waiterMapModel.arrayOfTableModel count];
+    return [_arrayOfTableModelWithOrders count];
 }
 
 // In this method we return number of row in section when we've clicked.
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSInteger numberOfOrders = 0;
-    if( _flagsContainer ){
-        if ( [[_flagsContainer objectAtIndex: section ] boolValue] ) {
+    if( _arrayOfFlags ){
+        if ( [[_arrayOfFlags objectAtIndex: section ] boolValue] ) {
             // Number of orders + one row for add button
-            numberOfOrders = ((WaiterTableModel*)_waiterMapModel.arrayOfTableModel[section]).arrayOfOrders.count +1;
+            numberOfOrders = ((TableModelWithOrders*)_arrayOfTableModelWithOrders[section]).arrayOfOrdersModel.count +1;
         }
     }
+    
     return numberOfOrders;
 }
 
@@ -134,14 +207,14 @@ static const CGFloat kHeightOfHeaderSection    = 35.0f;
     
     return sectionButton;  //  if you need - return sectionView
 }
-
 // Create and set settings for section button
 - (UIButton*)createSectionButton:(NSInteger)section
 {
     UIButton *sectionButton = [UIButton buttonWithType:UIButtonTypeCustom];
     sectionButton.tag = section;
     
-    NSString *tempStr = [@"Table #" stringByAppendingString:((WaiterTableModel*)_waiterMapModel.arrayOfTableModel[section]).table.name];
+    
+    NSString *tempStr = [@"Table #" stringByAppendingString: ((TableModelWithOrders*)_arrayOfTableModelWithOrders[section]).name];
     
     [sectionButton setTitle: tempStr
                    forState: UIControlStateNormal];
@@ -157,29 +230,7 @@ static const CGFloat kHeightOfHeaderSection    = 35.0f;
     return sectionButton;
 }
 
-// Handle click on some header of section.
-- (void)didSelectSection:(UIButton*)sender {
-    
-    NSArray *items = ((WaiterTableModel*)_waiterMapModel.arrayOfTableModel[sender.tag]).arrayOfOrders;  //    Get order from table
-    
-    NSMutableArray *indexPaths = [NSMutableArray array]; //    Create index array
-    for (int i=0; i < items.count+1; ++i) {
-        [indexPaths addObject: [NSIndexPath indexPathForRow:i inSection:sender.tag]];
-    }
-    
-    //    Get flag of some header section and then make inversion for this header section
-    BOOL isOpen = [[_flagsContainer objectAtIndex: sender.tag] boolValue];
-    [_flagsContainer replaceObjectAtIndex: sender.tag
-                               withObject: [NSNumber numberWithBool: !isOpen] ];
-    
-    if ( isOpen ) {
-        [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
-    } else {
-        [self.tableView insertRowsAtIndexPaths:indexPaths  withRowAnimation:UITableViewRowAnimationAutomatic];
-    }
-}
-
-// Create cell for header section
+// Create cells for header section.
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellIdentifier"];
@@ -192,34 +243,39 @@ static const CGFloat kHeightOfHeaderSection    = 35.0f;
     } else {
         cell.textLabel.text = [NSString stringWithFormat:@"Order #%d", indexPath.row];
     }
+    
     return cell;
 }
 
-// Handle click on add cell (the last cell).
+#pragma mark - Handle user click.
+
+// Handle click on some section header.
+- (void)didSelectSection:(UIButton*)sender
+{
+    if( _arrayOfFlags[sender.tag] == 0 ){
+        [self loadTableOrders:sender];
+    } else {
+        [self didReceiveOrdersResponse: sender];
+    }
+    
+    
+}
+
+// Handle click on cell of add (the last cell).
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ( indexPath.row == [tableView numberOfRowsInSection: indexPath.section]-1 ) {
         
+        // Create new empty order and push it in array.
         OrderModel *orderModel = [[OrderModel alloc] init];
-        [((WaiterTableModel*)_waiterMapModel.arrayOfTableModel[indexPath.section]) addOrder:orderModel];
-        
-        //        if( ((WaiterTableModel*)_waiterMapModel.arrayOfTableModel[indexPath.section]).arrayOfOrders == nil ){
-        //            ((WaiterTableModel*)_waiterMapModel.arrayOfTableModel[indexPath.section]).arrayOfOrders = [[NSMutableArray alloc] init];
-        //        }
-        //        NSString *str = [[NSString alloc] initWithFormat:@"Order%ld", random()];
+        [((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]) addOrder: orderModel];
         
         [self.tableView reloadData];
     } else {
         OrderItemsViewController *orderItemsViewController = [[OrderItemsViewController alloc] init];
-        orderItemsViewController.currentOrder=
-                [
-                 [[_waiterMapModel.arrayOfTableModel objectAtIndex:[indexPath section]]
-                  arrayOfOrders]
-                 objectAtIndex:[indexPath row]
-                ];
+        
         [self.navigationController pushViewController: orderItemsViewController
                                              animated: YES];
-//        [self.navigationController performSegueWithIdentifier: kSegueForOrderItems sender:self];
     }
 }
 
@@ -239,9 +295,10 @@ static const CGFloat kHeightOfHeaderSection    = 35.0f;
     [tableView beginUpdates];
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
-        [((WaiterTableModel*)_waiterMapModel.arrayOfTableModel[indexPath.section]).arrayOfOrders removeObjectAtIndex:indexPath.row];
+        [((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]).arrayOfOrdersModel removeObjectAtIndex:indexPath.row];
         
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationAutomatic];
+        
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         
     } else if(editingStyle == UITableViewCellEditingStyleInsert){
         // Here handle UITableViewCellEditingStyleInsert if we need.

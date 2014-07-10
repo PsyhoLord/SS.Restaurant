@@ -38,4 +38,23 @@
     return self;
 }
 
+// It's used for TableModelWithOrders.
+-(instancetype) initWithTableModel:(TableModel*)tableModel
+{
+    if ( self = [super init] ){
+        self.Id       = tableModel.Id;
+        self.capacity = tableModel.capacity;
+        self.height   = tableModel.height;
+        self.isActive = tableModel.isActive;
+        self.isFree   = tableModel.isFree;
+        self.isRound  = tableModel.isRound;
+        self.name     = tableModel.name;
+        self.rotation = tableModel.rotation;
+        self.width    = tableModel.width;
+        self.X        = tableModel.X;
+        self.Y        = tableModel.Y;
+    }
+    return self;
+}
+
 @end

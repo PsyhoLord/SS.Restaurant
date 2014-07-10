@@ -11,7 +11,7 @@
 // MapModel class will contains an array of tables
 @interface MapModel : NSObject
 
-@property (strong, nonatomic) NSMutableArray *arrayTableModel;
+@property (strong, nonatomic) NSMutableArray *arrayOfTableModel;
 @property (strong, nonatomic) UIImage        *image;
 
 // add TableModel to an array of TableModels

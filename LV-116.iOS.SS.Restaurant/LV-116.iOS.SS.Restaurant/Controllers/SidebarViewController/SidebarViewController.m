@@ -13,8 +13,6 @@
 
 #import "MapDataProvider.h"
 
-#import "WaiterMapModel.h"
-#import "WaiterTableModel.h"
 #import "MapModel.h"
 #import "TableModel.h"
 

@@ -114,7 +114,7 @@ static NSString *const kMapName = @"Table map";
     
     [_zoomView addSubview:_backgroundView];
     
-    for ( TableModel *tableModel in _mapModel.arrayTableModel ) {
+    for ( TableModel *tableModel in _mapModel.arrayOfTableModel ) {
         [_zoomView addSubview:[self addTableView:tableModel]];
     }
     

@@ -14,10 +14,10 @@
 // add TableModel to an array of TableModels
 - (void)addTableModel:(TableModel*)arrayOfTableModel
 {
-    if( _arrayTableModel == nil ) {
-        _arrayTableModel = [[NSMutableArray alloc] init];
+    if( _arrayOfTableModel == nil ) {
+        _arrayOfTableModel = [[NSMutableArray alloc] init];
     }
-    [_arrayTableModel addObject:arrayOfTableModel];
+    [_arrayOfTableModel addObject:arrayOfTableModel];
 }
 
 @end
