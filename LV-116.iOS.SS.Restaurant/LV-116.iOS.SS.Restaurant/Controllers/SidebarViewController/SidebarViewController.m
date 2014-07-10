@@ -31,7 +31,11 @@ static NSString *const  kMapTableViewCellIdentifier         = @"MapCellIdentifie
 static NSString *const  kOrdersTableViewCellIdentifier      = @"OrdersCellIdentifier";
 
 // number of cells needs for waiter in the end of table view
-static const NSUInteger kNumberOfCellsForWaiter             = 1;
+//static const NSUInteger kNumberOfCellsForWaiter             = 1;
+
+// !!! this is only for test without any authorization !!!
+static const NSUInteger kNumberOfCellsForWaiter             = 0;
+// !!!
 
 // consts segue to another scrins
 static NSString *const  kSegueToHome                        = @"sw_segue_home";

@@ -69,7 +69,7 @@ static NSString *const kRoleWaiterIconName  = @"role_waiter_icon.png";
 #pragma mark - home page configuration
 
 // set home page configuration according to user role
-- (void) setHomePageConfiguration:(EnumUserRole)userRole
+- (void) setHomePageConfiguration: (EnumUserRole)userRole
 {
     [self setRoleImage: userRole];
     switch ( userRole ) {
@@ -118,6 +118,10 @@ static NSString *const kRoleWaiterIconName  = @"role_waiter_icon.png";
         [UserRole getInstance].enumUserRole = enumUserRole;
         [self setHomePageConfiguration: enumUserRole];
         [_sidebarViewController reloadData];
+        
+        // remove text from textFields
+        _textFieldUserName.text = @"";
+        _textFieldPassword.text = @"";
     }];
 }
 
