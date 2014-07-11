@@ -14,8 +14,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *totallPrice;
 
-
-
 - (void) drawCellWithModel:(OrderModel*)orderModel;
 
 @end

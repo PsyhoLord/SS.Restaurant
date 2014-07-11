@@ -13,21 +13,6 @@
 
 @implementation OrderTotallCell
 
-- (void)awakeFromNib
-{
-    // Initialization code
-}
-
--(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if ( self ) {
-        NSArray *nibArray = [[NSBundle mainBundle] loadNibNamed:@"OrderTotallCell" owner:self options:nil];
-        self = [nibArray objectAtIndex:0];
-    }
-    return self;
-}
-
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {

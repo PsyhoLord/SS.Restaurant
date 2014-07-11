@@ -243,6 +243,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="sidebarButton" destination="djH-8s-jFV" id="bYJ-rP-xQe"/>
+                        <segue destination="zgs-Wf-spS" kind="push" identifier="segue_order_items" id="rEJ-BU-v3u"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s5A-pT-33X" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -306,7 +307,7 @@
                                     <outlet property="pricePerPcs" destination="XVf-kN-RZR" id="bP0-e4-Uhh"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OrderTotallCell" id="awL-Ka-Hpl" customClass="OrderTotallCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OrderTotallCellIdentifier" id="awL-Ka-Hpl" customClass="OrderTotallCell">
                                 <rect key="frame" x="0.0" y="66" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="awL-Ka-Hpl" id="8AK-vC-Zky">
@@ -331,10 +332,11 @@
                             <outlet property="delegate" destination="zgs-Wf-spS" id="kWn-fg-jfh"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="BaQ-Ly-znE"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eaT-Iy-pdt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="542" y="103"/>
+            <point key="canvasLocation" x="671" y="103"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="cjE-5r-DwY">

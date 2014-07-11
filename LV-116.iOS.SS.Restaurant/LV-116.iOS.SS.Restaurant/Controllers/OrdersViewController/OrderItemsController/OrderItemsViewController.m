@@ -13,8 +13,8 @@
 #import "MenuItemModel.h"
 #import "OrderTotallCell.h"
 
-static NSString *const orderCellIdentifier   = @"OrderItemCell";
-static NSString *const orderTotallIdentifier = @"TotallOrderCell";
+static NSString *const kOrderCellIdentifier    = @"OrderItemCell";
+static NSString *const kOrderTotallIdentifier  = @"OrderTotallCellIdentifier";
 
 @implementation OrderItemsViewController
 {
@@ -25,6 +25,7 @@ static NSString *const orderTotallIdentifier = @"TotallOrderCell";
 {
     self = [super initWithStyle:style];
     if (self) {
+        
         // Custom initialization
     }
     return self;
@@ -39,10 +40,13 @@ static NSString *const orderTotallIdentifier = @"TotallOrderCell";
     for (int i=0; i<5; i++)
     {
         addOrderItem =[[OrderItemModel alloc] init];
+        MenuItemModel *temp=[[MenuItemModel alloc] initWithId:i categoryId:i description:@"kvkdskjd" name:[NSString stringWithFormat:@"Item#%i",i] portions:3 price:i*1.5];
       
-        addOrderItem.menuItemModel.name=[NSString stringWithFormat:@"Item#%i",i];
+        /*temp.name=[NSString stringWithFormat:@"Item#%i",i];
         
-        addOrderItem.menuItemModel.price = i*1.5;
+        temp.price = i*1.5;
+        */
+        addOrderItem = [[OrderItemModel alloc] initWithMenuItemModel:temp];
         
         addOrderItem.countOfItem=i;
         
@@ -55,10 +59,10 @@ static NSString *const orderTotallIdentifier = @"TotallOrderCell";
 
 - (void)viewDidLoad
 {
-    _currentOrder=[[OrderModel alloc] init];
-    
+   _currentOrder=[[OrderModel alloc] init];
+    [self setDefaultvalues];
     [super viewDidLoad];
-    //[self setDefaultvalues];
+ 
     
     
     
@@ -94,38 +98,41 @@ static NSString *const orderTotallIdentifier = @"TotallOrderCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([_currentOrder.arrayOfOrderItems count]>[indexPath row])
-    {
-    OrderItemCell *orderItemCell = [tableView dequeueReusableCellWithIdentifier:orderCellIdentifier];
-        if (orderItemCell==nil)
-        {
-            orderItemCell=[[OrderItemCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:orderCellIdentifier];
+    if ([_currentOrder.arrayOfOrderItems count]>indexPath.row) {
         
-        }
+        OrderItemCell *orderItemCell = [tableView dequeueReusableCellWithIdentifier:kOrderTotallIdentifier];
+       /* if (orderItemCell==nil)
+        {
+            orderItemCell=[[OrderItemCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kOrderCellIdentifier];
+        
+        }*/
     
-    
-   /* OrderItemModel * tmp=[[OrderItemModel alloc] init];
-    tmp=[_currentOrder.arrayOfOrderItem objectAtIndex:[indexPath row]];*/
-        orderItemCell.currentOrderItem=[_currentOrder.arrayOfOrderItems objectAtIndex:[indexPath row]];
-    [orderItemCell drawCell];
+        
+        orderItemCell.currentOrderItem = [_currentOrder.arrayOfOrderItems objectAtIndex:indexPath.row];
+        [orderItemCell drawCell];
         return orderItemCell;
         
     }
-    else
-    {
+    else {
         
-        OrderTotallCell *totallOrderCell=[tableView dequeueReusableCellWithIdentifier:orderTotallIdentifier];
-        if (totallOrderCell==nil)
-        {
-            totallOrderCell = [[OrderTotallCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:orderTotallIdentifier];
-        }
-        //totallOrderCell.TotallPrice.text=@"All Your Money";
-        //totallOrderCell.
-        //HERE NEED TO ADD "ADD CUSTOM CELL"
-        [totallOrderCell drawCellWithModel:_currentOrder];
+//        OrderTotallCell *totallOrderCell=[tableView dequeueReusableCellWithIdentifier:orderTotallIdentifier];
+//        if (totallOrderCell==nil)
+//        {
+//            totallOrderCell = [[OrderTotallCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:orderTotallIdentifier];
+//        }
+//        //totallOrderCell.TotallPrice.text=@"All Your Money";
+//        //totallOrderCell.
+//        //HERE NEED TO ADD "ADD CUSTOM CELL"
+//        [totallOrderCell drawCellWithModel:_currentOrder];
+//        
+//        return totallOrderCell;
+
         
-        return totallOrderCell;
+        OrderTotallCell *orderTotalCell = [self.tableView dequeueReusableCellWithIdentifier: kOrderTotallIdentifier];
         
+        [orderTotalCell drawCellWithModel:_currentOrder];
+        
+        return orderTotalCell;
     }
     
 }
@@ -133,26 +140,23 @@ static NSString *const orderTotallIdentifier = @"TotallOrderCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if ([_currentOrder.arrayOfOrderItems count]<[indexPath row])
-    {}
-    else
-    {
+    if ([_currentOrder.arrayOfOrderItems count]==indexPath.row){
         
-    MenuItemModel *menuItemModel=[[MenuItemModel alloc] init];
-    
-    menuItemModel.name=[NSString stringWithFormat:@"Item"];
+        MenuItemModel *menuItemModel=[[MenuItemModel alloc] init];
         
-
-    menuItemModel.price = 5*1.5;
+        menuItemModel.name=[NSString stringWithFormat:@"Item"];
         
-    addOrderItem=[[OrderItemModel alloc] initWithMenuItemModel:menuItemModel];
         
-    
-    addOrderItem.countOfItem=3;
-    
-    [_currentOrder.arrayOfOrderItems addObject:addOrderItem];
-    
-    [tableView reloadData];
+        menuItemModel.price = 5*1.5;
+        
+        addOrderItem=[[OrderItemModel alloc] initWithMenuItemModel:menuItemModel];
+        
+        
+        addOrderItem.countOfItem=3;
+        
+        [_currentOrder.arrayOfOrderItems addObject:addOrderItem];
+        
+        [tableView reloadData];
     }
 }
 
