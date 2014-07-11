@@ -252,7 +252,7 @@ static const CGFloat kHeightOfHeaderSection    = 35.0f;
 // Handle click on some section header.
 - (void)didSelectSection:(UIButton*)sender
 {
-    if( _arrayOfFlags[sender.tag] == 0 ){
+    if( [_arrayOfFlags[sender.tag] intValue] == 0 ){
         [self loadTableOrders:sender];
     } else {
         [self didReceiveOrdersResponse: sender];
