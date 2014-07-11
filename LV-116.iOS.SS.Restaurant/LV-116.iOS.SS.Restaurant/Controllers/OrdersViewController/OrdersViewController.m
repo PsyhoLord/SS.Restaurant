@@ -19,9 +19,7 @@
 #import "TableModel.h"
 #import "TableModelWithOrders.h"
 
-static NSString *const kOrdersTitle            = @"Orders";
 static const CGFloat kHeightOfHeaderSection    = 35.0f;
-
 
 @implementation OrdersViewController
 {
@@ -47,8 +45,6 @@ static const CGFloat kHeightOfHeaderSection    = 35.0f;
 - (void) viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.title = kOrdersTitle;
     
     [self setSidebarConfiguration];
     

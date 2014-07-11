@@ -8,7 +8,12 @@
 
 #import "SidebarViewController.h"
 #import "SWRevealViewController.h"
+
+#import "HomeViewController.h"
+#import "MenuViewController.h"
+#import "MapViewController.h"
 #import "OrdersViewController.h"
+
 #import "SidebarTableViewCell.h"
 
 #import "MapDataProvider.h"
@@ -29,23 +34,28 @@ static const NSUInteger kNumberOfCellsForClient  = 3;
 static const NSUInteger kNumberOfCellsForWaiter  = 4;
 
 // consts segue to another scrins
-static NSString *const kSegueToHome              = @"sw_segue_home";
-static NSString *const kSegueToMenu              = @"sw_segue_menu";
-static NSString *const kSegueToMap               = @"sw_segue_map";
-static NSString *const kSegueToOrders            = @"sw_segue_orders";
+static NSString *const kSegueToHome     = @"sw_segue_home";
+static NSString *const kSegueToMenu     = @"sw_segue_menu";
+static NSString *const kSegueToMap      = @"sw_segue_map";
+static NSString *const kSegueToOrders   = @"sw_segue_orders";
 
 // const strings of images for cells
-static NSString *const kCellImageHome            = @"home_page_icon.png";
-static NSString *const kCellImageMenu            = @"menu_icon.png";
-static NSString *const kCellImageMap             = @"map_icon.png";
-static NSString *const kCellImageOrders          = @"orders_icon.png";
+static NSString *const kCellImageHome   = @"home_page_icon.png";
+static NSString *const kCellImageMenu   = @"menu_icon.png";
+static NSString *const kCellImageMap    = @"map_icon.png";
+static NSString *const kCellImageOrders = @"orders_icon.png";
 
 // const strings of labels for cells
-static NSString *const kCellLabelTextHome        = @"Home";
-static NSString *const kCellLabelTextMenu        = @"Menu";
-static NSString *const kCellLabelTextMap         = @"Map";
-static NSString *const kCellLabelTextOrders      = @"Orders";
+static NSString *const kCellLabelTextHome   = @"Home";
+static NSString *const kCellLabelTextMenu   = @"Menu";
+static NSString *const kCellLabelTextMap    = @"Map";
+static NSString *const kCellLabelTextOrders = @"Orders";
 
+// const strings of titles for destination view controllers
+static NSString *const kDestinationViewControllerTitleHome      = @"Home";
+static NSString *const kDestinationViewControllerTitleMenu      = @"Menu";
+static NSString *const kDestinationViewControllerTitleMap       = @"Map";
+static NSString *const kDestinationViewControllerTitleOrders    = @"Orders";
 
 // enum of all cells on root sidebar menu
 typedef enum
@@ -58,14 +68,7 @@ typedef enum
 
 @implementation SidebarViewController
 
-- (id) initWithStyle: (UITableViewStyle)style
-{
-    self = [super initWithStyle: style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+#pragma mark - initialization methods
 
 - (void) viewDidLoad
 {
@@ -80,12 +83,6 @@ typedef enum
     dispatch_async( dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
     });
-}
-
-- (void) didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -205,6 +202,10 @@ typedef enum
 // something that did before segue
 - (void) prepareForSegue: (UIStoryboardSegue*)segue sender: (id)sender
 {
+    
+    UIViewController *destinationViewController = segue.destinationViewController;
+    destinationViewController.title = [self getTitleForDestinationViewController: destinationViewController];
+    
     if ( [segue isKindOfClass: [SWRevealViewControllerSegue class]] ) {
         
         SWRevealViewControllerSegue *swSegue = (SWRevealViewControllerSegue*) segue;
@@ -218,6 +219,25 @@ typedef enum
         };
         
     }
+}
+
+// return string of title for appropriate destination view controller
+// (UIViewController*)destinationViewController - destination view controller on segue
+- (NSString*) getTitleForDestinationViewController: (UIViewController*)destinationViewController
+{
+    NSString *title;
+    
+    if ( [destinationViewController isKindOfClass: [HomeViewController class]] ) {
+        title = kDestinationViewControllerTitleHome;
+    } else if ( [destinationViewController isKindOfClass: [MenuViewController class]] ) {
+        title = kDestinationViewControllerTitleMenu;
+    } else if ( [destinationViewController isKindOfClass: [MapViewController class]] ) {
+        title = kDestinationViewControllerTitleMap;
+    } else if ( [destinationViewController isKindOfClass: [OrdersViewController class]] ) {
+        title = kDestinationViewControllerTitleOrders;
+    }
+    
+    return title;
 }
 
 @end
