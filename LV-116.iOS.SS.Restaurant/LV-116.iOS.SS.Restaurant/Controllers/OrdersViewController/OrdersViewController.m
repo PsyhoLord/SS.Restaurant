@@ -134,10 +134,10 @@ static const CGFloat kHeightOfHeaderSection    = 35.0f;
             dispatch_async( dispatch_get_main_queue(), ^{
                 
                 //                [((TableModelWithOrders*)_arrayOfTableWithOrder[sender.tag]).arrayOfOrdersModel addObject: arrayOfOrderModel];
-                if( [arrayOfOrderModel count] != 0 ){
+                
                     //                    ((TableModelWithOrders*)_arrayOfTableWithOrder[sender.tag]).arrayOfOrdersModel = [[NSMutableArray alloc] init];
                     [((TableModelWithOrders*)_arrayOfTableModelWithOrders[sender.tag]) addArrayOfOrders: arrayOfOrderModel];
-                }
+                
                 
                 [self didReceiveOrdersResponse:sender];
                 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
@@ -165,6 +165,7 @@ static const CGFloat kHeightOfHeaderSection    = 35.0f;
                              withObject: [NSNumber numberWithBool: !isOpen] ];
     
     if ( isOpen ) {
+        ((TableModelWithOrders*)_arrayOfTableModelWithOrders[sender.tag]).arrayOfOrdersModel = nil;
         [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
     } else {
         [self.tableView insertRowsAtIndexPaths:indexPaths  withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -200,10 +201,12 @@ static const CGFloat kHeightOfHeaderSection    = 35.0f;
 // Create button for each section.
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *sectionView = [[UIView alloc] init];
+    UIView *sectionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 30)];
     UIButton *sectionButton = [self createSectionButton: section];
     
     [sectionView addSubview: sectionButton];
+    
+    
     
     return sectionButton;  //  if you need - return sectionView
 }
@@ -225,7 +228,7 @@ static const CGFloat kHeightOfHeaderSection    = 35.0f;
                       action: @selector(didSelectSection:)
             forControlEvents: UIControlEventTouchUpInside];
     
-    sectionButton.frame = CGRectMake(0, 0, 130, 30);
+    sectionButton.frame = CGRectMake(0, 0, self.tableView.frame.size.width, 30);
     
     return sectionButton;
 }
