@@ -12,6 +12,10 @@
 
 @interface OrdersDataProvider : NSObject
 
-+ (void)loadTableOrdersDataWithTableId:(int)tableId andWithBlock:(void (^)(NSArray*, NSError*))callback;
+// Load data about orders on one table
++ (void)loadTableOrdersDataWithTableId:(int)tableId responseBlock:(void (^)(NSArray*, NSError*))callback;
+
+// You can delete the one order on table.
++ (void)deleteTableOrderWithOrderId:(int)orderId responseBlock:(void (^)(NSError*))callback;
 
 @end

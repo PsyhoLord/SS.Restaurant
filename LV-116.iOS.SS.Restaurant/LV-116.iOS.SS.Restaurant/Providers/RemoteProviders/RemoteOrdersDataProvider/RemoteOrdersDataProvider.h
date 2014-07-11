@@ -11,6 +11,10 @@
 
 @interface RemoteOrdersDataProvider : NSObject
 
-+ (void)loadTableOrdersWithId:(int)tableId withBlock:(void (^)(NSArray*, NSError*))callback;
+// Load orders on one table using tableId.
++ (void)loadTableOrdersWithId:(int)tableId responseBlock:(void (^)(NSArray*, NSError*))callback;
+
+// Delete the one order on table using orderId.
++ (void)deleteTableOrderWithOrderId:(int)orderId responseBlock:(void (^)(NSError*))callback;
 
 @end

@@ -12,6 +12,9 @@ static NSString *const connectionAlertTitle       = @"No network connection";
 static NSString *const connectionAlertMessage     = @"You must be connected to the internet to use this app.";
 static NSString *const connectionAlertButtonTitle = @"OK";
 
+static NSString *const methodAlertTitle           = @"Error";
+static NSString *const methodAlertMessage         = @"Code of error: %d";
+
 @implementation Alert
 
 // This method creates UIAlert and show it
@@ -22,6 +25,17 @@ static NSString *const connectionAlertButtonTitle = @"OK";
                                                    delegate:nil
                                           cancelButtonTitle:connectionAlertButtonTitle
                                           otherButtonTitles:nil];
+    [alert show];
+}
+
+// This method show alert error when http method is failed.
++ (void)showHTTPMethodsAlert:(NSError*)error
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: methodAlertTitle
+                                                    message: [NSString stringWithFormat: methodAlertMessage, error.code]
+                                                   delegate: nil
+                                          cancelButtonTitle: connectionAlertButtonTitle
+                                          otherButtonTitles: nil];
     [alert show];
 }
 

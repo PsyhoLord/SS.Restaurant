@@ -14,14 +14,27 @@
 
 @implementation OrdersDataProvider
 
+#pragma mark - Load table orders.
 // load remote data of orders on one table using tableId
 // call block when model have created
-+ (void)loadTableOrdersDataWithTableId:(int)tableId andWithBlock:(void (^)(NSArray*, NSError*))callback
++ (void)loadTableOrdersDataWithTableId:(int)tableId responseBlock:(void (^)(NSArray*, NSError*))callback
 {
     [RemoteOrdersDataProvider loadTableOrdersWithId: (int)tableId
-                                          withBlock: ^(NSArray *arrayOfOrderModel, NSError *error) {
+                                      responseBlock: ^(NSArray *arrayOfOrderModel, NSError *error) {
                                               callback(arrayOfOrderModel, error);
-                                          }
+                                      }
+     ];
+}
+
+#pragma mark - HTTP methods.
+#pragma mark - DELETE
+// Delete the one order on table using orderId.
++ (void)deleteTableOrderWithOrderId:(int)orderId responseBlock:(void (^)(NSError*))callback
+{
+    [RemoteOrdersDataProvider deleteTableOrderWithOrderId:orderId
+                                            responseBlock:^(NSError *error) {
+                                                callback(error);
+                                            }
      ];
 }
 

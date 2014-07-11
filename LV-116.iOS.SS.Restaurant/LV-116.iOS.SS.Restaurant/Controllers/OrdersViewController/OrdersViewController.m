@@ -122,7 +122,7 @@ static const CGFloat kHeightOfHeaderSection    = 35.0f;
 // Load asynchronously orders on table.
 - (void)loadTableOrders:(UIButton *)sender
 {
-    [OrdersDataProvider loadTableOrdersDataWithTableId: ((TableModelWithOrders*)_arrayOfTableModelWithOrders[sender.tag]).Id andWithBlock:^(NSArray *arrayOfOrderModel, NSError *error) {
+    [OrdersDataProvider loadTableOrdersDataWithTableId: ((TableModelWithOrders*)_arrayOfTableModelWithOrders[sender.tag]).Id responseBlock:^(NSArray *arrayOfOrderModel, NSError *error) {
         
         if ( error ) {
             dispatch_async( dispatch_get_main_queue(), ^{
@@ -290,6 +290,8 @@ static const CGFloat kHeightOfHeaderSection    = 35.0f;
     } else {
         return UITableViewCellEditingStyleNone;
     }
+
+
 }
 
 // Handle editing action.
@@ -298,10 +300,22 @@ static const CGFloat kHeightOfHeaderSection    = 35.0f;
     [tableView beginUpdates];
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
-        [((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]).arrayOfOrdersModel removeObjectAtIndex:indexPath.row];
+        
         
         
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+
+        // Not all orders deleted. Maybe because some orders have items (don't emtpties).
+        [OrdersDataProvider deleteTableOrderWithOrderId: ((OrderModel*)((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]).arrayOfOrdersModel[indexPath.row]).Id
+                                          responseBlock: ^(NSError *error) {
+                                              if( error ) {
+                                                  [Alert showHTTPMethodsAlert: error];
+                                              }
+                                          }
+         ];
+        
+        
+        [((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]).arrayOfOrdersModel removeObjectAtIndex:indexPath.row];
         
     } else if(editingStyle == UITableViewCellEditingStyleInsert){
         // Here handle UITableViewCellEditingStyleInsert if we need.
