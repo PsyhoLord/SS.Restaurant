@@ -17,8 +17,6 @@
 #import "ItemDescription.h"
 #import "SWRevealViewController.h"
 
-static NSString *const  kMenuName                     = @"Menu";
-
 static NSString *const  kMenuCategoryCellIdentifier   = @"menuCategoryCellIdentifier";
 static NSString *const  kMenuItemCellIdentifier       = @"menuItemCellIdentifier";
 static const NSUInteger kNumberOfSectionsInTableView  = 1;
@@ -35,8 +33,6 @@ static const NSUInteger kNumberOfSectionsInTableView  = 1;
     [self setupRefreshControl];
     
     [self setSidebarConfiguration];
-    
-    self.title = kMenuName;
     
     if ( _currentCategory == nil ) {
         [self loadMenuData];

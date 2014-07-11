@@ -14,8 +14,6 @@
 #import "Alert.h"
 #import "SWRevealViewController.h"
 
-static NSString *const kMapName = @"Table map";
-
 @implementation MapViewController
 {
     __weak IBOutlet UIScrollView *_scrollView;
@@ -30,8 +28,6 @@ static NSString *const kMapName = @"Table map";
     [super viewDidLoad];
     
     [self setSidebarConfiguration];
-    
-    self.title = kMapName;
     
     // init _tableViews
     _tableViews = [[NSMutableArray alloc] init];
