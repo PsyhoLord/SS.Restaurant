@@ -19,7 +19,6 @@
 #import "TableModel.h"
 #import "TableModelWithOrders.h"
 
-static NSString *const kOrdersTitle            = @"Orders";
 static const CGFloat kHeightOfHeaderSection    = 35.0f;
 
 static NSString *const kSegueToOrderItems      = @"segue_order_items";
@@ -49,8 +48,6 @@ static NSString *const kSegueToOrderItems      = @"segue_order_items";
 - (void) viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.title = kOrdersTitle;
     
     [self setSidebarConfiguration];
     
@@ -124,7 +121,7 @@ static NSString *const kSegueToOrderItems      = @"segue_order_items";
 // Load asynchronously orders on table.
 - (void)loadTableOrders:(UIButton *)sender
 {
-    [OrdersDataProvider loadTableOrdersDataWithTableId: ((TableModelWithOrders*)_arrayOfTableModelWithOrders[sender.tag]).Id andWithBlock:^(NSArray *arrayOfOrderModel, NSError *error) {
+    [OrdersDataProvider loadTableOrdersDataWithTableId: ((TableModelWithOrders*)_arrayOfTableModelWithOrders[sender.tag]).Id responseBlock:^(NSArray *arrayOfOrderModel, NSError *error) {
         
         if ( error ) {
             dispatch_async( dispatch_get_main_queue(), ^{
@@ -136,10 +133,10 @@ static NSString *const kSegueToOrderItems      = @"segue_order_items";
             dispatch_async( dispatch_get_main_queue(), ^{
                 
                 //                [((TableModelWithOrders*)_arrayOfTableWithOrder[sender.tag]).arrayOfOrdersModel addObject: arrayOfOrderModel];
-                if( [arrayOfOrderModel count] != 0 ){
+                
                     //                    ((TableModelWithOrders*)_arrayOfTableWithOrder[sender.tag]).arrayOfOrdersModel = [[NSMutableArray alloc] init];
                     [((TableModelWithOrders*)_arrayOfTableModelWithOrders[sender.tag]) addArrayOfOrders: arrayOfOrderModel];
-                }
+                
                 
                 [self didReceiveOrdersResponse:sender];
                 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
@@ -167,6 +164,7 @@ static NSString *const kSegueToOrderItems      = @"segue_order_items";
                              withObject: [NSNumber numberWithBool: !isOpen] ];
     
     if ( isOpen ) {
+        ((TableModelWithOrders*)_arrayOfTableModelWithOrders[sender.tag]).arrayOfOrdersModel = nil;
         [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
     } else {
         [self.tableView insertRowsAtIndexPaths:indexPaths  withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -202,10 +200,12 @@ static NSString *const kSegueToOrderItems      = @"segue_order_items";
 // Create button for each section.
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *sectionView = [[UIView alloc] init];
+    UIView *sectionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 30)];
     UIButton *sectionButton = [self createSectionButton: section];
     
     [sectionView addSubview: sectionButton];
+    
+    
     
     return sectionButton;  //  if you need - return sectionView
 }
@@ -227,7 +227,7 @@ static NSString *const kSegueToOrderItems      = @"segue_order_items";
                       action: @selector(didSelectSection:)
             forControlEvents: UIControlEventTouchUpInside];
     
-    sectionButton.frame = CGRectMake(0, 0, 130, 30);
+    sectionButton.frame = CGRectMake(0, 0, self.tableView.frame.size.width, 30);
     
     return sectionButton;
 }
@@ -254,7 +254,7 @@ static NSString *const kSegueToOrderItems      = @"segue_order_items";
 // Handle click on some section header.
 - (void)didSelectSection:(UIButton*)sender
 {
-    if( _arrayOfFlags[sender.tag] == 0 ){
+    if( [_arrayOfFlags[sender.tag] intValue] == 0 ){
         [self loadTableOrders:sender];
     } else {
         [self didReceiveOrdersResponse: sender];
@@ -291,6 +291,8 @@ static NSString *const kSegueToOrderItems      = @"segue_order_items";
     } else {
         return UITableViewCellEditingStyleNone;
     }
+
+
 }
 
 // Handle editing action.
@@ -299,10 +301,22 @@ static NSString *const kSegueToOrderItems      = @"segue_order_items";
     [tableView beginUpdates];
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
-        [((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]).arrayOfOrdersModel removeObjectAtIndex:indexPath.row];
+        
         
         
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+
+        // Not all orders deleted. Maybe because some orders have items (don't emtpties).
+        [OrdersDataProvider deleteTableOrderWithOrderId: ((OrderModel*)((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]).arrayOfOrdersModel[indexPath.row]).Id
+                                          responseBlock: ^(NSError *error) {
+                                              if( error ) {
+                                                  [Alert showHTTPMethodsAlert: error];
+                                              }
+                                          }
+         ];
+        
+        
+        [((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]).arrayOfOrdersModel removeObjectAtIndex:indexPath.row];
         
     } else if(editingStyle == UITableViewCellEditingStyleInsert){
         // Here handle UITableViewCellEditingStyleInsert if we need.

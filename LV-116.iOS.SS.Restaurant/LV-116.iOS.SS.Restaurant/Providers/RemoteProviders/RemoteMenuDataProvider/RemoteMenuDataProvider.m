@@ -49,8 +49,8 @@ static const int kMaxCountOfAttemptsForRequest  = 3;
 // (void (^)(UIImage*, NSError*))callback - block which will be called when image is
 + (void)loadMenuItemImageById:(int)menuItemId withBlock:(void (^)(UIImage*, NSError*))callback
 {
-    NSURLRequest *URLRequest = [RemoteMenuDataProvider getURLRequestWithstring:[NSString stringWithFormat:kURLDownloadImage, menuItemId]
-                                                           timeoutInterval:kConnectionTimeoutInterval];
+    NSURLRequest *URLRequest = [RemoteMenuDataProvider getURLRequestWithstring: [NSString stringWithFormat:kURLDownloadImage, menuItemId]
+                                                               timeoutInterval: kConnectionTimeoutInterval];
     
     [RequestManager send:URLRequest
            responseBlock:^(NSHTTPURLResponse *urlResponse, NSData *data, NSError *error) {

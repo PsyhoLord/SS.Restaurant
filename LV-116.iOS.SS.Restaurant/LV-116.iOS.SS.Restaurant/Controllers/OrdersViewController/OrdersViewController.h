@@ -8,11 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@class WaiterMapModel;
-
 @interface OrdersViewController : UITableViewController
 
-@property (strong, nonatomic) WaiterMapModel *waiterMapModel;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 

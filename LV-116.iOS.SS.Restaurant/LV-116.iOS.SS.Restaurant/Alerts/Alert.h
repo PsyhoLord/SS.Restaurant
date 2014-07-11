@@ -13,4 +13,7 @@
 // This method creates UIAlert and show it
 + (void)showConnectionAlert;
 
+// This method show alert error when http method is failed. 
++ (void)showHTTPMethodsAlert:(NSError*)error;
+
 @end
