@@ -118,7 +118,7 @@ static NSString *const kMapName = @"Table map";
         [_zoomView addSubview:[self addTableView:tableModel]];
     }
     
-    [_scrollView addSubview:_zoomView];
+    [_scrollView addSubview: _zoomView];
     
     _scrollView.contentSize = CGSizeMake(_mapModel.image.size.width, _mapModel.image.size.height);
 }
