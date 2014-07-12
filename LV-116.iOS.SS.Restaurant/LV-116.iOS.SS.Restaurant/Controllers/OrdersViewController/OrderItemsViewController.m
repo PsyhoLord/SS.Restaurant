@@ -42,6 +42,7 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
 }
 
 
+//Sets default values for testing
 - (void) setDefaultvalues
 {
     
@@ -59,7 +60,7 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
       
         addOrderItem = [[OrderItemModel alloc] initWithMenuItemModel: temp];
         
-        addOrderItem.countOfItem = i;
+        addOrderItem.countOfItem = i+1;
         
         [_currentOrder.arrayOfOrderItems addObject: addOrderItem];
         
@@ -67,6 +68,7 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
     
     
 }
+
 
 - (void)viewDidLoad
 {
@@ -80,6 +82,7 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
 
 #pragma mark - Table view data source
 
+// Return the number of sections.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     #warning - there no need any magic numbers
@@ -87,7 +90,7 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
     return 1;
 }
 
-
+// Return the number of rows in the section.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
@@ -96,14 +99,17 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
 }
 
 
-
+//Creating cells for Order screen and select whitch is need (OrderItem ot OrderTotall)
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ( [_currentOrder.arrayOfOrderItems count] > indexPath.row ) {
         
         OrderItemCell *orderItemCell = [tableView dequeueReusableCellWithIdentifier: kOrderCellIdentifier];
         
-        orderItemCell.currentOrderItem = [_currentOrder.arrayOfOrderItems objectAtIndex: indexPath.row];
+        //orderItemCell.currentOrderItem = [_currentOrder.arrayOfOrderItems objectAtIndex: indexPath.row];
+        
+        [orderItemCell setDataWhithOrderItemModel:[_currentOrder.arrayOfOrderItems objectAtIndex: indexPath.row]
+                                   andNumberOfRow:indexPath.row];
         
         [orderItemCell drawCell];
         #warning - there no need any magic numbers
@@ -128,7 +134,7 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
 }
 
 
-
+//Adding new OrderItem to order, calling this method from OrderTotallCell
 - (void) addNewOrderItem
 {
 //    MenuItemModel *menuItemModel = [[MenuItemModel alloc] init];
@@ -167,7 +173,7 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
     NSLog(@"%@", menuItem);
 }
 
-
+//Reloading Order tableView, calling this method from OrderItemCell
 - (void) redrawTable
 {
     [self.tableView reloadData];

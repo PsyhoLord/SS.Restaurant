@@ -23,4 +23,6 @@
 
 -(void) addNewOrderItem;
 
+-(void) removeOrderItemAtIndex: (int)index;
+
 @end

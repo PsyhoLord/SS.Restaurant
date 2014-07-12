@@ -22,7 +22,9 @@
 @property (weak,nonatomic) id <POrderItems> delegate;
 
 @property (strong,nonatomic) OrderItemModel *currentOrderItem;
+@property int orderItemNumber;
 
+- (void) setDataWhithOrderItemModel: (OrderItemModel *) currentOrderItem andNumberOfRow:(int) row;
 - (void) drawCell;
 
 @end
