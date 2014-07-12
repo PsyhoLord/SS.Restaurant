@@ -8,6 +8,8 @@
 
 // Class Alert needs for show alert box.
 
+@class OrderItemCell;
+
 @interface Alert : NSObject
 
 // This method creates UIAlert and show it
@@ -17,6 +19,6 @@
 + (void)showHTTPMethodsAlert:(NSError*)error;
 
 // This method show alert when waiter want to delete OrderItem
-- (void)showDeleteOrderItemWarning;
++ (void) showDeleteOrderItemWarningWithDelegate: (OrderItemCell *) newDelegate;
 
 @end

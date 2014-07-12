@@ -26,19 +26,10 @@
     _orderItemNumber  = row;
 }
 
-#warning - ClickOnStepper must be clickOnStepper
 
-- (IBAction)ClickOnStepper: (id)sender {
+- (IBAction)clickOnStepper: (id)sender {
     if (_itemCountStepper.value == 0){
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Are you sure?"
-                                                        message: @"Are you want to delete current item?"
-                                                       delegate: self
-                                              cancelButtonTitle: @"NO"
-                                              otherButtonTitles: @"YES", nil
-                              ];
-        [alert show];
-        /*UIAlertView *alert;
-        [alert show];*/
+        [Alert showDeleteOrderItemWarningWithDelegate: self];
     } else {
         [_itemCount setText: [NSString stringWithFormat: @"%d", (int)_itemCountStepper.value] ];
         _currentOrderItem.countOfItem = (int)_itemCountStepper.value;

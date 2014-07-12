@@ -7,6 +7,7 @@
 //
 
 #import "Alert.h"
+#import "OrderItemCell.h"
 
 static NSString *const connectionAlertTitle       = @"No network connection";
 static NSString *const connectionAlertMessage     = @"You must be connected to the internet to use this app.";
@@ -17,7 +18,6 @@ static NSString *const methodAlertMessage         = @"Code of error: %d";
 
 @implementation Alert
 
-// This method creates UIAlert and show it
 + (void) showConnectionAlert
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:connectionAlertTitle
@@ -39,11 +39,13 @@ static NSString *const methodAlertMessage         = @"Code of error: %d";
     [alert show];
 }
 
- - (void) showDeleteOrderItemWarning
+//Shows alert to confirm OrderItem deleting
++ (void) showDeleteOrderItemWarningWithDelegate: (OrderItemCell *) newDelegate
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Are you sure?"
                                                     message: @"Are you want to delete current item?"
-                                                   delegate: self cancelButtonTitle:@"NO"
+                                                   delegate: newDelegate
+                                          cancelButtonTitle: @"NO"
                                           otherButtonTitles: @"YES", nil
                           ];
     [alert show];

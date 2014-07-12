@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
 
-#warning #import "protocol"
+
 
 #import "OrderItemsViewController.h"
 
@@ -19,6 +19,8 @@
 #import "MenuItemModel.h"
 
 #import "WaiterMenuViewController.h"
+
+#import "POrderItems.h"
 
 static NSString *const kOrderCellIdentifier     = @"OrderItemCell";
 static NSString *const kOrderTotallIdentifier   = @"OrderTotallCellIdentifier";
@@ -49,8 +51,7 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
     for (int i=0; i<5; i++){
         
         addOrderItem = [[OrderItemModel alloc] init];
-        #warning - temp - is bad name of var
-        MenuItemModel *temp = [[MenuItemModel alloc] initWithId: i
+        MenuItemModel *addMenuItemModel = [[MenuItemModel alloc] initWithId: i
                                                      categoryId: i
                                                      description: @"kvkdskjd"
                                                      name: [NSString stringWithFormat:@"Item#%i",i]
@@ -58,7 +59,7 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
                                                      price: i*1.5
                                ];
       
-        addOrderItem = [[OrderItemModel alloc] initWithMenuItemModel: temp];
+        addOrderItem = [[OrderItemModel alloc] initWithMenuItemModel: addMenuItemModel];
         
         addOrderItem.countOfItem = i+1;
         
@@ -74,8 +75,6 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
 {
     _currentOrder = [[OrderModel alloc] init];
     
-    //[self setDefaultvalues];
-    
     [super viewDidLoad];
 }
 
@@ -85,7 +84,6 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
 // Return the number of sections.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    #warning - there no need any magic numbers
     // Return the number of sections.
     return 1;
 }
@@ -94,7 +92,6 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    #warning - there no need any magic numbers
     return [_currentOrder.arrayOfOrderItems count]+1;
 }
 
@@ -112,7 +109,6 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
                                    andNumberOfRow:indexPath.row];
         
         [orderItemCell drawCell];
-        #warning - there no need any magic numbers
         orderItemCell.itemCountStepper.transform = CGAffineTransformMakeScale(0.75, 1);
        
         orderItemCell.delegate = self;
@@ -137,23 +133,7 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
 //Adding new OrderItem to order, calling this method from OrderTotallCell
 - (void) addNewOrderItem
 {
-//    MenuItemModel *menuItemModel = [[MenuItemModel alloc] init];
-//#warning - there no need any magic numbers
-//    menuItemModel.name = [NSString stringWithFormat: @"Item"];
-//    
-//#warning - there no need any magic numbers
-//    menuItemModel.price = 5*1.5;
-//    
-//    addOrderItem = [[OrderItemModel alloc] initWithMenuItemModel: menuItemModel];
-//    
-//    addOrderItem.countOfItem = 3;
-//    
-//    [_currentOrder.arrayOfOrderItems addObject: addOrderItem];
-//    
-//    
-//    
-//    [self.tableView reloadData];
-    
+   
     [self performSegueWithIdentifier: kSegueToMenuForAddItem sender: self];
     
 }
@@ -183,13 +163,20 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
     [self.tableView reloadData];
 }
 
+//removing ItemOrder from order
+- (void) removeOrderItemAtIndex:(int)index
+{
+    [_currentOrder.arrayOfOrderItems removeObjectAtIndex:index];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
 }
 
-#warning - there in need in these comments
+
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

@@ -8,14 +8,11 @@
 
 @class MenuItemModel;
 
-#warning - comment all your code !!! 
-
 @protocol POrderItems <NSObject>
 
 // calls when user has added menu item
 - (void) didAddedOrderItem: (MenuItemModel*)menuItem;
 
-#warning these methods are required
 
 @optional
 
