@@ -21,6 +21,8 @@
 #import "ItemDescription.h"
 #import "SWRevealViewController.h"
 
+#import "UserRole.h"
+
 static NSString *const kMenuCategoryCellIdentifier  = @"MenuCategoryCellIdentifier";
 static NSString *const kMenuItemCellIdentifier      = @"MenuItemCellIdentifier";
 
@@ -147,11 +149,6 @@ static const CGFloat kHeightForMenuItemCell     = 70.0f;
         return menuItemCell;
     }
 
-}
-
-- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath: (NSIndexPath *)indexPath
-{
-//    self.navigationController pushViewController: animated:<#(BOOL)#>
 }
 
 #pragma mark - Segues

@@ -5,6 +5,7 @@
 //  Created by Mykola_Salo on 7/7/14.
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
+#warning - comment all your code !!! 
 
 #import "POrderItems.h"
 

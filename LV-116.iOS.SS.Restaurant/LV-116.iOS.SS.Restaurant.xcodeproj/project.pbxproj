@@ -47,6 +47,7 @@
 		EDBDFE341967219000E65DCA /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDBDFE241967219000E65DCA /* menu@2x.png */; };
 		EDCE5C88196BE4C600496B34 /* role_client_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EDCE5C86196BE4C600496B34 /* role_client_icon.png */; };
 		EDCE5C89196BE4C600496B34 /* role_waiter_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EDCE5C87196BE4C600496B34 /* role_waiter_icon.png */; };
+		EDD611021971712600A70D4B /* WaiterMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD611011971712600A70D4B /* WaiterMenuViewController.m */; };
 		EDE50DF7193E110500ACA71D /* ServiceAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE50DF6193E110500ACA71D /* ServiceAgent.m */; };
 		EDEC47291956F9950041B98B /* MapModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEC47251956F9950041B98B /* MapModel.m */; };
 		EDEC472A1956F9950041B98B /* TableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEC47281956F9950041B98B /* TableModel.m */; };
@@ -153,6 +154,8 @@
 		EDBDFE241967219000E65DCA /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
 		EDCE5C86196BE4C600496B34 /* role_client_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = role_client_icon.png; sourceTree = "<group>"; };
 		EDCE5C87196BE4C600496B34 /* role_waiter_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = role_waiter_icon.png; sourceTree = "<group>"; };
+		EDD611001971712600A70D4B /* WaiterMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaiterMenuViewController.h; sourceTree = "<group>"; };
+		EDD611011971712600A70D4B /* WaiterMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaiterMenuViewController.m; sourceTree = "<group>"; };
 		EDE50DF3193E10D400ACA71D /* PServiceAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PServiceAgent.h; path = ServiceAgent/PServiceAgent.h; sourceTree = "<group>"; };
 		EDE50DF5193E110500ACA71D /* ServiceAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceAgent.h; path = ServiceAgent/ServiceAgent.h; sourceTree = "<group>"; };
 		EDE50DF6193E110500ACA71D /* ServiceAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceAgent.m; path = ServiceAgent/ServiceAgent.m; sourceTree = "<group>"; };
@@ -445,6 +448,7 @@
 				ED42A3E5196C32FA00A63656 /* SwRevealViewController */,
 				ED42A3DE196C32FA00A63656 /* SidebarViewController */,
 				ED7C31FE19715B6C00C76047 /* MenuViewController */,
+				EDD610FF197170FD00A70D4B /* WaiterMenuViewController */,
 				ED42A3C1196C32FA00A63656 /* HomeViewController */,
 				ED42A3C4196C32FA00A63656 /* MapViewController */,
 				570ABE8C196C3EEF003DC398 /* OrdersViewController */,
@@ -594,6 +598,15 @@
 				EDCE5C87196BE4C600496B34 /* role_waiter_icon.png */,
 			);
 			path = RoleIcons;
+			sourceTree = "<group>";
+		};
+		EDD610FF197170FD00A70D4B /* WaiterMenuViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EDD611001971712600A70D4B /* WaiterMenuViewController.h */,
+				EDD611011971712600A70D4B /* WaiterMenuViewController.m */,
+			);
+			path = WaiterMenuViewController;
 			sourceTree = "<group>";
 		};
 		EDE50DF4193E10DA00ACA71D /* ServiceAgent */ = {
@@ -907,6 +920,7 @@
 				EDEC47351956FACB0041B98B /* MenuItemModel.m in Sources */,
 				22A36704196F11BA002D27B7 /* MenuDataProvider.m in Sources */,
 				22A366D9196F10D2002D27B7 /* TableModelWithOrders.m in Sources */,
+				EDD611021971712600A70D4B /* WaiterMenuViewController.m in Sources */,
 				570ABE9E196C4058003DC398 /* OrderTotallCell.m in Sources */,
 				ED42A3ED196C32FA00A63656 /* MapViewController.m in Sources */,
 			);

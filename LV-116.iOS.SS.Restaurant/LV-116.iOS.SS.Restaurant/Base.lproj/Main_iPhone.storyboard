@@ -341,6 +341,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="BaQ-Ly-znE"/>
+                    <connections>
+                        <segue destination="TNA-3Q-pK8" kind="push" identifier="segue_menu_add_order_item" id="XwQ-tH-eVK"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eaT-Iy-pdt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -439,6 +442,99 @@
             </objects>
             <point key="canvasLocation" x="121" y="-1302"/>
         </scene>
+        <!--Waiter Menu View Controller-->
+        <scene sceneID="kWk-1V-uur">
+            <objects>
+                <tableViewController id="TNA-3Q-pK8" customClass="WaiterMenuViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="redraw" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="79f-Uw-oAy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MenuCategoryCellIdentifier" rowHeight="50" id="8hX-8h-r2C" customClass="MenuCategoryCell">
+                                <rect key="frame" x="0.0" y="22" width="320" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8hX-8h-r2C" id="RiA-7u-2VQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="49"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Category name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxy-vd-VzC">
+                                            <rect key="frame" x="67" y="14" width="139" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="UI_Arrow_1" translatesAutoresizingMaskIntoConstraints="NO" id="fgi-N0-bpy">
+                                            <rect key="frame" x="20" y="9" width="39" height="31"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="categoryName" destination="kxy-vd-VzC" id="57w-M7-WG6"/>
+                                    <segue destination="TNA-3Q-pK8" kind="push" id="jvd-mk-CDP"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MenuItemCellIdentifier" rowHeight="70" id="TPJ-YK-O2a" customClass="MenuItemCell">
+                                <rect key="frame" x="0.0" y="72" width="320" height="70"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TPJ-YK-O2a" id="Le7-Db-mj1">
+                                    <rect key="frame" x="0.0" y="0.0" width="273" height="69"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eom-Dq-6vE">
+                                            <rect key="frame" x="20" y="10" width="53" height="45"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Item name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6f0-mR-WtN">
+                                            <rect key="frame" x="106" y="10" width="124" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Item price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xnv-RK-yg8">
+                                            <rect key="frame" x="106" y="34" width="124" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="itemImage" destination="eom-Dq-6vE" id="mgn-O1-0dc"/>
+                                    <outlet property="itemName" destination="6f0-mR-WtN" id="evh-Hq-8Fq"/>
+                                    <outlet property="itemPrice" destination="xnv-RK-yg8" id="4Wf-cA-4Ch"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="TNA-3Q-pK8" id="3QO-dT-1Y2"/>
+                            <outlet property="delegate" destination="TNA-3Q-pK8" id="DMl-Ia-dN8"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="bUP-Qa-7RR">
+                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="h0C-bE-1Oz"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="_swipeGestureRecognizer" destination="Sde-I4-C7c" id="fIx-E2-QJJ"/>
+                        <outlet property="sidebarButton" destination="h0C-bE-1Oz" id="TJG-dQ-Zhj"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ibS-3s-HNp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="BWg-Ow-uhW">
+                    <connections>
+                        <action selector="handleSwipeGestureRecognizer:" destination="TNA-3Q-pK8" id="pky-5Y-92o"/>
+                        <outlet property="delegate" destination="TNA-3Q-pK8" id="vk4-uf-fVk"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1231" y="103"/>
+        </scene>
     </scenes>
     <resources>
         <image name="UI_Arrow_1" width="128" height="128"/>
@@ -450,7 +546,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="nGc-QS-9fF"/>
         <segue reference="CBA-MG-BoC"/>
+        <segue reference="nGc-QS-9fF"/>
+        <segue reference="XwQ-tH-eVK"/>
     </inferredMetricsTieBreakers>
 </document>

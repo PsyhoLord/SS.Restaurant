@@ -7,6 +7,8 @@
 //
 #import "POrderItems.h"
 
+#warning @protocol !
+
 @class OrderModel;
 @class OrderItemModel;
 @class OrderItemCell;
@@ -18,6 +20,5 @@
 
 @property (strong,nonatomic) OrderModel *currentOrder;
 @property (strong,nonatomic) OrderModel *Order;
-
 
 @end

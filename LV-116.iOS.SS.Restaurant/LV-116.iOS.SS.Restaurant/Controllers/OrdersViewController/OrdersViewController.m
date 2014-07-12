@@ -23,7 +23,6 @@ static const CGFloat kHeightOfHeaderSection    = 35.0f;
 
 static NSString *const kSegueToOrderItems      = @"segue_order_items";
 
-
 @implementation OrdersViewController
 {
     NSMutableArray *arrayOfImage;
