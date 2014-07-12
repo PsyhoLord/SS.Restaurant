@@ -13,5 +13,6 @@
 @interface WaiterMenuViewController : MenuViewController
 
 @property (weak, nonatomic) id<POrderItems> delegate;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *barButtonFinish;
 
 @end

@@ -32,4 +32,11 @@
     ((WaiterMenuViewController*)segue.destinationViewController).delegate = self.delegate;
 }
 
+- (IBAction) finishAddingItems: (id)sender
+{
+    [self.navigationController popToViewController: (UIViewController*)self.delegate
+                                          animated: YES];
+}
+
+
 @end

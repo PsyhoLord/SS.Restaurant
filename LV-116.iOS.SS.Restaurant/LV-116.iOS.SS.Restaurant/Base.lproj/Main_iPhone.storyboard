@@ -531,10 +531,16 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="bUP-Qa-7RR">
                         <barButtonItem key="leftBarButtonItem" image="menu.png" id="h0C-bE-1Oz"/>
+                        <barButtonItem key="rightBarButtonItem" title="Finish" id="dAy-sC-cbx">
+                            <connections>
+                                <action selector="finishAddingItems:" destination="TNA-3Q-pK8" id="SO6-0F-Vst"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="_swipeGestureRecognizer" destination="Sde-I4-C7c" id="fIx-E2-QJJ"/>
+                        <outlet property="barButtonFinish" destination="dAy-sC-cbx" id="3rn-d7-0Zu"/>
                         <outlet property="sidebarButton" destination="h0C-bE-1Oz" id="TJG-dQ-Zhj"/>
                     </connections>
                 </tableViewController>
