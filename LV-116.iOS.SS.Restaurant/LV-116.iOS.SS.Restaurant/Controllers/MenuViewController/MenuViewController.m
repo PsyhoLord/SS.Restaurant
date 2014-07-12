@@ -18,13 +18,14 @@
 #import "MenuCategoryModel.h"
 #import "MenuItemModel.h"
 
-#import "ItemDescription.h"
+#import "ItemDescriptionViewController.h"
 #import "SWRevealViewController.h"
 
 #import "UserRole.h"
 
 static NSString *const kMenuCategoryCellIdentifier  = @"MenuCategoryCellIdentifier";
 static NSString *const kMenuItemCellIdentifier      = @"MenuItemCellIdentifier";
+static NSString *const kSegueToItemdescription      = @"segue_description";
 
 static const CGFloat kHeightForMenuCategoryCell = 50.0f;
 static const CGFloat kHeightForMenuItemCell     = 70.0f;
@@ -160,24 +161,23 @@ static const CGFloat kHeightForMenuItemCell     = 70.0f;
 // do smth before segue on next scrin recursively
 - (void) prepareForSegue: (UIStoryboardSegue*)segue sender: (id)sender
 {
-    MenuViewController *destinationMenuViewController =  segue.destinationViewController;
-    
-    NSUInteger selectedRow = [self.tableView indexPathForSelectedRow].row;
-    MenuCategoryModel *selectedCategory = _currentCategory.categories[selectedRow];
-    
-    [destinationMenuViewController setTitle: selectedCategory.name];
-    destinationMenuViewController->_currentCategory = selectedCategory;
-}
-
-//
-- (void) tableView: (UITableView*)tableView accessoryButtonTappedForRowWithIndexPath: (NSIndexPath *)indexPath
-{
-    MenuItemModel *menuItemModel = [_currentCategory.items objectAtIndex:indexPath.row];
-    
-    ItemDescription *ItemScreen = [[ItemDescription alloc] init];
-    
-    ItemScreen.itemModel = menuItemModel;
-    [self.navigationController pushViewController: ItemScreen animated: YES];
+    if( [segue.identifier isEqualToString: kSegueToItemdescription] ) {
+        
+        ItemDescriptionViewController *itemScreen = (ItemDescriptionViewController*)segue.destinationViewController;
+        MenuItemModel *menuItemModel = _currentCategory.items[ [self.tableView indexPathForSelectedRow].row ] ;
+        
+        itemScreen.menuItemModel = menuItemModel;
+        //        itemScreen = [[DescriptionViewController alloc] initWithModel: menuItemModel];
+        
+    } else {
+        MenuViewController *destinationMenuViewController =  segue.destinationViewController;
+        
+        NSUInteger selectedRow = [self.tableView indexPathForSelectedRow].row;
+        MenuCategoryModel *selectedCategory = _currentCategory.categories[selectedRow];
+        
+        [destinationMenuViewController setTitle: selectedCategory.name];
+        destinationMenuViewController->_currentCategory = selectedCategory;
+    }
 }
 
 // return back to previous scrin

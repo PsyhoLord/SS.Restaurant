@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		22346B58195F209000495B2A /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 22346B57195F209000495B2A /* Alert.m */; };
 		2265A70519642B1B0059EC0E /* RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2265A70419642B1B0059EC0E /* RequestManager.m */; };
+		2298487A1971A48500C7D56B /* ItemDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 229848791971A48500C7D56B /* ItemDescriptionViewController.m */; };
 		22A366D7196F10D2002D27B7 /* OrderItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A366D0196F10D2002D27B7 /* OrderItemModel.m */; };
 		22A366D8196F10D2002D27B7 /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A366D3196F10D2002D27B7 /* OrderModel.m */; };
 		22A366D9196F10D2002D27B7 /* TableModelWithOrders.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A366D6196F10D2002D27B7 /* TableModelWithOrders.m */; };
@@ -38,8 +39,6 @@
 		ED5B2E0E196D218F0070FF98 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5B2E0D196D218F0070FF98 /* HomeViewController.m */; };
 		ED7C320C19715B6C00C76047 /* MenuCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7C320219715B6C00C76047 /* MenuCategoryCell.m */; };
 		ED7C320D19715B6C00C76047 /* MenuItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7C320519715B6C00C76047 /* MenuItemCell.m */; };
-		ED7C320E19715B6C00C76047 /* ItemDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7C320819715B6C00C76047 /* ItemDescription.m */; };
-		ED7C320F19715B6C00C76047 /* ItemDescription.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED7C320919715B6C00C76047 /* ItemDescription.xib */; };
 		ED7C321019715B6C00C76047 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7C320B19715B6C00C76047 /* MenuViewController.m */; };
 		EDA13E2C196ADCC400CF579C /* map_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA13E27196ADCC400CF579C /* map_icon.png */; };
 		EDA13E2D196ADCC400CF579C /* orders_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA13E28196ADCC400CF579C /* orders_icon.png */; };
@@ -85,6 +84,8 @@
 		22346B57195F209000495B2A /* Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alert.m; sourceTree = "<group>"; };
 		2265A70319642B1B0059EC0E /* RequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestManager.h; sourceTree = "<group>"; };
 		2265A70419642B1B0059EC0E /* RequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestManager.m; sourceTree = "<group>"; };
+		229848781971A48500C7D56B /* ItemDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemDescriptionViewController.h; sourceTree = "<group>"; };
+		229848791971A48500C7D56B /* ItemDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemDescriptionViewController.m; sourceTree = "<group>"; };
 		22A366CF196F10D2002D27B7 /* OrderItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderItemModel.h; sourceTree = "<group>"; };
 		22A366D0196F10D2002D27B7 /* OrderItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderItemModel.m; sourceTree = "<group>"; };
 		22A366D2196F10D2002D27B7 /* OrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderModel.h; sourceTree = "<group>"; };
@@ -143,9 +144,6 @@
 		ED7C320219715B6C00C76047 /* MenuCategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuCategoryCell.m; sourceTree = "<group>"; };
 		ED7C320419715B6C00C76047 /* MenuItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuItemCell.h; sourceTree = "<group>"; };
 		ED7C320519715B6C00C76047 /* MenuItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuItemCell.m; sourceTree = "<group>"; };
-		ED7C320719715B6C00C76047 /* ItemDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemDescription.h; sourceTree = "<group>"; };
-		ED7C320819715B6C00C76047 /* ItemDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemDescription.m; sourceTree = "<group>"; };
-		ED7C320919715B6C00C76047 /* ItemDescription.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemDescription.xib; sourceTree = "<group>"; };
 		ED7C320A19715B6C00C76047 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		ED7C320B19715B6C00C76047 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		EDA13E27196ADCC400CF579C /* map_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_icon.png; sourceTree = "<group>"; };
@@ -229,6 +227,15 @@
 				2265A70419642B1B0059EC0E /* RequestManager.m */,
 			);
 			path = RequestManager;
+			sourceTree = "<group>";
+		};
+		229848771971A48500C7D56B /* ItemDescriptionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				229848781971A48500C7D56B /* ItemDescriptionViewController.h */,
+				229848791971A48500C7D56B /* ItemDescriptionViewController.m */,
+			);
+			path = ItemDescriptionViewController;
 			sourceTree = "<group>";
 		};
 		22A366CD196F10D2002D27B7 /* OrdersModel */ = {
@@ -456,6 +463,7 @@
 			children = (
 				ED42A3E5196C32FA00A63656 /* SwRevealViewController */,
 				ED42A3DE196C32FA00A63656 /* SidebarViewController */,
+				229848771971A48500C7D56B /* ItemDescriptionViewController */,
 				ED7C31FE19715B6C00C76047 /* MenuViewController */,
 				EDD610FF197170FD00A70D4B /* WaiterMenuViewController */,
 				ED42A3C1196C32FA00A63656 /* HomeViewController */,
@@ -534,7 +542,6 @@
 			isa = PBXGroup;
 			children = (
 				ED7C31FF19715B6C00C76047 /* Cells */,
-				ED7C320619715B6C00C76047 /* ItemDescription */,
 				ED7C320A19715B6C00C76047 /* MenuViewController.h */,
 				ED7C320B19715B6C00C76047 /* MenuViewController.m */,
 			);
@@ -566,16 +573,6 @@
 				ED7C320519715B6C00C76047 /* MenuItemCell.m */,
 			);
 			path = MenuItemCell;
-			sourceTree = "<group>";
-		};
-		ED7C320619715B6C00C76047 /* ItemDescription */ = {
-			isa = PBXGroup;
-			children = (
-				ED7C320719715B6C00C76047 /* ItemDescription.h */,
-				ED7C320819715B6C00C76047 /* ItemDescription.m */,
-				ED7C320919715B6C00C76047 /* ItemDescription.xib */,
-			);
-			path = ItemDescription;
 			sourceTree = "<group>";
 		};
 		EDA13E26196ADCC400CF579C /* SidebarRootMenuIcons */ = {
@@ -866,7 +863,6 @@
 				ED35A85D1971933E006F91F6 /* menu.png in Resources */,
 				FA336C3319335B950007CC76 /* Main_iPad.storyboard in Resources */,
 				EDCE5C89196BE4C600496B34 /* role_waiter_icon.png in Resources */,
-				ED7C320F19715B6C00C76047 /* ItemDescription.xib in Resources */,
 				EDA13E2D196ADCC400CF579C /* orders_icon.png in Resources */,
 				FA336C3819335B950007CC76 /* Images.xcassets in Resources */,
 				FA336C3019335B950007CC76 /* Main_iPhone.storyboard in Resources */,
@@ -916,12 +912,12 @@
 				ED3A298A196EDBC100970B48 /* SidebarTableViewCell.m in Sources */,
 				FA336C2919335B950007CC76 /* main.m in Sources */,
 				EDEC472A1956F9950041B98B /* TableModel.m in Sources */,
+				2298487A1971A48500C7D56B /* ItemDescriptionViewController.m in Sources */,
 				2265A70519642B1B0059EC0E /* RequestManager.m in Sources */,
 				ED7C320C19715B6C00C76047 /* MenuCategoryCell.m in Sources */,
 				570ABE93196C3EEF003DC398 /* OrdersViewController.m in Sources */,
 				22A36709196F11BA002D27B7 /* RemoteOrdersDataProvider.m in Sources */,
 				ED42A3FB196C32FA00A63656 /* SWRevealViewController.m in Sources */,
-				ED7C320E19715B6C00C76047 /* ItemDescription.m in Sources */,
 				22A366D8196F10D2002D27B7 /* OrderModel.m in Sources */,
 				ED5B2E0E196D218F0070FF98 /* HomeViewController.m in Sources */,
 				22A366E5196F11A4002D27B7 /* MapDataParser.m in Sources */,
