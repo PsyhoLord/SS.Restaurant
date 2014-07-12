@@ -11,7 +11,7 @@
 @class MenuItemModel;
 @class OrderItemModel;
 
-@interface OrderItemCell : UITableViewCell <POrderItems>
+@interface OrderItemCell : UITableViewCell <POrderItems,UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel   *itemName;
 @property (weak, nonatomic) IBOutlet UILabel   *itemCount;

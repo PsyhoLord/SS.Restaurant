@@ -16,4 +16,7 @@
 // This method show alert error when http method is failed. 
 + (void)showHTTPMethodsAlert:(NSError*)error;
 
+// This method show alert when waiter want to delete OrderItem
++ (void)showDeleteOrderItemWarning;
+
 @end
