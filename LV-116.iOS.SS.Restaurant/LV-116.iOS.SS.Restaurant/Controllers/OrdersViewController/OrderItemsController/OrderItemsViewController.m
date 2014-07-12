@@ -7,24 +7,30 @@
 //
 
 #import "OrderItemsViewController.h"
+
 #import "OrderModel.h"
-#import "OrderItemCell.h"
 #import "OrderItemModel.h"
-#import "MenuItemModel.h"
+
+#import "OrderItemCell.h"
 #import "OrderTotallCell.h"
 
-static NSString *const orderCellIdentifier   = @"OrderItemCell";
-static NSString *const orderTotallIdentifier = @"TotallOrderCell";
+#import "MenuItemModel.h"
+
+
+static NSString *const kOrderCellIdentifier    = @"OrderItemCell";
+static NSString *const kOrderTotallIdentifier  = @"OrderTotallCellIdentifier";
 
 @implementation OrderItemsViewController
 {
     OrderItemModel *addOrderItem;
 }
 
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
+        
         // Custom initialization
     }
     return self;
@@ -33,20 +39,24 @@ static NSString *const orderTotallIdentifier = @"TotallOrderCell";
 
 - (void) setDefaultvalues
 {
-  
-    //addOrderItem =[[OrderItemModel alloc] init];
     
-    for (int i=0; i<5; i++)
-    {
-        addOrderItem =[[OrderItemModel alloc] init];
+    for (int i=0; i<5; i++){
+        
+        addOrderItem = [[OrderItemModel alloc] init];
+        
+        MenuItemModel *temp = [[MenuItemModel alloc] initWithId: i
+                                                     categoryId: i
+                                                     description: @"kvkdskjd"
+                                                     name: [NSString stringWithFormat:@"Item#%i",i]
+                                                     portions: 3
+                                                     price: i*1.5
+                               ];
       
-        addOrderItem.menuItemModel.name=[NSString stringWithFormat:@"Item#%i",i];
+        addOrderItem = [[OrderItemModel alloc] initWithMenuItemModel: temp];
         
-        addOrderItem.menuItemModel.price = i*1.5;
+        addOrderItem.countOfItem = i;
         
-        addOrderItem.countOfItem=i;
-        
-        [_currentOrder.arrayOfOrderItems addObject:addOrderItem];
+        [_currentOrder.arrayOfOrderItems addObject: addOrderItem];
         
     }
     
@@ -55,26 +65,13 @@ static NSString *const orderTotallIdentifier = @"TotallOrderCell";
 
 - (void)viewDidLoad
 {
-    _currentOrder=[[OrderModel alloc] init];
+    _currentOrder = [[OrderModel alloc] init];
+    
+    [self setDefaultvalues];
     
     [super viewDidLoad];
-    //[self setDefaultvalues];
-    
-    
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    
-    // Dispose of any resources that can be recreated.
-}
 
 #pragma mark - Table view data source
 
@@ -83,6 +80,7 @@ static NSString *const orderTotallIdentifier = @"TotallOrderCell";
     // Return the number of sections.
     return 1;
 }
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -94,66 +92,65 @@ static NSString *const orderTotallIdentifier = @"TotallOrderCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([_currentOrder.arrayOfOrderItems count]>[indexPath row])
-    {
-    OrderItemCell *orderItemCell = [tableView dequeueReusableCellWithIdentifier:orderCellIdentifier];
-        if (orderItemCell==nil)
-        {
-            orderItemCell=[[OrderItemCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:orderCellIdentifier];
+    if ( [_currentOrder.arrayOfOrderItems count] > indexPath.row ) {
         
-        }
-    
-    
-   /* OrderItemModel * tmp=[[OrderItemModel alloc] init];
-    tmp=[_currentOrder.arrayOfOrderItem objectAtIndex:[indexPath row]];*/
-        orderItemCell.currentOrderItem=[_currentOrder.arrayOfOrderItems objectAtIndex:[indexPath row]];
-    [orderItemCell drawCell];
+        OrderItemCell *orderItemCell = [tableView dequeueReusableCellWithIdentifier: kOrderCellIdentifier];
+        
+        orderItemCell.currentOrderItem = [_currentOrder.arrayOfOrderItems objectAtIndex: indexPath.row];
+        
+        [orderItemCell drawCell];
+        
+        orderItemCell.itemCountStepper.transform = CGAffineTransformMakeScale(0.75, 1);
+       
+        orderItemCell.delegate = self;
+        
         return orderItemCell;
         
     }
-    else
-    {
+    else {
         
-        OrderTotallCell *totallOrderCell=[tableView dequeueReusableCellWithIdentifier:orderTotallIdentifier];
-        if (totallOrderCell==nil)
-        {
-            totallOrderCell = [[OrderTotallCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:orderTotallIdentifier];
-        }
-        //totallOrderCell.TotallPrice.text=@"All Your Money";
-        //totallOrderCell.
-        //HERE NEED TO ADD "ADD CUSTOM CELL"
-        [totallOrderCell drawCellWithModel:_currentOrder];
+        OrderTotallCell *orderTotalCell = [self.tableView dequeueReusableCellWithIdentifier: kOrderTotallIdentifier];
         
-        return totallOrderCell;
+        [orderTotalCell drawCellWithModel: _currentOrder];
         
+        orderTotalCell.delegate = self;
+        
+        return orderTotalCell;
     }
     
 }
 
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if ([_currentOrder.arrayOfOrderItems count]<[indexPath row])
-    {}
-    else
-    {
-        
-    MenuItemModel *menuItemModel=[[MenuItemModel alloc] init];
-    
-    menuItemModel.name=[NSString stringWithFormat:@"Item"];
-        
 
+- (void) addNewOrderItem
+{
+    MenuItemModel *menuItemModel = [[MenuItemModel alloc] init];
+    
+    menuItemModel.name = [NSString stringWithFormat: @"Item"];
+    
+    
     menuItemModel.price = 5*1.5;
-        
-    addOrderItem=[[OrderItemModel alloc] initWithMenuItemModel:menuItemModel];
-        
     
-    addOrderItem.countOfItem=3;
+    addOrderItem = [[OrderItemModel alloc] initWithMenuItemModel: menuItemModel];
     
-    [_currentOrder.arrayOfOrderItems addObject:addOrderItem];
+    addOrderItem.countOfItem = 3;
     
-    [tableView reloadData];
-    }
+    [_currentOrder.arrayOfOrderItems addObject: addOrderItem];
+    
+    [self.tableView reloadData];
+}
+
+
+
+- (void) redrawTable
+{
+    [self.tableView reloadData];
+}
+
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
 }
 
 
@@ -164,6 +161,11 @@ static NSString *const orderTotallIdentifier = @"TotallOrderCell";
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
+ 
+ 
+ - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+ 
+ }
 */
 
 /*

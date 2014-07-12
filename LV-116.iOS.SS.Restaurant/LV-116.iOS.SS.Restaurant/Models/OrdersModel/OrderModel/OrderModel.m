@@ -27,4 +27,13 @@
     return self;
 }
 
+-(instancetype) init
+{
+    if (self=[super init]){
+        self.arrayOfOrderItems = [[NSMutableArray alloc] init];
+        
+    }
+    return  self;
+}
+
 @end

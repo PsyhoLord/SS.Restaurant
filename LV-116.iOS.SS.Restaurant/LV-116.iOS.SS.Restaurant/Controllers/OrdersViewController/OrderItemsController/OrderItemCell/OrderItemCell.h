@@ -6,20 +6,19 @@
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "POrderItems.h"
+
 @class MenuItemModel;
 @class OrderItemModel;
 
-@interface OrderItemCell : UITableViewCell
+@interface OrderItemCell : UITableViewCell <POrderItems>
 
-@property (weak, nonatomic) IBOutlet UILabel *itemName;
-@property (weak, nonatomic) IBOutlet UILabel *itemCount;
-@property (weak, nonatomic) IBOutlet UILabel *pricePerPcs;
+@property (weak, nonatomic) IBOutlet UILabel   *itemName;
+@property (weak, nonatomic) IBOutlet UILabel   *itemCount;
+@property (weak, nonatomic) IBOutlet UILabel   *pricePerPcs;
 @property (weak, nonatomic) IBOutlet UIStepper *itemCountStepper;
 
-
-
-
+@property (weak,nonatomic) id <POrderItems> delegate;
 
 @property (strong,nonatomic) OrderItemModel *currentOrderItem;
 

@@ -5,18 +5,19 @@
 //  Created by Mykola_Salo on 7/7/14.
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
+#import "POrderItems.h"
 
-#import <UIKit/UIKit.h>
 @class OrderModel;
-@class OrderItemCell;
 @class OrderItemModel;
+@class OrderItemCell;
 @class OrderTotallCell;
+
 @class MenuItemModel;
-//@class MenuItemModel;
 
-@interface OrderItemsViewController : UITableViewController
+@interface OrderItemsViewController : UITableViewController <POrderItems>
 
-@property (strong,nonatomic)OrderModel *currentOrder;
+@property (strong,nonatomic) OrderModel *currentOrder;
+@property (strong,nonatomic) OrderModel *Order;
 
 
 @end

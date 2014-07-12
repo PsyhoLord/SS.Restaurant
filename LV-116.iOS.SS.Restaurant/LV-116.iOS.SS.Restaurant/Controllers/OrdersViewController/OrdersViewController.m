@@ -21,6 +21,9 @@
 
 static const CGFloat kHeightOfHeaderSection    = 35.0f;
 
+static NSString *const kSegueToOrderItems      = @"segue_order_items";
+
+
 @implementation OrdersViewController
 {
     NSMutableArray *arrayOfImage;
@@ -301,10 +304,12 @@ static const CGFloat kHeightOfHeaderSection    = 35.0f;
         
         [self.tableView reloadData];
     } else {
-        OrderItemsViewController *orderItemsViewController = [[OrderItemsViewController alloc] init];
+//        OrderItemsViewController *orderItemsViewController = [[OrderItemsViewController alloc] init];
+//        
+//        [self.navigationController pushViewController: orderItemsViewController
+//                                             animated: YES];
         
-        [self.navigationController pushViewController: orderItemsViewController
-                                             animated: YES];
+        [self performSegueWithIdentifier: @"segue_order_items" sender: self];
     }
 }
 

@@ -13,52 +13,39 @@
 
 @implementation OrderTotallCell
 
-- (void)awakeFromNib
+- (void) setDelegate: (id<POrderItems>) newDelegate
 {
-    // Initialization code
+    _delegate = newDelegate;
 }
 
--(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (void) drawCellWithModel: (OrderModel*)orderModel
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if ( self ) {
-        NSArray *nibArray = [[NSBundle mainBundle] loadNibNamed:@"OrderTotallCell" owner:self options:nil];
-        self = [nibArray objectAtIndex:0];
+    float totalValue = 0;
+    
+    for (int i = 0; i < [orderModel.arrayOfOrderItems count]; i++){
+    
+        OrderItemModel *itemInOrderWithCount;
+        
+        itemInOrderWithCount = [orderModel.arrayOfOrderItems objectAtIndex: i];
+        
+        totalValue += itemInOrderWithCount.menuItemModel.price * itemInOrderWithCount.countOfItem;
     }
-    return self;
+    
+    self.totallPrice.text = [NSString stringWithFormat: @"Totall  %.2f$", totalValue];
+}
+
+- (IBAction)addNewOrderItem: (UIButton *)sender {
+    
+    [_delegate addNewOrderItem];
+    
 }
 
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+- (void)setSelected: (BOOL)selected animated: (BOOL)animated
 {
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
 }
-
-- (IBAction)AddNewOrderItem:(UIButton *)sender {
-    
-    
-}
-
-
-
-- (void) drawCellWithModel:(OrderModel*)orderModel
-{
-    float totalValue=0;
-    for (int i=0;i<[orderModel.arrayOfOrderItems count];i++)
-    {
-    
-        OrderItemModel *itemInOrderWithCount;
-        
-        itemInOrderWithCount=[orderModel.arrayOfOrderItems objectAtIndex:i];
-        
-        totalValue+=(itemInOrderWithCount.menuItemModel.price)*[itemInOrderWithCount countOfItem];
-    }
-    
-    self.totallPrice.text=[NSString stringWithFormat:@"Totall  %.2f$",totalValue];
-     // [[(OrderItemModel *)[orderModel.arrayOfOrderItem objectAtIndex:i] ].menuItemModel ];
-}
-
 
 @end
