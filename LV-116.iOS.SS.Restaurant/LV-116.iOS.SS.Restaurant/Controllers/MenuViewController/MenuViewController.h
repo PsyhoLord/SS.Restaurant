@@ -6,6 +6,9 @@
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
 
+@class MenuCategoryModel;
+
 @interface MenuViewController : UITableViewController
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
+@property (strong, nonatomic) MenuCategoryModel *currentCategory;
 @end

@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
 
+#warning #import "protocol"
+
 #import "OrderItemsViewController.h"
 
 #import "OrderModel.h"
@@ -16,12 +18,15 @@
 
 #import "MenuItemModel.h"
 
+#import "WaiterMenuViewController.h"
 
-static NSString *const kOrderCellIdentifier    = @"OrderItemCell";
-static NSString *const kOrderTotallIdentifier  = @"OrderTotallCellIdentifier";
+static NSString *const kOrderCellIdentifier     = @"OrderItemCell";
+static NSString *const kOrderTotallIdentifier   = @"OrderTotallCellIdentifier";
+static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
 
 @implementation OrderItemsViewController
 {
+    // in this ptivate section var need to name with _ ( _addOrderItem because for difference with property )
     OrderItemModel *addOrderItem;
 }
 
@@ -44,7 +49,7 @@ static NSString *const kOrderTotallIdentifier  = @"OrderTotallCellIdentifier";
     for (int i=0; i<5; i++){
         
         addOrderItem = [[OrderItemModel alloc] init];
-        
+        #warning - temp - is bad name of var
         MenuItemModel *temp = [[MenuItemModel alloc] initWithId: i
                                                      categoryId: i
                                                      description: @"kvkdskjd"
@@ -80,14 +85,16 @@ static NSString *const kOrderTotallIdentifier  = @"OrderTotallCellIdentifier";
 // Return the number of sections.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
- 
+    #warning - there no need any magic numbers
+    // Return the number of sections.
     return 1;
 }
 
 // Return the number of rows in the section.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
+    // Return the number of rows in the section.
+    #warning - there no need any magic numbers
     return [_currentOrder.arrayOfOrderItems count]+1;
 }
 
@@ -105,7 +112,7 @@ static NSString *const kOrderTotallIdentifier  = @"OrderTotallCellIdentifier";
                                    andNumberOfRow:indexPath.row];
         
         [orderItemCell drawCell];
-        
+        #warning - there no need any magic numbers
         orderItemCell.itemCountStepper.transform = CGAffineTransformMakeScale(0.75, 1);
        
         orderItemCell.delegate = self;
@@ -130,25 +137,40 @@ static NSString *const kOrderTotallIdentifier  = @"OrderTotallCellIdentifier";
 //Adding new OrderItem to order, calling this method from OrderTotallCell
 - (void) addNewOrderItem
 {
-    MenuItemModel *menuItemModel = [[MenuItemModel alloc] init];
+//    MenuItemModel *menuItemModel = [[MenuItemModel alloc] init];
+//#warning - there no need any magic numbers
+//    menuItemModel.name = [NSString stringWithFormat: @"Item"];
+//    
+//#warning - there no need any magic numbers
+//    menuItemModel.price = 5*1.5;
+//    
+//    addOrderItem = [[OrderItemModel alloc] initWithMenuItemModel: menuItemModel];
+//    
+//    addOrderItem.countOfItem = 3;
+//    
+//    [_currentOrder.arrayOfOrderItems addObject: addOrderItem];
+//    
+//    
+//    
+//    [self.tableView reloadData];
     
-    menuItemModel.name = [NSString stringWithFormat: @"Item"];
+    [self performSegueWithIdentifier: kSegueToMenuForAddItem sender: self];
     
-    menuItemModel.price = 5*1.5;
-    
-    addOrderItem = [[OrderItemModel alloc] initWithMenuItemModel: menuItemModel];
-    
-    addOrderItem.countOfItem = 3;
-    
-    [_currentOrder.arrayOfOrderItems addObject: addOrderItem];
-    
-    [self.tableView reloadData];
 }
 
-//Removing OrderItem from _currentOrder
-- (void) removeOrderItemAtIndex:(int)index
+// do smth before segue on next scrin - WaiterMenuViewController
+- (void) prepareForSegue: (UIStoryboardSegue *)segue sender: (id)sender
 {
-    [_currentOrder.arrayOfOrderItems removeObjectAtIndex: index];
+    WaiterMenuViewController *destWaiterMenuVC =  segue.destinationViewController;
+    destWaiterMenuVC.delegate = self;
+    destWaiterMenuVC.title = @"Add item";
+}
+
+// method from POrderItem protocol
+// calls by WaiterMenuViewController
+- (void) didAddedOrderItem: (MenuItemModel*)menuItem
+{
+    NSLog(@"%@", menuItem);
 }
 
 //Reloading Order tableView, calling this method from OrderItemCell
@@ -163,7 +185,7 @@ static NSString *const kOrderTotallIdentifier  = @"OrderTotallCellIdentifier";
     [super didReceiveMemoryWarning];
 }
 
-
+#warning - there in need in these comments
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

@@ -21,6 +21,8 @@
 #import "ItemDescription.h"
 #import "SWRevealViewController.h"
 
+#import "UserRole.h"
+
 static NSString *const kMenuCategoryCellIdentifier  = @"MenuCategoryCellIdentifier";
 static NSString *const kMenuItemCellIdentifier      = @"MenuItemCellIdentifier";
 
@@ -29,7 +31,6 @@ static const CGFloat kHeightForMenuItemCell     = 70.0f;
 
 @implementation MenuViewController
 {
-    MenuCategoryModel *_currentCategory;
     IBOutlet UISwipeGestureRecognizer *_swipeGestureRecognizer; // need for pop self VC and go back
 }
 
@@ -78,6 +79,11 @@ static const CGFloat kHeightForMenuItemCell     = 70.0f;
 // set gesture
 - (void) setupGestureRecognizerConfiguration
 {
+    if ( _swipeGestureRecognizer == nil ) {
+        _swipeGestureRecognizer =
+        [[UISwipeGestureRecognizer alloc] initWithTarget: self
+                                                  action: @selector(handleSwipeGestureRecognizer:)];
+    }
     [self.view addGestureRecognizer: _swipeGestureRecognizer];
 }
 
@@ -147,11 +153,6 @@ static const CGFloat kHeightForMenuItemCell     = 70.0f;
         return menuItemCell;
     }
 
-}
-
-- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath: (NSIndexPath *)indexPath
-{
-//    self.navigationController pushViewController: animated:<#(BOOL)#>
 }
 
 #pragma mark - Segues

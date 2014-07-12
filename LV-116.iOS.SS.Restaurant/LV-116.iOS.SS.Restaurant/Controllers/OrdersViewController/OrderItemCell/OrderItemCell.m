@@ -26,7 +26,8 @@
     _orderItemNumber  = row;
 }
 
-//handles OrderItemCount changing
+#warning - ClickOnStepper must be clickOnStepper
+
 - (IBAction)ClickOnStepper: (id)sender {
     if (_itemCountStepper.value == 0){
         /*UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Are you sure?"
