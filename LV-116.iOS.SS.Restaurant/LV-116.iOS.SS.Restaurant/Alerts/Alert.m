@@ -39,7 +39,7 @@ static NSString *const methodAlertMessage         = @"Code of error: %d";
     [alert show];
 }
 
- + (void) showDeleteOrderItemWarning
+ - (void) showDeleteOrderItemWarning
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Are you sure?"
                                                     message: @"Are you want to delete current item?"

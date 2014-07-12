@@ -17,6 +17,6 @@
 + (void)showHTTPMethodsAlert:(NSError*)error;
 
 // This method show alert when waiter want to delete OrderItem
-+ (void)showDeleteOrderItemWarning;
+- (void)showDeleteOrderItemWarning;
 
 @end

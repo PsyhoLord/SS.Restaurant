@@ -29,13 +29,15 @@
 //handles OrderItemCount changing
 - (IBAction)ClickOnStepper: (id)sender {
     if (_itemCountStepper.value == 0){
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Are you sure?"
+        /*UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Are you sure?"
                                                         message: @"Are you want to delete current item?"
-                                                       delegate: self cancelButtonTitle:@"NO"
+                                                       delegate: self
+                                              cancelButtonTitle: @"NO"
                                               otherButtonTitles: @"YES", nil
                               ];
+        [alert show];*/
+        UIAlertView *alert;
         [alert show];
-        //[Alert showDeleteOrderItemWarning];
     } else {
         [_itemCount setText: [NSString stringWithFormat: @"%d", (int)_itemCountStepper.value] ];
         _currentOrderItem.countOfItem = (int)_itemCountStepper.value;
@@ -47,10 +49,10 @@
 ////assign data to draw cell
 - (void) drawCell
 {
-    _itemName.text = _currentOrderItem.menuItemModel.name;
-    _itemCount.text = [NSString stringWithFormat:@"%d",_currentOrderItem.countOfItem];
+    _itemName.text          = _currentOrderItem.menuItemModel.name;
+    _itemCount.text         = [NSString stringWithFormat:@"%d",_currentOrderItem.countOfItem];
     _itemCountStepper.value = _currentOrderItem.countOfItem;
-    _pricePerPcs.text =[ NSString stringWithFormat:@"%.2f $",_currentOrderItem.menuItemModel.price];
+    _pricePerPcs.text       =[ NSString stringWithFormat:@"%.2f $",_currentOrderItem.menuItemModel.price];
     
 }
 
