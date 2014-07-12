@@ -78,7 +78,7 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
     
     _currentOrder = [[OrderModel alloc] init];
     
-    [self setDefaultvalues];
+    //[self setDefaultvalues];
     
     [self setupSidebarConfigurationWithGesture: NO];
     
@@ -215,6 +215,10 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
 - (void) didAddedOrderItem: (MenuItemModel*)menuItem
 {
     NSLog(@"%@", menuItem);
+    OrderItemModel *newOrderItem = [[OrderItemModel alloc] initWithMenuItemModel:menuItem];
+    newOrderItem.countOfItem =1 ;
+    [_currentOrder.arrayOfOrderItems addObject:newOrderItem];
+    [self.tableView reloadData];
 }
 
 //Reloading Order tableView, calling this method from OrderItemCell
