@@ -6,6 +6,10 @@
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
 
+// class UserRole contains current state of user
+// This class is Singleton
+
+// Enum of current user
 typedef enum
 {
     UserRoleClient,
@@ -14,9 +18,10 @@ typedef enum
 
 @interface UserRole : NSObject
 
+// return instance of UserRole
 + (instancetype) getInstance;
 
-@property EnumUserRole enumUserRole;
+@property EnumUserRole enumUserRole;    // return enum of current user
 @property (strong, nonatomic) NSString *name;
 
 @end

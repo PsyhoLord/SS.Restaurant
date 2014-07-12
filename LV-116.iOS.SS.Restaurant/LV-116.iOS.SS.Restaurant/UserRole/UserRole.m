@@ -8,6 +8,7 @@
 
 #import "UserRole.h"
 
+// identifier for synchronous queue
 static const char *const kSyncQueueIdentifier = "SyncQueueIdentifier";
 
 @implementation UserRole
@@ -23,7 +24,7 @@ static const char *const kSyncQueueIdentifier = "SyncQueueIdentifier";
     static UserRole *instance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        instance = [[UserRole alloc] init];
+        instance = [[UserRole alloc] init]; // create instance once
     });
     return instance;
 }
@@ -37,6 +38,7 @@ static const char *const kSyncQueueIdentifier = "SyncQueueIdentifier";
     return self;
 }
 
+// set enum of current user
 - (void) setEnumUserRole: (EnumUserRole)enumUserRole
 {
     dispatch_barrier_async(_syncQueue, ^{
@@ -44,6 +46,7 @@ static const char *const kSyncQueueIdentifier = "SyncQueueIdentifier";
     });
 }
 
+// return current enum of user role
 - (EnumUserRole) enumUserRole
 {
     __block EnumUserRole enumUserRole;
