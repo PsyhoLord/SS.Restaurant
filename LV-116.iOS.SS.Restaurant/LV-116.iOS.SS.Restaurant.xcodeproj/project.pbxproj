@@ -23,10 +23,10 @@
 		22A36707196F11BA002D27B7 /* RemoteMapDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A366FB196F11BA002D27B7 /* RemoteMapDataProvider.m */; };
 		22A36708196F11BA002D27B7 /* RemoteMenuDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A366FE196F11BA002D27B7 /* RemoteMenuDataProvider.m */; };
 		22A36709196F11BA002D27B7 /* RemoteOrdersDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A36701196F11BA002D27B7 /* RemoteOrdersDataProvider.m */; };
-		570ABE92196C3EEF003DC398 /* OrderItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570ABE8F196C3EEF003DC398 /* OrderItemsViewController.m */; };
 		570ABE93196C3EEF003DC398 /* OrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570ABE91196C3EEF003DC398 /* OrdersViewController.m */; };
-		570ABE9C196C4058003DC398 /* OrderItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 570ABE96196C4058003DC398 /* OrderItemCell.m */; };
-		570ABE9E196C4058003DC398 /* OrderTotallCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 570ABE9A196C4058003DC398 /* OrderTotallCell.m */; };
+		576B6F6C197171D000CEC6BF /* OrderItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 576B6F65197171D000CEC6BF /* OrderItemCell.m */; };
+		576B6F6D197171D000CEC6BF /* OrderItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 576B6F67197171D000CEC6BF /* OrderItemsViewController.m */; };
+		576B6F6E197171D000CEC6BF /* OrderTotallCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 576B6F6A197171D000CEC6BF /* OrderTotallCell.m */; };
 		ED3A298A196EDBC100970B48 /* SidebarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3A2989196EDBC100970B48 /* SidebarTableViewCell.m */; };
 		ED42A3ED196C32FA00A63656 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3C6196C32FA00A63656 /* MapViewController.m */; };
 		ED42A3EE196C32FA00A63656 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3C9196C32FA00A63656 /* TableView.m */; };
@@ -113,15 +113,15 @@
 		22A366FE196F11BA002D27B7 /* RemoteMenuDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteMenuDataProvider.m; sourceTree = "<group>"; };
 		22A36700196F11BA002D27B7 /* RemoteOrdersDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteOrdersDataProvider.h; sourceTree = "<group>"; };
 		22A36701196F11BA002D27B7 /* RemoteOrdersDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteOrdersDataProvider.m; sourceTree = "<group>"; };
-		570ABE8E196C3EEF003DC398 /* OrderItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderItemsViewController.h; sourceTree = "<group>"; };
-		570ABE8F196C3EEF003DC398 /* OrderItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderItemsViewController.m; sourceTree = "<group>"; };
 		570ABE90196C3EEF003DC398 /* OrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersViewController.h; sourceTree = "<group>"; };
 		570ABE91196C3EEF003DC398 /* OrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersViewController.m; sourceTree = "<group>"; };
-		570ABE95196C4058003DC398 /* OrderItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderItemCell.h; sourceTree = "<group>"; };
-		570ABE96196C4058003DC398 /* OrderItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderItemCell.m; sourceTree = "<group>"; };
-		570ABE99196C4058003DC398 /* OrderTotallCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderTotallCell.h; sourceTree = "<group>"; };
-		570ABE9A196C4058003DC398 /* OrderTotallCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderTotallCell.m; sourceTree = "<group>"; };
-		57B001E4197113AC00436528 /* POrderItems.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = POrderItems.h; sourceTree = "<group>"; };
+		576B6F64197171D000CEC6BF /* OrderItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderItemCell.h; sourceTree = "<group>"; };
+		576B6F65197171D000CEC6BF /* OrderItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderItemCell.m; sourceTree = "<group>"; };
+		576B6F66197171D000CEC6BF /* OrderItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderItemsViewController.h; sourceTree = "<group>"; };
+		576B6F67197171D000CEC6BF /* OrderItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderItemsViewController.m; sourceTree = "<group>"; };
+		576B6F69197171D000CEC6BF /* OrderTotallCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderTotallCell.h; sourceTree = "<group>"; };
+		576B6F6A197171D000CEC6BF /* OrderTotallCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderTotallCell.m; sourceTree = "<group>"; };
+		576B6F6B197171D000CEC6BF /* POrderItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POrderItems.h; sourceTree = "<group>"; };
 		ED3A2988196EDBC100970B48 /* SidebarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarTableViewCell.h; sourceTree = "<group>"; };
 		ED3A2989196EDBC100970B48 /* SidebarTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarTableViewCell.m; sourceTree = "<group>"; };
 		ED42A3C5196C32FA00A63656 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -402,41 +402,41 @@
 		570ABE8C196C3EEF003DC398 /* OrdersViewController */ = {
 			isa = PBXGroup;
 			children = (
-				570ABE8D196C3EEF003DC398 /* OrderItemsController */,
+				576B6F6F1971725800CEC6BF /* OrderItemsController */,
 				570ABE90196C3EEF003DC398 /* OrdersViewController.h */,
 				570ABE91196C3EEF003DC398 /* OrdersViewController.m */,
 			);
 			path = OrdersViewController;
 			sourceTree = "<group>";
 		};
-		570ABE8D196C3EEF003DC398 /* OrderItemsController */ = {
+		576B6F63197171D000CEC6BF /* OrderItemCell */ = {
 			isa = PBXGroup;
 			children = (
-				57B001E4197113AC00436528 /* POrderItems.h */,
-				570ABE94196C4058003DC398 /* OrderItemCell */,
-				570ABE98196C4058003DC398 /* OrderTotallCell */,
-				570ABE8E196C3EEF003DC398 /* OrderItemsViewController.h */,
-				570ABE8F196C3EEF003DC398 /* OrderItemsViewController.m */,
-			);
-			path = OrderItemsController;
-			sourceTree = "<group>";
-		};
-		570ABE94196C4058003DC398 /* OrderItemCell */ = {
-			isa = PBXGroup;
-			children = (
-				570ABE95196C4058003DC398 /* OrderItemCell.h */,
-				570ABE96196C4058003DC398 /* OrderItemCell.m */,
+				576B6F64197171D000CEC6BF /* OrderItemCell.h */,
+				576B6F65197171D000CEC6BF /* OrderItemCell.m */,
 			);
 			path = OrderItemCell;
 			sourceTree = "<group>";
 		};
-		570ABE98196C4058003DC398 /* OrderTotallCell */ = {
+		576B6F68197171D000CEC6BF /* OrderTotallCell */ = {
 			isa = PBXGroup;
 			children = (
-				570ABE99196C4058003DC398 /* OrderTotallCell.h */,
-				570ABE9A196C4058003DC398 /* OrderTotallCell.m */,
+				576B6F69197171D000CEC6BF /* OrderTotallCell.h */,
+				576B6F6A197171D000CEC6BF /* OrderTotallCell.m */,
 			);
 			path = OrderTotallCell;
+			sourceTree = "<group>";
+		};
+		576B6F6F1971725800CEC6BF /* OrderItemsController */ = {
+			isa = PBXGroup;
+			children = (
+				576B6F6B197171D000CEC6BF /* POrderItems.h */,
+				576B6F63197171D000CEC6BF /* OrderItemCell */,
+				576B6F68197171D000CEC6BF /* OrderTotallCell */,
+				576B6F66197171D000CEC6BF /* OrderItemsViewController.h */,
+				576B6F67197171D000CEC6BF /* OrderItemsViewController.m */,
+			);
+			name = OrderItemsController;
 			sourceTree = "<group>";
 		};
 		ED42A3C0196C32FA00A63656 /* Controllers */ = {
@@ -875,19 +875,19 @@
 				ED42A3EE196C32FA00A63656 /* TableView.m in Sources */,
 				ED5B2DF4196D21060070FF98 /* UserRole.m in Sources */,
 				ED7C321019715B6C00C76047 /* MenuViewController.m in Sources */,
-				570ABE92196C3EEF003DC398 /* OrderItemsViewController.m in Sources */,
 				22A36707196F11BA002D27B7 /* RemoteMapDataProvider.m in Sources */,
 				22A366E6196F11A4002D27B7 /* MenuDataParser.m in Sources */,
 				22A36703196F11BA002D27B7 /* MapDataProvider.m in Sources */,
 				ED7C320D19715B6C00C76047 /* MenuItemCell.m in Sources */,
-				570ABE9C196C4058003DC398 /* OrderItemCell.m in Sources */,
 				22A36705196F11BA002D27B7 /* OrdersDataProvider.m in Sources */,
 				FA336C2D19335B950007CC76 /* AppDelegate.m in Sources */,
 				EDEC47291956F9950041B98B /* MapModel.m in Sources */,
+				576B6F6D197171D000CEC6BF /* OrderItemsViewController.m in Sources */,
 				22A366E7196F11A4002D27B7 /* OrdersDataParser.m in Sources */,
 				ED42A3FA196C32FA00A63656 /* SidebarViewController.m in Sources */,
 				22A36702196F11BA002D27B7 /* AuthorizationProvider.m in Sources */,
 				EDE50DF7193E110500ACA71D /* ServiceAgent.m in Sources */,
+				576B6F6E197171D000CEC6BF /* OrderTotallCell.m in Sources */,
 				EDEC47341956FACB0041B98B /* MenuCategoryModel.m in Sources */,
 				22A36706196F11BA002D27B7 /* RemoteAuthorizationProvider.m in Sources */,
 				22346B58195F209000495B2A /* Alert.m in Sources */,
@@ -907,8 +907,8 @@
 				EDEC47351956FACB0041B98B /* MenuItemModel.m in Sources */,
 				22A36704196F11BA002D27B7 /* MenuDataProvider.m in Sources */,
 				22A366D9196F10D2002D27B7 /* TableModelWithOrders.m in Sources */,
-				570ABE9E196C4058003DC398 /* OrderTotallCell.m in Sources */,
 				ED42A3ED196C32FA00A63656 /* MapViewController.m in Sources */,
+				576B6F6C197171D000CEC6BF /* OrderItemCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

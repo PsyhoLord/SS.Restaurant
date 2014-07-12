@@ -17,18 +17,30 @@
     _delegate = newDelegate;
 }
 
+//Setting properties
+- (void) setDataWhithOrderItemModel:(OrderItemModel *)currentOrderItem andNumberOfRow:(int)row
+{
+    _currentOrderItem = currentOrderItem;
+    _orderItemNumber  = row;
+}
 
-
+//handles OrderItemCount changing
 - (IBAction)ClickOnStepper: (id)sender {
     
-    double value = [_itemCountStepper value];
+    double value = _itemCountStepper.value;
     _currentOrderItem.countOfItem = (int)_itemCountStepper.value;
     [_itemCount setText: [NSString stringWithFormat: @"%d", (int)value] ];
+    
+    if (value == 0){
+        [_delegate removeOrderItemAtIndex:_orderItemNumber];
+    }
+    
     [_delegate redrawTable];
     
 }
 
 
+////assign data to draw cell
 - (void) drawCell
 {
     _itemName.text = _currentOrderItem.menuItemModel.name;

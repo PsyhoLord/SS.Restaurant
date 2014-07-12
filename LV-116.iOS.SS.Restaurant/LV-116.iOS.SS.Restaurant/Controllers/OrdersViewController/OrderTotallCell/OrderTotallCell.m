@@ -13,11 +13,13 @@
 
 @implementation OrderTotallCell
 
+//setting delegate
 - (void) setDelegate: (id<POrderItems>) newDelegate
 {
     _delegate = newDelegate;
 }
 
+//calculating data to draw cell
 - (void) drawCellWithModel: (OrderModel*)orderModel
 {
     float totalValue = 0;
@@ -34,6 +36,8 @@
     self.totallPrice.text = [NSString stringWithFormat: @"Totall  %.2f$", totalValue];
 }
 
+
+//calling mathod in OrderItemsViewController
 - (IBAction)addNewOrderItem: (UIButton *)sender {
     
     [_delegate addNewOrderItem];
