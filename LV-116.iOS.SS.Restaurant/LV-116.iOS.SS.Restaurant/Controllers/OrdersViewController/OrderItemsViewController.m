@@ -82,6 +82,44 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
     [super viewDidLoad];
 }
 
+#pragma mark - Configuration
+
+// set sidebare configuration
+// (BOOL)addGesture - if YES, go to sidebar by pan gesture
+- (void) setupSidebarConfigurationWithGesture: (BOOL)addGesture
+{
+    // Change button color
+    _sidebarButton.tintColor = [UIColor colorWithWhite: 0.1f alpha: 0.9f];
+    
+    // Set the side bar button action. When it's tapped, it'll show up the sidebar.
+    _sidebarButton.target = self.revealViewController;
+    _sidebarButton.action = @selector(revealToggle:);
+    
+    if ( addGesture ) {
+        // Set the gesture
+        [self.tableView addGestureRecognizer: self.revealViewController.panGestureRecognizer];
+    }
+}
+
+// set gesture
+- (void) setupGestureRecognizerConfiguration
+{
+    if ( _swipeGestureRecognizer == nil ) {
+        _swipeGestureRecognizer =
+        [[UISwipeGestureRecognizer alloc] initWithTarget: self
+                                                  action: @selector(handleSwipeGestureRecognizer:)];
+    }
+    [self.view addGestureRecognizer: _swipeGestureRecognizer];
+}
+
+#pragma mark - handle
+
+// return back to previous scrin
+- (IBAction) handleSwipeGestureRecognizer: (UISwipeGestureRecognizer *)sender
+{
+    [self.navigationController popViewControllerAnimated: YES];
+}
+
 
 #pragma mark - Table view data source
 
