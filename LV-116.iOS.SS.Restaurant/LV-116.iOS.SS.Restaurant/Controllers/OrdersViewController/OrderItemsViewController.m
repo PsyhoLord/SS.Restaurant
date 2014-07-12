@@ -9,6 +9,7 @@
 
 
 #import "OrderItemsViewController.h"
+#import "SWRevealViewController.h"
 
 #import "OrderModel.h"
 #import "OrderItemModel.h"
@@ -30,6 +31,7 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
 {
     // in this ptivate section var need to name with _ ( _addOrderItem because for difference with property )
     OrderItemModel *addOrderItem;
+    IBOutlet UISwipeGestureRecognizer *_swipeGestureRecognizer; // need for pop self VC and go back
 }
 
 
@@ -73,6 +75,8 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
+    
     _currentOrder = [[OrderModel alloc] init];
     
     [super viewDidLoad];

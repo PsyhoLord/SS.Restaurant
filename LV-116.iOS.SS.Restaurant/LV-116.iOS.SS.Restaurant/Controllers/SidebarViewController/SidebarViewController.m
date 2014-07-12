@@ -28,9 +28,9 @@
 static const NSUInteger kNumberOfSections        = 1;
 
 // number of cells needs for waiter in the end of table view
-static const NSUInteger kNumberOfCellsForClient  = 3;
+//static const NSUInteger kNumberOfCellsForClient  = 3;
 // !!! this is only for test without any authorization !!!
-//static const NSUInteger kNumberOfCellsForClient  = 4;
+static const NSUInteger kNumberOfCellsForClient  = 4;
 static const NSUInteger kNumberOfCellsForWaiter  = 4;
 
 static NSString *const  kSidebarTableViewCellIdentifier = @"SidebarTableViewCellIdentifier";
@@ -209,6 +209,10 @@ typedef enum
     
     UIViewController *destinationViewController = segue.destinationViewController;
     destinationViewController.title = [self getTitleForDestinationViewController: destinationViewController];
+    
+    if ( [destinationViewController isKindOfClass: [MenuViewController class]] ) {
+        ((MenuViewController*)destinationViewController).isNeedGestureForCallSidebar = YES;
+    }
     
     if ( [segue isKindOfClass: [SWRevealViewControllerSegue class]] ) {
         

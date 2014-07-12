@@ -40,7 +40,7 @@ static const CGFloat kHeightForMenuItemCell     = 70.0f;
 {
     [super viewDidLoad];
     
-    [self setupSidebarConfigurationWithGesture: NO];
+    [self setupSidebarConfigurationWithGesture: _isNeedGestureForCallSidebar];
 
     [self setupRefreshControl];
     
