@@ -23,6 +23,7 @@
 		22A36707196F11BA002D27B7 /* RemoteMapDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A366FB196F11BA002D27B7 /* RemoteMapDataProvider.m */; };
 		22A36708196F11BA002D27B7 /* RemoteMenuDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A366FE196F11BA002D27B7 /* RemoteMenuDataProvider.m */; };
 		22A36709196F11BA002D27B7 /* RemoteOrdersDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A36701196F11BA002D27B7 /* RemoteOrdersDataProvider.m */; };
+		22F9249C197057C800A67ACA /* down_arrow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 22F9249B197057C800A67ACA /* down_arrow.jpg */; };
 		570ABE92196C3EEF003DC398 /* OrderItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570ABE8F196C3EEF003DC398 /* OrderItemsViewController.m */; };
 		570ABE93196C3EEF003DC398 /* OrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570ABE91196C3EEF003DC398 /* OrdersViewController.m */; };
 		570ABE9C196C4058003DC398 /* OrderItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 570ABE96196C4058003DC398 /* OrderItemCell.m */; };
@@ -117,6 +118,7 @@
 		22A366FE196F11BA002D27B7 /* RemoteMenuDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteMenuDataProvider.m; sourceTree = "<group>"; };
 		22A36700196F11BA002D27B7 /* RemoteOrdersDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteOrdersDataProvider.h; sourceTree = "<group>"; };
 		22A36701196F11BA002D27B7 /* RemoteOrdersDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteOrdersDataProvider.m; sourceTree = "<group>"; };
+		22F9249B197057C800A67ACA /* down_arrow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = down_arrow.jpg; path = ../../../../down_arrow.jpg; sourceTree = "<group>"; };
 		570ABE8E196C3EEF003DC398 /* OrderItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderItemsViewController.h; sourceTree = "<group>"; };
 		570ABE8F196C3EEF003DC398 /* OrderItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderItemsViewController.m; sourceTree = "<group>"; };
 		570ABE90196C3EEF003DC398 /* OrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersViewController.h; sourceTree = "<group>"; };
@@ -602,6 +604,7 @@
 				EDCE5C85196BE4C600496B34 /* RoleIcons */,
 				EDA13E26196ADCC400CF579C /* SidebarRootMenuIcons */,
 				EDBDFE231967219000E65DCA /* menu.png */,
+				22F9249B197057C800A67ACA /* down_arrow.jpg */,
 				EDBDFE241967219000E65DCA /* menu@2x.png */,
 			);
 			path = Images;
@@ -861,6 +864,7 @@
 			files = (
 				EDCE5C88196BE4C600496B34 /* role_client_icon.png in Resources */,
 				EDA13E2C196ADCC400CF579C /* map_icon.png in Resources */,
+				22F9249C197057C800A67ACA /* down_arrow.jpg in Resources */,
 				FA336C3319335B950007CC76 /* Main_iPad.storyboard in Resources */,
 				EDCE5C89196BE4C600496B34 /* role_waiter_icon.png in Resources */,
 				EDA13E2D196ADCC400CF579C /* orders_icon.png in Resources */,

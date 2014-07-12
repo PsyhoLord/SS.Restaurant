@@ -23,13 +23,11 @@ static const CGFloat kHeightOfHeaderSection    = 35.0f;
 
 @implementation OrdersViewController
 {
-    TableModelWithOrders *_containerTableModel;
+    NSMutableArray *arrayOfImage;
     
     NSMutableArray  *_arrayOfTableModelWithOrders;
-    NSMutableArray  *_arrayOfOrderModel;
     NSMutableArray  *_arrayOfFlags;
 }
-
 
 #pragma mark - Initialization methods
 
@@ -46,6 +44,7 @@ static const CGFloat kHeightOfHeaderSection    = 35.0f;
 {
     [super viewDidLoad];
     
+    arrayOfImage = [[NSMutableArray alloc] init];
     [self setSidebarConfiguration];
     
     [self loadMapData];
@@ -138,7 +137,6 @@ static const CGFloat kHeightOfHeaderSection    = 35.0f;
                 [self didReceiveOrdersResponse:sender];
                 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
             });
-            
         }
         
     }];
@@ -148,22 +146,25 @@ static const CGFloat kHeightOfHeaderSection    = 35.0f;
 {
     NSArray *items = ((TableModelWithOrders*)_arrayOfTableModelWithOrders[sender.tag]).arrayOfOrdersModel;
     
-    
     NSMutableArray *indexPaths = [NSMutableArray array]; //    Create index array
     for (int i=0; i < items.count+1; ++i) {
         [indexPaths addObject: [NSIndexPath indexPathForRow:i inSection:sender.tag]];
     }
-    
     
     //    Get flag of some header section and then make inversion for this header section
     BOOL isOpen = [[_arrayOfFlags objectAtIndex: sender.tag] boolValue];
     [_arrayOfFlags replaceObjectAtIndex: sender.tag
                              withObject: [NSNumber numberWithBool: !isOpen] ];
     
+    NSLog(@"%d", sender.tag);
+    
+    
     if ( isOpen ) {
+        ((UIImageView*)arrayOfImage[sender.tag]).transform = CGAffineTransformMakeRotation( 0 );
         ((TableModelWithOrders*)_arrayOfTableModelWithOrders[sender.tag]).arrayOfOrdersModel = nil;
         [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
     } else {
+        ((UIImageView*)arrayOfImage[sender.tag]).transform = CGAffineTransformMakeRotation( M_PI_2 *2 );
         [self.tableView insertRowsAtIndexPaths:indexPaths  withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }
@@ -197,14 +198,38 @@ static const CGFloat kHeightOfHeaderSection    = 35.0f;
 // Create button for each section.
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *sectionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 30)];
+    UIView *sectionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, kHeightOfHeaderSection)];
     UIButton *sectionButton = [self createSectionButton: section];
     
+    
+    UIImage *image = [UIImage imageNamed: @"down_arrow.jpg"];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage: image];
+    
+    
+    
+    [sectionButton addSubview: imageView ];
     [sectionView addSubview: sectionButton];
     
+    // We need this array of imageView because image will turn over when we will clicked.
+    [arrayOfImage addObject: imageView];
+    
+    // Set coordinates and width, height of imageView (our image).
+    NSUInteger xImage = self.tableView.frame.size.width - 40;
+    NSUInteger yImage = 5;
+    NSUInteger widthImage = 24;
+    NSUInteger heightImage = 24;
+    
+    imageView.frame = CGRectMake(xImage, yImage, widthImage, heightImage);
+    
+    // Added bottom border for each sectionView.
+    CALayer *bottomBorder = [CALayer layer];
+    bottomBorder.frame = CGRectMake(0.0f, 0, self.tableView.frame.size.width, 1);
+    bottomBorder.backgroundColor = [UIColor colorWithWhite:0.8f
+                                                     alpha:1.0f].CGColor;
+    [sectionView.layer addSublayer: bottomBorder];
     
     
-    return sectionButton;  //  if you need - return sectionView
+    return sectionView;  //  if you need - return sectionView
 }
 // Create and set settings for section button
 - (UIButton*)createSectionButton:(NSInteger)section
@@ -224,7 +249,7 @@ static const CGFloat kHeightOfHeaderSection    = 35.0f;
                       action: @selector(didSelectSection:)
             forControlEvents: UIControlEventTouchUpInside];
     
-    sectionButton.frame = CGRectMake(0, 0, self.tableView.frame.size.width, 30);
+    sectionButton.frame = CGRectMake(0, 0, self.tableView.frame.size.width, kHeightOfHeaderSection);
     
     return sectionButton;
 }
@@ -240,7 +265,7 @@ static const CGFloat kHeightOfHeaderSection    = 35.0f;
     if( indexPath.row == [tableView numberOfRowsInSection: indexPath.section]-1 ) {
         cell.textLabel.text = @"Add";
     } else {
-        cell.textLabel.text = [NSString stringWithFormat:@"Order #%d", indexPath.row];
+        cell.textLabel.text = [NSString stringWithFormat:@"Order %d", indexPath.row];
     }
     
     return cell;
@@ -256,8 +281,6 @@ static const CGFloat kHeightOfHeaderSection    = 35.0f;
     } else {
         [self didReceiveOrdersResponse: sender];
     }
-    
-    
 }
 
 // Handle click on cell of add (the last cell).
@@ -269,6 +292,13 @@ static const CGFloat kHeightOfHeaderSection    = 35.0f;
         OrderModel *orderModel = [[OrderModel alloc] init];
         [((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]) addOrder: orderModel];
         
+        
+        [OrdersDataProvider postTableOrderWithTableId:((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]).Id responseBlock:^(NSError *error) {
+            if( error ) {
+                [Alert showHTTPMethodsAlert: error];
+            }
+        } ];
+        
         [self.tableView reloadData];
     } else {
         OrderItemsViewController *orderItemsViewController = [[OrderItemsViewController alloc] init];
@@ -278,31 +308,17 @@ static const CGFloat kHeightOfHeaderSection    = 35.0f;
     }
 }
 
-// Set editing style for cell. Add cell has not any editing style.
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if ( indexPath.row != [tableView numberOfRowsInSection: indexPath.section]-1 ) {
-        return UITableViewCellEditingStyleDelete;
-    } else {
-        return UITableViewCellEditingStyleNone;
-    }
-
-
-}
-
 // Handle editing action.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView beginUpdates];
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
-        
-        
-        
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 
-        // Not all orders deleted. Maybe because some orders have items (don't emtpties).
-        [OrdersDataProvider deleteTableOrderWithOrderId: ((OrderModel*)((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]).arrayOfOrdersModel[indexPath.row]).Id
+        // Not all orders deleted. Maybe because some orders have items (don't empties).
+        NSUInteger orderId = ((OrderModel*)((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]).arrayOfOrdersModel[indexPath.row]).Id;
+        [OrdersDataProvider deleteTableOrderWithOrderId: orderId
                                           responseBlock: ^(NSError *error) {
                                               if( error ) {
                                                   [Alert showHTTPMethodsAlert: error];
@@ -317,6 +333,17 @@ static const CGFloat kHeightOfHeaderSection    = 35.0f;
         // Here handle UITableViewCellEditingStyleInsert if we need.
     }
     [tableView endUpdates];
+}
+// Set editing style for cell. Add cell has not any editing style.
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ( indexPath.row != [tableView numberOfRowsInSection: indexPath.section]-1 ) {
+        return UITableViewCellEditingStyleDelete;
+    } else {
+        return UITableViewCellEditingStyleNone;
+    }
+    
+    
 }
 
 @end

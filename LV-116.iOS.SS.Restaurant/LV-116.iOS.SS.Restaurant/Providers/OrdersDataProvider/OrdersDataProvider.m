@@ -38,4 +38,16 @@
      ];
 }
 
+#pragma mark - POST
+
+// Post the one order on table using tableId.
++ (void)postTableOrderWithTableId:(int)tableId responseBlock:(void (^)(NSError*))callback
+{
+    [RemoteOrdersDataProvider postTableOrderWithTableId:tableId
+                                            responseBlock:^(NSError *error) {
+                                                callback(error);
+                                            }
+    ];
+}
+
 @end
