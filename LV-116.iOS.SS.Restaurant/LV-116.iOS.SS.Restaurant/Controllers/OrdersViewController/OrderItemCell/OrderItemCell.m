@@ -30,15 +30,15 @@
 
 - (IBAction)ClickOnStepper: (id)sender {
     if (_itemCountStepper.value == 0){
-        /*UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Are you sure?"
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Are you sure?"
                                                         message: @"Are you want to delete current item?"
                                                        delegate: self
                                               cancelButtonTitle: @"NO"
                                               otherButtonTitles: @"YES", nil
                               ];
-        [alert show];*/
-        UIAlertView *alert;
         [alert show];
+        /*UIAlertView *alert;
+        [alert show];*/
     } else {
         [_itemCount setText: [NSString stringWithFormat: @"%d", (int)_itemCountStepper.value] ];
         _currentOrderItem.countOfItem = (int)_itemCountStepper.value;
