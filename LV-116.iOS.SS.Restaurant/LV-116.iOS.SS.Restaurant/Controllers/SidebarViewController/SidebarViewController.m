@@ -33,6 +33,8 @@ static const NSUInteger kNumberOfSections        = 1;
 static const NSUInteger kNumberOfCellsForClient  = 4;
 static const NSUInteger kNumberOfCellsForWaiter  = 4;
 
+static NSString *const  kSidebarTableViewCellIdentifier = @"SidebarTableViewCellIdentifier";
+
 // consts segue to another scrins
 static NSString *const kSegueToHome     = @"sw_segue_home";
 static NSString *const kSegueToMenu     = @"sw_segue_menu";
@@ -57,6 +59,8 @@ static NSString *const kDestinationViewControllerTitleMenu      = @"Menu";
 static NSString *const kDestinationViewControllerTitleMap       = @"Map";
 static NSString *const kDestinationViewControllerTitleOrders    = @"Orders";
 
+static const CGFloat kRearViewRevealWidth = 175.0f;
+
 // enum of all cells on root sidebar menu
 typedef enum
 {
@@ -74,7 +78,7 @@ typedef enum
 {
     [super viewDidLoad];
     
-    self.revealViewController.rearViewRevealWidth = 175.0f;
+    self.revealViewController.rearViewRevealWidth = kRearViewRevealWidth;
 }
 
 // reload data of sidebar menu on main thread
@@ -112,7 +116,7 @@ typedef enum
 
 - (UITableViewCell *)tableView: (UITableView *)tableView cellForRowAtIndexPath: (NSIndexPath *)indexPath
 {
-    SidebarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"SidebarTableViewCellIdentifier"];
+    SidebarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: kSidebarTableViewCellIdentifier];
     
     [cell drawWithImage: [self getImageForCellAtIndexPath: indexPath]
                    text: [self getTextForCellAtIndexPath: indexPath]];

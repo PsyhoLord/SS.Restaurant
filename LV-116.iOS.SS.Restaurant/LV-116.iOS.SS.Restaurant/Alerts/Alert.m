@@ -18,7 +18,7 @@ static NSString *const methodAlertMessage         = @"Code of error: %d";
 @implementation Alert
 
 // This method creates UIAlert and show it
-+ (void)showConnectionAlert
++ (void) showConnectionAlert
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:connectionAlertTitle
                                                     message:connectionAlertMessage
@@ -29,7 +29,7 @@ static NSString *const methodAlertMessage         = @"Code of error: %d";
 }
 
 // This method show alert error when http method is failed.
-+ (void)showHTTPMethodsAlert:(NSError*)error
++ (void) showHTTPMethodsAlert:(NSError*)error
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle: methodAlertTitle
                                                     message: [NSString stringWithFormat: methodAlertMessage, error.code]

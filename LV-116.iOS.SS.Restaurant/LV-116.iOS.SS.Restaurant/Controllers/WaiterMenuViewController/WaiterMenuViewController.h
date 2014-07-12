@@ -8,6 +8,10 @@
 
 #import "MenuViewController.h"
 
+@protocol POrderItems;
+
 @interface WaiterMenuViewController : MenuViewController
+
+@property (weak, nonatomic) id<POrderItems> delegate;
 
 @end

@@ -7,39 +7,29 @@
 //
 
 #import "WaiterMenuViewController.h"
+#import "MenuItemCell.h"
+
+#import "MenuCategoryModel.h"
+#import "MenuItemModel.h"
+
+#import "POrderItems.h"
 
 @implementation WaiterMenuViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+#pragma mark - handle of user click on cell
+
+// logic of click on cell
+- (void) tableView: (UITableView *)tableView didSelectRowAtIndexPath: (NSIndexPath *)indexPath
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+    if ( [[self.tableView cellForRowAtIndexPath: indexPath] isKindOfClass: [MenuItemCell class]] ) {
+        [self.delegate didAddedOrderItem: self.currentCategory.items[indexPath.row]];
     }
-    return self;
 }
 
-- (void)viewDidLoad
+- (void) prepareForSegue: (UIStoryboardSegue *)segue sender: (id)sender
 {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [super prepareForSegue: segue sender: sender];
+    ((WaiterMenuViewController*)segue.destinationViewController).delegate = self.delegate;
 }
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

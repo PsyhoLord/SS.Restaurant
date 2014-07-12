@@ -18,6 +18,7 @@
 
 #import "MenuItemModel.h"
 
+#import "WaiterMenuViewController.h"
 
 static NSString *const kOrderCellIdentifier     = @"OrderItemCell";
 static NSString *const kOrderTotallIdentifier   = @"OrderTotallCellIdentifier";
@@ -147,18 +148,23 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
 //    
 //    [self.tableView reloadData];
     
-    [self performSegueWithIdentifier:kSegueToMenuForAddItem sender:self];
+    [self performSegueWithIdentifier: kSegueToMenuForAddItem sender: self];
     
 }
 
+// do smth before segue on next scrin - WaiterMenuViewController
 - (void) prepareForSegue: (UIStoryboardSegue *)segue sender: (id)sender
 {
-    
+    WaiterMenuViewController *destWaiterMenuVC =  segue.destinationViewController;
+    destWaiterMenuVC.delegate = self;
+    destWaiterMenuVC.title = @"Add item";
 }
 
-- (void) didAddedOrderItem:(MenuItemModel *)menuItem
+// method from POrderItem protocol
+// calls by WaiterMenuViewController
+- (void) didAddedOrderItem: (MenuItemModel*)menuItem
 {
-    
+    NSLog(@"%@", menuItem);
 }
 
 
