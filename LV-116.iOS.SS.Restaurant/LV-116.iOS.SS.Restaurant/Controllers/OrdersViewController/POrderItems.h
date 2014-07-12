@@ -15,7 +15,7 @@
 // calls when user has added menu item
 - (void) didAddedOrderItem: (MenuItemModel*)menuItem;
 
-#warning these methods are required
+#warning these methods are requaired
 
 @optional
 

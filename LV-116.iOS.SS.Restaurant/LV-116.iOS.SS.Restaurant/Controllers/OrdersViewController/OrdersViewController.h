@@ -10,7 +10,6 @@
 
 @interface OrdersViewController : UITableViewController
 
-
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 
 @end

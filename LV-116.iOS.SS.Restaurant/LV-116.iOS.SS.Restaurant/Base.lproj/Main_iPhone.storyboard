@@ -245,7 +245,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="sidebarButton" destination="djH-8s-jFV" id="bYJ-rP-xQe"/>
-                        <segue destination="zgs-Wf-spS" kind="push" identifier="segue_order_items" id="rEJ-BU-v3u"/>
+                        <segue destination="zgs-Wf-spS" kind="push" identifier="segue_order_items" id="JIs-xc-FK0"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s5A-pT-33X" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -260,6 +260,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OrderItemCell" id="jeG-Ww-p2G" customClass="OrderItemCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
@@ -338,16 +339,28 @@
                         <connections>
                             <outlet property="dataSource" destination="zgs-Wf-spS" id="e73-Pg-IyZ"/>
                             <outlet property="delegate" destination="zgs-Wf-spS" id="kWn-fg-jfh"/>
+                            <outletCollection property="gestureRecognizers" destination="RBv-kn-8Lt" appends="YES" id="2OZ-6Q-sT4"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="BaQ-Ly-znE"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="BaQ-Ly-znE">
+                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="LE1-HW-ny2"/>
+                    </navigationItem>
                     <connections>
+                        <outlet property="_swipeGestureRecognizer" destination="RBv-kn-8Lt" id="w0J-6f-yFA"/>
+                        <outlet property="sidebarButton" destination="LE1-HW-ny2" id="hbS-lR-emc"/>
                         <segue destination="TNA-3Q-pK8" kind="push" identifier="segue_menu_add_order_item" id="XwQ-tH-eVK"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eaT-Iy-pdt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="RBv-kn-8Lt">
+                    <connections>
+                        <action selector="handleSwipeGestureRecognizer:" destination="zgs-Wf-spS" id="jo6-0v-3MQ"/>
+                        <outlet property="delegate" destination="TNA-3Q-pK8" id="0Tt-A9-ADA"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="671" y="103"/>
+            <point key="canvasLocation" x="705" y="103"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="cjE-5r-DwY">
@@ -533,7 +546,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1231" y="103"/>
+            <point key="canvasLocation" x="1265" y="103"/>
         </scene>
     </scenes>
     <resources>

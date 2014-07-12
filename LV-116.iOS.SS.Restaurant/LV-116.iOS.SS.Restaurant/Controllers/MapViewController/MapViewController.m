@@ -27,7 +27,7 @@
 {
     [super viewDidLoad];
     
-    [self setSidebarConfiguration];
+    [self setupSidebarConfigurationWithGesture: NO];
     
     // init _tableViews
     _tableViews = [[NSMutableArray alloc] init];
@@ -35,17 +35,21 @@
     [self loadMapData];
 }
 
-- (void)setSidebarConfiguration
+// set sidebare configuration
+// (BOOL)addGesture - if YES, go to sidebar by pan gesture
+- (void) setupSidebarConfigurationWithGesture: (BOOL)addGesture
 {
     // Change button color
-    _sidebarButton.tintColor = [UIColor colorWithWhite:0.1f alpha:0.9f];
+    _sidebarButton.tintColor = [UIColor colorWithWhite: 0.1f alpha: 0.9f];
     
     // Set the side bar button action. When it's tapped, it'll show up the sidebar.
     _sidebarButton.target = self.revealViewController;
     _sidebarButton.action = @selector(revealToggle:);
     
-    // Set the gesture
-    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    if ( addGesture ) {
+        // Set the gesture
+        [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
+    }
 }
 
 // create button with characteristic of the current TableModel

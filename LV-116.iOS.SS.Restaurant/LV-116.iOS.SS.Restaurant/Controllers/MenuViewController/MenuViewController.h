@@ -11,4 +11,5 @@
 @interface MenuViewController : UITableViewController
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 @property (strong, nonatomic) MenuCategoryModel *currentCategory;
+@property BOOL isNeedGestureForCallSidebar; // if YES, than gesture works for call sidebar
 @end

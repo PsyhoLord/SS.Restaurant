@@ -9,6 +9,7 @@
 #warning #import "protocol"
 
 #import "OrderItemsViewController.h"
+#import "SWRevealViewController.h"
 
 #import "OrderModel.h"
 #import "OrderItemModel.h"
@@ -28,6 +29,7 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
 {
     // in this ptivate section var need to name with _ ( _addOrderItem because for difference with property )
     OrderItemModel *addOrderItem;
+    IBOutlet UISwipeGestureRecognizer *_swipeGestureRecognizer; // need for pop self VC and go back
 }
 
 
@@ -72,11 +74,53 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
+    
     _currentOrder = [[OrderModel alloc] init];
     
     [self setDefaultvalues];
     
-    [super viewDidLoad];
+    [self setupSidebarConfigurationWithGesture: NO];
+    
+    [self setupGestureRecognizerConfiguration];
+}
+
+#pragma mark - Configuration
+
+// set sidebare configuration
+// (BOOL)addGesture - if YES, go to sidebar by pan gesture
+- (void) setupSidebarConfigurationWithGesture: (BOOL)addGesture
+{
+    // Change button color
+    _sidebarButton.tintColor = [UIColor colorWithWhite: 0.1f alpha: 0.9f];
+    
+    // Set the side bar button action. When it's tapped, it'll show up the sidebar.
+    _sidebarButton.target = self.revealViewController;
+    _sidebarButton.action = @selector(revealToggle:);
+    
+    if ( addGesture ) {
+        // Set the gesture
+        [self.tableView addGestureRecognizer: self.revealViewController.panGestureRecognizer];
+    }
+}
+
+// set gesture
+- (void) setupGestureRecognizerConfiguration
+{
+    if ( _swipeGestureRecognizer == nil ) {
+        _swipeGestureRecognizer =
+        [[UISwipeGestureRecognizer alloc] initWithTarget: self
+                                                  action: @selector(handleSwipeGestureRecognizer:)];
+    }
+    [self.view addGestureRecognizer: _swipeGestureRecognizer];
+}
+
+#pragma mark - handle
+
+// return back to previous scrin
+- (IBAction) handleSwipeGestureRecognizer: (UISwipeGestureRecognizer *)sender
+{
+    [self.navigationController popViewControllerAnimated: YES];
 }
 
 
