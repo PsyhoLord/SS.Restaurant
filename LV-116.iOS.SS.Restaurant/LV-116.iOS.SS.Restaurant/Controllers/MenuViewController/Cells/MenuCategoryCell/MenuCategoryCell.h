@@ -12,12 +12,8 @@
 
 @interface MenuCategoryCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *pointingImage;
-@property (weak, nonatomic) IBOutlet UILabel     *categoryName;
+@property (weak, nonatomic) IBOutlet UILabel *categoryName;
 
-// this method draws category cell with data menuCategoryModel
-// (MenuCategoryModel*)menuCategoryModel - data for category cell
-- (void) drawCellWithModel:(MenuCategoryModel*)menuCategoryModel;
+- (void) drawCellWithModel: (MenuCategoryModel*)menuCategoryModel;
 
-+ (CGFloat) rowHeightForCell;
 @end
