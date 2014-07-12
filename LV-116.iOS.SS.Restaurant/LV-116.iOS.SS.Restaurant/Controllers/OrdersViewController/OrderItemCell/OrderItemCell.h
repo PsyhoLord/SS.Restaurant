@@ -9,6 +9,8 @@
 
 #import "POrderItems.h"
 
+@class Alert;
+
 @class MenuItemModel;
 @class OrderItemModel;
 

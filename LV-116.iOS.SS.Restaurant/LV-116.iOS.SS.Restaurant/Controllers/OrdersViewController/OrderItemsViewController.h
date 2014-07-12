@@ -7,7 +7,7 @@
 //
 #import "POrderItems.h"
 
-#warning @protocol !
+@protocol POrderItems;
 
 @class OrderModel;
 @class OrderItemModel;

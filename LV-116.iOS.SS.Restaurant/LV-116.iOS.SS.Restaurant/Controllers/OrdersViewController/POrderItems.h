@@ -8,21 +8,15 @@
 
 @class MenuItemModel;
 
-#warning - comment all your code !!! 
-
 @protocol POrderItems <NSObject>
 
 // calls when user has added menu item
 - (void) didAddedOrderItem: (MenuItemModel*)menuItem;
 
-#warning these methods are requaired
+- (void) redrawTable;
 
-@optional
+- (void) addNewOrderItem;
 
--(void) redrawTable;
-
--(void) addNewOrderItem;
-
--(void) removeOrderItemAtIndex: (int)index;
+- (void) removeOrderItemAtIndex: (int)index;
 
 @end
