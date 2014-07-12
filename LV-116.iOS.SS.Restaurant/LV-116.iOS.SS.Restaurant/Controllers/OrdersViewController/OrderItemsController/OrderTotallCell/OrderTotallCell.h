@@ -6,14 +6,17 @@
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
 
+#import "POrderItems.h"
 
 @class OrderModel;
 @class MenuItemModel;
 
-@interface OrderTotallCell : UITableViewCell
+@interface OrderTotallCell : UITableViewCell <POrderItems>
 
 @property (weak, nonatomic) IBOutlet UILabel *totallPrice;
 
-- (void) drawCellWithModel:(OrderModel*)orderModel;
+@property (weak, nonatomic) id <POrderItems> delegate;
+
+- (void) drawCellWithModel: (OrderModel*)orderModel;
 
 @end

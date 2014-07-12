@@ -13,37 +13,39 @@
 
 @implementation OrderTotallCell
 
+- (void) setDelegate: (id<POrderItems>) newDelegate
+{
+    _delegate = newDelegate;
+}
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+- (void) drawCellWithModel: (OrderModel*)orderModel
+{
+    float totalValue = 0;
+    
+    for (int i = 0; i < [orderModel.arrayOfOrderItems count]; i++){
+    
+        OrderItemModel *itemInOrderWithCount;
+        
+        itemInOrderWithCount = [orderModel.arrayOfOrderItems objectAtIndex: i];
+        
+        totalValue += itemInOrderWithCount.menuItemModel.price * itemInOrderWithCount.countOfItem;
+    }
+    
+    self.totallPrice.text = [NSString stringWithFormat: @"Totall  %.2f$", totalValue];
+}
+
+- (IBAction)addNewOrderItem: (UIButton *)sender {
+    
+    [_delegate addNewOrderItem];
+    
+}
+
+
+- (void)setSelected: (BOOL)selected animated: (BOOL)animated
 {
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
 }
-
-- (IBAction)AddNewOrderItem:(UIButton *)sender {
-    
-    
-}
-
-
-
-- (void) drawCellWithModel:(OrderModel*)orderModel
-{
-    float totalValue=0;
-    for (int i=0;i<[orderModel.arrayOfOrderItems count];i++)
-    {
-    
-        OrderItemModel *itemInOrderWithCount;
-        
-        itemInOrderWithCount=[orderModel.arrayOfOrderItems objectAtIndex:i];
-        
-        totalValue+=(itemInOrderWithCount.menuItemModel.price)*[itemInOrderWithCount countOfItem];
-    }
-    
-    self.totallPrice.text=[NSString stringWithFormat:@"Totall  %.2f$",totalValue];
-     // [[(OrderItemModel *)[orderModel.arrayOfOrderItem objectAtIndex:i] ].menuItemModel ];
-}
-
 
 @end
