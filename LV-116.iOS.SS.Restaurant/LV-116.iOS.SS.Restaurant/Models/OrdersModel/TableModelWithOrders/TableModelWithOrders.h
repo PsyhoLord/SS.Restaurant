@@ -9,7 +9,7 @@
 #import "TableModel.h"
 
 // Class TableModelWithOrders will contain whole data about one table.
-// Difference between TableModel in that it has orders model array.
+// Difference between TableModel in that it has array of orders model.
 
 @class OrderModel;
 
@@ -17,12 +17,15 @@
 
 @property (strong,nonatomic) NSMutableArray *arrayOfOrdersModel;
 
+-(instancetype)initWithTableModel:(TableModel*)tableModel;
+
 // Add one order in arrayOfOrdersModel from OrderModel.
 -(void)addOrder:(OrderModel*)orderModel;
 
 // Add few orders from array in arrayOfOrdersModel.
 -(void)addArrayOfOrders:(NSArray*)orderModel;
 
--(instancetype)initWithTableModel:(TableModel*)tableModel;
+// Remove one order at index.
+-(void)removeOrderAtIndex:(NSUInteger)index;
 
 @end

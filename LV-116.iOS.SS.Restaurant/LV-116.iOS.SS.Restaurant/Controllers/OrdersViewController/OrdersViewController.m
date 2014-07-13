@@ -22,11 +22,10 @@
 static const CGFloat kHeightOfHeaderSection    = 35.0f;
 
 static NSString *const kSegueToOrderItems      = @"segue_order_items";
+static NSString *const kImageOfSectionView     = @"arrow_down.png";
 
 @implementation OrdersViewController
 {
-    NSMutableArray *arrayOfImage;
-    
     NSMutableArray  *_arrayOfTableModelWithOrders;
     NSMutableArray  *_arrayOfFlags;
 }
@@ -45,8 +44,6 @@ static NSString *const kSegueToOrderItems      = @"segue_order_items";
 - (void) viewDidLoad
 {
     [super viewDidLoad];
-    
-    arrayOfImage = [[NSMutableArray alloc] init];
     
     [self setupSidebarConfigurationWithGesture: YES];
     
@@ -124,8 +121,9 @@ static NSString *const kSegueToOrderItems      = @"segue_order_items";
 // Load asynchronously orders on table.
 - (void)loadTableOrders:(UIButton *)sender
 {
-    [OrdersDataProvider loadTableOrdersDataWithTableId: ((TableModelWithOrders*)_arrayOfTableModelWithOrders[sender.tag]).Id responseBlock:^(NSArray *arrayOfOrderModel, NSError *error) {
-        
+    NSUInteger idOfTableModel = ((TableModelWithOrders*)_arrayOfTableModelWithOrders[sender.tag]).Id;
+    [OrdersDataProvider loadTableOrdersDataWithTableId: idOfTableModel
+                                         responseBlock: ^(NSArray *arrayOfOrderModel, NSError *error) {
         if ( error ) {
             dispatch_async( dispatch_get_main_queue(), ^{
                 [Alert showConnectionAlert];
@@ -134,12 +132,8 @@ static NSString *const kSegueToOrderItems      = @"segue_order_items";
         } else {
             
             dispatch_async( dispatch_get_main_queue(), ^{
-                
-                //                [((TableModelWithOrders*)_arrayOfTableWithOrder[sender.tag]).arrayOfOrdersModel addObject: arrayOfOrderModel];
-                
-                    //                    ((TableModelWithOrders*)_arrayOfTableWithOrder[sender.tag]).arrayOfOrdersModel = [[NSMutableArray alloc] init];
-                    [((TableModelWithOrders*)_arrayOfTableModelWithOrders[sender.tag]) addArrayOfOrders: arrayOfOrderModel];
-                
+
+                [((TableModelWithOrders*)_arrayOfTableModelWithOrders[sender.tag]) addArrayOfOrders: arrayOfOrderModel];
                 
                 [self didReceiveOrdersResponse:sender];
                 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
@@ -163,15 +157,13 @@ static NSString *const kSegueToOrderItems      = @"segue_order_items";
     [_arrayOfFlags replaceObjectAtIndex: sender.tag
                              withObject: [NSNumber numberWithBool: !isOpen] ];
     
-    NSLog(@"%d", sender.tag);
-    
     
     if ( isOpen ) {
-        ((UIImageView*)arrayOfImage[sender.tag]).transform = CGAffineTransformMakeRotation( 0 );
         ((TableModelWithOrders*)_arrayOfTableModelWithOrders[sender.tag]).arrayOfOrdersModel = nil;
+        
         [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
     } else {
-        ((UIImageView*)arrayOfImage[sender.tag]).transform = CGAffineTransformMakeRotation( M_PI_2 *2 );
+        
         [self.tableView insertRowsAtIndexPaths:indexPaths  withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }
@@ -202,65 +194,6 @@ static NSString *const kSegueToOrderItems      = @"segue_order_items";
     return numberOfOrders;
 }
 
-// Create button for each section.
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    UIView *sectionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, kHeightOfHeaderSection)];
-    UIButton *sectionButton = [self createSectionButton: section];
-    
-    
-    UIImage *image = [UIImage imageNamed: @"down_arrow.jpg"];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage: image];
-    
-    
-    
-    [sectionButton addSubview: imageView ];
-    [sectionView addSubview: sectionButton];
-    
-    // We need this array of imageView because image will turn over when we will clicked.
-    [arrayOfImage addObject: imageView];
-    
-    // Set coordinates and width, height of imageView (our image).
-    NSUInteger xImage = self.tableView.frame.size.width - 40;
-    NSUInteger yImage = 5;
-    NSUInteger widthImage = 24;
-    NSUInteger heightImage = 24;
-    
-    imageView.frame = CGRectMake(xImage, yImage, widthImage, heightImage);
-    
-    // Added bottom border for each sectionView.
-    CALayer *bottomBorder = [CALayer layer];
-    bottomBorder.frame = CGRectMake(0.0f, 0, self.tableView.frame.size.width, 1);
-    bottomBorder.backgroundColor = [UIColor colorWithWhite:0.8f
-                                                     alpha:1.0f].CGColor;
-    [sectionView.layer addSublayer: bottomBorder];
-    
-    
-    return sectionView;  //  if you need - return sectionView
-}
-// Create and set settings for section button
-- (UIButton*)createSectionButton:(NSInteger)section
-{
-    UIButton *sectionButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    sectionButton.tag = section;
-    
-    
-    NSString *tempStr = [@"Table #" stringByAppendingString: ((TableModelWithOrders*)_arrayOfTableModelWithOrders[section]).name];
-    
-    [sectionButton setTitle: tempStr
-                   forState: UIControlStateNormal];
-    [sectionButton setTitleColor:[UIColor blackColor]
-                        forState:UIControlStateNormal];
-    
-    [sectionButton addTarget: self
-                      action: @selector(didSelectSection:)
-            forControlEvents: UIControlEventTouchUpInside];
-    
-    sectionButton.frame = CGRectMake(0, 0, self.tableView.frame.size.width, kHeightOfHeaderSection);
-    
-    return sectionButton;
-}
-
 // Create cells for header section.
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -278,16 +211,94 @@ static NSString *const kSegueToOrderItems      = @"segue_order_items";
     return cell;
 }
 
+// Create button for each section.
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *sectionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, kHeightOfHeaderSection)];
+    UIButton *sectionButton = [self createSectionButton: section];
+    
+    
+    // Adding subviews and layer in UIView.
+    [sectionView.layer addSublayer: [self createBottomBorder]];            // Adding bottom border.
+
+    [sectionView addSubview: sectionButton];                               // Adding section buttonMaybe make sense [sectionView addSubview: [self createSectionButton: section]]; I don't know.
+    
+    
+    return sectionView;  //  if you need - return sectionView
+}
+// Create and setting bottom border.
+- (CALayer *)createBottomBorder
+{
+    // Added bottom border for each sectionView.
+    CGFloat colorWithWhite = 0.8f;
+    CGFloat alphaColor     = 1.0f;
+    
+    CALayer *bottomBorder = [CALayer layer];
+    bottomBorder.frame = CGRectMake(0, 0, self.tableView.frame.size.width, 1);
+    bottomBorder.backgroundColor = [UIColor colorWithWhite: colorWithWhite
+                                                     alpha: alphaColor].CGColor;
+    return bottomBorder;
+}
+// Create and set settings for section button
+- (UIButton*)createSectionButton:(NSUInteger)section
+{
+    UIButton *sectionButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    sectionButton.tag = section;        // We'll use this value when we will have clicked on button.
+    
+    
+    NSString *tempStr = [@"Table " stringByAppendingString: ((TableModelWithOrders*)_arrayOfTableModelWithOrders[section]).name];
+    
+    [sectionButton setTitle: tempStr
+                   forState: UIControlStateNormal];
+    [sectionButton setTitleColor:[UIColor blackColor]
+                        forState:UIControlStateNormal];
+    
+    [sectionButton addTarget: self
+                      action: @selector(didSelectSection:)
+            forControlEvents: UIControlEventTouchUpInside];
+    
+    sectionButton.frame = CGRectMake(0, 0, self.tableView.frame.size.width, kHeightOfHeaderSection);
+    
+    [sectionButton addSubview: [self createImageView: section] ];          // Adding imageView on button.
+    
+    return sectionButton;
+}
+// Create and setting imageView for UIView.
+-(UIImageView*)createImageView:(NSUInteger)section
+{
+    UIImage *image = [UIImage imageNamed: kImageOfSectionView];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage: image];
+    
+    // Set coordinates and width, height of imageView (our image).
+    NSUInteger xImage      = self.tableView.frame.size.width - 40;
+    NSUInteger yImage      = 5;
+    NSUInteger widthImage  = 23;
+    NSUInteger heightImage = 23;
+    
+    imageView.frame = CGRectMake(xImage, yImage, widthImage, heightImage);
+    
+    
+    return imageView;
+}
+
+
 #pragma mark - Handle user click.
+
 
 // Handle click on some section header.
 - (void)didSelectSection:(UIButton*)sender
 {
+    CGFloat degreeTransform = 0.0;
+    
     if( [_arrayOfFlags[sender.tag] intValue] == 0 ){
         [self loadTableOrders:sender];
+        degreeTransform = M_PI_2*2;
     } else {
         [self didReceiveOrdersResponse: sender];
+        degreeTransform = 0.0; // or some other
     }
+    // subviews[1] keeps UIImageView.
+    ((UIImageView*)sender.subviews[1]).transform = CGAffineTransformMakeRotation( degreeTransform );
 }
 
 // Handle click on cell of add (the last cell).
@@ -300,20 +311,18 @@ static NSString *const kSegueToOrderItems      = @"segue_order_items";
         [((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]) addOrder: orderModel];
         
         
-        [OrdersDataProvider postTableOrderWithTableId:((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]).Id responseBlock:^(NSError *error) {
-            if( error ) {
-                [Alert showHTTPMethodsAlert: error];
-            }
-        } ];
+        [OrdersDataProvider postTableOrderWithTableId: ((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]).Id
+                                        responseBlock: ^(NSError *error) {
+                                            if( error ) {
+                                                [Alert showHTTPMethodsAlert: error];
+                                            }
+                                        }
+         ];
         
         [self.tableView reloadData];
     } else {
-//        OrderItemsViewController *orderItemsViewController = [[OrderItemsViewController alloc] init];
-//        
-//        [self.navigationController pushViewController: orderItemsViewController
-//                                             animated: YES];
-        
-        [self performSegueWithIdentifier: @"segue_order_items" sender: self];
+        [self performSegueWithIdentifier: kSegueToOrderItems
+                                  sender: self];
     }
 }
 
@@ -321,12 +330,12 @@ static NSString *const kSegueToOrderItems      = @"segue_order_items";
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView beginUpdates];
-    if (editingStyle == UITableViewCellEditingStyleDelete)
-    {
+    if ( editingStyle == UITableViewCellEditingStyleDelete ) {
+        
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-
-        // Not all orders deleted. Maybe because some orders have items (don't empties).
+        
         NSUInteger orderId = ((OrderModel*)((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]).arrayOfOrdersModel[indexPath.row]).Id;
+        
         [OrdersDataProvider deleteTableOrderWithOrderId: orderId
                                           responseBlock: ^(NSError *error) {
                                               if( error ) {
@@ -335,10 +344,9 @@ static NSString *const kSegueToOrderItems      = @"segue_order_items";
                                           }
          ];
         
+        [((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]) removeOrderAtIndex: indexPath.row];
         
-        [((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]).arrayOfOrdersModel removeObjectAtIndex:indexPath.row];
-        
-    } else if(editingStyle == UITableViewCellEditingStyleInsert){
+    } else if( editingStyle == UITableViewCellEditingStyleInsert ){
         // Here handle UITableViewCellEditingStyleInsert if we need.
     }
     [tableView endUpdates];

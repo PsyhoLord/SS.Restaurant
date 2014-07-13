@@ -38,6 +38,13 @@
 
 }
 
+// Remove one order at index.
+-(void)removeOrderAtIndex:(NSUInteger)index
+{
+    if( self.arrayOfOrdersModel != nil ){
+        [self.arrayOfOrdersModel removeObjectAtIndex: index];
+    }
+}
 
 
 
