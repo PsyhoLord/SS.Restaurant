@@ -19,8 +19,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="3oh-ol-0m6"/>
                     <connections>
-                        <segue destination="sCM-Jg-aPl" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegue" id="7Dd-kz-4Ow"/>
                         <segue destination="1Pv-4g-4Dc" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegue" id="fIX-qD-XeS"/>
+                        <segue destination="sCM-Jg-aPl" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="0Sz-wK-e4N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Aw-H3-w0r" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -68,10 +68,10 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <segue destination="5AU-UM-i95" kind="custom" identifier="sw_segue_home" customClass="SWRevealViewControllerSegue" id="Za4-h2-KxW"/>
-                        <segue destination="NPD-Tr-GqD" kind="custom" identifier="sw_segue_map" customClass="SWRevealViewControllerSegue" id="2cT-Eh-BFR"/>
-                        <segue destination="b8q-Hv-z2Q" kind="custom" identifier="sw_segue_orders" customClass="SWRevealViewControllerSegue" id="gCH-G4-IWz"/>
-                        <segue destination="cMh-My-IIx" kind="custom" identifier="sw_segue_menu" customClass="SWRevealViewControllerSegue" id="nGc-QS-9fF"/>
+                        <segue destination="Zyg-Cv-3T2" kind="custom" identifier="sw_segue_orders" customClass="SWRevealViewControllerSeguePushController" id="QtC-CT-gSi"/>
+                        <segue destination="GVN-bq-V1b" kind="custom" identifier="sw_segue_menu" customClass="SWRevealViewControllerSeguePushController" id="8Li-RK-7Rz"/>
+                        <segue destination="mWr-FZ-xfD" kind="custom" identifier="sw_segue_map" customClass="SWRevealViewControllerSeguePushController" id="fPL-dw-t03"/>
+                        <segue destination="sCM-Jg-aPl" kind="custom" identifier="sw_segue_home" customClass="SWRevealViewControllerSeguePushController" id="rLw-tV-qEA"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UcF-eM-uEk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -118,7 +118,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KQe-ux-jO3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="121" y="-618"/>
+            <point key="canvasLocation" x="877" y="-642"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QnK-L2-3VN">
@@ -133,7 +133,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dIK-dS-OQU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-534" y="800"/>
+            <point key="canvasLocation" x="126" y="800"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="dbN-KY-mCW">
@@ -223,7 +223,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LLg-OC-OYn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="121" y="800"/>
+            <point key="canvasLocation" x="877" y="800"/>
         </scene>
         <!--Orders View Controller-->
         <scene sceneID="wwa-qJ-q7l">
@@ -250,7 +250,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s5A-pT-33X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="121" y="103"/>
+            <point key="canvasLocation" x="877" y="84"/>
         </scene>
         <!--Order Items View Controller-->
         <scene sceneID="MOX-kb-Ulk">
@@ -263,7 +263,7 @@
                         <gestureRecognizers/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OrderItemCell" id="jeG-Ww-p2G" customClass="OrderItemCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jeG-Ww-p2G" id="4fB-3D-aOF">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -307,7 +307,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OrderTotallCellIdentifier" id="awL-Ka-Hpl" customClass="OrderTotallCell">
-                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="130" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="awL-Ka-Hpl" id="8AK-vC-Zky">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -360,7 +360,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="705" y="103"/>
+            <point key="canvasLocation" x="1461" y="84"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="cjE-5r-DwY">
@@ -373,7 +373,7 @@
                         <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MenuCategoryCellIdentifier" rowHeight="50" id="qWm-62-fVu" customClass="MenuCategoryCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="50"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qWm-62-fVu" id="KrI-4b-2ec">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -398,7 +398,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MenuItemCellIdentifier" rowHeight="70" id="A5O-mA-N9e" customClass="MenuItemCell">
-                                <rect key="frame" x="0.0" y="72" width="320" height="70"/>
+                                <rect key="frame" x="0.0" y="136" width="320" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="A5O-mA-N9e" id="Qg6-aS-hB5">
                                     <rect key="frame" x="0.0" y="0.0" width="273" height="69"/>
@@ -454,7 +454,22 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="121" y="-1302"/>
+            <point key="canvasLocation" x="877" y="-1358"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MPC-cC-xJ6">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="mWr-FZ-xfD" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zFM-Iq-gZ8">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="NPD-Tr-GqD" kind="relationship" relationship="rootViewController" id="v2H-b4-nQd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2gz-kX-Trw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="121" y="-642"/>
         </scene>
         <!--Waiter Menu View Controller-->
         <scene sceneID="kWk-1V-uur">
@@ -467,7 +482,7 @@
                         <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MenuCategoryCellIdentifier" rowHeight="50" id="8hX-8h-r2C" customClass="MenuCategoryCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="50"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8hX-8h-r2C" id="RiA-7u-2VQ">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -492,7 +507,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MenuItemCellIdentifier" rowHeight="70" id="TPJ-YK-O2a" customClass="MenuItemCell">
-                                <rect key="frame" x="0.0" y="72" width="320" height="70"/>
+                                <rect key="frame" x="0.0" y="136" width="320" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TPJ-YK-O2a" id="Le7-Db-mj1">
                                     <rect key="frame" x="0.0" y="0.0" width="273" height="69"/>
@@ -553,7 +568,22 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1265" y="103"/>
+            <point key="canvasLocation" x="2021" y="84"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6jo-1O-Ya1">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="Zyg-Cv-3T2" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bHk-51-IfG">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="b8q-Hv-z2Q" kind="relationship" relationship="rootViewController" id="Pji-Ml-aK7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A6q-RO-mqU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="121" y="84"/>
         </scene>
         <!--Item Description View Controller-->
         <scene sceneID="ESC-J2-DuA">
@@ -650,7 +680,22 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="872" y="-1302"/>
+            <point key="canvasLocation" x="1461" y="-1358"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Utr-y5-j0E">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="GVN-bq-V1b" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VeM-9l-pU5">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="cMh-My-IIx" kind="relationship" relationship="rootViewController" id="6S0-e5-FFl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9FL-2B-Btf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="121" y="-1358"/>
         </scene>
     </scenes>
     <resources>
@@ -663,8 +708,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="CBA-MG-BoC"/>
-        <segue reference="nGc-QS-9fF"/>
+        <segue reference="rLw-tV-qEA"/>
+        <segue reference="6S0-e5-FFl"/>
         <segue reference="XwQ-tH-eVK"/>
     </inferredMetricsTieBreakers>
 </document>
