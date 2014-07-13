@@ -8,6 +8,7 @@
 
 #import "ItemDescriptionViewController.h"
 #import "SWRevealViewController.h"
+#import "SidebarViewController+ConfigurationForOtherViewControllers.h"
 
 #import "MenuDataProvider.h"
 #import "MenuItemModel.h"
@@ -39,8 +40,12 @@
     [super viewDidLoad];
     // Set IBOtlets.
     [self drawDescriptionWithModel: _menuItemModel];
+    
     [self setupGestureRecognizerConfiguration];
-    [self setupSidebarConfigurationWithGesture: NO];
+    
+    [SidebarViewController setupSidebarConfigurationForViewController: self
+                                                        sidebarButton: self.sidebarButton
+                                                            isGesture: NO];
 }
 
 
@@ -68,23 +73,6 @@
                                   }
          ];
         
-    }
-}
-
-// set sidebare configuration
-// (BOOL)addGesture - if YES, go to sidebar by pan gesture
-- (void) setupSidebarConfigurationWithGesture: (BOOL)addGesture
-{
-    // Change button color
-    _sidebarButton.tintColor = [UIColor colorWithWhite: 0.1f alpha: 0.9f];
-    
-    // Set the side bar button action. When it's tapped, it'll show up the sidebar.
-    _sidebarButton.target = self.revealViewController;
-    _sidebarButton.action = @selector(revealToggle:);
-    
-    if ( addGesture ) {
-        // Set the gesture
-        [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
     }
 }
 

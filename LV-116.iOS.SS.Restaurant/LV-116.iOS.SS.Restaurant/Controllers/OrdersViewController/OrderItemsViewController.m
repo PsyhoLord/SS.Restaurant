@@ -9,7 +9,7 @@
 
 
 #import "OrderItemsViewController.h"
-#import "SWRevealViewController.h"
+#import "SidebarViewController+ConfigurationForOtherViewControllers.h"
 
 #import "OrderModel.h"
 #import "OrderItemModel.h"
@@ -68,8 +68,6 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
         [_currentOrder.arrayOfOrderItems addObject: addOrderItem];
         
     }
-    
-    
 }
 
 
@@ -77,28 +75,13 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
 {
     [super viewDidLoad];
     
+    [SidebarViewController setupSidebarConfigurationForViewController: self
+                                                        sidebarButton: self.sidebarButton
+                                                            isGesture: NO];
+    
     _currentOrder = [[OrderModel alloc] init];
     
     [super viewDidLoad];
-}
-
-#pragma mark - Configuration
-
-// set sidebare configuration
-// (BOOL)addGesture - if YES, go to sidebar by pan gesture
-- (void) setupSidebarConfigurationWithGesture: (BOOL)addGesture
-{
-    // Change button color
-    _sidebarButton.tintColor = [UIColor colorWithWhite: 0.1f alpha: 0.9f];
-    
-    // Set the side bar button action. When it's tapped, it'll show up the sidebar.
-    _sidebarButton.target = self.revealViewController;
-    _sidebarButton.action = @selector(revealToggle:);
-    
-    if ( addGesture ) {
-        // Set the gesture
-        [self.tableView addGestureRecognizer: self.revealViewController.panGestureRecognizer];
-    }
 }
 
 // set gesture
@@ -157,8 +140,7 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
         
         return orderItemCell;
         
-    }
-    else {
+    } else {
         
         OrderTotallCell *orderTotalCell = [self.tableView dequeueReusableCellWithIdentifier: kOrderTotallIdentifier];
         
@@ -175,9 +157,7 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
 //Adding new OrderItem to order, calling this method from OrderTotallCell
 - (void) addNewOrderItem
 {
-   
     [self performSegueWithIdentifier: kSegueToMenuForAddItem sender: self];
-    
 }
 
 // do smth before segue on next scrin - WaiterMenuViewController

@@ -8,7 +8,10 @@
 
 #import "MenuViewController.h"
 #import "Alert.h"
+
+#import "SWRevealViewController.h"
 #import "SidebarViewController.h"
+#import "SidebarViewController+ConfigurationForOtherViewControllers.h"
 
 #import "MenuItemCell.h"
 #import "MenuCategoryCell.h"
@@ -19,7 +22,6 @@
 #import "MenuItemModel.h"
 
 #import "ItemDescriptionViewController.h"
-#import "SWRevealViewController.h"
 
 #import "UserRole.h"
 
@@ -41,8 +43,10 @@ static const CGFloat kHeightForMenuItemCell     = 70.0f;
 {
     [super viewDidLoad];
     
-    [self setupSidebarConfigurationWithGesture: _isNeedGestureForCallSidebar];
-
+    [SidebarViewController setupSidebarConfigurationForViewController: self
+                                                        sidebarButton: self.sidebarButton
+                                                            isGesture: _isGestureForCallSidebar];
+    
     [self setupRefreshControl];
     
     if ( _currentCategory == nil ) {
@@ -50,25 +54,6 @@ static const CGFloat kHeightForMenuItemCell     = 70.0f;
     }
     
     [self setupGestureRecognizerConfiguration];
-}
-
-#pragma mark - Configurations
-
-// set sidebare configuration
-// (BOOL)addGesture - if YES, go to sidebar by pan gesture
-- (void) setupSidebarConfigurationWithGesture: (BOOL)addGesture
-{
-    // Change button color
-    _sidebarButton.tintColor = [UIColor colorWithWhite: 0.1f alpha: 0.9f];
-    
-    // Set the side bar button action. When it's tapped, it'll show up the sidebar.
-    _sidebarButton.target = self.revealViewController;
-    _sidebarButton.action = @selector(revealToggle:);
-    
-    if ( addGesture ) {
-        // Set the gesture
-        [self.tableView addGestureRecognizer: self.revealViewController.panGestureRecognizer];
-    }
 }
 
 // set refresh control

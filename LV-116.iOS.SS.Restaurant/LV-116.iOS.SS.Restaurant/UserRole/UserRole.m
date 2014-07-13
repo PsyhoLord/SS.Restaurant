@@ -41,7 +41,7 @@ static const char *const kSyncQueueIdentifier = "SyncQueueIdentifier";
 // set enum of current user
 - (void) setEnumUserRole: (EnumUserRole)enumUserRole
 {
-    dispatch_barrier_async(_syncQueue, ^{
+    dispatch_sync(_syncQueue, ^{
         _enumUserRole = enumUserRole;
     });
 }

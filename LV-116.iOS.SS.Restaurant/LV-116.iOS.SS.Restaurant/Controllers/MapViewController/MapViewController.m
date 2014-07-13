@@ -7,12 +7,16 @@
 //
 
 #import "MapViewController.h"
+
+#import "SidebarViewController+ConfigurationForOtherViewControllers.h"
+
 #import "TableView.h"
+
 #import "MapDataProvider.h"
 #import "MapModel.h"
 #import "TableModel.h"
+
 #import "Alert.h"
-#import "SWRevealViewController.h"
 
 @implementation MapViewController
 {
@@ -27,7 +31,9 @@
 {
     [super viewDidLoad];
     
-    [self setupSidebarConfigurationWithGesture: NO];
+    [SidebarViewController setupSidebarConfigurationForViewController: self
+                                                        sidebarButton: self.sidebarButton
+                                                            isGesture: NO];
     
     // init _tableViews
     _tableViews = [[NSMutableArray alloc] init];
@@ -35,22 +41,6 @@
     [self loadMapData];
 }
 
-// set sidebare configuration
-// (BOOL)addGesture - if YES, go to sidebar by pan gesture
-- (void) setupSidebarConfigurationWithGesture: (BOOL)addGesture
-{
-    // Change button color
-    _sidebarButton.tintColor = [UIColor colorWithWhite: 0.1f alpha: 0.9f];
-    
-    // Set the side bar button action. When it's tapped, it'll show up the sidebar.
-    _sidebarButton.target = self.revealViewController;
-    _sidebarButton.action = @selector(revealToggle:);
-    
-    if ( addGesture ) {
-        // Set the gesture
-        [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
-    }
-}
 
 // create button with characteristic of the current TableModel
 // (TableModel*)TableModel - model of one TableModel
