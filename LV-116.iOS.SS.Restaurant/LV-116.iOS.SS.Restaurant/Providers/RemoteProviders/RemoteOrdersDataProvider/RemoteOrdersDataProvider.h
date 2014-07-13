@@ -17,6 +17,7 @@
 // Delete the one order on table using orderId.
 + (void)deleteTableOrderWithOrderId:(int)orderId responseBlock:(void (^)(NSError*))callback;
 
+// Post the new order on table using tableId.
 + (void)postTableOrderWithTableId:(int)tableId responseBlock:(void (^)(NSError*))callback;
 
 @end

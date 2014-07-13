@@ -7,16 +7,20 @@
 //
 
 #import "RemoteOrdersDataProvider.h"
-#import "RequestManager.h"
 #import "OrdersDataParser.h"
 
-static NSString *const kDeleteOrderURL       = @"http://192.168.195.212/Restaurant/api/Orders/%d";
-static NSString *const kPostTableOrderURL    = @"http://192.168.195.212/Restaurant/api/Orders?tableId=%d";
-static NSString *const kLoadTableOrdersURL   = @"http://192.168.195.212/Restaurant/api/Orders?tableId=%d";
+#import "RequestManager.h"
+#import "RequestMaker.h"
 
-static const CGFloat kRequestTimeoutInterval = 3.0;
+
+static NSString *const kURLDeleteOrder       = @"http://192.168.195.212/Restaurant/api/Orders/%d";
+static NSString *const kURLPostTableOrder    = @"http://192.168.195.212/Restaurant/api/Orders?tableId=%d";
+static NSString *const kURLGetTableOrders   = @"http://192.168.195.212/Restaurant/api/Orders?tableId=%d";
+
+static const NSUInteger kMaxAttemptsForRequest = 3;
 
 @implementation RemoteOrdersDataProvider
+
 
 #pragma mark - Load table orders.
 
@@ -24,7 +28,8 @@ static const CGFloat kRequestTimeoutInterval = 3.0;
 + (void)loadTableOrdersWithId:(int)tableId responseBlock:(void (^)(NSArray*, NSError*))callback
 {
     
-    NSURLRequest *URLRequest = [RemoteOrdersDataProvider getURLRequest:tableId];
+    NSURLRequest *URLRequest = [RequestMaker getRequestWithURL: kURLGetTableOrders
+                                                       idOfURL: tableId];
     
     [RequestManager send: URLRequest
            responseBlock: ^(NSHTTPURLResponse *response, NSData *data, NSError *error) {
@@ -37,18 +42,7 @@ static const CGFloat kRequestTimeoutInterval = 3.0;
                callback(arrayOfOrderModel, error);
                
            }
-         countOfAttempts: 3];
-}
-// Set request using url with tableId.
-+ (NSURLRequest *)getURLRequest:(int)tableId
-{
-    NSString *urlString = [NSString stringWithFormat: kLoadTableOrdersURL, tableId];
-    NSURL *URL = [[NSURL alloc] initWithString: urlString];
-    
-    NSURLRequest *URLRequest = [NSURLRequest requestWithURL: URL
-                                                cachePolicy: NSURLRequestUseProtocolCachePolicy
-                                            timeoutInterval: kRequestTimeoutInterval];
-    return URLRequest;
+         countOfAttempts: kMaxAttemptsForRequest];
 }
 
 #pragma mark - HTTP methods.
@@ -57,74 +51,35 @@ static const CGFloat kRequestTimeoutInterval = 3.0;
 // Delete the one order on table using orderId. 
 + (void)deleteTableOrderWithOrderId:(int)orderId responseBlock:(void (^)(NSError*))callback
 {
-    NSURLRequest *URLRequest = [RemoteOrdersDataProvider getURLDeleteRequest: orderId];
+    NSURLRequest *URLRequest = [RequestMaker getDeleteRequestWithURL: kURLDeleteOrder
+                                                             idOfURL: orderId];
     
     [RequestManager send: URLRequest
            responseBlock: ^(NSHTTPURLResponse *response, NSData *data, NSError *error) {
                // call block from hight layer - DataProvider
                callback(error);
            }
-         countOfAttempts: 3];
+         countOfAttempts: kMaxAttemptsForRequest];
 }
+
 // Set request using url with orderId.
-+ (NSURLRequest *)getURLDeleteRequest:(int)orderId
-{
-    NSString *urlString = [NSString stringWithFormat: kDeleteOrderURL, orderId];
-    NSURL *URL = [[NSURL alloc] initWithString: urlString];
-    
-    NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL: URL
-                                                              cachePolicy: NSURLRequestUseProtocolCachePolicy
-                                                          timeoutInterval: kRequestTimeoutInterval];
-    
-    [URLRequest setHTTPMethod: @"DELETE" ];
-    [URLRequest setValue: @"application/json" forHTTPHeaderField: @"Accept"];
-    //    [URLRequest setValue:@"192.168.195.212" forHTTPHeaderField:@"Host"];
-    
-    return URLRequest;
-}
+
+
 
 #pragma mark - POST.
 
-// Delete the one order on table using orderId.
+// Post the new order on table using tableId.
 + (void)postTableOrderWithTableId:(int)tableId responseBlock:(void (^)(NSError*))callback
 {
-    NSURLRequest *URLRequest = [RemoteOrdersDataProvider getURLPostRequest: tableId];
+    NSURLRequest *URLRequest = [RequestMaker getPostRequestWithURL: kURLPostTableOrder idOfURL:tableId];
     
     [RequestManager send: URLRequest
            responseBlock: ^(NSHTTPURLResponse *response, NSData *data, NSError *error) {
                // call block from hight layer - DataProvider
                callback(error);
            }
-         countOfAttempts: 3];
+         countOfAttempts: kMaxAttemptsForRequest];
 }
-// Set request using url with orderId.
-+ (NSURLRequest *)getURLPostRequest:(int)tableId
-{
-    NSString *urlString = [NSString stringWithFormat: kPostTableOrderURL, tableId];
-    NSURL *URL = [[NSURL alloc] initWithString: urlString];
-    
-    NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL: URL
-                                                              cachePolicy: NSURLRequestUseProtocolCachePolicy
-                                                          timeoutInterval: kRequestTimeoutInterval];
-    
-    
-    
-    NSArray *objects = @[@"Id", @"Closed", @"tableId", @"timestamp", @"table", @"userId"];
-    NSArray *keys = @[@"161", @"false", @"13", @"", @"null", @"1049"];
-    NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithObjects:objects forKeys:keys];
-    
-    NSError *error = nil;
-    NSData * JSONData = [NSJSONSerialization dataWithJSONObject: dict
-                                                        options: kNilOptions
-                                                          error: &error];
-    
-    [URLRequest setHTTPMethod: @"POST"];
-    [URLRequest setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [URLRequest setValue:@"192.168.195.212" forHTTPHeaderField:@"Host"];
-    
-    [URLRequest setHTTPBody: JSONData];
-    
-    return URLRequest;
-}
+
 
 @end
