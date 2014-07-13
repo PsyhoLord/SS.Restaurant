@@ -29,12 +29,13 @@
 		576B6F6C197171D000CEC6BF /* OrderItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 576B6F65197171D000CEC6BF /* OrderItemCell.m */; };
 		576B6F6D197171D000CEC6BF /* OrderItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 576B6F67197171D000CEC6BF /* OrderItemsViewController.m */; };
 		576B6F6E197171D000CEC6BF /* OrderTotallCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 576B6F6A197171D000CEC6BF /* OrderTotallCell.m */; };
+		ED0787271972E68C0064C0E1 /* SidebarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0787211972E68C0064C0E1 /* SidebarTableViewCell.m */; };
+		ED0787281972E68C0064C0E1 /* SidebarViewController+ConfigurationForOtherViewControllers.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0787241972E68C0064C0E1 /* SidebarViewController+ConfigurationForOtherViewControllers.m */; };
+		ED0787291972E68C0064C0E1 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0787261972E68C0064C0E1 /* SidebarViewController.m */; };
 		ED35A85D1971933E006F91F6 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = ED35A85A1971933E006F91F6 /* menu.png */; };
 		ED35A85E1971933E006F91F6 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED35A85B1971933E006F91F6 /* menu@2x.png */; };
-		ED3A298A196EDBC100970B48 /* SidebarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3A2989196EDBC100970B48 /* SidebarTableViewCell.m */; };
 		ED42A3ED196C32FA00A63656 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3C6196C32FA00A63656 /* MapViewController.m */; };
 		ED42A3EE196C32FA00A63656 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3C9196C32FA00A63656 /* TableView.m */; };
-		ED42A3FA196C32FA00A63656 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3E4196C32FA00A63656 /* SidebarViewController.m */; };
 		ED42A3FB196C32FA00A63656 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42A3E7196C32FA00A63656 /* SWRevealViewController.m */; };
 		ED5B2DF4196D21060070FF98 /* UserRole.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5B2DF3196D21060070FF98 /* UserRole.m */; };
 		ED5B2E0E196D218F0070FF98 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5B2E0D196D218F0070FF98 /* HomeViewController.m */; };
@@ -127,16 +128,18 @@
 		576B6F69197171D000CEC6BF /* OrderTotallCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderTotallCell.h; sourceTree = "<group>"; };
 		576B6F6A197171D000CEC6BF /* OrderTotallCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderTotallCell.m; sourceTree = "<group>"; };
 		576B6F6B197171D000CEC6BF /* POrderItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POrderItems.h; sourceTree = "<group>"; };
+		ED0787201972E68C0064C0E1 /* SidebarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarTableViewCell.h; sourceTree = "<group>"; };
+		ED0787211972E68C0064C0E1 /* SidebarTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarTableViewCell.m; sourceTree = "<group>"; };
+		ED0787231972E68C0064C0E1 /* SidebarViewController+ConfigurationForOtherViewControllers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SidebarViewController+ConfigurationForOtherViewControllers.h"; sourceTree = "<group>"; };
+		ED0787241972E68C0064C0E1 /* SidebarViewController+ConfigurationForOtherViewControllers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SidebarViewController+ConfigurationForOtherViewControllers.m"; sourceTree = "<group>"; };
+		ED0787251972E68C0064C0E1 /* SidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarViewController.h; sourceTree = "<group>"; };
+		ED0787261972E68C0064C0E1 /* SidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarViewController.m; sourceTree = "<group>"; };
 		ED35A85A1971933E006F91F6 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
 		ED35A85B1971933E006F91F6 /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
-		ED3A2988196EDBC100970B48 /* SidebarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarTableViewCell.h; sourceTree = "<group>"; };
-		ED3A2989196EDBC100970B48 /* SidebarTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarTableViewCell.m; sourceTree = "<group>"; };
 		ED42A3C5196C32FA00A63656 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		ED42A3C6196C32FA00A63656 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		ED42A3C8196C32FA00A63656 /* TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView.h; sourceTree = "<group>"; };
 		ED42A3C9196C32FA00A63656 /* TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView.m; sourceTree = "<group>"; };
-		ED42A3E3196C32FA00A63656 /* SidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarViewController.h; sourceTree = "<group>"; };
-		ED42A3E4196C32FA00A63656 /* SidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarViewController.m; sourceTree = "<group>"; };
 		ED42A3E6196C32FA00A63656 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		ED42A3E7196C32FA00A63656 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		ED5B2DF2196D21060070FF98 /* UserRole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRole.h; sourceTree = "<group>"; };
@@ -462,6 +465,35 @@
 			name = OrderItemsController;
 			sourceTree = "<group>";
 		};
+		ED07871E1972E68C0064C0E1 /* SidebarViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ED07871F1972E68C0064C0E1 /* SidebarTableViewCell */,
+				ED0787221972E68C0064C0E1 /* SidebarViewController+ConfigurationForOtherViewControllers */,
+				ED0787251972E68C0064C0E1 /* SidebarViewController.h */,
+				ED0787261972E68C0064C0E1 /* SidebarViewController.m */,
+			);
+			path = SidebarViewController;
+			sourceTree = "<group>";
+		};
+		ED07871F1972E68C0064C0E1 /* SidebarTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				ED0787201972E68C0064C0E1 /* SidebarTableViewCell.h */,
+				ED0787211972E68C0064C0E1 /* SidebarTableViewCell.m */,
+			);
+			path = SidebarTableViewCell;
+			sourceTree = "<group>";
+		};
+		ED0787221972E68C0064C0E1 /* SidebarViewController+ConfigurationForOtherViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				ED0787231972E68C0064C0E1 /* SidebarViewController+ConfigurationForOtherViewControllers.h */,
+				ED0787241972E68C0064C0E1 /* SidebarViewController+ConfigurationForOtherViewControllers.m */,
+			);
+			path = "SidebarViewController+ConfigurationForOtherViewControllers";
+			sourceTree = "<group>";
+		};
 		ED35A8581971933E006F91F6 /* ToolbarIcons */ = {
 			isa = PBXGroup;
 			children = (
@@ -475,7 +507,7 @@
 			isa = PBXGroup;
 			children = (
 				ED42A3E5196C32FA00A63656 /* SwRevealViewController */,
-				ED42A3DE196C32FA00A63656 /* SidebarViewController */,
+				ED07871E1972E68C0064C0E1 /* SidebarViewController */,
 				229848771971A48500C7D56B /* ItemDescriptionViewController */,
 				ED7C31FE19715B6C00C76047 /* MenuViewController */,
 				EDD610FF197170FD00A70D4B /* WaiterMenuViewController */,
@@ -512,25 +544,6 @@
 				ED42A3C9196C32FA00A63656 /* TableView.m */,
 			);
 			path = TableView;
-			sourceTree = "<group>";
-		};
-		ED42A3DE196C32FA00A63656 /* SidebarViewController */ = {
-			isa = PBXGroup;
-			children = (
-				ED42A3DF196C32FA00A63656 /* SidebarTableViewCell */,
-				ED42A3E3196C32FA00A63656 /* SidebarViewController.h */,
-				ED42A3E4196C32FA00A63656 /* SidebarViewController.m */,
-			);
-			path = SidebarViewController;
-			sourceTree = "<group>";
-		};
-		ED42A3DF196C32FA00A63656 /* SidebarTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				ED3A2988196EDBC100970B48 /* SidebarTableViewCell.h */,
-				ED3A2989196EDBC100970B48 /* SidebarTableViewCell.m */,
-			);
-			path = SidebarTableViewCell;
 			sourceTree = "<group>";
 		};
 		ED42A3E5196C32FA00A63656 /* SwRevealViewController */ = {
@@ -906,6 +919,7 @@
 				ED5B2DF4196D21060070FF98 /* UserRole.m in Sources */,
 				ED7C321019715B6C00C76047 /* MenuViewController.m in Sources */,
 				22A36707196F11BA002D27B7 /* RemoteMapDataProvider.m in Sources */,
+				ED0787291972E68C0064C0E1 /* SidebarViewController.m in Sources */,
 				22A366E6196F11A4002D27B7 /* MenuDataParser.m in Sources */,
 				22A36703196F11BA002D27B7 /* MapDataProvider.m in Sources */,
 				ED7C320D19715B6C00C76047 /* MenuItemCell.m in Sources */,
@@ -914,7 +928,6 @@
 				EDEC47291956F9950041B98B /* MapModel.m in Sources */,
 				576B6F6D197171D000CEC6BF /* OrderItemsViewController.m in Sources */,
 				22A366E7196F11A4002D27B7 /* OrdersDataParser.m in Sources */,
-				ED42A3FA196C32FA00A63656 /* SidebarViewController.m in Sources */,
 				22A36702196F11BA002D27B7 /* AuthorizationProvider.m in Sources */,
 				EDE50DF7193E110500ACA71D /* ServiceAgent.m in Sources */,
 				576B6F6E197171D000CEC6BF /* OrderTotallCell.m in Sources */,
@@ -922,16 +935,17 @@
 				22A36706196F11BA002D27B7 /* RemoteAuthorizationProvider.m in Sources */,
 				22346B58195F209000495B2A /* Alert.m in Sources */,
 				22A366D7196F10D2002D27B7 /* OrderItemModel.m in Sources */,
-				ED3A298A196EDBC100970B48 /* SidebarTableViewCell.m in Sources */,
 				FA336C2919335B950007CC76 /* main.m in Sources */,
 				EDEC472A1956F9950041B98B /* TableModel.m in Sources */,
 				2298487A1971A48500C7D56B /* ItemDescriptionViewController.m in Sources */,
 				2265A70519642B1B0059EC0E /* RequestManager.m in Sources */,
+				ED0787271972E68C0064C0E1 /* SidebarTableViewCell.m in Sources */,
 				ED7C320C19715B6C00C76047 /* MenuCategoryCell.m in Sources */,
 				570ABE93196C3EEF003DC398 /* OrdersViewController.m in Sources */,
 				22002A171972EF5400E6E7A2 /* RequestMaker.m in Sources */,
 				22A36709196F11BA002D27B7 /* RemoteOrdersDataProvider.m in Sources */,
 				ED42A3FB196C32FA00A63656 /* SWRevealViewController.m in Sources */,
+				ED0787281972E68C0064C0E1 /* SidebarViewController+ConfigurationForOtherViewControllers.m in Sources */,
 				22A366D8196F10D2002D27B7 /* OrderModel.m in Sources */,
 				ED5B2E0E196D218F0070FF98 /* HomeViewController.m in Sources */,
 				22A366E5196F11A4002D27B7 /* MapDataParser.m in Sources */,
