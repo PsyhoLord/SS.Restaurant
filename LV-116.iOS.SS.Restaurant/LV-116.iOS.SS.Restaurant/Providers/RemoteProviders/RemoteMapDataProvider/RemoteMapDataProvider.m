@@ -7,21 +7,25 @@
 //
 
 #import "RemoteMapDataProvider.h"
+
 #import "RequestManager.h"
+#import "RequestMaker.h"
+
 #import "MapModel.h"
 #import "MapDataParser.h"
 
 static NSString *const kStringURLMap                = @"http://192.168.195.212/Restaurant/api/tables";
 static NSString *const kStringURLDownloadMapImage   = @"http://192.168.195.212/Restaurant/Images/background.jpg";
-static const CGFloat kConnectionTimeoutInterval     = 3.0;
+
 static const int kMaxCountOfAttemptsForRequest      = 3;
 
 @implementation RemoteMapDataProvider
 
 + (void)loadMapDataWithBlock: (void (^)(MapModel *, NSError *))callback
 {
-    NSURLRequest *URLRequest = [RemoteMapDataProvider getURLRequestWithstring: kStringURLMap
-                                                           timeoutInterval: kConnectionTimeoutInterval];
+    NSURLRequest *URLRequest = [RequestMaker getRequestWithURL: kStringURLMap
+                                                       idOfURL: 0];
+    
     
     [RequestManager send: URLRequest
            responseBlock: ^(NSHTTPURLResponse *urlResponse, NSData *data, NSError *error) {
@@ -41,8 +45,8 @@ static const int kMaxCountOfAttemptsForRequest      = 3;
 // (void (^)(UIImage*, NSError*))callback - block which will be called when image is
 + (void) loadMapBackgroundImageWithBlock: (void (^)(UIImage*, NSError*))callback
 {
-    NSURLRequest *urlRequest = [RemoteMapDataProvider getURLRequestWithstring: kStringURLDownloadMapImage
-                                                              timeoutInterval: kConnectionTimeoutInterval];
+    NSURLRequest *urlRequest = [RequestMaker getRequestWithURL: kStringURLDownloadMapImage
+                                                       idOfURL: 0];
     
     [RequestManager send: urlRequest
            responseBlock: ^(NSHTTPURLResponse *urlResponse, NSData *data, NSError *error) {
@@ -56,15 +60,6 @@ static const int kMaxCountOfAttemptsForRequest      = 3;
                
            }
          countOfAttempts:kMaxCountOfAttemptsForRequest];
-}
-
-+ (NSURLRequest*) getURLRequestWithstring:(NSString*)stringURL timeoutInterval:(CGFloat)timeoutInterval
-{
-    NSURL *URL = [[NSURL alloc] initWithString: stringURL];
-    
-    return [NSURLRequest requestWithURL: URL
-                            cachePolicy: NSURLRequestUseProtocolCachePolicy
-                        timeoutInterval: timeoutInterval];
 }
 
 @end

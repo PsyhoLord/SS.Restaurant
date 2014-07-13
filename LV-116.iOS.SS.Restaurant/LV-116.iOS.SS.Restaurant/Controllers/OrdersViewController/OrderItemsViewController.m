@@ -194,7 +194,7 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
 {
     NSLog(@"%@", menuItem);
     OrderItemModel *newOrderItem = [[OrderItemModel alloc] initWithMenuItemModel:menuItem];
-    newOrderItem.countOfItem =1 ;
+    newOrderItem.countOfItem = 1 ;
     [_currentOrder.arrayOfOrderItems addObject:newOrderItem];
     [self.tableView reloadData];
 }

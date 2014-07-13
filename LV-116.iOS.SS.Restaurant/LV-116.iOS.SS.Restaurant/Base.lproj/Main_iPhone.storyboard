@@ -387,7 +387,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="UI_Arrow_1" translatesAutoresizingMaskIntoConstraints="NO" id="xDx-qx-tGo">
-                                            <rect key="frame" x="20" y="9" width="39" height="31"/>
+                                            <rect key="frame" x="20" y="9" width="31" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
@@ -481,7 +481,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="UI_Arrow_1" translatesAutoresizingMaskIntoConstraints="NO" id="fgi-N0-bpy">
-                                            <rect key="frame" x="20" y="9" width="39" height="31"/>
+                                            <rect key="frame" x="20" y="9" width="31" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
