@@ -39,7 +39,7 @@
 {
     [super viewDidLoad];
     // Set IBOtlets.
-    [self drawDescriptionWithModel: _menuItemModel];
+    [self drawDescriptionWithModel];
     
     [self setupGestureRecognizerConfiguration];
     
@@ -50,24 +50,24 @@
 
 
 
-- (void)drawDescriptionWithModel:(MenuItemModel*)menuItemModel
+- (void)drawDescriptionWithModel
 {
-    _itemName.text        = menuItemModel.name;
-    _itemDescription.text = menuItemModel.description;
-    _itemPrice.text       = [NSString stringWithFormat:@"%.2f$", menuItemModel.price];
-    _itemWeight.text      = [NSString stringWithFormat:@"%ldg",menuItemModel.portions];
+    _itemName.text        = _menuItemModel.name;
+    _itemDescription.text = _menuItemModel.description;
+    _itemPrice.text       = [NSString stringWithFormat:@"%.2f$", _menuItemModel.price];
+    _itemWeight.text      = [NSString stringWithFormat:@"%ldg",_menuItemModel.portions];
     
-    if ( menuItemModel.image ) {
-        _itemImage.image = menuItemModel.image;
+    if ( _menuItemModel.image ) {
+        _itemImage.image = _menuItemModel.image;
     } else {
         
         // Download image if model hasn't.
-        [MenuDataProvider loadMenuItemImage: menuItemModel
+        [MenuDataProvider loadMenuItemImage: _menuItemModel
                                   withBlock: ^(UIImage *itemImage, NSError *error) {
                                       if ( error ) {
                                           // [Alert showConnectionAlert];
                                       } else {
-                                          menuItemModel.image = itemImage;
+                                          _menuItemModel.image = itemImage;
                                           _itemImage.image = itemImage;
                                       }
                                   }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="gOy-F6-dCa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="gOy-F6-dCa">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -637,7 +637,7 @@
                         <outlet property="_itemDescription" destination="brs-sk-E4I" id="NTy-9D-uhO"/>
                         <outlet property="_itemImage" destination="fwA-Zk-alF" id="Qtb-EF-YGD"/>
                         <outlet property="_itemName" destination="Bt8-Dv-RIt" id="sI9-j1-LAd"/>
-                        <outlet property="_itemPrice" destination="LSq-6Y-esz" id="fMn-JW-PeY"/>
+                        <outlet property="_itemPrice" destination="LSq-6Y-esz" id="ZWe-u1-YPf"/>
                         <outlet property="_itemWeight" destination="0mc-Mr-Pb9" id="OoV-A6-a43"/>
                         <outlet property="_swipeGestureRecognizer" destination="ZSX-Rv-xBo" id="JTp-C8-Kf6"/>
                         <outlet property="sidebarButton" destination="y0N-Sw-4KE" id="DQe-UG-u96"/>

@@ -47,7 +47,9 @@ static NSString *const kImageOfSectionView     = @"arrow_down.png";
 {
     [super viewDidLoad];
     
-    [self setupSidebarConfigurationWithGesture: YES];
+    [SidebarViewController setupSidebarConfigurationForViewController: self
+                                                        sidebarButton: self.sidebarButton
+                                                            isGesture: YES];
     
     [self loadMapData];
 }

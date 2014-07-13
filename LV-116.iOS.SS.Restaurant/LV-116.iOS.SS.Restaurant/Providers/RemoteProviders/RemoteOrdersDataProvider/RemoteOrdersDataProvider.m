@@ -40,7 +40,6 @@ static const NSUInteger kMaxAttemptsForRequest = 3;
                }
                // call block from hight layer - DataProvider
                callback(arrayOfOrderModel, error);
-               
            }
          countOfAttempts: kMaxAttemptsForRequest];
 }

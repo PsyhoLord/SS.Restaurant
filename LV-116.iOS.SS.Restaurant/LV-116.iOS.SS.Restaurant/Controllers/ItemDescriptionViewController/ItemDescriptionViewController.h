@@ -15,7 +15,4 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 @property (strong, nonatomic) MenuItemModel *menuItemModel;
 
-- (void)drawDescriptionWithModel:(MenuItemModel*)menuItemModel;
-
-
 @end
