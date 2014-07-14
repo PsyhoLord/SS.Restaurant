@@ -27,6 +27,9 @@ static NSString *const kOrderCellIdentifier     = @"OrderItemCell";
 static NSString *const kOrderTotallIdentifier   = @"OrderTotallCellIdentifier";
 static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
 
+static float const kTransrormDimensionWidth     = 0.75;
+static float const kTransrormDimensionHeight    = 1;
+
 @implementation OrderItemsViewController
 {
     // in this ptivate section var need to name with _ ( _addOrderItem because for difference with property )
@@ -134,7 +137,7 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
                                    andNumberOfRow:indexPath.row];
         
         [orderItemCell drawCell];
-        orderItemCell.itemCountStepper.transform = CGAffineTransformMakeScale(0.75, 1);
+        orderItemCell.itemCountStepper.transform = CGAffineTransformMakeScale(kTransrormDimensionWidth, kTransrormDimensionHeight);
        
         orderItemCell.delegate = self;
         
@@ -173,9 +176,22 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
 - (void) didAddedOrderItem: (MenuItemModel*)menuItem
 {
     NSLog(@"%@", menuItem);
-    OrderItemModel *newOrderItem = [[OrderItemModel alloc] initWithMenuItemModel:menuItem];
-    newOrderItem.countOfItem = 1 ;
-    [_currentOrder.arrayOfOrderItems addObject:newOrderItem];
+    BOOL isInArray = 0;
+    OrderItemModel *newOrderItem = [[OrderItemModel alloc] init];
+    for (int i = 0; i < [_currentOrder.arrayOfOrderItems count]; i++)
+    {
+        newOrderItem = [_currentOrder.arrayOfOrderItems objectAtIndex: i];
+        if (newOrderItem.menuItemModel.Id == menuItem.Id){
+            newOrderItem.countOfItem ++;
+            isInArray = 1;
+        }
+    }
+    if (!isInArray)
+    {
+        OrderItemModel *newOrderItem = [[OrderItemModel alloc] initWithMenuItemModel: menuItem];
+        newOrderItem.countOfItem = 1;
+        [_currentOrder.arrayOfOrderItems addObject: newOrderItem];
+    }
     [self.tableView reloadData];
 }
 
@@ -186,9 +202,9 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
 }
 
 //removing ItemOrder from order
-- (void) removeOrderItemAtIndex:(int)index
+- (void) removeOrderItemAtIndex: (int)index
 {
-    [_currentOrder.arrayOfOrderItems removeObjectAtIndex:index];
+    [_currentOrder.arrayOfOrderItems removeObjectAtIndex: index];
 }
 
 
