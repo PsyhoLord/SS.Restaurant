@@ -462,6 +462,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zFM-Iq-gZ8">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="KGw-n9-diJ">
+                        <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="NPD-Tr-GqD" kind="relationship" relationship="rootViewController" id="v2H-b4-nQd"/>
                     </connections>

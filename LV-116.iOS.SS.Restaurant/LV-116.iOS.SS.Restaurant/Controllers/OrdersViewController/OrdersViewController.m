@@ -28,6 +28,7 @@ static NSString *const kImageOfSectionView     = @"arrow_down.png";
 
 @implementation OrdersViewController
 {
+    NSMutableArray  *_sortedArrayOfString;
     NSMutableArray  *_arrayOfTableModelWithOrders;
     NSMutableArray  *_arrayOfFlags;
 }
@@ -70,9 +71,7 @@ static NSString *const kImageOfSectionView     = @"arrow_down.png";
             });
         } else {
             // assigned data from "client" MapModel
-            
             [self createAndSetArray: mapModel];
-            //            NSLog(@"%@", _arrayOfTableModelWithOrders);
             
             dispatch_async( dispatch_get_main_queue(), ^{
                 
@@ -90,11 +89,23 @@ static NSString *const kImageOfSectionView     = @"arrow_down.png";
 {
     // if data is then we'll alloc memory for array
     _arrayOfTableModelWithOrders = [[NSMutableArray alloc] init];
+    
     for( TableModel *tmpTableModel in mapModel.arrayOfTableModel ){
         TableModelWithOrders *tmpWaiterTable = [[TableModelWithOrders alloc] initWithTableModel: tmpTableModel];
         
         [_arrayOfTableModelWithOrders addObject: tmpWaiterTable];
     }
+    
+    _sortedArrayOfString = [_arrayOfTableModelWithOrders sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        BOOL isFree1 = ((TableModelWithOrders*)obj1).isFree;
+        BOOL isFree2 = ((TableModelWithOrders*)obj2).isFree;
+        
+        if( isFree1 < isFree2 ) {
+            return (NSComparisonResult)NSOrderedDescending;
+        }
+        return (NSComparisonResult)NSOrderedAscending;
+    }];
+    _arrayOfTableModelWithOrders = _sortedArrayOfString;    // Is it the right assigned?
 }
 // Create and set initial values for _flagsContainer (if @NO - rows doesn't appear at start; if @YES - rows appear at start).
 -(void)createAndResetFlagsContainer
@@ -122,7 +133,7 @@ static NSString *const kImageOfSectionView     = @"arrow_down.png";
 
                 [((TableModelWithOrders*)_arrayOfTableModelWithOrders[sender.tag]) addArrayOfOrders: arrayOfOrderModel];
                 
-                [self didReceiveOrdersResponse:sender];
+                [self didReceiveOrdersResponse: sender];
                 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
             });
         }
@@ -134,7 +145,7 @@ static NSString *const kImageOfSectionView     = @"arrow_down.png";
 {
     NSArray *items = ((TableModelWithOrders*)_arrayOfTableModelWithOrders[sender.tag]).arrayOfOrdersModel;
     
-    NSMutableArray *indexPaths = [NSMutableArray array]; //    Create index array
+    NSMutableArray *indexPaths = [[NSMutableArray alloc] init]; //    Create index array
     for (int i=0; i < items.count+1; ++i) {
         [indexPaths addObject: [NSIndexPath indexPathForRow:i inSection:sender.tag]];
     }
@@ -175,6 +186,7 @@ static NSString *const kImageOfSectionView     = @"arrow_down.png";
         if ( [[_arrayOfFlags objectAtIndex: section ] boolValue] ) {
             // Number of orders + one row for add button
             numberOfOrders = ((TableModelWithOrders*)_arrayOfTableModelWithOrders[section]).arrayOfOrdersModel.count +1;
+            
         }
     }
     
@@ -309,9 +321,24 @@ static NSString *const kImageOfSectionView     = @"arrow_down.png";
         [self.tableView reloadData];
     } else {
         [self performSegueWithIdentifier: kSegueToOrderItems
-                                  sender: self];
+                                  sender: [tableView cellForRowAtIndexPath: indexPath]];
     }
 }
+
+- (void) prepareForSegue: (UIStoryboardSegue*)segue sender: (id)sender
+{
+    if( [segue.identifier isEqualToString: kSegueToOrderItems ] ){
+        NSUInteger indexSection = [self.tableView indexPathForCell: sender].section;
+        NSUInteger indexRow     = [self.tableView indexPathForCell: sender].row;
+        
+        OrderItemsViewController *itemsViewController = (OrderItemsViewController*)segue.destinationViewController;
+        itemsViewController.currentOrder = (OrderModel*)((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexSection]).arrayOfOrdersModel[indexRow];
+//        OrderModel *currOrder = (OrderModel*)((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexSection]).arrayOfOrdersModel[indexRow];
+
+    }
+    
+}
+
 
 // Handle editing action.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath

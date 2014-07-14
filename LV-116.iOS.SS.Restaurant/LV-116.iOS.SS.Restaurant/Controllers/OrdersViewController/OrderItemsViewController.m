@@ -109,7 +109,7 @@ static float const kTransrormDimensionHeight    = 1;
 
 #pragma mark - handle
 
-// return back to previous scrin
+// return back to previous screen
 - (IBAction) handleSwipeGestureRecognizer: (UISwipeGestureRecognizer *)sender
 {
     [self.navigationController popViewControllerAnimated: YES];

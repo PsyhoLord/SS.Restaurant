@@ -31,10 +31,10 @@
 // Add few orders from array in arrayOfOrdersModel.
 -(void)addArrayOfOrders:(NSArray*)arrayOfOrderModel
 {
-    if( self.arrayOfOrdersModel == nil ){
-        self.arrayOfOrdersModel = [[NSMutableArray alloc] init];
+    if( _arrayOfOrdersModel == nil ){
+        _arrayOfOrdersModel = [[NSMutableArray alloc] init];
     }
-    [self.arrayOfOrdersModel addObjectsFromArray: arrayOfOrderModel];
+    [_arrayOfOrdersModel addObjectsFromArray: arrayOfOrderModel];
 
 }
 
