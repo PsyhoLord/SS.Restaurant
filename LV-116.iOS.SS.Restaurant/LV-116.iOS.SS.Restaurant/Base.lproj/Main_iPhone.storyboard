@@ -337,7 +337,6 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="zgs-Wf-spS" id="e73-Pg-IyZ"/>
                             <outlet property="delegate" destination="zgs-Wf-spS" id="kWn-fg-jfh"/>
                             <outletCollection property="gestureRecognizers" destination="RBv-kn-8Lt" appends="YES" id="2OZ-6Q-sT4"/>
                         </connections>

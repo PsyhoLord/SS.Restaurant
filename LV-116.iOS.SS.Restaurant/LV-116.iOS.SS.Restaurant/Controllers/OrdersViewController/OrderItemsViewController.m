@@ -82,6 +82,15 @@ static float const kTransrormDimensionHeight    = 1;
                                                         sidebarButton: self.sidebarButton
                                                             isGesture: NO];
     
+    UIBarButtonItem *addOrderItemButton = [[UIBarButtonItem alloc] initWithTitle: @"Add..."
+                                                                           style: UIBarButtonItemStylePlain
+                                                                          target: self
+                                                                          action: @selector(addNewOrderItem)
+                                      ];
+    self.navigationItem.rightBarButtonItem = addOrderItemButton;
+    
+    self.title = [NSString stringWithFormat: @"Order #%i", _currentOrder.Id];
+    
     _currentOrder = [[OrderModel alloc] init];
     
     [super viewDidLoad];
@@ -110,14 +119,14 @@ static float const kTransrormDimensionHeight    = 1;
 #pragma mark - Table view data source
 
 // Return the number of sections.
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSInteger)numberOfSectionsInTableView: (UITableView *)tableView
 {
     // Return the number of sections.
     return 1;
 }
 
 // Return the number of rows in the section.
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView: (UITableView *)tableView numberOfRowsInSection: (NSInteger)section
 {
     // Return the number of rows in the section.
     return [_currentOrder.arrayOfOrderItems count]+1;
@@ -125,19 +134,18 @@ static float const kTransrormDimensionHeight    = 1;
 
 
 //Creating cells for Order screen and select whitch is need (OrderItem ot OrderTotall)
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView: (UITableView *)tableView cellForRowAtIndexPath: (NSIndexPath *)indexPath
 {
     if ( [_currentOrder.arrayOfOrderItems count] > indexPath.row ) {
         
         OrderItemCell *orderItemCell = [tableView dequeueReusableCellWithIdentifier: kOrderCellIdentifier];
         
-        //orderItemCell.currentOrderItem = [_currentOrder.arrayOfOrderItems objectAtIndex: indexPath.row];
-        
-        [orderItemCell setDataWhithOrderItemModel:[_currentOrder.arrayOfOrderItems objectAtIndex: indexPath.row]
-                                   andNumberOfRow:indexPath.row];
+        [orderItemCell setDataWhithOrderItemModel: [_currentOrder.arrayOfOrderItems objectAtIndex: indexPath.row]
+                                   andNumberOfRow: indexPath.row];
+       
+        orderItemCell.itemCountStepper.transform = CGAffineTransformMakeScale (kTransrormDimensionWidth, kTransrormDimensionHeight);
         
         [orderItemCell drawCell];
-        orderItemCell.itemCountStepper.transform = CGAffineTransformMakeScale(kTransrormDimensionWidth, kTransrormDimensionHeight);
        
         orderItemCell.delegate = self;
         
@@ -163,6 +171,7 @@ static float const kTransrormDimensionHeight    = 1;
     [self performSegueWithIdentifier: kSegueToMenuForAddItem sender: self];
 }
 
+
 // do smth before segue on next scrin - WaiterMenuViewController
 - (void) prepareForSegue: (UIStoryboardSegue *)segue sender: (id)sender
 {
@@ -171,11 +180,11 @@ static float const kTransrormDimensionHeight    = 1;
     destWaiterMenuVC.title = @"Add item";
 }
 
+
 // method from POrderItem protocol
-// calls by WaiterMenuViewController
+// calls by WaiterMenuViewController and OrderItemsViewController
 - (void) didAddedOrderItem: (MenuItemModel*)menuItem
 {
-    NSLog(@"%@", menuItem);
     BOOL isInArray = 0;
     OrderItemModel *newOrderItem = [[OrderItemModel alloc] init];
     for (int i = 0; i < [_currentOrder.arrayOfOrderItems count]; i++)
