@@ -78,9 +78,6 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
     [SidebarViewController setupSidebarConfigurationForViewController: self
                                                         sidebarButton: self.sidebarButton
                                                             isGesture: NO];
-    
-    _currentOrder = [[OrderModel alloc] init];
-    
     [super viewDidLoad];
 }
 
@@ -97,7 +94,7 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
 
 #pragma mark - handle
 
-// return back to previous scrin
+// return back to previous screen
 - (IBAction) handleSwipeGestureRecognizer: (UISwipeGestureRecognizer *)sender
 {
     [self.navigationController popViewControllerAnimated: YES];

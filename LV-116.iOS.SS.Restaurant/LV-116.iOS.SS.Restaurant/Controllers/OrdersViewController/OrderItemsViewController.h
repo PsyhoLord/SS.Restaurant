@@ -7,17 +7,16 @@
 //
 #import "POrderItems.h"
 
-@protocol POrderItems;
-
 @class OrderModel;
 @class OrderItemModel;
 @class OrderItemCell;
 @class OrderTotallCell;
-
 @class MenuItemModel;
 
+
 @interface OrderItemsViewController : UITableViewController <POrderItems>
+
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 @property (strong,nonatomic) OrderModel *currentOrder;
-@property (strong,nonatomic) OrderModel *Order;
+
 @end
