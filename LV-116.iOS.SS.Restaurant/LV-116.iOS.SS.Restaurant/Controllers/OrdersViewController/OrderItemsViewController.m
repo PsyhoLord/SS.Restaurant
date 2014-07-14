@@ -27,6 +27,9 @@ static NSString *const kOrderCellIdentifier     = @"OrderItemCell";
 static NSString *const kOrderTotallIdentifier   = @"OrderTotallCellIdentifier";
 static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
 
+static float const kTransrormDimensionWidth     = 0.75;
+static float const kTransrormDimensionHeight    = 1;
+
 @implementation OrderItemsViewController
 {
     // in this ptivate section var need to name with _ ( _addOrderItem because for difference with property )
@@ -78,6 +81,18 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
     [SidebarViewController setupSidebarConfigurationForViewController: self
                                                         sidebarButton: self.sidebarButton
                                                             isGesture: NO];
+    
+    UIBarButtonItem *addOrderItemButton = [[UIBarButtonItem alloc] initWithTitle: @"Add..."
+                                                                           style: UIBarButtonItemStylePlain
+                                                                          target: self
+                                                                          action: @selector(addNewOrderItem)
+                                      ];
+    self.navigationItem.rightBarButtonItem = addOrderItemButton;
+    
+    self.title = [NSString stringWithFormat: @"Order #%i", _currentOrder.Id];
+    
+    _currentOrder = [[OrderModel alloc] init];
+    
     [super viewDidLoad];
 }
 
@@ -104,14 +119,14 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
 #pragma mark - Table view data source
 
 // Return the number of sections.
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSInteger)numberOfSectionsInTableView: (UITableView *)tableView
 {
     // Return the number of sections.
     return 1;
 }
 
 // Return the number of rows in the section.
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView: (UITableView *)tableView numberOfRowsInSection: (NSInteger)section
 {
     // Return the number of rows in the section.
     return [_currentOrder.arrayOfOrderItems count]+1;
@@ -119,19 +134,18 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
 
 
 //Creating cells for Order screen and select whitch is need (OrderItem ot OrderTotall)
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView: (UITableView *)tableView cellForRowAtIndexPath: (NSIndexPath *)indexPath
 {
     if ( [_currentOrder.arrayOfOrderItems count] > indexPath.row ) {
         
         OrderItemCell *orderItemCell = [tableView dequeueReusableCellWithIdentifier: kOrderCellIdentifier];
         
-        //orderItemCell.currentOrderItem = [_currentOrder.arrayOfOrderItems objectAtIndex: indexPath.row];
-        
-        [orderItemCell setDataWhithOrderItemModel:[_currentOrder.arrayOfOrderItems objectAtIndex: indexPath.row]
-                                   andNumberOfRow:indexPath.row];
+        [orderItemCell setDataWhithOrderItemModel: [_currentOrder.arrayOfOrderItems objectAtIndex: indexPath.row]
+                                   andNumberOfRow: indexPath.row];
+       
+        orderItemCell.itemCountStepper.transform = CGAffineTransformMakeScale (kTransrormDimensionWidth, kTransrormDimensionHeight);
         
         [orderItemCell drawCell];
-        orderItemCell.itemCountStepper.transform = CGAffineTransformMakeScale(0.75, 1);
        
         orderItemCell.delegate = self;
         
@@ -157,6 +171,7 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
     [self performSegueWithIdentifier: kSegueToMenuForAddItem sender: self];
 }
 
+
 // do smth before segue on next scrin - WaiterMenuViewController
 - (void) prepareForSegue: (UIStoryboardSegue *)segue sender: (id)sender
 {
@@ -165,14 +180,44 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
     destWaiterMenuVC.title = @"Add item";
 }
 
+
 // method from POrderItem protocol
-// calls by WaiterMenuViewController
+// calls by WaiterMenuViewController and OrderItemsViewController
 - (void) didAddedOrderItem: (MenuItemModel*)menuItem
 {
-    NSLog(@"%@", menuItem);
-    OrderItemModel *newOrderItem = [[OrderItemModel alloc] initWithMenuItemModel:menuItem];
-    newOrderItem.countOfItem = 1 ;
-    [_currentOrder.arrayOfOrderItems addObject:newOrderItem];
+    //--New logic (need to make sure that it works)
+    /*
+    OrderItemModel *newOrderItem = [[OrderItemModel alloc] initWithMenuItemModel: menuItem];
+    newOrderItem.countOfItem = 1;
+    [_currentOrder.arrayOfOrderItems addObject: newOrderItem];
+    for (int i = 0; i < [_currentOrder.arrayOfOrderItems count]-1; i++){
+        newOrderItem = [_currentOrder.arrayOfOrderItems objectAtIndex: i];
+        if (newOrderItem.menuItemModel.Id == menuItem.Id){
+            newOrderItem.countOfItem ++;
+            [_currentOrder.arrayOfOrderItems removeLastObject];
+            break;
+        }
+    }*/
+    //--end
+    
+    
+    
+    BOOL isInArray = 0;
+    OrderItemModel *newOrderItem = [[OrderItemModel alloc] init];
+    for (int i = 0; i < [_currentOrder.arrayOfOrderItems count]; i++)
+    {
+        newOrderItem = [_currentOrder.arrayOfOrderItems objectAtIndex: i];
+        if (newOrderItem.menuItemModel.Id == menuItem.Id){
+            newOrderItem.countOfItem ++;
+            isInArray = 1;
+        }
+    }
+    if (!isInArray)
+    {
+        OrderItemModel *newOrderItem = [[OrderItemModel alloc] initWithMenuItemModel: menuItem];
+        newOrderItem.countOfItem = 1;
+        [_currentOrder.arrayOfOrderItems addObject: newOrderItem];
+    }
     [self.tableView reloadData];
 }
 
@@ -183,9 +228,9 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
 }
 
 //removing ItemOrder from order
-- (void) removeOrderItemAtIndex:(int)index
+- (void) removeOrderItemAtIndex: (int)index
 {
-    [_currentOrder.arrayOfOrderItems removeObjectAtIndex:index];
+    [_currentOrder.arrayOfOrderItems removeObjectAtIndex: index];
 }
 
 
