@@ -1,5 +1,5 @@
 //
-//  TestDropTableView.m
+//  OrdersViewController.m
 //  LV-116.iOS.SS.Restaurant
 //
 //  Created by Oleg Hnidets on 7/6/14.
@@ -28,7 +28,7 @@ static NSString *const kImageOfSectionView     = @"arrow_down.png";
 
 @implementation OrdersViewController
 {
-    NSMutableArray  *_sortedArrayOfString;
+    NSArray  *_sortedArrayOfString;
     NSMutableArray  *_arrayOfTableModelWithOrders;
     NSMutableArray  *_arrayOfFlags;
 }
@@ -96,7 +96,7 @@ static NSString *const kImageOfSectionView     = @"arrow_down.png";
         [_arrayOfTableModelWithOrders addObject: tmpWaiterTable];
     }
     
-    _sortedArrayOfString = [_arrayOfTableModelWithOrders sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+    _sortedArrayOfString = [_arrayOfTableModelWithOrders sortedArrayUsingComparator: ^NSComparisonResult(id obj1, id obj2) {
         BOOL isFree1 = ((TableModelWithOrders*)obj1).isFree;
         BOOL isFree2 = ((TableModelWithOrders*)obj2).isFree;
         
@@ -105,7 +105,7 @@ static NSString *const kImageOfSectionView     = @"arrow_down.png";
         }
         return (NSComparisonResult)NSOrderedAscending;
     }];
-    _arrayOfTableModelWithOrders = _sortedArrayOfString;    // Is it the right assigned?
+    _arrayOfTableModelWithOrders = [_sortedArrayOfString copy];    // Is it the right assigned?
 }
 // Create and set initial values for _flagsContainer (if @NO - rows doesn't appear at start; if @YES - rows appear at start).
 -(void)createAndResetFlagsContainer

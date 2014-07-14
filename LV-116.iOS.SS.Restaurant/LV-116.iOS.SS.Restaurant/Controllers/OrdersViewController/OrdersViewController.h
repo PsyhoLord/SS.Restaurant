@@ -1,5 +1,5 @@
 //
-//  TestDropTableView.h
+//  OrdersViewController.h
 //  LV-116.iOS.SS.Restaurant
 //
 //  Created by Oleg Hnidets on 7/6/14.

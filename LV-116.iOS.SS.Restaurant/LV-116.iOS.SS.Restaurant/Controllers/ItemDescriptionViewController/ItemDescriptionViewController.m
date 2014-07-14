@@ -9,9 +9,15 @@
 #import "ItemDescriptionViewController.h"
 #import "SWRevealViewController.h"
 #import "SidebarViewController+ConfigurationForOtherViewControllers.h"
+#import "MDCParallaxView.h"
 
 #import "MenuDataProvider.h"
 #import "MenuItemModel.h"
+
+
+@interface ItemDescriptionViewController () <UIScrollViewDelegate>
+
+@end
 
 
 @implementation ItemDescriptionViewController
@@ -46,6 +52,35 @@
     [SidebarViewController setupSidebarConfigurationForViewController: self
                                                         sidebarButton: self.sidebarButton
                                                             isGesture: NO];
+    
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+    [_itemImage addGestureRecognizer:tapGesture];
+    _itemImage.contentMode =  UIViewContentModeScaleAspectFill;
+    _itemName.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 400.0f);
+    
+    MDCParallaxView *parallaxView = [[MDCParallaxView alloc] initWithBackgroundView: _itemImage
+                                                                     foregroundView: _itemName];
+    parallaxView.frame = self.view.bounds;
+    parallaxView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    parallaxView.backgroundHeight = 200.0f;
+    parallaxView.scrollView.scrollsToTop = YES;
+    parallaxView.backgroundInteractionEnabled = YES;
+    parallaxView.scrollViewDelegate = self;
+    [self.view addSubview:parallaxView];
+}
+
+#pragma mark - UIScrollViewDelegate Protocol Methods
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    NSLog(@"%@:%@", [self class], NSStringFromSelector(_cmd));
+}
+
+
+#pragma mark - Internal Methods
+
+- (void)handleTap:(UIGestureRecognizer *)gesture {
+    NSLog(@"%@:%@", [self class], NSStringFromSelector(_cmd));
 }
 
 
