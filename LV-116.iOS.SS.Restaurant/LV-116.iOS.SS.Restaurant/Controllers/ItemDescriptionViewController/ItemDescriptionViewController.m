@@ -22,6 +22,7 @@
 
 @implementation ItemDescriptionViewController
 {
+    __weak IBOutlet UIView *_itemView;
     __weak IBOutlet UIImageView *_itemImage;
     __weak IBOutlet UILabel *_itemName;
     __weak IBOutlet UILabel *_itemWeight;
@@ -53,20 +54,27 @@
                                                         sidebarButton: self.sidebarButton
                                                             isGesture: NO];
     
-    
+    UIImage *image = _itemImage.image;
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
     [_itemImage addGestureRecognizer:tapGesture];
+    
     _itemImage.contentMode =  UIViewContentModeScaleAspectFill;
-    _itemName.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 400.0f);
+    
+    UIView *myLabel = [[UIView alloc] initWithFrame:CGRectMake(20, 20, CGRectGetWidth(self.view.frame), 300)];
+//    myLabel.text = @"HELLO WORLD";
+//    _itemName.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 300);
+    
+
     
     MDCParallaxView *parallaxView = [[MDCParallaxView alloc] initWithBackgroundView: _itemImage
-                                                                     foregroundView: _itemName];
+                                                                     foregroundView: myLabel];
     parallaxView.frame = self.view.bounds;
     parallaxView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    parallaxView.backgroundHeight = 200.0f;
+    parallaxView.backgroundHeight = image.size.height +30;
     parallaxView.scrollView.scrollsToTop = YES;
     parallaxView.backgroundInteractionEnabled = YES;
     parallaxView.scrollViewDelegate = self;
+    
     [self.view addSubview:parallaxView];
 }
 

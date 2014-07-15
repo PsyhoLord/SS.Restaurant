@@ -16,13 +16,15 @@
 + (void) send: (NSURLRequest *)request responseBlock: (void (^)(NSHTTPURLResponse*, NSData*, NSError*))callback
 {
     NSOperationQueue *operationQueue = [[NSOperationQueue alloc] init];
-    
+
     // send request
     [NSURLConnection sendAsynchronousRequest: request
                                        queue: operationQueue
                            completionHandler: ^(NSURLResponse *urlResponse, NSData *data, NSError *connectionError) {
                                // call block from hight layer - RemoteDataProvider
+                               
                                callback((NSHTTPURLResponse*)urlResponse, data, connectionError);
+                
 //                               NSLog(@"%@",urlResponse);
                            } ];
     

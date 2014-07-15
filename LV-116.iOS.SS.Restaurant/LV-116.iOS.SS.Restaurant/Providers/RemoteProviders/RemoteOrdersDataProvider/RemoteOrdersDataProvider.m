@@ -15,7 +15,7 @@
 
 static NSString *const kURLDeleteOrder       = @"http://192.168.195.212/Restaurant/api/Orders/%d";
 static NSString *const kURLPostTableOrder    = @"http://192.168.195.212/Restaurant/api/Orders?tableId=%d";
-static NSString *const kURLGetTableOrders   = @"http://192.168.195.212/Restaurant/api/Orders?tableId=%d";
+static NSString *const kURLGetTableOrders    = @"http://192.168.195.212/Restaurant/api/Orders?tableId=%d";
 
 static const NSUInteger kMaxAttemptsForRequest = 3;
 
