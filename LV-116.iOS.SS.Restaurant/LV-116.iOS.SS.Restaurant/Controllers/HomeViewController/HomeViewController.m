@@ -95,11 +95,14 @@ static NSString *const kRoleWaiterIconName  = @"role_waiter_icon.png";
                             responseBlock: ^(BOOL isAutorizated, UserRole *userRole, NSError *error) {
                                 
                                 if ( isAutorizated ) {
-                                    [self setHomePageConfiguration: userRole.enumUserRole];
-                                    [_sidebarViewController reloadData];
-                                    [self clearTextFields];
+                                    dispatch_async( dispatch_get_main_queue(), ^{
+                                        [self setHomePageConfiguration: userRole.enumUserRole];
+                                        [_sidebarViewController reloadData];
+                                        [self clearTextFields];
+                                    });
+                                } else {
+                                    // Alert ...
                                 }
-                                
                             }];
     [self hideKeyboard];
 }
@@ -108,9 +111,10 @@ static NSString *const kRoleWaiterIconName  = @"role_waiter_icon.png";
 - (IBAction) logOut: (id)sender
 {
     [AuthorizationProvider logOutWithResponseBlock: ^(UserRole *userRole, NSError *error) {
-        
-        [self setHomePageConfiguration: userRole.enumUserRole];
-        [_sidebarViewController reloadData];
+        dispatch_async( dispatch_get_main_queue(), ^{
+            [self setHomePageConfiguration: userRole.enumUserRole];
+            [_sidebarViewController reloadData];
+        });
         
     }];
 }
