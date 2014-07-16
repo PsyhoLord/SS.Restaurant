@@ -23,6 +23,10 @@
 
 #import "POrderItems.h"
 
+#import "OrderItemsDataProvider.h"
+
+#import "Alert.h"
+
 static NSString *const kOrderCellIdentifier     = @"OrderItemCell";
 static NSString *const kOrderTotallIdentifier   = @"OrderTotallCellIdentifier";
 static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
@@ -73,6 +77,31 @@ static float const kTransrormDimensionHeight    = 1;
     }
 }
 
+//loads data about order from server using order ID
+- (void) loadOrderDataByOrderId: (int)orderId
+{
+    [OrderItemsDataProvider loadOrderDatawithOrderId: orderId
+                                  responseBlock: ^(NSArray *arrayOfOrderItems, NSError *error){
+                                      if ( error ) {
+                                          dispatch_async( dispatch_get_main_queue(), ^{
+                                              [Alert showConnectionAlert];
+                                              [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+                                          });
+                                      } else {
+                                          
+                                          dispatch_async( dispatch_get_main_queue(), ^{
+                                              
+                                              _currentOrder = [[OrderModel alloc] init];
+                                             
+                                              [_currentOrder addArrayOfOrderItems: arrayOfOrderItems];
+                                              
+                                              [self.tableView reloadData];
+                                              
+                                              [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+                                          });
+                                      }
+    }];
+}
 
 - (void)viewDidLoad
 {
@@ -91,7 +120,9 @@ static float const kTransrormDimensionHeight    = 1;
     
     self.title = [NSString stringWithFormat: @"Order #%i", _currentOrder.Id];
     
-    _currentOrder = [[OrderModel alloc] init];
+    //[[_currentOrder alloc] init];
+    
+    [self loadOrderDataByOrderId: 228];
     
     [super viewDidLoad];
 }

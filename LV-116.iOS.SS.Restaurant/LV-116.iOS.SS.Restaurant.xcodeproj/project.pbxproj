@@ -27,6 +27,9 @@
 		22A36708196F11BA002D27B7 /* RemoteMenuDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A366FE196F11BA002D27B7 /* RemoteMenuDataProvider.m */; };
 		22A36709196F11BA002D27B7 /* RemoteOrdersDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A36701196F11BA002D27B7 /* RemoteOrdersDataProvider.m */; };
 		570ABE93196C3EEF003DC398 /* OrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570ABE91196C3EEF003DC398 /* OrdersViewController.m */; };
+		5748E86A1976534900C6FA67 /* OrderItemsDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5748E8691976534900C6FA67 /* OrderItemsDataProvider.m */; };
+		5748E8761976749300C6FA67 /* OrderItemsDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5748E8751976749300C6FA67 /* OrderItemsDataParser.m */; };
+		5748E87E197674F900C6FA67 /* RemoteOrderProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5748E87D197674F900C6FA67 /* RemoteOrderProvider.m */; };
 		576B6F6C197171D000CEC6BF /* OrderItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 576B6F65197171D000CEC6BF /* OrderItemCell.m */; };
 		576B6F6D197171D000CEC6BF /* OrderItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 576B6F67197171D000CEC6BF /* OrderItemsViewController.m */; };
 		576B6F6E197171D000CEC6BF /* OrderTotallCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 576B6F6A197171D000CEC6BF /* OrderTotallCell.m */; };
@@ -124,6 +127,12 @@
 		22A36701196F11BA002D27B7 /* RemoteOrdersDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteOrdersDataProvider.m; sourceTree = "<group>"; };
 		570ABE90196C3EEF003DC398 /* OrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersViewController.h; sourceTree = "<group>"; };
 		570ABE91196C3EEF003DC398 /* OrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersViewController.m; sourceTree = "<group>"; };
+		5748E8681976534900C6FA67 /* OrderItemsDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderItemsDataProvider.h; path = OrderDataProvider/OrderItemsDataProvider.h; sourceTree = "<group>"; };
+		5748E8691976534900C6FA67 /* OrderItemsDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderItemsDataProvider.m; path = OrderDataProvider/OrderItemsDataProvider.m; sourceTree = "<group>"; };
+		5748E8741976749300C6FA67 /* OrderItemsDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderItemsDataParser.h; sourceTree = "<group>"; };
+		5748E8751976749300C6FA67 /* OrderItemsDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderItemsDataParser.m; sourceTree = "<group>"; };
+		5748E87C197674F900C6FA67 /* RemoteOrderProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteOrderProvider.h; sourceTree = "<group>"; };
+		5748E87D197674F900C6FA67 /* RemoteOrderProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteOrderProvider.m; sourceTree = "<group>"; };
 		576B6F64197171D000CEC6BF /* OrderItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderItemCell.h; sourceTree = "<group>"; };
 		576B6F65197171D000CEC6BF /* OrderItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderItemCell.m; sourceTree = "<group>"; };
 		576B6F66197171D000CEC6BF /* OrderItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderItemsViewController.h; sourceTree = "<group>"; };
@@ -310,6 +319,7 @@
 				22A366DB196F11A4002D27B7 /* MapDataParser */,
 				22A366DE196F11A4002D27B7 /* MenuDataParser */,
 				22A366E1196F11A4002D27B7 /* OrdersDataParser */,
+				5748E8731976749300C6FA67 /* OrderItemsDataParser */,
 				22A366E4196F11A4002D27B7 /* PDataParser.h */,
 			);
 			path = Parsers;
@@ -349,6 +359,7 @@
 				22A366EC196F11BA002D27B7 /* MapDataProvider */,
 				22A366EF196F11BA002D27B7 /* MenuDataProvider */,
 				22A366F2196F11BA002D27B7 /* OrdersDataProvider */,
+				5748E867197652D200C6FA67 /* OrderDataProvider */,
 				22A366F5196F11BA002D27B7 /* RemoteProviders */,
 			);
 			path = Providers;
@@ -398,6 +409,7 @@
 				22A366F9196F11BA002D27B7 /* RemoteMapDataProvider */,
 				22A366FC196F11BA002D27B7 /* RemoteMenuDataProvider */,
 				22A366FF196F11BA002D27B7 /* RemoteOrdersDataProvider */,
+				5748E87B197674F900C6FA67 /* RemoteOrderItemsDataProvider */,
 			);
 			path = RemoteProviders;
 			sourceTree = "<group>";
@@ -446,6 +458,33 @@
 				570ABE91196C3EEF003DC398 /* OrdersViewController.m */,
 			);
 			path = OrdersViewController;
+			sourceTree = "<group>";
+		};
+		5748E867197652D200C6FA67 /* OrderDataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				5748E8681976534900C6FA67 /* OrderItemsDataProvider.h */,
+				5748E8691976534900C6FA67 /* OrderItemsDataProvider.m */,
+			);
+			name = OrderDataProvider;
+			sourceTree = "<group>";
+		};
+		5748E8731976749300C6FA67 /* OrderItemsDataParser */ = {
+			isa = PBXGroup;
+			children = (
+				5748E8741976749300C6FA67 /* OrderItemsDataParser.h */,
+				5748E8751976749300C6FA67 /* OrderItemsDataParser.m */,
+			);
+			path = OrderItemsDataParser;
+			sourceTree = "<group>";
+		};
+		5748E87B197674F900C6FA67 /* RemoteOrderItemsDataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				5748E87C197674F900C6FA67 /* RemoteOrderProvider.h */,
+				5748E87D197674F900C6FA67 /* RemoteOrderProvider.m */,
+			);
+			path = RemoteOrderItemsDataProvider;
 			sourceTree = "<group>";
 		};
 		576B6F63197171D000CEC6BF /* OrderItemCell */ = {
@@ -936,12 +975,14 @@
 				ED0787291972E68C0064C0E1 /* SidebarViewController.m in Sources */,
 				22A366E6196F11A4002D27B7 /* MenuDataParser.m in Sources */,
 				22A36703196F11BA002D27B7 /* MapDataProvider.m in Sources */,
+				5748E87E197674F900C6FA67 /* RemoteOrderProvider.m in Sources */,
 				ED7C320D19715B6C00C76047 /* MenuItemCell.m in Sources */,
 				22A36705196F11BA002D27B7 /* OrdersDataProvider.m in Sources */,
 				FA336C2D19335B950007CC76 /* AppDelegate.m in Sources */,
 				EDEC47291956F9950041B98B /* MapModel.m in Sources */,
 				576B6F6D197171D000CEC6BF /* OrderItemsViewController.m in Sources */,
 				22A366E7196F11A4002D27B7 /* OrdersDataParser.m in Sources */,
+				5748E86A1976534900C6FA67 /* OrderItemsDataProvider.m in Sources */,
 				22A36702196F11BA002D27B7 /* AuthorizationProvider.m in Sources */,
 				22002A1B1972FACA00E6E7A2 /* RequestMaker.m in Sources */,
 				EDE50DF7193E110500ACA71D /* ServiceAgent.m in Sources */,
@@ -949,6 +990,7 @@
 				EDEC47341956FACB0041B98B /* MenuCategoryModel.m in Sources */,
 				22A36706196F11BA002D27B7 /* RemoteAuthorizationProvider.m in Sources */,
 				22346B58195F209000495B2A /* Alert.m in Sources */,
+				5748E8761976749300C6FA67 /* OrderItemsDataParser.m in Sources */,
 				22A366D7196F10D2002D27B7 /* OrderItemModel.m in Sources */,
 				FA336C2919335B950007CC76 /* main.m in Sources */,
 				EDEC472A1956F9950041B98B /* TableModel.m in Sources */,

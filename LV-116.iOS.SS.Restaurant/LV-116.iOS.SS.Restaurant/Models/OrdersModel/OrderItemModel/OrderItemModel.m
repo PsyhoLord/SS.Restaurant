@@ -7,6 +7,7 @@
 //
 
 #import "OrderItemModel.h"
+#import "MenuItemModel.h"
 
 @implementation OrderItemModel
 
@@ -14,6 +15,14 @@
 {
     if ( self = [super init] ) {
         self.menuItemModel = menuItemModel;
+    }
+    return self;
+}
+
+- (instancetype) init
+{
+    if (self = [super init]) {
+        _menuItemModel = [[MenuItemModel alloc] init];
     }
     return self;
 }
