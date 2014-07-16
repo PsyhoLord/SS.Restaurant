@@ -122,7 +122,7 @@ static float const kTransrormDimensionHeight    = 1;
     
     //[[_currentOrder alloc] init];
     
-    [self loadOrderDataByOrderId: 228];
+    [self loadOrderDataByOrderId: _currentOrder.Id];
     
     [super viewDidLoad];
 }
