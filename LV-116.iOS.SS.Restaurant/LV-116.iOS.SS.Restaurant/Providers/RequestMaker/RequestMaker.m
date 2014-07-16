@@ -31,26 +31,13 @@ static const CGFloat kRequestTimeoutInterval = 3.0;
 // Set GET request using url with id.
 + (NSURLRequest *)getRequestWithURL:(NSString*)stringOfURL idOfURL:(int)Id
 {
-  /*  NSMutableDictionary *cookieProperties = [NSMutableDictionary dictionary];
-    
-    [cookieProperties setObject:@".ASPXAUTH" forKey: NSHTTPCookieName];
-    [cookieProperties setObject:@"969198C425AB97F789BA20B2AEB51E5211A0196AD54F86EAD7911F03B2F3C5AAB84455DC5A563CF443D2AC1247797710C9A7B06F810DE4EB9B73181668B41EEECB89999749A3C2B943FD4F4808B58FCCB1A4BE944FE14FCF52DB48D9BE20A30D312CF63E" forKey: NSHTTPCookieValue];
-    [cookieProperties setObject:@"http://192.168.195.212/Restaurant/Security/Authenticate" forKey: NSHTTPCookieOriginURL];
-    [cookieProperties setObject: @"/" forKey: NSHTTPCookiePath];
-    
-    NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties: cookieProperties];
-//    [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie: cookie];
-    NSLog(@"ncookie: %@", cookie);*/
-    
     NSString *urlString = [NSString stringWithFormat: stringOfURL, Id];
     NSURL *URL = [[NSURL alloc] initWithString: urlString];
     
-    NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL: URL
+    NSURLRequest *URLRequest = [NSMutableURLRequest requestWithURL: URL
                                                 cachePolicy: NSURLRequestUseProtocolCachePolicy
                                             timeoutInterval: kRequestTimeoutInterval];
-//    [URLRequest setAllHTTPHeaderFields: headers];
-    
-   /* [URLRequest setValue:@".ASPXAUTH=969198C425AB97F789BA20B2AEB51E5211A0196AD54F86EAD7911F03B2F3C5AAB84455DC5A563CF443D2AC1247797710C9A7B06F810DE4EB9B73181668B41EEECB89999749A3C2B943FD4F4808B58FCCB1A4BE944FE14FCF52DB48D9BE20A30D312CF63E" forHTTPHeaderField:kHTTPHeaderFieldCookie];*/
+
      return URLRequest;
 }
 
@@ -66,7 +53,7 @@ static const CGFloat kRequestTimeoutInterval = 3.0;
                                                               cachePolicy: NSURLRequestUseProtocolCachePolicy
                                                           timeoutInterval: kRequestTimeoutInterval];
     
-    [URLRequest setValue:@".ASPXAUTH=969198C425AB97F789BA20B2AEB51E5211A0196AD54F86EAD7911F03B2F3C5AAB84455DC5A563CF443D2AC1247797710C9A7B06F810DE4EB9B73181668B41EEECB89999749A3C2B943FD4F4808B58FCCB1A4BE944FE14FCF52DB48D9BE20A30D312CF63E" forHTTPHeaderField:kHTTPHeaderFieldCookie];
+
     [URLRequest setHTTPMethod: kHTTPMethodDELETE ];
     [URLRequest setValue: kHTTPHeaderValueAcceptAppJSON forHTTPHeaderField: kHTTPHeaderFieldAccept];
     
@@ -89,6 +76,7 @@ static const CGFloat kRequestTimeoutInterval = 3.0;
     return URLRequest;
 }
 
+#pragma mark - POST login
 // Return request that can used for login.
 + (NSURLRequest *)getLoginRequestWithURL:(NSString*)stringOfURL idOfURL:(int)Id data:(NSData*)data
 {

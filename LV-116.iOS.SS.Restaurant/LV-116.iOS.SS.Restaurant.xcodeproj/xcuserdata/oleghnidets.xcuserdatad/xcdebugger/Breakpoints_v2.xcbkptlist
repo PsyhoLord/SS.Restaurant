@@ -22,16 +22,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LV-116.iOS.SS.Restaurant/Providers/RemoteProviders/RemoteAuthorizationProvider/RemoteAuthorizationProvider.m"
-            timestampString = "427215696.301204"
+            filePath = "LV-116.iOS.SS.Restaurant/Providers/RequestMaker/RequestMaker.m"
+            timestampString = "427219186.224041"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
-            landmarkName = "+getToken:"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "+getDeleteRequestWithURL:idOfURL:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,13 +41,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LV-116.iOS.SS.Restaurant/Providers/RemoteProviders/RemoteAuthorizationProvider/RemoteAuthorizationProvider.m"
-            timestampString = "427215696.301204"
+            filePath = "LV-116.iOS.SS.Restaurant/Providers/RequestMaker/RequestMaker.m"
+            timestampString = "427219188.348383"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "+logInWithLogin:password:responseBlock:"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "+getPostRequestWithURL:idOfURL:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LV-116.iOS.SS.Restaurant/Controllers/OrdersViewController/OrdersViewController.m"
+            timestampString = "427219641.505534"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

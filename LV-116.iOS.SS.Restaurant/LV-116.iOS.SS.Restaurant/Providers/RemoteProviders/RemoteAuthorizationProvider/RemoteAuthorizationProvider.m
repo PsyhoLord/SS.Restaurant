@@ -17,7 +17,14 @@
 static NSString *const kURLAuthenticate     = @"http://192.168.195.212/Restaurant/Security/Authenticate";
 static NSString *const kCookieASPXAUTH      = @".ASPXAUTH";
 static NSString *const kCookiePath          = @"/";
+
 static NSString *const kHTTPHeaderSetCookie = @"Set-Cookie";
+
+static NSString *const kJSONKeyIsSuccess    = @"isSuccess";
+
+static NSString *const kKeyUserName         = @"UserName";
+static NSString *const kKeyPassword         = @"Password";
+static NSString *const kKeyRememberMe       = @"RememberMe";
 
 static const NSUInteger kMaxAttemptsForRequest = 3;
 
@@ -25,7 +32,7 @@ static const NSUInteger kMaxAttemptsForRequest = 3;
 @implementation RemoteAuthorizationProvider
 
 
-#pragma mark -
+#pragma mark - Login.
 // this method do authorization
 // (NSString*)login - login
 //(NSString*)password - password
@@ -34,7 +41,7 @@ static const NSUInteger kMaxAttemptsForRequest = 3;
 + (void) logInWithLogin: (NSString*)login password: (NSString*)password responseBlock: (void (^)(BOOL isAuthorizated, UserRole*, NSError*))callback
 {
     // Arrays are created for getting JSON data.
-    NSArray *keys       = @[@"UserName", @"Password", @"RememberMe"];
+    NSArray *keys       = @[kKeyUserName, kKeyPassword, kKeyRememberMe];
     NSArray *objects    = @[login, password, @"true"];
     NSData *JSONData = [ParserToJSON createJSONDataWithObjects: objects
                                                           keys: keys];
@@ -49,7 +56,7 @@ static const NSUInteger kMaxAttemptsForRequest = 3;
                if ( error == nil ) {
                    
                    // If login data are true then response is JSON ( { isSuccess : "true" } ).
-                   NSString *isSuccess = [[NSJSONSerialization JSONObjectWithData:data options:0 error:&error] valueForKeyPath:@"isSuccess"];
+                   NSString *isSuccess = [[NSJSONSerialization JSONObjectWithData:data options:0 error:&error] valueForKeyPath: kJSONKeyIsSuccess];
                    
                    if( [response statusCode] == 200 && [isSuccess boolValue] ) {
                        
@@ -72,7 +79,7 @@ static const NSUInteger kMaxAttemptsForRequest = 3;
 {
     // Gets string of header "Set-Cookie".
     NSDictionary *headerDictionary = [response allHeaderFields];
-    NSString *headerSetCookie = [headerDictionary valueForKey: @"Set-Cookie"];
+    NSString *headerSetCookie = [headerDictionary valueForKey: kHTTPHeaderSetCookie];
     
     // Gets token from headerSetCookie.
     NSString *token = [RemoteAuthorizationProvider getToken:headerSetCookie];
@@ -89,15 +96,18 @@ static const NSUInteger kMaxAttemptsForRequest = 3;
     [cookieProperties setObject: kCookiePath forKey: NSHTTPCookiePath];
     
     // Cookies init from dictionary and then save into cookie storage.
+
     NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties: cookieProperties];
+    [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
     [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie: cookie];
+    
 }
 
 // Returns ASPX token.
 +(NSString*)getToken:(NSString*)headerSetCookie
 {
     // Separates header "Set-Cookie" apart.
-    NSArray *arrayOfSetCookie = [headerSetCookie componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@";,"]];
+    NSArray *arrayOfSetCookie = [headerSetCookie componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString: @";,"]];
     NSString *token = nil;
     
     for ( NSString *cookie in arrayOfSetCookie ) {
@@ -108,21 +118,26 @@ static const NSUInteger kMaxAttemptsForRequest = 3;
             return token;
         }
     }
+    
+    
     return token;
 }
 
+#pragma mark - Logout
 
 // this method do log out
 // (void (^)(UserRole *userRole, NSError *error))callback -
 // // - block which calls for return value: userRole, error to hight level
 + (void) logOutWithResponseBlock: (void (^)(UserRole*, NSError*))callback
 {
+    NSHTTPCookie *cookie;
+    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (cookie in [storage cookies]) {
+        [storage deleteCookie:cookie];
+    }
+
     [UserRole getInstance].enumUserRole = UserRoleClient;
-    // this is only for test
-    
     callback([UserRole getInstance], nil);
-    
-    
 }
 
 @end

@@ -51,8 +51,11 @@ static NSString *const kImageOfSectionView     = @"arrow_down.png";
     [SidebarViewController setupSidebarConfigurationForViewController: self
                                                         sidebarButton: self.sidebarButton
                                                             isGesture: YES];
+    [[[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        
+        NSLog(@"Printing cookies %@", obj);
+    }];
     
-//    [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
     [self loadMapData];
 }
 
