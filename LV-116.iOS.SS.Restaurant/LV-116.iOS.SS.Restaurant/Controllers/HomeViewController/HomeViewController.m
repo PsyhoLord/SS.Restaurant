@@ -89,6 +89,7 @@ static NSString *const kRoleWaiterIconName  = @"role_waiter_icon.png";
 // logic of button login
 - (IBAction) logIn: (id)sender
 {
+    
     [AuthorizationProvider logInWithLogin: _textFieldUserName.text
                                  password: _textFieldPassword.text
                             responseBlock: ^(BOOL isAutorizated, UserRole *userRole, NSError *error) {

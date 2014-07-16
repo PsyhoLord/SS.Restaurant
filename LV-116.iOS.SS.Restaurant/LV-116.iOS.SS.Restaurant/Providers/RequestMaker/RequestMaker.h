@@ -19,4 +19,7 @@
 // POST
 + (NSURLRequest *)getPostRequestWithURL:(NSString*)stringOfURL idOfURL:(int)Id;
 
+// POST Login
++ (NSURLRequest *)getLoginRequestWithURL:(NSString*)stringOfURL idOfURL:(int)Id data:(NSData*)data;
+
 @end

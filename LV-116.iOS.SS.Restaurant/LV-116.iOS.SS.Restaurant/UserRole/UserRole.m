@@ -32,7 +32,7 @@ static const char *const kSyncQueueIdentifier = "SyncQueueIdentifier";
 - (id) init
 {
     if ( self = [super init] ) {
-        _enumUserRole = UserRoleWaiter;
+        _enumUserRole = UserRoleClient;
         _syncQueue = dispatch_queue_create(kSyncQueueIdentifier, NULL);
     }
     return self;

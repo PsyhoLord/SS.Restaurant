@@ -23,5 +23,6 @@ typedef enum
 
 @property EnumUserRole enumUserRole;    // return enum of current user
 @property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSString *cookie;
 
 @end

@@ -6,16 +6,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LV-116.iOS.SS.Restaurant/Controllers/OrdersViewController/OrdersViewController.m"
-            timestampString = "427150495.076775"
+            filePath = "LV-116.iOS.SS.Restaurant/Controllers/HomeViewController/HomeViewController.m"
+            timestampString = "427215621.648827"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "337"
-            endingLineNumber = "337"
-            landmarkName = "-prepareForSegue:sender:"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "-logIn:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LV-116.iOS.SS.Restaurant/Providers/RemoteProviders/RemoteAuthorizationProvider/RemoteAuthorizationProvider.m"
+            timestampString = "427215696.301204"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "+getToken:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,45 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LV-116.iOS.SS.Restaurant/Controllers/OrdersViewController/OrderItemsViewController.m"
-            timestampString = "427033054.328584"
+            filePath = "LV-116.iOS.SS.Restaurant/Providers/RemoteProviders/RemoteAuthorizationProvider/RemoteAuthorizationProvider.m"
+            timestampString = "427215696.301204"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LV-116.iOS.SS.Restaurant/Controllers/OrdersViewController/OrdersViewController.m"
-            timestampString = "427150495.076775"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
-            landmarkName = "-loadTableOrders:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LV-116.iOS.SS.Restaurant/Controllers/OrdersViewController/OrdersViewController.m"
-            timestampString = "427150495.076775"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
-            landmarkName = "-didReceiveOrdersResponse:"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "+logInWithLogin:password:responseBlock:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

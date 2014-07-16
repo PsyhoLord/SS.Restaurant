@@ -7,27 +7,110 @@
 //
 
 #import "RemoteAuthorizationProvider.h"
+
+#import "RequestMaker.h"
+#import "RequestManager.h"
+
+#import "ParserToJSON.h"
 #import "UserRole.h"
+
+static NSString *const kURLAuthenticate     = @"http://192.168.195.212/Restaurant/Security/Authenticate";
+static NSString *const kCookieASPXAUTH      = @".ASPXAUTH";
+static NSString *const kCookiePath          = @"/";
+static NSString *const kHTTPHeaderSetCookie = @"Set-Cookie";
+
+static const NSUInteger kMaxAttemptsForRequest = 3;
+
 
 @implementation RemoteAuthorizationProvider
 
+
+#pragma mark -
 // this method do authorization
 // (NSString*)login - login
 //(NSString*)password - password
 // (void (^)(BOOL isAuthorizated, UserRole *userRole, NSError *error))callback
 // - block which calls for return value: isAuthorizated, userRole, error to hight level
-+ (void) logInWithLogin: (NSString*)login
-               password: (NSString*)password
-          responseBlock: (void (^)(BOOL isAuthorizated, UserRole*, NSError*))callback
++ (void) logInWithLogin: (NSString*)login password: (NSString*)password responseBlock: (void (^)(BOOL isAuthorizated, UserRole*, NSError*))callback
 {
-    // this is only for test
-    if ( [login isEqualToString:@"123"] && [password isEqualToString:@"123"] ) {
-        [UserRole getInstance].enumUserRole = UserRoleWaiter;
-        callback(YES, [UserRole getInstance], nil);
-    } else {
-        callback(NO, nil, nil);
-    }
+    // Arrays are created for getting JSON data.
+    NSArray *keys       = @[@"UserName", @"Password", @"RememberMe"];
+    NSArray *objects    = @[login, password, @"true"];
+    NSData *JSONData = [ParserToJSON createJSONDataWithObjects: objects
+                                                          keys: keys];
+    
+    // Creates request using JSON data.
+    NSURLRequest *urlRequest = [RequestMaker getLoginRequestWithURL: kURLAuthenticate
+                                                            idOfURL: 0
+                                                               data: JSONData ];
+    [RequestManager send: urlRequest
+           responseBlock: ^(NSHTTPURLResponse *response, NSData *data, NSError *error) {
+               
+               if ( error == nil ) {
+                   
+                   // If login data are true then response is JSON ( { isSuccess : "true" } ).
+                   NSString *isSuccess = [[NSJSONSerialization JSONObjectWithData:data options:0 error:&error] valueForKeyPath:@"isSuccess"];
+                   
+                   if( [response statusCode] == 200 && [isSuccess boolValue] ) {
+                       
+                       [UserRole getInstance].enumUserRole = UserRoleWaiter;
+                       
+                       [RemoteAuthorizationProvider createCookieStorageWithHeaderSetCookie:response];
+                       
+                       callback(YES, [UserRole getInstance], error);
+                   }
+                   else {
+                       callback(NO, nil, error);
+                   }
+               }
+           }
+         countOfAttempts: kMaxAttemptsForRequest];
 }
+
+// This method creates cookie storage in our application.
++(void)createCookieStorageWithHeaderSetCookie:(NSHTTPURLResponse*)response
+{
+    // Gets string of header "Set-Cookie".
+    NSDictionary *headerDictionary = [response allHeaderFields];
+    NSString *headerSetCookie = [headerDictionary valueForKey: @"Set-Cookie"];
+    
+    // Gets token from headerSetCookie.
+    NSString *token = [RemoteAuthorizationProvider getToken:headerSetCookie];
+    
+    NSMutableDictionary *cookieProperties = [[NSMutableDictionary alloc] init];
+    
+    // Cookie name
+    [cookieProperties setObject: kCookieASPXAUTH forKey: NSHTTPCookieName];
+    // Cookie value
+    [cookieProperties setObject: token forKey: NSHTTPCookieValue];
+    // Cookie url
+    [cookieProperties setObject: kURLAuthenticate forKey: NSHTTPCookieOriginURL];
+    // Cookie path
+    [cookieProperties setObject: kCookiePath forKey: NSHTTPCookiePath];
+    
+    // Cookies init from dictionary and then save into cookie storage.
+    NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties: cookieProperties];
+    [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie: cookie];
+}
+
+// Returns ASPX token.
++(NSString*)getToken:(NSString*)headerSetCookie
+{
+    // Separates header "Set-Cookie" apart.
+    NSArray *arrayOfSetCookie = [headerSetCookie componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@";,"]];
+    NSString *token = nil;
+    
+    for ( NSString *cookie in arrayOfSetCookie ) {
+        if ( [cookie hasPrefix: kCookieASPXAUTH] ) {
+            // We need only token (not key). Therefore we ignore .ASPXAUTH .
+            NSRange range =  [cookie rangeOfString: kCookieASPXAUTH];
+            token = [cookie substringFromIndex: range.length+1 ]; // +1 because kCookieASPXAUTH hasn't =
+            return token;
+        }
+    }
+    return token;
+}
+
 
 // this method do log out
 // (void (^)(UserRole *userRole, NSError *error))callback -
@@ -36,7 +119,10 @@
 {
     [UserRole getInstance].enumUserRole = UserRoleClient;
     // this is only for test
+    
     callback([UserRole getInstance], nil);
+    
+    
 }
 
 @end

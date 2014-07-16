@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		22002A1B1972FACA00E6E7A2 /* RequestMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 22002A1A1972FACA00E6E7A2 /* RequestMaker.m */; };
 		22276D4F197432E8005F698D /* MDCParallaxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22276D4E197432E8005F698D /* MDCParallaxView.m */; };
+		22276E3C1976B02F005F698D /* arrow_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 22276E3B1976B02F005F698D /* arrow_down.png */; };
 		22346B58195F209000495B2A /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 22346B57195F209000495B2A /* Alert.m */; };
 		2265A70519642B1B0059EC0E /* RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2265A70419642B1B0059EC0E /* RequestManager.m */; };
 		2298487A1971A48500C7D56B /* ItemDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 229848791971A48500C7D56B /* ItemDescriptionViewController.m */; };
@@ -26,6 +27,7 @@
 		22A36707196F11BA002D27B7 /* RemoteMapDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A366FB196F11BA002D27B7 /* RemoteMapDataProvider.m */; };
 		22A36708196F11BA002D27B7 /* RemoteMenuDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A366FE196F11BA002D27B7 /* RemoteMenuDataProvider.m */; };
 		22A36709196F11BA002D27B7 /* RemoteOrdersDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A36701196F11BA002D27B7 /* RemoteOrdersDataProvider.m */; };
+		22D09EE61976D35100FD94AA /* ParserToJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D09EE51976D35100FD94AA /* ParserToJSON.m */; };
 		570ABE93196C3EEF003DC398 /* OrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570ABE91196C3EEF003DC398 /* OrdersViewController.m */; };
 		576B6F6C197171D000CEC6BF /* OrderItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 576B6F65197171D000CEC6BF /* OrderItemCell.m */; };
 		576B6F6D197171D000CEC6BF /* OrderItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 576B6F67197171D000CEC6BF /* OrderItemsViewController.m */; };
@@ -87,6 +89,7 @@
 		22002A1A1972FACA00E6E7A2 /* RequestMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestMaker.m; sourceTree = "<group>"; };
 		22276D4D197432E8005F698D /* MDCParallaxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCParallaxView.h; sourceTree = "<group>"; };
 		22276D4E197432E8005F698D /* MDCParallaxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCParallaxView.m; sourceTree = "<group>"; };
+		22276E3B1976B02F005F698D /* arrow_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_down.png; sourceTree = "<group>"; };
 		22346B56195F209000495B2A /* Alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alert.h; sourceTree = "<group>"; };
 		22346B57195F209000495B2A /* Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alert.m; sourceTree = "<group>"; };
 		2265A70319642B1B0059EC0E /* RequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestManager.h; sourceTree = "<group>"; };
@@ -122,6 +125,8 @@
 		22A366FE196F11BA002D27B7 /* RemoteMenuDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteMenuDataProvider.m; sourceTree = "<group>"; };
 		22A36700196F11BA002D27B7 /* RemoteOrdersDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteOrdersDataProvider.h; sourceTree = "<group>"; };
 		22A36701196F11BA002D27B7 /* RemoteOrdersDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteOrdersDataProvider.m; sourceTree = "<group>"; };
+		22D09EE41976D35100FD94AA /* ParserToJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParserToJSON.h; sourceTree = "<group>"; };
+		22D09EE51976D35100FD94AA /* ParserToJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParserToJSON.m; sourceTree = "<group>"; };
 		570ABE90196C3EEF003DC398 /* OrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersViewController.h; sourceTree = "<group>"; };
 		570ABE91196C3EEF003DC398 /* OrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersViewController.m; sourceTree = "<group>"; };
 		576B6F64197171D000CEC6BF /* OrderItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderItemCell.h; sourceTree = "<group>"; };
@@ -237,6 +242,14 @@
 				22276D4E197432E8005F698D /* MDCParallaxView.m */,
 			);
 			path = MDCParallaxView;
+			sourceTree = "<group>";
+		};
+		22276E3A1976B02F005F698D /* TablesIcon */ = {
+			isa = PBXGroup;
+			children = (
+				22276E3B1976B02F005F698D /* arrow_down.png */,
+			);
+			path = TablesIcon;
 			sourceTree = "<group>";
 		};
 		22346B55195F204E00495B2A /* Alerts */ = {
@@ -438,6 +451,15 @@
 			path = RemoteOrdersDataProvider;
 			sourceTree = "<group>";
 		};
+		22D09EE31976D35100FD94AA /* Reparser */ = {
+			isa = PBXGroup;
+			children = (
+				22D09EE41976D35100FD94AA /* ParserToJSON.h */,
+				22D09EE51976D35100FD94AA /* ParserToJSON.m */,
+			);
+			path = Reparser;
+			sourceTree = "<group>";
+		};
 		570ABE8C196C3EEF003DC398 /* OrdersViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -629,6 +651,7 @@
 		EDBDFE1B1967219000E65DCA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				22276E3A1976B02F005F698D /* TablesIcon */,
 				ED35A8581971933E006F91F6 /* ToolbarIcons */,
 				EDCE5C85196BE4C600496B34 /* RoleIcons */,
 				EDA13E26196ADCC400CF579C /* SidebarRootMenuIcons */,
@@ -757,6 +780,7 @@
 		FA336C2219335B950007CC76 /* LV-116.iOS.SS.Restaurant */ = {
 			isa = PBXGroup;
 			children = (
+				22D09EE31976D35100FD94AA /* Reparser */,
 				ED58B564196BEAA500396CED /* UserRole */,
 				22346B55195F204E00495B2A /* Alerts */,
 				EDE50DFB193E19EE00ACA71D /* Models */,
@@ -905,6 +929,7 @@
 				EDCE5C89196BE4C600496B34 /* role_waiter_icon.png in Resources */,
 				EDA13E2D196ADCC400CF579C /* orders_icon.png in Resources */,
 				FA336C3819335B950007CC76 /* Images.xcassets in Resources */,
+				22276E3C1976B02F005F698D /* arrow_down.png in Resources */,
 				FA336C3019335B950007CC76 /* Main_iPhone.storyboard in Resources */,
 				EDA4E34D196BD97F008E7CE2 /* home_page_icon.png in Resources */,
 				EDA13E2E196ADCC400CF579C /* menu_icon.png in Resources */,
@@ -966,6 +991,7 @@
 				EDEC47351956FACB0041B98B /* MenuItemModel.m in Sources */,
 				22A36704196F11BA002D27B7 /* MenuDataProvider.m in Sources */,
 				22A366D9196F10D2002D27B7 /* TableModelWithOrders.m in Sources */,
+				22D09EE61976D35100FD94AA /* ParserToJSON.m in Sources */,
 				EDD611021971712600A70D4B /* WaiterMenuViewController.m in Sources */,
 				ED42A3ED196C32FA00A63656 /* MapViewController.m in Sources */,
 				22276D4F197432E8005F698D /* MDCParallaxView.m in Sources */,

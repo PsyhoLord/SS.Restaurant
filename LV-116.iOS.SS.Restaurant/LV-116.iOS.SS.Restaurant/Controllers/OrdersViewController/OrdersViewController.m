@@ -52,7 +52,7 @@ static NSString *const kImageOfSectionView     = @"arrow_down.png";
                                                         sidebarButton: self.sidebarButton
                                                             isGesture: YES];
     
-    [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
+//    [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
     [self loadMapData];
 }
 

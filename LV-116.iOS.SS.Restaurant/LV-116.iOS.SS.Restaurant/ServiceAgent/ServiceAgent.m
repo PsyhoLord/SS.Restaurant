@@ -22,7 +22,7 @@
                                        queue: operationQueue
                            completionHandler: ^(NSURLResponse *urlResponse, NSData *data, NSError *connectionError) {
                                // call block from hight layer - RemoteDataProvider
-                               
+
                                callback((NSHTTPURLResponse*)urlResponse, data, connectionError);
                 
 //                               NSLog(@"%@",urlResponse);
