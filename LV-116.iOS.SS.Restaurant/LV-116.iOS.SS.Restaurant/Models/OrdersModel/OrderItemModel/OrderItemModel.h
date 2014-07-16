@@ -14,7 +14,10 @@
 
 @property (strong, nonatomic) MenuItemModel *menuItemModel;
 @property NSUInteger countOfItem;
+@property BOOL served;
 
-- (instancetype)initWithMenuItemModel: (MenuItemModel*)menuItemModel;
+- (instancetype) initWithMenuItemModel: (MenuItemModel*)menuItemModel;
+
+- (instancetype) init;
 
 @end

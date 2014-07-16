@@ -8,6 +8,7 @@
 
 
 // class OrderModel will contain data of one order
+@class OrderItemModel;
 
 @interface OrderModel : NSObject
 
@@ -23,4 +24,7 @@
 - (instancetype)initWithId:(int)Id isClosed:(BOOL)closed tableId:(int)tableId timestamp:(NSString*)timestamp userId:(int)userId;
 
 - (instancetype) init;
+
+- (void) addArrayOfOrderItems:(NSArray *) arrayOfOrderItems;
+
 @end

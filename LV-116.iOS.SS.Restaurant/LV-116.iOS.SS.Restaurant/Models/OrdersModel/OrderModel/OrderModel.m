@@ -36,4 +36,13 @@
     return  self;
 }
 
+- (void) addArrayOfOrderItems:(NSArray *) arrayOfOrderItems
+{
+    if (_arrayOfOrderItems == nil){
+        _arrayOfOrderItems = [[NSMutableArray alloc] initWithArray: arrayOfOrderItems copyItems: YES];
+    }
+    [_arrayOfOrderItems addObjectsFromArray: arrayOfOrderItems];
+}
+
+
 @end
