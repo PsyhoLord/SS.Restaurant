@@ -19,4 +19,6 @@
 
 - (void) removeOrderItemAtIndex: (int)index;
 
+- (void) sendUpdateOrder;
+
 @end

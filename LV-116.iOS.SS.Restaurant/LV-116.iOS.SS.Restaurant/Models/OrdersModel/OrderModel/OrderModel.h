@@ -17,7 +17,7 @@
 @property (strong, nonatomic) NSMutableArray *arrayOfOrderItems;
 //@property int table;
 @property int tableId;
-@property (strong,nonatomic) NSString *timestamp;
+@property (strong,nonatomic) NSDate *timestamp;
 //@property int user;
 @property int userId;
 

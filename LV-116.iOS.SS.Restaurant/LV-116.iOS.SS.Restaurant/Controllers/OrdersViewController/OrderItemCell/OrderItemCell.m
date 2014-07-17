@@ -32,7 +32,7 @@
         [Alert showDeleteOrderItemWarningWithDelegate: self];
     } else {
         [_itemCount setText: [NSString stringWithFormat: @"%d", (int)_itemCountStepper.value] ];
-        _currentOrderItem.countOfItem = (int)_itemCountStepper.value;
+        _currentOrderItem.amount = (int)_itemCountStepper.value;
         [_delegate redrawTable];
     }
 }
@@ -42,8 +42,8 @@
 - (void) drawCell
 {
     _itemName.text          = _currentOrderItem.menuItemModel.name;
-    _itemCount.text         = [NSString stringWithFormat:@"%d",_currentOrderItem.countOfItem];
-    _itemCountStepper.value = _currentOrderItem.countOfItem;
+    _itemCount.text         = [NSString stringWithFormat:@"%d",_currentOrderItem.amount];
+    _itemCountStepper.value = _currentOrderItem.amount;
     _pricePerPcs.text       =[ NSString stringWithFormat:@"%.2f $",_currentOrderItem.menuItemModel.price];
     
 }

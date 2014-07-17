@@ -14,4 +14,7 @@
 // Load order with orderItems by OrderId.
 + (void)loadOrderItemsWithId:(int)orderId responseBlock:(void (^)(NSArray*, NSError*))callback;
 
+// Updates Order by sending data
++ (void) sendDataFromOrderToUpdate: (NSData * )data responseBlock: (void (^)(NSError*))callback;
+
 @end

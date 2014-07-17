@@ -14,7 +14,8 @@
 #import "RequestMaker.h"
 
 
-static NSString *const kURLGetOrderItems    = @"http://192.168.195.212/Restaurant/api/Orders/?id=%d";
+static NSString *const kURLGetOrderItems            = @"http://192.168.195.212/Restaurant/api/Orders/?id=%d";
+static NSString *const kURLPutToUpdateOrderItems    = @"http://192.168.195.212/Restaurant/api/Orders/";
 
 static const NSUInteger kMaxAttemptsForRequest = 3;
 
@@ -37,6 +38,12 @@ static const NSUInteger kMaxAttemptsForRequest = 3;
            }
          countOfAttempts: kMaxAttemptsForRequest
      ];
+}
+
+// Updates Order by sending data
++ (void) sendDataFromOrderToUpdate: (NSData * )data responseBlock: (void (^)(NSError*)) callback
+{
+    //NSURLRequest * urlRequest = [RequestMaker]
 }
 
 @end
