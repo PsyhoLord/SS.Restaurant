@@ -30,7 +30,7 @@
         
         itemInOrderWithCount = [orderModel.arrayOfOrderItems objectAtIndex: i];
         
-        totalValue += itemInOrderWithCount.menuItemModel.price * itemInOrderWithCount.countOfItem;
+        totalValue += itemInOrderWithCount.menuItemModel.price * itemInOrderWithCount.amount;
     }
     
     self.totallPrice.text = [NSString stringWithFormat: @"Totall  %.2f$", totalValue];
@@ -40,7 +40,7 @@
 //calling mathod in OrderItemsViewController
 - (IBAction)addNewOrderItem: (UIButton *)sender {
     
-    [_delegate addNewOrderItem];
+    [_delegate sendUpdateOrder];
     
 }
 

@@ -70,7 +70,7 @@ static float const kTransrormDimensionHeight    = 1;
       
         addOrderItem = [[OrderItemModel alloc] initWithMenuItemModel: addMenuItemModel];
         
-        addOrderItem.countOfItem = i+1;
+        addOrderItem.amount = i+1;
         
         [_currentOrder.arrayOfOrderItems addObject: addOrderItem];
         
@@ -91,7 +91,7 @@ static float const kTransrormDimensionHeight    = 1;
                                           
                                           dispatch_async( dispatch_get_main_queue(), ^{
                                               
-                                              _currentOrder = [[OrderModel alloc] init];
+                                              //_currentOrder = [[OrderModel alloc] init];
                                              
                                               [_currentOrder addArrayOfOrderItems: arrayOfOrderItems];
                                               
@@ -120,7 +120,7 @@ static float const kTransrormDimensionHeight    = 1;
     
     self.title = [NSString stringWithFormat: @"Order #%i", _currentOrder.Id];
     
-    //[[_currentOrder alloc] init];
+    //_currentOrder = [[OrderModel alloc] init];
     
     [self loadOrderDataByOrderId: _currentOrder.Id];
     
@@ -239,14 +239,14 @@ static float const kTransrormDimensionHeight    = 1;
     {
         newOrderItem = [_currentOrder.arrayOfOrderItems objectAtIndex: i];
         if (newOrderItem.menuItemModel.Id == menuItem.Id){
-            newOrderItem.countOfItem ++;
+            newOrderItem.amount ++;
             isInArray = 1;
         }
     }
     if (!isInArray)
     {
         OrderItemModel *newOrderItem = [[OrderItemModel alloc] initWithMenuItemModel: menuItem];
-        newOrderItem.countOfItem = 1;
+        newOrderItem.amount = 1;
         [_currentOrder.arrayOfOrderItems addObject: newOrderItem];
     }
     [self.tableView reloadData];
@@ -270,6 +270,11 @@ static float const kTransrormDimensionHeight    = 1;
     [super didReceiveMemoryWarning];
 }
 
+//Getting started sendibg OrderUpdate request to server
+- (void) sendUpdateOrder
+{
+    //send UPD
+}
 
 
 /*

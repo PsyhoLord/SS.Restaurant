@@ -12,9 +12,16 @@
 
 @interface OrderItemModel : NSObject
 
+@property long ID;
 @property (strong, nonatomic) MenuItemModel *menuItemModel;
-@property NSUInteger countOfItem;
+@property int amount;
 @property BOOL served;
+@property float actualPrice;
+#pragma mark Those propertis are in the model, thats sends on server
+/*
+need to be sure, delete them or no
+@property long menuItemId;
+@property long orderId;*/
 
 - (instancetype) initWithMenuItemModel: (MenuItemModel*)menuItemModel;
 
