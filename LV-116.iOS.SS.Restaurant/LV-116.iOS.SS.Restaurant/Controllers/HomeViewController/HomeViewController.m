@@ -7,13 +7,16 @@
 //
 
 #import "HomeViewController.h"
-
 #import "SWRevealViewController.h"
 #import "SidebarViewController.h"
+
 #import "SidebarViewController+ConfigurationForOtherViewControllers.h"
 
-#import "AuthorizationProvider.h"
+#import "Alert.h"
 #import "UserRole.h"
+#import "AuthorizationProvider.h"
+#import "HomeViewController.h"
+
 
 static NSString *const kRootMenuName        = @"Home page";
 static NSString *const kRoleClientIconName  = @"role_client_icon.png";
@@ -101,6 +104,9 @@ static NSString *const kRoleWaiterIconName  = @"role_waiter_icon.png";
                                         [self clearTextFields];
                                     });
                                 } else {
+                                    dispatch_async( dispatch_get_main_queue(), ^{
+                                        [Alert showAuthorizationAlert];
+                                    });
                                     // Alert ...
                                 }
                             }];

@@ -305,24 +305,40 @@ static NSString *const kImageOfSectionView     = @"arrow_down.png";
 }
 
 // Handle click on cell of add (the last cell).
+/*
+ "Id": 5,
+ "Closed": true,
+ "Items": []
+ "TableId": 1,
+ "Timestamp": "2014-07-17T17:07:19.183+03:00",
+ "UserId": 2
+*/
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ( indexPath.row == [tableView numberOfRowsInSection: indexPath.section]-1 ) {
         
         // Create new empty order and push it in array.
-        OrderModel *orderModel = [[OrderModel alloc] init];
-        [((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]) addOrder: orderModel];
+
+        NSUInteger tableId = ((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]).Id;
         
-        
-        [OrdersDataProvider postTableOrderWithTableId: ((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]).Id
-                                        responseBlock: ^(NSError *error) {
-                                            if( error ) {
-                                                [Alert showHTTPMethodsAlert: error];
-                                            }
-                                        }
+        [OrdersDataProvider postTableOrderWithTableModel: tableId
+                                           responseBlock: ^(NSUInteger orderId, NSError *error) {
+                                               
+                                               if( error ) {
+                                                   dispatch_async( dispatch_get_main_queue(), ^{
+                                                       [Alert showHTTPMethodsAlert: error];
+                                                   });
+                                               } else {
+                                                   dispatch_async( dispatch_get_main_queue(), ^{
+                                                       OrderModel *orderModel = [[OrderModel alloc] init];
+                                                       [((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]) addOrder: orderModel];
+                                                       [self.tableView reloadData];
+                                                   });
+                                               }
+                                           }
          ];
         
-        [self.tableView reloadData];
+
     } else {
         [self performSegueWithIdentifier: kSegueToOrderItems
                                   sender: [tableView cellForRowAtIndexPath: indexPath]];

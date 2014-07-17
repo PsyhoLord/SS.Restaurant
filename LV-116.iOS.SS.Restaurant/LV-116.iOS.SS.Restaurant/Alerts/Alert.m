@@ -9,32 +9,47 @@
 #import "Alert.h"
 #import "OrderItemCell.h"
 
-static NSString *const connectionAlertTitle       = @"No network connection";
-static NSString *const connectionAlertMessage     = @"You must be connected to the internet to use this app.";
-static NSString *const connectionAlertButtonTitle = @"OK";
+static NSString *const kConnectionAlertTitle       = @"No network connection";
+static NSString *const kConnectionAlertMessage     = @"You must be connected to the internet to use this app.";
+static NSString *const kConnectionAlertButtonTitle = @"OK";
 
-static NSString *const methodAlertTitle           = @"Error";
-static NSString *const methodAlertMessage         = @"Code of error: %d";
+static NSString *const kMethodAlertTitle           = @"Error";
+static NSString *const kMethodAlertMessage         = @"Code of error: %d";
+
+static NSString *const kAuthorizationmethodAlertTitle   = @"Login error";
+static NSString *const kAuthorizationmethodAlertMessage = @"Your login or password doesn't correct. Please, try again.";
+
 
 @implementation Alert
 
 + (void) showConnectionAlert
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:connectionAlertTitle
-                                                    message:connectionAlertMessage
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kConnectionAlertTitle
+                                                    message:kConnectionAlertMessage
                                                    delegate:nil
-                                          cancelButtonTitle:connectionAlertButtonTitle
+                                          cancelButtonTitle:kConnectionAlertButtonTitle
                                           otherButtonTitles:nil];
     [alert show];
 }
 
-// This method show alert error when http method is failed.
+// This method shows alert error when http method is failed.
 + (void) showHTTPMethodsAlert:(NSError*)error
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: methodAlertTitle
-                                                    message: [NSString stringWithFormat: methodAlertMessage, error.code]
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: kMethodAlertTitle
+                                                    message: [NSString stringWithFormat: kMethodAlertMessage, error.code]
                                                    delegate: nil
-                                          cancelButtonTitle: connectionAlertButtonTitle
+                                          cancelButtonTitle: kConnectionAlertButtonTitle
+                                          otherButtonTitles: nil];
+    [alert show];
+}
+
+// This method shows alert when login and password don't correct.
++ (void) showAuthorizationAlert
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: kAuthorizationmethodAlertTitle
+                                                    message: kAuthorizationmethodAlertMessage
+                                                   delegate: nil
+                                          cancelButtonTitle: kConnectionAlertButtonTitle
                                           otherButtonTitles: nil];
     [alert show];
 }

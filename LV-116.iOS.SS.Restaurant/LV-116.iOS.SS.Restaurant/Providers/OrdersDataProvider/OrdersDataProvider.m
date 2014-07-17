@@ -10,7 +10,9 @@
 #import "RemoteOrdersDataProvider.h"
 
 #import "MapModel.h"
+#import "TableModelWithOrders.h"
 
+@class TableModelWithOrders;
 
 @implementation OrdersDataProvider
 
@@ -41,12 +43,12 @@
 #pragma mark - POST
 
 // Post the one order on table using tableId.
-+ (void)postTableOrderWithTableId:(int)tableId responseBlock:(void (^)(NSError*))callback
++ (void)postTableOrderWithTableModel:(int)tableId responseBlock:(void (^)(NSUInteger,  NSError*))callback
 {
-    [RemoteOrdersDataProvider postTableOrderWithTableId:tableId
-                                            responseBlock:^(NSError *error) {
-                                                callback(error);
-                                            }
+    [RemoteOrdersDataProvider postTableOrderWithTableModel:tableId
+                                             responseBlock:^(NSUInteger orderId, NSError *error) {
+                                                 callback(orderId, error);
+                                             }
     ];
 }
 

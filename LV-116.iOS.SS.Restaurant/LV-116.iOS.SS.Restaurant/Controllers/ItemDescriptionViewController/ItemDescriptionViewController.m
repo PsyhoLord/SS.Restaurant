@@ -9,7 +9,6 @@
 #import "ItemDescriptionViewController.h"
 #import "SWRevealViewController.h"
 #import "SidebarViewController+ConfigurationForOtherViewControllers.h"
-#import "MDCParallaxView.h"
 
 #import "MenuDataProvider.h"
 #import "MenuItemModel.h"
@@ -22,7 +21,6 @@
 
 @implementation ItemDescriptionViewController
 {
-    __weak IBOutlet UIView *_itemView;
     __weak IBOutlet UIImageView *_itemImage;
     __weak IBOutlet UILabel *_itemName;
     __weak IBOutlet UILabel *_itemWeight;
@@ -53,29 +51,6 @@
     [SidebarViewController setupSidebarConfigurationForViewController: self
                                                         sidebarButton: self.sidebarButton
                                                             isGesture: NO];
-    
-    UIImage *image = _itemImage.image;
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
-    [_itemImage addGestureRecognizer:tapGesture];
-    
-    _itemImage.contentMode =  UIViewContentModeScaleAspectFill;
-    
-    UIView *myLabel = [[UIView alloc] initWithFrame:CGRectMake(20, 20, CGRectGetWidth(self.view.frame), 300)];
-//    myLabel.text = @"HELLO WORLD";
-//    _itemName.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 300);
-    
-
-    
-    MDCParallaxView *parallaxView = [[MDCParallaxView alloc] initWithBackgroundView: _itemImage
-                                                                     foregroundView: myLabel];
-    parallaxView.frame = self.view.bounds;
-    parallaxView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    parallaxView.backgroundHeight = image.size.height +30;
-    parallaxView.scrollView.scrollsToTop = YES;
-    parallaxView.backgroundInteractionEnabled = YES;
-    parallaxView.scrollViewDelegate = self;
-    
-    [self.view addSubview:parallaxView];
 }
 
 #pragma mark - UIScrollViewDelegate Protocol Methods
@@ -110,7 +85,7 @@
                                       if ( error ) {
                                           // [Alert showConnectionAlert];
                                       } else {
-                                          _menuItemModel.image = itemImage;
+                                          [self.menuItemModel setImage:itemImage];
                                           _itemImage.image = itemImage;
                                       }
                                   }

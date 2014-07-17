@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 
 @class OrderModel;
+@class TableModelWithOrders;
 
 @interface OrdersDataProvider : NSObject
 
@@ -19,6 +19,6 @@
 + (void)deleteTableOrderWithOrderId:(int)orderId responseBlock:(void (^)(NSError*))callback;
 
 
-+ (void)postTableOrderWithTableId:(int)tableId responseBlock:(void (^)(NSError*))callback;
++ (void)postTableOrderWithTableModel:(int)tableId responseBlock:(void (^)(NSUInteger,  NSError*))callback;
 
 @end

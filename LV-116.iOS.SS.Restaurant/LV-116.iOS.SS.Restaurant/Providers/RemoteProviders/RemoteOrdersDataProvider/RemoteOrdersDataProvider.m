@@ -11,10 +11,11 @@
 
 #import "RequestManager.h"
 #import "RequestMaker.h"
+#import "ParserToJSON.h"
 
 
 static NSString *const kURLDeleteOrder       = @"http://192.168.195.212/Restaurant/api/Orders/%d";
-static NSString *const kURLPostTableOrder    = @"http://192.168.195.212/Restaurant/api/Orders?tableId=%d";
+static NSString *const kURLPostTableOrder    = @"http://192.168.195.212/Restaurant/Api/orders";
 static NSString *const kURLGetTableOrders    = @"http://192.168.195.212/Restaurant/api/Orders?tableId=%d";
 
 static const NSUInteger kMaxAttemptsForRequest = 3;
@@ -47,13 +48,13 @@ static const NSUInteger kMaxAttemptsForRequest = 3;
 #pragma mark - HTTP methods.
 #pragma mark - DELETE.
 
-// Delete the one order on table using orderId. 
+// Delete the one order on table using orderId.
 + (void)deleteTableOrderWithOrderId:(int)orderId responseBlock:(void (^)(NSError*))callback
 {
-    NSURLRequest *URLRequest = [RequestMaker getDeleteRequestWithURL: kURLDeleteOrder
+    NSURLRequest *urlRequest = [RequestMaker getDeleteRequestWithURL: kURLDeleteOrder
                                                              idOfURL: orderId];
     
-    [RequestManager send: URLRequest
+    [RequestManager send: urlRequest
            responseBlock: ^(NSHTTPURLResponse *response, NSData *data, NSError *error) {
                // call block from hight layer - DataProvider
                callback(error);
@@ -61,21 +62,33 @@ static const NSUInteger kMaxAttemptsForRequest = 3;
          countOfAttempts: kMaxAttemptsForRequest];
 }
 
-// Set request using url with orderId.
-
-
-
 #pragma mark - POST.
 
 // Post the new order on table using tableId.
-+ (void)postTableOrderWithTableId:(int)tableId responseBlock:(void (^)(NSError*))callback
++ (void)postTableOrderWithTableModel:(int)table responseBlock:(void (^)(NSUInteger, NSError*))callback
 {
-    NSURLRequest *URLRequest = [RequestMaker getPostRequestWithURL: kURLPostTableOrder idOfURL:tableId];
+    NSNumber *Id = [NSNumber numberWithInt: rand() % 1000];
+    NSString *timestamp = [NSString stringWithFormat:@"%@",[NSDate date]] ;
+    NSArray *keys    = @[@"Closed",@"TableId", @"Timestamp", @"UserId"];
+    NSArray *objects = @[ @"true",[NSNumber numberWithInt: table], timestamp, @"1049" ];
     
-    [RequestManager send: URLRequest
+    NSData *data = [ParserToJSON createJSONDataWithObjects:objects keys:keys];
+    
+    
+    NSURLRequest *urlRequest = [RequestMaker getRequestWithURL:@"http://192.168.195.212/Restaurant/Orders/NewOrder?tableId=%d" idOfURL:table];
+//    NSURLRequest *urlRequest = [RequestMaker getPostRequestWithURL:kURLPostTableOrder idOfURL:0 requestBody: data];
+    
+    [RequestManager send: urlRequest
            responseBlock: ^(NSHTTPURLResponse *response, NSData *data, NSError *error) {
                // call block from hight layer - DataProvider
-               callback(error);
+               if( error ){
+                   callback(-1, error);
+               } else {
+                   NSString *tmp = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                   NSUInteger orderId = [tmp integerValue];
+                   callback(orderId, error);
+               }
+               
            }
          countOfAttempts: kMaxAttemptsForRequest];
 }

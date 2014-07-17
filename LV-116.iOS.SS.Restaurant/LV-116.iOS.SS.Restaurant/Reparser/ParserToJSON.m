@@ -16,14 +16,38 @@
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithObjects: objects
                                                                      forKeys: keys];
     NSError *error = nil;
-    NSData * JSONData = [NSJSONSerialization dataWithJSONObject: dict
+    NSData * jsonData = [NSJSONSerialization dataWithJSONObject: dict
                                                         options: NSJSONWritingPrettyPrinted
                                                           error: &error];
     if( error != nil ) {
         return nil;
     } else {
-        return JSONData;
+        return jsonData;
     }
 }
+
+// Returns JSON data using dictionary.
++(NSData*)createJSONDataWithDictionary:(NSDictionary*)jsonDictionary
+{
+    NSError *error = nil;
+    NSData * jsonData = [NSJSONSerialization dataWithJSONObject: jsonDictionary
+                                                        options: NSJSONWritingPrettyPrinted
+                                                          error: &error];
+    if( error != nil ) {
+        return nil;
+    } else {
+        return jsonData;
+    }
+}
+
+
+// Return dictionary. We can use it for create JSON data.
++(NSDictionary*)createJSONStringsWithObjects:(NSArray*)objects keys:(NSArray*)keys
+{
+    NSMutableDictionary *jsonDictionary = [[NSMutableDictionary alloc] initWithObjects: objects
+                                                                     forKeys: keys];
+    return jsonDictionary;
+}
+
 
 @end

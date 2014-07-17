@@ -49,7 +49,7 @@ static const NSUInteger kMaxAttemptsForRequest = 3;
     // Creates request using JSON data.
     NSURLRequest *urlRequest = [RequestMaker getLoginRequestWithURL: kURLAuthenticate
                                                             idOfURL: 0
-                                                               data: JSONData ];
+                                                               requestBody: JSONData ];
     [RequestManager send: urlRequest
            responseBlock: ^(NSHTTPURLResponse *response, NSData *data, NSError *error) {
                

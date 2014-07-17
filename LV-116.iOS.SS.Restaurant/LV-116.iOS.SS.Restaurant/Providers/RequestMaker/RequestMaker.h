@@ -11,15 +11,18 @@
 @interface RequestMaker : NSObject
 
 // GET
-+ (NSURLRequest *)getRequestWithURL:(NSString*)stringOfURL idOfURL:(int)tableId;
++ (NSURLRequest*)getRequestWithURL:(NSString*)stringOfURL idOfURL:(int)tableId;
 
 // DELETE
-+ (NSURLRequest *)getDeleteRequestWithURL:(NSString*)stringOfURL idOfURL:(int)Id;
++ (NSURLRequest*)getDeleteRequestWithURL:(NSString*)stringOfURL idOfURL:(int)Id;
+
+// PUT
++ (NSURLRequest*)getPutRequestWithURL:(NSString*)stringOfURL idOfURL:(int)Id requestBody:(NSData*)body;
 
 // POST
-+ (NSURLRequest *)getPostRequestWithURL:(NSString*)stringOfURL idOfURL:(int)Id;
++ (NSURLRequest*)getPostRequestWithURL:(NSString*)stringOfURL idOfURL:(int)Id requestBody:(NSData*)body;
 
 // POST Login
-+ (NSURLRequest *)getLoginRequestWithURL:(NSString*)stringOfURL idOfURL:(int)Id data:(NSData*)data;
++ (NSURLRequest*)getLoginRequestWithURL:(NSString*)stringOfURL idOfURL:(int)Id requestBody:(NSData*)data;
 
 @end

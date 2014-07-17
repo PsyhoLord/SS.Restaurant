@@ -15,10 +15,13 @@
 // This method creates UIAlert and show it
 + (void)showConnectionAlert;
 
-// This method show alert error when http method is failed. 
+// This method shows alert error when http method is failed.
 + (void)showHTTPMethodsAlert:(NSError*)error;
 
-// This method show alert when waiter want to delete OrderItem
+// This method shows alert when login and password don't correct.
++ (void) showAuthorizationAlert;
+
+// This method shows alert when waiter want to delete OrderItem
 + (void) showDeleteOrderItemWarningWithDelegate: (OrderItemCell *) newDelegate;
 
 @end

@@ -9,6 +9,14 @@
 #import "OrdersDataParser.h"
 #import "OrderModel.h"
 
+static NSString *const kOrderKeyId        = @"Id";
+static NSString *const kOrderKeyClosed    = @"closed";
+static NSString *const kOrderKeyTableId   = @"tableId";
+static NSString *const kOrderKeyTimeStamp = @"timestamp";
+static NSString *const kOrderKeyUserId    = @"userId";
+
+
+
 @implementation OrdersDataParser
 
 + (id)parse:(NSData*) data parsingError:(NSError**) parseError
@@ -32,11 +40,11 @@
     NSMutableArray *arrayOfTableOrders = [[NSMutableArray alloc] init];
 
     for ( NSMutableDictionary *orderDictionary in arrayOfOrdersDictionary ) {
-        OrderModel *orderModel = [[OrderModel alloc] initWithId: [[orderDictionary valueForKey:@"Id"] intValue]
-                                                       isClosed: [[orderDictionary valueForKey:@"closed"] boolValue]
-                                                        tableId: [[orderDictionary valueForKey:@"tableId"] intValue]
-                                                      timestamp: [[orderDictionary valueForKey:@"timestamp"] dateFormat]
-                                                         userId: [[orderDictionary valueForKey:@"userId"] intValue]
+        OrderModel *orderModel = [[OrderModel alloc] initWithId: [[orderDictionary valueForKey: kOrderKeyId] intValue]
+                                                       isClosed: [[orderDictionary valueForKey: kOrderKeyClosed] boolValue]
+                                                        tableId: [[orderDictionary valueForKey: kOrderKeyTableId] intValue]
+                                                      timestamp: [[orderDictionary valueForKey: kOrderKeyTimeStamp] dateFormat]
+                                                         userId: [[orderDictionary valueForKey: kOrderKeyUserId] intValue]
                          ];
         
         [arrayOfTableOrders addObject: orderModel];

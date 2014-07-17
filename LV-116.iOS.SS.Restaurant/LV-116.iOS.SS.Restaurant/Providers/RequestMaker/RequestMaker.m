@@ -29,73 +29,98 @@ static const CGFloat kRequestTimeoutInterval = 3.0;
 
 #pragma mark - GET
 // Set GET request using url with id.
-+ (NSURLRequest *)getRequestWithURL:(NSString*)stringOfURL idOfURL:(int)Id
++ (NSURLRequest*)getRequestWithURL:(NSString*)stringOfURL idOfURL:(int)Id
 {
     NSString *urlString = [NSString stringWithFormat: stringOfURL, Id];
     NSURL *URL = [[NSURL alloc] initWithString: urlString];
     
-    NSURLRequest *URLRequest = [NSMutableURLRequest requestWithURL: URL
+    NSURLRequest *urlRequest = [NSMutableURLRequest requestWithURL: URL
                                                 cachePolicy: NSURLRequestUseProtocolCachePolicy
                                             timeoutInterval: kRequestTimeoutInterval];
 
-     return URLRequest;
+     return urlRequest;
 }
 
 #pragma mark - DELETE
 // Set DELETE request using url with id.
-+ (NSURLRequest *)getDeleteRequestWithURL:(NSString*)stringOfURL idOfURL:(int)Id;
++ (NSURLRequest*)getDeleteRequestWithURL:(NSString*)stringOfURL idOfURL:(int)Id;
 {
     NSString *urlString = [NSString stringWithFormat: stringOfURL, Id];
     
     NSURL *URL = [[NSURL alloc] initWithString: urlString];
     
-    NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL: URL
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL: URL
                                                               cachePolicy: NSURLRequestUseProtocolCachePolicy
                                                           timeoutInterval: kRequestTimeoutInterval];
     
 
-    [URLRequest setHTTPMethod: kHTTPMethodDELETE ];
-    [URLRequest setValue: kHTTPHeaderValueAcceptAppJSON forHTTPHeaderField: kHTTPHeaderFieldAccept];
+    [urlRequest setHTTPMethod: kHTTPMethodDELETE ];
+    [urlRequest setValue: kHTTPHeaderValueAcceptAppJSON forHTTPHeaderField: kHTTPHeaderFieldAccept];
     
-    return URLRequest;
+    return urlRequest;
 }
+
+#pragma mark - PUT
+// Set PUT using url with id.
++ (NSURLRequest*)getPutRequestWithURL:(NSString*)stringOfURL idOfURL:(int)Id requestBody:(NSData*)body
+{
+    NSString *urlString = [NSString stringWithFormat: stringOfURL, Id];
+    NSURL *URL = [[NSURL alloc] initWithString: urlString];
+    
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL: URL
+                                                              cachePolicy: NSURLRequestUseProtocolCachePolicy
+                                                          timeoutInterval: kRequestTimeoutInterval];
+    
+    [urlRequest setValue: kHTTPHeaderValueAcceptAppJSON forHTTPHeaderField: kHTTPHeaderFieldAccept];
+    [urlRequest setValue: kHTTPHeaderValueAcceptAppJSON forHTTPHeaderField: kHTTPHeaderFieldContentType];
+    
+    urlRequest.HTTPMethod = kHTTPMethodPUT;
+    urlRequest.HTTPBody   = body;
+    
+    return urlRequest;
+}
+
 
 #pragma mark - POST
 // Set POST using url with id.
-+ (NSURLRequest *)getPostRequestWithURL:(NSString*)stringOfURL idOfURL:(int)Id
++ (NSURLRequest*)getPostRequestWithURL:(NSString*)stringOfURL idOfURL:(int)Id requestBody:(NSData*)body
 {
     NSString *urlString = [NSString stringWithFormat: stringOfURL, Id];
     NSURL *URL = [[NSURL alloc] initWithString: urlString];
     
-    NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL: URL
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL: URL
                                                               cachePolicy: NSURLRequestUseProtocolCachePolicy
                                                           timeoutInterval: kRequestTimeoutInterval];
-
-
     
-    return URLRequest;
+//    [urlRequest setValue: kHTTPHeaderValueAcceptAppJSON forHTTPHeaderField: kHTTPHeaderFieldAccept];
+    [urlRequest setValue: kHTTPHeaderValueAcceptAppJSON forHTTPHeaderField: kHTTPHeaderFieldContentType];
+
+    urlRequest.HTTPMethod = kHTTPMethodPOST;
+    urlRequest.HTTPBody   = body;
+    
+    return urlRequest;
 }
 
 #pragma mark - POST login
 // Return request that can used for login.
-+ (NSURLRequest *)getLoginRequestWithURL:(NSString*)stringOfURL idOfURL:(int)Id data:(NSData*)data
++ (NSURLRequest*)getLoginRequestWithURL:(NSString*)stringOfURL idOfURL:(int)Id requestBody:(NSData*)data
 {
     NSString *urlString = [NSString stringWithFormat: stringOfURL, Id];
     NSURL *URL = [[NSURL alloc] initWithString: urlString];
     
-    NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL: URL
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL: URL
                                                               cachePolicy: NSURLRequestUseProtocolCachePolicy
                                                           timeoutInterval: kRequestTimeoutInterval];
     
     // Set HTTP header.
-    [URLRequest setValue: kHTTPHeaderValueAcceptAppJSON forHTTPHeaderField: kHTTPHeaderFieldAccept];
-    [URLRequest setValue: kHTTPHeaderValueAcceptAppJSON forHTTPHeaderField: kHTTPHeaderFieldContentType];
+    [urlRequest setValue: kHTTPHeaderValueAcceptAppJSON forHTTPHeaderField: kHTTPHeaderFieldAccept];
+    [urlRequest setValue: kHTTPHeaderValueAcceptAppJSON forHTTPHeaderField: kHTTPHeaderFieldContentType];
     
     // Set POST method and JSON data.
-    [URLRequest setHTTPMethod: kHTTPMethodPOST];
-    [URLRequest setHTTPBody: data];
+    urlRequest.HTTPMethod = kHTTPMethodPOST;
+    urlRequest.HTTPBody   = data;
     
-    return URLRequest;
+    return urlRequest;
 }
 
 
