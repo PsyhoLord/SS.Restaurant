@@ -2,4 +2,52 @@
 <Bucket
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LV-116.iOS.SS.Restaurant/Controllers/MenuViewController/MenuViewController.m"
+            timestampString = "427315625.910471"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "-loadMenuData"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[MenuViewController loadMenuData]"
+                  moduleName = "LV-116.iOS.SS.Restaurant"
+                  urlString = "file:///Users/oleghnidets/Desktop/SS.Restaurant/LV-116.iOS.SS.Restaurant/LV-116.iOS.SS.Restaurant/Controllers/MenuViewController/MenuViewController.m"
+                  timestampString = "427315102.018397"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88"
+                  offsetFromSymbolStart = "139">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__34-[MenuViewController loadMenuData]_block_invoke"
+                  moduleName = "LV-116.iOS.SS.Restaurant"
+                  urlString = "file:///Users/oleghnidets/Desktop/SS.Restaurant/LV-116.iOS.SS.Restaurant/LV-116.iOS.SS.Restaurant/Controllers/MenuViewController/MenuViewController.m"
+                  timestampString = "427315102.018755"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88"
+                  offsetFromSymbolStart = "83">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

@@ -59,7 +59,11 @@ static const CGFloat kHeightForMenuItemCell     = 70.0f;
 // set refresh control
 - (void) setupRefreshControl
 {
-    [self.refreshControl addTarget: self action: @selector(loadMenuData) forControlEvents: UIControlEventAllEvents];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.backgroundColor = [UIColor purpleColor];
+    self.refreshControl.tintColor = [UIColor whiteColor];
+
+    [self.refreshControl addTarget: self action: @selector(loadMenuData) forControlEvents: UIControlEventValueChanged];
 }
 
 // set gesture
@@ -79,8 +83,8 @@ static const CGFloat kHeightForMenuItemCell     = 70.0f;
 - (void) loadMenuData
 {
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+//    [self.refreshControl beginRefreshing];
     
-    [self.refreshControl beginRefreshing];
     
     [MenuDataProvider loadMenuDataWithBlock:^(MenuModel *menuModel, NSError *error) {
         
@@ -94,7 +98,17 @@ static const CGFloat kHeightForMenuItemCell     = 70.0f;
                 [Alert showConnectionAlert];
             } else {
                 [self.tableView reloadData];
-                [self.refreshControl endRefreshing];
+                
+                if(self.refreshControl){
+                    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                    [formatter setDateFormat:@"MMM d, h:mm a"];
+                    NSString *title = [NSString stringWithFormat:@"Last update: %@", [formatter stringFromDate:[NSDate date]]];
+                    NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:[UIColor whiteColor]
+                                                                                forKey:NSForegroundColorAttributeName];
+                    NSAttributedString *attributedTitle = [[NSAttributedString alloc] initWithString:title attributes:attrsDictionary];
+                    self.refreshControl.attributedTitle = attributedTitle;
+                    [self.refreshControl endRefreshing];
+                }
             }
         } );
     }];
