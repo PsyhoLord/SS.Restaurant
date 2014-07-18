@@ -83,7 +83,7 @@ static NSString *const kOrderPrice          = @"Price";
     NSDictionary *menuItemFromOrderSecond;
     NSDictionary *menuItemFromOrderThird;
     
-    NSMutableArray *keysArrayFirst = [[NSMutableArray alloc] initWithObjects: @"Id",@"Closed", @"Items", @"TableId", @"Timestamp", @"UserId", nil];
+    NSMutableArray *keysArrayFirst = [[NSMutableArray alloc] initWithObjects: @"Id",@"Closed", @"Items", @"TableId", /*@"Timestamp", */@"UserId", nil];
     NSMutableArray *valuesArrayFirst = [[NSMutableArray alloc] initWithObjects:  [NSString stringWithFormat:@"%i",orderModel.Id],
                                                                             [NSString stringWithFormat:@"%i",orderModel.closed],
                                                                             nil
@@ -105,7 +105,7 @@ static NSString *const kOrderPrice          = @"Price";
         [valuesArraySecond addObject: [NSString stringWithFormat: @"%f", currentOrderItem.actualPrice] ];
         [valuesArraySecond addObject: [NSString stringWithFormat: @"%d", currentOrderItem.amount] ];
         
-            MenuItemModel *menuItem;
+            MenuItemModel *menuItem = orderItem.menuItemModel;
             NSMutableArray *keysArrayThird = [[NSMutableArray alloc] init];
             NSMutableArray *valuesArrayThird = [[NSMutableArray alloc] init];
             [keysArrayThird addObjectsFromArray: @[@"Id", @"CategoryId", @"Description", @"IsActive", @"Name", @"Portions", @"Price"]];
@@ -131,7 +131,7 @@ static NSString *const kOrderPrice          = @"Price";
     
     [valuesArrayFirst addObject: ItemsDictionaryArray];
     [valuesArrayFirst addObject: [NSString stringWithFormat: @"%d", orderModel.Id] ];
-    [valuesArrayFirst addObject: orderModel.timestamp];
+    //[valuesArrayFirst addObject: orderModel.timestamp];
     [valuesArrayFirst addObject: [NSString stringWithFormat: @"%d", orderModel.userId] ];
     
     menuItemFromOrder = [[NSDictionary alloc] initWithObjects: valuesArrayFirst forKeys: keysArrayFirst];

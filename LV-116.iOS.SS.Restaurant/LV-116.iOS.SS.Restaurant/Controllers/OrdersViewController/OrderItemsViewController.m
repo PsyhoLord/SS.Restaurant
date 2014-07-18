@@ -25,6 +25,8 @@
 
 #import "OrderItemsDataProvider.h"
 
+#import "OrderItemsDataParser.h"
+
 #import "Alert.h"
 
 static NSString *const kOrderCellIdentifier     = @"OrderItemCell";
@@ -273,6 +275,19 @@ static float const kTransrormDimensionHeight    = 1;
 //Getting started sendibg OrderUpdate request to server
 - (void) sendUpdateOrder
 {
+    NSData *dataFromOrder = [OrderItemsDataParser unParseOrder: _currentOrder];
+    [OrderItemsDataProvider sendDataFromOrderToUpdate:dataFromOrder
+                                        responseBlock:^(NSError *error){
+                                            dispatch_async( dispatch_get_main_queue(), ^{
+                                                 if(error){
+                                                 [Alert showConnectionAlert];
+                                                 }
+                                                 [Alert showUpdateOrderInfoSuccesfull];
+                                            });
+
+                                        
+                                        }
+     ];
     //send UPD
 }
 

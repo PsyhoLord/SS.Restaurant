@@ -24,4 +24,7 @@
 // This method shows alert when waiter want to delete OrderItem
 + (void) showDeleteOrderItemWarningWithDelegate: (OrderItemCell *) newDelegate;
 
+// This method shows alert when order updated.
++ (void) showUpdateOrderInfoSuccesfull;
+
 @end

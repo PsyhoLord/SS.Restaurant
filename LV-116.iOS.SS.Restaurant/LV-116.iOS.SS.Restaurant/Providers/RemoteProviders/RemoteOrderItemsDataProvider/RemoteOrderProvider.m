@@ -43,7 +43,16 @@ static const NSUInteger kMaxAttemptsForRequest = 3;
 // Updates Order by sending data
 + (void) sendDataFromOrderToUpdate: (NSData * )data responseBlock: (void (^)(NSError*)) callback
 {
-    //NSURLRequest * urlRequest = [RequestMaker]
+    NSURLRequest * urlRequest = [RequestMaker getPutRequestWithURL: kURLPutToUpdateOrderItems
+                                                           idOfURL: 0
+                                                       requestBody: data
+                                 ];
+    [RequestManager send: urlRequest
+           responseBlock:^(NSHTTPURLResponse * response, NSData *responseData, NSError *error) {
+               callback (error);
+           }
+         countOfAttempts: kMaxAttemptsForRequest
+     ];
 }
 
 @end
