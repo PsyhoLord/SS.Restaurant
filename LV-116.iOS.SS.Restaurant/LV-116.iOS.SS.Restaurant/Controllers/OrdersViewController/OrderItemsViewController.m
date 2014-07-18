@@ -218,24 +218,21 @@ static float const kTransrormDimensionHeight    = 1;
 // calls by WaiterMenuViewController and OrderItemsViewController
 - (void) didAddedOrderItem: (MenuItemModel*)menuItem
 {
-    //--New logic (need to make sure that it works)
-    /*
     OrderItemModel *newOrderItem = [[OrderItemModel alloc] initWithMenuItemModel: menuItem];
-    newOrderItem.countOfItem = 1;
+    newOrderItem.amount = 1;
     [_currentOrder.arrayOfOrderItems addObject: newOrderItem];
     for (int i = 0; i < [_currentOrder.arrayOfOrderItems count]-1; i++){
         newOrderItem = [_currentOrder.arrayOfOrderItems objectAtIndex: i];
         if (newOrderItem.menuItemModel.Id == menuItem.Id){
-            newOrderItem.countOfItem ++;
+            newOrderItem.amount ++;
             [_currentOrder.arrayOfOrderItems removeLastObject];
             break;
         }
-    }*/
-    //--end
+    }
     
     
     
-    BOOL isInArray = 0;
+    /*BOOL isInArray = 0;
     OrderItemModel *newOrderItem = [[OrderItemModel alloc] init];
     for (int i = 0; i < [_currentOrder.arrayOfOrderItems count]; i++)
     {
@@ -250,7 +247,7 @@ static float const kTransrormDimensionHeight    = 1;
         OrderItemModel *newOrderItem = [[OrderItemModel alloc] initWithMenuItemModel: menuItem];
         newOrderItem.amount = 1;
         [_currentOrder.arrayOfOrderItems addObject: newOrderItem];
-    }
+    }*/
     [self.tableView reloadData];
 }
 
