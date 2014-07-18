@@ -28,10 +28,10 @@
 static const NSUInteger kNumberOfSections        = 1;
 
 // number of cells needs for waiter in the end of table view
-static const NSUInteger kNumberOfCellsForClient  = 3;
+static const NSUInteger kNumberOfCellsForClient  = 4;
 // !!! this is only for test without any authorization !!!
 //static const NSUInteger kNumberOfCellsForClient  = 4;
-static const NSUInteger kNumberOfCellsForWaiter  = 4;
+static const NSUInteger kNumberOfCellsForWaiter  = 5;
 
 static NSString *const  kSidebarTableViewCellIdentifier = @"SidebarTableViewCellIdentifier";
 
@@ -39,24 +39,28 @@ static NSString *const  kSidebarTableViewCellIdentifier = @"SidebarTableViewCell
 static NSString *const kSegueToHome     = @"sw_segue_home";
 static NSString *const kSegueToMenu     = @"sw_segue_menu";
 static NSString *const kSegueToMap      = @"sw_segue_map";
+static NSString *const kSegueToLocation = @"sw_segue_location";
 static NSString *const kSegueToOrders   = @"sw_segue_orders";
 
 // const strings of images for cells
-static NSString *const kCellImageHome   = @"home_page_icon.png";
-static NSString *const kCellImageMenu   = @"menu_icon.png";
-static NSString *const kCellImageMap    = @"map_icon.png";
-static NSString *const kCellImageOrders = @"orders_icon.png";
+static NSString *const kCellImageHome     = @"home_page_icon.png";
+static NSString *const kCellImageMenu     = @"menu_icon.png";
+static NSString *const kCellImageMap      = @"map_icon.png";
+static NSString *const kCellImageLocation = @"location_icon2.png";
+static NSString *const kCellImageOrders   = @"orders_icon.png";
 
 // const strings of labels for cells
-static NSString *const kCellLabelTextHome   = @"Home";
-static NSString *const kCellLabelTextMenu   = @"Menu";
-static NSString *const kCellLabelTextMap    = @"Map";
-static NSString *const kCellLabelTextOrders = @"Orders";
+static NSString *const kCellLabelTextHome     = @"Home";
+static NSString *const kCellLabelTextMenu     = @"Menu";
+static NSString *const kCellLabelTextMap      = @"Map";
+static NSString *const kCellLabelTextLocation = @"Location";
+static NSString *const kCellLabelTextOrders   = @"Orders";
 
 // const strings of titles for destination view controllers
 static NSString *const kDestinationViewControllerTitleHome      = @"Home";
 static NSString *const kDestinationViewControllerTitleMenu      = @"Menu";
 static NSString *const kDestinationViewControllerTitleMap       = @"Map";
+static NSString *const kDestinationViewControllerTitleLocation  = @"Location";
 static NSString *const kDestinationViewControllerTitleOrders    = @"Orders";
 
 static const CGFloat kRearViewRevealWidth = 175.0f;
@@ -67,6 +71,7 @@ typedef enum
     CellHomePage,
     CellMenuPage,
     CellMapPage,
+    CellLocationPage,
     CellOrdersPage
 } EnumCellForPage;
 
@@ -77,7 +82,6 @@ typedef enum
 - (void) viewDidLoad
 {
     [super viewDidLoad];
-    
     self.revealViewController.rearViewRevealWidth = kRearViewRevealWidth;
 }
 
@@ -140,6 +144,9 @@ typedef enum
         case CellMapPage:
             image = [UIImage imageNamed: kCellImageMap];
             break;
+        case CellLocationPage:
+            image = [UIImage imageNamed: kCellImageLocation];
+            break;
         case CellOrdersPage:
             image = [UIImage imageNamed: kCellImageOrders];
             break;
@@ -163,6 +170,9 @@ typedef enum
             break;
         case CellMapPage:
             text = kCellLabelTextMap;
+            break;
+        case CellLocationPage:
+            text = kCellLabelTextLocation;
             break;
         case CellOrdersPage:
             text = kCellLabelTextOrders;
@@ -195,6 +205,9 @@ typedef enum
             break;
         case CellMapPage:
             stringSegue = kSegueToMap;
+            break;
+        case CellLocationPage:
+            stringSegue = kSegueToLocation;
             break;
         case CellOrdersPage:
             stringSegue = kSegueToOrders;

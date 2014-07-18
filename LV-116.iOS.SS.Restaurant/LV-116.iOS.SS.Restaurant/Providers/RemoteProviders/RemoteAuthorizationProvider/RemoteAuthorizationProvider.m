@@ -43,25 +43,24 @@ static const NSUInteger kMaxAttemptsForRequest = 3;
     // Arrays are created for getting JSON data.
     NSArray *keys       = @[kKeyUserName, kKeyPassword, kKeyRememberMe];
     NSArray *objects    = @[login, password, @"true"];
-    NSData *JSONData = [ParserToJSON createJSONDataWithObjects: objects
+    NSData *jsonData = [ParserToJSON createJSONDataWithObjects: objects
                                                           keys: keys];
     
     // Creates request using JSON data.
     NSURLRequest *urlRequest = [RequestMaker getLoginRequestWithURL: kURLAuthenticate
                                                             idOfURL: 0
-                                                               requestBody: JSONData ];
+                                                               requestBody: jsonData ];
     [RequestManager send: urlRequest
            responseBlock: ^(NSHTTPURLResponse *response, NSData *data, NSError *error) {
                
                if ( error == nil ) {
-                   
                    // If login data are true then response is JSON ( { isSuccess : "true" } ).
                    NSString *isSuccess = [[NSJSONSerialization JSONObjectWithData:data options:0 error:&error] valueForKeyPath: kJSONKeyIsSuccess];
                    
                    if( [response statusCode] == 200 && [isSuccess boolValue] ) {
                        
                        [UserRole getInstance].enumUserRole = UserRoleWaiter;
-                       
+                       // Adds cookies into singleton
                        [RemoteAuthorizationProvider createCookieStorageWithHeaderSetCookie:response];
                        
                        callback(YES, [UserRole getInstance], error);
@@ -96,7 +95,6 @@ static const NSUInteger kMaxAttemptsForRequest = 3;
     [cookieProperties setObject: kCookiePath forKey: NSHTTPCookiePath];
     
     // Cookies init from dictionary and then save into cookie storage.
-
     NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties: cookieProperties];
     [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
     [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie: cookie];

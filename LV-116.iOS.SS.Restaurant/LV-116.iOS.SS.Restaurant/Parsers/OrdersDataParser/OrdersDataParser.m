@@ -10,10 +10,10 @@
 #import "OrderModel.h"
 
 static NSString *const kOrderKeyId        = @"Id";
-static NSString *const kOrderKeyClosed    = @"closed";
-static NSString *const kOrderKeyTableId   = @"tableId";
-static NSString *const kOrderKeyTimeStamp = @"timestamp";
-static NSString *const kOrderKeyUserId    = @"userId";
+static NSString *const kOrderKeyClosed    = @"Closed";
+static NSString *const kOrderKeyTableId   = @"TableId";
+static NSString *const kOrderKeyTimeStamp = @"Timestamp";
+static NSString *const kOrderKeyUserId    = @"UserId";
 
 
 
@@ -43,9 +43,9 @@ static NSString *const kOrderKeyUserId    = @"userId";
         OrderModel *orderModel = [[OrderModel alloc] initWithId: [[orderDictionary valueForKey: kOrderKeyId] intValue]
                                                        isClosed: [[orderDictionary valueForKey: kOrderKeyClosed] boolValue]
                                                         tableId: [[orderDictionary valueForKey: kOrderKeyTableId] intValue]
-                                                      timestamp: [[orderDictionary valueForKey: kOrderKeyTimeStamp] dateFormat]
+                                                      timestamp: [orderDictionary valueForKey: kOrderKeyTimeStamp]
                                                          userId: [[orderDictionary valueForKey: kOrderKeyUserId] intValue]
-                         ];
+                                  ];
         
         [arrayOfTableOrders addObject: orderModel];
     }

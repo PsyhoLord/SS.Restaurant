@@ -63,7 +63,7 @@ static const CGFloat kHeightForMenuItemCell     = 70.0f;
     self.refreshControl.backgroundColor = [UIColor purpleColor];
     self.refreshControl.tintColor = [UIColor whiteColor];
 
-    [self.refreshControl addTarget: self action: @selector(loadMenuData) forControlEvents: UIControlEventValueChanged];
+    [self.refreshControl addTarget: self action: @selector(loadMenuData) forControlEvents: UIControlEventAllTouchEvents];
 }
 
 // set gesture

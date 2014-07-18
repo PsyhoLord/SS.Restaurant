@@ -67,13 +67,18 @@ static const NSUInteger kMaxAttemptsForRequest = 3;
 // Post the new order on table using tableId.
 + (void)postTableOrderWithTableModel:(int)table responseBlock:(void (^)(NSUInteger, NSError*))callback
 {
-    NSNumber *Id = [NSNumber numberWithInt: rand() % 1000];
-    NSString *timestamp = [NSString stringWithFormat:@"%@",[NSDate date]] ;
-    NSArray *keys    = @[@"Closed",@"TableId", @"Timestamp", @"UserId"];
-    NSArray *objects = @[ @"true",[NSNumber numberWithInt: table], timestamp, @"1049" ];
+    __unused NSNumber *Id        = [NSNumber numberWithInt: rand() % 1000];
+    __unused NSString *timestamp = [NSString stringWithFormat:@"%@",[NSDate date]];
+    
+//    {"Id":160,"ActualPrice":25.0000,"Amount":1,"MenuItem":null,"MenuItemId":5,"OrderId":101,"Served":true}
+//    NSArray *orderItemKeys = @[@"Id",@"ActualPrice", @"Amount", @"MenuItem", @"MenuItemId", @"OrderId", @"Served"];
+//    NSArray *objectsItemKeys = @[@160, @25.00, @1, @"null", @5, @101, @true];
+//    NSDictionary *items = [ParserToJSON createJSONStringsWithObjects:orderItemKeys keys:objectsItemKeys];
+    
+    NSArray  *keys      = @[ @"Closed", @"Items", @"TableId", @"UserId"];
+    NSArray  *objects   = @[ @YES, @[], [NSNumber numberWithInt: table], @1049 ];
     
     NSData *data = [ParserToJSON createJSONDataWithObjects:objects keys:keys];
-    
     
     NSURLRequest *urlRequest = [RequestMaker getRequestWithURL:@"http://192.168.195.212/Restaurant/Orders/NewOrder?tableId=%d" idOfURL:table];
 //    NSURLRequest *urlRequest = [RequestMaker getPostRequestWithURL:kURLPostTableOrder idOfURL:0 requestBody: data];

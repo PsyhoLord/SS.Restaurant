@@ -92,8 +92,8 @@ static const CGFloat kRequestTimeoutInterval = 3.0;
                                                               cachePolicy: NSURLRequestUseProtocolCachePolicy
                                                           timeoutInterval: kRequestTimeoutInterval];
     
-//    [urlRequest setValue: kHTTPHeaderValueAcceptAppJSON forHTTPHeaderField: kHTTPHeaderFieldAccept];
-    [urlRequest setValue: kHTTPHeaderValueAcceptAppJSON forHTTPHeaderField: kHTTPHeaderFieldContentType];
+    [urlRequest setValue: kHTTPHeaderValueAcceptAppJSON forHTTPHeaderField: kHTTPHeaderFieldAccept];
+//    [urlRequest setValue: kHTTPHeaderValueAcceptAppJSON forHTTPHeaderField: kHTTPHeaderFieldContentType];
 
     urlRequest.HTTPMethod = kHTTPMethodPOST;
     urlRequest.HTTPBody   = body;
