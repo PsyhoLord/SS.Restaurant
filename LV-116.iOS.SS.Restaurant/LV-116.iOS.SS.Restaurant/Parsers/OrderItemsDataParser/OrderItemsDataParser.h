@@ -8,6 +8,11 @@
 
 #import "PDataParser.h"
 
+@class OrderModel;
+
 @interface OrderItemsDataParser : NSObject <PDataParser>
+
+//Making NSData object (in server needed format) from OrderModel object
++ (NSData*) unParseOrder: (OrderModel*) orderModel;
 
 @end

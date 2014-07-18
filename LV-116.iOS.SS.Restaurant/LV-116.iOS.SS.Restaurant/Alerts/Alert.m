@@ -65,4 +65,18 @@ static NSString *const kAuthorizationmethodAlertMessage = @"Your login or passwo
                           ];
     [alert show];
 }
+
+// This method shows alert when order updated sucessfully.
++ (void) showUpdateOrderInfoSuccesfull
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Order update"
+                                                    message: @"Current order nave been updeted succesfully"
+                                                   delegate: nil
+                                          cancelButtonTitle: @"OK"
+                                          otherButtonTitles: nil
+                          ];
+    [alert show];
+
+}
+
 @end

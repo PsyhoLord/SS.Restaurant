@@ -25,4 +25,14 @@
      ];
 }
 
+//Send UPD Order request to server
++ (void) sendDataFromOrderToUpdate: (NSData *) data responseBlock : (void (^)(NSError *))callback
+{
+    [RemoteOrderProvider sendDataFromOrderToUpdate: data
+                                     responseBlock: ^(NSError * error){
+                                         callback (error);
+                                     }
+     ];
+}
+
 @end

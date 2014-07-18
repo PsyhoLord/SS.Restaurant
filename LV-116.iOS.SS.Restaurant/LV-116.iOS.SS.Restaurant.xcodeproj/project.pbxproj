@@ -95,7 +95,7 @@
 
 /* Begin PBXFileReference section */
 		22002A191972FACA00E6E7A2 /* RequestMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestMaker.h; sourceTree = "<group>"; };
-		22002A1A1972FACA00E6E7A2 /* RequestMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestMaker.m; sourceTree = "<group>"; };
+		22002A1A1972FACA00E6E7A2 /* RequestMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RequestMaker.m; path = ../../RequestMaker/RequestMaker.m; sourceTree = "<group>"; };
 		22276E3B1976B02F005F698D /* arrow_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_down.png; sourceTree = "<group>"; };
 		22346B56195F209000495B2A /* Alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alert.h; sourceTree = "<group>"; };
 		22346B57195F209000495B2A /* Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alert.m; sourceTree = "<group>"; };
@@ -252,7 +252,6 @@
 			isa = PBXGroup;
 			children = (
 				22002A191972FACA00E6E7A2 /* RequestMaker.h */,
-				22002A1A1972FACA00E6E7A2 /* RequestMaker.m */,
 			);
 			name = RequestMaker;
 			path = "LV-116.iOS.SS.Restaurant/Providers/RequestMaker";
@@ -444,6 +443,7 @@
 		22A366F9196F11BA002D27B7 /* RemoteMapDataProvider */ = {
 			isa = PBXGroup;
 			children = (
+				22002A1A1972FACA00E6E7A2 /* RequestMaker.m */,
 				22A366FA196F11BA002D27B7 /* RemoteMapDataProvider.h */,
 				22A366FB196F11BA002D27B7 /* RemoteMapDataProvider.m */,
 			);

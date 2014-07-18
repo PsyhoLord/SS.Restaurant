@@ -21,7 +21,7 @@
 //@property int user;
 @property int userId;
 
-- (instancetype)initWithId:(int)Id isClosed:(BOOL)closed tableId:(int)tableId timestamp:(NSString*)timestamp userId:(int)userId;
+- (instancetype)initWithId: (int)Id isClosed: (BOOL)closed tableId: (int)tableId timestamp: (NSString*)timestamp userId: (int)userId;
 
 - (instancetype) init;
 
