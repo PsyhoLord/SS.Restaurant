@@ -18,6 +18,8 @@
 
 #import "Alert.h"
 
+
+
 @implementation MapViewController
 {
     __weak IBOutlet UIScrollView *_scrollView;
@@ -37,7 +39,6 @@
     
     // init _tableViews
     _tableViews = [[NSMutableArray alloc] init];
-    
     [self loadMapData];
 }
 
