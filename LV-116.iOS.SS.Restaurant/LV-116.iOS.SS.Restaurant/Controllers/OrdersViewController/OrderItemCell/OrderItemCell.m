@@ -18,6 +18,18 @@
 {
     _delegate = newDelegate;
 }
+- (IBAction)removeOrderItemButton: (UIButton *)sender
+{
+    _currentOrderItem.amount--;
+    [self amountChanged];
+}
+
+
+- (IBAction)addOrderItemButton: (UIButton *)sender
+{
+    _currentOrderItem.amount++;
+    [self amountChanged];
+}
 
 //Setting properties
 - (void) setDataWhithOrderItemModel:(OrderItemModel *)currentOrderItem andNumberOfRow:(int)row
@@ -26,13 +38,12 @@
     _orderItemNumber  = row;
 }
 
-
-- (IBAction)clickOnStepper: (id)sender {
-    if (_itemCountStepper.value == 0){
+- (void) amountChanged
+{
+    if (_currentOrderItem.amount == 0){
         [Alert showDeleteOrderItemWarningWithDelegate: self];
     } else {
-        [_itemCount setText: [NSString stringWithFormat: @"%d", (int)_itemCountStepper.value] ];
-        _currentOrderItem.amount = (int)_itemCountStepper.value;
+        [_itemCount setText: [NSString stringWithFormat: @"%d", _currentOrderItem.amount] ];
         [_delegate redrawTable];
     }
 }
@@ -43,8 +54,11 @@
 {
     _itemName.text          = _currentOrderItem.menuItemModel.name;
     _itemCount.text         = [NSString stringWithFormat:@"%d",_currentOrderItem.amount];
-    _itemCountStepper.value = _currentOrderItem.amount;
     _pricePerPcs.text       =[ NSString stringWithFormat:@"%.2f $",_currentOrderItem.menuItemModel.price];
+    if (_currentOrderItem.served) {
+        self.amountButtonMinus.alpha = 0.0;
+        self.amountButtonPlus.alpha = 0.0;
+    }
     
 }
 
@@ -63,7 +77,7 @@
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     
     if([title isEqualToString: @"NO"]){
-        _itemCountStepper.value ++;
+        _currentOrderItem.amount ++;
         
     }
     else if([title isEqualToString: @"YES"]){

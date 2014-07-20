@@ -363,9 +363,9 @@ static NSString *const kImageOfSectionView     = @"arrow_down.png";
 // Handle editing action.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView beginUpdates];
+    
     if ( editingStyle == UITableViewCellEditingStyleDelete ) {
-        
+        [tableView beginUpdates];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         
         NSUInteger orderId = ((OrderModel*)((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]).arrayOfOrdersModel[indexPath.row]).Id;
@@ -379,11 +379,11 @@ static NSString *const kImageOfSectionView     = @"arrow_down.png";
          ];
         
         [((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]) removeOrderAtIndex: indexPath.row];
-        
+        [tableView endUpdates];
     } else if( editingStyle == UITableViewCellEditingStyleInsert ){
         // Here handle UITableViewCellEditingStyleInsert if we need.
     }
-    [tableView endUpdates];
+    
 }
 // Set editing style for cell. Add cell has not any editing style.
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath

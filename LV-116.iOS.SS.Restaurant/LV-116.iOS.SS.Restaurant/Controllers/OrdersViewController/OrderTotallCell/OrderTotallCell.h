@@ -14,9 +14,11 @@
 @interface OrderTotallCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *totallPrice;
+@property (weak, nonatomic) IBOutlet UIButton *updateOrderInfoButton;
 
 @property (weak, nonatomic) id <POrderItems> delegate;
 
-- (void) drawCellWithModel: (OrderModel*)orderModel;
+
+- (void) drawCellWithModel: (OrderModel*)orderModel andChangedOrderStatus: (BOOL)isChanged;
 
 @end

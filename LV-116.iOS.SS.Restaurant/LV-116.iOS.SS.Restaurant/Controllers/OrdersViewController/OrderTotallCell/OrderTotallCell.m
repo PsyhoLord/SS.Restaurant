@@ -20,7 +20,7 @@
 }
 
 //calculating data to draw cell
-- (void) drawCellWithModel: (OrderModel*)orderModel
+- (void) drawCellWithModel: (OrderModel*)orderModel andChangedOrderStatus: (BOOL)isChanged
 {
     float totalValue = 0;
     
@@ -34,22 +34,29 @@
     }
     
     self.totallPrice.text = [NSString stringWithFormat: @"Totall  %.2f$", totalValue];
+    
+    if (isChanged){
+        self.updateOrderInfoButton.alpha = 1.0;
+    } else {
+        self.updateOrderInfoButton.alpha = 0.0;
+    }
+    
 }
 
 
 //calling mathod in OrderItemsViewController
-- (IBAction)addNewOrderItem: (UIButton *)sender {
+- (IBAction)saveUpdatedOrderInfo: (UIButton *)sender {
     
     [_delegate sendUpdateOrder];
     
 }
 
 
-- (void)setSelected: (BOOL)selected animated: (BOOL)animated
+/*- (void)setSelected: (BOOL)selected animated: (BOOL)animated
 {
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
-}
+}*/
 
 @end
