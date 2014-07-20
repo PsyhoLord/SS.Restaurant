@@ -33,7 +33,6 @@
 		22B774F8197954A0003BC7A9 /* location_icon4.png in Resources */ = {isa = PBXBuildFile; fileRef = 22B774F7197954A0003BC7A9 /* location_icon4.png */; };
 		22D09EE61976D35100FD94AA /* ParserToJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D09EE51976D35100FD94AA /* ParserToJSON.m */; };
 		22DAB3C9197BE970001F0F8A /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DAB3C8197BE970001F0F8A /* LocationViewController.m */; };
-		22DAB3CB197BF7D5001F0F8A /* location_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 22DAB3CA197BF7D5001F0F8A /* location_icon.png */; };
 		22DAB3F5197C1ED4001F0F8A /* blurred1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 22DAB3EF197C1ED4001F0F8A /* blurred1.jpg */; };
 		22DAB3F6197C1ED4001F0F8A /* blurred2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 22DAB3F0197C1ED4001F0F8A /* blurred2.jpg */; };
 		22DAB3F7197C1ED4001F0F8A /* blurred3.png in Resources */ = {isa = PBXBuildFile; fileRef = 22DAB3F1197C1ED4001F0F8A /* blurred3.png */; };
@@ -148,7 +147,6 @@
 		22D09EE51976D35100FD94AA /* ParserToJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParserToJSON.m; sourceTree = "<group>"; };
 		22DAB3C7197BE970001F0F8A /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
 		22DAB3C8197BE970001F0F8A /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
-		22DAB3CA197BF7D5001F0F8A /* location_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location_icon.png; sourceTree = "<group>"; };
 		22DAB3EF197C1ED4001F0F8A /* blurred1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = blurred1.jpg; sourceTree = "<group>"; };
 		22DAB3F0197C1ED4001F0F8A /* blurred2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = blurred2.jpg; sourceTree = "<group>"; };
 		22DAB3F1197C1ED4001F0F8A /* blurred3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blurred3.png; sourceTree = "<group>"; };
@@ -720,7 +718,6 @@
 		EDA13E26196ADCC400CF579C /* SidebarRootMenuIcons */ = {
 			isa = PBXGroup;
 			children = (
-				22DAB3CA197BF7D5001F0F8A /* location_icon.png */,
 				22B774F31979523B003BC7A9 /* location_icon2.png */,
 				22B774F7197954A0003BC7A9 /* location_icon4.png */,
 				22B774F519795423003BC7A9 /* location_icon3.png */,
@@ -1030,7 +1027,6 @@
 				FA336C3019335B950007CC76 /* Main_iPhone.storyboard in Resources */,
 				EDA4E34D196BD97F008E7CE2 /* home_page_icon.png in Resources */,
 				22DAB3F9197C1ED4001F0F8A /* password.png in Resources */,
-				22DAB3CB197BF7D5001F0F8A /* location_icon.png in Resources */,
 				EDA13E2E196ADCC400CF579C /* menu_icon.png in Resources */,
 				FA336C2719335B950007CC76 /* InfoPlist.strings in Resources */,
 			);
