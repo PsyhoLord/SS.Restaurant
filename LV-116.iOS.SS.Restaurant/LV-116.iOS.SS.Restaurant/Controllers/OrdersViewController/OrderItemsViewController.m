@@ -33,14 +33,13 @@ static NSString *const kOrderCellIdentifier     = @"OrderItemCell";
 static NSString *const kOrderTotallIdentifier   = @"OrderTotallCellIdentifier";
 static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
 
-static float const kTransrormDimensionWidth     = 0.75;
-static float const kTransrormDimensionHeight    = 1;
 
 @implementation OrderItemsViewController
 {
     // in this ptivate section var need to name with _ ( _addOrderItem because for difference with property )
     OrderItemModel *addOrderItem;
     IBOutlet UISwipeGestureRecognizer *_swipeGestureRecognizer; // need for pop self VC and go back
+    BOOL isOrderChanged ;
 }
 
 
@@ -126,6 +125,8 @@ static float const kTransrormDimensionHeight    = 1;
     
     [self loadOrderDataByOrderId: _currentOrder.Id];
     
+    isOrderChanged = NO;
+    
     [super viewDidLoad];
 }
 
@@ -176,8 +177,6 @@ static float const kTransrormDimensionHeight    = 1;
         [orderItemCell setDataWhithOrderItemModel: [_currentOrder.arrayOfOrderItems objectAtIndex: indexPath.row]
                                    andNumberOfRow: indexPath.row];
        
-        orderItemCell.itemCountStepper.transform = CGAffineTransformMakeScale (kTransrormDimensionWidth, kTransrormDimensionHeight);
-        
         [orderItemCell drawCell];
        
         orderItemCell.delegate = self;
@@ -188,7 +187,7 @@ static float const kTransrormDimensionHeight    = 1;
         
         OrderTotallCell *orderTotalCell = [self.tableView dequeueReusableCellWithIdentifier: kOrderTotallIdentifier];
         
-        [orderTotalCell drawCellWithModel: _currentOrder];
+        [orderTotalCell drawCellWithModel: _currentOrder andChangedOrderStatus: isOrderChanged];
         
         orderTotalCell.delegate = self;
         
@@ -229,31 +228,14 @@ static float const kTransrormDimensionHeight    = 1;
             break;
         }
     }
-    
-    
-    
-    /*BOOL isInArray = 0;
-    OrderItemModel *newOrderItem = [[OrderItemModel alloc] init];
-    for (int i = 0; i < [_currentOrder.arrayOfOrderItems count]; i++)
-    {
-        newOrderItem = [_currentOrder.arrayOfOrderItems objectAtIndex: i];
-        if (newOrderItem.menuItemModel.Id == menuItem.Id){
-            newOrderItem.amount ++;
-            isInArray = 1;
-        }
-    }
-    if (!isInArray)
-    {
-        OrderItemModel *newOrderItem = [[OrderItemModel alloc] initWithMenuItemModel: menuItem];
-        newOrderItem.amount = 1;
-        [_currentOrder.arrayOfOrderItems addObject: newOrderItem];
-    }*/
+ 
     [self.tableView reloadData];
 }
 
 //Reloading Order tableView, calling this method from OrderItemCell
 - (void) redrawTable
 {
+    isOrderChanged = YES;
     [self.tableView reloadData];
 }
 
@@ -280,6 +262,8 @@ static float const kTransrormDimensionHeight    = 1;
                                                  [Alert showConnectionAlert];
                                                  }
                                                  [Alert showUpdateOrderInfoSuccesfull];
+                                                 isOrderChanged = NO;
+                                                 [self.tableView reloadData];
                                             });
 
                                         
@@ -288,7 +272,23 @@ static float const kTransrormDimensionHeight    = 1;
     //send UPD
 }
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        OrderItemModel *currentOrderItem;
+        currentOrderItem = [_currentOrder.arrayOfOrderItems objectAtIndex: indexPath.row];
+        currentOrderItem.served = YES ;
+        [self.tableView reloadData];
+    } 
+}
 
+- (NSString*)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([_currentOrder.arrayOfOrderItems count] == indexPath.row) {
+        return @"Close Order";
+    } else
+        return @"Served";
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

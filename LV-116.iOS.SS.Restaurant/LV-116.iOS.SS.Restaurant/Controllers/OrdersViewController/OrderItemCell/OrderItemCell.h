@@ -19,7 +19,8 @@
 @property (weak, nonatomic) IBOutlet UILabel   *itemName;
 @property (weak, nonatomic) IBOutlet UILabel   *itemCount;
 @property (weak, nonatomic) IBOutlet UILabel   *pricePerPcs;
-@property (weak, nonatomic) IBOutlet UIStepper *itemCountStepper;
+@property (weak, nonatomic) IBOutlet UIButton *amountButtonMinus;
+@property (weak, nonatomic) IBOutlet UIButton *amountButtonPlus;
 
 @property (weak,nonatomic) id <POrderItems> delegate;
 
