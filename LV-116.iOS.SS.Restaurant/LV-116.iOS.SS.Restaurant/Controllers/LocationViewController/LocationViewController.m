@@ -12,11 +12,6 @@
 #import "Alert.h"
 
 
-
-@interface LocationViewController ()
-
-@end
-
 @implementation LocationViewController
 {
     CLPlacemark *_thePlacemark;
@@ -31,10 +26,9 @@
     [SidebarViewController setupSidebarConfigurationForViewController: self
                                                         sidebarButton: self.sidebarButton
                                                             isGesture: NO];
-    self.mapView.delegate = self;
-    self.mapView.showsUserLocation = YES;
-    self.mapView.userLocation.title = @"I'm Here";
-    self.mapView.userLocation.subtitle = @"Come and Find Me";
+
+    self.mapView.userLocation.title = @"You're Here";
+
 }
 
 - (IBAction)createRoute:(id)sender
@@ -47,8 +41,8 @@
             NSLog(@"%@", error.description);
         } else {
             _thePlacemark = [placemarks lastObject];
-            float spanX = 20.00725;
-            float spanY = 20.00725;
+            float spanX = 10.00725;
+            float spanY = 10.00725;
             // A structure that defines which portion of the map to display.
             MKCoordinateRegion region;
             region.center.latitude = _thePlacemark.location.coordinate.latitude;
@@ -56,7 +50,7 @@
             region.span = MKCoordinateSpanMake(spanX, spanY);
             
             [self.mapView setRegion:region animated:YES];
-            [self addAnnotation:_thePlacemark];
+            [self addAnnotation: _thePlacemark];
             
             MKPlacemark *placemark = [[MKPlacemark alloc] initWithPlacemark:_thePlacemark];
             // Create request for getting the start and the end points.
@@ -77,7 +71,9 @@
                 } else {
                     //  _routeDetails defines the geometry for the route and includes information which you can display to the user.
                     _routeDetails = response.routes.lastObject;
-                    [self.mapView addOverlay: _routeDetails.polyline];
+                    
+                    [self.mapView addOverlay: _routeDetails.polyline level:MKOverlayLevelAboveRoads];
+                    
                 }
             }];
         }
@@ -90,17 +86,17 @@
     MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
     point.coordinate = CLLocationCoordinate2DMake(placemark.location.coordinate.latitude, placemark.location.coordinate.longitude);
     point.title = [placemark.addressDictionary objectForKey: @"Street"];
-    point.subtitle = [placemark.addressDictionary objectForKey: @"City"];
     [self.mapView addAnnotation:point];
 }
 
 // Adds on map route line.
 -(MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
     MKPolylineRenderer  * routeLineRenderer = [[MKPolylineRenderer alloc] initWithPolyline:_routeDetails.polyline];
-    routeLineRenderer.strokeColor = [UIColor redColor];
-    routeLineRenderer.lineWidth = 4;
+    routeLineRenderer.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.5];
+    routeLineRenderer.lineWidth = 3;
     return routeLineRenderer;
 }
+
 
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {

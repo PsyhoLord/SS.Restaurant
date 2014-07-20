@@ -30,7 +30,7 @@ static NSString *const kMenuItemCellIdentifier      = @"MenuItemCellIdentifier";
 static NSString *const kSegueToItemdescription      = @"segue_description";
 
 static const CGFloat kHeightForMenuCategoryCell = 50.0f;
-static const CGFloat kHeightForMenuItemCell     = 70.0f;
+static const CGFloat kHeightForMenuItemCell     = 205.0f;
 
 @implementation MenuViewController
 {
@@ -63,7 +63,7 @@ static const CGFloat kHeightForMenuItemCell     = 70.0f;
     self.refreshControl.backgroundColor = [UIColor purpleColor];
     self.refreshControl.tintColor = [UIColor whiteColor];
 
-    [self.refreshControl addTarget: self action: @selector(loadMenuData) forControlEvents: UIControlEventAllTouchEvents];
+    [self.refreshControl addTarget: self action: @selector(loadMenuData) forControlEvents: UIControlEventAllEvents];
 }
 
 // set gesture

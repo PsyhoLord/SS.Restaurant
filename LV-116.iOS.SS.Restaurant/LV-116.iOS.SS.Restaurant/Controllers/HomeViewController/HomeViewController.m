@@ -18,9 +18,13 @@
 #import "HomeViewController.h"
 
 
-static NSString *const kRootMenuName        = @"Home page";
-static NSString *const kRoleClientIconName  = @"role_client_icon.png";
-static NSString *const kRoleWaiterIconName  = @"role_waiter_icon.png";
+static NSString *const kRootMenuName         = @"Home page";
+static NSString *const kRoleClientIconName   = @"home_restaurant.png";
+static NSString *const kRoleWaiterIconName   = @"home_restaurant.png";
+static NSString *const kLoginIconUserName    = @"user.png";
+static NSString *const kLoginIconPassword    = @"password.png";
+static NSString *const kLoginBackgroundImage = @"blurred2.jpg";
+
 
 @implementation HomeViewController
 {
@@ -41,9 +45,31 @@ static NSString *const kRoleWaiterIconName  = @"role_waiter_icon.png";
                                                         sidebarButton: self.sidebarButton
                                                             isGesture: YES];
     
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"blur2.jpg"]];
     self.title = kRootMenuName;
     
     [self setHomePageConfiguration: ([UserRole getInstance]).enumUserRole];
+    
+    _textFieldUserName.leftViewMode = UITextFieldViewModeAlways;
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+    imageView.image = [UIImage imageNamed:kLoginIconUserName];
+    _textFieldUserName.leftView = imageView;
+    
+    
+    _textFieldPassword.leftViewMode = UITextFieldViewModeAlways;
+    UIImageView *imageView2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+    imageView2.image = [UIImage imageNamed:kLoginIconPassword];
+    _textFieldPassword.leftView = imageView2;
+    
+    
+    
+    CALayer *bottomBorder = [CALayer layer];
+    bottomBorder.frame = CGRectMake(0, _textFieldUserName.frame.size.height -1 , _textFieldUserName.frame.size.width, 1);
+    bottomBorder.backgroundColor = [UIColor blackColor].CGColor;
+
+//    [_textFieldUserName.layer addSublayer:bottomBorder];
+
+    
     
     // set pointer to sidebar view controller
     // which needs for reload data on sidebar according to change of user role

@@ -53,21 +53,6 @@
                                                             isGesture: NO];
 }
 
-#pragma mark - UIScrollViewDelegate Protocol Methods
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    NSLog(@"%@:%@", [self class], NSStringFromSelector(_cmd));
-}
-
-
-#pragma mark - Internal Methods
-
-- (void)handleTap:(UIGestureRecognizer *)gesture {
-    NSLog(@"%@:%@", [self class], NSStringFromSelector(_cmd));
-}
-
-
-
 - (void)drawDescriptionWithModel
 {
     _itemName.text        = _menuItemModel.name;

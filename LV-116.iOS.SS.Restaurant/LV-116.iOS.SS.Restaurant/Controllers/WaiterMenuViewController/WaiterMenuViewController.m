@@ -14,6 +14,10 @@
 
 #import "POrderItems.h"
 
+static const CGFloat kHeightForMenuCategoryCell = 50.0f;
+static const CGFloat kHeightForMenuItemCell     = 70.0f;
+
+
 @implementation WaiterMenuViewController
 
 #pragma mark - handle of user click on cell
@@ -24,6 +28,11 @@
     if ( [[self.tableView cellForRowAtIndexPath: indexPath] isKindOfClass: [MenuItemCell class]] ) {
         [self.delegate didAddedOrderItem: self.currentCategory.items[indexPath.row]];
     }
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return ( [self.currentCategory isCategories] ? kHeightForMenuCategoryCell : kHeightForMenuItemCell );
 }
 
 - (void) prepareForSegue: (UIStoryboardSegue *)segue sender: (id)sender
