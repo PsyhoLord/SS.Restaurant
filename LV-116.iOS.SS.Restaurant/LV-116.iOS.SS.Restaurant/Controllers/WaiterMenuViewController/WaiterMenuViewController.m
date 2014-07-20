@@ -30,6 +30,7 @@ static const CGFloat kHeightForMenuItemCell     = 70.0f;
     }
 }
 
+// Sets height for category or item rows.
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return ( [self.currentCategory isCategories] ? kHeightForMenuCategoryCell : kHeightForMenuItemCell );

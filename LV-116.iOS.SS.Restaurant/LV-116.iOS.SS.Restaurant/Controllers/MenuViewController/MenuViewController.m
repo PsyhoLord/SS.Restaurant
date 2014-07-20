@@ -163,7 +163,7 @@ static const CGFloat kHeightForMenuItemCell     = 205.0f;
     if( [segue.identifier isEqualToString: kSegueToItemdescription] ) {
         
         NSUInteger index = [self.tableView indexPathForCell:sender].row;
-        MenuItemModel *menuItemModel = _currentCategory.items[ index];
+        MenuItemModel *menuItemModel = _currentCategory.items[ index ];
         ItemDescriptionViewController *itemScreen = (ItemDescriptionViewController*)segue.destinationViewController;
         
         itemScreen.menuItemModel = menuItemModel;

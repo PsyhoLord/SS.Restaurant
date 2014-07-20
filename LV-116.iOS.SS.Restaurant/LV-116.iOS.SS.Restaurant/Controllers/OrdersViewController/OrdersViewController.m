@@ -301,14 +301,6 @@ static NSString *const kImageOfSectionView     = @"arrow_down.png";
 }
 
 // Handle click on cell of add (the last cell).
-/*
- "Id": 5,
- "Closed": true,
- "Items": []
- "TableId": 1,
- "Timestamp": "2014-07-17T17:07:19.183+03:00",
- "UserId": 2
-*/
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ( indexPath.row == [tableView numberOfRowsInSection: indexPath.section]-1 ) {
@@ -328,13 +320,19 @@ static NSString *const kImageOfSectionView     = @"arrow_down.png";
                                                    dispatch_async( dispatch_get_main_queue(), ^{
                                                        OrderModel *orderModel = [[OrderModel alloc] init];
                                                        [((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]) addOrder: orderModel];
-                                                       [self.tableView reloadData];
+                                                       [tableView beginUpdates];
+                                                       
+                                                       NSMutableArray *indexPaths = [[NSMutableArray alloc] init]; //    Create index array
+                                                       [indexPaths addObject: [NSIndexPath indexPathForRow: indexPath.row inSection: indexPath.section]];
+                                                       
+                                                       [self.tableView insertRowsAtIndexPaths:indexPaths  withRowAnimation:UITableViewRowAnimationAutomatic];
+                                                       [tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+                                                       
+                                                       [tableView endUpdates];
                                                    });
                                                }
                                            }
          ];
-        
-
     } else {
         [self performSegueWithIdentifier: kSegueToOrderItems
                                   sender: [tableView cellForRowAtIndexPath: indexPath]];
@@ -349,7 +347,6 @@ static NSString *const kImageOfSectionView     = @"arrow_down.png";
         
         OrderItemsViewController *itemsViewController = (OrderItemsViewController*)segue.destinationViewController;
         itemsViewController.currentOrder = (OrderModel*)((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexSection]).arrayOfOrdersModel[indexRow];
-//        OrderModel *currOrder = (OrderModel*)((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexSection]).arrayOfOrdersModel[indexRow];
 
     }
     
@@ -359,9 +356,9 @@ static NSString *const kImageOfSectionView     = @"arrow_down.png";
 // Handle editing action.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView beginUpdates];
+    
     if ( editingStyle == UITableViewCellEditingStyleDelete ) {
-        
+        [tableView beginUpdates];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         
         NSUInteger orderId = ((OrderModel*)((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]).arrayOfOrdersModel[indexPath.row]).Id;
@@ -375,11 +372,11 @@ static NSString *const kImageOfSectionView     = @"arrow_down.png";
          ];
         
         [((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]) removeOrderAtIndex: indexPath.row];
-        
+        [tableView endUpdates];
     } else if( editingStyle == UITableViewCellEditingStyleInsert ){
         // Here handle UITableViewCellEditingStyleInsert if we need.
     }
-    [tableView endUpdates];
+    
 }
 // Set editing style for cell. Add cell has not any editing style.
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath

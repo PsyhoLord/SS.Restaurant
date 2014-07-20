@@ -50,25 +50,15 @@ static NSString *const kLoginBackgroundImage = @"blurred2.jpg";
     
     [self setHomePageConfiguration: ([UserRole getInstance]).enumUserRole];
     
-    _textFieldUserName.leftViewMode = UITextFieldViewModeAlways;
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-    imageView.image = [UIImage imageNamed:kLoginIconUserName];
-    _textFieldUserName.leftView = imageView;
+    // Sets images for text fields.
+    [self setTextField:_textFieldUserName imageName:kLoginIconUserName];
+    [self setTextField:_textFieldPassword imageName:kLoginIconPassword];
     
-    
-    _textFieldPassword.leftViewMode = UITextFieldViewModeAlways;
-    UIImageView *imageView2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-    imageView2.image = [UIImage imageNamed:kLoginIconPassword];
-    _textFieldPassword.leftView = imageView2;
-    
-    
-    
-    CALayer *bottomBorder = [CALayer layer];
-    bottomBorder.frame = CGRectMake(0, _textFieldUserName.frame.size.height -1 , _textFieldUserName.frame.size.width, 1);
-    bottomBorder.backgroundColor = [UIColor blackColor].CGColor;
-
+    // Sets border.
+//    CALayer *bottomBorder = [CALayer layer];
+//    bottomBorder.frame = CGRectMake(0, _textFieldUserName.frame.size.height -1 , _textFieldUserName.frame.size.width, 1);
+//    bottomBorder.backgroundColor = [UIColor blackColor].CGColor;
 //    [_textFieldUserName.layer addSublayer:bottomBorder];
-
     
     
     // set pointer to sidebar view controller
@@ -76,6 +66,18 @@ static NSString *const kLoginBackgroundImage = @"blurred2.jpg";
     _sidebarViewController =  ((SidebarViewController*)self.revealViewController.rearViewController);
     
     [self setKeyboardConfiguration];
+}
+
+// Sets image for text field.
+- (void)setTextField:(UITextField*)textField imageName:(NSString*)imageName
+{
+    int sizeOfImage = textField.frame.size.height/1.5;
+    
+    textField.leftViewMode = UITextFieldViewModeAlways;
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, sizeOfImage, sizeOfImage)];
+    imageView.image = [UIImage imageNamed: imageName];
+
+    textField.leftView = imageView;
 }
 
 #pragma mark - home page configuration

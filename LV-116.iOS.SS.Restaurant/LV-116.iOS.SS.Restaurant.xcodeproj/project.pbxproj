@@ -40,6 +40,7 @@
 		22DAB3F8197C1ED4001F0F8A /* home_restaurant.png in Resources */ = {isa = PBXBuildFile; fileRef = 22DAB3F2197C1ED4001F0F8A /* home_restaurant.png */; };
 		22DAB3F9197C1ED4001F0F8A /* password.png in Resources */ = {isa = PBXBuildFile; fileRef = 22DAB3F3197C1ED4001F0F8A /* password.png */; };
 		22DAB3FA197C1ED4001F0F8A /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 22DAB3F4197C1ED4001F0F8A /* user.png */; };
+		22DAB3FC197C28A2001F0F8A /* basket.png in Resources */ = {isa = PBXBuildFile; fileRef = 22DAB3FB197C28A2001F0F8A /* basket.png */; };
 		570ABE93196C3EEF003DC398 /* OrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570ABE91196C3EEF003DC398 /* OrdersViewController.m */; };
 		5748E86A1976534900C6FA67 /* OrderItemsDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5748E8691976534900C6FA67 /* OrderItemsDataProvider.m */; };
 		5748E8761976749300C6FA67 /* OrderItemsDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5748E8751976749300C6FA67 /* OrderItemsDataParser.m */; };
@@ -154,6 +155,7 @@
 		22DAB3F2197C1ED4001F0F8A /* home_restaurant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_restaurant.png; sourceTree = "<group>"; };
 		22DAB3F3197C1ED4001F0F8A /* password.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = password.png; sourceTree = "<group>"; };
 		22DAB3F4197C1ED4001F0F8A /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
+		22DAB3FB197C28A2001F0F8A /* basket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = basket.png; sourceTree = "<group>"; };
 		570ABE90196C3EEF003DC398 /* OrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersViewController.h; sourceTree = "<group>"; };
 		570ABE91196C3EEF003DC398 /* OrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersViewController.m; sourceTree = "<group>"; };
 		5748E8681976534900C6FA67 /* OrderItemsDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderItemsDataProvider.h; path = OrderDataProvider/OrderItemsDataProvider.h; sourceTree = "<group>"; };
@@ -733,6 +735,7 @@
 		EDBDFE1B1967219000E65DCA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				22DAB3FB197C28A2001F0F8A /* basket.png */,
 				22DAB3EE197C1ED4001F0F8A /* HomeIcons */,
 				22276E3A1976B02F005F698D /* TablesIcon */,
 				ED35A8581971933E006F91F6 /* ToolbarIcons */,
@@ -1021,6 +1024,7 @@
 				FA336C3819335B950007CC76 /* Images.xcassets in Resources */,
 				22276E3C1976B02F005F698D /* arrow_down.png in Resources */,
 				22DAB3F8197C1ED4001F0F8A /* home_restaurant.png in Resources */,
+				22DAB3FC197C28A2001F0F8A /* basket.png in Resources */,
 				22DAB3F6197C1ED4001F0F8A /* blurred2.jpg in Resources */,
 				22DAB3F7197C1ED4001F0F8A /* blurred3.png in Resources */,
 				FA336C3019335B950007CC76 /* Main_iPhone.storyboard in Resources */,

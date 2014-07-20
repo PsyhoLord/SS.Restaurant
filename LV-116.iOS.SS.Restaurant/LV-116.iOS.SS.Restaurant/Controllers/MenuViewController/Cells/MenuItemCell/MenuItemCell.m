@@ -20,6 +20,7 @@
 {
     _itemName.text        = menuItemModel.name;
     _itemPrice.text       = [NSString stringWithFormat:@"%.2f$", menuItemModel.price];
+    
     if ( menuItemModel.image ) {
         _itemImage.image = menuItemModel.image;
     } else {
@@ -27,11 +28,11 @@
         [MenuDataProvider loadMenuItemImage:menuItemModel withBlock:^(UIImage *itemImage, NSError *error) {
             
             if ( error ) {
-//                [Alert showConnectionAlert];
+            //   [Alert showConnectionAlert];
             } else {
                 menuItemModel.image = itemImage;
                 
-//            drawing of item image performs on main thread.
+                // drawing of item image performs on main thread.
                 dispatch_async( dispatch_get_main_queue(), ^{
                     if (itemImage) {
                     _itemImage.image = itemImage;
