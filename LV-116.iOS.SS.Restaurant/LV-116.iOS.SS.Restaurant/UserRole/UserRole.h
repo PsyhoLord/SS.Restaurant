@@ -22,6 +22,7 @@ typedef enum
 + (instancetype) getInstance;
 
 @property EnumUserRole enumUserRole;    // return enum of current user
+@property (nonatomic) int userId;
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *cookie;
 

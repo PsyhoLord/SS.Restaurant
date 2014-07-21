@@ -55,7 +55,7 @@ static NSString *const kOrderPrice          = @"Price";
         OrderItemModel *orderItemModel = [[OrderItemModel alloc] init];
         
         orderItemModel.ID       = [[orderItem valueForKey: kOrderId] longValue];
-        orderItemModel.amount   = [[orderItem valueForKey: kOrderAmount] intValue];//Really it needed???
+        orderItemModel.amount   = [[orderItem valueForKey: kOrderAmount] intValue]; //Really it needed???
         
         NSMutableDictionary *menuItemFromOrder = [orderItem valueForKey: kOrderMenuItem];
         orderItemModel.menuItemModel = [[MenuItemModel alloc] initWithId: [[menuItemFromOrder valueForKey: kOrderId] longValue]
@@ -77,8 +77,6 @@ static NSString *const kOrderPrice          = @"Price";
 //Making NSData object (in server needed format) from OrderModel object
 + (NSData*) unParseOrder: (OrderModel*) orderModel
 {
-    
-    
     NSDictionary *menuItemFromOrder;
     NSDictionary *menuItemFromOrderSecond;
     NSDictionary *menuItemFromOrderThird;

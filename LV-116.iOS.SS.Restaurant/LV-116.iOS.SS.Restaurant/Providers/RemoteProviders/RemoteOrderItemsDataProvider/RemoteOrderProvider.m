@@ -17,7 +17,7 @@
 static NSString *const kURLGetOrderItems            = @"http://192.168.195.212/Restaurant/api/Orders/?id=%d";
 static NSString *const kURLPutToUpdateOrderItems    = @"http://192.168.195.212/Restaurant/api/Orders/";
 
-static const NSUInteger kMaxAttemptsForRequest = 3;
+static const NSUInteger kMaxAttemptsForRequest = 1;
 
 @implementation RemoteOrderProvider
 

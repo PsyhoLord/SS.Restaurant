@@ -16,6 +16,12 @@
 // Returns JSON data using dictionary.
 +(NSData*)createJSONDataWithDictionary:(NSDictionary*)jsonDictionary;
 
+//
++(NSData*)createJSONDataForNewOrderWithTableId:(int)tableId;
+
+//
++(NSData*)createJSONDataForAuthorizationWithLogin:(NSString*)userName password:(NSString*)password rememberMe:(BOOL)rememberMe;
+
 // Return dictionary. We can use it for create JSON data.
 +(NSDictionary*)createJSONStringsWithObjects:(NSArray*)objects keys:(NSArray*)keys;
 

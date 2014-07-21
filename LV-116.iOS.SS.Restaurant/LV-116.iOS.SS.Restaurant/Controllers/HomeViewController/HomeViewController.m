@@ -18,9 +18,13 @@
 #import "HomeViewController.h"
 
 
-static NSString *const kRootMenuName        = @"Home page";
-static NSString *const kRoleClientIconName  = @"role_client_icon.png";
-static NSString *const kRoleWaiterIconName  = @"role_waiter_icon.png";
+static NSString *const kRootMenuName         = @"Home page";
+static NSString *const kRoleClientIconName   = @"home_restaurant.png";
+static NSString *const kRoleWaiterIconName   = @"home_restaurant.png";
+static NSString *const kLoginIconUserName    = @"user.png";
+static NSString *const kLoginIconPassword    = @"password.png";
+static NSString *const kLoginBackgroundImage = @"blurred2.jpg";
+
 
 @implementation HomeViewController
 {
@@ -41,15 +45,39 @@ static NSString *const kRoleWaiterIconName  = @"role_waiter_icon.png";
                                                         sidebarButton: self.sidebarButton
                                                             isGesture: YES];
     
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"blur2.jpg"]];
     self.title = kRootMenuName;
     
     [self setHomePageConfiguration: ([UserRole getInstance]).enumUserRole];
+    
+    // Sets images for text fields.
+    [self setTextField:_textFieldUserName imageName:kLoginIconUserName];
+    [self setTextField:_textFieldPassword imageName:kLoginIconPassword];
+    
+    // Sets border.
+//    CALayer *bottomBorder = [CALayer layer];
+//    bottomBorder.frame = CGRectMake(0, _textFieldUserName.frame.size.height -1 , _textFieldUserName.frame.size.width, 1);
+//    bottomBorder.backgroundColor = [UIColor blackColor].CGColor;
+//    [_textFieldUserName.layer addSublayer:bottomBorder];
+    
     
     // set pointer to sidebar view controller
     // which needs for reload data on sidebar according to change of user role
     _sidebarViewController =  ((SidebarViewController*)self.revealViewController.rearViewController);
     
     [self setKeyboardConfiguration];
+}
+
+// Sets image for text field.
+- (void)setTextField:(UITextField*)textField imageName:(NSString*)imageName
+{
+    int sizeOfImage = textField.frame.size.height/1.5;
+    
+    textField.leftViewMode = UITextFieldViewModeAlways;
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, sizeOfImage, sizeOfImage)];
+    imageView.image = [UIImage imageNamed: imageName];
+
+    textField.leftView = imageView;
 }
 
 #pragma mark - home page configuration

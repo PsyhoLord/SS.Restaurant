@@ -27,9 +27,9 @@
     __weak IBOutlet UILabel *_itemPrice;
     __weak IBOutlet UILabel *_itemDescription;
     
+    IBOutlet UISwipeGestureRecognizer *_swipeGestureSlide;
     IBOutlet UISwipeGestureRecognizer *_swipeGestureRecognizer;
 }
-
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,6 +37,7 @@
     if (self) {
         // Custom initialization
     }
+    
     return self;
 }
 
@@ -52,21 +53,6 @@
                                                         sidebarButton: self.sidebarButton
                                                             isGesture: NO];
 }
-
-#pragma mark - UIScrollViewDelegate Protocol Methods
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    NSLog(@"%@:%@", [self class], NSStringFromSelector(_cmd));
-}
-
-
-#pragma mark - Internal Methods
-
-- (void)handleTap:(UIGestureRecognizer *)gesture {
-    NSLog(@"%@:%@", [self class], NSStringFromSelector(_cmd));
-}
-
-
 
 - (void)drawDescriptionWithModel
 {
@@ -98,6 +84,12 @@
 - (void) setupGestureRecognizerConfiguration
 {
     [self.view addGestureRecognizer: _swipeGestureRecognizer];
+    [self.view addGestureRecognizer: _swipeGestureSlide];
+}
+
+- (IBAction)handleSwipeGestureSlide:(UISwipeGestureRecognizer *)sender
+{
+    [self.navigationController popViewControllerAnimated: YES];
 }
 
 - (IBAction) handleSwipeGestureRecognizer: (UISwipeGestureRecognizer *)sender

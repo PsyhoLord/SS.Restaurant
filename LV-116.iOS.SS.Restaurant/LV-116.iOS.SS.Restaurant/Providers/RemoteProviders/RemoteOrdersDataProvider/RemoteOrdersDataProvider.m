@@ -18,7 +18,7 @@ static NSString *const kURLDeleteOrder       = @"http://192.168.195.212/Restaura
 static NSString *const kURLPostTableOrder    = @"http://192.168.195.212/Restaurant/Api/orders";
 static NSString *const kURLGetTableOrders    = @"http://192.168.195.212/Restaurant/api/Orders?tableId=%d";
 
-static const NSUInteger kMaxAttemptsForRequest = 3;
+static const NSUInteger kMaxAttemptsForRequest = 2;
 
 @implementation RemoteOrdersDataProvider
 
@@ -52,7 +52,8 @@ static const NSUInteger kMaxAttemptsForRequest = 3;
 + (void)deleteTableOrderWithOrderId:(int)orderId responseBlock:(void (^)(NSError*))callback
 {
     NSURLRequest *urlRequest = [RequestMaker getDeleteRequestWithURL: kURLDeleteOrder
-                                                             idOfURL: orderId];
+                                                             idOfURL: orderId
+                                                         requestBody: nil];
     
     [RequestManager send: urlRequest
            responseBlock: ^(NSHTTPURLResponse *response, NSData *data, NSError *error) {
@@ -65,23 +66,13 @@ static const NSUInteger kMaxAttemptsForRequest = 3;
 #pragma mark - POST.
 
 // Post the new order on table using tableId.
-+ (void)postTableOrderWithTableModel:(int)table responseBlock:(void (^)(NSUInteger, NSError*))callback
++ (void)postTableOrderWithTableModel:(NSInteger)tableId responseBlock:(void (^)(NSUInteger, NSError*))callback
 {
-    __unused NSNumber *Id        = [NSNumber numberWithInt: rand() % 1000];
-    __unused NSString *timestamp = [NSString stringWithFormat:@"%@",[NSDate date]];
+    NSData *data = [ParserToJSON createJSONDataForNewOrderWithTableId: tableId];
     
-//    {"Id":160,"ActualPrice":25.0000,"Amount":1,"MenuItem":null,"MenuItemId":5,"OrderId":101,"Served":true}
-//    NSArray *orderItemKeys = @[@"Id",@"ActualPrice", @"Amount", @"MenuItem", @"MenuItemId", @"OrderId", @"Served"];
-//    NSArray *objectsItemKeys = @[@160, @25.00, @1, @"null", @5, @101, @true];
-//    NSDictionary *items = [ParserToJSON createJSONStringsWithObjects:orderItemKeys keys:objectsItemKeys];
-    
-    NSArray  *keys      = @[ @"Closed", @"Items", @"TableId", @"UserId"];
-    NSArray  *objects   = @[ @YES, @[], [NSNumber numberWithInt: table], @1049 ];
-    
-    NSData *data = [ParserToJSON createJSONDataWithObjects:objects keys:keys];
-    
-    NSURLRequest *urlRequest = [RequestMaker getRequestWithURL:@"http://192.168.195.212/Restaurant/Orders/NewOrder?tableId=%d" idOfURL:table];
-//    NSURLRequest *urlRequest = [RequestMaker getPostRequestWithURL:kURLPostTableOrder idOfURL:0 requestBody: data];
+    NSURLRequest *urlRequest = [RequestMaker getPostRequestWithURL: kURLPostTableOrder
+                                                           idOfURL: tableId
+                                                       requestBody: data];
     
     [RequestManager send: urlRequest
            responseBlock: ^(NSHTTPURLResponse *response, NSData *data, NSError *error) {
