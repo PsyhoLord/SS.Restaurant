@@ -206,7 +206,6 @@
                     </navigationItem>
                     <keyCommands/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="_buttonLogIn" destination="KxW-cD-L5h" id="No2-cP-Lpe"/>
                         <outlet property="_buttonLogOut" destination="2Hd-Nx-A09" id="DQG-NT-d4f"/>
@@ -672,6 +671,7 @@
                         <outlet property="_itemPrice" destination="p9T-gg-84Z" id="Z5b-bh-W1T"/>
                         <outlet property="_itemWeight" destination="2az-ws-pZr" id="04O-0A-Bmn"/>
                         <outlet property="_swipeGestureRecognizer" destination="ZSX-Rv-xBo" id="JTp-C8-Kf6"/>
+                        <outlet property="_swipeGestureSlide" destination="5ua-Rq-J99" id="yUH-yH-br3"/>
                         <outlet property="sidebarButton" destination="y0N-Sw-4KE" id="DQe-UG-u96"/>
                     </connections>
                 </viewController>
@@ -679,6 +679,11 @@
                 <swipeGestureRecognizer direction="right" id="ZSX-Rv-xBo">
                     <connections>
                         <action selector="handleSwipeGestureRecognizer:" destination="NJp-jF-bNx" id="QLl-Ul-3ZL"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="5ua-Rq-J99">
+                    <connections>
+                        <action selector="handleSwipeGestureSlide:" destination="NJp-jF-bNx" id="U4h-Ui-cyT"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>

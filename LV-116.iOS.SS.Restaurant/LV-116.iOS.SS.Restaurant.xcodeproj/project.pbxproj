@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		22002A1B1972FACA00E6E7A2 /* RequestMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 22002A1A1972FACA00E6E7A2 /* RequestMaker.m */; };
 		22276E3C1976B02F005F698D /* arrow_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 22276E3B1976B02F005F698D /* arrow_down.png */; };
 		22346B58195F209000495B2A /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 22346B57195F209000495B2A /* Alert.m */; };
 		2265A70519642B1B0059EC0E /* RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2265A70419642B1B0059EC0E /* RequestManager.m */; };
@@ -31,6 +30,8 @@
 		22B774F41979523B003BC7A9 /* location_icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 22B774F31979523B003BC7A9 /* location_icon2.png */; };
 		22B774F619795423003BC7A9 /* location_icon3.png in Resources */ = {isa = PBXBuildFile; fileRef = 22B774F519795423003BC7A9 /* location_icon3.png */; };
 		22B774F8197954A0003BC7A9 /* location_icon4.png in Resources */ = {isa = PBXBuildFile; fileRef = 22B774F7197954A0003BC7A9 /* location_icon4.png */; };
+		22C1556E197D6FD100C6AB31 /* RequestMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C1556D197D6FD100C6AB31 /* RequestMaker.m */; };
+		22C15579197D7AE700C6AB31 /* AuthorizationDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C15578197D7AE700C6AB31 /* AuthorizationDataParser.m */; };
 		22C7417D197C34E4003804BF /* ButtonMinus.png in Resources */ = {isa = PBXBuildFile; fileRef = 22C7417B197C34E4003804BF /* ButtonMinus.png */; };
 		22C7417E197C34E4003804BF /* ButtonPlus.png in Resources */ = {isa = PBXBuildFile; fileRef = 22C7417C197C34E4003804BF /* ButtonPlus.png */; };
 		22C74180197C34E9003804BF /* image_OK.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 22C7417F197C34E9003804BF /* image_OK.jpg */; };
@@ -104,8 +105,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		22002A191972FACA00E6E7A2 /* RequestMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestMaker.h; sourceTree = "<group>"; };
-		22002A1A1972FACA00E6E7A2 /* RequestMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RequestMaker.m; path = ../../RequestMaker/RequestMaker.m; sourceTree = "<group>"; };
 		22276E3B1976B02F005F698D /* arrow_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_down.png; sourceTree = "<group>"; };
 		22346B56195F209000495B2A /* Alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alert.h; sourceTree = "<group>"; };
 		22346B57195F209000495B2A /* Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alert.m; sourceTree = "<group>"; };
@@ -147,6 +146,10 @@
 		22B774F31979523B003BC7A9 /* location_icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location_icon2.png; sourceTree = "<group>"; };
 		22B774F519795423003BC7A9 /* location_icon3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location_icon3.png; sourceTree = "<group>"; };
 		22B774F7197954A0003BC7A9 /* location_icon4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location_icon4.png; sourceTree = "<group>"; };
+		22C1556C197D6FD100C6AB31 /* RequestMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestMaker.h; sourceTree = "<group>"; };
+		22C1556D197D6FD100C6AB31 /* RequestMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestMaker.m; sourceTree = "<group>"; };
+		22C15577197D7AE700C6AB31 /* AuthorizationDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorizationDataParser.h; sourceTree = "<group>"; };
+		22C15578197D7AE700C6AB31 /* AuthorizationDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorizationDataParser.m; sourceTree = "<group>"; };
 		22C7417B197C34E4003804BF /* ButtonMinus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonMinus.png; sourceTree = "<group>"; };
 		22C7417C197C34E4003804BF /* ButtonPlus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonPlus.png; sourceTree = "<group>"; };
 		22C7417F197C34E9003804BF /* image_OK.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image_OK.jpg; sourceTree = "<group>"; };
@@ -268,15 +271,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		22002A181972FACA00E6E7A2 /* RequestMaker */ = {
-			isa = PBXGroup;
-			children = (
-				22002A191972FACA00E6E7A2 /* RequestMaker.h */,
-			);
-			name = RequestMaker;
-			path = "LV-116.iOS.SS.Restaurant/Providers/RequestMaker";
-			sourceTree = SOURCE_ROOT;
-		};
 		22276E3A1976B02F005F698D /* TablesIcon */ = {
 			isa = PBXGroup;
 			children = (
@@ -353,6 +347,7 @@
 		22A366DA196F11A4002D27B7 /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
+				22C15576197D7AE700C6AB31 /* AuthorizationDataParser */,
 				22A366DB196F11A4002D27B7 /* MapDataParser */,
 				22A366DE196F11A4002D27B7 /* MenuDataParser */,
 				22A366E1196F11A4002D27B7 /* OrdersDataParser */,
@@ -441,7 +436,7 @@
 		22A366F5196F11BA002D27B7 /* RemoteProviders */ = {
 			isa = PBXGroup;
 			children = (
-				22002A181972FACA00E6E7A2 /* RequestMaker */,
+				22C1556B197D6FD100C6AB31 /* RequestMaker */,
 				22A366F6196F11BA002D27B7 /* RemoteAuthorizationProvider */,
 				22A366F9196F11BA002D27B7 /* RemoteMapDataProvider */,
 				22A366FC196F11BA002D27B7 /* RemoteMenuDataProvider */,
@@ -463,7 +458,6 @@
 		22A366F9196F11BA002D27B7 /* RemoteMapDataProvider */ = {
 			isa = PBXGroup;
 			children = (
-				22002A1A1972FACA00E6E7A2 /* RequestMaker.m */,
 				22A366FA196F11BA002D27B7 /* RemoteMapDataProvider.h */,
 				22A366FB196F11BA002D27B7 /* RemoteMapDataProvider.m */,
 			);
@@ -486,6 +480,24 @@
 				22A36701196F11BA002D27B7 /* RemoteOrdersDataProvider.m */,
 			);
 			path = RemoteOrdersDataProvider;
+			sourceTree = "<group>";
+		};
+		22C1556B197D6FD100C6AB31 /* RequestMaker */ = {
+			isa = PBXGroup;
+			children = (
+				22C1556C197D6FD100C6AB31 /* RequestMaker.h */,
+				22C1556D197D6FD100C6AB31 /* RequestMaker.m */,
+			);
+			path = RequestMaker;
+			sourceTree = "<group>";
+		};
+		22C15576197D7AE700C6AB31 /* AuthorizationDataParser */ = {
+			isa = PBXGroup;
+			children = (
+				22C15577197D7AE700C6AB31 /* AuthorizationDataParser.h */,
+				22C15578197D7AE700C6AB31 /* AuthorizationDataParser.m */,
+			);
+			path = AuthorizationDataParser;
 			sourceTree = "<group>";
 		};
 		22D09EE31976D35100FD94AA /* Reparser */ = {
@@ -1081,7 +1093,6 @@
 				22A366E7196F11A4002D27B7 /* OrdersDataParser.m in Sources */,
 				5748E86A1976534900C6FA67 /* OrderItemsDataProvider.m in Sources */,
 				22A36702196F11BA002D27B7 /* AuthorizationProvider.m in Sources */,
-				22002A1B1972FACA00E6E7A2 /* RequestMaker.m in Sources */,
 				EDE50DF7193E110500ACA71D /* ServiceAgent.m in Sources */,
 				576B6F6E197171D000CEC6BF /* OrderTotallCell.m in Sources */,
 				EDEC47341956FACB0041B98B /* MenuCategoryModel.m in Sources */,
@@ -1104,9 +1115,11 @@
 				22A366E5196F11A4002D27B7 /* MapDataParser.m in Sources */,
 				EDEC47351956FACB0041B98B /* MenuItemModel.m in Sources */,
 				22A36704196F11BA002D27B7 /* MenuDataProvider.m in Sources */,
+				22C1556E197D6FD100C6AB31 /* RequestMaker.m in Sources */,
 				22A366D9196F10D2002D27B7 /* TableModelWithOrders.m in Sources */,
 				22DAB3C9197BE970001F0F8A /* LocationViewController.m in Sources */,
 				22D09EE61976D35100FD94AA /* ParserToJSON.m in Sources */,
+				22C15579197D7AE700C6AB31 /* AuthorizationDataParser.m in Sources */,
 				EDD611021971712600A70D4B /* WaiterMenuViewController.m in Sources */,
 				ED42A3ED196C32FA00A63656 /* MapViewController.m in Sources */,
 				576B6F6C197171D000CEC6BF /* OrderItemCell.m in Sources */,

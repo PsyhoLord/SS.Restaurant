@@ -11,6 +11,7 @@
 #import "RequestMaker.h"
 #import "RequestManager.h"
 
+#import "AuthorizationDataParser.h"
 #import "ParserToJSON.h"
 #import "UserRole.h"
 
@@ -21,10 +22,6 @@ static NSString *const kCookiePath          = @"/";
 static NSString *const kHTTPHeaderSetCookie = @"Set-Cookie";
 
 static NSString *const kJSONKeyIsSuccess    = @"isSuccess";
-
-static NSString *const kKeyUserName         = @"UserName";
-static NSString *const kKeyPassword         = @"Password";
-static NSString *const kKeyRememberMe       = @"RememberMe";
 
 static const NSUInteger kMaxAttemptsForRequest = 3;
 
@@ -40,24 +37,27 @@ static const NSUInteger kMaxAttemptsForRequest = 3;
 // - block which calls for return value: isAuthorizated, userRole, error to hight level
 + (void) logInWithLogin: (NSString*)login password: (NSString*)password responseBlock: (void (^)(BOOL isAuthorizated, UserRole*, NSError*))callback
 {
-    // Arrays are created for getting JSON data.
-    NSArray *keys       = @[kKeyUserName, kKeyPassword, kKeyRememberMe];
-    NSArray *objects    = @[login, password, @"true"];
-    NSData *jsonData = [ParserToJSON createJSONDataWithObjects: objects
-                                                          keys: keys];
+    NSData *jsonData = [ParserToJSON createJSONDataForAuthorizationWithLogin: login
+                                                                    password: password
+                                                                  rememberMe: true];
     
     // Creates request using JSON data.
     NSURLRequest *urlRequest = [RequestMaker getLoginRequestWithURL: kURLAuthenticate
                                                             idOfURL: 0
-                                                               requestBody: jsonData ];
+                                                        requestBody: jsonData ];
     [RequestManager send: urlRequest
            responseBlock: ^(NSHTTPURLResponse *response, NSData *data, NSError *error) {
                
                if ( error == nil ) {
                    // If login data are true then response is JSON ( { isSuccess : "true" } ).
-                   NSString *isSuccess = [[NSJSONSerialization JSONObjectWithData:data options:0 error:&error] valueForKeyPath: kJSONKeyIsSuccess];
+                   NSMutableDictionary *authorizationResponse = [AuthorizationDataParser parse: data parsingError: &error];
+                   
+                   NSString *isSuccess = [authorizationResponse valueForKeyPath: kJSONKeyIsSuccess];
                    
                    if( [response statusCode] == 200 && [isSuccess boolValue] ) {
+                       
+                       
+                       
                        
                        [UserRole getInstance].enumUserRole = UserRoleWaiter;
                        // Adds cookies into singleton
@@ -71,6 +71,10 @@ static const NSUInteger kMaxAttemptsForRequest = 3;
                }
            }
          countOfAttempts: kMaxAttemptsForRequest];
+}
+-(void)setRole:(NSDictionary*)roleDictionary
+{
+    
 }
 
 // This method creates cookie storage in our application.
@@ -116,7 +120,6 @@ static const NSUInteger kMaxAttemptsForRequest = 3;
             return token;
         }
     }
-    
     
     return token;
 }

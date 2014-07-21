@@ -29,12 +29,12 @@ static const CGFloat kRequestTimeoutInterval = 3.0;
 
 #pragma mark - GET
 // Set GET request using url with id.
-+ (NSURLRequest*)getRequestWithURL:(NSString*)stringOfURL idOfURL:(int)Id
++ (NSURLRequest*)getRequestWithURL:(NSString*)stringOfURL idOfURL:(NSUInteger)Id
 {
     NSString *urlString = [NSString stringWithFormat: stringOfURL, Id];
-    NSURL *URL = [[NSURL alloc] initWithString: urlString];
+    NSURL *url = [[NSURL alloc] initWithString: urlString];
     
-    NSURLRequest *urlRequest = [NSMutableURLRequest requestWithURL: URL
+    NSURLRequest *urlRequest = [NSMutableURLRequest requestWithURL: url
                                                 cachePolicy: NSURLRequestUseProtocolCachePolicy
                                             timeoutInterval: kRequestTimeoutInterval];
 
@@ -43,31 +43,32 @@ static const CGFloat kRequestTimeoutInterval = 3.0;
 
 #pragma mark - DELETE
 // Set DELETE request using url with id.
-+ (NSURLRequest*)getDeleteRequestWithURL:(NSString*)stringOfURL idOfURL:(int)Id;
++ (NSURLRequest*)getDeleteRequestWithURL:(NSString*)stringOfURL idOfURL:(NSUInteger)Id requestBody:(NSData*)body
 {
     NSString *urlString = [NSString stringWithFormat: stringOfURL, Id];
     
-    NSURL *URL = [[NSURL alloc] initWithString: urlString];
+    NSURL *url = [[NSURL alloc] initWithString: urlString];
     
-    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL: URL
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL: url
                                                               cachePolicy: NSURLRequestUseProtocolCachePolicy
                                                           timeoutInterval: kRequestTimeoutInterval];
-    
 
-    [urlRequest setHTTPMethod: kHTTPMethodDELETE ];
     [urlRequest setValue: kHTTPHeaderValueAcceptAppJSON forHTTPHeaderField: kHTTPHeaderFieldAccept];
+
+    urlRequest.HTTPMethod = kHTTPMethodDELETE;
+    urlRequest.HTTPBody   = body;
     
     return urlRequest;
 }
 
 #pragma mark - PUT
-// Set PUT using url with id.
-+ (NSURLRequest*)getPutRequestWithURL:(NSString*)stringOfURL idOfURL:(int)Id requestBody:(NSData*)body
+// Set PUT using url with id and http body.
++ (NSURLRequest*)getPutRequestWithURL:(NSString*)stringOfURL idOfURL:(NSUInteger)Id requestBody:(NSData*)body
 {
     NSString *urlString = [NSString stringWithFormat: stringOfURL, Id];
-    NSURL *URL = [[NSURL alloc] initWithString: urlString];
+    NSURL *url = [[NSURL alloc] initWithString: urlString];
     
-    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL: URL
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL: url
                                                               cachePolicy: NSURLRequestUseProtocolCachePolicy
                                                           timeoutInterval: kRequestTimeoutInterval];
     
@@ -82,13 +83,13 @@ static const CGFloat kRequestTimeoutInterval = 3.0;
 
 
 #pragma mark - POST
-// Set POST using url with id.
-+ (NSURLRequest*)getPostRequestWithURL:(NSString*)stringOfURL idOfURL:(int)Id requestBody:(NSData*)body
+// Set POST using url with id of url and http body.
++ (NSURLRequest*)getPostRequestWithURL:(NSString*)stringOfURL idOfURL:(NSUInteger)Id requestBody:(NSData*)body
 {
     NSString *urlString = [NSString stringWithFormat: stringOfURL, Id];
-    NSURL *URL = [[NSURL alloc] initWithString: urlString];
+    NSURL *url = [[NSURL alloc] initWithString: urlString];
     
-    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL: URL
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL: url
                                                               cachePolicy: NSURLRequestUseProtocolCachePolicy
                                                           timeoutInterval: kRequestTimeoutInterval];
     
@@ -103,12 +104,12 @@ static const CGFloat kRequestTimeoutInterval = 3.0;
 
 #pragma mark - POST login
 // Return request that can used for login.
-+ (NSURLRequest*)getLoginRequestWithURL:(NSString*)stringOfURL idOfURL:(int)Id requestBody:(NSData*)data
++ (NSURLRequest*)getLoginRequestWithURL:(NSString*)stringOfURL idOfURL:(NSUInteger)Id requestBody:(NSData*)data
 {
     NSString *urlString = [NSString stringWithFormat: stringOfURL, Id];
-    NSURL *URL = [[NSURL alloc] initWithString: urlString];
+    NSURL *url = [[NSURL alloc] initWithString: urlString];
     
-    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL: URL
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL: url
                                                               cachePolicy: NSURLRequestUseProtocolCachePolicy
                                                           timeoutInterval: kRequestTimeoutInterval];
     

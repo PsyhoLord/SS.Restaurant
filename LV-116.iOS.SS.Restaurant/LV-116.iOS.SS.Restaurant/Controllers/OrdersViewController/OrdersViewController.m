@@ -21,10 +21,14 @@
 #import "TableModel.h"
 #import "TableModelWithOrders.h"
 
-static const CGFloat kHeightOfHeaderSection    = 35.0f;
+static const CGFloat kHeightOfHeaderSection = 35.0f;
+static CGFloat kDegreeTransform             = 0.0f;
 
-static NSString *const kSegueToOrderItems      = @"segue_order_items";
-static NSString *const kImageOfSectionView     = @"arrow_down.png";
+
+static NSString *const kSegueToOrderItems  = @"segue_order_items";
+static NSString *const kImageOfSectionView = @"arrow_down.png";
+static NSString *const kCellIdentifier     = @"CellIdentifier";
+
 
 @implementation OrdersViewController
 {
@@ -158,12 +162,16 @@ static NSString *const kImageOfSectionView     = @"arrow_down.png";
     
     if ( isOpen ) {
         ((TableModelWithOrders*)_arrayOfTableModelWithOrders[sender.tag]).arrayOfOrdersModel = nil;
-        
         [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+
+        kDegreeTransform = 0.0;
     } else {
-        
-        [self.tableView insertRowsAtIndexPaths:indexPaths  withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+//        [self.tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+        kDegreeTransform = M_PI_2*2; // or some other
     }
+    // subviews[1] keeps UIImageView.
+    ((UIImageView*)sender.subviews[1]).transform = CGAffineTransformMakeRotation( kDegreeTransform );
 }
 
 #pragma mark - Building and init table view components.
@@ -196,15 +204,16 @@ static NSString *const kImageOfSectionView     = @"arrow_down.png";
 // Create cells for header section.
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellIdentifier"];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: kCellIdentifier];
     if ( cell == nil ) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellIdentifier"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCellIdentifier];
     }
     
     if( indexPath.row == [tableView numberOfRowsInSection: indexPath.section]-1 ) {
-        cell.textLabel.text = @"Add";
+        cell.textLabel.text = @"Add new order";
     } else {
-        cell.textLabel.text = [NSString stringWithFormat:@"Order %d", indexPath.row];
+        NSInteger orderId = ((OrderModel*)((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]).arrayOfOrdersModel[indexPath.row]).Id;
+        cell.textLabel.text = [NSString stringWithFormat:@"Order %d", orderId];
     }
     
     return cell;
@@ -287,17 +296,11 @@ static NSString *const kImageOfSectionView     = @"arrow_down.png";
 // Handle click on some section header.
 - (void)didSelectSection:(UIButton*)sender
 {
-    CGFloat degreeTransform = 0.0;
-    
     if( [_arrayOfFlags[sender.tag] intValue] == 0 ){
         [self loadTableOrders:sender];
-        degreeTransform = M_PI_2*2;
     } else {
         [self didReceiveOrdersResponse: sender];
-        degreeTransform = 0.0; // or some other
     }
-    // subviews[1] keeps UIImageView.
-    ((UIImageView*)sender.subviews[1]).transform = CGAffineTransformMakeRotation( degreeTransform );
 }
 
 // Handle click on cell of add (the last cell).
@@ -307,7 +310,7 @@ static NSString *const kImageOfSectionView     = @"arrow_down.png";
         
         // Create new empty order and push it in array.
 
-        NSUInteger tableId = ((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]).Id;
+        NSInteger tableId = ((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]).Id;
         
         [OrdersDataProvider postTableOrderWithTableModel: tableId
                                            responseBlock: ^(NSUInteger orderId, NSError *error) {
@@ -320,12 +323,13 @@ static NSString *const kImageOfSectionView     = @"arrow_down.png";
                                                    dispatch_async( dispatch_get_main_queue(), ^{
                                                        OrderModel *orderModel = [[OrderModel alloc] init];
                                                        [((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]) addOrder: orderModel];
+                                                       
                                                        [tableView beginUpdates];
                                                        
                                                        NSMutableArray *indexPaths = [[NSMutableArray alloc] init]; //    Create index array
                                                        [indexPaths addObject: [NSIndexPath indexPathForRow: indexPath.row inSection: indexPath.section]];
                                                        
-                                                       [self.tableView insertRowsAtIndexPaths:indexPaths  withRowAnimation:UITableViewRowAnimationAutomatic];
+                                                       [tableView insertRowsAtIndexPaths:indexPaths  withRowAnimation:UITableViewRowAnimationAutomatic];
                                                        [tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
                                                        
                                                        [tableView endUpdates];
@@ -349,9 +353,7 @@ static NSString *const kImageOfSectionView     = @"arrow_down.png";
         itemsViewController.currentOrder = (OrderModel*)((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexSection]).arrayOfOrdersModel[indexRow];
 
     }
-    
 }
-
 
 // Handle editing action.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath

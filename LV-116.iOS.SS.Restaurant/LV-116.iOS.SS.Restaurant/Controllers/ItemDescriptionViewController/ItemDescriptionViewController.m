@@ -27,9 +27,9 @@
     __weak IBOutlet UILabel *_itemPrice;
     __weak IBOutlet UILabel *_itemDescription;
     
+    IBOutlet UISwipeGestureRecognizer *_swipeGestureSlide;
     IBOutlet UISwipeGestureRecognizer *_swipeGestureRecognizer;
 }
-
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,6 +37,7 @@
     if (self) {
         // Custom initialization
     }
+    
     return self;
 }
 
@@ -83,6 +84,12 @@
 - (void) setupGestureRecognizerConfiguration
 {
     [self.view addGestureRecognizer: _swipeGestureRecognizer];
+    [self.view addGestureRecognizer: _swipeGestureSlide];
+}
+
+- (IBAction)handleSwipeGestureSlide:(UISwipeGestureRecognizer *)sender
+{
+    [self.navigationController popViewControllerAnimated: YES];
 }
 
 - (IBAction) handleSwipeGestureRecognizer: (UISwipeGestureRecognizer *)sender

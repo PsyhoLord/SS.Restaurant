@@ -5,36 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>EAC2A261-40EF-4966-B0DA-5FB37E3E95D7</string>
+	<string>3BA349AB-FAA8-4786-AE78-713737EF8461</string>
 	<key>IDESourceControlProjectName</key>
 	<string>LV-116.iOS.SS.Restaurant</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>B29443C6-9F66-4FFB-A3B3-DDDE107F2F45</key>
-		<string>https://github.com/PsyhoLord/SS.Restaurant</string>
+		<key>B78F5182-A334-4008-8F98-A2B06FDA8D71</key>
+		<string>https://github.com/PsyhoLord/SS.Restaurant.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>LV-116.iOS.SS.Restaurant/LV-116.iOS.SS.Restaurant.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>B29443C6-9F66-4FFB-A3B3-DDDE107F2F45</key>
+		<key>B78F5182-A334-4008-8F98-A2B06FDA8D71</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/PsyhoLord/SS.Restaurant</string>
+	<string>https://github.com/PsyhoLord/SS.Restaurant.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>B29443C6-9F66-4FFB-A3B3-DDDE107F2F45</string>
+	<string>B78F5182-A334-4008-8F98-A2B06FDA8D71</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>B29443C6-9F66-4FFB-A3B3-DDDE107F2F45</string>
+			<string>B78F5182-A334-4008-8F98-A2B06FDA8D71</string>
 			<key>IDESourceControlWCCName</key>
-			<string>GitHub</string>
+			<string>SS.Restaurant</string>
 		</dict>
 	</array>
 </dict>
