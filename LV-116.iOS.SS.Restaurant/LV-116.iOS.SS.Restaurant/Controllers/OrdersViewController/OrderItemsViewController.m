@@ -228,7 +228,7 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
             break;
         }
     }
- 
+    isOrderChanged = YES;
     [self.tableView reloadData];
 }
 
@@ -242,7 +242,14 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
 //removing ItemOrder from order
 - (void) removeOrderItemAtIndex: (int)index
 {
-    [_currentOrder.arrayOfOrderItems removeObjectAtIndex: index];
+    OrderItemModel *orderItemToRemove = [[OrderItemModel alloc] init];
+    orderItemToRemove = [_currentOrder.arrayOfOrderItems objectAtIndex: index];
+    [_currentOrder.arrayOfOrderItems removeObjectAtIndex:index];
+    orderItemToRemove.ID = -1;
+    [_currentOrder.arrayOfOrderItems insertObject:orderItemToRemove atIndex:index];
+    [self sendUpdateOrder];
+    [_currentOrder.arrayOfOrderItems removeObjectAtIndex:index];
+    //[_currentOrder.arrayOfOrderItems removeObjectAtIndex: index];
 }
 
 

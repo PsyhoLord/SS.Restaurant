@@ -106,21 +106,21 @@ static NSString *const kOrderPrice          = @"Price";
         [valuesArraySecond addObject: [NSString stringWithFormat: @"%d", currentOrderItem.amount] ];
         
             MenuItemModel *menuItem = orderItem.menuItemModel;
-            NSMutableArray *keysArrayThird = [[NSMutableArray alloc] init];
-            NSMutableArray *valuesArrayThird = [[NSMutableArray alloc] init];
-            [keysArrayThird addObjectsFromArray: @[@"Id", @"CategoryId", @"Description", @"IsActive", @"Name", @"Portions", @"Price"]];
-        
+           // NSMutableArray *keysArrayThird = [[NSMutableArray alloc] init];
+           // NSMutableArray *valuesArrayThird = [[NSMutableArray alloc] init];
+           // [keysArrayThird addObjectsFromArray: @[@"Id", @"CategoryId", @"Description", @"IsActive", @"Name", @"Portions", @"Price"]];
+        /*
             [valuesArrayThird addObject: [NSString stringWithFormat: @"%ld", menuItem.Id] ];
             [valuesArrayThird addObject: [NSString stringWithFormat: @"%ld", menuItem.categoryId] ];
             [valuesArrayThird addObject: menuItem.description];
             [valuesArrayThird addObject: @"1"];
             [valuesArrayThird addObject: menuItem.name];
             [valuesArrayThird addObject: [NSString stringWithFormat: @"%ld", menuItem.portions] ];
-            [valuesArrayThird addObject: [NSString stringWithFormat: @"%f", menuItem.price] ];
+            [valuesArrayThird addObject: [NSString stringWithFormat: @"%f", menuItem.price] ];*/
         
-            menuItemFromOrderThird = [[NSDictionary alloc] initWithObjects: valuesArrayThird forKeys: keysArrayThird];
+        //menuItemFromOrderThird = @[];//[[NSDictionary alloc] initWithObjects: valuesArrayThird forKeys: keysArrayThird];
         
-        [valuesArraySecond addObject:menuItemFromOrderThird];
+        [valuesArraySecond addObject: @[]];
         [valuesArraySecond addObject: [NSString stringWithFormat: @"%ld", menuItem.Id] ];
         [valuesArraySecond addObject: [NSString stringWithFormat: @"%d", orderModel.Id] ];
         [valuesArraySecond addObject: [NSString stringWithFormat: @"%i", currentOrderItem.served] ];
