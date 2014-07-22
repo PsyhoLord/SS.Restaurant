@@ -15,7 +15,7 @@
 
 
 @interface ItemDescriptionViewController () <UIScrollViewDelegate>
-
+@property (strong, nonatomic) MenuItemModel *menuItemModel;
 @end
 
 
@@ -45,13 +45,15 @@
 {
     [super viewDidLoad];
     // Set IBOtlets.
-    [self drawDescriptionWithModel];
+    
     
     [self setupGestureRecognizerConfiguration];
     
     [SidebarViewController setupSidebarConfigurationForViewController: self
                                                         sidebarButton: self.sidebarButton
                                                             isGesture: NO];
+    self.menuItemModel = _arrayOfItem[ _index ];
+    [self drawDescriptionWithModel];
 }
 
 - (void)drawDescriptionWithModel
@@ -80,18 +82,25 @@
     }
 }
 
-// set gesture
+// Set gesture.
 - (void) setupGestureRecognizerConfiguration
 {
     [self.view addGestureRecognizer: _swipeGestureRecognizer];
     [self.view addGestureRecognizer: _swipeGestureSlide];
 }
 
+// Swipe for slide on next item.
 - (IBAction)handleSwipeGestureSlide:(UISwipeGestureRecognizer *)sender
 {
-    [self.navigationController popViewControllerAnimated: YES];
+    if( _index++ == _arrayOfItem.count-1 ) {
+        _index = 0;
+    }
+    self.menuItemModel =  ((MenuItemModel*)_arrayOfItem[ _index ]);
+        
+    [self drawDescriptionWithModel];
 }
 
+// Swipe for reveal menu.
 - (IBAction) handleSwipeGestureRecognizer: (UISwipeGestureRecognizer *)sender
 {
     [self.navigationController popViewControllerAnimated: YES];

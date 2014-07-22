@@ -21,7 +21,6 @@ static NSString *const kKeyTimestamp       =  @"Timestamp";
 static NSString *const kKeyUserId       =  @"UserId";
 
 
-
 @implementation ParserToJSON
 
 // Return JSON data which are based on arays.

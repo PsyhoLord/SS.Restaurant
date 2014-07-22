@@ -50,12 +50,13 @@ static const NSUInteger kMaxAttemptsForRequest = 3;
                
                if ( error == nil ) {
                    // If login data are true then response is JSON ( { isSuccess : "true" } ).
+                   
+                   
                    NSMutableDictionary *authorizationResponse = [AuthorizationDataParser parse: data parsingError: &error];
                    
                    NSString *isSuccess = [authorizationResponse valueForKeyPath: kJSONKeyIsSuccess];
                    
                    if( [response statusCode] == 200 && [isSuccess boolValue] ) {
-                       
                        
                        [UserRole getInstance].enumUserRole = UserRoleWaiter;
                        // Adds cookies into singleton
@@ -69,10 +70,6 @@ static const NSUInteger kMaxAttemptsForRequest = 3;
                }
            }
          countOfAttempts: kMaxAttemptsForRequest];
-}
--(void)setRole:(NSDictionary*)roleDictionary
-{
-    
 }
 
 // This method creates cookie storage in our application.

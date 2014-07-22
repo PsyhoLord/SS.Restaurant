@@ -13,6 +13,8 @@
 @interface ItemDescriptionViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
-@property (strong, nonatomic) MenuItemModel *menuItemModel;
+
+@property (strong, nonatomic) NSArray *arrayOfItem;
+@property (nonatomic) int index;
 
 @end

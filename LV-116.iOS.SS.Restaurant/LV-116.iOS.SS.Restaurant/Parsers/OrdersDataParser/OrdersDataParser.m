@@ -57,7 +57,6 @@ static NSString *const kOrderKeyUserId    = @"UserId";
             orderModel = [self createOrderModel:orderDictionary];
             [arrayOfTableOrders addObject: orderModel];
         }
-        
     } else if ( [arrayOfOrdersDictionary isKindOfClass:[NSMutableDictionary class]] ) {
         orderModel = [self createOrderModel:arrayOfOrdersDictionary];
         [arrayOfTableOrders addObject: orderModel];

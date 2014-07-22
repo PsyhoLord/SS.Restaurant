@@ -40,7 +40,6 @@ static NSString *const kLoginBackgroundImage = @"blurred2.jpg";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     [SidebarViewController setupSidebarConfigurationForViewController: self
                                                         sidebarButton: self.sidebarButton
                                                             isGesture: YES];
@@ -54,12 +53,7 @@ static NSString *const kLoginBackgroundImage = @"blurred2.jpg";
     [self setTextField:_textFieldUserName imageName:kLoginIconUserName];
     [self setTextField:_textFieldPassword imageName:kLoginIconPassword];
     
-    // Sets border.
-//    CALayer *bottomBorder = [CALayer layer];
-//    bottomBorder.frame = CGRectMake(0, _textFieldUserName.frame.size.height -1 , _textFieldUserName.frame.size.width, 1);
-//    bottomBorder.backgroundColor = [UIColor blackColor].CGColor;
-//    [_textFieldUserName.layer addSublayer:bottomBorder];
-    
+  
     
     // set pointer to sidebar view controller
     // which needs for reload data on sidebar according to change of user role
