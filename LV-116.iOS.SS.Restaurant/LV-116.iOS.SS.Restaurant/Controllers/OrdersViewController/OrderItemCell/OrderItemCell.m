@@ -18,13 +18,15 @@
 {
     _delegate = newDelegate;
 }
+
+//Handled click on reduce quantity of OrderItem Button
 - (IBAction)removeOrderItemButton: (UIButton *)sender
 {
     _currentOrderItem.amount--;
     [self amountChanged];
 }
 
-
+//Handled click on increse quantity of OrderItem Button
 - (IBAction)addOrderItemButton: (UIButton *)sender
 {
     _currentOrderItem.amount++;
@@ -38,6 +40,7 @@
     _orderItemNumber  = row;
 }
 
+//Handled amount quantity 
 - (void) amountChanged
 {
     if (_currentOrderItem.amount == 0){
@@ -70,6 +73,7 @@
     // Configure the view for the selected state
 }
 
+//handeled confirmation of removing orderItem
 - (void) alertView: (UIAlertView *)alertView clickedButtonAtIndex: (NSInteger)buttonIndex
 {
     // This method is invoked in response to the user's action. The altert view is about to disappear (or has been disappeard already - I am not sure)

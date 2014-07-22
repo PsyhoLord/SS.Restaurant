@@ -55,7 +55,7 @@ static NSString *const kOrderPrice          = @"Price";
         OrderItemModel *orderItemModel = [[OrderItemModel alloc] init];
         
         orderItemModel.ID       = [[orderItem valueForKey: kOrderId] longValue];
-        orderItemModel.amount   = [[orderItem valueForKey: kOrderAmount] intValue]; //Really it needed???
+        orderItemModel.amount   = [[orderItem valueForKey: kOrderAmount] intValue];
         
         NSMutableDictionary *menuItemFromOrder = [orderItem valueForKey: kOrderMenuItem];
         orderItemModel.menuItemModel = [[MenuItemModel alloc] initWithId: [[menuItemFromOrder valueForKey: kOrderId] longValue]
@@ -77,62 +77,49 @@ static NSString *const kOrderPrice          = @"Price";
 //Making NSData object (in server needed format) from OrderModel object
 + (NSData*) unParseOrder: (OrderModel*) orderModel
 {
-    NSDictionary *menuItemFromOrder;
     NSDictionary *menuItemFromOrderSecond;
-    NSDictionary *menuItemFromOrderThird;
-    
-    NSMutableArray *keysArrayFirst = [[NSMutableArray alloc] initWithObjects: @"Id",@"Closed", @"Items", @"TableId", @"Timestamp", @"UserId", nil];
-    NSMutableArray *valuesArrayFirst = [[NSMutableArray alloc] initWithObjects:  [NSString stringWithFormat:@"%i",orderModel.Id],
-                                                                            [NSString stringWithFormat:@"%i",orderModel.closed],
-                                                                            nil
+     
+    NSMutableArray *keysArrayFirst = [[NSMutableArray alloc] initWithObjects:   @"Id",
+                                                                                @"Closed",
+                                                                                @"Items",
+                                                                                @"TableId",
+                                                                                @"Timestamp",
+                                                                                @"UserId",
+                                                                                nil
+                                      ];
+    NSMutableArray *valuesArrayFirst = [[NSMutableArray alloc] initWithObjects: [NSString stringWithFormat:@"%i",orderModel.Id],
+                                                                                [NSString stringWithFormat:@"%s",(orderModel.closed ? "true" : "false")],
+                                                                                nil
                                         ];
     NSMutableArray *ItemsDictionaryArray = [[NSMutableArray alloc] init];
+    
     
     for (OrderItemModel *orderItem in orderModel.arrayOfOrderItems) {
         
         NSMutableArray *keysArraySecond = [[NSMutableArray alloc] init];
         NSMutableArray *valuesArraySecond = [[NSMutableArray alloc] init];
         
-        OrderItemModel *currentOrderItem;
-        
-        currentOrderItem = orderItem;
-        
         [keysArraySecond addObjectsFromArray: @[@"Id", @"ActualPrice", @"Amount", @"MenuItem", @"MenuItemId", @"OrderId", @"Served"]];
         
-        [valuesArraySecond addObject: [NSString stringWithFormat: @"%ld", currentOrderItem.ID] ];
-        [valuesArraySecond addObject: [NSString stringWithFormat: @"%f", currentOrderItem.actualPrice] ];
-        [valuesArraySecond addObject: [NSString stringWithFormat: @"%d", currentOrderItem.amount] ];
-        
-            MenuItemModel *menuItem = orderItem.menuItemModel;
-           // NSMutableArray *keysArrayThird = [[NSMutableArray alloc] init];
-           // NSMutableArray *valuesArrayThird = [[NSMutableArray alloc] init];
-           // [keysArrayThird addObjectsFromArray: @[@"Id", @"CategoryId", @"Description", @"IsActive", @"Name", @"Portions", @"Price"]];
-        /*
-            [valuesArrayThird addObject: [NSString stringWithFormat: @"%ld", menuItem.Id] ];
-            [valuesArrayThird addObject: [NSString stringWithFormat: @"%ld", menuItem.categoryId] ];
-            [valuesArrayThird addObject: menuItem.description];
-            [valuesArrayThird addObject: @"1"];
-            [valuesArrayThird addObject: menuItem.name];
-            [valuesArrayThird addObject: [NSString stringWithFormat: @"%ld", menuItem.portions] ];
-            [valuesArrayThird addObject: [NSString stringWithFormat: @"%f", menuItem.price] ];*/
-        
-        //menuItemFromOrderThird = @[];//[[NSDictionary alloc] initWithObjects: valuesArrayThird forKeys: keysArrayThird];
-        
-        [valuesArraySecond addObject: @[]];
-        [valuesArraySecond addObject: [NSString stringWithFormat: @"%ld", menuItem.Id] ];
-        [valuesArraySecond addObject: [NSString stringWithFormat: @"%d", orderModel.Id] ];
-        [valuesArraySecond addObject: [NSString stringWithFormat: @"%i", currentOrderItem.served] ];
+        [valuesArraySecond addObjectsFromArray:@[[NSString stringWithFormat: @"%ld", orderItem.ID],
+                                                 [NSString stringWithFormat: @"%f", orderItem.actualPrice],
+                                                 [NSString stringWithFormat: @"%d", orderItem.amount],
+                                                 @[],
+                                                 [NSString stringWithFormat: @"%ld", orderItem.menuItemModel.Id],
+                                                 [NSString stringWithFormat: @"%d", orderModel.Id],
+                                                 [NSString stringWithFormat: @"%s", (orderItem.served  ? "true" : "false")]
+                                                 ]
+         ];
         
         menuItemFromOrderSecond = [[NSDictionary alloc] initWithObjects: valuesArraySecond forKeys: keysArraySecond];
         [ItemsDictionaryArray addObject: menuItemFromOrderSecond];
     }
     
     [valuesArrayFirst addObject: ItemsDictionaryArray];
-    [valuesArrayFirst addObject: [NSString stringWithFormat: @"%d", orderModel.Id] ];
+    [valuesArrayFirst addObject: [NSString stringWithFormat: @"%d", orderModel.tableId] ];
     [valuesArrayFirst addObject: orderModel.timestamp];
     [valuesArrayFirst addObject: [NSString stringWithFormat: @"%d", orderModel.userId] ];
     
-    menuItemFromOrder = [[NSDictionary alloc] initWithObjects: valuesArrayFirst forKeys: keysArrayFirst];
     
     NSData *data=[ParserToJSON createJSONDataWithObjects: valuesArrayFirst keys: keysArrayFirst];
     

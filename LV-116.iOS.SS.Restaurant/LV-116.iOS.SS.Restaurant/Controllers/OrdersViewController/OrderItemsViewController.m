@@ -54,29 +54,6 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
 }
 
 
-//Sets default values for testing
-- (void) setDefaultvalues
-{
-    
-    for (int i=0; i<5; i++){
-        
-        addOrderItem = [[OrderItemModel alloc] init];
-        MenuItemModel *addMenuItemModel = [[MenuItemModel alloc] initWithId: i
-                                                     categoryId: i
-                                                     description: @"kvkdskjd"
-                                                     name: [NSString stringWithFormat:@"Item#%i",i]
-                                                     portions: 3
-                                                     price: i*1.5
-                               ];
-      
-        addOrderItem = [[OrderItemModel alloc] initWithMenuItemModel: addMenuItemModel];
-        
-        addOrderItem.amount = i+1;
-        
-        [_currentOrder.arrayOfOrderItems addObject: addOrderItem];
-        
-    }
-}
 
 //loads data about order from server using order ID
 - (void) loadOrderDataByOrderId: (int)orderId
@@ -245,11 +222,10 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
     OrderItemModel *orderItemToRemove = [[OrderItemModel alloc] init];
     orderItemToRemove = [_currentOrder.arrayOfOrderItems objectAtIndex: index];
     [_currentOrder.arrayOfOrderItems removeObjectAtIndex:index];
-    orderItemToRemove.ID = -1;
+    orderItemToRemove.ID = -orderItemToRemove.ID;
     [_currentOrder.arrayOfOrderItems insertObject:orderItemToRemove atIndex:index];
     [self sendUpdateOrder];
     [_currentOrder.arrayOfOrderItems removeObjectAtIndex:index];
-    //[_currentOrder.arrayOfOrderItems removeObjectAtIndex: index];
 }
 
 
@@ -279,16 +255,27 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
     //send UPD
 }
 
+//handled "served" property for orderItem and "closed" property for orderTotallCell
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        OrderItemModel *currentOrderItem;
-        currentOrderItem = [_currentOrder.arrayOfOrderItems objectAtIndex: indexPath.row];
-        currentOrderItem.served = YES ;
-        [self.tableView reloadData];
-    } 
+    if ([_currentOrder.arrayOfOrderItems count] < indexPath.row) {
+        if (editingStyle == UITableViewCellEditingStyleDelete) {
+            OrderItemModel *currentOrderItem;
+            currentOrderItem = [_currentOrder.arrayOfOrderItems objectAtIndex: indexPath.row];
+            currentOrderItem.served = YES ;
+            isOrderChanged = YES;
+            [self.tableView reloadData];
+        }
+    } else {
+        //here handeled closing order
+        _currentOrder.closed = YES;
+        [self sendUpdateOrder];
+        
+    }
+    
 }
 
+//changed "delete" text (appears when swipe left) for each cell
 - (NSString*)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([_currentOrder.arrayOfOrderItems count] == indexPath.row) {
@@ -296,58 +283,6 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
     } else
         return @"Served";
 }
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
- 
- 
- - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
- 
- }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

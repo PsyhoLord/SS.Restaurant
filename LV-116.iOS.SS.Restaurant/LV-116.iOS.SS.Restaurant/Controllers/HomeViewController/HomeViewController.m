@@ -45,7 +45,7 @@ static NSString *const kLoginBackgroundImage = @"blurred2.jpg";
                                                         sidebarButton: self.sidebarButton
                                                             isGesture: YES];
     
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"blur2.jpg"]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:kLoginBackgroundImage]];
     self.title = kRootMenuName;
     
     [self setHomePageConfiguration: ([UserRole getInstance]).enumUserRole];
