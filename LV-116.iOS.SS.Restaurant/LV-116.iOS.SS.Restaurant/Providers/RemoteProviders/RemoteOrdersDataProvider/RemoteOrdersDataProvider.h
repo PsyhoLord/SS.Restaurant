@@ -18,6 +18,6 @@
 + (void)deleteTableOrderWithOrderId:(int)orderId responseBlock:(void (^)(NSError*))callback;
 
 // Post the new order on table using tableId.
-+ (void)postTableOrderWithTableModel:(NSInteger)tableId responseBlock:(void (^)(NSUInteger, NSError*))callback;
++ (void)postTableOrderOnTableId:(NSInteger)tableId responseBlock:(void (^)(NSArray*, NSError*))callback;
 
 @end

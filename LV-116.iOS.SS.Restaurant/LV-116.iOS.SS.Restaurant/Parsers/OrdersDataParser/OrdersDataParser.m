@@ -35,22 +35,37 @@ static NSString *const kOrderKeyUserId    = @"UserId";
     return [self parseDictionary:responseForTableOrders];
 }
 
-+ (NSMutableArray*)parseDictionary:(NSMutableDictionary*)arrayOfOrdersDictionary
++ (OrderModel*)createOrderModel:(NSMutableDictionary *)orderDictionary
+{
+    OrderModel *orderModel;
+    orderModel = [[OrderModel alloc] initWithId: [[orderDictionary valueForKey: kOrderKeyId] intValue]
+                                       isClosed: [[orderDictionary valueForKey: kOrderKeyClosed] boolValue]
+                                        tableId: [[orderDictionary valueForKey: kOrderKeyTableId] intValue]
+                                      timestamp: [orderDictionary valueForKey:  kOrderKeyTimeStamp]
+                                         userId: [[orderDictionary valueForKey: kOrderKeyUserId] intValue]
+                  ];
+    return orderModel;
+}
+
++ (NSArray*)parseDictionary:(NSMutableDictionary*)arrayOfOrdersDictionary
 {
     NSMutableArray *arrayOfTableOrders = [[NSMutableArray alloc] init];
-
-    for ( NSMutableDictionary *orderDictionary in arrayOfOrdersDictionary ) {
-        OrderModel *orderModel = [[OrderModel alloc] initWithId: [[orderDictionary valueForKey: kOrderKeyId] intValue]
-                                                       isClosed: [[orderDictionary valueForKey: kOrderKeyClosed] boolValue]
-                                                        tableId: [[orderDictionary valueForKey: kOrderKeyTableId] intValue]
-                                                      timestamp: [orderDictionary valueForKey: kOrderKeyTimeStamp]
-                                                         userId: [[orderDictionary valueForKey: kOrderKeyUserId] intValue]
-                                  ];
+    OrderModel *orderModel;
+    
+    if([arrayOfOrdersDictionary isKindOfClass:[NSMutableArray class]]){
+        for ( NSMutableDictionary *orderDictionary in arrayOfOrdersDictionary ) {
+            orderModel = [self createOrderModel:orderDictionary];
+            [arrayOfTableOrders addObject: orderModel];
+        }
         
+    } else if ( [arrayOfOrdersDictionary isKindOfClass:[NSMutableDictionary class]] ) {
+        orderModel = [self createOrderModel:arrayOfOrdersDictionary];
         [arrayOfTableOrders addObject: orderModel];
     }
-    return arrayOfTableOrders;
     
+    return arrayOfTableOrders;
 }
+
+
 
 @end

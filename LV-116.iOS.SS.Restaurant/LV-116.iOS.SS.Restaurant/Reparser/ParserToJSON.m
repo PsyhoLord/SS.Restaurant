@@ -57,8 +57,8 @@ static NSString *const kKeyUserId       =  @"UserId";
 +(NSData*)createJSONDataForNewOrderWithTableId:(int)tableId
 {
     NSNumber *tableIdNumber = [NSNumber numberWithInt: tableId];
-      long int timeInMiliseconds = [[NSDate date] timeIntervalSince1970] * 1000;
-    NSString *timestamp = [[NSString alloc] initWithFormat:@"/Date(%ld+0200)/", timeInMiliseconds];
+      long long int timeInMiliseconds = [[NSDate date] timeIntervalSince1970] * 1000;
+    NSString *timestamp = [[NSString alloc] initWithFormat:@"/Date(%lld+0200)/", timeInMiliseconds];
 //    NSNumber *userIdNumber = [NSNumber numberWithInt: ([UserRole getInstance]).userId ];
     NSNumber *userIdNumber = @1049;
     

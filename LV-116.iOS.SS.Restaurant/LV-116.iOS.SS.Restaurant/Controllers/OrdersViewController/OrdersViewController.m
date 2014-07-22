@@ -39,15 +39,6 @@ static NSString *const kCellIdentifier     = @"CellIdentifier";
 
 #pragma mark - Initialization methods
 
-- (id) initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void) viewDidLoad
 {
     [super viewDidLoad];
@@ -59,9 +50,9 @@ static NSString *const kCellIdentifier     = @"CellIdentifier";
     [self loadMapData];
 }
 
-#pragma mark - Load data from remote server
-
-// Load asynchronously map data which based on class MapModel
+#pragma mark - Loading data from remote server
+#pragma mark - Loading map data.
+// Loading asynchronously map data which based on class MapModel.
 - (void)loadMapData
 {
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
@@ -88,6 +79,7 @@ static NSString *const kCellIdentifier     = @"CellIdentifier";
     }];
     
 }
+
 // Create and init array with TableModelWithOrders objects.
 - (void)createAndSetArray:(MapModel *)mapModel
 {
@@ -100,6 +92,7 @@ static NSString *const kCellIdentifier     = @"CellIdentifier";
         [_arrayOfTableModelWithOrders addObject: tmpWaiterTable];
     }
     
+    // Sorts array (at first - free table).
     _sortedArrayOfString = [_arrayOfTableModelWithOrders sortedArrayUsingComparator: ^NSComparisonResult(id obj1, id obj2) {
         BOOL isFree1 = ((TableModelWithOrders*)obj1).isFree;
         BOOL isFree2 = ((TableModelWithOrders*)obj2).isFree;
@@ -110,20 +103,24 @@ static NSString *const kCellIdentifier     = @"CellIdentifier";
         return (NSComparisonResult)NSOrderedAscending;
     }];
     _arrayOfTableModelWithOrders = [_sortedArrayOfString copy];    // Is it the right assigned?
+    _sortedArrayOfString = nil;
 }
+
 // Create and set initial values for _flagsContainer (if @NO - rows doesn't appear at start; if @YES - rows appear at start).
 -(void)createAndResetFlagsContainer
 {
     _arrayOfFlags = [[NSMutableArray alloc] init];
-    for (int i=0; i < [_arrayOfTableModelWithOrders count]; ++i) {
+    for (int i = 0; i < [_arrayOfTableModelWithOrders count]; ++i) {
         [_arrayOfFlags addObject: @NO];
     }
 }
 
-// Load asynchronously orders on table.
-- (void)loadTableOrders:(UIButton *)sender
+#pragma mark - Loading table orders.
+
+// Loading asynchronously orders on table.
+- (void)loadTableOrders:(NSUInteger)section
 {
-    NSUInteger idOfTableModel = ((TableModelWithOrders*)_arrayOfTableModelWithOrders[sender.tag]).Id;
+    NSUInteger idOfTableModel = ((TableModelWithOrders*)_arrayOfTableModelWithOrders[section]).Id;
     [OrdersDataProvider loadTableOrdersDataWithTableId: idOfTableModel
                                          responseBlock: ^(NSArray *arrayOfOrderModel, NSError *error) {
         if ( error ) {
@@ -135,9 +132,9 @@ static NSString *const kCellIdentifier     = @"CellIdentifier";
             
             dispatch_async( dispatch_get_main_queue(), ^{
 
-                [((TableModelWithOrders*)_arrayOfTableModelWithOrders[sender.tag]) addArrayOfOrders: arrayOfOrderModel];
+                [((TableModelWithOrders*)_arrayOfTableModelWithOrders[section]) addArrayOfOrders: arrayOfOrderModel];
                 
-                [self didReceiveOrdersResponse: sender];
+                [self didReceiveOrdersResponse: section];
                 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
             });
         }
@@ -145,45 +142,40 @@ static NSString *const kCellIdentifier     = @"CellIdentifier";
     }];
 }
 // It's delete or insert rows for one section.
--(void)didReceiveOrdersResponse:(UIButton*)sender
+-(void)didReceiveOrdersResponse:(NSUInteger)section
 {
-    NSArray *items = ((TableModelWithOrders*)_arrayOfTableModelWithOrders[sender.tag]).arrayOfOrdersModel;
+    NSArray *ordersInSection = ((TableModelWithOrders*)_arrayOfTableModelWithOrders[section]).arrayOfOrdersModel;
     
     NSMutableArray *indexPaths = [[NSMutableArray alloc] init]; //    Create index array
-    for (int i=0; i < items.count+1; ++i) {
-        [indexPaths addObject: [NSIndexPath indexPathForRow:i inSection:sender.tag]];
+    for (int i = 0; i < ordersInSection.count+1; ++i) {
+        [indexPaths addObject: [NSIndexPath indexPathForRow:i inSection:section]];
     }
     
-    //    Get flag of some header section and then make inversion for this header section
-    BOOL isOpen = [[_arrayOfFlags objectAtIndex: sender.tag] boolValue];
-    [_arrayOfFlags replaceObjectAtIndex: sender.tag
+    // Get flag of some header section and then make inversion for this header section.
+    BOOL isOpen = [[_arrayOfFlags objectAtIndex: section] boolValue];
+    [_arrayOfFlags replaceObjectAtIndex: section
                              withObject: [NSNumber numberWithBool: !isOpen] ];
     
     
     if ( isOpen ) {
-        ((TableModelWithOrders*)_arrayOfTableModelWithOrders[sender.tag]).arrayOfOrdersModel = nil;
+        ((TableModelWithOrders*)_arrayOfTableModelWithOrders[section]).arrayOfOrdersModel = nil;
         [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
-
         kDegreeTransform = 0.0;
     } else {
         [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
-//        [self.tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
-        kDegreeTransform = M_PI_2*2; // or some other
     }
-    // subviews[1] keeps UIImageView.
-    ((UIImageView*)sender.subviews[1]).transform = CGAffineTransformMakeRotation( kDegreeTransform );
 }
 
 #pragma mark - Building and init table view components.
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return kHeightOfHeaderSection;
-}
-
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {
     return [_arrayOfTableModelWithOrders count];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return kHeightOfHeaderSection;
 }
 
 // In this method we return number of row in section when we've clicked.
@@ -194,10 +186,8 @@ static NSString *const kCellIdentifier     = @"CellIdentifier";
         if ( [[_arrayOfFlags objectAtIndex: section ] boolValue] ) {
             // Number of orders + one row for add button
             numberOfOrders = ((TableModelWithOrders*)_arrayOfTableModelWithOrders[section]).arrayOfOrdersModel.count +1;
-            
         }
     }
-    
     return numberOfOrders;
 }
 
@@ -210,7 +200,7 @@ static NSString *const kCellIdentifier     = @"CellIdentifier";
     }
     
     if( indexPath.row == [tableView numberOfRowsInSection: indexPath.section]-1 ) {
-        cell.textLabel.text = @"Add new order";
+        cell.textLabel.text = @"New order";
     } else {
         NSInteger orderId = ((OrderModel*)((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]).arrayOfOrdersModel[indexPath.row]).Id;
         cell.textLabel.text = [NSString stringWithFormat:@"Order %d", orderId];
@@ -219,27 +209,24 @@ static NSString *const kCellIdentifier     = @"CellIdentifier";
     return cell;
 }
 
-// Create button for each section.
+// Create view with button for each section.
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView *sectionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, kHeightOfHeaderSection)];
-    UIButton *sectionButton = [self createSectionButton: section];
-    
-    
-    // Adding subviews and layer in UIView.
-    [sectionView.layer addSublayer: [self createBottomBorder]];            // Adding bottom border.
+    [sectionView.layer addSublayer: [self createBottomBorder]];     // Adding bottom border.
 
-    [sectionView addSubview: sectionButton];                               // Adding section buttonMaybe make sense [sectionView addSubview: [self createSectionButton: section]]; I don't know.
+    UIButton *sectionButton = [self createSectionButton: section];
+    [sectionView addSubview: sectionButton];                        // Adding section button.
     
-    
-    return sectionView;  //  if you need - return sectionView
+    return sectionView;
 }
+
 // Create and setting bottom border.
 - (CALayer *)createBottomBorder
 {
     // Added bottom border for each sectionView.
-    CGFloat colorWithWhite = 0.8f;
-    CGFloat alphaColor     = 1.0f;
+    CGFloat colorWithWhite = 0.9f;
+    CGFloat alphaColor     = 0.9f;
     
     CALayer *bottomBorder = [CALayer layer];
     bottomBorder.frame = CGRectMake(0, 0, self.tableView.frame.size.width, 1);
@@ -247,12 +234,12 @@ static NSString *const kCellIdentifier     = @"CellIdentifier";
                                                      alpha: alphaColor].CGColor;
     return bottomBorder;
 }
-// Create and set settings for section button
+
+// Create and add settings for section button
 - (UIButton*)createSectionButton:(NSUInteger)section
 {
     UIButton *sectionButton = [UIButton buttonWithType:UIButtonTypeCustom];
     sectionButton.tag = section;        // We'll use this value when we will have clicked on button.
-    
     
     NSString *tempStr = [@"Table " stringByAppendingString: ((TableModelWithOrders*)_arrayOfTableModelWithOrders[section]).name];
     
@@ -267,12 +254,13 @@ static NSString *const kCellIdentifier     = @"CellIdentifier";
     
     sectionButton.frame = CGRectMake(0, 0, self.tableView.frame.size.width, kHeightOfHeaderSection);
     
-    [sectionButton addSubview: [self createImageView: section] ];          // Adding imageView on button.
+    [sectionButton addSubview: [self createImageViewForSectionButton: section] ];          // Adding imageView on button.
     
     return sectionButton;
 }
+
 // Create and setting imageView for UIView.
--(UIImageView*)createImageView:(NSUInteger)section
+-(UIImageView*)createImageViewForSectionButton:(NSUInteger)section
 {
     UIImage *image = [UIImage imageNamed: kImageOfSectionView];
     UIImageView *imageView = [[UIImageView alloc] initWithImage: image];
@@ -280,26 +268,31 @@ static NSString *const kCellIdentifier     = @"CellIdentifier";
     // Set coordinates and width, height of imageView (our image).
     NSUInteger xImage      = self.tableView.frame.size.width - 40;
     NSUInteger yImage      = 5;
-    NSUInteger widthImage  = 23;
-    NSUInteger heightImage = 23;
+    NSUInteger widthImage  = kHeightOfHeaderSection / 1.5;
+    NSUInteger heightImage = kHeightOfHeaderSection / 1.5;
     
     imageView.frame = CGRectMake(xImage, yImage, widthImage, heightImage);
-    
     
     return imageView;
 }
 
-
 #pragma mark - Handle user click.
-
 
 // Handle click on some section header.
 - (void)didSelectSection:(UIButton*)sender
 {
     if( [_arrayOfFlags[sender.tag] intValue] == 0 ){
-        [self loadTableOrders:sender];
+        [self loadTableOrders: sender.tag];
+        kDegreeTransform = M_PI_2*2;
     } else {
-        [self didReceiveOrdersResponse: sender];
+        [self didReceiveOrdersResponse: sender.tag];
+        kDegreeTransform = 0;
+    }
+    // check on UIImageView.
+    for ( id tmpImagView in sender.subviews ){
+        if ( [tmpImagView isMemberOfClass: [UIImageView class]] ){
+            ((UIImageView*)tmpImagView).transform = CGAffineTransformMakeRotation( kDegreeTransform );
+        }
     }
 }
 
@@ -312,30 +305,29 @@ static NSString *const kCellIdentifier     = @"CellIdentifier";
 
         NSInteger tableId = ((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]).Id;
         
-        [OrdersDataProvider postTableOrderWithTableModel: tableId
-                                           responseBlock: ^(NSUInteger orderId, NSError *error) {
-                                               
-                                               if( error ) {
-                                                   dispatch_async( dispatch_get_main_queue(), ^{
-                                                       [Alert showHTTPMethodsAlert: error];
-                                                   });
-                                               } else {
-                                                   dispatch_async( dispatch_get_main_queue(), ^{
-                                                       OrderModel *orderModel = [[OrderModel alloc] init];
-                                                       [((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]) addOrder: orderModel];
-                                                       
-                                                       [tableView beginUpdates];
-                                                       
-                                                       NSMutableArray *indexPaths = [[NSMutableArray alloc] init]; //    Create index array
-                                                       [indexPaths addObject: [NSIndexPath indexPathForRow: indexPath.row inSection: indexPath.section]];
-                                                       
-                                                       [tableView insertRowsAtIndexPaths:indexPaths  withRowAnimation:UITableViewRowAnimationAutomatic];
-                                                       [tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
-                                                       
-                                                       [tableView endUpdates];
-                                                   });
-                                               }
-                                           }
+        [OrdersDataProvider postTableOrderOnTableId: tableId responseBlock: ^(NSArray* newOrder, NSError *error) {
+            
+            if( error ) {
+                dispatch_async( dispatch_get_main_queue(), ^{
+                    [Alert showHTTPMethodsAlert: error];
+                });
+            } else {
+                dispatch_async( dispatch_get_main_queue(), ^{
+                    OrderModel *orderModel = [newOrder objectAtIndex:0];
+                    [((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]) addOrder: orderModel];
+                    
+                    [tableView beginUpdates];
+                    
+                    NSMutableArray *indexPaths = [[NSMutableArray alloc] init]; //    Create index array
+                    [indexPaths addObject: [NSIndexPath indexPathForRow: indexPath.row inSection: indexPath.section]];
+                    
+                    [tableView insertRowsAtIndexPaths:indexPaths  withRowAnimation:UITableViewRowAnimationAutomatic];
+                    [tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+                    
+                    [tableView endUpdates];
+                });
+            }
+        }
          ];
     } else {
         [self performSegueWithIdentifier: kSegueToOrderItems
@@ -351,7 +343,6 @@ static NSString *const kCellIdentifier     = @"CellIdentifier";
         
         OrderItemsViewController *itemsViewController = (OrderItemsViewController*)segue.destinationViewController;
         itemsViewController.currentOrder = (OrderModel*)((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexSection]).arrayOfOrdersModel[indexRow];
-
     }
 }
 
@@ -364,23 +355,25 @@ static NSString *const kCellIdentifier     = @"CellIdentifier";
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         
         NSUInteger orderId = ((OrderModel*)((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]).arrayOfOrdersModel[indexPath.row]).Id;
+        [((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]) removeOrderAtIndex: indexPath.row];
         
         [OrdersDataProvider deleteTableOrderWithOrderId: orderId
                                           responseBlock: ^(NSError *error) {
                                               if( error ) {
-                                                  [Alert showHTTPMethodsAlert: error];
+                                                  dispatch_async( dispatch_get_main_queue(), ^{
+                                                      [Alert showHTTPMethodsAlert: error];
+                                                  });
                                               }
                                           }
          ];
-        
-        [((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]) removeOrderAtIndex: indexPath.row];
         [tableView endUpdates];
     } else if( editingStyle == UITableViewCellEditingStyleInsert ){
         // Here handle UITableViewCellEditingStyleInsert if we need.
     }
     
 }
-// Set editing style for cell. Add cell has not any editing style.
+
+// Set editing style for cell. The last cell has not any editing style.
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ( indexPath.row != [tableView numberOfRowsInSection: indexPath.section]-1 ) {
@@ -388,8 +381,6 @@ static NSString *const kCellIdentifier     = @"CellIdentifier";
     } else {
         return UITableViewCellEditingStyleNone;
     }
-    
-    
 }
 
 @end

@@ -66,7 +66,7 @@ static const NSUInteger kMaxAttemptsForRequest = 2;
 #pragma mark - POST.
 
 // Post the new order on table using tableId.
-+ (void)postTableOrderWithTableModel:(NSInteger)tableId responseBlock:(void (^)(NSUInteger, NSError*))callback
++ (void)postTableOrderOnTableId:(NSInteger)tableId responseBlock:(void (^)(NSArray*, NSError*))callback
 {
     NSData *data = [ParserToJSON createJSONDataForNewOrderWithTableId: tableId];
     
@@ -78,11 +78,10 @@ static const NSUInteger kMaxAttemptsForRequest = 2;
            responseBlock: ^(NSHTTPURLResponse *response, NSData *data, NSError *error) {
                // call block from hight layer - DataProvider
                if( error ){
-                   callback(-1, error);
+                   callback(nil, error);
                } else {
-                   NSString *tmp = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                   NSUInteger orderId = [tmp integerValue];
-                   callback(orderId, error);
+                   NSArray *newOrder = [OrdersDataParser parse:data parsingError: &error];
+                   callback(newOrder, error);
                }
                
            }

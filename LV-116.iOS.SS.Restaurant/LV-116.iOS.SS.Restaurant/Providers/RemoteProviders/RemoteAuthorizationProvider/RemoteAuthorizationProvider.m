@@ -57,8 +57,6 @@ static const NSUInteger kMaxAttemptsForRequest = 3;
                    if( [response statusCode] == 200 && [isSuccess boolValue] ) {
                        
                        
-                       
-                       
                        [UserRole getInstance].enumUserRole = UserRoleWaiter;
                        // Adds cookies into singleton
                        [RemoteAuthorizationProvider createCookieStorageWithHeaderSetCookie:response];
