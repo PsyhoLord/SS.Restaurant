@@ -8,15 +8,24 @@
 
 #import "AuthorizationDataParser.h"
 
+#import "UserRole.h"
+
+static NSString *const kJSONKeyUser        = @"User";
+static NSString *const kJSONKeyWaiter      = @"Waiter";
+static NSString *const kJSONKeyRoles       = @"Roles";
+static NSString *const kJSONKeyName        = @"Name";
+static NSString *const kJSONKeyPhoneNumber = @"PhoneNumber";
+static NSString *const kJSONKeyPhoneImage  = @"Image";
+
 
 @implementation AuthorizationDataParser
 
 + (id)parse:(NSData*) data parsingError:(NSError**) parseError
 {
-    NSError *parsingError;
+    NSError *parsingError = nil;
     
     // Calling a method, which will be convert data from JSON to OrderModel.
-    NSMutableDictionary *authorizationResponse = [NSJSONSerialization JSONObjectWithData: data
+    NSMutableDictionary *authorizationDictionary = [NSJSONSerialization JSONObjectWithData: data
                                                                                  options: NSJSONReadingMutableContainers
                                                                                    error: &parsingError];
     if ( parsingError ) {
@@ -24,15 +33,25 @@
         return nil;
     }
     
-    return authorizationResponse;
+    [self parseRole: authorizationDictionary];
+    return authorizationDictionary;
 }
 
-+ (NSMutableArray*)parseDictionary:(NSMutableDictionary*)arrayOfOrdersDictionary
+// Sets user settings for singleton.
++(void)parseRole:(NSDictionary*)roleDictionary
 {
-    NSMutableArray *arrayOfTableOrders = [[NSMutableArray alloc] init];
-
-    return arrayOfTableOrders;
+    NSMutableDictionary *arrayOfUserInfo = [roleDictionary objectForKey: kJSONKeyUser];
+    NSArray *str = [roleDictionary objectForKey:kJSONKeyRoles];
     
+    
+    if( [str[0] isEqualToString: kJSONKeyWaiter]  ) {
+        [UserRole getInstance].enumUserRole = UserRoleWaiter;
+    }
+    
+    [UserRole getInstance].name = [arrayOfUserInfo valueForKey: kJSONKeyName];
+    [UserRole getInstance].phoneNumber = [arrayOfUserInfo valueForKey: kJSONKeyPhoneNumber];
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:[arrayOfUserInfo objectForKey: kJSONKeyPhoneImage] ];
+    [UserRole getInstance].photo = [[UIImage alloc] initWithData:data];
 }
 
 

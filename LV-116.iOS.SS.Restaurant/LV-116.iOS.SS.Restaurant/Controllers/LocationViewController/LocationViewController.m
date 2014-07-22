@@ -26,9 +26,7 @@
     [SidebarViewController setupSidebarConfigurationForViewController: self
                                                         sidebarButton: self.sidebarButton
                                                             isGesture: NO];
-
     self.mapView.userLocation.title = @"You're Here";
-
 }
 
 - (IBAction)createRoute:(id)sender

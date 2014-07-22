@@ -42,7 +42,6 @@
     [self loadMapData];
 }
 
-
 // create button with characteristic of the current TableModel
 // (TableModel*)TableModel - model of one TableModel
 // return button

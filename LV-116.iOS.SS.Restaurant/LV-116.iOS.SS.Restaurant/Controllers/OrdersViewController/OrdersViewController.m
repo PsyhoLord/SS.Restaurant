@@ -7,23 +7,22 @@
 //
 
 #import "OrdersViewController.h"
-
+#import "OrderItemsViewController.h"
 #import "SidebarViewController+ConfigurationForOtherViewControllers.h"
 
-#import "OrderItemsViewController.h"
-
+#import "Alert.h"
 #import "MapDataProvider.h"
 #import "OrdersDataProvider.h"
-#import "Alert.h"
 
+#import "UserRole.h"
 #import "OrderModel.h"
 #import "MapModel.h"
 #import "TableModel.h"
 #import "TableModelWithOrders.h"
 
+
 static const CGFloat kHeightOfHeaderSection = 35.0f;
 static CGFloat kDegreeTransform             = 0.0f;
-
 
 static NSString *const kSegueToOrderItems  = @"segue_order_items";
 static NSString *const kImageOfSectionView = @"arrow_down.png";
@@ -315,7 +314,6 @@ static NSString *const kCellIdentifier     = @"CellIdentifier";
                 dispatch_async( dispatch_get_main_queue(), ^{
                     OrderModel *orderModel = [newOrder objectAtIndex:0];
                     [((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]) addOrder: orderModel];
-                    
                     [tableView beginUpdates];
                     
                     NSMutableArray *indexPaths = [[NSMutableArray alloc] init]; //    Create index array

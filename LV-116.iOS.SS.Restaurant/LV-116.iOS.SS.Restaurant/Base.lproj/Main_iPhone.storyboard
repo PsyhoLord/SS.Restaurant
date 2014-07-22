@@ -540,7 +540,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eom-Dq-6vE">
-                                            <rect key="frame" x="20" y="8" width="53" height="53"/>
+                                            <rect key="frame" x="20" y="8" width="54" height="54"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Item name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6f0-mR-WtN">
@@ -614,7 +614,7 @@
         <!--Item Description View Controller-->
         <scene sceneID="ESC-J2-DuA">
             <objects>
-                <viewController id="NJp-jF-bNx" customClass="ItemDescriptionViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IDE" id="NJp-jF-bNx" customClass="ItemDescriptionViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FgA-og-i6D"/>
                         <viewControllerLayoutGuide type="bottom" id="owW-Uu-fSd"/>

@@ -41,6 +41,9 @@
         callback(userRole, error);
         
     }];
+    
+    
+    
 }
 
 @end
