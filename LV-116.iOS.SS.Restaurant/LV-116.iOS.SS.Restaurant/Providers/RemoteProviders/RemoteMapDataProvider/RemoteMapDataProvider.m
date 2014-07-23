@@ -17,7 +17,6 @@
 static NSString *const kStringURLMap                = @"http://192.168.195.212/Restaurant/api/tables";
 static NSString *const kStringURLDownloadMapImage   = @"http://192.168.195.212/Restaurant/Images/background.jpg";
 
-static const int kMaxCountOfAttemptsForRequest      = 3;
 
 @implementation RemoteMapDataProvider
 
@@ -25,7 +24,6 @@ static const int kMaxCountOfAttemptsForRequest      = 3;
 {
     NSURLRequest *URLRequest = [RequestMaker getRequestWithURL: kStringURLMap
                                                        idOfURL: 0];
-    
     
     [RequestManager send: URLRequest
            responseBlock: ^(NSHTTPURLResponse *urlResponse, NSData *data, NSError *error) {
@@ -36,9 +34,8 @@ static const int kMaxCountOfAttemptsForRequest      = 3;
                                       parsingError: &error];
                }
                callback(mapModel,error);
-               
            }
-         countOfAttempts: kMaxCountOfAttemptsForRequest];
+     ];
 }
 
 // download image for map
@@ -57,9 +54,8 @@ static const int kMaxCountOfAttemptsForRequest      = 3;
                }
                // call block from hight layer - DataProvider
                callback(image, error);
-               
            }
-         countOfAttempts:kMaxCountOfAttemptsForRequest];
+     ];
 }
 
 @end

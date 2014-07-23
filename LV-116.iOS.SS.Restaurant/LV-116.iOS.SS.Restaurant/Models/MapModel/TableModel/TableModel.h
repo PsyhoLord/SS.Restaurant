@@ -11,22 +11,19 @@
 // Table class will contains data about any of tables
 @interface TableModel : NSObject
 
-@property int Id;
-@property int capacity;
-@property int height;
-@property BOOL isActive;
-@property BOOL isFree;
-@property BOOL isRound;
+@property (assign, nonatomic) int Id;
+@property (assign, nonatomic) int capacity;
+@property (assign, nonatomic) int height;
+@property (assign, nonatomic) BOOL isActive;
+@property (assign, nonatomic) BOOL isFree;
+@property (assign, nonatomic) BOOL isRound;
+@property (assign, nonatomic) int rotation;
+@property (assign, nonatomic) int width;
+@property (assign, nonatomic) int X;
+@property (assign, nonatomic) int Y;
 @property (strong, nonatomic) NSString *name;
-@property int rotation;
-@property int width;
-@property int X;
-@property int Y;
 
-// ptr to an orders of this table
-@property (strong, nonatomic) WaiterTableModel *tableOrderModel;
-
--(instancetype)initWithId:(int)Id
+- (instancetype)initWithId:(int)Id
                  Capacity:(int)capacity
                    height:(int)height
                  isActive:(BOOL)isActive
@@ -38,6 +35,6 @@
                    coordX:(int)X
                    coordY:(int)Y;
 
--(instancetype) initWithTableModel:(TableModel*)tableModel;
+- (instancetype) initWithTableModel:(TableModel*)tableModel;
 
 @end

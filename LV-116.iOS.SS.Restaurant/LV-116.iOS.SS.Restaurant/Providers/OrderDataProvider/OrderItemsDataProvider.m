@@ -19,8 +19,8 @@
 + (void) loadOrderDatawithOrderId:(int) OrderId responseBlock : (void (^)(NSArray*, NSError*))callback
 {
     [RemoteOrderProvider loadOrderItemsWithId: OrderId
-                                responseBlock: ^(NSArray *arrayOfOrderItems, NSError *error){
-                                    callback (arrayOfOrderItems, error);
+                                responseBlock: ^(NSArray *orderItems, NSError *error){
+                                    callback (orderItems, error);
                                 }
      ];
 }

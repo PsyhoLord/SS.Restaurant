@@ -104,7 +104,7 @@
     
     [_zoomView addSubview:_backgroundView];
     
-    for ( TableModel *tableModel in _mapModel.arrayOfTableModel ) {
+    for ( TableModel *tableModel in _mapModel.tables ) {
         [_zoomView addSubview:[self addTableView:tableModel]];
     }
     

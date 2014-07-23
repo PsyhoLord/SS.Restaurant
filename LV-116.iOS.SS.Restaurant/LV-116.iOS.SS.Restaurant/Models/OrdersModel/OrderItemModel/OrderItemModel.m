@@ -14,7 +14,7 @@
 - (instancetype) initWithMenuItemModel: (MenuItemModel*)menuItemModel
 {
     if ( self = [super init] ) {
-        self.menuItemModel = menuItemModel;
+        _menuItemModel = menuItemModel;
     }
     return self;
 }

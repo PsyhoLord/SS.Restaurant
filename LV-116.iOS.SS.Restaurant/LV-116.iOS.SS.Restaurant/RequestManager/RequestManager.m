@@ -9,19 +9,22 @@
 #import "RequestManager.h"
 #import "ServiceAgent.h"
 
+
+static NSUInteger kMaxAttemptsForRequest = 3;
+
 @implementation RequestManager
 
 // send request to server and call block when response comes
 // (NSURLRequest *)request - request
 // responseBlock:(void (^)(NSData*, NSError*))callback - block which will call when response come
 // countOfAttempts:(int)countOfAttempts - count of attempts if it is no internet
-+ (void) send: (NSURLRequest *)urlRequest responseBlock: (void (^)(NSHTTPURLResponse*, NSData*, NSError*))callback countOfAttempts: (int)countOfAttempts
++ (void) send: (NSURLRequest *)urlRequest responseBlock: (void (^)(NSHTTPURLResponse*, NSData*, NSError*))callback
 {
-    --countOfAttempts;
+    --kMaxAttemptsForRequest;
     [ServiceAgent send: urlRequest responseBlock: ^(NSHTTPURLResponse *urlResponse, NSData *data, NSError *error) {
         
-        if ( error && countOfAttempts ) {
-            [RequestManager send: urlRequest responseBlock: callback countOfAttempts: countOfAttempts];
+        if ( error && kMaxAttemptsForRequest ) {
+            [RequestManager send: urlRequest responseBlock: callback];
         } else {
             callback(urlResponse, data, error);
         }

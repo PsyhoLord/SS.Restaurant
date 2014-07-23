@@ -12,14 +12,14 @@
 
 @interface OrderItemModel : NSObject
 
-@property long ID;
+@property (assign, nonatomic) int Id;
 @property (strong, nonatomic) MenuItemModel *menuItemModel;
-@property int amount;
-@property BOOL served;
-@property float actualPrice;
+@property (assign, nonatomic) int amount;
+@property (assign, nonatomic) BOOL served;
+@property (assign, nonatomic) float actualPrice;
 #pragma mark Those propertis are in the model, thats sends on server
-/*
-need to be sure, delete them or no
+
+/*need to be sure, delete them or no
 @property long menuItemId;
 @property long orderId;*/
 

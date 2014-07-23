@@ -12,12 +12,12 @@
 @implementation MapModel
 
 // add TableModel to an array of TableModels
-- (void)addTableModel:(TableModel*)arrayOfTableModel
+- (void)addTableModel:(TableModel*)table
 {
-    if( _arrayOfTableModel == nil ) {
-        _arrayOfTableModel = [[NSMutableArray alloc] init];
+    if( _tables == nil ) {
+        _tables = [[NSMutableArray alloc] init];
     }
-    [_arrayOfTableModel addObject:arrayOfTableModel];
+    [_tables addObject:table];
 }
 
 @end

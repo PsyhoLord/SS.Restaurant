@@ -23,8 +23,6 @@ static NSString *const kHTTPHeaderSetCookie = @"Set-Cookie";
 
 static NSString *const kJSONKeyIsSuccess    = @"isSuccess";
 
-static const NSUInteger kMaxAttemptsForRequest = 3;
-
 
 @implementation RemoteAuthorizationProvider
 
@@ -40,7 +38,6 @@ static const NSUInteger kMaxAttemptsForRequest = 3;
     NSData *jsonData = [ParserToJSON createJSONDataForAuthorizationWithLogin: login
                                                                     password: password
                                                                   rememberMe: true];
-    
     // Creates request using JSON data.
     NSURLRequest *urlRequest = [RequestMaker getLoginRequestWithURL: kURLAuthenticate
                                                             idOfURL: 0
@@ -69,7 +66,7 @@ static const NSUInteger kMaxAttemptsForRequest = 3;
                    }
                }
            }
-         countOfAttempts: kMaxAttemptsForRequest];
+     ];
 }
 
 // This method creates cookie storage in our application.
@@ -131,7 +128,7 @@ static const NSUInteger kMaxAttemptsForRequest = 3;
     for (cookie in [storage cookies]) {
         [storage deleteCookie:cookie];
     }
-
+    
     [UserRole getInstance].enumUserRole = UserRoleClient;
     callback([UserRole getInstance], nil);
 }

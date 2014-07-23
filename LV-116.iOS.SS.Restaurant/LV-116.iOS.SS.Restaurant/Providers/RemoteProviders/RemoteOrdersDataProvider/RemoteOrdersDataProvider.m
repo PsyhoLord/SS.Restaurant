@@ -18,7 +18,6 @@ static NSString *const kURLDeleteOrder       = @"http://192.168.195.212/Restaura
 static NSString *const kURLPostTableOrder    = @"http://192.168.195.212/Restaurant/Api/orders";
 static NSString *const kURLGetTableOrders    = @"http://192.168.195.212/Restaurant/api/Orders?tableId=%d";
 
-static const NSUInteger kMaxAttemptsForRequest = 2;
 
 @implementation RemoteOrdersDataProvider
 
@@ -35,14 +34,14 @@ static const NSUInteger kMaxAttemptsForRequest = 2;
     [RequestManager send: URLRequest
            responseBlock: ^(NSHTTPURLResponse *response, NSData *data, NSError *error) {
                
-               NSArray *arrayOfOrderModel;
+               NSArray *orders;
                if ( error == nil ) {
-                   arrayOfOrderModel = [OrdersDataParser parse: data parsingError: &error];
+                   orders = [OrdersDataParser parse: data parsingError: &error];
                }
                // call block from hight layer - DataProvider
-               callback(arrayOfOrderModel, error);
+               callback(orders, error);
            }
-         countOfAttempts: kMaxAttemptsForRequest];
+     ];
 }
 
 #pragma mark - HTTP methods.
@@ -60,7 +59,7 @@ static const NSUInteger kMaxAttemptsForRequest = 2;
                // call block from hight layer - DataProvider
                callback(error);
            }
-         countOfAttempts: kMaxAttemptsForRequest];
+     ];
 }
 
 #pragma mark - POST.
@@ -85,7 +84,7 @@ static const NSUInteger kMaxAttemptsForRequest = 2;
                }
                
            }
-         countOfAttempts: kMaxAttemptsForRequest];
+     ];
 }
 
 

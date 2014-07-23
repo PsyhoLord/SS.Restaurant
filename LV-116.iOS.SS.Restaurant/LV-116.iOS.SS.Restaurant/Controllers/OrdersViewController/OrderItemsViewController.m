@@ -42,43 +42,30 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
     BOOL isOrderChanged ;
 }
 
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        
-        // Custom initialization
-    }
-    return self;
-}
-
-
-
 //loads data about order from server using order ID
 - (void) loadOrderDataByOrderId: (int)orderId
 {
     [OrderItemsDataProvider loadOrderDatawithOrderId: orderId
-                                  responseBlock: ^(NSArray *arrayOfOrderItems, NSError *error){
-                                      if ( error ) {
-                                          dispatch_async( dispatch_get_main_queue(), ^{
-                                              [Alert showConnectionAlert];
-                                              [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-                                          });
-                                      } else {
-                                          
-                                          dispatch_async( dispatch_get_main_queue(), ^{
-                                              
-                                              //_currentOrder = [[OrderModel alloc] init];
-                                             
-                                              [_currentOrder addArrayOfOrderItems: arrayOfOrderItems];
-                                              
-                                              [self.tableView reloadData];
-                                              
-                                              [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-                                          });
-                                      }
-    }];
+                                       responseBlock: ^(NSArray *orderItems, NSError *error){
+                                           if ( error ) {
+                                               dispatch_async( dispatch_get_main_queue(), ^{
+                                                   [Alert showConnectionAlert];
+                                                   [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+                                               });
+                                           } else {
+                                               
+                                               dispatch_async( dispatch_get_main_queue(), ^{
+                                                   
+                                                   [_currentOrder.items removeAllObjects];
+                                                   
+                                                   [_currentOrder addOrderItems: orderItems];
+                                                   
+                                                   [self.tableView reloadData];
+                                                   
+                                                   [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+                                               });
+                                           }
+                                       }];
 }
 
 - (void)viewDidLoad
@@ -93,7 +80,7 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
                                                                            style: UIBarButtonItemStylePlain
                                                                           target: self
                                                                           action: @selector(addNewOrderItem)
-                                      ];
+                                           ];
     self.navigationItem.rightBarButtonItem = addOrderItemButton;
     
     self.title = [NSString stringWithFormat: @"Order #%i", _currentOrder.Id];
@@ -140,22 +127,22 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
 - (NSInteger)tableView: (UITableView *)tableView numberOfRowsInSection: (NSInteger)section
 {
     // Return the number of rows in the section.
-    return [_currentOrder.arrayOfOrderItems count]+1;
+    return [_currentOrder.items count]+1;
 }
 
 
 //Creating cells for Order screen and select whitch is need (OrderItem ot OrderTotall)
 - (UITableViewCell *)tableView: (UITableView *)tableView cellForRowAtIndexPath: (NSIndexPath *)indexPath
 {
-    if ( [_currentOrder.arrayOfOrderItems count] > indexPath.row ) {
+    if ( [_currentOrder.items count] > indexPath.row ) {
         
         OrderItemCell *orderItemCell = [tableView dequeueReusableCellWithIdentifier: kOrderCellIdentifier];
         
-        [orderItemCell setDataWhithOrderItemModel: [_currentOrder.arrayOfOrderItems objectAtIndex: indexPath.row]
+        [orderItemCell setDataWhithOrderItemModel: [_currentOrder.items objectAtIndex: indexPath.row]
                                    andNumberOfRow: indexPath.row];
-       
+        
         [orderItemCell drawCell];
-       
+        
         orderItemCell.delegate = self;
         
         return orderItemCell;
@@ -196,12 +183,12 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
 {
     OrderItemModel *newOrderItem = [[OrderItemModel alloc] initWithMenuItemModel: menuItem];
     newOrderItem.amount = 1;
-    [_currentOrder.arrayOfOrderItems addObject: newOrderItem];
-    for (int i = 0; i < [_currentOrder.arrayOfOrderItems count]-1; i++){
-        newOrderItem = [_currentOrder.arrayOfOrderItems objectAtIndex: i];
+    [_currentOrder.items addObject: newOrderItem];
+    for (int i = 0; i < [_currentOrder.items count]-1; i++){
+        newOrderItem = [_currentOrder.items objectAtIndex: i];
         if (newOrderItem.menuItemModel.Id == menuItem.Id){
             newOrderItem.amount ++;
-            [_currentOrder.arrayOfOrderItems removeLastObject];
+            [_currentOrder.items removeLastObject];
             break;
         }
     }
@@ -220,12 +207,12 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
 - (void) removeOrderItemAtIndex: (int)index
 {
     OrderItemModel *orderItemToRemove = [[OrderItemModel alloc] init];
-    orderItemToRemove = [_currentOrder.arrayOfOrderItems objectAtIndex: index];
-    [_currentOrder.arrayOfOrderItems removeObjectAtIndex:index];
-    orderItemToRemove.ID = -orderItemToRemove.ID;
-    [_currentOrder.arrayOfOrderItems insertObject:orderItemToRemove atIndex:index];
+    orderItemToRemove = [_currentOrder.items objectAtIndex: index];
+    [_currentOrder.items removeObjectAtIndex:index];
+    orderItemToRemove.Id = -orderItemToRemove.Id;
+    [_currentOrder.items insertObject:orderItemToRemove atIndex:index];
     [self sendUpdateOrder];
-    [_currentOrder.arrayOfOrderItems removeObjectAtIndex:index];
+    [_currentOrder.items removeObjectAtIndex:index];
 }
 
 
@@ -237,19 +224,19 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
 //Getting started sendibg OrderUpdate request to server
 - (void) sendUpdateOrder
 {
-    NSData *dataFromOrder = [OrderItemsDataParser unParseOrder: _currentOrder];
+    NSData *dataFromOrder = [OrderItemsDataParser parseOrderToData: _currentOrder];
     [OrderItemsDataProvider sendDataFromOrderToUpdate:dataFromOrder
                                         responseBlock:^(NSError *error){
                                             dispatch_async( dispatch_get_main_queue(), ^{
-                                                 if(error){
-                                                 [Alert showConnectionAlert];
-                                                 }
-                                                 [Alert showUpdateOrderInfoSuccesfull];
-                                                 isOrderChanged = NO;
-                                                 [self.tableView reloadData];
+                                                if(error){
+                                                    [Alert showConnectionAlert];
+                                                }
+                                                [Alert showUpdateOrderInfoSuccesfull];
+                                                isOrderChanged = NO;
+                                                [self.tableView reloadData];
                                             });
-
-                                        
+                                            
+                                            
                                         }
      ];
     //send UPD
@@ -258,19 +245,19 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
 //handled "served" property for orderItem and "closed" property for orderTotallCell
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([_currentOrder.arrayOfOrderItems count] < indexPath.row) {
+    if ([_currentOrder.items count] > indexPath.row) {
         if (editingStyle == UITableViewCellEditingStyleDelete) {
             OrderItemModel *currentOrderItem;
-            currentOrderItem = [_currentOrder.arrayOfOrderItems objectAtIndex: indexPath.row];
+            currentOrderItem = [_currentOrder.items objectAtIndex: indexPath.row];
             currentOrderItem.served = YES ;
             isOrderChanged = YES;
             [self.tableView reloadData];
         }
     } else {
-        //here handeled closing order
+        // here handeled closing order
         _currentOrder.closed = YES;
         [self sendUpdateOrder];
-        
+        [self.navigationController popViewControllerAnimated:YES];
     }
     
 }
@@ -278,10 +265,11 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
 //changed "delete" text (appears when swipe left) for each cell
 - (NSString*)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([_currentOrder.arrayOfOrderItems count] == indexPath.row) {
+    if ([_currentOrder.items count] == indexPath.row) {
         return @"Close Order";
-    } else
+    } else {
         return @"Served";
+    }
 }
 
 

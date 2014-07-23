@@ -23,36 +23,36 @@
                    coordY:(int)Y
 {
     if ( self = [super init] ){
-        self.Id       = Id;
-        self.capacity = capacity;
-        self.height   = height;
-        self.isActive = isActive;
-        self.isFree   = isFree;
-        self.isRound  = isRound;
-        self.name     = name;
-        self.rotation = rotation;
-        self.width    = width;
-        self.X        = X;
-        self.Y        = Y;
+        _Id       = Id;
+        _capacity = capacity;
+        _height   = height;
+        _isActive = isActive;
+        _isFree   = isFree;
+        _isRound  = isRound;
+        _name     = name;
+        _rotation = rotation;
+        _width    = width;
+        _X        = X;
+        _Y        = Y;
     }
     return self;
 }
 
 // It's used for TableModelWithOrders.
--(instancetype) initWithTableModel:(TableModel*)tableModel
+- (instancetype) initWithTableModel:(TableModel*)tableModel
 {
     if ( self = [super init] ){
-        self.Id       = tableModel.Id;
-        self.capacity = tableModel.capacity;
-        self.height   = tableModel.height;
-        self.isActive = tableModel.isActive;
-        self.isFree   = tableModel.isFree;
-        self.isRound  = tableModel.isRound;
-        self.name     = tableModel.name;
-        self.rotation = tableModel.rotation;
-        self.width    = tableModel.width;
-        self.X        = tableModel.X;
-        self.Y        = tableModel.Y;
+        _Id       = tableModel.Id;
+        _capacity = tableModel.capacity;
+        _height   = tableModel.height;
+        _isActive = tableModel.isActive;
+        _isFree   = tableModel.isFree;
+        _isRound  = tableModel.isRound;
+        _name     = tableModel.name;
+        _rotation = tableModel.rotation;
+        _width    = tableModel.width;
+        _X        = tableModel.X;
+        _Y        = tableModel.Y;
     }
     return self;
 }

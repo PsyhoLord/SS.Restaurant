@@ -18,10 +18,10 @@
 - (void)addCategory:(MenuCategoryModel*)category;
 - (void)addItem:(MenuItemModel*)item;
 
-@property int Id;
+@property (assign, nonatomic) int Id;
+@property (assign, nonatomic) int parentId;
 @property (strong, nonatomic) NSMutableArray *categories;
 @property (strong, nonatomic) NSMutableArray *items;
 @property (strong, nonatomic) NSString *name;
-@property int parentId;
 
 @end

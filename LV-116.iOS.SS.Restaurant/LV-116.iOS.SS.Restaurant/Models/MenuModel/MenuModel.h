@@ -16,13 +16,13 @@
 
 @property (strong, nonatomic) MenuCategoryModel *rootMenuCategory;
 
--(BOOL)isEmpty;
+- (BOOL)isEmpty;
 
 // get MenuCategory object which contains categories or items of current category we want to get in
--(MenuCategoryModel*)getMenuData:(MenuCategoryModel*)category;
+- (MenuCategoryModel*)getMenuData:(MenuCategoryModel*)category;
 
 // add category or item to menu tree
 // needs for DataParser
--(void)addNode:(id)node toCategory:(MenuCategoryModel*)nodeFather;
+- (void)addNode:(id)node toCategory:(MenuCategoryModel*)nodeFather;
 
 @end

@@ -12,19 +12,19 @@
 
 @interface OrderModel : NSObject
 
-@property int Id;
-@property BOOL closed;
-@property (strong, nonatomic) NSMutableArray *arrayOfOrderItems;
-//@property int table;
-@property int tableId;
+@property (assign, nonatomic) int Id;
+@property (assign, nonatomic) BOOL closed;
+@property (assign, nonatomic) int tableId;
+@property (assign, nonatomic) int userId;
+@property (strong, nonatomic) NSMutableArray *items;
+
 @property (strong,nonatomic) NSString *timestamp;
-//@property int user;
-@property int userId;
+
 
 - (instancetype)initWithId: (int)Id isClosed: (BOOL)closed tableId: (int)tableId timestamp: (NSString*)timestamp userId: (int)userId;
 
 - (instancetype) init;
 
-- (void) addArrayOfOrderItems:(NSArray *) arrayOfOrderItems;
+- (void) addOrderItems:(NSArray *) newOrderItems;
 
 @end

@@ -40,7 +40,7 @@ static NSString *const kJSONKeyPhoneImage  = @"Image";
 // Sets user settings for singleton.
 +(void)parseRole:(NSDictionary*)roleDictionary
 {
-    NSMutableDictionary *arrayOfUserInfo = [roleDictionary objectForKey: kJSONKeyUser];
+    NSMutableDictionary *userInfo = [roleDictionary objectForKey: kJSONKeyUser];
     NSArray *str = [roleDictionary objectForKey:kJSONKeyRoles];
     
     
@@ -48,9 +48,10 @@ static NSString *const kJSONKeyPhoneImage  = @"Image";
         [UserRole getInstance].enumUserRole = UserRoleWaiter;
     }
     
-    [UserRole getInstance].name = [arrayOfUserInfo valueForKey: kJSONKeyName];
-    [UserRole getInstance].phoneNumber = [arrayOfUserInfo valueForKey: kJSONKeyPhoneNumber];
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:[arrayOfUserInfo objectForKey: kJSONKeyPhoneImage] ];
+    [UserRole getInstance].name = [userInfo valueForKey: kJSONKeyName];
+    [UserRole getInstance].phoneNumber = [userInfo valueForKey: kJSONKeyPhoneNumber];
+    
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:[userInfo objectForKey: kJSONKeyPhoneImage] ];
     [UserRole getInstance].photo = [[UIImage alloc] initWithData:data];
 }
 

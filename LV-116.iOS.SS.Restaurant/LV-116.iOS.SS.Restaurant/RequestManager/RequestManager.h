@@ -14,6 +14,6 @@
 // (NSURLRequest *)request - request
 // responseBlock:(void (^)(NSData*, NSError*))callback - block which will call when response come
 // ountOfAttempts:(int)countOfAttempts - count of attempts if it is no internet
-+ (void) send: (NSURLRequest *)urlRequest responseBlock: (void (^)(NSHTTPURLResponse*, NSData*, NSError*))callback countOfAttempts: (int)countOfAttempts;
++ (void) send: (NSURLRequest *)urlRequest responseBlock: (void (^)(NSHTTPURLResponse*, NSData*, NSError*))callback;
 
 @end

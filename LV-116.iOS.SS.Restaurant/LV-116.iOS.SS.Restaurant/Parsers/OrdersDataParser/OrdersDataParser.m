@@ -24,47 +24,49 @@ static NSString *const kOrderKeyUserId    = @"UserId";
     NSError *parsingError;
     
     // Calling a method, which will be convert data from JSON to OrderModel.
-    NSMutableDictionary *responseForTableOrders = [NSJSONSerialization JSONObjectWithData: data
-                                                                                  options: NSJSONReadingMutableContainers
-                                                                                    error: &parsingError];
+    NSMutableDictionary *ordersResponse = [NSJSONSerialization JSONObjectWithData: data
+                                                                          options: NSJSONReadingMutableContainers
+                                                                            error: &parsingError];
     if ( parsingError ) {
         *parseError = parsingError;
         return nil;
     }
     
-    return [self parseDictionary:responseForTableOrders];
+    return [self parseDictionary:ordersResponse];
+}
+
++ (NSArray*)parseDictionary:(NSMutableDictionary*)ordersDictionary
+{
+    NSMutableArray *orders = [[NSMutableArray alloc] init];
+    OrderModel *order;
+    
+    if([ordersDictionary isKindOfClass:[NSMutableArray class]]){
+        for ( NSMutableDictionary *orderDictionary in ordersDictionary ) {
+            
+            order = [self createOrderModel:orderDictionary];
+            [orders addObject: order];
+            
+        }
+    } else if ( [ordersDictionary isKindOfClass:[NSMutableDictionary class]] ) {
+        
+        order = [self createOrderModel:ordersDictionary];
+        [orders addObject: order];
+        
+    }
+    
+    return orders;
 }
 
 + (OrderModel*)createOrderModel:(NSMutableDictionary *)orderDictionary
 {
-    OrderModel *orderModel;
-    orderModel = [[OrderModel alloc] initWithId: [[orderDictionary valueForKey: kOrderKeyId] intValue]
-                                       isClosed: [[orderDictionary valueForKey: kOrderKeyClosed] boolValue]
-                                        tableId: [[orderDictionary valueForKey: kOrderKeyTableId] intValue]
-                                      timestamp: [orderDictionary valueForKey:  kOrderKeyTimeStamp]
-                                         userId: [[orderDictionary valueForKey: kOrderKeyUserId] intValue]
-                  ];
-    return orderModel;
+    OrderModel *order;
+    order = [[OrderModel alloc] initWithId: [[orderDictionary valueForKey: kOrderKeyId] intValue]
+                                  isClosed: [[orderDictionary valueForKey: kOrderKeyClosed] boolValue]
+                                   tableId: [[orderDictionary valueForKey: kOrderKeyTableId] intValue]
+                                 timestamp: [orderDictionary valueForKey:  kOrderKeyTimeStamp]
+                                    userId: [[orderDictionary valueForKey: kOrderKeyUserId] intValue]
+             ];
+    return order;
 }
-
-+ (NSArray*)parseDictionary:(NSMutableDictionary*)arrayOfOrdersDictionary
-{
-    NSMutableArray *arrayOfTableOrders = [[NSMutableArray alloc] init];
-    OrderModel *orderModel;
-    
-    if([arrayOfOrdersDictionary isKindOfClass:[NSMutableArray class]]){
-        for ( NSMutableDictionary *orderDictionary in arrayOfOrdersDictionary ) {
-            orderModel = [self createOrderModel:orderDictionary];
-            [arrayOfTableOrders addObject: orderModel];
-        }
-    } else if ( [arrayOfOrdersDictionary isKindOfClass:[NSMutableDictionary class]] ) {
-        orderModel = [self createOrderModel:arrayOfOrdersDictionary];
-        [arrayOfTableOrders addObject: orderModel];
-    }
-    
-    return arrayOfTableOrders;
-}
-
-
 
 @end

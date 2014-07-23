@@ -10,6 +10,15 @@
 
 @implementation OrderModel
 
+- (instancetype) init
+{
+    if (self = [super init]){
+        _items = [[NSMutableArray alloc] init];
+        
+    }
+    return  self;
+}
+
 - (instancetype)initWithId: (int)Id
                   isClosed: (BOOL)closed
                    tableId: (int)tableId
@@ -17,31 +26,25 @@
                     userId: (int)userId
 {
     if ( self = [super init] ) {
-        self.arrayOfOrderItems = [[NSMutableArray alloc] init];  // need to think where we will alloc 
-        self.Id                = Id;
-        self.closed            = closed;
-        self.tableId           = tableId;
-        self.timestamp         = timestamp;
-        self.userId            = userId;
+        _items = [[NSMutableArray alloc] init];  // need to think where we will alloc
+        _Id                = Id;
+        _closed            = closed;
+        _tableId           = tableId;
+        _timestamp         = timestamp;
+        _userId            = userId;
     }
     return self;
 }
 
--(instancetype) init
-{
-    if (self = [super init]){
-        self.arrayOfOrderItems = [[NSMutableArray alloc] init];
-        
-    }
-    return  self;
-}
 
-- (void) addArrayOfOrderItems:(NSArray *) arrayOfOrderItems
+
+// Adds array of items.
+- (void) addOrderItems:(NSArray *) newOrderItems
 {
-    if (_arrayOfOrderItems == nil){
-        _arrayOfOrderItems = [[NSMutableArray alloc] initWithArray: arrayOfOrderItems copyItems: YES];
+    if (_items == nil) {
+        _items = [[NSMutableArray alloc] initWithArray: newOrderItems copyItems: YES];
     }
-    [_arrayOfOrderItems addObjectsFromArray: arrayOfOrderItems];
+    [_items addObjectsFromArray: newOrderItems];
 }
 
 

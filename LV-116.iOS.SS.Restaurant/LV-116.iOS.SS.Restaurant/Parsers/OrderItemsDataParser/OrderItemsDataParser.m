@@ -48,34 +48,42 @@ static NSString *const kOrderPrice          = @"Price";
 //Parsing dictionary into OrderItems array
 + (NSMutableArray*)parseDictionary:(NSMutableDictionary*) orderItemsDictionary
 {
-    NSMutableArray *arrayOfOrderItems = [[NSMutableArray alloc] init];
+    NSMutableArray *orderItems = [[NSMutableArray alloc] init];
     
     for ( NSMutableDictionary *orderItem in orderItemsDictionary) {
         
         OrderItemModel *orderItemModel = [[OrderItemModel alloc] init];
         
-        orderItemModel.ID       = [[orderItem valueForKey: kOrderId] longValue];
+        orderItemModel.Id       = [[orderItem valueForKey: kOrderId] longValue];
         orderItemModel.amount   = [[orderItem valueForKey: kOrderAmount] intValue];
         
         NSMutableDictionary *menuItemFromOrder = [orderItem valueForKey: kOrderMenuItem];
+        NSString *description = [[NSString alloc] init];
+        if ([menuItemFromOrder valueForKey: kOrderDescription] != [NSNull null]){
+            description = [menuItemFromOrder valueForKey: kOrderDescription];
+        } else {
+            description = @"No info";
+        }
+        
+        
         orderItemModel.menuItemModel = [[MenuItemModel alloc] initWithId: [[menuItemFromOrder valueForKey: kOrderId] longValue]
                                                               categoryId: [[menuItemFromOrder valueForKey: kOrderCategoryId] intValue]
-                                                             description: [menuItemFromOrder  valueForKey: kOrderDescription]
+                                                             description: description
                                                                     name: [menuItemFromOrder  valueForKey: kOrderName]
                                                                 portions: [[menuItemFromOrder valueForKey: kOrderPortions] floatValue]
                                                                    price: [[menuItemFromOrder valueForKey: kOrderPrice] floatValue]
                                         ];
         orderItemModel.served   = [[orderItem valueForKey: kOrderServed] boolValue];
         
-        [arrayOfOrderItems addObject: orderItemModel];
+        [orderItems addObject: orderItemModel];
     }
-    return arrayOfOrderItems;
+    return orderItems;
     
 }
 
 
 //Making NSData object (in server needed format) from OrderModel object
-+ (NSData*) unParseOrder: (OrderModel*) orderModel
++ (NSData*) parseOrderToData: (OrderModel*) orderModel
 {
     NSDictionary *menuItemFromOrderSecond;
      
@@ -94,18 +102,18 @@ static NSString *const kOrderPrice          = @"Price";
     NSMutableArray *ItemsDictionaryArray = [[NSMutableArray alloc] init];
     
     
-    for (OrderItemModel *orderItem in orderModel.arrayOfOrderItems) {
+    for (OrderItemModel *orderItem in orderModel.items) {
         
         NSMutableArray *keysArraySecond = [[NSMutableArray alloc] init];
         NSMutableArray *valuesArraySecond = [[NSMutableArray alloc] init];
         
         [keysArraySecond addObjectsFromArray: @[@"Id", @"ActualPrice", @"Amount", @"MenuItem", @"MenuItemId", @"OrderId", @"Served"]];
         
-        [valuesArraySecond addObjectsFromArray:@[[NSString stringWithFormat: @"%ld", orderItem.ID],
+        [valuesArraySecond addObjectsFromArray:@[[NSString stringWithFormat: @"%d", orderItem.Id],
                                                  [NSString stringWithFormat: @"%f", orderItem.actualPrice],
                                                  [NSString stringWithFormat: @"%d", orderItem.amount],
                                                  @[],
-                                                 [NSString stringWithFormat: @"%ld", orderItem.menuItemModel.Id],
+                                                 [NSString stringWithFormat: @"%d", orderItem.menuItemModel.Id],
                                                  [NSString stringWithFormat: @"%d", orderModel.Id],
                                                  [NSString stringWithFormat: @"%s", (orderItem.served  ? "true" : "false")]
                                                  ]

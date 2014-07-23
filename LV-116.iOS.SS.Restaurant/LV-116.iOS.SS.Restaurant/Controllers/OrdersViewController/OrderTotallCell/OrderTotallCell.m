@@ -24,11 +24,11 @@
 {
     float totalValue = 0;
     
-    for (int i = 0; i < [orderModel.arrayOfOrderItems count]; i++){
+    for (int i = 0; i < [orderModel.items count]; i++){
     
         OrderItemModel *itemInOrderWithCount;
         
-        itemInOrderWithCount = [orderModel.arrayOfOrderItems objectAtIndex: i];
+        itemInOrderWithCount = [orderModel.items objectAtIndex: i];
         
         totalValue += itemInOrderWithCount.menuItemModel.price * itemInOrderWithCount.amount;
     }

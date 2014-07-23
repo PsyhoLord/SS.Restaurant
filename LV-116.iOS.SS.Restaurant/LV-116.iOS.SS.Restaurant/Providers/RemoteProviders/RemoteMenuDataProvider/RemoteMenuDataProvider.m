@@ -18,8 +18,6 @@
 static NSString *const kURLMenu                 = @"http://192.168.195.212/Restaurant/api/Menu?withItems=true&active=true&parentId=%i";
 static NSString *const kURLDownloadImage        = @"http://192.168.195.212/Restaurant/Menu/ImageResult/%i";
 
-static const int kMaxCountOfAttemptsForRequest  = 3;
-
 
 @implementation RemoteMenuDataProvider
 
@@ -27,7 +25,7 @@ static const int kMaxCountOfAttemptsForRequest  = 3;
 // it makes requesst with id = 0
 // (void (^)(NSMutableArray*, NSError*))callback - block which will call when data is
 + (void)loadMenuDataWithBlock:(void (^)(MenuModel*, NSError*))callback
-{    
+{
     NSURLRequest *URLRequest = [RequestMaker getRequestWithURL: kURLMenu
                                                        idOfURL: 0];
     [RequestManager send: URLRequest
@@ -44,7 +42,7 @@ static const int kMaxCountOfAttemptsForRequest  = 3;
                callback(menuModel, error);
                
            }
-         countOfAttempts:kMaxCountOfAttemptsForRequest];
+     ];
 }
 
 // download image for itemId
@@ -66,7 +64,7 @@ static const int kMaxCountOfAttemptsForRequest  = 3;
                callback(image, error);
                
            }
-         countOfAttempts:kMaxCountOfAttemptsForRequest];
+     ];
 }
 
 @end

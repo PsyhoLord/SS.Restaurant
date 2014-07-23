@@ -52,7 +52,7 @@
     [SidebarViewController setupSidebarConfigurationForViewController: self
                                                         sidebarButton: self.sidebarButton
                                                             isGesture: NO];
-    self.menuItemModel = _arrayOfItem[ _index ];
+    self.menuItemModel = _items[ _index ];
     [self drawDescriptionWithModel];
 }
 
@@ -61,7 +61,7 @@
     _itemName.text        = _menuItemModel.name;
     _itemDescription.text = _menuItemModel.description;
     _itemPrice.text       = [NSString stringWithFormat:@"%.2f$", _menuItemModel.price];
-    _itemWeight.text      = [NSString stringWithFormat:@"%ldg",_menuItemModel.portions];
+    _itemWeight.text      = [NSString stringWithFormat:@"%dg",_menuItemModel.portions];
     
     if ( _menuItemModel.image ) {
         _itemImage.image = _menuItemModel.image;
@@ -92,10 +92,10 @@
 // Swipe for slide on next item.
 - (IBAction)handleSwipeGestureSlide:(UISwipeGestureRecognizer *)sender
 {
-    if( _index++ == _arrayOfItem.count-1 ) {
+    if( _index++ == _items.count-1 ) {
         _index = 0;
     }
-    self.menuItemModel =  ((MenuItemModel*)_arrayOfItem[ _index ]);
+    self.menuItemModel =  ((MenuItemModel*)_items[ _index ]);
         
     [self drawDescriptionWithModel];
 }

@@ -11,18 +11,6 @@
 #import "MenuItemModel.h"
 
 @implementation MenuModel
-{
-    // root of menu tree
-//    MenuCategoryModel *_rootMenuCategory;
-}
-
-- (instancetype)init
-{
-    if ( self = [super init] ) {
-        
-    }
-    return self;
-}
 
 - (BOOL)isEmpty
 {

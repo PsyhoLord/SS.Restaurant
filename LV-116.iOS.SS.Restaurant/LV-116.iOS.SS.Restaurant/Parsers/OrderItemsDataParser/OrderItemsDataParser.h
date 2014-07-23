@@ -13,6 +13,6 @@
 @interface OrderItemsDataParser : NSObject <PDataParser>
 
 //Making NSData object (in server needed format) from OrderModel object
-+ (NSData*) unParseOrder: (OrderModel*) orderModel;
++ (NSData*) parseOrderToData: (OrderModel*) orderModel;
 
 @end

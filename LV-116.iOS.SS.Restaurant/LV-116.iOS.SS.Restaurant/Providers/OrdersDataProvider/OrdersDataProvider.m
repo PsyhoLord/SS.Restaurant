@@ -22,8 +22,8 @@
 + (void)loadTableOrdersDataWithTableId:(int)tableId responseBlock:(void (^)(NSArray*, NSError*))callback
 {
     [RemoteOrdersDataProvider loadTableOrdersWithId: (int)tableId
-                                      responseBlock: ^(NSArray *arrayOfOrderModel, NSError *error) {
-                                              callback(arrayOfOrderModel, error);
+                                      responseBlock: ^(NSArray *orders, NSError *error) {
+                                              callback(orders, error);
                                       }
      ];
 }

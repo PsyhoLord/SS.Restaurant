@@ -11,8 +11,6 @@
 #import <CoreLocation/CoreLocation.h>
 
 
-
-
 @interface LocationViewController : UIViewController<MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;

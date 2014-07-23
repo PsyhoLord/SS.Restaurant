@@ -165,7 +165,7 @@ static const CGFloat kHeightForMenuItemCell     = 205.0f;
         NSUInteger index = [self.tableView indexPathForCell:sender].row;
         ItemDescriptionViewController *itemScreen = (ItemDescriptionViewController*)segue.destinationViewController;
         
-        itemScreen.arrayOfItem = _currentCategory.items;
+        itemScreen.items = _currentCategory.items;
         itemScreen.index = index;
     } else {
         MenuViewController *destinationMenuViewController =  segue.destinationViewController;

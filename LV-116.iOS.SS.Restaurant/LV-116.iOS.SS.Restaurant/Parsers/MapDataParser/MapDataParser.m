@@ -38,28 +38,35 @@ static NSString *const kTableY           = @"Y";
     return [self parseDictionary:responseForTableMap];
 }
 
-+ (MapModel*)parseDictionary:(NSMutableDictionary*)arrayOftablesDictionary
++ (MapModel*)parseDictionary:(NSMutableDictionary*)tables
 {
     MapModel *mapModel = [[MapModel alloc] init];
     
-    for ( NSMutableDictionary *tableDictionary in arrayOftablesDictionary ) {
-        TableModel *tableToAddToMap;
-        tableToAddToMap=[[TableModel alloc] initWithId:[[tableDictionary valueForKey:kTableID] intValue]
-                                              Capacity:[[tableDictionary valueForKey:kTableCapacity]intValue]
-                                                height:[[tableDictionary valueForKey:kTableHeight]intValue]
-                                              isActive:[[tableDictionary valueForKey:kTableisActive] boolValue]
-                                                isFree:[[tableDictionary valueForKey:kTableIsFree]boolValue]
-                                               isRound:[[tableDictionary valueForKey:kTableIsRound]intValue]
-                                                  name:[tableDictionary valueForKey:kTableName]
-                                              rotation:[[tableDictionary valueForKey:kTableRotation]intValue]
-                                                 width:[[tableDictionary valueForKey:kTablewWidth]intValue]
-                                                coordX:[[tableDictionary valueForKey:kTableX]intValue]
-                                                coordY:[[tableDictionary valueForKey:kTableY]intValue]
-                         ];
-        [mapModel addTableModel:tableToAddToMap];
+    for ( NSMutableDictionary *tableDictionary in tables ) {
+        
+        TableModel *table = [self createNewTable:tableDictionary];
+        [mapModel addTableModel:table];
+        
     }
     return mapModel;
-    
+}
+
++ (TableModel*)createNewTable:(NSDictionary*)tableDictionary
+{
+    TableModel *table;
+    table = [[TableModel alloc] initWithId:[[tableDictionary valueForKey:kTableID] intValue]
+                                  Capacity:[[tableDictionary valueForKey:kTableCapacity]intValue]
+                                    height:[[tableDictionary valueForKey:kTableHeight]intValue]
+                                  isActive:[[tableDictionary valueForKey:kTableisActive] boolValue]
+                                    isFree:[[tableDictionary valueForKey:kTableIsFree]boolValue]
+                                   isRound:[[tableDictionary valueForKey:kTableIsRound]intValue]
+                                      name:[tableDictionary valueForKey:kTableName]
+                                  rotation:[[tableDictionary valueForKey:kTableRotation]intValue]
+                                     width:[[tableDictionary valueForKey:kTablewWidth]intValue]
+                                    coordX:[[tableDictionary valueForKey:kTableX]intValue]
+                                    coordY:[[tableDictionary valueForKey:kTableY]intValue]
+             ];
+    return table;
 }
 
 @end

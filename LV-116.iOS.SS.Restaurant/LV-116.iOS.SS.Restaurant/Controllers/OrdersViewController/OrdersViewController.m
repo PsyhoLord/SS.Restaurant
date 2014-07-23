@@ -31,9 +31,8 @@ static NSString *const kCellIdentifier     = @"CellIdentifier";
 
 @implementation OrdersViewController
 {
-    NSArray  *_sortedArrayOfString;
-    NSMutableArray  *_arrayOfTableModelWithOrders;
-    NSMutableArray  *_arrayOfFlags;
+    NSMutableArray  *_tablesWithOrders;
+    NSMutableArray  *_flags;
 }
 
 #pragma mark - Initialization methods
@@ -83,16 +82,22 @@ static NSString *const kCellIdentifier     = @"CellIdentifier";
 - (void)createAndSetArray:(MapModel *)mapModel
 {
     // if data is then we'll alloc memory for array
-    _arrayOfTableModelWithOrders = [[NSMutableArray alloc] init];
+    _tablesWithOrders = [[NSMutableArray alloc] init];
     
-    for( TableModel *tmpTableModel in mapModel.arrayOfTableModel ){
+    for( TableModel *tmpTableModel in mapModel.tables ){
         TableModelWithOrders *tmpWaiterTable = [[TableModelWithOrders alloc] initWithTableModel: tmpTableModel];
         
-        [_arrayOfTableModelWithOrders addObject: tmpWaiterTable];
+        [_tablesWithOrders addObject: tmpWaiterTable];
     }
     
-    // Sorts array (at first - free table).
-    _sortedArrayOfString = [_arrayOfTableModelWithOrders sortedArrayUsingComparator: ^NSComparisonResult(id obj1, id obj2) {
+    [self sortTables];
+}
+
+// Sorts array (at first - free table).
+- (void)sortTables
+{
+    NSArray *_sortedTables;
+    _sortedTables = [_tablesWithOrders sortedArrayUsingComparator: ^NSComparisonResult(id obj1, id obj2) {
         BOOL isFree1 = ((TableModelWithOrders*)obj1).isFree;
         BOOL isFree2 = ((TableModelWithOrders*)obj2).isFree;
         
@@ -101,16 +106,17 @@ static NSString *const kCellIdentifier     = @"CellIdentifier";
         }
         return (NSComparisonResult)NSOrderedAscending;
     }];
-    _arrayOfTableModelWithOrders = [_sortedArrayOfString copy];    // Is it the right assigned?
-    _sortedArrayOfString = nil;
+    
+    _tablesWithOrders = [_sortedTables copy];    // Is it the right assigned?
+    _sortedTables = nil;
 }
 
 // Create and set initial values for _flagsContainer (if @NO - rows doesn't appear at start; if @YES - rows appear at start).
--(void)createAndResetFlagsContainer
+- (void)createAndResetFlagsContainer
 {
-    _arrayOfFlags = [[NSMutableArray alloc] init];
-    for (int i = 0; i < [_arrayOfTableModelWithOrders count]; ++i) {
-        [_arrayOfFlags addObject: @NO];
+    _flags = [[NSMutableArray alloc] init];
+    for (int i = 0; i < [_tablesWithOrders count]; ++i) {
+        [_flags addObject: @NO];
     }
 }
 
@@ -119,9 +125,9 @@ static NSString *const kCellIdentifier     = @"CellIdentifier";
 // Loading asynchronously orders on table.
 - (void)loadTableOrders:(NSUInteger)section
 {
-    NSUInteger idOfTableModel = ((TableModelWithOrders*)_arrayOfTableModelWithOrders[section]).Id;
-    [OrdersDataProvider loadTableOrdersDataWithTableId: idOfTableModel
-                                         responseBlock: ^(NSArray *arrayOfOrderModel, NSError *error) {
+    NSUInteger idTable = ((TableModelWithOrders*)_tablesWithOrders[section]).Id;
+    [OrdersDataProvider loadTableOrdersDataWithTableId: idTable
+                                         responseBlock: ^(NSArray *order, NSError *error) {
         if ( error ) {
             dispatch_async( dispatch_get_main_queue(), ^{
                 [Alert showConnectionAlert];
@@ -131,7 +137,7 @@ static NSString *const kCellIdentifier     = @"CellIdentifier";
             
             dispatch_async( dispatch_get_main_queue(), ^{
 
-                [((TableModelWithOrders*)_arrayOfTableModelWithOrders[section]) addArrayOfOrders: arrayOfOrderModel];
+                [((TableModelWithOrders*)_tablesWithOrders[section]) addOrders: order];
                 
                 [self didReceiveOrdersResponse: section];
                 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
@@ -141,9 +147,9 @@ static NSString *const kCellIdentifier     = @"CellIdentifier";
     }];
 }
 // It's delete or insert rows for one section.
--(void)didReceiveOrdersResponse:(NSUInteger)section
+- (void)didReceiveOrdersResponse:(NSUInteger)section
 {
-    NSArray *ordersInSection = ((TableModelWithOrders*)_arrayOfTableModelWithOrders[section]).arrayOfOrdersModel;
+    NSArray *ordersInSection = ((TableModelWithOrders*)_tablesWithOrders[section]).orders;
     
     NSMutableArray *indexPaths = [[NSMutableArray alloc] init]; //    Create index array
     for (int i = 0; i < ordersInSection.count+1; ++i) {
@@ -151,13 +157,13 @@ static NSString *const kCellIdentifier     = @"CellIdentifier";
     }
     
     // Get flag of some header section and then make inversion for this header section.
-    BOOL isOpen = [[_arrayOfFlags objectAtIndex: section] boolValue];
-    [_arrayOfFlags replaceObjectAtIndex: section
+    BOOL isOpen = [[_flags objectAtIndex: section] boolValue];
+    [_flags replaceObjectAtIndex: section
                              withObject: [NSNumber numberWithBool: !isOpen] ];
     
     
     if ( isOpen ) {
-        ((TableModelWithOrders*)_arrayOfTableModelWithOrders[section]).arrayOfOrdersModel = nil;
+        ((TableModelWithOrders*)_tablesWithOrders[section]).orders = nil;
         [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
         kDegreeTransform = 0.0;
     } else {
@@ -169,7 +175,7 @@ static NSString *const kCellIdentifier     = @"CellIdentifier";
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [_arrayOfTableModelWithOrders count];
+    return [_tablesWithOrders count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -181,10 +187,10 @@ static NSString *const kCellIdentifier     = @"CellIdentifier";
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSInteger numberOfOrders = 0;
-    if( _arrayOfFlags ){
-        if ( [[_arrayOfFlags objectAtIndex: section ] boolValue] ) {
+    if( _flags ){
+        if ( [[_flags objectAtIndex: section ] boolValue] ) {
             // Number of orders + one row for add button
-            numberOfOrders = ((TableModelWithOrders*)_arrayOfTableModelWithOrders[section]).arrayOfOrdersModel.count +1;
+            numberOfOrders = ((TableModelWithOrders*)_tablesWithOrders[section]).orders.count +1;
         }
     }
     return numberOfOrders;
@@ -201,7 +207,7 @@ static NSString *const kCellIdentifier     = @"CellIdentifier";
     if( indexPath.row == [tableView numberOfRowsInSection: indexPath.section]-1 ) {
         cell.textLabel.text = @"New order";
     } else {
-        NSInteger orderId = ((OrderModel*)((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]).arrayOfOrdersModel[indexPath.row]).Id;
+        NSInteger orderId = ((OrderModel*)((TableModelWithOrders*)_tablesWithOrders[indexPath.section]).orders[indexPath.row]).Id;
         cell.textLabel.text = [NSString stringWithFormat:@"Order %d", orderId];
     }
     
@@ -240,7 +246,7 @@ static NSString *const kCellIdentifier     = @"CellIdentifier";
     UIButton *sectionButton = [UIButton buttonWithType:UIButtonTypeCustom];
     sectionButton.tag = section;        // We'll use this value when we will have clicked on button.
     
-    NSString *tempStr = [@"Table " stringByAppendingString: ((TableModelWithOrders*)_arrayOfTableModelWithOrders[section]).name];
+    NSString *tempStr = [@"Table " stringByAppendingString: ((TableModelWithOrders*)_tablesWithOrders[section]).name];
     
     [sectionButton setTitle: tempStr
                    forState: UIControlStateNormal];
@@ -259,7 +265,7 @@ static NSString *const kCellIdentifier     = @"CellIdentifier";
 }
 
 // Create and setting imageView for UIView.
--(UIImageView*)createImageViewForSectionButton:(NSUInteger)section
+- (UIImageView*)createImageViewForSectionButton:(NSUInteger)section
 {
     UIImage *image = [UIImage imageNamed: kImageOfSectionView];
     UIImageView *imageView = [[UIImageView alloc] initWithImage: image];
@@ -280,7 +286,7 @@ static NSString *const kCellIdentifier     = @"CellIdentifier";
 // Handle click on some section header.
 - (void)didSelectSection:(UIButton*)sender
 {
-    if( [_arrayOfFlags[sender.tag] intValue] == 0 ){
+    if( [_flags[sender.tag] intValue] == 0 ){
         [self loadTableOrders: sender.tag];
         kDegreeTransform = M_PI_2*2;
     } else {
@@ -302,7 +308,7 @@ static NSString *const kCellIdentifier     = @"CellIdentifier";
         
         // Create new empty order and push it in array.
 
-        NSInteger tableId = ((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]).Id;
+        NSInteger tableId = ((TableModelWithOrders*)_tablesWithOrders[indexPath.section]).Id;
         
         [OrdersDataProvider postTableOrderOnTableId: tableId responseBlock: ^(NSArray* newOrder, NSError *error) {
             
@@ -313,7 +319,7 @@ static NSString *const kCellIdentifier     = @"CellIdentifier";
             } else {
                 dispatch_async( dispatch_get_main_queue(), ^{
                     OrderModel *orderModel = [newOrder objectAtIndex:0];
-                    [((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]) addOrder: orderModel];
+                    [((TableModelWithOrders*)_tablesWithOrders[indexPath.section]) addOrder: orderModel];
                     [tableView beginUpdates];
                     
                     NSMutableArray *indexPaths = [[NSMutableArray alloc] init]; //    Create index array
@@ -340,7 +346,7 @@ static NSString *const kCellIdentifier     = @"CellIdentifier";
         NSUInteger indexRow     = [self.tableView indexPathForCell: sender].row;
         
         OrderItemsViewController *itemsViewController = (OrderItemsViewController*)segue.destinationViewController;
-        itemsViewController.currentOrder = (OrderModel*)((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexSection]).arrayOfOrdersModel[indexRow];
+        itemsViewController.currentOrder = (OrderModel*)((TableModelWithOrders*)_tablesWithOrders[indexSection]).orders[indexRow];
     }
 }
 
@@ -352,8 +358,8 @@ static NSString *const kCellIdentifier     = @"CellIdentifier";
         [tableView beginUpdates];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         
-        NSUInteger orderId = ((OrderModel*)((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]).arrayOfOrdersModel[indexPath.row]).Id;
-        [((TableModelWithOrders*)_arrayOfTableModelWithOrders[indexPath.section]) removeOrderAtIndex: indexPath.row];
+        NSUInteger orderId = ((OrderModel*)((TableModelWithOrders*)_tablesWithOrders[indexPath.section]).orders[indexPath.row]).Id;
+        [((TableModelWithOrders*)_tablesWithOrders[indexPath.section]) removeOrderAtIndex: indexPath.row];
         
         [OrdersDataProvider deleteTableOrderWithOrderId: orderId
                                           responseBlock: ^(NSError *error) {

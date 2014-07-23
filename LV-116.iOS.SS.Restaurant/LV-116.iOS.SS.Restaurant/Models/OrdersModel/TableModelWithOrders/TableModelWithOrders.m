@@ -12,37 +12,37 @@
 
 @implementation TableModelWithOrders
 
--(instancetype)initWithTableModel:(TableModel*)tableModel
+-(instancetype)initWithTableModel:(TableModel*)table
 {
-    if( self = [super initWithTableModel: tableModel] ) {
+    if( self = [super initWithTableModel: table] ) {
     }
     return self;
 }
 
-// Add one order in arrayOfOrdersModel from OrderModel.
--(void)addOrder:(OrderModel*)orderModel
+// Add one order in array orders from OrderModel.
+-(void)addOrder:(OrderModel*)order
 {
-    if( self.arrayOfOrdersModel == nil ){
-        self.arrayOfOrdersModel = [[NSMutableArray alloc] init];
+    if( _orders == nil ){
+        _orders = [[NSMutableArray alloc] init];
     }
-    [self.arrayOfOrdersModel addObject: orderModel];
+    [_orders addObject: order];
 }
 
-// Add few orders from array in arrayOfOrdersModel.
--(void)addArrayOfOrders:(NSArray*)arrayOfOrderModel
+// Add few orders from array.
+-(void)addOrders:(NSArray*)orders
 {
-    if( _arrayOfOrdersModel == nil ){
-        _arrayOfOrdersModel = [[NSMutableArray alloc] init];
+    if( _orders == nil ){
+        _orders = [[NSMutableArray alloc] init];
     }
-    [_arrayOfOrdersModel addObjectsFromArray: arrayOfOrderModel];
+    [_orders addObjectsFromArray: orders];
 
 }
 
 // Remove one order at index.
 -(void)removeOrderAtIndex:(NSUInteger)index
 {
-    if( self.arrayOfOrdersModel != nil ){
-        [self.arrayOfOrdersModel removeObjectAtIndex: index];
+    if( _orders != nil ){
+        [_orders removeObjectAtIndex: index];
     }
 }
 
