@@ -17,4 +17,7 @@
 // Updates Order by sending data
 + (void) sendDataFromOrderToUpdate: (NSData * )data responseBlock: (void (^)(NSError*))callback;
 
+//Closing Order by specifed ID
++ (void) closeOrderById: (int)orderId responseBlock: (void (^)(NSError*)) callback;
+
 @end

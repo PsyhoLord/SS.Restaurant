@@ -15,4 +15,7 @@
 
 //Send UPD Order request to server
 + (void) sendDataFromOrderToUpdate: (NSData *) data responseBlock : (void (^)(NSError *))callback;
+
+//Closing order by spesyfied ID of order
++ (void) closeOrder: (int) orderId responseBlock: (void (^)(NSError *))callback;
 @end

@@ -25,6 +25,6 @@
 + (void) showDeleteOrderItemWarningWithDelegate: (OrderItemCell *) newDelegate;
 
 // This method shows alert when order updated.
-+ (void) showUpdateOrderInfoSuccesfull;
++ (void) showUpdateOrderInfoSuccesfullWhithTitle: (NSString *) title andMessage: (NSString *) message;
 
 @end

@@ -16,6 +16,7 @@
 
 static NSString *const kURLGetOrderItems            = @"http://192.168.195.212/Restaurant/api/Orders/?id=%d";
 static NSString *const kURLPutToUpdateOrderItems    = @"http://192.168.195.212/Restaurant/api/Orders/";
+static NSString *const kURLPutCloseOrder            = @"http://192.168.195.212/Restaurant/api/Orders/id=%d";
 
 
 
@@ -53,5 +54,22 @@ static NSString *const kURLPutToUpdateOrderItems    = @"http://192.168.195.212/R
      
      ];
 }
+
+//Closing Order by specifed ID
++ (void) closeOrderById: (int)orderId responseBlock: (void (^)(NSError*)) callback
+{
+    NSURLRequest *urlRequest = [RequestMaker getPutRequestWithURL: kURLPutCloseOrder
+                                                          idOfURL: orderId
+                                                      requestBody: nil
+                                ];
+
+    [RequestManager send:urlRequest
+           responseBlock:^(NSHTTPURLResponse *response, NSData *data , NSError *error){
+               callback (error);
+           }
+     
+     ];
+}
+
 
 @end

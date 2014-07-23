@@ -34,6 +34,11 @@ static NSString *const kOrderCellIdentifier     = @"OrderItemCell";
 static NSString *const kOrderTotallIdentifier   = @"OrderTotallCellIdentifier";
 static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
 
+static NSString *const kAlertTitleUpdateOrder   = @"OrderUpdating";
+static NSString *const kAlertMessageUpdateOrder = @"Current order nave been updeted succesfully";
+static NSString *const kAlertTitleCloseOrder    = @"ClosingOrder";
+static NSString *const kAlertMessageCloseOrder  = @"Order Succesfully closed";
+
 
 @implementation OrderItemsViewController
 {
@@ -233,8 +238,20 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
     } else {
         // here handeled closing order
         _currentOrder.closed = YES;
-        [self sendUpdateOrder];
-        [self.navigationController popViewControllerAnimated:YES];
+        [OrderItemsDataProvider closeOrder: _currentOrder.Id
+                             responseBlock: ^(NSError *error){
+                                 dispatch_async( dispatch_get_main_queue(), ^{
+                                     if(error){
+                                         [Alert showConnectionAlert];
+                                     }
+                                     [Alert showUpdateOrderInfoSuccesfullWhithTitle: kAlertTitleCloseOrder
+                                                                         andMessage: kAlertMessageCloseOrder
+                                      ];
+                                     [self.navigationController popViewControllerAnimated:YES];
+                                 });
+                             }
+         ];
+        
     }
     
 }
