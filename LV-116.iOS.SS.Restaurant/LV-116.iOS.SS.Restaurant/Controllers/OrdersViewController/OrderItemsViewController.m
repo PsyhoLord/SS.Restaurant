@@ -216,7 +216,8 @@ static NSString *const kAlertMessageCloseOrder  = @"Order Succesfully closed";
                                             if(error){
                                                 [Alert showConnectionAlert];
                                             }
-                                            [Alert showUpdateOrderInfoSuccesfull];
+                                            [Alert showUpdateOrderInfoSuccesfullWhithTitle: kAlertTitleUpdateOrder
+                                                                                andMessage: kAlertMessageUpdateOrder];
                                             isOrderChanged = NO;
                                             [self.tableView reloadData];
                                         }
@@ -240,7 +241,7 @@ static NSString *const kAlertMessageCloseOrder  = @"Order Succesfully closed";
         _currentOrder.closed = YES;
         [OrderItemsDataProvider closeOrder: _currentOrder.Id
                              responseBlock: ^(NSError *error){
-                                 dispatch_async( dispatch_get_main_queue(), ^{
+
                                      if(error){
                                          [Alert showConnectionAlert];
                                      }
@@ -248,7 +249,6 @@ static NSString *const kAlertMessageCloseOrder  = @"Order Succesfully closed";
                                                                          andMessage: kAlertMessageCloseOrder
                                       ];
                                      [self.navigationController popViewControllerAnimated:YES];
-                                 });
                              }
          ];
         
