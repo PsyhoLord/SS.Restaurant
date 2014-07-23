@@ -26,7 +26,9 @@ static NSUInteger kMaxAttemptsForRequest = 3;
         if ( error && kMaxAttemptsForRequest ) {
             [RequestManager send: urlRequest responseBlock: callback];
         } else {
-            callback(urlResponse, data, error);
+            dispatch_async( dispatch_get_main_queue(), ^{
+                callback(urlResponse, data, error);
+            });
         }
         
     } ];

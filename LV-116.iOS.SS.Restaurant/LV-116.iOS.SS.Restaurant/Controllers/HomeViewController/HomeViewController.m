@@ -11,6 +11,7 @@
 #import "SidebarViewController.h"
 
 #import "SidebarViewController+ConfigurationForOtherViewControllers.h"
+#import "UITableView+TableView_Image.h"
 
 #import "Alert.h"
 #import "UserRole.h"
@@ -23,7 +24,7 @@ static NSString *const kRoleClientIconName   = @"home_restaurant.png";
 static NSString *const kRoleWaiterIconName   = @"home_restaurant.png";
 static NSString *const kLoginIconUserName    = @"user.png";
 static NSString *const kLoginIconPassword    = @"password.png";
-static NSString *const kLoginBackgroundImage = @"blurred2.jpg";
+
 
 
 @implementation HomeViewController
@@ -44,7 +45,7 @@ static NSString *const kLoginBackgroundImage = @"blurred2.jpg";
                                                         sidebarButton: self.sidebarButton
                                                             isGesture: YES];
     
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:kLoginBackgroundImage]];
+    [UIViewController setBackgroundImage:self ];
     self.title = kRootMenuName;
     
     [self setHomePageConfiguration: ([UserRole getInstance]).enumUserRole];
@@ -53,7 +54,7 @@ static NSString *const kLoginBackgroundImage = @"blurred2.jpg";
     [self setTextField:_textFieldUserName imageName:kLoginIconUserName];
     [self setTextField:_textFieldPassword imageName:kLoginIconPassword];
     
-  
+    
     
     // set pointer to sidebar view controller
     // which needs for reload data on sidebar according to change of user role
@@ -70,7 +71,7 @@ static NSString *const kLoginBackgroundImage = @"blurred2.jpg";
     textField.leftViewMode = UITextFieldViewModeAlways;
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, sizeOfImage, sizeOfImage)];
     imageView.image = [UIImage imageNamed: imageName];
-
+    
     textField.leftView = imageView;
 }
 
@@ -118,18 +119,15 @@ static NSString *const kLoginBackgroundImage = @"blurred2.jpg";
     [AuthorizationProvider logInWithLogin: _textFieldUserName.text
                                  password: _textFieldPassword.text
                             responseBlock: ^(BOOL isAutorizated, UserRole *userRole, NSError *error) {
-                                
                                 if ( isAutorizated ) {
-                                    dispatch_async( dispatch_get_main_queue(), ^{
-                                        [self setHomePageConfiguration: userRole.enumUserRole];
-                                        [_sidebarViewController reloadData];
-                                        [self clearTextFields];
-                                    });
+                                    _textFieldUserName.alpha = 0.1;
+                                    _textFieldPassword.alpha = 0.1;
+                                    [self setHomePageConfiguration: userRole.enumUserRole];
+                                    [_sidebarViewController reloadData];
+                                    [self clearTextFields];
+                                    
                                 } else {
-                                    dispatch_async( dispatch_get_main_queue(), ^{
-                                        [Alert showAuthorizationAlert];
-                                    });
-                                    // Alert ...
+                                    [Alert showAuthorizationAlert];
                                 }
                             }];
     [self hideKeyboard];
@@ -139,11 +137,10 @@ static NSString *const kLoginBackgroundImage = @"blurred2.jpg";
 - (IBAction) logOut: (id)sender
 {
     [AuthorizationProvider logOutWithResponseBlock: ^(UserRole *userRole, NSError *error) {
-        dispatch_async( dispatch_get_main_queue(), ^{
-            [self setHomePageConfiguration: userRole.enumUserRole];
-            [_sidebarViewController reloadData];
-        });
-        
+        [self setHomePageConfiguration: userRole.enumUserRole];
+        _textFieldUserName.alpha = 0.7;
+        _textFieldPassword.alpha = 0.7;
+        [_sidebarViewController reloadData];
     }];
 }
 

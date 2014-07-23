@@ -10,6 +10,7 @@
 
 #import "OrderItemsViewController.h"
 #import "SidebarViewController+ConfigurationForOtherViewControllers.h"
+#import "UITableView+TableView_Image.h"
 
 #import "OrderModel.h"
 #import "OrderItemModel.h"
@@ -42,57 +43,40 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
     BOOL isOrderChanged ;
 }
 
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.title = [NSString stringWithFormat: @"Order #%i", _currentOrder.Id];
+    
+    [self loadOrderDataByOrderId: _currentOrder.Id];
+    
+    [UIViewController setBackgroundImage:self];
+    
+    isOrderChanged = NO;
+}
+
 //loads data about order from server using order ID
 - (void) loadOrderDataByOrderId: (int)orderId
 {
     [OrderItemsDataProvider loadOrderDatawithOrderId: orderId
                                        responseBlock: ^(NSArray *orderItems, NSError *error){
                                            if ( error ) {
-                                               dispatch_async( dispatch_get_main_queue(), ^{
-                                                   [Alert showConnectionAlert];
-                                                   [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-                                               });
+                                               [Alert showConnectionAlert];
+                                               [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
                                            } else {
+                                               [_currentOrder.items removeAllObjects];
+                                               [_currentOrder addOrderItems: orderItems];
                                                
-                                               dispatch_async( dispatch_get_main_queue(), ^{
-                                                   
-                                                   [_currentOrder.items removeAllObjects];
-                                                   
-                                                   [_currentOrder addOrderItems: orderItems];
-                                                   
-                                                   [self.tableView reloadData];
-                                                   
-                                                   [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-                                               });
+                                               [self.tableView reloadData];
+                                               
+                                               [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
                                            }
                                        }];
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    [SidebarViewController setupSidebarConfigurationForViewController: self
-                                                        sidebarButton: self.sidebarButton
-                                                            isGesture: NO];
-    
-    UIBarButtonItem *addOrderItemButton = [[UIBarButtonItem alloc] initWithTitle: @"Add..."
-                                                                           style: UIBarButtonItemStylePlain
-                                                                          target: self
-                                                                          action: @selector(addNewOrderItem)
-                                           ];
-    self.navigationItem.rightBarButtonItem = addOrderItemButton;
-    
-    self.title = [NSString stringWithFormat: @"Order #%i", _currentOrder.Id];
-    
-    //_currentOrder = [[OrderModel alloc] init];
-    
-    [self loadOrderDataByOrderId: _currentOrder.Id];
-    
-    isOrderChanged = NO;
-    
-    [super viewDidLoad];
-}
+
 
 // set gesture
 - (void) setupGestureRecognizerConfiguration
@@ -145,6 +129,8 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
         
         orderItemCell.delegate = self;
         
+        orderItemCell.backgroundColor = [UIColor colorWithRed:0.99 green:0.99 blue:0.99 alpha:0.6];
+        
         return orderItemCell;
         
     } else {
@@ -155,16 +141,11 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
         
         orderTotalCell.delegate = self;
         
+        orderTotalCell.backgroundColor = [UIColor colorWithRed:0.99 green:0.99 blue:0.99 alpha:0.4];
+        
         return orderTotalCell;
     }
     
-}
-
-
-//Adding new OrderItem to order, calling this method from OrderTotallCell
-- (void) addNewOrderItem
-{
-    [self performSegueWithIdentifier: kSegueToMenuForAddItem sender: self];
 }
 
 
@@ -227,16 +208,12 @@ static NSString *const kSegueToMenuForAddItem   = @"segue_menu_add_order_item";
     NSData *dataFromOrder = [OrderItemsDataParser parseOrderToData: _currentOrder];
     [OrderItemsDataProvider sendDataFromOrderToUpdate:dataFromOrder
                                         responseBlock:^(NSError *error){
-                                            dispatch_async( dispatch_get_main_queue(), ^{
-                                                if(error){
-                                                    [Alert showConnectionAlert];
-                                                }
-                                                [Alert showUpdateOrderInfoSuccesfull];
-                                                isOrderChanged = NO;
-                                                [self.tableView reloadData];
-                                            });
-                                            
-                                            
+                                            if(error){
+                                                [Alert showConnectionAlert];
+                                            }
+                                            [Alert showUpdateOrderInfoSuccesfull];
+                                            isOrderChanged = NO;
+                                            [self.tableView reloadData];
                                         }
      ];
     //send UPD

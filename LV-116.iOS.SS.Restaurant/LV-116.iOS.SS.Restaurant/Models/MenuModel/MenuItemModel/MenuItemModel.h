@@ -14,12 +14,12 @@
 
 - (bool)isImage;
 
-@property (assign, nonatomic) int Id;
-@property (assign, nonatomic) int categoryId;
-@property (assign, nonatomic) int portions;
-@property (assign, nonatomic) float price;
-@property (strong, nonatomic) NSString *description;
-@property (strong, nonatomic) NSString *name;
+@property (assign, nonatomic, readonly) int Id;
+@property (assign, nonatomic, readonly) int categoryId;
+@property (assign, nonatomic, readonly) int portions;
+@property (assign, nonatomic, readonly) float price;
+@property (strong, nonatomic, readonly) NSString *description;
+@property (strong, nonatomic, readonly) NSString *name;
 @property (strong, nonatomic) UIImage *image;
 
 @end

@@ -22,9 +22,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *amountButtonMinus;
 @property (weak, nonatomic) IBOutlet UIButton *amountButtonPlus;
 
-@property (weak,nonatomic) id <POrderItems> delegate;
+@property (weak, nonatomic) id <POrderItems> delegate;
 
-@property (strong,nonatomic) OrderItemModel *currentOrderItem;
+@property (strong, nonatomic, readonly) OrderItemModel *currentOrderItem;
 @property int orderItemNumber;
 
 - (void) setDataWhithOrderItemModel: (OrderItemModel *) currentOrderItem andNumberOfRow:(int) row;

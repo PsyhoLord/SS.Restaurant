@@ -34,13 +34,11 @@ static NSString *const kURLDownloadImage        = @"http://192.168.195.212/Resta
                MenuModel *menuModel;
                if ( error == nil ) {
                    // call parser
-                   
                    menuModel = [MenuDataParser parse: data
                                         parsingError: &error];
                }
                // call block from hight layer - DataProvider
                callback(menuModel, error);
-               
            }
      ];
 }

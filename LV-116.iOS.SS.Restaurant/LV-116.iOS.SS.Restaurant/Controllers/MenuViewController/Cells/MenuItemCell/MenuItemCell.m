@@ -33,24 +33,14 @@
                 menuItemModel.image = itemImage;
                 
                 // drawing of item image performs on main thread.
-                dispatch_async( dispatch_get_main_queue(), ^{
                     if (itemImage) {
                     _itemImage.image = itemImage;
                     }
-                } );
             }
         }];
         
     }
 
 }
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-    // Configure the view for the selected state
-}
-
-
 
 @end

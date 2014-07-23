@@ -12,6 +12,7 @@
 #import "SWRevealViewController.h"
 #import "SidebarViewController.h"
 #import "SidebarViewController+ConfigurationForOtherViewControllers.h"
+#import "UITableView+TableView_Image.h"
 
 #import "MenuItemCell.h"
 #import "MenuCategoryCell.h"
@@ -32,6 +33,27 @@ static NSString *const kSegueToItemdescription      = @"segue_description";
 static const CGFloat kHeightForMenuCategoryCell = 50.0f;
 static const CGFloat kHeightForMenuItemCell     = 205.0f;
 
+@interface UITableViewController(method)
+- (void) setupRefreshControl:(SEL)method;
+@end
+
+@implementation UITableViewController(method)
+
+// Sets refresh control
+- (void) setupRefreshControl:(SEL)method
+{
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.backgroundColor = [UIColor purpleColor];
+    self.refreshControl.tintColor = [UIColor whiteColor];
+    
+    [self.refreshControl addTarget: self action: method forControlEvents: UIControlEventAllEvents];
+}
+
+@end
+
+
+
+
 @implementation MenuViewController
 {
     IBOutlet UISwipeGestureRecognizer *_swipeGestureRecognizer; // need for pop self VC and go back
@@ -47,7 +69,11 @@ static const CGFloat kHeightForMenuItemCell     = 205.0f;
                                                         sidebarButton: self.sidebarButton
                                                             isGesture: _isGestureForCallSidebar];
     
-    [self setupRefreshControl];
+    if( self == [self.navigationController.viewControllers objectAtIndex:0] ){
+        [self setupRefreshControl:@selector(loadMenuData)];
+    }
+    
+    [UIViewController setBackgroundImage:self ];
     
     if ( _currentCategory == nil ) {
         [self loadMenuData];
@@ -56,15 +82,7 @@ static const CGFloat kHeightForMenuItemCell     = 205.0f;
     [self setupGestureRecognizerConfiguration];
 }
 
-// set refresh control
-- (void) setupRefreshControl
-{
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    self.refreshControl.backgroundColor = [UIColor purpleColor];
-    self.refreshControl.tintColor = [UIColor whiteColor];
 
-    [self.refreshControl addTarget: self action: @selector(loadMenuData) forControlEvents: UIControlEventAllEvents];
-}
 
 // set gesture
 - (void) setupGestureRecognizerConfiguration
@@ -82,24 +100,25 @@ static const CGFloat kHeightForMenuItemCell     = 205.0f;
 // This method loads menu data from remote
 - (void) loadMenuData
 {
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-//    [self.refreshControl beginRefreshing];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible: YES];
+    //    [self.refreshControl beginRefreshing];
     
     
     [MenuDataProvider loadMenuDataWithBlock:^(MenuModel *menuModel, NSError *error) {
         
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible: NO];
         
         _currentCategory = menuModel.rootMenuCategory;
         
         // method reloadData performs on main thread.
-        dispatch_async( dispatch_get_main_queue(), ^{
-            if ( error ) {
-                [Alert showConnectionAlert];
-            } else {
-                [self.tableView reloadData];
-                
-                if(self.refreshControl){
+        
+        if ( error ) {
+            [Alert showConnectionAlert];
+        } else {
+            [self.tableView reloadData];
+            
+            if(self.refreshControl){
+
                     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
                     [formatter setDateFormat:@"MMM d, h:mm a"];
                     NSString *title = [NSString stringWithFormat:@"Last update: %@", [formatter stringFromDate:[NSDate date]]];
@@ -108,9 +127,8 @@ static const CGFloat kHeightForMenuItemCell     = 205.0f;
                     NSAttributedString *attributedTitle = [[NSAttributedString alloc] initWithString:title attributes:attrsDictionary];
                     self.refreshControl.attributedTitle = attributedTitle;
                     [self.refreshControl endRefreshing];
-                }
             }
-        } );
+        }
     }];
     
 }
@@ -137,22 +155,25 @@ static const CGFloat kHeightForMenuItemCell     = 205.0f;
 {
     if ( [_currentCategory isCategories] ) {
         MenuCategoryCell *menuCategoryCell = [tableView dequeueReusableCellWithIdentifier:
-                                                       kMenuCategoryCellIdentifier];
+                                              kMenuCategoryCellIdentifier];
         
         MenuCategoryModel *menuCategoryModel = _currentCategory.categories[indexPath.row];
         [menuCategoryCell drawCellWithModel: menuCategoryModel];
+        menuCategoryCell.backgroundColor = [UIColor colorWithRed:0.99 green:0.99 blue:0.99 alpha:0.3];
         
         return menuCategoryCell;
     } else {
         MenuItemCell *menuItemCell = [tableView dequeueReusableCellWithIdentifier:
-                                               kMenuItemCellIdentifier];
+                                      kMenuItemCellIdentifier];
         
         MenuItemModel *menuItemModel = _currentCategory.items[indexPath.row];
         [menuItemCell drawCellWithModel: menuItemModel];
         
+        menuItemCell.backgroundColor = [UIColor colorWithRed:0.99 green:0.99 blue:0.99 alpha:0.6];
+        
         return menuItemCell;
     }
-
+    
 }
 
 #pragma mark - Segues

@@ -19,6 +19,6 @@
 + (void)deleteTableOrderWithOrderId:(int)orderId responseBlock:(void (^)(NSError*))callback;
 
 
-+ (void)postTableOrderOnTableId:(NSInteger)tableId responseBlock:(void (^)(NSArray*,  NSError*))callback;
++ (void)createTableOrderOnTableId:(int)tableId responseBlock:(void (^)(NSArray*,  NSError*))callback;
 
 @end

@@ -15,6 +15,6 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 
 @property (strong, nonatomic) NSArray *items;
-@property (assign, nonatomic) int index;
+@property (assign, nonatomic) NSUInteger index;
 
 @end

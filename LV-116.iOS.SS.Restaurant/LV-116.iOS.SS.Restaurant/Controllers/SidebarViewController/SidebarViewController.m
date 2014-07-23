@@ -8,6 +8,7 @@
 
 #import "SidebarViewController.h"
 #import "SWRevealViewController.h"
+#import "UITableView+TableView_Image.h"
 
 #import "HomeViewController.h"
 #import "MenuViewController.h"
@@ -43,11 +44,11 @@ static NSString *const kSegueToLocation = @"sw_segue_location";
 static NSString *const kSegueToOrders   = @"sw_segue_orders";
 
 // const strings of images for cells
-static NSString *const kCellImageHome     = @"home_page_icon.png";
+static NSString *const kCellImageHome     = @"home_icon.png";
 static NSString *const kCellImageMenu     = @"menu_icon.png";
 static NSString *const kCellImageMap      = @"map_icon.png";
 static NSString *const kCellImageLocation = @"location_icon2.png";
-static NSString *const kCellImageOrders   = @"orders_icon.png";
+static NSString *const kCellImageOrders   = @"waiter.png";
 
 // const strings of labels for cells
 static NSString *const kCellLabelTextHome     = @"Home";
@@ -82,15 +83,14 @@ typedef enum
 - (void) viewDidLoad
 {
     [super viewDidLoad];
+    [UIViewController setBackgroundImage:self];
     self.revealViewController.rearViewRevealWidth = kRearViewRevealWidth;
 }
 
 // reload data of sidebar menu on main thread
 - (void) reloadData
 {
-    dispatch_async( dispatch_get_main_queue(), ^{
-        [self.tableView reloadData];
-    });
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -124,7 +124,7 @@ typedef enum
     
     [cell drawWithImage: [self getImageForCellAtIndexPath: indexPath]
                    text: [self getTextForCellAtIndexPath: indexPath]];
-    
+    cell.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.0];
     return cell;
 }
 

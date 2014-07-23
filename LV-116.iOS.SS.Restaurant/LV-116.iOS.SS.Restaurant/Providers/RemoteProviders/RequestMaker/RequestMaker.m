@@ -8,21 +8,21 @@
 
 #import "RequestMaker.h"
 
-static NSString *const kHTTPMethodDELETE         = @"DELETE";
-static NSString *const kHTTPMethodPOST           = @"POST";
-static NSString *const kHTTPMethodPUT            = @"PUT";
-static NSString *const kHTTPMethodGET            = @"GET";
+static NSString *const kHTTPMethodDELETE             = @"DELETE";
+static NSString *const kHTTPMethodPOST               = @"POST";
+static NSString *const kHTTPMethodPUT                = @"PUT";
+static NSString *const kHTTPMethodGET                = @"GET";
 
-static NSString *const kHTTPHeaderFieldAccept             = @"Accept";
-static NSString *const kHTTPHeaderFieldHost               = @"Host";
-static NSString *const kHTTPHeaderFieldContentLength      = @"Content-Length";
-static NSString *const kHTTPHeaderFieldContentType        = @"Content-Type";
-static NSString *const kHTTPHeaderFieldCookie             = @"Cookie";
+static NSString *const kHTTPHeaderFieldAccept        = @"Accept";
+static NSString *const kHTTPHeaderFieldHost          = @"Host";
+static NSString *const kHTTPHeaderFieldContentLength = @"Content-Length";
+static NSString *const kHTTPHeaderFieldContentType   = @"Content-Type";
+static NSString *const kHTTPHeaderFieldCookie        = @"Cookie";
 
-static NSString *const kHTTPHeaderValueAcceptAppJSON      = @"application/json";
-static NSString *const kHTTPHeaderValueHost               = @"192.168.195.212";
+static NSString *const kHTTPHeaderValueAcceptAppJSON = @"application/json";
+static NSString *const kHTTPHeaderValueHost          = @"192.168.195.212";
 
-static const CGFloat kRequestTimeoutInterval = 3.0;
+static const CGFloat kRequestTimeoutInterval = 10.0;
 
 
 @implementation RequestMaker
@@ -43,7 +43,7 @@ static const CGFloat kRequestTimeoutInterval = 3.0;
 
 #pragma mark - DELETE
 // Set DELETE request using url with id.
-+ (NSURLRequest*)getDeleteRequestWithURL:(NSString*)stringOfURL idOfURL:(NSUInteger)Id requestBody:(NSData*)body
++ (NSURLRequest*)getDeleteRequestWithURL:(NSString*)stringOfURL idOfURL:(NSUInteger)Id requestBody:(NSData*)bodyData
 {
     NSString *urlString = [NSString stringWithFormat: stringOfURL, Id];
     
@@ -56,14 +56,14 @@ static const CGFloat kRequestTimeoutInterval = 3.0;
     [urlRequest setValue: kHTTPHeaderValueAcceptAppJSON forHTTPHeaderField: kHTTPHeaderFieldAccept];
 
     urlRequest.HTTPMethod = kHTTPMethodDELETE;
-    urlRequest.HTTPBody   = body;
+    urlRequest.HTTPBody   = bodyData;
     
     return urlRequest;
 }
 
 #pragma mark - PUT
 // Set PUT using url with id and http body.
-+ (NSURLRequest*)getPutRequestWithURL:(NSString*)stringOfURL idOfURL:(NSUInteger)Id requestBody:(NSData*)body
++ (NSURLRequest*)getPutRequestWithURL:(NSString*)stringOfURL idOfURL:(NSUInteger)Id requestBody:(NSData*)bodyData
 {
     NSString *urlString = [NSString stringWithFormat: stringOfURL, Id];
     NSURL *url = [[NSURL alloc] initWithString: urlString];
@@ -76,7 +76,7 @@ static const CGFloat kRequestTimeoutInterval = 3.0;
     [urlRequest setValue: kHTTPHeaderValueAcceptAppJSON forHTTPHeaderField: kHTTPHeaderFieldContentType];
     
     urlRequest.HTTPMethod = kHTTPMethodPUT;
-    urlRequest.HTTPBody   = body;
+    urlRequest.HTTPBody   = bodyData;
     
     return urlRequest;
 }
@@ -84,7 +84,7 @@ static const CGFloat kRequestTimeoutInterval = 3.0;
 
 #pragma mark - POST
 // Set POST using url with id of url and http body.
-+ (NSURLRequest*)getPostRequestWithURL:(NSString*)stringOfURL idOfURL:(NSUInteger)Id requestBody:(NSData*)body
++ (NSURLRequest*)getPostRequestWithURL:(NSString*)stringOfURL idOfURL:(NSUInteger)Id requestBody:(NSData*)bodyData
 {
     NSString *urlString = [NSString stringWithFormat: stringOfURL, Id];
     NSURL *url = [[NSURL alloc] initWithString: urlString];
@@ -97,14 +97,14 @@ static const CGFloat kRequestTimeoutInterval = 3.0;
     [urlRequest setValue: kHTTPHeaderValueAcceptAppJSON forHTTPHeaderField: kHTTPHeaderFieldContentType];
 
     urlRequest.HTTPMethod = kHTTPMethodPOST;
-    urlRequest.HTTPBody   = body;
+    urlRequest.HTTPBody   = bodyData;
     
     return urlRequest;
 }
 
 #pragma mark - POST login
 // Return request that can used for login.
-+ (NSURLRequest*)getLoginRequestWithURL:(NSString*)stringOfURL idOfURL:(NSUInteger)Id requestBody:(NSData*)data
++ (NSURLRequest*)getLoginRequestWithURL:(NSString*)stringOfURL idOfURL:(NSUInteger)Id requestBody:(NSData*)bodyData
 {
     NSString *urlString = [NSString stringWithFormat: stringOfURL, Id];
     NSURL *url = [[NSURL alloc] initWithString: urlString];
@@ -119,7 +119,7 @@ static const CGFloat kRequestTimeoutInterval = 3.0;
     
     // Set POST method and JSON data.
     urlRequest.HTTPMethod = kHTTPMethodPOST;
-    urlRequest.HTTPBody   = data;
+    urlRequest.HTTPBody   = bodyData;
     
     return urlRequest;
 }

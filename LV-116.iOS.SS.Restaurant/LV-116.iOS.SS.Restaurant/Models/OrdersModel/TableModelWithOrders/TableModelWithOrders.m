@@ -10,9 +10,10 @@
 #import "OrderModel.h"
 #import "MapModel.h"
 
+
 @implementation TableModelWithOrders
 
--(instancetype)initWithTableModel:(TableModel*)table
+- (instancetype)initWithTableModel:(TableModel*)table
 {
     if( self = [super initWithTableModel: table] ) {
     }
@@ -20,7 +21,7 @@
 }
 
 // Add one order in array orders from OrderModel.
--(void)addOrder:(OrderModel*)order
+- (void)addOrder:(OrderModel*)order
 {
     if( _orders == nil ){
         _orders = [[NSMutableArray alloc] init];
@@ -29,24 +30,27 @@
 }
 
 // Add few orders from array.
--(void)addOrders:(NSArray*)orders
+- (void)addOrders:(NSArray*)orders
 {
     if( _orders == nil ){
         _orders = [[NSMutableArray alloc] init];
     }
     [_orders addObjectsFromArray: orders];
-
 }
 
 // Remove one order at index.
--(void)removeOrderAtIndex:(NSUInteger)index
+- (void)removeOrderAtIndex:(NSUInteger)index
 {
     if( _orders != nil ){
         [_orders removeObjectAtIndex: index];
     }
 }
 
-
-
+// Remove all orders.
+- (void)removeAllOrders
+{
+    [_orders removeAllObjects];
+    _orders = nil;
+}
 
 @end

@@ -15,8 +15,6 @@
 
 - (void) redrawTable;
 
-- (void) addNewOrderItem;
-
 - (void) removeOrderItemAtIndex: (int)index;
 
 - (void) sendUpdateOrder;

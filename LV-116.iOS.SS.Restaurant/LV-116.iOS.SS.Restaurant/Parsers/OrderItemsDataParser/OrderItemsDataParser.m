@@ -54,7 +54,7 @@ static NSString *const kOrderPrice          = @"Price";
         
         OrderItemModel *orderItemModel = [[OrderItemModel alloc] init];
         
-        orderItemModel.Id       = [[orderItem valueForKey: kOrderId] longValue];
+        orderItemModel.Id       = [[orderItem valueForKey: kOrderId] intValue];
         orderItemModel.amount   = [[orderItem valueForKey: kOrderAmount] intValue];
         
         NSMutableDictionary *menuItemFromOrder = [orderItem valueForKey: kOrderMenuItem];
@@ -66,7 +66,7 @@ static NSString *const kOrderPrice          = @"Price";
         }
         
         
-        orderItemModel.menuItemModel = [[MenuItemModel alloc] initWithId: [[menuItemFromOrder valueForKey: kOrderId] longValue]
+        orderItemModel.menuItemModel = [[MenuItemModel alloc] initWithId: [[menuItemFromOrder valueForKey: kOrderId] intValue]
                                                               categoryId: [[menuItemFromOrder valueForKey: kOrderCategoryId] intValue]
                                                              description: description
                                                                     name: [menuItemFromOrder  valueForKey: kOrderName]

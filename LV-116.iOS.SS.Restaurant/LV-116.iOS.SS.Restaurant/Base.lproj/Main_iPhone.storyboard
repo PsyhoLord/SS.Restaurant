@@ -175,7 +175,7 @@
                                     <action selector="logOut:" destination="5AU-UM-i95" eventType="touchUpInside" id="uwi-5B-Mah"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" alpha="0.84999999999999987" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="lv116_waiter" placeholder="User name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QpM-HR-v53">
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.69999999999999973" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="lv116_waiter" placeholder="User name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QpM-HR-v53">
                                 <rect key="frame" x="46" y="284" width="228" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -186,7 +186,7 @@
                                     <outlet property="delegate" destination="5AU-UM-i95" id="x8p-HT-aH0"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" alpha="0.84999999999999987" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ccu-WN-RDA">
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.69999999999999973" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ccu-WN-RDA">
                                 <rect key="frame" x="46" y="316" width="228" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -235,6 +235,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -359,11 +360,15 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="BaQ-Ly-znE">
                         <barButtonItem key="leftBarButtonItem" image="menu.png" id="LE1-HW-ny2"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="AHj-JI-HP3">
+                            <connections>
+                                <segue destination="TNA-3Q-pK8" kind="push" identifier="segue_menu_add_order_item" id="O6k-Gz-Ui4"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="_swipeGestureRecognizer" destination="RBv-kn-8Lt" id="w0J-6f-yFA"/>
                         <outlet property="sidebarButton" destination="LE1-HW-ny2" id="hbS-lR-emc"/>
-                        <segue destination="TNA-3Q-pK8" kind="push" identifier="segue_menu_add_order_item" id="XwQ-tH-eVK"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eaT-Iy-pdt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -753,6 +758,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="VeM-9l-pU5">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="yVe-sh-pVR">
+                        <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="cMh-My-IIx" kind="relationship" relationship="rootViewController" id="6S0-e5-FFl"/>
                     </connections>
@@ -793,8 +802,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="rLw-tV-qEA"/>
         <segue reference="6S0-e5-FFl"/>
-        <segue reference="XwQ-tH-eVK"/>
+        <segue reference="0Sz-wK-e4N"/>
+        <segue reference="O6k-Gz-Ui4"/>
     </inferredMetricsTieBreakers>
 </document>

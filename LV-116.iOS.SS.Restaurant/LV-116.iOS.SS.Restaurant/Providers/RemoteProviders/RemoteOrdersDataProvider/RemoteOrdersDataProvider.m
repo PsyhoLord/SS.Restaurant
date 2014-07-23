@@ -22,7 +22,7 @@ static NSString *const kURLGetTableOrders    = @"http://192.168.195.212/Restaura
 @implementation RemoteOrdersDataProvider
 
 
-#pragma mark - Load table orders.
+#pragma mark - Loading table orders.
 
 // Load orders on one table using tableId.
 + (void)loadTableOrdersWithId:(int)tableId responseBlock:(void (^)(NSArray*, NSError*))callback
@@ -65,7 +65,7 @@ static NSString *const kURLGetTableOrders    = @"http://192.168.195.212/Restaura
 #pragma mark - POST.
 
 // Post the new order on table using tableId.
-+ (void)postTableOrderOnTableId:(NSInteger)tableId responseBlock:(void (^)(NSArray*, NSError*))callback
++ (void)postTableOrderOnTableId:(int)tableId responseBlock:(void (^)(NSArray*, NSError*))callback
 {
     NSData *data = [ParserToJSON createJSONDataForNewOrderWithTableId: tableId];
     

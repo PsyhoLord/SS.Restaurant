@@ -15,17 +15,20 @@
 
 @interface TableModelWithOrders : TableModel
 
-@property (strong,nonatomic) NSMutableArray *orders;
+@property (strong, nonatomic, readonly) NSMutableArray *orders;
 
--(instancetype)initWithTableModel:(TableModel*)table;
+- (instancetype)initWithTableModel:(TableModel*)table;
 
 // Add one order in array orders from OrderModel.
--(void)addOrder:(OrderModel*)order;
+- (void)addOrder:(OrderModel*)order;
 
 // Add few orders from array.
--(void)addOrders:(NSArray*)orders;
+- (void)addOrders:(NSArray*)orders;
 
 // Remove one order at index.
--(void)removeOrderAtIndex:(NSUInteger)index;
+- (void)removeOrderAtIndex:(NSUInteger)index;
+
+// Remove all orders.
+- (void)removeAllOrders;
 
 @end

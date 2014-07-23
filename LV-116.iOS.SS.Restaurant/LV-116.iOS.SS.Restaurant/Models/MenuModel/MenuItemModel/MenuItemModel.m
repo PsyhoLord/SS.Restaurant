@@ -14,20 +14,19 @@
 {
     self = [super init];
     if ( nil != self ) {
-        self.Id             = Id;
-        //        self.image          = [UIImage alloc] init
-        self.categoryId     = categoryId;
-        self.description    = [[NSString alloc] initWithString:description];
-        self.name           = [[NSString alloc] initWithString:name];
-        self.portions       = portions;
-        self.price          = price;
+        _Id             = Id;
+        _categoryId     = categoryId;
+        _description    = [[NSString alloc] initWithString:description];
+        _name           = [[NSString alloc] initWithString:name];
+        _portions       = portions;
+        _price          = price;
     }
     return self;
 }
 
 - (bool)isImage
 {
-    return (self.image != nil);
+    return (_image != nil);
 }
 
 @end

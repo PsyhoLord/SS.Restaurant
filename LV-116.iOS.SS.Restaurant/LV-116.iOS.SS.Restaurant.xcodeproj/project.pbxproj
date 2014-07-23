@@ -10,6 +10,10 @@
 		22276E3C1976B02F005F698D /* arrow_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 22276E3B1976B02F005F698D /* arrow_down.png */; };
 		22346B58195F209000495B2A /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 22346B57195F209000495B2A /* Alert.m */; };
 		2265A70519642B1B0059EC0E /* RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2265A70419642B1B0059EC0E /* RequestManager.m */; };
+		227AE9191980190500BCE3A8 /* UITableView+TableView_Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 227AE9181980190500BCE3A8 /* UITableView+TableView_Image.m */; };
+		227AE91B198020FC00BCE3A8 /* C_Restaurant.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 227AE91A198020FC00BCE3A8 /* C_Restaurant.jpg */; };
+		227AE9231980263D00BCE3A8 /* home_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 227AE9221980263D00BCE3A8 /* home_icon.png */; };
+		227AE925198027BE00BCE3A8 /* waiter.png in Resources */ = {isa = PBXBuildFile; fileRef = 227AE924198027BE00BCE3A8 /* waiter.png */; };
 		2298487A1971A48500C7D56B /* ItemDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 229848791971A48500C7D56B /* ItemDescriptionViewController.m */; };
 		22A366D7196F10D2002D27B7 /* OrderItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A366D0196F10D2002D27B7 /* OrderItemModel.m */; };
 		22A366D8196F10D2002D27B7 /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A366D3196F10D2002D27B7 /* OrderModel.m */; };
@@ -110,6 +114,11 @@
 		22346B57195F209000495B2A /* Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alert.m; sourceTree = "<group>"; };
 		2265A70319642B1B0059EC0E /* RequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestManager.h; sourceTree = "<group>"; };
 		2265A70419642B1B0059EC0E /* RequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestManager.m; sourceTree = "<group>"; };
+		227AE9171980190500BCE3A8 /* UITableView+TableView_Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+TableView_Image.h"; sourceTree = "<group>"; };
+		227AE9181980190500BCE3A8 /* UITableView+TableView_Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+TableView_Image.m"; sourceTree = "<group>"; };
+		227AE91A198020FC00BCE3A8 /* C_Restaurant.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = C_Restaurant.jpg; sourceTree = "<group>"; };
+		227AE9221980263D00BCE3A8 /* home_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_icon.png; sourceTree = "<group>"; };
+		227AE924198027BE00BCE3A8 /* waiter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = waiter.png; sourceTree = "<group>"; };
 		229848781971A48500C7D56B /* ItemDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemDescriptionViewController.h; sourceTree = "<group>"; };
 		229848791971A48500C7D56B /* ItemDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemDescriptionViewController.m; sourceTree = "<group>"; };
 		22A366CF196F10D2002D27B7 /* OrderItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderItemModel.h; sourceTree = "<group>"; };
@@ -648,6 +657,8 @@
 				ED42A3C4196C32FA00A63656 /* MapViewController */,
 				570ABE8C196C3EEF003DC398 /* OrdersViewController */,
 				22DAB3C6197BE970001F0F8A /* LocationViewController */,
+				227AE9171980190500BCE3A8 /* UITableView+TableView_Image.h */,
+				227AE9181980190500BCE3A8 /* UITableView+TableView_Image.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -738,6 +749,8 @@
 		EDA13E26196ADCC400CF579C /* SidebarRootMenuIcons */ = {
 			isa = PBXGroup;
 			children = (
+				227AE924198027BE00BCE3A8 /* waiter.png */,
+				227AE9221980263D00BCE3A8 /* home_icon.png */,
 				25709CCD197C30DC0012CD41 /* location_icon.png */,
 				22B774F31979523B003BC7A9 /* location_icon2.png */,
 				22B774F7197954A0003BC7A9 /* location_icon4.png */,
@@ -753,6 +766,7 @@
 		EDBDFE1B1967219000E65DCA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				227AE91A198020FC00BCE3A8 /* C_Restaurant.jpg */,
 				22C7417F197C34E9003804BF /* image_OK.jpg */,
 				22C7417B197C34E4003804BF /* ButtonMinus.png */,
 				22C7417C197C34E4003804BF /* ButtonPlus.png */,
@@ -1033,9 +1047,11 @@
 				EDCE5C88196BE4C600496B34 /* role_client_icon.png in Resources */,
 				22B774F41979523B003BC7A9 /* location_icon2.png in Resources */,
 				ED35A85E1971933E006F91F6 /* menu@2x.png in Resources */,
+				227AE925198027BE00BCE3A8 /* waiter.png in Resources */,
 				22DAB3FA197C1ED4001F0F8A /* user.png in Resources */,
 				EDA13E2C196ADCC400CF579C /* map_icon.png in Resources */,
 				22DAB3F5197C1ED4001F0F8A /* blurred1.jpg in Resources */,
+				227AE9231980263D00BCE3A8 /* home_icon.png in Resources */,
 				22B774F8197954A0003BC7A9 /* location_icon4.png in Resources */,
 				25709CCE197C30DC0012CD41 /* location_icon.png in Resources */,
 				ED35A85D1971933E006F91F6 /* menu.png in Resources */,
@@ -1044,6 +1060,7 @@
 				EDA13E2D196ADCC400CF579C /* orders_icon.png in Resources */,
 				22C7417E197C34E4003804BF /* ButtonPlus.png in Resources */,
 				22B774F619795423003BC7A9 /* location_icon3.png in Resources */,
+				227AE91B198020FC00BCE3A8 /* C_Restaurant.jpg in Resources */,
 				22C74180197C34E9003804BF /* image_OK.jpg in Resources */,
 				FA336C3819335B950007CC76 /* Images.xcassets in Resources */,
 				22276E3C1976B02F005F698D /* arrow_down.png in Resources */,
@@ -1083,6 +1100,7 @@
 				22A36707196F11BA002D27B7 /* RemoteMapDataProvider.m in Sources */,
 				ED0787291972E68C0064C0E1 /* SidebarViewController.m in Sources */,
 				22A366E6196F11A4002D27B7 /* MenuDataParser.m in Sources */,
+				227AE9191980190500BCE3A8 /* UITableView+TableView_Image.m in Sources */,
 				22A36703196F11BA002D27B7 /* MapDataProvider.m in Sources */,
 				5748E87E197674F900C6FA67 /* RemoteOrderProvider.m in Sources */,
 				ED7C320D19715B6C00C76047 /* MenuItemCell.m in Sources */,

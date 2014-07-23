@@ -43,7 +43,7 @@
 #pragma mark - POST
 
 // Post the one order on table using tableId.
-+ (void)postTableOrderOnTableId:(NSInteger)tableId responseBlock:(void (^)(NSArray*,  NSError*))callback
++ (void)createTableOrderOnTableId:(int)tableId responseBlock:(void (^)(NSArray*,  NSError*))callback
 {
     [RemoteOrdersDataProvider postTableOrderOnTableId:tableId
                                              responseBlock:^(NSArray* newOrder, NSError *error) {

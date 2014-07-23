@@ -12,10 +12,10 @@
 
 @interface OrderModel : NSObject
 
-@property (assign, nonatomic) int Id;
+@property (assign, nonatomic, readonly) int Id;
 @property (assign, nonatomic) BOOL closed;
-@property (assign, nonatomic) int tableId;
-@property (assign, nonatomic) int userId;
+@property (assign, nonatomic, readonly) int tableId;
+@property (assign, nonatomic, readonly) int userId;
 @property (strong, nonatomic) NSMutableArray *items;
 
 @property (strong,nonatomic) NSString *timestamp;

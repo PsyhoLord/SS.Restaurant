@@ -14,7 +14,7 @@
 
 @interface MenuModel : NSObject
 
-@property (strong, nonatomic) MenuCategoryModel *rootMenuCategory;
+@property (strong, nonatomic, readonly) MenuCategoryModel *rootMenuCategory;
 
 - (BOOL)isEmpty;
 

@@ -14,7 +14,7 @@ static NSString *const kConnectionAlertMessage     = @"You must be connected to 
 static NSString *const kConnectionAlertButtonTitle = @"OK";
 
 static NSString *const kMethodAlertTitle           = @"Error";
-static NSString *const kMethodAlertMessage         = @"Code of error: %d";
+static NSString *const kMethodAlertMessage         = @"Code of error: %ld";
 
 static NSString *const kAuthorizationmethodAlertTitle   = @"Login error";
 static NSString *const kAuthorizationmethodAlertMessage = @"Your login or password doesn't correct. Please, try again.";
@@ -36,7 +36,7 @@ static NSString *const kAuthorizationmethodAlertMessage = @"Your login or passwo
 + (void) showHTTPMethodsAlert:(NSError*)error
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle: kMethodAlertTitle
-                                                    message: [NSString stringWithFormat: kMethodAlertMessage, error.code]
+                                                    message: [NSString stringWithFormat: kMethodAlertMessage, (long)error.code]
                                                    delegate: nil
                                           cancelButtonTitle: kConnectionAlertButtonTitle
                                           otherButtonTitles: nil];
