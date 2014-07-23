@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="gOy-F6-dCa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="gOy-F6-dCa">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -359,11 +359,15 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="BaQ-Ly-znE">
                         <barButtonItem key="leftBarButtonItem" image="menu.png" id="LE1-HW-ny2"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="uNn-ZF-wBK">
+                            <connections>
+                                <segue destination="TNA-3Q-pK8" kind="push" identifier="segue_menu_add_order_item" id="Iow-RJ-JW2"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="_swipeGestureRecognizer" destination="RBv-kn-8Lt" id="w0J-6f-yFA"/>
                         <outlet property="sidebarButton" destination="LE1-HW-ny2" id="hbS-lR-emc"/>
-                        <segue destination="TNA-3Q-pK8" kind="push" identifier="segue_menu_add_order_item" id="XwQ-tH-eVK"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eaT-Iy-pdt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -794,7 +798,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="rLw-tV-qEA"/>
+        <segue reference="Iow-RJ-JW2"/>
         <segue reference="6S0-e5-FFl"/>
-        <segue reference="XwQ-tH-eVK"/>
     </inferredMetricsTieBreakers>
 </document>

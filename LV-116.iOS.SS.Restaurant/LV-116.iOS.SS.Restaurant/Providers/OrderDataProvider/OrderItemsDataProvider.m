@@ -35,4 +35,13 @@
      ];
 }
 
++ (void) closeOrder: (int)orderId responseBlock: (void (^)(NSError *))callback
+{
+    [RemoteOrderProvider closeOrderById:orderId
+                          responseBlock:^(NSError *error){
+                              callback (error);
+                          }
+     ];
+}
+
 @end
