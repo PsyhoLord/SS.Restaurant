@@ -26,8 +26,8 @@ static NSString *const kJSONKeyPhoneImage  = @"Image";
     
     // Calling a method, which will be convert data from JSON to OrderModel.
     NSMutableDictionary *authorizationDictionary = [NSJSONSerialization JSONObjectWithData: data
-                                                                                 options: NSJSONReadingMutableContainers
-                                                                                   error: &parsingError];
+                                                                                   options: NSJSONReadingMutableContainers
+                                                                                     error: &parsingError];
     if ( parsingError ) {
         *parseError = parsingError;
         return nil;
@@ -38,10 +38,10 @@ static NSString *const kJSONKeyPhoneImage  = @"Image";
 }
 
 // Sets user settings for singleton.
-+(void)parseRole:(NSDictionary*)roleDictionary
++(void)parseRole:(NSDictionary*)authorizationDictionary
 {
-    NSMutableDictionary *userInfo = [roleDictionary objectForKey: kJSONKeyUser];
-    NSArray *str = [roleDictionary objectForKey:kJSONKeyRoles];
+    NSMutableDictionary *userInfo = [authorizationDictionary objectForKey: kJSONKeyUser];
+    NSArray *str = [authorizationDictionary objectForKey:kJSONKeyRoles];
     
     
     if( [str[0] isEqualToString: kJSONKeyWaiter]  ) {
