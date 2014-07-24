@@ -47,15 +47,12 @@ static NSString *const kJSONKeyIsSuccess    = @"isSuccess";
                
                if ( error == nil ) {
                    // If login data are true then response is JSON ( { isSuccess : "true" } ).
-                   
-                   
                    NSMutableDictionary *authorizationResponse = [AuthorizationDataParser parse: data parsingError: &error];
                    
                    NSString *isSuccess = [authorizationResponse valueForKeyPath: kJSONKeyIsSuccess];
                    
                    if( [response statusCode] == 200 && [isSuccess boolValue] ) {
                        
-                       [UserRole getInstance].enumUserRole = UserRoleWaiter;
                        // Adds cookies into singleton
                        [RemoteAuthorizationProvider createCookieStorageWithHeaderSetCookie:response];
                        
@@ -92,6 +89,7 @@ static NSString *const kJSONKeyIsSuccess    = @"isSuccess";
     
     // Cookies init from dictionary and then save into cookie storage.
     NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties: cookieProperties];
+    
     [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
     [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie: cookie];
     
@@ -102,17 +100,16 @@ static NSString *const kJSONKeyIsSuccess    = @"isSuccess";
 {
     // Separates header "Set-Cookie" apart.
     NSArray *arrayOfSetCookie = [headerSetCookie componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString: @";,"]];
-    NSString *token = nil;
+    NSString *token;
     
     for ( NSString *cookie in arrayOfSetCookie ) {
         if ( [cookie hasPrefix: kCookieASPXAUTH] ) {
             // We need only token (not key). Therefore we ignore .ASPXAUTH .
             NSRange range =  [cookie rangeOfString: kCookieASPXAUTH];
-            token = [cookie substringFromIndex: range.length+1 ]; // +1 because kCookieASPXAUTH hasn't =
-            return token;
+            token = [cookie substringFromIndex: range.length+1 ]; // +1 because kCookieASPXAUTH hasn't = .
+            break;
         }
     }
-    
     return token;
 }
 
@@ -123,9 +120,8 @@ static NSString *const kJSONKeyIsSuccess    = @"isSuccess";
 // // - block which calls for return value: userRole, error to hight level
 + (void) logOutWithResponseBlock: (void (^)(UserRole*, NSError*))callback
 {
-    NSHTTPCookie *cookie;
     NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    for (cookie in [storage cookies]) {
+    for ( NSHTTPCookie *cookie in [storage cookies] ) {
         [storage deleteCookie:cookie];
     }
     

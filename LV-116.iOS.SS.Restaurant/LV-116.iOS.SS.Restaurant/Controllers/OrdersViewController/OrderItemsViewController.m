@@ -10,7 +10,7 @@
 
 #import "OrderItemsViewController.h"
 #import "SidebarViewController+ConfigurationForOtherViewControllers.h"
-#import "UITableView+TableView_Image.h"
+#import "UIViewController+BackgroundImage.h"
 
 #import "OrderModel.h"
 #import "OrderItemModel.h"

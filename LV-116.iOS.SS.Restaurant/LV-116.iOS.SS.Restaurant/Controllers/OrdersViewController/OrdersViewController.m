@@ -9,7 +9,7 @@
 #import "OrdersViewController.h"
 #import "OrderItemsViewController.h"
 #import "SidebarViewController+ConfigurationForOtherViewControllers.h"
-#import "UITableView+TableView_Image.h"
+#import "UIViewController+BackgroundImage.h"
 
 #import "Alert.h"
 #import "MapDataProvider.h"

@@ -33,7 +33,7 @@
 {
     // geocoder saves street, city, state, and country information.
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-    [geocoder geocodeAddressString:@"Washington" completionHandler:^(NSArray *placemarks, NSError *error) {
+    [geocoder geocodeAddressString:@"Sackton" completionHandler:^(NSArray *placemarks, NSError *error) {
         
         if ( error ) {
             NSLog(@"%@", error.description);

@@ -106,22 +106,7 @@ static const CGFloat kRequestTimeoutInterval = 10.0;
 // Return request that can used for login.
 + (NSURLRequest*)getLoginRequestWithURL:(NSString*)stringOfURL idOfURL:(NSUInteger)Id requestBody:(NSData*)bodyData
 {
-    NSString *urlString = [NSString stringWithFormat: stringOfURL, Id];
-    NSURL *url = [[NSURL alloc] initWithString: urlString];
-    
-    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL: url
-                                                              cachePolicy: NSURLRequestUseProtocolCachePolicy
-                                                          timeoutInterval: kRequestTimeoutInterval];
-    
-    // Set HTTP header.
-    [urlRequest setValue: kHTTPHeaderValueAcceptAppJSON forHTTPHeaderField: kHTTPHeaderFieldAccept];
-    [urlRequest setValue: kHTTPHeaderValueAcceptAppJSON forHTTPHeaderField: kHTTPHeaderFieldContentType];
-    
-    // Set POST method and JSON data.
-    urlRequest.HTTPMethod = kHTTPMethodPOST;
-    urlRequest.HTTPBody   = bodyData;
-    
-    return urlRequest;
+    return [self getPostRequestWithURL:stringOfURL idOfURL:Id requestBody:bodyData];
 }
 
 

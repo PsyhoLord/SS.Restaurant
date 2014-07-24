@@ -8,7 +8,7 @@
 
 #import "SidebarViewController.h"
 #import "SWRevealViewController.h"
-#import "UITableView+TableView_Image.h"
+#import "UIViewController+BackgroundImage.h"
 
 #import "HomeViewController.h"
 #import "MenuViewController.h"
