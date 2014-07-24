@@ -25,7 +25,8 @@ static NSString *const kRoleWaiterIconName   = @"home_restaurant.png";
 static NSString *const kLoginIconUserName    = @"user.png";
 static NSString *const kLoginIconPassword    = @"password.png";
 
-
+static const CGFloat kTextFieldsAlphaForClient = 0.7;
+static const CGFloat kTextFieldsAlphaForWaiter = 0.1;
 
 @implementation HomeViewController
 {
@@ -87,12 +88,16 @@ static NSString *const kLoginIconPassword    = @"password.png";
             _textFieldPassword.enabled  = YES;
             _buttonLogIn.enabled        = YES;
             _buttonLogOut.enabled       = NO;
+            _textFieldUserName.alpha    = kTextFieldsAlphaForClient;
+            _textFieldPassword.alpha    = kTextFieldsAlphaForClient;
             break;
         case UserRoleWaiter:
             _textFieldUserName.enabled  = NO;
             _textFieldPassword.enabled  = NO;
             _buttonLogIn.enabled        = NO;
             _buttonLogOut.enabled       = YES;
+            _textFieldUserName.alpha    = kTextFieldsAlphaForWaiter;
+            _textFieldPassword.alpha    = kTextFieldsAlphaForWaiter;
             break;
     }
 }
@@ -120,8 +125,6 @@ static NSString *const kLoginIconPassword    = @"password.png";
                                  password: _textFieldPassword.text
                             responseBlock: ^(BOOL isAutorizated, UserRole *userRole, NSError *error) {
                                 if ( isAutorizated ) {
-                                    _textFieldUserName.alpha = 0.1;
-                                    _textFieldPassword.alpha = 0.1;
                                     [self setHomePageConfiguration: userRole.enumUserRole];
                                     [_sidebarViewController reloadData];
                                     [self clearTextFields];
@@ -138,8 +141,6 @@ static NSString *const kLoginIconPassword    = @"password.png";
 {
     [AuthorizationProvider logOutWithResponseBlock: ^(UserRole *userRole, NSError *error) {
         [self setHomePageConfiguration: userRole.enumUserRole];
-        _textFieldUserName.alpha = 0.7;
-        _textFieldPassword.alpha = 0.7;
         [_sidebarViewController reloadData];
     }];
 }

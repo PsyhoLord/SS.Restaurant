@@ -24,7 +24,6 @@ typedef enum
 @property EnumUserRole enumUserRole;    // return enum of current user
 @property (assign, nonatomic) int userId;
 @property (strong, nonatomic) NSString *name;
-@property (strong, nonatomic) NSString *cookie;
 @property (strong, nonatomic) NSString *phoneNumber;
 @property (strong, nonatomic) UIImage  *photo;
 
