@@ -6,9 +6,6 @@
 //  Copyright (c) 2014 SortServe. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
-
 // class MenuModel will contain all menu tree
 @class MenuCategoryModel;
 

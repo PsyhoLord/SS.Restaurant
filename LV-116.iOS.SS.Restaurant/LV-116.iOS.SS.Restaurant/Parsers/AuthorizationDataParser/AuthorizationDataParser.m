@@ -48,8 +48,8 @@ static NSString *const kJSONKeyPhoneImage  = @"Image";
         [UserRole getInstance].enumUserRole = UserRoleWaiter;
     }
     
-    [UserRole getInstance].name = [userInfo valueForKey: kJSONKeyName];
-    [UserRole getInstance].phoneNumber = [userInfo valueForKey: kJSONKeyPhoneNumber];
+    [UserRole getInstance].name = [userInfo objectForKey: kJSONKeyName];
+    [UserRole getInstance].phoneNumber = [userInfo objectForKey: kJSONKeyPhoneNumber];
     
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:[userInfo objectForKey: kJSONKeyPhoneImage] ];
     [UserRole getInstance].photo = [[UIImage alloc] initWithData:data];

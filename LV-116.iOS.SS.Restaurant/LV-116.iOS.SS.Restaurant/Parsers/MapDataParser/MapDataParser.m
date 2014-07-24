@@ -54,17 +54,17 @@ static NSString *const kTableY           = @"Y";
 + (TableModel*)createNewTable:(NSDictionary*)tableDictionary
 {
     TableModel *table;
-    table = [[TableModel alloc] initWithId:[[tableDictionary valueForKey:kTableID] intValue]
-                                  Capacity:[[tableDictionary valueForKey:kTableCapacity]intValue]
-                                    height:[[tableDictionary valueForKey:kTableHeight]intValue]
-                                  isActive:[[tableDictionary valueForKey:kTableisActive] boolValue]
-                                    isFree:[[tableDictionary valueForKey:kTableIsFree]boolValue]
-                                   isRound:[[tableDictionary valueForKey:kTableIsRound]intValue]
-                                      name:[tableDictionary valueForKey:kTableName]
-                                  rotation:[[tableDictionary valueForKey:kTableRotation]intValue]
-                                     width:[[tableDictionary valueForKey:kTablewWidth]intValue]
-                                    coordX:[[tableDictionary valueForKey:kTableX]intValue]
-                                    coordY:[[tableDictionary valueForKey:kTableY]intValue]
+    table = [[TableModel alloc] initWithId:[[tableDictionary objectForKey:kTableID] intValue]
+                                  Capacity:[[tableDictionary objectForKey:kTableCapacity]intValue]
+                                    height:[[tableDictionary objectForKey:kTableHeight]intValue]
+                                  isActive:[[tableDictionary objectForKey:kTableisActive] boolValue]
+                                    isFree:[[tableDictionary objectForKey:kTableIsFree]boolValue]
+                                   isRound:[[tableDictionary objectForKey:kTableIsRound]intValue]
+                                      name:[tableDictionary  objectForKey:kTableName]
+                                  rotation:[[tableDictionary objectForKey:kTableRotation]intValue]
+                                     width:[[tableDictionary objectForKey:kTablewWidth]intValue]
+                                    coordX:[[tableDictionary objectForKey:kTableX]intValue]
+                                    coordY:[[tableDictionary objectForKey:kTableY]intValue]
              ];
     return table;
 }

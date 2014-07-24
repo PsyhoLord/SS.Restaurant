@@ -60,11 +60,11 @@ static NSString *const kOrderKeyUserId    = @"UserId";
 + (OrderModel*)createOrderModel:(NSMutableDictionary *)orderDictionary
 {
     OrderModel *order;
-    order = [[OrderModel alloc] initWithId: [[orderDictionary valueForKey: kOrderKeyId] intValue]
-                                  isClosed: [[orderDictionary valueForKey: kOrderKeyClosed] boolValue]
-                                   tableId: [[orderDictionary valueForKey: kOrderKeyTableId] intValue]
-                                 timestamp: [orderDictionary valueForKey:  kOrderKeyTimeStamp]
-                                    userId: [[orderDictionary valueForKey: kOrderKeyUserId] intValue]
+    order = [[OrderModel alloc] initWithId: [[orderDictionary objectForKey: kOrderKeyId] intValue]
+                                  isClosed: [[orderDictionary objectForKey: kOrderKeyClosed] boolValue]
+                                   tableId: [[orderDictionary objectForKey: kOrderKeyTableId] intValue]
+                                 timestamp: [orderDictionary objectForKey:  kOrderKeyTimeStamp]
+                                    userId: [[orderDictionary objectForKey: kOrderKeyUserId] intValue]
              ];
     return order;
 }

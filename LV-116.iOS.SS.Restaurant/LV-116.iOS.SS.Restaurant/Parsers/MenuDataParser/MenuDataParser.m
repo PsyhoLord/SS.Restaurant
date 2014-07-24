@@ -48,7 +48,7 @@ static NSString *const kIsActive    = @"IsActive";
 // and add it
 + (void)parseMenuDictionary:(NSMutableDictionary*)menuCategoriesDictionary toMenuModel:(MenuModel*)menuModel withTopMenuCategoryModel:(MenuCategoryModel*)topMenuCategoryModel
 {
-    if ( [menuCategoriesDictionary count] == 0 ){
+    if ( [menuCategoriesDictionary count] == 0 ) {
         return;
     }
     
@@ -57,14 +57,14 @@ static NSString *const kIsActive    = @"IsActive";
         MenuCategoryModel *menuCategoryModel = [MenuDataParser createMenuCategoryModel:menuCategoryDictionary];
         [menuModel addNode: menuCategoryModel toCategory: topMenuCategoryModel];
         
-        if ( [[menuCategoryDictionary valueForKey:kCategories] count] != 0 ) {
+        if ( [[menuCategoryDictionary objectForKey:kCategories] count] != 0 ) {
             // recursivly calling parseMenuDictionary
-            [MenuDataParser parseMenuDictionary: [menuCategoryDictionary valueForKey:kCategories]
+            [MenuDataParser parseMenuDictionary: [menuCategoryDictionary objectForKey:kCategories]
                                     toMenuModel: menuModel
                        withTopMenuCategoryModel: menuCategoryModel];
         } else {
-            if ( [[menuCategoryDictionary valueForKey:kItems] count] != 0 ) {
-                for ( NSMutableDictionary *menuItemDictionary in [menuCategoryDictionary valueForKey: kItems] ) {
+            if ( [[menuCategoryDictionary objectForKey:kItems] count] != 0 ) {
+                for ( NSMutableDictionary *menuItemDictionary in [menuCategoryDictionary objectForKey: kItems] ) {
                     
                     MenuItemModel *menuItemModel = [self createMenuItemModel: menuItemDictionary];
                     [menuModel addNode: menuItemModel toCategory: menuCategoryModel];
@@ -79,11 +79,11 @@ static NSString *const kIsActive    = @"IsActive";
 {
     int parentId = 0;
     if ( [menuCategoryDictionary objectForKey: kParentId] != [NSNull null] ) {
-        parentId = [[menuCategoryDictionary valueForKey: kParentId] intValue];
+        parentId = [[menuCategoryDictionary objectForKey: kParentId] intValue];
     }
     
-    return [[MenuCategoryModel alloc] initWithId: [[menuCategoryDictionary valueForKey: kMenuID] intValue]
-                                            name: [menuCategoryDictionary valueForKey: kName]
+    return [[MenuCategoryModel alloc] initWithId: [[menuCategoryDictionary objectForKey: kMenuID] intValue]
+                                            name: [menuCategoryDictionary objectForKey: kName]
                                         parentId: parentId];
 }
 
@@ -91,15 +91,15 @@ static NSString *const kIsActive    = @"IsActive";
 {
     NSString *description = [[NSString alloc] init];
     if ( [menuItemDictionary objectForKey: kDescription] != [NSNull null] ) {
-        description = [menuItemDictionary valueForKey: kDescription];
+        description = [menuItemDictionary objectForKey: kDescription];
     }
     
-    return [[MenuItemModel alloc] initWithId: [[menuItemDictionary valueForKey:kMenuID] integerValue]
-                                  categoryId: [[menuItemDictionary valueForKey:kCategoryId] integerValue]
+    return [[MenuItemModel alloc] initWithId: [[menuItemDictionary objectForKey:kMenuID] integerValue]
+                                  categoryId: [[menuItemDictionary objectForKey:kCategoryId] integerValue]
                                  description: description
-                                        name: [menuItemDictionary valueForKey:kName]
-                                    portions: [[menuItemDictionary valueForKey:kPortions] integerValue]
-                                       price: [[menuItemDictionary valueForKey:kPrice] floatValue]];
+                                        name: [menuItemDictionary objectForKey:kName]
+                                    portions: [[menuItemDictionary objectForKey:kPortions] integerValue]
+                                       price: [[menuItemDictionary objectForKey:kPrice] floatValue]];
 }
 
 

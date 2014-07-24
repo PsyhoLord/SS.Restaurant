@@ -40,7 +40,6 @@
             [nodeFather addItem:node];
         }
     } else {
-        //        [_entireMenuCategory addCategory:node];
         _rootMenuCategory = node;
     }
 }

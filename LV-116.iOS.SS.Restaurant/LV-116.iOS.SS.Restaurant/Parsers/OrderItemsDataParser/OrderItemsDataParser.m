@@ -54,26 +54,26 @@ static NSString *const kOrderPrice          = @"Price";
         
         OrderItemModel *orderItemModel = [[OrderItemModel alloc] init];
         
-        orderItemModel.Id       = [[orderItem valueForKey: kOrderId] intValue];
-        orderItemModel.amount   = [[orderItem valueForKey: kOrderAmount] intValue];
+        orderItemModel.Id       = [[orderItem objectForKey: kOrderId] intValue];
+        orderItemModel.amount   = [[orderItem objectForKey: kOrderAmount] intValue];
         
-        NSMutableDictionary *menuItemFromOrder = [orderItem valueForKey: kOrderMenuItem];
+        NSMutableDictionary *menuItemFromOrder = [orderItem objectForKey: kOrderMenuItem];
         NSString *description = [[NSString alloc] init];
-        if ([menuItemFromOrder valueForKey: kOrderDescription] != [NSNull null]){
-            description = [menuItemFromOrder valueForKey: kOrderDescription];
+        if ([menuItemFromOrder objectForKey: kOrderDescription] != [NSNull null]){
+            description = [menuItemFromOrder objectForKey: kOrderDescription];
         } else {
             description = @"No info";
         }
         
         
-        orderItemModel.menuItemModel = [[MenuItemModel alloc] initWithId: [[menuItemFromOrder valueForKey: kOrderId] intValue]
-                                                              categoryId: [[menuItemFromOrder valueForKey: kOrderCategoryId] intValue]
+        orderItemModel.menuItemModel = [[MenuItemModel alloc] initWithId: [[menuItemFromOrder objectForKey: kOrderId] intValue]
+                                                              categoryId: [[menuItemFromOrder objectForKey: kOrderCategoryId] intValue]
                                                              description: description
-                                                                    name: [menuItemFromOrder  valueForKey: kOrderName]
-                                                                portions: [[menuItemFromOrder valueForKey: kOrderPortions] floatValue]
-                                                                   price: [[menuItemFromOrder valueForKey: kOrderPrice] floatValue]
+                                                                    name: [menuItemFromOrder  objectForKey: kOrderName]
+                                                                portions: [[menuItemFromOrder objectForKey: kOrderPortions] floatValue]
+                                                                   price: [[menuItemFromOrder objectForKey: kOrderPrice] floatValue]
                                         ];
-        orderItemModel.served   = [[orderItem valueForKey: kOrderServed] boolValue];
+        orderItemModel.served   = [[orderItem objectForKey: kOrderServed] boolValue];
         
         [orderItems addObject: orderItemModel];
     }
