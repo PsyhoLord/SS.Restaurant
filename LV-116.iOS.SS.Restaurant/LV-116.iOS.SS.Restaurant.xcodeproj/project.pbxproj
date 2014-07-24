@@ -356,12 +356,12 @@
 		22A366DA196F11A4002D27B7 /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
+				22A366E4196F11A4002D27B7 /* PDataParser.h */,
 				22C15576197D7AE700C6AB31 /* AuthorizationDataParser */,
 				22A366DB196F11A4002D27B7 /* MapDataParser */,
 				22A366DE196F11A4002D27B7 /* MenuDataParser */,
 				22A366E1196F11A4002D27B7 /* OrdersDataParser */,
 				5748E8731976749300C6FA67 /* OrderItemsDataParser */,
-				22A366E4196F11A4002D27B7 /* PDataParser.h */,
 			);
 			path = Parsers;
 			sourceTree = "<group>";

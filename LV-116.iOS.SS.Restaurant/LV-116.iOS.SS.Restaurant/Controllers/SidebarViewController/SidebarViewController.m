@@ -219,8 +219,10 @@ typedef enum
 // something that did before segue
 - (void) prepareForSegue: (UIStoryboardSegue*)segue sender: (id)sender
 {
-    UIViewController *destinationViewController = segue.destinationViewController;
+    UIViewController *destinationViewController =
+    ((UINavigationController*)segue.destinationViewController).topViewController;
     destinationViewController.title = [self getTitleForDestinationViewController: destinationViewController];
+    
     
     if ( [destinationViewController isKindOfClass: [MenuViewController class]] ) {
         ((MenuViewController*)destinationViewController).isGestureForCallSidebar = YES;

@@ -51,9 +51,6 @@ static const CGFloat kHeightForMenuItemCell     = 205.0f;
 
 @end
 
-
-
-
 @implementation MenuViewController
 {
     IBOutlet UISwipeGestureRecognizer *_swipeGestureRecognizer; // need for pop self VC and go back
@@ -90,7 +87,7 @@ static const CGFloat kHeightForMenuItemCell     = 205.0f;
     if ( _swipeGestureRecognizer == nil ) {
         _swipeGestureRecognizer =
         [[UISwipeGestureRecognizer alloc] initWithTarget: self
-                                                  action: @selector(handleSwipeGestureRecognizer:)];
+action: @selector(handleSwipeGestureRecognizer:)];
     }
     [self.view addGestureRecognizer: _swipeGestureRecognizer];
 }
