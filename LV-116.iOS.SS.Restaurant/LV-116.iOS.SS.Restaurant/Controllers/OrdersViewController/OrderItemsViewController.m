@@ -60,6 +60,10 @@ static NSString *const kAlertMessageCloseOrder  = @"Order Succesfully closed";
     [UIViewController setBackgroundImage:self];
     
     isOrderChanged = NO;
+    
+    [SidebarViewController setupSidebarConfigurationForViewController: self
+                                                        sidebarButton: self.sidebarButton
+                                                            isGesture: NO];
 }
 
 //loads data about order from server using order ID
