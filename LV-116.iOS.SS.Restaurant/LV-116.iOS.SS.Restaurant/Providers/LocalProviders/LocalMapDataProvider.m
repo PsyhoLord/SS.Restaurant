@@ -28,19 +28,20 @@ static NSString *const kTableY           = @"y";
 @implementation LocalMapDataProvider
 
 // store data to local data base
-+ (BOOL) storeMapData: (MapModel*) mapModel error: (NSError**)error
++ (void) storeMapData: (MapModel*) mapModel
 {
-    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
-    
-    for ( TableModel *tableModel in mapModel.tables ) {
-        // Create a new managed object and insert it to local data base
-        [LocalMapDataProvider insertTable: tableModel
-                                forEntity: kEntityMapModel
-                   inManagedObjectContext: managedObjectContext];
-    }
-    
-    // Save the object to persistent store
-    return ([managedObjectContext save: error]);
+    dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async( concurrentQueue, ^{
+        NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+        
+        for ( TableModel *tableModel in mapModel.tables ) {
+            // Create a new managed object and insert it to local data base
+            [LocalMapDataProvider insertTable: tableModel
+                                    forEntity: kEntityMapModel
+                       inManagedObjectContext: managedObjectContext];
+        }
+        [managedObjectContext save: nil];
+    });
 }
 
 + (NSManagedObject*) insertTable:(TableModel*)tableModel forEntity:(NSString*)entity inManagedObjectContext:(NSManagedObjectContext*)managedObjectContext

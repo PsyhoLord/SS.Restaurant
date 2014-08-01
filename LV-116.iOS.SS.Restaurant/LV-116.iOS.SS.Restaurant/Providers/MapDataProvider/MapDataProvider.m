@@ -31,8 +31,7 @@
         [RemoteMapDataProvider loadMapDataWithBlock: ^(MapModel *mapModel, NSError *error) {
             
             if ( error == nil ) {
-                [LocalMapDataProvider storeMapData: mapModel
-                                             error: &error];
+                [LocalMapDataProvider storeMapData: mapModel];
             }
             
             callback(mapModel, error);

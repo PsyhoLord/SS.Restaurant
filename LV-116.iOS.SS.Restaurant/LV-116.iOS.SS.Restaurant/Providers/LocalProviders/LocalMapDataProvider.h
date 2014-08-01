@@ -13,7 +13,7 @@
 @interface LocalMapDataProvider : NSObject
 
 // store data to local data base
-+ (BOOL) storeMapData:(MapModel*) mapModel error:(NSError**)error;
++ (void) storeMapData:(MapModel*) mapModel;
 
 // load data from local data base
 + (void) loadMapDataWithBlock: (void (^)(MapModel*, NSError*))callback;
