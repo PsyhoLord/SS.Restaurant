@@ -13,6 +13,8 @@
 #import "MapModel.h"
 #import "TableModel.h"
 
+#import "LocalDataValidator.h"
+
 
 @implementation MapDataProvider
 
@@ -20,8 +22,7 @@
 // calls block when model has created
 + (void)loadMapDataWithBlock:(void (^)(MapModel*, NSError*))callback
 {
-    
-    if ( [LocalMapDataProvider isData] ) {
+    if ( [LocalDataValidator isNeedForUpdateData] == NO && [LocalMapDataProvider isData] ) {
         [LocalMapDataProvider loadMapDataWithBlock:^(MapModel *mapModel, NSError *error) {
             
             callback(mapModel, error);
