@@ -7,9 +7,12 @@
 //
 
 #import "RemoteMapDataProvider.h"
+#import "LocalMapDataProvider.h"
 #import "MapDataProvider.h"
+
 #import "MapModel.h"
 #import "TableModel.h"
+
 
 @implementation MapDataProvider
 
@@ -17,11 +20,25 @@
 // calls block when model has created
 + (void)loadMapDataWithBlock:(void (^)(MapModel*, NSError*))callback
 {
-    [RemoteMapDataProvider loadMapDataWithBlock:^(MapModel *mapModel, NSError *error) {
-        
-        callback(mapModel, error);
-        
-    } ];
+    
+    if ( [LocalMapDataProvider isData] ) {
+        [LocalMapDataProvider loadMapDataWithBlock:^(MapModel *mapModel, NSError *error) {
+            
+            callback(mapModel, error);
+            
+        }];
+    } else {
+        [RemoteMapDataProvider loadMapDataWithBlock: ^(MapModel *mapModel, NSError *error) {
+            
+            if ( error == nil ) {
+                [LocalMapDataProvider storeMapData: mapModel
+                                             error: &error];
+            }
+            
+            callback(mapModel, error);
+            
+        } ];
+    }
 }
 
 // load map background image from remote
@@ -34,5 +51,8 @@
         
     } ];
 }
+
+
+
 
 @end

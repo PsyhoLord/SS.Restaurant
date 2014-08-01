@@ -10,6 +10,9 @@
 		22276E3C1976B02F005F698D /* arrow_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 22276E3B1976B02F005F698D /* arrow_down.png */; };
 		22346B58195F209000495B2A /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 22346B57195F209000495B2A /* Alert.m */; };
 		2265A70519642B1B0059EC0E /* RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2265A70419642B1B0059EC0E /* RequestManager.m */; };
+		226FFA87198BB61E00C5A065 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 226FFA86198BB61E00C5A065 /* CoreData.framework */; };
+		226FFA8A198BB64B00C5A065 /* LocalDataBase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 226FFA88198BB64B00C5A065 /* LocalDataBase.xcdatamodeld */; };
+		226FFA8E198BBE4900C5A065 /* LocalMapDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 226FFA8D198BBE4900C5A065 /* LocalMapDataProvider.m */; };
 		227AE9231980263D00BCE3A8 /* home_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 227AE9221980263D00BCE3A8 /* home_icon.png */; };
 		227AE925198027BE00BCE3A8 /* waiter.png in Resources */ = {isa = PBXBuildFile; fileRef = 227AE924198027BE00BCE3A8 /* waiter.png */; };
 		227AE92C1980EDA500BCE3A8 /* UIViewController+BackgroundImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 227AE92B1980EDA500BCE3A8 /* UIViewController+BackgroundImage.m */; };
@@ -112,6 +115,10 @@
 		22346B57195F209000495B2A /* Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alert.m; sourceTree = "<group>"; };
 		2265A70319642B1B0059EC0E /* RequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestManager.h; sourceTree = "<group>"; };
 		2265A70419642B1B0059EC0E /* RequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestManager.m; sourceTree = "<group>"; };
+		226FFA86198BB61E00C5A065 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		226FFA89198BB64B00C5A065 /* LocalDataBase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocalDataBase.xcdatamodel; sourceTree = "<group>"; };
+		226FFA8C198BBE4900C5A065 /* LocalMapDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalMapDataProvider.h; sourceTree = "<group>"; };
+		226FFA8D198BBE4900C5A065 /* LocalMapDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalMapDataProvider.m; sourceTree = "<group>"; };
 		227AE9221980263D00BCE3A8 /* home_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_icon.png; sourceTree = "<group>"; };
 		227AE924198027BE00BCE3A8 /* waiter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = waiter.png; sourceTree = "<group>"; };
 		227AE92A1980EDA500BCE3A8 /* UIViewController+BackgroundImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BackgroundImage.h"; sourceTree = "<group>"; };
@@ -255,6 +262,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				226FFA87198BB61E00C5A065 /* CoreData.framework in Frameworks */,
 				22B774F219793D25003BC7A9 /* MapKit.framework in Frameworks */,
 				22B774F019793D1E003BC7A9 /* CoreLocation.framework in Frameworks */,
 				FA336C1F19335B950007CC76 /* CoreGraphics.framework in Frameworks */,
@@ -300,6 +308,15 @@
 				2265A70419642B1B0059EC0E /* RequestManager.m */,
 			);
 			path = RequestManager;
+			sourceTree = "<group>";
+		};
+		226FFA8B198BBE0400C5A065 /* LocalProviders */ = {
+			isa = PBXGroup;
+			children = (
+				226FFA8C198BBE4900C5A065 /* LocalMapDataProvider.h */,
+				226FFA8D198BBE4900C5A065 /* LocalMapDataProvider.m */,
+			);
+			path = LocalProviders;
 			sourceTree = "<group>";
 		};
 		227AE9291980EDA500BCE3A8 /* UIViewController+BackgroundImage */ = {
@@ -401,6 +418,7 @@
 		22A366E8196F11BA002D27B7 /* Providers */ = {
 			isa = PBXGroup;
 			children = (
+				226FFA8B198BBE0400C5A065 /* LocalProviders */,
 				22A366E9196F11BA002D27B7 /* AuthorizationProvider */,
 				22A366EC196F11BA002D27B7 /* MapDataProvider */,
 				22A366EF196F11BA002D27B7 /* MenuDataProvider */,
@@ -873,6 +891,7 @@
 		FA336C1019335B950007CC76 = {
 			isa = PBXGroup;
 			children = (
+				226FFA88198BB64B00C5A065 /* LocalDataBase.xcdatamodeld */,
 				FA336C2219335B950007CC76 /* LV-116.iOS.SS.Restaurant */,
 				FA336C4419335B950007CC76 /* LV-116.iOS.SS.RestaurantTests */,
 				FA336C1B19335B950007CC76 /* Frameworks */,
@@ -892,6 +911,7 @@
 		FA336C1B19335B950007CC76 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				226FFA86198BB61E00C5A065 /* CoreData.framework */,
 				22B774F119793D25003BC7A9 /* MapKit.framework */,
 				22B774EF19793D1E003BC7A9 /* CoreLocation.framework */,
 				FA336C1C19335B950007CC76 /* Foundation.framework */,
@@ -1134,11 +1154,13 @@
 				EDEC47351956FACB0041B98B /* MenuItemModel.m in Sources */,
 				22A36704196F11BA002D27B7 /* MenuDataProvider.m in Sources */,
 				22C1556E197D6FD100C6AB31 /* RequestMaker.m in Sources */,
+				226FFA8E198BBE4900C5A065 /* LocalMapDataProvider.m in Sources */,
 				22A366D9196F10D2002D27B7 /* TableModelWithOrders.m in Sources */,
 				22DAB3C9197BE970001F0F8A /* LocationViewController.m in Sources */,
 				22D09EE61976D35100FD94AA /* ParserToJSON.m in Sources */,
 				22C15579197D7AE700C6AB31 /* AuthorizationDataParser.m in Sources */,
 				EDD611021971712600A70D4B /* WaiterMenuViewController.m in Sources */,
+				226FFA8A198BB64B00C5A065 /* LocalDataBase.xcdatamodeld in Sources */,
 				ED42A3ED196C32FA00A63656 /* MapViewController.m in Sources */,
 				576B6F6C197171D000CEC6BF /* OrderItemCell.m in Sources */,
 			);
@@ -1371,6 +1393,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		226FFA88198BB64B00C5A065 /* LocalDataBase.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				226FFA89198BB64B00C5A065 /* LocalDataBase.xcdatamodel */,
+			);
+			currentVersion = 226FFA89198BB64B00C5A065 /* LocalDataBase.xcdatamodel */;
+			path = LocalDataBase.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FA336C1119335B950007CC76 /* Project object */;
 }

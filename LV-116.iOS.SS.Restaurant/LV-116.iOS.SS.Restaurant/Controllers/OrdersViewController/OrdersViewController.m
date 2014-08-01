@@ -376,6 +376,12 @@ static NSString *const kCellIdentifier     = @"CellIdentifier";
     
 }
 
+// Return NO if you do not want the specified item to be editable.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
 // Set editing style for cell. The last cell has not any editing style.
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
