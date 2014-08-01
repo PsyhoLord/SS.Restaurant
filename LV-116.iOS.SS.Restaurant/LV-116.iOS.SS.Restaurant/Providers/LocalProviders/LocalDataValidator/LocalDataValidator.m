@@ -15,8 +15,6 @@ static EnumDays kDayForUpdateData = Monday;
 // check is need to update local data
 + (BOOL) isNeedForUpdateData
 {
-    NSLog(@"%@", [NSCalendar currentCalendar]);
-    
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *comps = [gregorian components:NSWeekdayCalendarUnit fromDate:[NSDate date]];
 

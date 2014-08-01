@@ -32,6 +32,7 @@
         [RemoteMapDataProvider loadMapDataWithBlock: ^(MapModel *mapModel, NSError *error) {
             
             if ( error == nil ) {
+                [LocalMapDataProvider resetMapData];
                 [LocalMapDataProvider storeMapData: mapModel];
             }
             

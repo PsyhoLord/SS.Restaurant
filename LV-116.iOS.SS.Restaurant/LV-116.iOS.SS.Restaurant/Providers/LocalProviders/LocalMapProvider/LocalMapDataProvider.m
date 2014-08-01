@@ -24,7 +24,6 @@ static NSString *const kTablewWidth      = @"width";
 static NSString *const kTableX           = @"x";
 static NSString *const kTableY           = @"y";
 
-
 @implementation LocalMapDataProvider
 
 // store data to local data base
@@ -73,6 +72,31 @@ static NSString *const kTableY           = @"y";
                 forKey: kTableY];
     
     return newTable;
+}
+
++ (void) resetMapData
+{
+    dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async( concurrentQueue, ^{
+        NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+        
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        
+        NSEntityDescription *entity = [NSEntityDescription entityForName: kEntityMapModel
+                                                  inManagedObjectContext: managedObjectContext];
+        
+        [fetchRequest setEntity: entity];
+        
+        NSError *requestError;
+        NSArray *managedTables = [self.managedObjectContext executeFetchRequest: fetchRequest
+                                                                          error: &requestError];
+        
+        for ( NSManagedObject *managedTable in managedTables ) {
+            [managedObjectContext deleteObject: managedTable];
+        }
+        
+        [managedObjectContext save: nil];
+    });
 }
 
 // load data from local data base

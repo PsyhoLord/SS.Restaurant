@@ -15,6 +15,9 @@
 // store data to local data base
 + (void) storeMapData:(MapModel*) mapModel;
 
+// delete all rows from entity map
++ (void) resetMapData;
+
 // load data from local data base
 + (void) loadMapDataWithBlock: (void (^)(MapModel*, NSError*))callback;
 
