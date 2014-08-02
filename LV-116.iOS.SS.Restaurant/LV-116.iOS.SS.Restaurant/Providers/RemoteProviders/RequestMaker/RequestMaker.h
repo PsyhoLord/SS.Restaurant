@@ -14,15 +14,15 @@
 + (NSURLRequest*)getRequestWithURL:(NSString*)stringOfURL idOfURL:(NSUInteger)tableId;
 
 // DELETE
-+ (NSURLRequest*)getDeleteRequestWithURL:(NSString*)stringOfURL idOfURL:(NSUInteger)Id requestBody:(NSData*)bodyData;
++ (NSURLRequest*)deleteRequestWithURL:(NSString*)stringOfURL idOfURL:(NSUInteger)Id requestBody:(NSData*)bodyData;
 
 // PUT
-+ (NSURLRequest*)getPutRequestWithURL:(NSString*)stringOfURL idOfURL:(NSUInteger)Id requestBody:(NSData*)bodyData;
++ (NSURLRequest*)putRequestWithURL:(NSString*)stringOfURL idOfURL:(NSUInteger)Id requestBody:(NSData*)bodyData;
 
 // POST
-+ (NSURLRequest*)getPostRequestWithURL:(NSString*)stringOfURL idOfURL:(NSUInteger)Id requestBody:(NSData*)bodyData;
++ (NSURLRequest*)postRequestWithURL:(NSString*)stringOfURL idOfURL:(NSUInteger)Id requestBody:(NSData*)bodyData;
 
 // POST Login
-+ (NSURLRequest*)getLoginRequestWithURL:(NSString*)stringOfURL idOfURL:(NSUInteger)Id requestBody:(NSData*)bodyData;
++ (NSURLRequest*)loginRequestWithURL:(NSString*)stringOfURL idOfURL:(NSUInteger)Id requestBody:(NSData*)bodyData;
 
 @end
