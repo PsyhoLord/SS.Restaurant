@@ -43,7 +43,7 @@ static const CGFloat kRequestTimeoutInterval = 10.0;
 
 #pragma mark - DELETE
 // Set DELETE request using url with id.
-+ (NSURLRequest*)getDeleteRequestWithURL:(NSString*)stringOfURL idOfURL:(NSUInteger)Id requestBody:(NSData*)bodyData
++ (NSURLRequest*)deleteRequestWithURL:(NSString*)stringOfURL idOfURL:(NSUInteger)Id requestBody:(NSData*)bodyData
 {
     NSString *urlString = [NSString stringWithFormat: stringOfURL, Id];
     
@@ -63,7 +63,7 @@ static const CGFloat kRequestTimeoutInterval = 10.0;
 
 #pragma mark - PUT
 // Set PUT using url with id and http body.
-+ (NSURLRequest*)getPutRequestWithURL:(NSString*)stringOfURL idOfURL:(NSUInteger)Id requestBody:(NSData*)bodyData
++ (NSURLRequest*)putRequestWithURL:(NSString*)stringOfURL idOfURL:(NSUInteger)Id requestBody:(NSData*)bodyData
 {
     NSString *urlString = [NSString stringWithFormat: stringOfURL, Id];
     NSURL *url = [[NSURL alloc] initWithString: urlString];
@@ -84,7 +84,7 @@ static const CGFloat kRequestTimeoutInterval = 10.0;
 
 #pragma mark - POST
 // Set POST using url with id of url and http body.
-+ (NSURLRequest*)getPostRequestWithURL:(NSString*)stringOfURL idOfURL:(NSUInteger)Id requestBody:(NSData*)bodyData
++ (NSURLRequest*)postRequestWithURL:(NSString*)stringOfURL idOfURL:(NSUInteger)Id requestBody:(NSData*)bodyData
 {
     NSString *urlString = [NSString stringWithFormat: stringOfURL, Id];
     NSURL *url = [[NSURL alloc] initWithString: urlString];
@@ -104,9 +104,9 @@ static const CGFloat kRequestTimeoutInterval = 10.0;
 
 #pragma mark - POST login
 // Return request that can used for login.
-+ (NSURLRequest*)getLoginRequestWithURL:(NSString*)stringOfURL idOfURL:(NSUInteger)Id requestBody:(NSData*)bodyData
++ (NSURLRequest*)loginRequestWithURL:(NSString*)stringOfURL idOfURL:(NSUInteger)Id requestBody:(NSData*)bodyData
 {
-    return [self getPostRequestWithURL:stringOfURL idOfURL:Id requestBody:bodyData];
+    return [self postRequestWithURL:stringOfURL idOfURL:Id requestBody:bodyData];
 }
 
 

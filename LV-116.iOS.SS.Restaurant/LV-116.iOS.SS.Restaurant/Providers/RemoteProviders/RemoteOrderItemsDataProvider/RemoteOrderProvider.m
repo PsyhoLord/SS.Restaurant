@@ -43,7 +43,7 @@ static NSString *const kURLPutCloseOrder            = @"http://192.168.195.212/R
 // Updates Order by sending data
 + (void) sendDataFromOrderToUpdate: (NSData * )data responseBlock: (void (^)(NSError*)) callback
 {
-    NSURLRequest * urlRequest = [RequestMaker getPutRequestWithURL: kURLPutToUpdateOrderItems
+    NSURLRequest * urlRequest = [RequestMaker putRequestWithURL: kURLPutToUpdateOrderItems
                                                            idOfURL: 0
                                                        requestBody: data
                                  ];
@@ -58,7 +58,7 @@ static NSString *const kURLPutCloseOrder            = @"http://192.168.195.212/R
 //Closing Order by specifed ID
 + (void) closeOrderById: (int)orderId responseBlock: (void (^)(NSError*)) callback
 {
-    NSURLRequest *urlRequest = [RequestMaker getPutRequestWithURL: kURLPutCloseOrder
+    NSURLRequest *urlRequest = [RequestMaker putRequestWithURL: kURLPutCloseOrder
                                                           idOfURL: orderId
                                                       requestBody: nil
                                 ];

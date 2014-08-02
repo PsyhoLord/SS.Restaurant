@@ -50,7 +50,7 @@ static NSString *const kURLGetTableOrders    = @"http://192.168.195.212/Restaura
 // Delete the one order on table using orderId.
 + (void)deleteTableOrderWithOrderId:(int)orderId responseBlock:(void (^)(NSError*))callback
 {
-    NSURLRequest *urlRequest = [RequestMaker getDeleteRequestWithURL: kURLDeleteOrder
+    NSURLRequest *urlRequest = [RequestMaker deleteRequestWithURL: kURLDeleteOrder
                                                              idOfURL: orderId
                                                          requestBody: nil];
     
@@ -69,7 +69,7 @@ static NSString *const kURLGetTableOrders    = @"http://192.168.195.212/Restaura
 {
     NSData *data = [ParserToJSON createJSONDataForNewOrderWithTableId: tableId];
     
-    NSURLRequest *urlRequest = [RequestMaker getPostRequestWithURL: kURLPostTableOrder
+    NSURLRequest *urlRequest = [RequestMaker postRequestWithURL: kURLPostTableOrder
                                                            idOfURL: tableId
                                                        requestBody: data];
     

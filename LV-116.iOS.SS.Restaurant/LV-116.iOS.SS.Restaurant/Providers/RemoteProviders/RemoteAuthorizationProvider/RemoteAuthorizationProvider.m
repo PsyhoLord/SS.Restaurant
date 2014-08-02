@@ -39,7 +39,7 @@ static NSString *const kJSONKeyIsSuccess    = @"isSuccess";
                                                                     password: password
                                                                   rememberMe: true];
     // Creates request using JSON data.
-    NSURLRequest *urlRequest = [RequestMaker getLoginRequestWithURL: kURLAuthenticate
+    NSURLRequest *urlRequest = [RequestMaker loginRequestWithURL: kURLAuthenticate
                                                             idOfURL: 0
                                                         requestBody: jsonData ];
     [RequestManager send: urlRequest
