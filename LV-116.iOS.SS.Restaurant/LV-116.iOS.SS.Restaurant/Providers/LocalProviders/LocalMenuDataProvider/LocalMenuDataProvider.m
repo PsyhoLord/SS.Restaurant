@@ -17,6 +17,17 @@
 static NSString *const kEntityMenuCategories = @"MenuCategories";
 static NSString *const kEntityMenuItems = @"MenuItems";
 
+static NSString *const kID      = @"id";
+static NSString *const kName        = @"name";
+static NSString *const kParentId    = @"parentId";
+static NSString *const kPortions    = @"portions";
+static NSString *const kPrice       = @"price";
+static NSString *const kCategoryId  = @"categoryId";
+static NSString *const kDescription = @"itemDescription";
+static NSString *const kCategories  = @"categories";
+static NSString *const kItems       = @"items";
+static NSString *const kIsActive    = @"isActive";
+
 @implementation LocalMenuDataProvider
 
 // store data to local data base
@@ -24,36 +35,63 @@ static NSString *const kEntityMenuItems = @"MenuItems";
 {
     dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async( concurrentQueue, ^{
-
+        
         [LocalMenuDataProvider storeRecursivelyElementsFromCategory: menuModel.rootMenuCategory];
         
         [LocalServiceAgent save: nil];
+        
     });
 }
 
 + (void) storeRecursivelyElementsFromCategory: (MenuCategoryModel*)category
 {
-    
+    [LocalMenuDataProvider storeWithMenuCategory: category];
+    if ( [category isCategories] ) {
+        for ( MenuCategoryModel *subCategory in category.categories ) {
+            [LocalMenuDataProvider storeRecursivelyElementsFromCategory: subCategory];
+        }
+    } else {
+        for ( MenuItemModel *subItem in category.items ) {
+            [LocalMenuDataProvider storeWithMenuItem: subItem];
+        }
+    }
 }
 
-//+ (NSManagedObject*) insertCategory: (MenuCategoryModel*)managedMenuCategory
-//                          forEntity: (NSString*)entity
-//             inManagedObjectContext: (NSManagedObjectContext*)managedObjectContext
-//{
-//    
-////    NSManagedObject *newTable = [NSEntityDescription insertNewObjectForEntityForName: entity
-////                                                              inManagedObjectContext: managedObjectContext];
-//}
-
-+ (void) storeItem:(NSManagedObject*)managedMenuItem
++ (void) storeWithMenuCategory: (MenuCategoryModel*)menuCategory
 {
-//    // Create a new managed object and insert it to local data base
-//    [LocalMenuDataProvider insertTable: managedMenuItem
-//                             forEntity: kEntityMenuCategories
-//                inManagedObjectContext: managedObjectContext];
+    NSLog(@"%@", menuCategory.name);
+    
+    NSManagedObject *managedCategory = [LocalServiceAgent insertNewObjectForEntityName: kEntityMenuCategories];
+    
+    // set data of category by using KVC
+    [managedCategory setValue: [NSNumber numberWithInt: menuCategory.Id ]
+                       forKey: kID];
+    [managedCategory setValue: [NSNumber numberWithInt: menuCategory.parentId ]
+                       forKey: kParentId];
+    [managedCategory setValue: menuCategory.name
+                       forKey: kName];
 }
 
-
++ (void) storeWithMenuItem: (MenuItemModel*)menuItem
+{
+    NSLog(@"%@", menuItem.name);
+    
+    NSManagedObject *managedItem = [LocalServiceAgent insertNewObjectForEntityName: kEntityMenuItems];
+    
+    // set data of item by using KVC
+    [managedItem setValue: [NSNumber numberWithInt: menuItem.Id ]
+                   forKey: kID];
+    [managedItem setValue: [NSNumber numberWithInt: menuItem.categoryId ]
+                   forKey: kCategoryId];
+    [managedItem setValue: [NSNumber numberWithInt: menuItem.portions ]
+                   forKey: kPortions];
+    [managedItem setValue: [NSNumber numberWithFloat: menuItem.price ]
+                   forKey: kPrice];
+    [managedItem setValue: menuItem.description
+                   forKey: kDescription];
+    [managedItem setValue: menuItem.name
+                   forKey: kName];
+}
 
 // delete all rows from entity map
 + (void) resetMenuData
@@ -64,7 +102,7 @@ static NSString *const kEntityMenuItems = @"MenuItems";
         [LocalMenuDataProvider resetMenuElementsForEntityName: kEntityMenuCategories];
         
         [LocalMenuDataProvider resetMenuElementsForEntityName: kEntityMenuItems];
-
+        
     });
 }
 
@@ -76,7 +114,13 @@ static NSString *const kEntityMenuItems = @"MenuItems";
 // load data from local data base
 + (void) loadMenuDataWithBlock: (void (^)(MenuModel*, NSError*))callback
 {
+    // tests ...
+    NSArray *categories = [LocalServiceAgent executeFetchRequestForEntity: kEntityMenuCategories
+                                                                    error: nil];
     
+    for ( id category in categories ) {
+        NSLog(@"%@", [category valueForKey: @"name"]);
+    }
 }
 
 // check is data in local data base

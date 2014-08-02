@@ -28,7 +28,7 @@
         <attribute name="price" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="MapModel" positionX="-63" positionY="-18" width="128" height="210"/>
+        <element name="MapModel" positionX="-63" positionY="-18" width="128" height="208"/>
         <element name="MenuCategories" positionX="-63" positionY="63" width="128" height="88"/>
         <element name="MenuItems" positionX="-54" positionY="72" width="128" height="148"/>
     </elements>
