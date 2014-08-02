@@ -77,10 +77,11 @@
 		EDC8D3D7198CD95200673F75 /* LocalDataValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC8D3D2198CD95200673F75 /* LocalDataValidator.m */; };
 		EDC8D3D8198CD95200673F75 /* LocalMapDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC8D3D5198CD95200673F75 /* LocalMapDataProvider.m */; };
 		EDC8D3DB198CD96A00673F75 /* LocalMenuDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC8D3DA198CD96A00673F75 /* LocalMenuDataProvider.m */; };
+		EDC8D3E1198CE7CD00673F75 /* RemoteServiceAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC8D3E0198CE7CD00673F75 /* RemoteServiceAgent.m */; };
+		EDC8D3E4198CE7EF00673F75 /* LocalServiceAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC8D3E3198CE7EF00673F75 /* LocalServiceAgent.m */; };
 		EDCE5C88196BE4C600496B34 /* role_client_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EDCE5C86196BE4C600496B34 /* role_client_icon.png */; };
 		EDCE5C89196BE4C600496B34 /* role_waiter_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EDCE5C87196BE4C600496B34 /* role_waiter_icon.png */; };
 		EDD611021971712600A70D4B /* WaiterMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD611011971712600A70D4B /* WaiterMenuViewController.m */; };
-		EDE50DF7193E110500ACA71D /* RemoteServiceAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE50DF6193E110500ACA71D /* RemoteServiceAgent.m */; };
 		EDEC47291956F9950041B98B /* MapModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEC47251956F9950041B98B /* MapModel.m */; };
 		EDEC472A1956F9950041B98B /* TableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEC47281956F9950041B98B /* TableModel.m */; };
 		EDEC47341956FACB0041B98B /* MenuCategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEC472E1956FACB0041B98B /* MenuCategoryModel.m */; };
@@ -228,12 +229,14 @@
 		EDC8D3D5198CD95200673F75 /* LocalMapDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalMapDataProvider.m; sourceTree = "<group>"; };
 		EDC8D3D9198CD96A00673F75 /* LocalMenuDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalMenuDataProvider.h; sourceTree = "<group>"; };
 		EDC8D3DA198CD96A00673F75 /* LocalMenuDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalMenuDataProvider.m; sourceTree = "<group>"; };
+		EDC8D3DF198CE7CD00673F75 /* RemoteServiceAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteServiceAgent.h; sourceTree = "<group>"; };
+		EDC8D3E0198CE7CD00673F75 /* RemoteServiceAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteServiceAgent.m; sourceTree = "<group>"; };
+		EDC8D3E2198CE7EF00673F75 /* LocalServiceAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalServiceAgent.h; sourceTree = "<group>"; };
+		EDC8D3E3198CE7EF00673F75 /* LocalServiceAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalServiceAgent.m; sourceTree = "<group>"; };
 		EDCE5C86196BE4C600496B34 /* role_client_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = role_client_icon.png; sourceTree = "<group>"; };
 		EDCE5C87196BE4C600496B34 /* role_waiter_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = role_waiter_icon.png; sourceTree = "<group>"; };
 		EDD611001971712600A70D4B /* WaiterMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaiterMenuViewController.h; sourceTree = "<group>"; };
 		EDD611011971712600A70D4B /* WaiterMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaiterMenuViewController.m; sourceTree = "<group>"; };
-		EDE50DF5193E110500ACA71D /* RemoteServiceAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RemoteServiceAgent.h; path = ServiceAgent/RemoteServiceAgent.h; sourceTree = "<group>"; };
-		EDE50DF6193E110500ACA71D /* RemoteServiceAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RemoteServiceAgent.m; path = ServiceAgent/RemoteServiceAgent.m; sourceTree = "<group>"; };
 		EDEC47241956F9950041B98B /* MapModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapModel.h; sourceTree = "<group>"; };
 		EDEC47251956F9950041B98B /* MapModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapModel.m; sourceTree = "<group>"; };
 		EDEC47271956F9950041B98B /* TableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableModel.h; sourceTree = "<group>"; };
@@ -836,6 +839,33 @@
 			path = LocalMenuDataProvider;
 			sourceTree = "<group>";
 		};
+		EDC8D3DC198CE7CD00673F75 /* ServiceAgents */ = {
+			isa = PBXGroup;
+			children = (
+				EDC8D3DD198CE7CD00673F75 /* LocalServiceAgent */,
+				EDC8D3DE198CE7CD00673F75 /* RemoteServiceAgent */,
+			);
+			path = ServiceAgents;
+			sourceTree = "<group>";
+		};
+		EDC8D3DD198CE7CD00673F75 /* LocalServiceAgent */ = {
+			isa = PBXGroup;
+			children = (
+				EDC8D3E2198CE7EF00673F75 /* LocalServiceAgent.h */,
+				EDC8D3E3198CE7EF00673F75 /* LocalServiceAgent.m */,
+			);
+			path = LocalServiceAgent;
+			sourceTree = "<group>";
+		};
+		EDC8D3DE198CE7CD00673F75 /* RemoteServiceAgent */ = {
+			isa = PBXGroup;
+			children = (
+				EDC8D3DF198CE7CD00673F75 /* RemoteServiceAgent.h */,
+				EDC8D3E0198CE7CD00673F75 /* RemoteServiceAgent.m */,
+			);
+			path = RemoteServiceAgent;
+			sourceTree = "<group>";
+		};
 		EDCE5C85196BE4C600496B34 /* RoleIcons */ = {
 			isa = PBXGroup;
 			children = (
@@ -852,15 +882,6 @@
 				EDD611011971712600A70D4B /* WaiterMenuViewController.m */,
 			);
 			path = WaiterMenuViewController;
-			sourceTree = "<group>";
-		};
-		EDE50DF4193E10DA00ACA71D /* ServiceAgent */ = {
-			isa = PBXGroup;
-			children = (
-				EDE50DF5193E110500ACA71D /* RemoteServiceAgent.h */,
-				EDE50DF6193E110500ACA71D /* RemoteServiceAgent.m */,
-			);
-			name = ServiceAgent;
 			sourceTree = "<group>";
 		};
 		EDE50DFB193E19EE00ACA71D /* Models */ = {
@@ -965,7 +986,7 @@
 				22346B55195F204E00495B2A /* Alerts */,
 				EDE50DFB193E19EE00ACA71D /* Models */,
 				2265A70219642B0A0059EC0E /* RequestManager */,
-				EDE50DF4193E10DA00ACA71D /* ServiceAgent */,
+				EDC8D3DC198CE7CD00673F75 /* ServiceAgents */,
 				22A366E8196F11BA002D27B7 /* Providers */,
 				22D09EE31976D35100FD94AA /* Reparser */,
 				22A366DA196F11A4002D27B7 /* Parsers */,
@@ -1169,7 +1190,6 @@
 				22A366E7196F11A4002D27B7 /* OrdersDataParser.m in Sources */,
 				5748E86A1976534900C6FA67 /* OrderItemsDataProvider.m in Sources */,
 				22A36702196F11BA002D27B7 /* AuthorizationProvider.m in Sources */,
-				EDE50DF7193E110500ACA71D /* RemoteServiceAgent.m in Sources */,
 				576B6F6E197171D000CEC6BF /* OrderTotallCell.m in Sources */,
 				EDEC47341956FACB0041B98B /* MenuCategoryModel.m in Sources */,
 				22A36706196F11BA002D27B7 /* RemoteAuthorizationProvider.m in Sources */,
@@ -1182,6 +1202,8 @@
 				2265A70519642B1B0059EC0E /* RequestManager.m in Sources */,
 				ED0787271972E68C0064C0E1 /* SidebarTableViewCell.m in Sources */,
 				ED7C320C19715B6C00C76047 /* MenuCategoryCell.m in Sources */,
+				EDC8D3E4198CE7EF00673F75 /* LocalServiceAgent.m in Sources */,
+				EDC8D3E1198CE7CD00673F75 /* RemoteServiceAgent.m in Sources */,
 				570ABE93196C3EEF003DC398 /* OrdersViewController.m in Sources */,
 				22A36709196F11BA002D27B7 /* RemoteOrdersDataProvider.m in Sources */,
 				ED42A3FB196C32FA00A63656 /* SWRevealViewController.m in Sources */,
