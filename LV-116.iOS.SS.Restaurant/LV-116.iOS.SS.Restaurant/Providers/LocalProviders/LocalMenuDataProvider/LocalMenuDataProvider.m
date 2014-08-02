@@ -46,14 +46,11 @@ static NSString *const kIsActive    = @"isActive";
 + (void) storeRecursivelyElementsFromCategory: (MenuCategoryModel*)category
 {
     [LocalMenuDataProvider storeWithMenuCategory: category];
-    if ( [category isCategories] ) {
-        for ( MenuCategoryModel *subCategory in category.categories ) {
-            [LocalMenuDataProvider storeRecursivelyElementsFromCategory: subCategory];
-        }
-    } else {
-        for ( MenuItemModel *subItem in category.items ) {
-            [LocalMenuDataProvider storeWithMenuItem: subItem];
-        }
+    for ( MenuCategoryModel *subCategory in category.categories ) {
+        [LocalMenuDataProvider storeRecursivelyElementsFromCategory: subCategory];
+    }
+    for ( MenuItemModel *subItem in category.items ) {
+        [LocalMenuDataProvider storeWithMenuItem: subItem];
     }
 }
 
