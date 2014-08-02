@@ -10,4 +10,19 @@
 
 @implementation LocalServiceAgent
 
++ (NSArray *)executeFetchRequest:(NSFetchRequest *)request error:(NSError **)error
+{
+    return nil;
+}
+
++ (NSUInteger) countForFetchRequest: (NSFetchRequest *)request error: (NSError **)error
+{
+    return 0;
+}
+
++ (BOOL)save:(NSError **)error
+{
+    return NO;
+}
+
 @end

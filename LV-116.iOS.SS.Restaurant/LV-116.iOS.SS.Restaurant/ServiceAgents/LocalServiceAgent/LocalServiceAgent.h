@@ -8,6 +8,10 @@
 
 @interface LocalServiceAgent : NSObject
 
++ (NSArray *)executeFetchRequest:(NSFetchRequest *)request error:(NSError **)error;
 
++ (NSUInteger) countForFetchRequest: (NSFetchRequest *)request error: (NSError **)error;
+
++ (BOOL)save:(NSError **)error;
 
 @end
