@@ -79,13 +79,8 @@ static NSString *const kTableY           = @"y";
     dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async( concurrentQueue, ^{
         NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
-        
-        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-        
-        NSEntityDescription *entity = [NSEntityDescription entityForName: kEntityMapModel
-                                                  inManagedObjectContext: managedObjectContext];
-        
-        [fetchRequest setEntity: entity];
+    
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName: kEntityMapModel];
         
         NSError *requestError;
         NSArray *managedTables = [self.managedObjectContext executeFetchRequest: fetchRequest
@@ -138,7 +133,6 @@ static NSString *const kTableY           = @"y";
                                    coordY: [[tableManagedObject valueForKey: kTableY]intValue]
             ];
 }
-
 
 + (BOOL) isData
 {

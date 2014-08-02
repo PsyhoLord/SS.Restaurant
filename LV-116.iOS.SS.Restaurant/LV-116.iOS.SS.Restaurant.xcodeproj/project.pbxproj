@@ -74,8 +74,9 @@
 		EDA13E2E196ADCC400CF579C /* menu_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA13E29196ADCC400CF579C /* menu_icon.png */; };
 		EDA4E34D196BD97F008E7CE2 /* home_page_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA4E34C196BD97F008E7CE2 /* home_page_icon.png */; };
 		EDC8D3C5198BD7BE00673F75 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDC8D3C4198BD7BE00673F75 /* EventKit.framework */; };
-		EDC8D3CB198BEBC500673F75 /* LocalMapDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC8D3CA198BEBC500673F75 /* LocalMapDataProvider.m */; };
-		EDC8D3CE198BEBF300673F75 /* LocalDataValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC8D3CD198BEBF300673F75 /* LocalDataValidator.m */; };
+		EDC8D3D7198CD95200673F75 /* LocalDataValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC8D3D2198CD95200673F75 /* LocalDataValidator.m */; };
+		EDC8D3D8198CD95200673F75 /* LocalMapDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC8D3D5198CD95200673F75 /* LocalMapDataProvider.m */; };
+		EDC8D3DB198CD96A00673F75 /* LocalMenuDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC8D3DA198CD96A00673F75 /* LocalMenuDataProvider.m */; };
 		EDCE5C88196BE4C600496B34 /* role_client_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EDCE5C86196BE4C600496B34 /* role_client_icon.png */; };
 		EDCE5C89196BE4C600496B34 /* role_waiter_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EDCE5C87196BE4C600496B34 /* role_waiter_icon.png */; };
 		EDD611021971712600A70D4B /* WaiterMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD611011971712600A70D4B /* WaiterMenuViewController.m */; };
@@ -221,10 +222,12 @@
 		EDA13E29196ADCC400CF579C /* menu_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_icon.png; sourceTree = "<group>"; };
 		EDA4E34C196BD97F008E7CE2 /* home_page_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_page_icon.png; sourceTree = "<group>"; };
 		EDC8D3C4198BD7BE00673F75 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
-		EDC8D3C9198BEBC500673F75 /* LocalMapDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalMapDataProvider.h; sourceTree = "<group>"; };
-		EDC8D3CA198BEBC500673F75 /* LocalMapDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalMapDataProvider.m; sourceTree = "<group>"; };
-		EDC8D3CC198BEBF300673F75 /* LocalDataValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalDataValidator.h; sourceTree = "<group>"; };
-		EDC8D3CD198BEBF300673F75 /* LocalDataValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalDataValidator.m; sourceTree = "<group>"; };
+		EDC8D3D1198CD95200673F75 /* LocalDataValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalDataValidator.h; sourceTree = "<group>"; };
+		EDC8D3D2198CD95200673F75 /* LocalDataValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalDataValidator.m; sourceTree = "<group>"; };
+		EDC8D3D4198CD95200673F75 /* LocalMapDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalMapDataProvider.h; sourceTree = "<group>"; };
+		EDC8D3D5198CD95200673F75 /* LocalMapDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalMapDataProvider.m; sourceTree = "<group>"; };
+		EDC8D3D9198CD96A00673F75 /* LocalMenuDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalMenuDataProvider.h; sourceTree = "<group>"; };
+		EDC8D3DA198CD96A00673F75 /* LocalMenuDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalMenuDataProvider.m; sourceTree = "<group>"; };
 		EDCE5C86196BE4C600496B34 /* role_client_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = role_client_icon.png; sourceTree = "<group>"; };
 		EDCE5C87196BE4C600496B34 /* role_waiter_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = role_waiter_icon.png; sourceTree = "<group>"; };
 		EDD611001971712600A70D4B /* WaiterMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaiterMenuViewController.h; sourceTree = "<group>"; };
@@ -415,7 +418,7 @@
 		22A366E8196F11BA002D27B7 /* Providers */ = {
 			isa = PBXGroup;
 			children = (
-				EDC8D3C6198BEBC500673F75 /* LocalProviders */,
+				EDC8D3CF198CD95200673F75 /* LocalProviders */,
 				22A366E9196F11BA002D27B7 /* AuthorizationProvider */,
 				22A366EC196F11BA002D27B7 /* MapDataProvider */,
 				22A366EF196F11BA002D27B7 /* MenuDataProvider */,
@@ -797,31 +800,41 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		EDC8D3C6198BEBC500673F75 /* LocalProviders */ = {
+		EDC8D3CF198CD95200673F75 /* LocalProviders */ = {
 			isa = PBXGroup;
 			children = (
-				EDC8D3C7198BEBC500673F75 /* LocalDataValidator */,
-				EDC8D3C8198BEBC500673F75 /* LocalMapProvider */,
+				EDC8D3D0198CD95200673F75 /* LocalDataValidator */,
+				EDC8D3D3198CD95200673F75 /* LocalMapDataProvider */,
+				EDC8D3D6198CD95200673F75 /* LocalMenuDataProvider */,
 			);
 			path = LocalProviders;
 			sourceTree = "<group>";
 		};
-		EDC8D3C7198BEBC500673F75 /* LocalDataValidator */ = {
+		EDC8D3D0198CD95200673F75 /* LocalDataValidator */ = {
 			isa = PBXGroup;
 			children = (
-				EDC8D3CC198BEBF300673F75 /* LocalDataValidator.h */,
-				EDC8D3CD198BEBF300673F75 /* LocalDataValidator.m */,
+				EDC8D3D1198CD95200673F75 /* LocalDataValidator.h */,
+				EDC8D3D2198CD95200673F75 /* LocalDataValidator.m */,
 			);
 			path = LocalDataValidator;
 			sourceTree = "<group>";
 		};
-		EDC8D3C8198BEBC500673F75 /* LocalMapProvider */ = {
+		EDC8D3D3198CD95200673F75 /* LocalMapDataProvider */ = {
 			isa = PBXGroup;
 			children = (
-				EDC8D3C9198BEBC500673F75 /* LocalMapDataProvider.h */,
-				EDC8D3CA198BEBC500673F75 /* LocalMapDataProvider.m */,
+				EDC8D3D4198CD95200673F75 /* LocalMapDataProvider.h */,
+				EDC8D3D5198CD95200673F75 /* LocalMapDataProvider.m */,
 			);
-			path = LocalMapProvider;
+			path = LocalMapDataProvider;
+			sourceTree = "<group>";
+		};
+		EDC8D3D6198CD95200673F75 /* LocalMenuDataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				EDC8D3D9198CD96A00673F75 /* LocalMenuDataProvider.h */,
+				EDC8D3DA198CD96A00673F75 /* LocalMenuDataProvider.m */,
+			);
+			path = LocalMenuDataProvider;
 			sourceTree = "<group>";
 		};
 		EDCE5C85196BE4C600496B34 /* RoleIcons */ = {
@@ -1146,12 +1159,13 @@
 				ED0787291972E68C0064C0E1 /* SidebarViewController.m in Sources */,
 				22A366E6196F11A4002D27B7 /* MenuDataParser.m in Sources */,
 				227AE92C1980EDA500BCE3A8 /* UIViewController+BackgroundImage.m in Sources */,
+				EDC8D3D7198CD95200673F75 /* LocalDataValidator.m in Sources */,
 				22A36703196F11BA002D27B7 /* MapDataProvider.m in Sources */,
+				EDC8D3D8198CD95200673F75 /* LocalMapDataProvider.m in Sources */,
 				5748E87E197674F900C6FA67 /* RemoteOrderProvider.m in Sources */,
 				ED7C320D19715B6C00C76047 /* MenuItemCell.m in Sources */,
 				22A36705196F11BA002D27B7 /* OrdersDataProvider.m in Sources */,
 				FA336C2D19335B950007CC76 /* AppDelegate.m in Sources */,
-				EDC8D3CE198BEBF300673F75 /* LocalDataValidator.m in Sources */,
 				EDEC47291956F9950041B98B /* MapModel.m in Sources */,
 				576B6F6D197171D000CEC6BF /* OrderItemsViewController.m in Sources */,
 				22A366E7196F11A4002D27B7 /* OrdersDataParser.m in Sources */,
@@ -1180,10 +1194,10 @@
 				EDEC47351956FACB0041B98B /* MenuItemModel.m in Sources */,
 				22A36704196F11BA002D27B7 /* MenuDataProvider.m in Sources */,
 				22C1556E197D6FD100C6AB31 /* RequestMaker.m in Sources */,
-				EDC8D3CB198BEBC500673F75 /* LocalMapDataProvider.m in Sources */,
 				22A366D9196F10D2002D27B7 /* TableModelWithOrders.m in Sources */,
 				22DAB3C9197BE970001F0F8A /* LocationViewController.m in Sources */,
 				22D09EE61976D35100FD94AA /* ParserToJSON.m in Sources */,
+				EDC8D3DB198CD96A00673F75 /* LocalMenuDataProvider.m in Sources */,
 				22C15579197D7AE700C6AB31 /* AuthorizationDataParser.m in Sources */,
 				EDD611021971712600A70D4B /* WaiterMenuViewController.m in Sources */,
 				226FFA8A198BB64B00C5A065 /* LocalDataBase.xcdatamodeld in Sources */,
