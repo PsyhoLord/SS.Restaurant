@@ -80,7 +80,7 @@
 		EDCE5C88196BE4C600496B34 /* role_client_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EDCE5C86196BE4C600496B34 /* role_client_icon.png */; };
 		EDCE5C89196BE4C600496B34 /* role_waiter_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EDCE5C87196BE4C600496B34 /* role_waiter_icon.png */; };
 		EDD611021971712600A70D4B /* WaiterMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD611011971712600A70D4B /* WaiterMenuViewController.m */; };
-		EDE50DF7193E110500ACA71D /* ServiceAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE50DF6193E110500ACA71D /* ServiceAgent.m */; };
+		EDE50DF7193E110500ACA71D /* RemoteServiceAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE50DF6193E110500ACA71D /* RemoteServiceAgent.m */; };
 		EDEC47291956F9950041B98B /* MapModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEC47251956F9950041B98B /* MapModel.m */; };
 		EDEC472A1956F9950041B98B /* TableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEC47281956F9950041B98B /* TableModel.m */; };
 		EDEC47341956FACB0041B98B /* MenuCategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEC472E1956FACB0041B98B /* MenuCategoryModel.m */; };
@@ -232,9 +232,8 @@
 		EDCE5C87196BE4C600496B34 /* role_waiter_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = role_waiter_icon.png; sourceTree = "<group>"; };
 		EDD611001971712600A70D4B /* WaiterMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaiterMenuViewController.h; sourceTree = "<group>"; };
 		EDD611011971712600A70D4B /* WaiterMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaiterMenuViewController.m; sourceTree = "<group>"; };
-		EDE50DF3193E10D400ACA71D /* PServiceAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PServiceAgent.h; path = ServiceAgent/PServiceAgent.h; sourceTree = "<group>"; };
-		EDE50DF5193E110500ACA71D /* ServiceAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceAgent.h; path = ServiceAgent/ServiceAgent.h; sourceTree = "<group>"; };
-		EDE50DF6193E110500ACA71D /* ServiceAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceAgent.m; path = ServiceAgent/ServiceAgent.m; sourceTree = "<group>"; };
+		EDE50DF5193E110500ACA71D /* RemoteServiceAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RemoteServiceAgent.h; path = ServiceAgent/RemoteServiceAgent.h; sourceTree = "<group>"; };
+		EDE50DF6193E110500ACA71D /* RemoteServiceAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RemoteServiceAgent.m; path = ServiceAgent/RemoteServiceAgent.m; sourceTree = "<group>"; };
 		EDEC47241956F9950041B98B /* MapModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapModel.h; sourceTree = "<group>"; };
 		EDEC47251956F9950041B98B /* MapModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapModel.m; sourceTree = "<group>"; };
 		EDEC47271956F9950041B98B /* TableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableModel.h; sourceTree = "<group>"; };
@@ -858,9 +857,8 @@
 		EDE50DF4193E10DA00ACA71D /* ServiceAgent */ = {
 			isa = PBXGroup;
 			children = (
-				EDE50DF3193E10D400ACA71D /* PServiceAgent.h */,
-				EDE50DF5193E110500ACA71D /* ServiceAgent.h */,
-				EDE50DF6193E110500ACA71D /* ServiceAgent.m */,
+				EDE50DF5193E110500ACA71D /* RemoteServiceAgent.h */,
+				EDE50DF6193E110500ACA71D /* RemoteServiceAgent.m */,
 			);
 			name = ServiceAgent;
 			sourceTree = "<group>";
@@ -1171,7 +1169,7 @@
 				22A366E7196F11A4002D27B7 /* OrdersDataParser.m in Sources */,
 				5748E86A1976534900C6FA67 /* OrderItemsDataProvider.m in Sources */,
 				22A36702196F11BA002D27B7 /* AuthorizationProvider.m in Sources */,
-				EDE50DF7193E110500ACA71D /* ServiceAgent.m in Sources */,
+				EDE50DF7193E110500ACA71D /* RemoteServiceAgent.m in Sources */,
 				576B6F6E197171D000CEC6BF /* OrderTotallCell.m in Sources */,
 				EDEC47341956FACB0041B98B /* MenuCategoryModel.m in Sources */,
 				22A36706196F11BA002D27B7 /* RemoteAuthorizationProvider.m in Sources */,

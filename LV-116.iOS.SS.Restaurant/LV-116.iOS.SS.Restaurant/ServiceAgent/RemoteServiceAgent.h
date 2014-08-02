@@ -1,12 +1,14 @@
 //
-//  PDataManager.h
-//  Test_5
+//  ServiceAgent.h
+//  LV-116.iOS.SS.Restaurant
 //
-//  Created by Administrator on 5/30/14.
-//  Copyright (c) 2014 BTS. All rights reserved.
+//  Created by Roman Sorochak on 6/3/14.
+//  Copyright (c) 2014 SortServe. All rights reserved.
 //
 
-@protocol PServiceAgent <NSObject>
+// class ServiceAgent sends request and get response from server
+
+@interface RemoteServiceAgent : NSObject
 
 // send request to server and call block when response comes
 // (NSURLRequest *)request - request

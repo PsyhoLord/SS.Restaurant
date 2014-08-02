@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 BTS. All rights reserved.
 //
 
-#import "ServiceAgent.h"
+#import "RemoteServiceAgent.h"
 
-@implementation ServiceAgent
+@implementation RemoteServiceAgent
 
 // send request to server and call block when response comes
 // (NSURLRequest *)request - request

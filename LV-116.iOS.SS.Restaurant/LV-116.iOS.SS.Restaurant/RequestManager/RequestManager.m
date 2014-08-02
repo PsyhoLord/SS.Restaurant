@@ -7,7 +7,7 @@
 //
 
 #import "RequestManager.h"
-#import "ServiceAgent.h"
+#import "RemoteServiceAgent.h"
 
 
 static NSUInteger kMaxAttemptsForRequest = 3;
@@ -21,7 +21,7 @@ static NSUInteger kMaxAttemptsForRequest = 3;
 + (void) send: (NSURLRequest *)urlRequest responseBlock: (void (^)(NSHTTPURLResponse*, NSData*, NSError*))callback
 {
     --kMaxAttemptsForRequest;
-    [ServiceAgent send: urlRequest responseBlock: ^(NSHTTPURLResponse *urlResponse, NSData *data, NSError *error) {
+    [RemoteServiceAgent send: urlRequest responseBlock: ^(NSHTTPURLResponse *urlResponse, NSData *data, NSError *error) {
         
         if ( error && kMaxAttemptsForRequest ) {
             [RequestManager send: urlRequest responseBlock: callback];
