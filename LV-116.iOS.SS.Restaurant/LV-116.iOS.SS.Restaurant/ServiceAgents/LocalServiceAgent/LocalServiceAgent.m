@@ -10,19 +10,70 @@
 
 @implementation LocalServiceAgent
 
-+ (NSArray *)executeFetchRequest:(NSFetchRequest *)request error:(NSError **)error
++ (NSArray *) executeFetchRequestForEntity: (NSString *)entityName error: (NSError **)error;
 {
-    return nil;
+    NSFetchRequest *request = [LocalServiceAgent fetchRequestWithEntity: entityName];
+    
+    return [[LocalServiceAgent managedObjectContext] executeFetchRequest: request
+                                                                   error: error];
 }
 
-+ (NSUInteger) countForFetchRequest: (NSFetchRequest *)request error: (NSError **)error
++ (NSUInteger) countForFetchRequestForEntity: (NSString *)entityName error: (NSError **)error;
 {
-    return 0;
+    NSFetchRequest *request = [LocalServiceAgent fetchRequestWithEntity: entityName];
+    
+    return [[LocalServiceAgent managedObjectContext] countForFetchRequest: request
+                                                                    error: error];
 }
 
-+ (BOOL)save:(NSError **)error
++ (id) insertNewObjectForEntityName: (NSString *)entityName
 {
-    return NO;
+    NSManagedObjectContext *managedObjectContext = [LocalServiceAgent managedObjectContext];
+    
+    return [NSEntityDescription insertNewObjectForEntityForName: entityName
+                                         inManagedObjectContext: managedObjectContext];
+}
+
++ (BOOL) save: (NSError**)error
+{
+    return [[LocalServiceAgent managedObjectContext] save: error];
+}
+
++ (void) deleteDataFromEntity: (NSString*)entityName;
+{
+    NSManagedObjectContext *managedObjectContext = [LocalServiceAgent managedObjectContext];
+    
+    NSArray *managedObjects = [LocalServiceAgent executeFetchRequestForEntity:entityName
+                                                                        error: nil];
+    
+    for ( NSManagedObject *managedObject in managedObjects ) {
+        [managedObjectContext deleteObject: managedObject];
+    }
+    
+    [LocalServiceAgent save: nil];
+}
+
++ (BOOL) isDataInEntity: (NSString*)entityName
+{
+    NSUInteger count = [LocalServiceAgent countForFetchRequestForEntity: entityName
+                                                                  error: nil];
+    
+    return (count > 0);
+}
+
++ (NSFetchRequest*) fetchRequestWithEntity: (NSString*)entityName
+{
+    return [[NSFetchRequest alloc] initWithEntityName: entityName];
+}
+
++ (NSManagedObjectContext*) managedObjectContext
+{
+    NSManagedObjectContext *context;
+    id delegate = [[UIApplication sharedApplication] delegate];
+    if ([delegate performSelector:@selector(managedObjectContext)]) {
+        context = [delegate managedObjectContext];
+    }
+    return context;
 }
 
 @end

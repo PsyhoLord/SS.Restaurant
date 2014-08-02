@@ -8,10 +8,16 @@
 
 @interface LocalServiceAgent : NSObject
 
-+ (NSArray *)executeFetchRequest:(NSFetchRequest *)request error:(NSError **)error;
++ (NSArray *) executeFetchRequestForEntity: (NSString *)entityName error: (NSError **)error;
 
-+ (NSUInteger) countForFetchRequest: (NSFetchRequest *)request error: (NSError **)error;
++ (NSUInteger) countForFetchRequestForEntity: (NSString *)entityName error: (NSError **)error;
 
-+ (BOOL)save:(NSError **)error;
++ (id) insertNewObjectForEntityName: (NSString *)entityName;
+
++ (BOOL) save: (NSError **)error;
+
++ (void) deleteDataFromEntity: (NSString*)entityName;
+
++ (BOOL) isDataInEntity: (NSString*)entityName;
 
 @end

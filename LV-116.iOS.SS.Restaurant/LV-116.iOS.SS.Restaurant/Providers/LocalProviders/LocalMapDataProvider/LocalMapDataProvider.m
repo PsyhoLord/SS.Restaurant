@@ -10,6 +10,8 @@
 #import "MapModel.h"
 #import "TableModel.h"
 
+#import "LocalServiceAgent.h"
+
 static NSString *const kEntityMapModel = @"MapModel";
 
 static NSString *const kTableID          = @"id";
@@ -27,87 +29,67 @@ static NSString *const kTableY           = @"y";
 @implementation LocalMapDataProvider
 
 // store data to local data base
-+ (void) storeMapData: (MapModel*) mapModel
++ (void) storeMapData: (MapModel*)mapModel
 {
     dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async( concurrentQueue, ^{
-        NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
         
         for ( TableModel *tableModel in mapModel.tables ) {
-            // Create a new managed object and insert it to local data base
-            [LocalMapDataProvider insertTable: tableModel
-                                    forEntity: kEntityMapModel
-                       inManagedObjectContext: managedObjectContext];
+            
+            NSManagedObject *managedTable = [LocalServiceAgent insertNewObjectForEntityName: kEntityMapModel];
+            
+            [LocalMapDataProvider setTableData: tableModel
+                              forManagedObject: managedTable];
         }
-        [managedObjectContext save: nil];
+        
+        [LocalServiceAgent save: nil];
     });
 }
 
-+ (NSManagedObject*) insertTable:(TableModel*)tableModel forEntity:(NSString*)entity inManagedObjectContext:(NSManagedObjectContext*)managedObjectContext
+//+ (NSManagedObject*) insertTable:(TableModel*)tableModel forEntity:(NSString*)entity
++ (void) setTableData: (TableModel*)tableModel forManagedObject: (NSManagedObject*)managedTable
 {
-    NSManagedObject *newTable = [NSEntityDescription insertNewObjectForEntityForName: entity
-                                                              inManagedObjectContext: managedObjectContext];
-    
-    [newTable setValue: [NSNumber numberWithInt: tableModel.Id]
-                forKey: kTableID];
-    [newTable setValue: [NSNumber numberWithInt: tableModel.capacity]
-                forKey: kTableCapacity];
-    [newTable setValue: [NSNumber numberWithInt: tableModel.height]
-                forKey: kTableHeight];
-    [newTable setValue: [NSNumber numberWithBool: tableModel.isActive]
-                forKey: kTableisActive];
-    [newTable setValue: [NSNumber numberWithBool: tableModel.isFree]
-                forKey: kTableIsFree];
-    [newTable setValue: [NSNumber numberWithBool: tableModel.isRound]
-                forKey: kTableIsRound];
-    [newTable setValue: tableModel.name
-                forKey: kTableName];
-    [newTable setValue: [NSNumber numberWithInt: tableModel.rotation]
-                forKey: kTableRotation];
-    [newTable setValue: [NSNumber numberWithInt: tableModel.width]
-                forKey: kTablewWidth];
-    [newTable setValue: [NSNumber numberWithInt: tableModel.X]
-                forKey: kTableX];
-    [newTable setValue: [NSNumber numberWithInt: tableModel.Y]
-                forKey: kTableY];
-    
-    return newTable;
+    [managedTable setValue: [NSNumber numberWithInt: tableModel.Id]
+                    forKey: kTableID];
+    [managedTable setValue: [NSNumber numberWithInt: tableModel.capacity]
+                    forKey: kTableCapacity];
+    [managedTable setValue: [NSNumber numberWithInt: tableModel.height]
+                    forKey: kTableHeight];
+    [managedTable setValue: [NSNumber numberWithBool: tableModel.isActive]
+                    forKey: kTableisActive];
+    [managedTable setValue: [NSNumber numberWithBool: tableModel.isFree]
+                    forKey: kTableIsFree];
+    [managedTable setValue: [NSNumber numberWithBool: tableModel.isRound]
+                    forKey: kTableIsRound];
+    [managedTable setValue: tableModel.name
+                    forKey: kTableName];
+    [managedTable setValue: [NSNumber numberWithInt: tableModel.rotation]
+                    forKey: kTableRotation];
+    [managedTable setValue: [NSNumber numberWithInt: tableModel.width]
+                    forKey: kTablewWidth];
+    [managedTable setValue: [NSNumber numberWithInt: tableModel.X]
+                    forKey: kTableX];
+    [managedTable setValue: [NSNumber numberWithInt: tableModel.Y]
+                    forKey: kTableY];
 }
 
 + (void) resetMapData
 {
     dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async( concurrentQueue, ^{
-        NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
-    
-        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName: kEntityMapModel];
-        
-        NSError *requestError;
-        NSArray *managedTables = [self.managedObjectContext executeFetchRequest: fetchRequest
-                                                                          error: &requestError];
-        
-        for ( NSManagedObject *managedTable in managedTables ) {
-            [managedObjectContext deleteObject: managedTable];
-        }
-        
-        [managedObjectContext save: nil];
+        [LocalServiceAgent deleteDataFromEntity: kEntityMapModel];
     });
 }
 
 // load data from local data base
-+ (void) loadMapDataWithBlock: (void (^)(MapModel*, NSError*))callback {
-    
-    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
-    
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName: kEntityMapModel];
-    
++ (void) loadMapDataWithBlock: (void (^)(MapModel*, NSError*))callback
+{
     NSError *error;
-    
-    NSArray *managedTables = [managedObjectContext executeFetchRequest: fetchRequest
-                                                                 error: &error];
+    NSArray *managedTables = [LocalServiceAgent executeFetchRequestForEntity: kEntityMapModel
+                                                                       error: &error];
     MapModel *mapModel;
     if ( error == nil ) {
-        mapModel = [[MapModel alloc] init];
+        mapModel = [MapModel new];
         
         for ( NSManagedObject *managedTable in managedTables ) {
             TableModel *tableModel = [LocalMapDataProvider createNewTable: managedTable];
@@ -136,25 +118,10 @@ static NSString *const kTableY           = @"y";
 
 + (BOOL) isData
 {
-    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName: kEntityMapModel];
-    
-    NSError *error;
-    NSUInteger count = [managedObjectContext countForFetchRequest: fetchRequest
-                                                            error: &error];
-    
-    return (count > 0);
+    return [LocalServiceAgent isDataInEntity: kEntityMapModel];
 }
 
-+ (NSManagedObjectContext *)managedObjectContext
-{
-    NSManagedObjectContext *context;
-    id delegate = [[UIApplication sharedApplication] delegate];
-    if ([delegate performSelector:@selector(managedObjectContext)]) {
-        context = [delegate managedObjectContext];
-    }
-    return context;
-}
+
 
 
 @end

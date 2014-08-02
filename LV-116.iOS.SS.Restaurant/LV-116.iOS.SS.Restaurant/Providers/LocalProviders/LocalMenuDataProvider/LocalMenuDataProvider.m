@@ -8,6 +8,8 @@
 
 #import "LocalMenuDataProvider.h"
 
+#import "LocalServiceAgent.h"
+
 #import "MenuModel.h"
 #import "MenuCategoryModel.h"
 #import "MenuItemModel.h"
@@ -22,15 +24,14 @@ static NSString *const kEntityMenuItems = @"MenuItems";
 {
     dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async( concurrentQueue, ^{
-        NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+
+        [LocalMenuDataProvider storeRecursivelyElementsFromCategory: menuModel.rootMenuCategory];
         
-        [LocalMenuDataProvider storeElementRecursively: menuModel.rootMenuCategory];
-        
-        [managedObjectContext save: nil];
+        [LocalServiceAgent save: nil];
     });
 }
 
-+ (void) storeElementRecursively:(MenuCategoryModel*)category
++ (void) storeRecursivelyElementsFromCategory: (MenuCategoryModel*)category
 {
     
 }
@@ -57,7 +58,19 @@ static NSString *const kEntityMenuItems = @"MenuItems";
 // delete all rows from entity map
 + (void) resetMenuData
 {
-    
+    dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async( concurrentQueue, ^{
+        
+        [LocalMenuDataProvider resetMenuElementsForEntityName: kEntityMenuCategories];
+        
+        [LocalMenuDataProvider resetMenuElementsForEntityName: kEntityMenuItems];
+
+    });
+}
+
++ (void) resetMenuElementsForEntityName: (NSString*)entityName
+{
+    [LocalServiceAgent deleteDataFromEntity: entityName];
 }
 
 // load data from local data base
@@ -69,17 +82,8 @@ static NSString *const kEntityMenuItems = @"MenuItems";
 // check is data in local data base
 + (BOOL) isData
 {
-    return NO;
-}
-
-+ (NSManagedObjectContext *)managedObjectContext
-{
-    NSManagedObjectContext *context;
-    id delegate = [[UIApplication sharedApplication] delegate];
-    if ([delegate performSelector:@selector(managedObjectContext)]) {
-        context = [delegate managedObjectContext];
-    }
-    return context;
+    return ( [LocalServiceAgent isDataInEntity: kEntityMenuCategories]
+            && [LocalServiceAgent isDataInEntity:kEntityMenuItems] );
 }
 
 @end
