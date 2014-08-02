@@ -48,30 +48,23 @@ static NSString *const kIsActive    = @"IsActive";
 // and add it
 + (void)parseMenuDictionary:(NSMutableDictionary*)menuCategoriesDictionary toMenuModel:(MenuModel*)menuModel withTopMenuCategoryModel:(MenuCategoryModel*)topMenuCategoryModel
 {
-    if ( [menuCategoriesDictionary count] == 0 ) {
-        return;
-    }
-    
     for ( NSMutableDictionary *menuCategoryDictionary in menuCategoriesDictionary ) {
         
-        MenuCategoryModel *menuCategoryModel = [MenuDataParser createMenuCategoryModel:menuCategoryDictionary];
+        MenuCategoryModel *menuCategoryModel = [MenuDataParser createMenuCategoryModel: menuCategoryDictionary];
         [menuModel addNode: menuCategoryModel toCategory: topMenuCategoryModel];
         
-        if ( [[menuCategoryDictionary objectForKey:kCategories] count] != 0 ) {
-            // recursivly calling parseMenuDictionary
-            [MenuDataParser parseMenuDictionary: [menuCategoryDictionary objectForKey:kCategories]
-                                    toMenuModel: menuModel
-                       withTopMenuCategoryModel: menuCategoryModel];
-        } else {
-            if ( [[menuCategoryDictionary objectForKey:kItems] count] != 0 ) {
-                for ( NSMutableDictionary *menuItemDictionary in [menuCategoryDictionary objectForKey: kItems] ) {
-                    
-                    MenuItemModel *menuItemModel = [self createMenuItemModel: menuItemDictionary];
-                    [menuModel addNode: menuItemModel toCategory: menuCategoryModel];
-                    
-                }
-            }
+        // recursivly calling parseMenuDictionary
+        [MenuDataParser parseMenuDictionary: [menuCategoryDictionary objectForKey: kCategories]
+                                toMenuModel: menuModel
+                   withTopMenuCategoryModel: menuCategoryModel];
+        
+        for ( NSMutableDictionary *menuItemDictionary in [menuCategoryDictionary objectForKey: kItems] ) {
+            
+            MenuItemModel *menuItemModel = [self createMenuItemModel: menuItemDictionary];
+            [menuModel addNode: menuItemModel toCategory: menuCategoryModel];
+            
         }
+        
     }
 }
 
