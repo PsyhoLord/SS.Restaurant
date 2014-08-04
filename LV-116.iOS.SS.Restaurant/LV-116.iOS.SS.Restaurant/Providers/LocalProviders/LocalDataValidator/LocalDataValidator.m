@@ -8,7 +8,7 @@
 
 #import "LocalDataValidator.h"
 
-static EnumDays kDayForUpdateData = Monday;
+static EnumDays kDayForUpdateData = Tuesady;
 
 @implementation LocalDataValidator
 

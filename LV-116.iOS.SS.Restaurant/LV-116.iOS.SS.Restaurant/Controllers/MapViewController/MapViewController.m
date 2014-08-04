@@ -66,8 +66,8 @@
     [MapDataProvider loadMapDataWithBlock:^(MapModel *mapModel, NSError *error) {
         
         if ( error ) {
-                [Alert showConnectionAlert];
-                [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+            [Alert showConnectionAlert];
+            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         } else {
             
             _mapModel = mapModel;
@@ -75,15 +75,16 @@
             [MapDataProvider loadMapBackgroundImageWithBlock:^(UIImage *mapBackgroundImage, NSError *error) {
                 
                 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-                    if ( error ) {
-                        [Alert showConnectionAlert];
-                    } else {
-                        _mapModel.image = mapBackgroundImage;
-                        
-                        // drawing map performs on main thread
-                        [self drawMap];
-                    }
+                if ( error ) {
+                    [Alert showConnectionAlert];
+                } else {
+                    _mapModel.image = mapBackgroundImage;
+                    
+                    // drawing map performs on main thread
+                    [self drawMap];
+                }
             }];
+            [self drawMap];
         }
     }];
     

@@ -22,4 +22,7 @@
 // needs for DataParser
 - (void)addNode:(id)node toCategory:(MenuCategoryModel*)nodeFather;
 
+// add categories or items to fatherCategory
+- (void) addArrayOfNodes: (NSArray*)nodes toFatherCategory: (MenuCategoryModel*)fatherCategory;
+
 @end

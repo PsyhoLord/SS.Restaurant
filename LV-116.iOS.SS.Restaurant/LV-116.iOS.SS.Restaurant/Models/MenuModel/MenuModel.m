@@ -44,4 +44,19 @@
     }
 }
 
+- (void) addArrayOfNodes: (NSArray*)nodes toFatherCategory: (MenuCategoryModel*)fatherCategory
+{
+    if ( [nodes count] != 0  ) {
+        if ( fatherCategory ) {
+            if ( [nodes[0] isKindOfClass:([MenuCategoryModel class])] ) {
+                fatherCategory.categories = [NSMutableArray arrayWithArray: nodes];
+            } else if ( [nodes[0] isKindOfClass:([MenuItemModel class])] ) {
+                fatherCategory.items = [NSMutableArray arrayWithArray: nodes];
+            }
+        } else {
+            _rootMenuCategory = nodes[0];
+        }
+    }
+}
+
 @end

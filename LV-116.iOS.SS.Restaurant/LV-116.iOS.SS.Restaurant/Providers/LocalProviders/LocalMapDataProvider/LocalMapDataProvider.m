@@ -32,7 +32,7 @@ static NSString *const kTableY           = @"y";
 + (void) storeMapData: (MapModel*)mapModel
 {
     dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async( concurrentQueue, ^{
+    dispatch_sync( concurrentQueue, ^{
         
         for ( TableModel *tableModel in mapModel.tables ) {
             
@@ -76,7 +76,7 @@ static NSString *const kTableY           = @"y";
 + (void) resetMapData
 {
     dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async( concurrentQueue, ^{
+    dispatch_sync( concurrentQueue, ^{
         [LocalServiceAgent deleteDataFromEntity: kEntityMapModel];
     });
 }

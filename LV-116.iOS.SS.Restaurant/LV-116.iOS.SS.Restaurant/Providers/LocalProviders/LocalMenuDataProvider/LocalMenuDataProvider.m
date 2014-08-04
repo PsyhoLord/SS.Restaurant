@@ -17,7 +17,7 @@
 static NSString *const kEntityMenuCategories = @"MenuCategories";
 static NSString *const kEntityMenuItems = @"MenuItems";
 
-static NSString *const kID      = @"id";
+static NSString *const kID          = @"id";
 static NSString *const kName        = @"name";
 static NSString *const kParentId    = @"parentId";
 static NSString *const kPortions    = @"portions";
@@ -34,7 +34,7 @@ static NSString *const kIsActive    = @"isActive";
 + (void) storeMenuData:(MenuModel*) menuModel
 {
     dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async( concurrentQueue, ^{
+    dispatch_sync( concurrentQueue, ^{
         
         [LocalMenuDataProvider storeRecursivelyElementsFromCategory: menuModel.rootMenuCategory];
         
@@ -94,7 +94,7 @@ static NSString *const kIsActive    = @"isActive";
 + (void) resetMenuData
 {
     dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async( concurrentQueue, ^{
+    dispatch_sync( concurrentQueue, ^{
         
         [LocalMenuDataProvider resetMenuElementsForEntityName: kEntityMenuCategories];
         
@@ -111,13 +111,144 @@ static NSString *const kIsActive    = @"isActive";
 // load data from local data base
 + (void) loadMenuDataWithBlock: (void (^)(MenuModel*, NSError*))callback
 {
-    // tests ...
-    NSArray *categories = [LocalServiceAgent executeFetchRequestForEntity: kEntityMenuCategories
-                                                                    error: nil];
+    dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async( concurrentQueue, ^{
+        
+        MenuModel *menuModel = [LocalMenuDataProvider menuModelWithEntityCategories: kEntityMenuCategories
+                                                                     andEntityItems: kEntityMenuItems];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            callback(menuModel, nil);
+        });
+    });
+}
+
+
+#pragma mark - creation of menu model
+
+// create menu model with data from local data base
++ (MenuModel*) menuModelWithEntityCategories: (NSString*)entityCategories andEntityItems: (NSString*)entityItems
+{
+    MenuModel *menuModel = [MenuModel new];
     
-    for ( id category in categories ) {
-        NSLog(@"%@", [category valueForKey: @"name"]);
+    // get data from local data base
+    NSArray *managedCategories = [LocalServiceAgent executeFetchRequestForEntity: entityCategories
+                                                                           error: nil];
+    NSArray *managedItems = [LocalServiceAgent executeFetchRequestForEntity: entityItems
+                                                                      error: nil];
+    
+    // get array of MenuCategoryModel and MenuItemModel using arrays of NSManagedObject
+    NSArray *categories = [LocalMenuDataProvider getCategoriesFromManagedCategories: managedCategories];
+    NSArray *items = [LocalMenuDataProvider getItemsFromManagedItems: managedItems];
+    
+    // create menu model with categories and items
+    [LocalMenuDataProvider addElementsFromCategories: categories
+                                               items: items
+                                         toMenuModel: menuModel
+                                  withFatherCategory: nil];
+    
+    
+    return menuModel;
+}
+
+// creates array of MenuCategoryModel with array of managedObject from data base
++ (NSMutableArray*) getCategoriesFromManagedCategories: (NSArray*)managedCategories
+{
+    NSMutableArray *categories = [NSMutableArray new];
+    
+    for ( NSManagedObject *managedCategory in managedCategories ) {
+        MenuCategoryModel *category = [[MenuCategoryModel alloc] initWithId: [[managedCategory valueForKey: kID] intValue]
+                                                                       name: [managedCategory valueForKey: kName]
+                                                                   parentId: [[managedCategory valueForKey: kParentId] intValue]
+                                       ];
+        
+        [categories addObject: category];
     }
+    
+    return categories;
+}
+
+// creates array of MenuCategoryModel with array of managedObject from data base
++ (NSMutableArray*) getItemsFromManagedItems: (NSArray*)managedItems
+{
+    NSMutableArray *items = [NSMutableArray new];
+    
+    for ( NSManagedObject *managedItem in managedItems ) {
+        MenuItemModel *item = [[MenuItemModel alloc] initWithId: [[managedItem valueForKey: kID] intValue]
+                                                     categoryId: [[managedItem valueForKey: kCategoryId] intValue]
+                                                    description: [managedItem valueForKey: kDescription]
+                                                           name: [managedItem valueForKey: kName]
+                                                       portions: [[managedItem valueForKey: kPortions] intValue]
+                                                          price: [[managedItem valueForKey: kPrice] floatValue]
+                               ];
+        
+        [items addObject: item];
+    }
+    
+    return items;
+}
+
+// add elements (categories or items) to menu model from categories ot items according to current node (father categoty)
+// recursively
++ (void) addElementsFromCategories: (NSArray*)categories items: (NSArray*)items toMenuModel: (MenuModel*)menuModel withFatherCategory: (MenuCategoryModel*)fatherCategory
+{
+    NSMutableArray *findCategories = [LocalMenuDataProvider findInCategories: categories byParentId: fatherCategory.Id];
+    NSMutableArray *findItems = [LocalMenuDataProvider findInItems: items byCategoryId: fatherCategory.Id];
+    
+    [menuModel addArrayOfNodes: findCategories
+              toFatherCategory: fatherCategory];
+    [menuModel addArrayOfNodes: findItems
+              toFatherCategory: fatherCategory];
+    
+    if ( fatherCategory == nil ) {
+        fatherCategory = menuModel.rootMenuCategory;
+        [LocalMenuDataProvider addElementsFromCategories: categories
+                                                   items: items
+                                             toMenuModel: menuModel
+                                      withFatherCategory: fatherCategory];
+    }
+    
+    for ( MenuCategoryModel *category in fatherCategory.categories ) {
+        [LocalMenuDataProvider addElementsFromCategories: categories
+                                                   items: items
+                                             toMenuModel: menuModel
+                                      withFatherCategory: category];
+    }
+}
+
+// find categories in arr - cattegories by parentId
++ (NSMutableArray*) findInCategories: (NSArray*)categories byParentId: (NSUInteger)parentId
+{
+    NSMutableArray *findCategories;
+    
+    for ( MenuCategoryModel *category in categories ) {
+        if ( category.parentId == parentId ) {
+            if ( findCategories == nil ) {
+                findCategories = [NSMutableArray new];
+            }
+            [findCategories addObject: category];
+        }
+    }
+    
+    return findCategories;
+}
+
+// find items in arr - items by categoryId
+// return array of items
++ (NSMutableArray*) findInItems: (NSArray*)items byCategoryId: (NSUInteger)categoryId
+{
+    NSMutableArray *findItems;
+    
+    for ( MenuItemModel *item in items ) {
+        if ( item.categoryId == categoryId ) {
+            if ( findItems == nil ) {
+                findItems = [NSMutableArray new];
+            }
+            [findItems addObject: item];
+        }
+    }
+    
+    return findItems;
 }
 
 // check is data in local data base
